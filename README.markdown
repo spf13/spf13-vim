@@ -4,6 +4,7 @@ My Vim config.
 I compile and configure a few popular vim plugins. 
 
 ## Plugins
+ * PIV (PHP Integration for VIM)
  * Snipmate
  * NerdCommenter
 
