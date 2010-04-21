@@ -1,3 +1,6 @@
+runtime! autoload/pathogen.vim
+silent! call pathogen#runtime_append_all_bundles()
+
 " Modeline and Notes {
 " 	vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
@@ -15,10 +18,11 @@
 
 " General {
 	filetype plugin indent on  	" Automatically detect file types.
-	syntax on 				" syntax highlighting
-	"set autochdir 			" always switch to the current file directory.. 
+	syntax on 					" syntax highlighting
+	"set autochdir 				" always switch to the current file directory.. 
 	" not every vim is compiled with this, use the following line instead
  	autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+	scriptencoding utf-8
 	set autowrite
 	set shortmess+=filmnrxoOtT     	" abbrev. of messages (avoids 'hit enter')
 	" set spell 		 	     	" spell checking on
@@ -30,11 +34,11 @@
 " }
 
 " Vim UI {
-	color tango        	       	" load a colorscheme
+"	color tango        	       		" load a colorscheme
 	set tabpagemax=15 				" only show 15 tabs
 	set showmode                   	" display the current mode
 
-	set cursorline  			" highlight current line
+	set cursorline  				" highlight current line
 	hi cursorline guibg=#333333 	" highlight bg color of current line
 	hi CursorColumn guibg=#333333   " highlight cursor
 
@@ -65,6 +69,7 @@
 	set scrolljump=5 				" lines to scroll when cursor leaves screen
 	set scrolloff=3 				" minimum lines to keep above and below cursor
 	set foldenable  				" auto fold code
+	set gdefault					" the /g flag on :s substitutions by default
 
 " }
 
@@ -95,6 +100,9 @@
 	map:WQ :wq
 	map:wQ :wq
 	map:Q :q
+
+	" Yank from the cursor to the end of the line, to be consistent with C and D.
+	nnoremap Y y$
 " }
 
 " Plugins {
