@@ -1,0 +1,3 @@
+[submodule ".vim/bundle/piv"]
+	path = .vim/bundle/piv
+	url = git@github.com:spf13/PIV.git
