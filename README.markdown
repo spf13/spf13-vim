@@ -7,6 +7,7 @@ I compile and configure a few popular vim plugins, colors, etc
  * PIV (PHP Integration for VIM)
  * Snipmate
  * NerdCommenter
+ * NerdTree
  * SuperTab
 
 

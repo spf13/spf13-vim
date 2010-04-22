@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/supertab"]
 	path = .vim/bundle/supertab
 	url = http://github.com/tsaleh/vim-supertab.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = http://github.com/scrooloose/nerdtree.git
