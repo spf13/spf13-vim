@@ -1,3 +1,12 @@
 [submodule ".vim/bundle/piv"]
 	path = .vim/bundle/piv
 	url = git@github.com:spf13/PIV.git
+[submodule ".vim/bundle/snipmate"]
+	path = .vim/bundle/snipmate
+	url = git://github.com/msanders/snipmate.vim.git
+[submodule ".vim/bundle/nerdcommenter"]
+	path = .vim/bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule ".vim/bundle/spf13-vim-colors"]
+	path = .vim/bundle/spf13-vim-colors
+	url = git://github.com/spf13/vim-colors.git
