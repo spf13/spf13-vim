@@ -30,8 +30,10 @@ silent! call pathogen#runtime_append_all_bundles()
 	set backup 						" backups are nice ...
 	set backupdir=$HOME/.vimbackup  " but not when they clog .
 	set directory=$HOME/.vimswap 	" Same for swap files
+	set viewdir=$HOME/.vimviewdir   " same but for view files
 	silent execute '!mkdir -p $HOME/.vimbackup'
 	silent execute '!mkdir -p $HOME/.vimswap'
+	silent execute '!mkdir -p $HOME/.vimviewdir'
 	au BufWinLeave * mkview 		 "make vim save and load the folding of the document each time it loads
 	au BufWinEnter * silent loadview "also places the cursor in the last place that it was left.
 " }
