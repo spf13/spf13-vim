@@ -32,6 +32,8 @@ silent! call pathogen#runtime_append_all_bundles()
 	set directory=$HOME/.vimswap 	" Same for swap files
 	silent execute '!mkdir -p $HOME/.vimbackup'
 	silent execute '!mkdir -p $HOME/.vimswap'
+	au BufWinLeave * mkview 		 "make vim save and load the folding of the document each time it loads
+	au BufWinEnter * silent loadview "also places the cursor in the last place that it was left.
 " }
 
 " Vim UI {
