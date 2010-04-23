@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/fugitive"]
+	path = .vim/bundle/fugitive
+	url = http://github.com/tpope/vim-fugitive.git
