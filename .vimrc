@@ -1,6 +1,3 @@
-runtime! autoload/pathogen.vim
-silent! call pathogen#runtime_append_all_bundles()
-
 " Modeline and Notes {
 " 	vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
@@ -10,6 +7,10 @@ silent! call pathogen#runtime_append_all_bundles()
 "
 " 	You can find me at http://spf13.com
 " }
+
+" The next two lines ensure that the ~/.vim/bundle/ system works
+runtime! autoload/pathogen.vim
+silent! call pathogen#runtime_append_all_bundles()
 
 " Basics {
 	set nocompatible 		" must be first line
@@ -27,19 +28,24 @@ silent! call pathogen#runtime_append_all_bundles()
 	set autowrite
 	set shortmess+=filmnrxoOtT     	" abbrev. of messages (avoids 'hit enter')
 	" set spell 		 	     	" spell checking on
-	set backup 						" backups are nice ...
-	set backupdir=$HOME/.vimbackup  " but not when they clog .
-	set directory=$HOME/.vimswap 	" Same for swap files
-	set viewdir=$HOME/.vimviewdir   " same but for view files
-	silent execute '!mkdir -p $HOME/.vimbackup'
-	silent execute '!mkdir -p $HOME/.vimswap'
-	silent execute '!mkdir -p $HOME/.vimviewdir'
-	au BufWinLeave * mkview 		 "make vim save and load the folding of the document each time it loads
-	au BufWinEnter * silent loadview "also places the cursor in the last place that it was left.
+	
+	" Setting up the directories {
+		set backup 						" backups are nice ...
+		set backupdir=$HOME/.vimbackup  " but not when they clog .
+		set directory=$HOME/.vimswap 	" Same for swap files
+		set viewdir=$HOME/.vimviews 	" same but for view files
+		
+		" Creating directories if they don't exist
+		silent execute '!mkdir -p $HOME/.vimbackup'
+		silent execute '!mkdir -p $HOME/.vimswap'
+		silent execute '!mkdir -p $HOME/.vimviews'
+		au BufWinLeave * mkview 		 "make vim save and load the folding of the document each time it loads
+		au BufWinEnter * silent loadview "also places the cursor in the last place that it was left.
+	" }
 " }
 
 " Vim UI {
-"	color tango        	       		" load a colorscheme
+	color ir_black     	       		" load a colorscheme
 	set tabpagemax=15 				" only show 15 tabs
 	set showmode                   	" display the current mode
 
