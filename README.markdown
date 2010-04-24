@@ -9,6 +9,7 @@ I compile and configure a few popular vim plugins, colors, etc
  * NerdCommenter
  * NerdTree
  * SuperTab
+ * Fugitive
 
 
 ## Using
