@@ -10,6 +10,8 @@ I compile and configure a few popular vim plugins, colors, etc
  * NerdTree
  * SuperTab
  * Fugitive
+ * DelimitMate
+ * Matchit
 
 
 ## Using
