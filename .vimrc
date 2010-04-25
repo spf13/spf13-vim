@@ -39,8 +39,8 @@ silent! call pathogen#runtime_append_all_bundles()
 		silent execute '!mkdir -p $HOME/.vimbackup'
 		silent execute '!mkdir -p $HOME/.vimswap'
 		silent execute '!mkdir -p $HOME/.vimviews'
-		au BufWinLeave * mkview 		 "make vim save and load the folding of the document each time it loads
-		au BufWinEnter * silent loadview "also places the cursor in the last place that it was left.
+		au BufWinLeave * silent! mkview 	 "make vim save and load the folding of the document each time it loads
+		au BufWinEnter * silent! loadview "also places the cursor in the last place that it was left.
 	" }
 " }
 
@@ -62,7 +62,9 @@ silent! call pathogen#runtime_append_all_bundles()
 
 	if has('statusline')
 		set laststatus=1           	" show statusline only if there are > 1 windows
-		set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
+		" Use the commented line if fugitive isn't installed
+		"set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
+		set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 	endif
 
 	set backspace=indent,eol,start 	" backspace for dummys
@@ -123,6 +125,11 @@ silent! call pathogen#runtime_append_all_bundles()
 		let b:VCSCommandVCSType='git'
 		""let mapleader = "-"
 	" } 
+	
+	" Supertab {
+		let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+		let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+	" }
 
 	" Misc { 
 		:map <C-F10> <Esc>:vsp<CR>:VTree<CR>
@@ -152,12 +159,12 @@ silent! call pathogen#runtime_append_all_bundles()
 	" }
 	
 	" OmniComplete {
-		if has("autocmd") && exists("+omnifunc")
-			autocmd Filetype *
-				\if &omnifunc == "" |
-				\setlocal omnifunc=syntaxcomplete#Complete |
-				\endif
-		endif
+		"if has("autocmd") && exists("+omnifunc")
+			"autocmd Filetype *
+				"\if &omnifunc == "" |
+				"\setlocal omnifunc=syntaxcomplete#Complete |
+				"\endif
+		"endif
 
 		" Popup menu hightLight Group
 		"highlight Pmenu 	ctermbg=13 	guibg=DarkBlue
