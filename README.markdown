@@ -12,6 +12,7 @@ I compile and configure a few popular vim plugins, colors, etc
  * Fugitive
  * DelimitMate
  * Matchit
+ * CheckSyntax
 
 
 ## Using

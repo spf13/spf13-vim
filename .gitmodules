@@ -28,3 +28,6 @@
 [submodule ".vim/bundle/delimitMate"]
 	path = .vim/bundle/delimitMate
 	url = http://github.com/Raimondi/delimitMate.git
+[submodule ".vim/bundle/checksyntax"]
+	path = .vim/bundle/checksyntax
+	url = http://github.com/tomtom/checksyntax_vim.git
