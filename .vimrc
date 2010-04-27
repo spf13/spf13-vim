@@ -1,5 +1,5 @@
 " Modeline and Notes {
-" 	vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
 " 	This is the personal .vimrc file of Steve Francia.
 " 	While much of it is beneficial for general use, I would
@@ -8,9 +8,11 @@
 " 	You can find me at http://spf13.com
 " }
 
+" Setup Bundle Support {
 " The next two lines ensure that the ~/.vim/bundle/ system works
-runtime! autoload/pathogen.vim
-silent! call pathogen#runtime_append_all_bundles()
+	runtime! autoload/pathogen.vim
+	silent! call pathogen#runtime_append_all_bundles()
+" }
 
 " Basics {
 	set nocompatible 		" must be first line
@@ -39,8 +41,8 @@ silent! call pathogen#runtime_append_all_bundles()
 		silent execute '!mkdir -p $HOME/.vimbackup'
 		silent execute '!mkdir -p $HOME/.vimswap'
 		silent execute '!mkdir -p $HOME/.vimviews'
-		au BufWinLeave * silent! mkview 	 "make vim save and load the folding of the document each time it loads
-		au BufWinEnter * silent! loadview "also places the cursor in the last place that it was left.
+		au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
+		au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
 	" }
 " }
 
@@ -113,6 +115,7 @@ silent! call pathogen#runtime_append_all_bundles()
 	map:WQ :wq
 	map:wQ :wq
 	map:Q :q
+	map:Tabe :tabe
 
 	" Yank from the cursor to the end of the line, to be consistent with C and D.
 	nnoremap Y y$
@@ -127,7 +130,7 @@ silent! call pathogen#runtime_append_all_bundles()
 	" } 
 	
 	" Supertab {
-		let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+		let g:SuperTabDefaultCompletionType = "context"
 		let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 	" }
 
@@ -192,6 +195,8 @@ silent! call pathogen#runtime_append_all_bundles()
 	" Ctags {
 		set tags=./tags;/	
 	" }
+	
+	 au FileType * let b:delimitMate_autoclose = 0 
 
 " }
 
