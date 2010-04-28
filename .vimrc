@@ -129,6 +129,10 @@
 		""let mapleader = "-"
 	" } 
 	
+	" PIV {
+		let g:DisableAutoPHPFolding = 0
+	" }
+	
 	" Supertab {
 		"let g:SuperTabDefaultCompletionType = "context"
 		let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
