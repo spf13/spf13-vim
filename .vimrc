@@ -130,7 +130,7 @@
 	" } 
 	
 	" Supertab {
-		let g:SuperTabDefaultCompletionType = "context"
+		"let g:SuperTabDefaultCompletionType = "context"
 		let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 	" }
 
@@ -195,8 +195,18 @@
 	" Ctags {
 		set tags=./tags;/	
 	" }
+
+	" Delimitmate {
+		au FileType * let b:delimitMate_autoclose = 1
+
+		" If using html auto complete (complete closing tag)
+        au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],{:}"
+	" }
 	
-	 au FileType * let b:delimitMate_autoclose = 0 
+	" AutoCloseTag {
+		" Make it so AutoCloseTag works for xml and xhtml files as well
+		au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+	" }
 
 " }
 
