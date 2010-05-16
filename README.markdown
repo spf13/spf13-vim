@@ -1,6 +1,6 @@
 # spf13-vim
 
-My Vim config.
+## My Vim config.
 I compile and configure a few popular vim plugins, colors, snippets, etc
 
 This configuration makes use of [pathogen](http://www.vim.org/scripts/script.php?script_id=2332) to have
