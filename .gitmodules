@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
+[submodule ".vim/bundle/easytags"]
+	path = .vim/bundle/easytags
+	url = http://github.com/xolox/vim-easytags.git
