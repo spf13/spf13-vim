@@ -201,7 +201,11 @@
 	" }
 	
 	" Ctags {
-		set tags=./tags;/	
+		set tags=./tags;/,~/.vimtags
+	" }
+
+	" EasyTags {
+		let g:easytags_cmd = '/usr/local/bin/ctags'
 	" }
 
 	" Delimitmate {
