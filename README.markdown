@@ -27,11 +27,18 @@ The vimrc is quite clean and provides easy configuration of the following plugin
 
 It also contains a very complete set of [snippets](http://github.com/spf13/snipmate-snippets) for use with snipmate.
 
-## Using
-Assuming you don't have an existing .vimrc and .vim...
+
+## Installation
+
+    git clone git@github.com:spf13/spf13-vim.git
+    cd spf13-vim
+    git submodule update --init
+
+I setup symlinks after this so I can maintain the repo outside of my actual config location.
+
+Use ln -s on mac/unix or mklink on windows.
 
     cd ~
     ln -s /path/to/spf13-vim/vimrc .vimrc
     ln -s /path/to/spf13-vim/vim .vim
 
-Or better, install this with homesick
