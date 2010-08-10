@@ -3,7 +3,7 @@
 	url = git@github.com:spf13/PIV.git
 [submodule ".vim/bundle/snipmate"]
 	path = .vim/bundle/snipmate
-	url = git://github.com/msanders/snipmate.vim.git
+	url = git://github.com/spf13/snipmate.vim.git
 [submodule ".vim/bundle/nerdcommenter"]
 	path = .vim/bundle/nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
@@ -36,7 +36,7 @@
 	url = git://git.wincent.com/command-t.git
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
-	url = git://github.com/tpope/vim-markdown.git
+	url = git://github.com/spf13/vim-markdown.git
 [submodule ".vim/bundle/easytags"]
 	path = .vim/bundle/easytags
-	url = http://github.com/xolox/vim-easytags.git
+	url = http://github.com/spf13/vim-easytags.git
