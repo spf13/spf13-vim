@@ -41,14 +41,15 @@
 	
 	" Setting up the directories {
 		set backup 						" backups are nice ...
-		set backupdir=$HOME/.vimbackup  " but not when they clog .
-		set directory=$HOME/.vimswap 	" Same for swap files
-		set viewdir=$HOME/.vimviews 	" same but for view files
+        " Moved to function at bottom of the file
+		"set backupdir=$HOME/.vimbackup//  " but not when they clog .
+		"set directory=$HOME/.vimswap// 	" Same for swap files
+		"set viewdir=$HOME/.vimviews// 	" same but for view files
 		
-		" Creating directories if they don't exist
-		silent execute '!mkdir -p $HOME/.vimbackup'
-		silent execute '!mkdir -p $HOME/.vimswap'
-		silent execute '!mkdir -p $HOME/.vimviews'
+		"" Creating directories if they don't exist
+		"silent execute '!mkdir -p $HOME/.vimbackup'
+		"silent execute '!mkdir -p $HOME/.vimswap'
+		"silent execute '!mkdir -p $HOME/.vimviews'
 		au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
 		au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
 	" }
@@ -243,3 +244,31 @@
 		set lines=40               	" 40 lines of text instead of 24,
 	endif
 " }
+"
+
+function InitalizeDirectories()
+  let separator = "."
+  let parent = $HOME 
+  let prefix = '.vim'
+  let missing_dir = 0
+
+  if exists("*mkdir")
+  for dirname in ('backup', 'view', 'swap')
+    let directory = parent . '/' . prefix . dirname . "/"
+    if !isdirectory(directory)
+       call mkdir(directory)
+	endif
+    if !isdirectory(directory)
+      echo "Warning: Unable to create backup directory: " . directory
+      echo "Try: mkdir -p " . directory
+    endif
+    if dirname == swap
+      set directory=directory . '/' 
+    else
+      let settingname=dirname . 'dir'
+      set settingname=directory . '/'
+    endif
+  endfor
+endfunction
+call InitializeDirectories()
+

@@ -1,16 +1,39 @@
 # spf13-vim
 
 ## My Vim config.
-I compile and configure a few popular vim plugins, colors, snippets, etc
+The ultimate vim configuration.
 
 This configuration makes use of [pathogen](http://www.vim.org/scripts/script.php?script_id=2332) to have
 a well organized vim directory.
 
-Most of the bundles are git submodules facilitating easy updating and configuration. 
+It also heavily uses vim submodules where possible for all plugins. This makes for easy updating.
 
-The vimrc is quite clean and provides easy configuration of the following plugins.
+It also works well on Windows, Linux and OSX without even modifying directories. Just clone and run.
+
+## The vimrc file
+
+The vimrc file is suited to programming. It is very well organized and folds in sections.
+Each section is labeled and each option is commented.
+
+It fixes many of the inconviences of vanilla vim including
+ * One config can be used across Windows, Mac and linux
+ * Eliminates swap and backup files from littering directories, preferring to store in a 
+ central location.
+ * Fixes common typos like :W, :Q, etc
+ * Setup a solid set of settings for Formatting (change to meet your needs) 
+ * Setup the interface to take advantage of vim's features including
+   * omnicomplete
+   * line numbers
+   * syntax highlighting
+   * A better ruler & status line
+   * & more
+ * Configuring included plugins
 
 ## Plugins
+I compile and configure a few popular vim plugins, colors, snippets, etc
+
+Most of the bundles are git submodules facilitating easy updating and configuration. 
+
  * [PIV (PHP Integration for VIM)](http://github.com/spf13/PIV)
  * [Snipmate](http://github.com/msanders/snipmate.vim)
  * [NerdCommenter](http://github.com/scrooloose/nerdcommenter.git)
@@ -26,7 +49,6 @@ The vimrc is quite clean and provides easy configuration of the following plugin
 ## Snippets
 
 It also contains a very complete set of [snippets](http://github.com/spf13/snipmate-snippets) for use with snipmate.
-
 
 ## Installation
 
