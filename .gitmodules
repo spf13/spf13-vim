@@ -1,6 +1,6 @@
 [submodule ".vim/bundle/piv"]
 	path = .vim/bundle/piv
-	url = git@github.com:spf13/PIV.git
+	url = git://github.com/spf13/PIV.git
 [submodule ".vim/bundle/snipmate"]
 	path = .vim/bundle/snipmate
 	url = git://github.com/spf13/snipmate.vim.git
@@ -12,7 +12,7 @@
 	url = git://github.com/spf13/vim-colors.git
 [submodule ".vim/bundle/snipmate-snippets"]
 	path = .vim/bundle/snipmate-snippets
-	url = git@github.com:spf13/snipmate-snippets.git
+	url = git://github.com/spf13/snipmate-snippets.git
 [submodule ".vim/bundle/snipmate-snippets/snippets"]
 	path = .vim/bundle/snipmate-snippets/snippets
 	url = git@github.com:spf13/snipmate-snippets.git
