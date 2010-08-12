@@ -37,6 +37,9 @@
 	scriptencoding utf-8
 	set autowrite
 	set shortmess+=filmnrxoOtT     	" abbrev. of messages (avoids 'hit enter')
+	set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
+	set virtualedit=onemore 	   	" allow for cursor beyond last character
+	set history=1000  				" Store a ton of history (default is 20)
 	" set spell 		 	     	" spell checking on
 	
 	" Setting up the directories {
@@ -246,29 +249,31 @@
 " }
 "
 
-function InitalizeDirectories()
+function InitializeDirectories()
   let separator = "."
   let parent = $HOME 
   let prefix = '.vim'
-  let missing_dir = 0
+  let dir_list = { 
+			  \ 'backup': 'backupdir', 
+			  \ 'views': 'viewdir', 
+			  \ 'swap': 'directory' }
 
-  if exists("*mkdir")
-  for dirname in ('backup', 'view', 'swap')
-    let directory = parent . '/' . prefix . dirname . "/"
-    if !isdirectory(directory)
-       call mkdir(directory)
-	endif
-    if !isdirectory(directory)
-      echo "Warning: Unable to create backup directory: " . directory
-      echo "Try: mkdir -p " . directory
-    endif
-    if dirname == swap
-      set directory=directory . '/' 
-    else
-      let settingname=dirname . 'dir'
-      set settingname=directory . '/'
-    endif
+  for [dirname, settingname] in items(dir_list)
+	  let directory = parent . '/' . prefix . dirname . "/"
+	  if exists("*mkdir")
+		  if !isdirectory(directory)
+			  call mkdir(directory)
+		  endif
+	  endif
+	  if !isdirectory(directory)
+		  echo "Warning: Unable to create backup directory: " . directory
+		  echo "Try: mkdir -p " . directory
+	  else  
+		  " Adding an extra trailing slash so it stores the path and not just the
+		  " filename so there aren't collisions for backups
+		  " Windows Vista / 7 has UAC issues, so setting $temp as fallback
+		  exec "set " . settingname . "='" . directory . "/'," . $temp
+	  endif
   endfor
 endfunction
-call InitializeDirectories()
-
+call InitializeDirectories() 
