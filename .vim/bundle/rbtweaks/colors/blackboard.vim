@@ -23,6 +23,10 @@ if has("gui_running")
   highlight Folded guifg=#f1f3e8 guibg=#444444
   highlight Pmenu guibg=#84A7C1
 
+  "Visual mode
+  highlight VisualNOS  guibg=#1C3B79
+  highlight Visual     guibg=#1C3B79
+
   "General Colors
   highlight Comment guifg=#AEAEAE
   highlight Constant guifg=#CAFE1E
