@@ -269,6 +269,12 @@
 			map <C-p> <Plug>ToggleProject
 			map <C-e> :NERDTreeToggle<CR>
 			nmap <leader>nt :NERDTreeFind<CR>
+
+            let NERDTreeShowBookmarks=1
+            let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$']
+            let NERDTreeChDirMode=2
+            let NERDTreeQuitOnOpen=1
+            let NERDTreeShowHidden=1
 		" }
 		
 		" VCS commands {
