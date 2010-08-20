@@ -37,13 +37,16 @@
      "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
 	scriptencoding utf-8
-	set autowrite
+	" set autowrite
 	set shortmess+=filmnrxoOtT		" abbrev. of messages (avoids 'hit enter')
 	set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
 	set virtualedit=onemore			" allow for cursor beyond last character
 	set history=1000				" Store a ton of history (default is 20)
 	" set spell						" spell checking on
 	
+	" Use TABS instead of SPACES for PHP (read: OpenSky... why oh why do they use tabs?)
+	autocmd FileType php set noexpandtab
+
 	" Setting up the directories {
 		set backup						" backups are nice ...
 		
@@ -85,7 +88,7 @@
 	set whichwrap=b,s,h,l,<,>,[,]	" backspace and cursor keys wrap to
 	set scrolljump=5				" lines to scroll when cursor leaves screen
 	set scrolloff=3					" minimum lines to keep above and below cursor
-    set foldenable					" auto fold code
+    set nofoldenable				" disable auto fold code
 	set gdefault					" the /g flag on :s substitutions by default
 
 " }
