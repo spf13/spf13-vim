@@ -10,12 +10,6 @@
 [submodule ".vim/bundle/spf13-vim-colors"]
 	path = .vim/bundle/spf13-vim-colors
 	url = git://github.com/spf13/vim-colors.git
-[submodule ".vim/bundle/snipmate-snippets"]
-	path = .vim/bundle/snipmate-snippets
-	url = git://github.com/spf13/snipmate-snippets.git
-[submodule ".vim/bundle/snipmate-snippets/snippets"]
-	path = .vim/bundle/snipmate-snippets/snippets
-	url = git@github.com:spf13/snipmate-snippets.git
 [submodule ".vim/bundle/supertab"]
 	path = .vim/bundle/supertab
 	url = http://github.com/tsaleh/vim-supertab.git
@@ -40,3 +34,6 @@
 [submodule ".vim/bundle/easytags"]
 	path = .vim/bundle/easytags
 	url = http://github.com/spf13/vim-easytags.git
+[submodule ".vim/bundle/VimDebugger"]
+	path = .vim/bundle/VimDebugger
+	url = git@github.com:taxilian/VimDebugger.git
