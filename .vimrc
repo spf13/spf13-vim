@@ -44,7 +44,7 @@
 	set history=1000				" Store a ton of history (default is 20)
 	" set spell						" spell checking on
 	
-	" Use TABS instead of SPACES for PHP (read: OpenSky... why oh why do they use tabs?)
+	" Use TABS instead of SPACES for PHP (read: OpenSky... why oh why use tabs?)
 	autocmd FileType php set noexpandtab
 
 	" Setting up the directories {
