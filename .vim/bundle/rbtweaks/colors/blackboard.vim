@@ -28,7 +28,6 @@ if has("gui_running")
   highlight VisualNOS  guibg=#1C3B79
   highlight Visual     guibg=#1C3B79
 
-
   "General Colors
   highlight Comment guifg=#AEAEAE
   highlight Constant guifg=#CAFE1E
