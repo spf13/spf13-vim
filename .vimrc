@@ -37,7 +37,7 @@
      "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
 	scriptencoding utf-8
-	set autowrite
+	"set autowrite
 	set shortmess+=filmnrxoOtT		" abbrev. of messages (avoids 'hit enter')
 	set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
 	set virtualedit=onemore			" allow for cursor beyond last character
