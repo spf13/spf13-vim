@@ -85,8 +85,7 @@
 	set whichwrap=b,s,h,l,<,>,[,]	" backspace and cursor keys wrap to
 	set scrolljump=5				" lines to scroll when cursor leaves screen
 	set scrolloff=3					" minimum lines to keep above and below cursor
-	set foldenable					" auto fold code
-    set foldlevel=4                 " Default to not fold much
+    set foldenable					" auto fold code
 	set gdefault					" the /g flag on :s substitutions by default
 
 " }
