@@ -270,7 +270,7 @@
 		
 		" Project related {
 			map <C-p> <Plug>ToggleProject
-			map <C-e> :NERDTreeToggle<CR>
+			map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 			nmap <leader>nt :NERDTreeFind<CR>
 
             let NERDTreeShowBookmarks=1
