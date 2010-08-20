@@ -86,6 +86,7 @@
 	set scrolljump=5				" lines to scroll when cursor leaves screen
 	set scrolloff=3					" minimum lines to keep above and below cursor
 	set foldenable					" auto fold code
+    set foldlevel=4                 " Default to not fold much
 	set gdefault					" the /g flag on :s substitutions by default
 
 " }
@@ -271,9 +272,9 @@
 			nmap <leader>nt :NERDTreeFind<CR>
 
             let NERDTreeShowBookmarks=1
-            let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$']
+            let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '.git']
             let NERDTreeChDirMode=2
-            let NERDTreeQuitOnOpen=1
+            let NERDTreeQuitOnOpen=0
             let NERDTreeShowHidden=1
 		" }
 		
