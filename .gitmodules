@@ -12,7 +12,7 @@
 	url = http://github.com/ervandew/supertab.git
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
-	url = http://github.com/scrooloose/nerdtree.git
+	url = git@github.com:taxilian/nerdtree.git
 [submodule ".vim/bundle/fugitive"]
 	path = .vim/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git

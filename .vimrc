@@ -204,7 +204,7 @@
 
 		" Popup menu hightLight Group
 		"highlight Pmenu	ctermbg=13	guibg=DarkBlue
-		highlight PmenuSel	ctermbg=7	guibg=DarkBlue		guifg=LightBlue
+        "highlight PmenuSel	ctermbg=7	guibg=DarkBlue		guifg=LightBlue
 		"highlight PmenuSbar ctermbg=7	guibg=DarkGray
 		"highlight PmenuThumb			guibg=Black
 
@@ -275,6 +275,8 @@
             let NERDTreeChDirMode=2
             let NERDTreeQuitOnOpen=0
             let NERDTreeShowHidden=1
+            let NERDTreeKeepTreeInNewTab=1
+			"au BufEnter * call NERDTreeInitAsNeeded()
 		" }
 		
 		" VCS commands {
@@ -356,3 +358,15 @@ function! InitializeDirectories()
   endfor
 endfunction
 call InitializeDirectories() 
+
+function! NERDTreeInitAsNeeded()
+    redir => bufoutput
+    buffers!
+    redir END
+    let idx = stridx(bufoutput, "NERD_tree")
+    if idx > -1
+        NERDTreeMirror
+        NERDTreeFind
+        wincmd l
+    endif
+endfunction
