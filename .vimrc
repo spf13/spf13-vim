@@ -277,7 +277,7 @@
 			nmap <leader>nt :NERDTreeFind<CR>
 
             let NERDTreeShowBookmarks=1
-            let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '.git']
+            let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
             let NERDTreeChDirMode=2
             let NERDTreeQuitOnOpen=0
             let NERDTreeShowHidden=1
