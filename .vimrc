@@ -115,16 +115,10 @@
 " Key Mappings {
 
 	" Easier moving in tabs and windows
-	map <C-S-J> :2 tabn
-	map <C-S-K> :2 tabp
-	map <C-S-L> :tabn
-	map <C-S-H> :tabp 
-	map <C-J> <C-W>j<C-W>_
-	map <C-K> <C-W>k<C-W>_
-	map <C-L> <C-W>l<C-W>_
-	map <C-H> <C-W>h<C-W>_
-	map <S-H> gT
-	map <S-L> gt
+	map <C-J> :2 tabn
+	map <C-K> :2 tabp
+	map <C-L> :tabn
+	map <C-H> :tabp 
 
 	" Yank from the cursor to the end of the line, to be consistent with C and D.
 	nnoremap Y y$
