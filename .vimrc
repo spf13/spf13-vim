@@ -45,14 +45,14 @@
 	" Setting up the directories {
 		set backup 						" backups are nice ...
         " Moved to function at bottom of the file
-		"set backupdir=$HOME/.vimbackup//  " but not when they clog .
-		"set directory=$HOME/.vimswap// 	" Same for swap files
-		"set viewdir=$HOME/.vimviews// 	" same but for view files
+		set backupdir=$HOME/.vimbackup//  " but not when they clog .
+		set directory=$HOME/.vimswap// 	" Same for swap files
+		set viewdir=$HOME/.vimviews// 	" same but for view files
 		
 		"" Creating directories if they don't exist
-		"silent execute '!mkdir -p $HOME/.vimbackup'
-		"silent execute '!mkdir -p $HOME/.vimswap'
-		"silent execute '!mkdir -p $HOME/.vimviews'
+		silent execute '!mkdir -p $HOME/.vimbackup'
+		silent execute '!mkdir -p $HOME/.vimswap'
+		silent execute '!mkdir -p $HOME/.vimviews'
 		au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
 		au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
 	" }
@@ -249,31 +249,32 @@
 " }
 "
 
-function InitializeDirectories()
-  let separator = "."
-  let parent = $HOME 
-  let prefix = '.vim'
-  let dir_list = { 
-			  \ 'backup': 'backupdir', 
-			  \ 'views': 'viewdir', 
-			  \ 'swap': 'directory' }
+" Not quite working yet
+"function InitializeDirectories()
+  "let separator = "."
+  "let parent = $HOME 
+  "let prefix = '.vim'
+  "let dir_list = { 
+			  "\ 'backup': 'backupdir', 
+			  "\ 'views': 'viewdir', 
+			  "\ 'swap': 'directory' }
 
-  for [dirname, settingname] in items(dir_list)
-	  let directory = parent . '/' . prefix . dirname . "/"
-	  if exists("*mkdir")
-		  if !isdirectory(directory)
-			  call mkdir(directory)
-		  endif
-	  endif
-	  if !isdirectory(directory)
-		  echo "Warning: Unable to create backup directory: " . directory
-		  echo "Try: mkdir -p " . directory
-	  else  
-		  " Adding an extra trailing slash so it stores the path and not just the
-		  " filename so there aren't collisions for backups
-		  " Windows Vista / 7 has UAC issues, so setting $temp as fallback
-		  exec "set " . settingname . "='" . directory . "/'," . $temp
-	  endif
-  endfor
-endfunction
-call InitializeDirectories() 
+  "for [dirname, settingname] in items(dir_list)
+	  "let directory = parent . '/' . prefix . dirname . "/"
+	  "if exists("*mkdir")
+		  "if !isdirectory(directory)
+			  "call mkdir(directory)
+		  "endif
+	  "endif
+	  "if !isdirectory(directory)
+		  "echo "Warning: Unable to create backup directory: " . directory
+		  "echo "Try: mkdir -p " . directory
+	  "else  
+		  "" Adding an extra trailing slash so it stores the path and not just the
+		  "" filename so there aren't collisions for backups
+		  "" Windows Vista / 7 has UAC issues, so setting $temp as fallback
+		  "exec "set " . settingname . "='" . directory . "/'," . $temp
+	  "endif
+  "endfor
+"endfunction
+"call InitializeDirectories() 
