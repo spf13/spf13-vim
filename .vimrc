@@ -352,7 +352,7 @@ function! InitializeDirectories()
 		  " Adding an extra trailing slash so it stores the path and not just the
 		  " filename so there aren't collisions for backups
 		  " Windows Vista / 7 has UAC issues, so setting $temp as fallback
-		  exec "set " . settingname . "=" . directory
+		  exec "set " . settingname . "=\"" . directory . "\""
 	  endif
   endfor
 endfunction
