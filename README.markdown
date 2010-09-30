@@ -52,7 +52,7 @@ It also contains a very complete set of [snippets](http://github.com/spf13/snipm
 
 ## Installation
 
-    git clone git@github.com:spf13/spf13-vim.git
+    git clone git://github.com/spf13/spf13-vim.git
     cd spf13-vim
     git submodule update --init
 
