@@ -36,7 +36,7 @@
 	set mouse=a					" automatically enable mouse usage
 	"set autochdir 				" always switch to the current file directory.. 
 	" not every vim is compiled with this, use the following line instead
-	" If you use command-H plugin, it conflicts with this, comment it out.
+	" If you use command-t plugin, it conflicts with this, comment it out.
      "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 	scriptencoding utf-8
 	set autowrite                  " automatically write a file when leaving a modified buffer
@@ -62,7 +62,7 @@
 " }
 
 " Vim UI {
-	color wombat     	       		" load a colorscheme
+	color molokai     	       		" load a colorscheme
 	set tabpagemax=15 				" only show 15 tabs
 	set showmode                   	" display the current mode
 
