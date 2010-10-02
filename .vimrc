@@ -8,47 +8,49 @@
 " 	You can find me at http://spf13.com
 " }
 
-" Windows Compatible {
-	" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-	" across (heterogeneous) systems easier. 
-	if has('win32') || has('win64')
-	  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-	endif
-" }
+" Environment {
+	" Basics {
+		set nocompatible 		" must be first line
+	" }
 
-" Setup Bundle Support {
-" The next two lines ensure that the ~/.vim/bundle/ system works
-	runtime! autoload/pathogen.vim
-	silent! call pathogen#helptags()
-	silent! call pathogen#runtime_append_all_bundles()
-" }
+	" Windows Compatible {
+		" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+		" across (heterogeneous) systems easier. 
+		if has('win32') || has('win64')
+		  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+		endif
+	" }
 
-" Basics {
-	set nocompatible 		" must be first line
-	set background=dark     " Assume a dark background
-" }
- 
+	" Setup Bundle Support {
+	" The next two lines ensure that the ~/.vim/bundle/ system works
+		runtime! autoload/pathogen.vim
+		silent! call pathogen#runtime_append_all_bundles()
+	" }
+" } 
+	
 " General {
+	set background=dark         " Assume a dark background
+	set term=builtin_ansi       " Make arrow and other keys work
 	filetype plugin indent on  	" Automatically detect file types.
 	syntax on 					" syntax highlighting
 	set mouse=a					" automatically enable mouse usage
 	"set autochdir 				" always switch to the current file directory.. 
 	" not every vim is compiled with this, use the following line instead
+	" If you use command-H plugin, it conflicts with this, comment it out.
      "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 	scriptencoding utf-8
-	set autowrite
+	set autowrite                  " automatically write a file when leaving a modified buffer
 	set shortmess+=filmnrxoOtT     	" abbrev. of messages (avoids 'hit enter')
 	set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
 	set virtualedit=onemore 	   	" allow for cursor beyond last character
 	set history=1000  				" Store a ton of history (default is 20)
-	" set spell 		 	     	" spell checking on
+	set spell 		 	        	" spell checking on
 	
 	" Setting up the directories {
 		set backup 						" backups are nice ...
-        " Moved to function at bottom of the file
 		set backupdir=$HOME/.vimbackup//  " but not when they clog .
 		set directory=$HOME/.vimswap// 	" Same for swap files
-		set viewdir=$HOME/.vimviews// 	" same but for view files
+		set viewdir=$HOME/.vimviews// 	" same for view files
 		
 		"" Creating directories if they don't exist
 		silent execute '!mkdir -p $HOME/.vimbackup'
@@ -60,7 +62,7 @@
 " }
 
 " Vim UI {
-	color ir_black     	       		" load a colorscheme
+	color wombat     	       		" load a colorscheme
 	set tabpagemax=15 				" only show 15 tabs
 	set showmode                   	" display the current mode
 
@@ -120,7 +122,10 @@
 	map <C-L> <C-W>l<C-W>_
 	map <C-H> <C-W>h<C-W>_
 	map <C-K> <C-W>k<C-W>_
-	map <S-H> gT
+	" The following two lines conflict with moving to top and bottom of the
+	" screen
+	" If you prefer that functionality, comment them out.
+	map <S-H> gT          
 	map <S-L> gt
 
 	" Stupid shift key fixes
@@ -251,7 +256,6 @@
 		set lines=40               	" 40 lines of text instead of 24,
 	endif
 " }
-"
 
 " Not quite working yet
 "function InitializeDirectories()
