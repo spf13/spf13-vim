@@ -15,10 +15,9 @@ It also works well on Windows, Linux and OSX without even modifying directories.
 The vimrc file is suited to programming. It is very well organized and folds in sections.
 Each section is labeled and each option is commented.
 
-It fixes many of the inconviences of vanilla vim including
+It fixes many of the inconveniences of vanilla vim including
  * One config can be used across Windows, Mac and linux
- * Eliminates swap and backup files from littering directories, preferring to store in a 
- central location.
+ * Eliminates swap and backup files from littering directories, preferring to store in a central location.
  * Fixes common typos like :W, :Q, etc
  * Setup a solid set of settings for Formatting (change to meet your needs) 
  * Setup the interface to take advantage of vim's features including
@@ -36,10 +35,10 @@ Most of the bundles are git submodules facilitating easy updating and configurat
 
  * [PIV (PHP Integration for VIM)](http://github.com/spf13/PIV)
  * [Snipmate](http://github.com/msanders/snipmate.vim)
- * [NerdCommenter](http://github.com/scrooloose/nerdcommenter.git)
+ * [NerdCommenter](http://github.com/scrooloose/nerdcommenter)
  * [NerdTree](http://github.com/scrooloose/nerdtree)
  * [SuperTab](http://www.vim.org/scripts/script.php?script_id=1643)
- * [Fugitive](http://github.com/tpope/vim-fugitive.git)
+ * [Fugitive](http://github.com/tpope/vim-fugitive)
  * [DelimitMate](http://github.com/Raimondi/delimitMate)
  * [Matchit](http://www.vim.org/scripts/script.php?script_id=39)
  * [CheckSyntax](http://www.vim.org/scripts/script.php?script_id=1431)
