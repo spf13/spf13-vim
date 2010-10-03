@@ -88,20 +88,21 @@
 	set whichwrap=b,s,h,l,<,>,[,]	" backspace and cursor keys wrap to
 	set scrolljump=5				" lines to scroll when cursor leaves screen
 	set scrolloff=3					" minimum lines to keep above and below cursor
-    set nofoldenable				" disable auto fold code
+	set nofoldenable				" disable auto fold code
 	set gdefault					" the /g flag on :s substitutions by default
 
 " }
 
 " Formatting {
-	" set nowrap						" wrap long lines
+	" set nowrap					" wrap long lines
 	set autoindent					" indent at the same level of the previous line
 	set shiftwidth=4				" use indents of 4 spaces
 	set expandtab					" tabs are spaces
 	set tabstop=4					" an indentation every four columns
+	set softtabstop=4				" a soft indentation every four columns
 	"set matchpairs+=<:>				" match, to be used with % 
-	"set pastetoggle=<F12>			" pastetoggle (sane indentation on pastes)
-	"set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
+	"set pastetoggle=<F12>				" pastetoggle (sane indentation on pastes)
+	"set comments=sl:/*,mb:*,elx:*/  		" auto format comment blocks
 " }
 
 " Python helpers {
@@ -268,6 +269,7 @@
 		" Project related {
 			map <C-p> <Plug>ToggleProject
 			map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+			map <leader>e :NERDTreeFind<CR>
 			nmap <leader>nt :NERDTreeFind<CR>
 
             let NERDTreeShowBookmarks=1
