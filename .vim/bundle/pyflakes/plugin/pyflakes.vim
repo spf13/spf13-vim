@@ -277,7 +277,7 @@ if !exists("*s:GetPyflakesMessage")
         endif
 
         " otherwise, if we're showing a message, clear it
-        if b:showing_message == 1
+        if exists('b:showing_message') && b:showing_message == 1
             echo
             let b:showing_message = 0
         endif
