@@ -114,18 +114,18 @@ if !b:did_python_init
     finish
 endif
 
-au BufLeave * call s:ClearPyflakes()
+au BufLeave *.{py,pyw} call s:ClearPyflakes()
 
-au BufEnter * call s:RunPyflakes()
-au InsertLeave * call s:RunPyflakes()
-au InsertEnter * call s:RunPyflakes()
-au BufWritePost * call s:RunPyflakes()
+au BufEnter *.{py,pyw} call s:RunPyflakes()
+au InsertLeave *.{py,pyw} call s:RunPyflakes()
+au InsertEnter *.{py,pyw} call s:RunPyflakes()
+au BufWritePost *.{py,pyw} call s:RunPyflakes()
 
-au CursorHold * call s:RunPyflakes()
-au CursorHoldI * call s:RunPyflakes()
+au CursorHold *.{py,pyw} call s:RunPyflakes()
+au CursorHoldI *.{py,pyw} call s:RunPyflakes()
 
-au CursorHold * call s:GetPyflakesMessage()
-au CursorMoved * call s:GetPyflakesMessage()
+au CursorHold *.{py,pyw} call s:GetPyflakesMessage()
+au CursorMoved *.{py,pyw} call s:GetPyflakesMessage()
 
 if !exists("*s:PyflakesUpdate")
     function s:PyflakesUpdate()
