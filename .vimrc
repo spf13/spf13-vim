@@ -115,6 +115,10 @@
 
 " Key Mappings {
 
+	"The default leader is '\', but many people prefer ',' as it's in a standard
+	"location
+	let mapleader = ","
+
 	" Easier moving in tabs and windows
 	map <C-J> <C-W>j<C-W>_
 	map <C-K> <C-W>k<C-W>_
