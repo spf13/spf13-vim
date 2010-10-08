@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/easytags"]
 	path = .vim/bundle/easytags
 	url = http://github.com/spf13/vim-easytags.git
+[submodule ".vim/bundle/surround"]
+	path = .vim/bundle/surround
+	url = git://github.com/spf13/vim-surround.git

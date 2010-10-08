@@ -30,7 +30,6 @@
 	
 " General {
 	set background=dark         " Assume a dark background
-	set term=builtin_ansi       " Make arrow and other keys work
 	filetype plugin indent on  	" Automatically detect file types.
 	syntax on 					" syntax highlighting
 	set mouse=a					" automatically enable mouse usage
@@ -141,6 +140,7 @@
 	" Shortcuts
 	" Change Working Directory to that of the current file
     cmap cwd lcd %:p:h
+	cmap cd. lcd %:p:h
 
 	" For when you forget to sudo.. Really Write the file.
 	cmap w!! w !sudo tee % >/dev/null
@@ -149,9 +149,8 @@
 " Plugins {
 
 	" VCSCommand {
-		let b:VCSCommandMapPrefix=',v'
-		let b:VCSCommandVCSType='git'
-		""let mapleader = "-"
+"		let b:VCSCommandMapPrefix=',v'
+"		let b:VCSCommandVCSType='git'
 	" } 
 	
 	" PIV {
@@ -247,6 +246,19 @@
 		" Shortcut for reloading snippets, useful when developing
 		nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
 	" }
+
+	" NerdTree {
+		map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+		map <leader>e :NERDTreeFind<CR>
+		nmap <leader>nt :NERDTreeFind<CR>
+
+		let NERDTreeShowBookmarks=1
+		let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+		let NERDTreeChDirMode=0
+		let NERDTreeQuitOnOpen=0
+		let NERDTreeShowHidden=1
+		let NERDTreeKeepTreeInNewTab=1
+	" }
 " }
 
 " GUI Settings {
@@ -254,6 +266,10 @@
 	if has('gui_running')
 		set guioptions-=T          	" remove the toolbar
 		set lines=40               	" 40 lines of text instead of 24,
+		set transparency=5          " Make the window slightly transparent
+		set fullscreen	            " Set vim to full screen in gvim or macvim
+	else
+		set term=builtin_ansi       " Make arrow and other keys work
 	endif
 " }
 
