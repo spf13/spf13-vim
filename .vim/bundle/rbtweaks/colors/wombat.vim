@@ -24,8 +24,9 @@ endif
 " General colors
 hi Cursor 		guifg=NONE    guibg=#656565 gui=none
 hi Normal 		guifg=#f6f3e8 guibg=#242424 gui=none
-hi NonText 		guifg=#808080 guibg=#303030 gui=none
-hi LineNr 		guifg=#857b6f guibg=#000000 gui=none
+hi NonText 		guifg=#f6f3e8 guibg=#242424 gui=none
+"hi NonText 		guifg=#808080 guibg=#303030 gui=none
+hi LineNr 		guifg=#857b6f guibg=#101010 gui=none
 hi StatusLine 	guifg=#f6f3e8 guibg=#444444 gui=italic
 hi StatusLineNC guifg=#857b6f guibg=#444444 gui=none
 hi VertSplit 	guifg=#444444 guibg=#444444 gui=none
@@ -36,9 +37,10 @@ hi SpecialKey	guifg=#808080 guibg=#343434 gui=none
 
 " Syntax highlighting
 hi Comment 		guifg=#99968b gui=italic
-hi Todo 		guifg=#8f8f8f gui=italic
+hi Todo 		guibg=#242424 guifg=#F1D017 gui=italic,bold
+"hi Todo 		guifg=#8f8f8f gui=italic
 hi Constant 	guifg=#e5786d gui=none
-hi String 		guifg=#95e454 gui=italic
+hi String 		guifg=#46D020 gui=italic
 hi Identifier 	guifg=#cae682 gui=none
 hi Function 	guifg=#cae682 gui=none
 hi Type 		guifg=#cae682 gui=none
