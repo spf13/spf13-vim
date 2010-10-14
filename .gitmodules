@@ -31,3 +31,12 @@
 [submodule ".vim/bundle/snipmate-snippets/snippets"]
 	path = .vim/bundle/snipmate-snippets/snippets
 	url = git://github.com/spf13/snipmate-snippets.git
+[submodule ".vim/bundle/piv"]
+	path = .vim/bundle/piv
+	url = git://github.com/taxilian/PIV.git
+[submodule ".vim/bundle/VimDebugger"]
+	path = .vim/bundle/VimDebugger
+	url = git://github.com/taxilian/VimDebugger.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = git://github.com/taxilian/nerdtree.git
