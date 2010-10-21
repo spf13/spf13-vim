@@ -43,3 +43,6 @@
 [submodule ".vim/bundle/jslint"]
 	path = .vim/bundle/jslint
 	url = git://github.com/bloveridge/jslint.vim.git
+[submodule ".vim/bundle/pyflakes"]
+	path = .vim/bundle/pyflakes
+	url = git://github.com/bloveridge/pyflakes-vim.git
