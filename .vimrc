@@ -111,13 +111,15 @@
 	"set matchpairs+=<:>            	" match, to be used with % 
 	set pastetoggle=<F12>          	" pastetoggle (sane indentation on pastes)
 	"set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
+	" Remove trailing whitespaces and ^M chars
+	autocmd FileType c,cpp,java,php,js,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 " }
 
 " Key Mappings {
 
 	"The default leader is '\', but many people prefer ',' as it's in a standard
 	"location
-	let mapleader = ","
+	let mapleader = ','
 
 	" Easier moving in tabs and windows
 	map <C-J> <C-W>j<C-W>_
@@ -159,6 +161,7 @@
 	
 	" PIV {
 		let g:DisableAutoPHPFolding = 0
+		let cfu=phpcomplete#CompletePHP
 	" }
 	
 	" Supertab {
@@ -233,7 +236,7 @@
 	" }
 
 	" Delimitmate {
-		au FileType * let b:delimitMate_autoclose = 1
+		"au FileType * let b:delimitMate_autoclose = 1
 
 		" If using html auto complete (complete closing tag)
         au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],{:}"
@@ -271,38 +274,7 @@
 		set guioptions-=T          	" remove the toolbar
 		set lines=40               	" 40 lines of text instead of 24,
 		set transparency=5          " Make the window slightly transparent
-		set fullscreen	            " Set vim to full screen in gvim or macvim
 	else
 		set term=builtin_ansi       " Make arrow and other keys work
 	endif
 " }
-
-" Not quite working yet
-"function InitializeDirectories()
-  "let separator = "."
-  "let parent = $HOME 
-  "let prefix = '.vim'
-  "let dir_list = { 
-			  "\ 'backup': 'backupdir', 
-			  "\ 'views': 'viewdir', 
-			  "\ 'swap': 'directory' }
-
-  "for [dirname, settingname] in items(dir_list)
-	  "let directory = parent . '/' . prefix . dirname . "/"
-	  "if exists("*mkdir")
-		  "if !isdirectory(directory)
-			  "call mkdir(directory)
-		  "endif
-	  "endif
-	  "if !isdirectory(directory)
-		  "echo "Warning: Unable to create backup directory: " . directory
-		  "echo "Try: mkdir -p " . directory
-	  "else  
-		  "" Adding an extra trailing slash so it stores the path and not just the
-		  "" filename so there aren't collisions for backups
-		  "" Windows Vista / 7 has UAC issues, so setting $temp as fallback
-		  "exec "set " . settingname . "='" . directory . "/'," . $temp
-	  "endif
-  "endfor
-"endfunction
-"call InitializeDirectories() 
