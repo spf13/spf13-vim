@@ -23,8 +23,9 @@
 
 	" Setup Bundle Support {
 	" The next two lines ensure that the ~/.vim/bundle/ system works
-		runtime! autoload/pathogen.vim
+		"runtime! autoload/pathogen.vim
 		silent! call pathogen#runtime_append_all_bundles()
+		call pathogen#helptags()
 	" }
 " } 
 	
@@ -148,6 +149,10 @@
     cmap cwd lcd %:p:h
 	cmap cd. lcd %:p:h
 
+	" visual shifting (does not exit Visual mode)
+	vnoremap < <gv
+	vnoremap > >gv 
+
 	" For when you forget to sudo.. Really Write the file.
 	cmap w!! w !sudo tee % >/dev/null
 " }
@@ -165,7 +170,7 @@
 	" }
 	
 	" Supertab {
-		"let g:SuperTabDefaultCompletionType = "context"
+		let g:SuperTabDefaultCompletionType = "context"
 		let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 	" }
 
@@ -224,7 +229,7 @@
 
 		" automatically open and close the popup menu / preview window
 		au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-		set completeopt=menu,longest,preview
+		set completeopt=menu,preview,longest
 	" }
 	
 	" Ctags {
