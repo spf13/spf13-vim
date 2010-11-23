@@ -80,7 +80,7 @@ if has("gui_running")
 	hi Comment        guibg=#1F1F1F guifg=#99968b gui=italic
 	hi Constant       guibg=#1F1F1F guifg=#6DF584 gui=none
 	hi String         guibg=#1F1F1F guifg=#FFB539 gui=italic
-	hi Error          guibg=#FC4234 guifg=#1F1F1F gui=none
+	hi Error          guibg=#A32024 guifg=#D0D0D0 gui=none
 	hi Identifier     guibg=#1F1F1F guifg=#70BDF1 gui=none
 	hi Function       guibg=#1F1F1F guifg=#90CBF1 gui=none
 	hi Ignore         guibg=#1F1F1F guifg=#1F1F1F gui=none
