@@ -8,14 +8,12 @@
 "	You can find me at http://spf13.com
 " }
 
-" Windows Compatible {
-	" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-	" across (heterogeneous) systems easier. 
-	if has('win32') || has('win64')
-	  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-	endif
-" }
+" Environment {
+	" Basics {
+		set nocompatible 		" must be first line
+	" }
 
+<<<<<<< HEAD
 " Setup Bundle Support {
 " The next two lines ensure that the ~/.vim/bundle/ system works
 	runtime! autoload/pathogen.vim
@@ -32,22 +30,44 @@
 	filetype plugin indent on	" Automatically detect file types.
 	syntax on					" syntax highlighting
     set hidden                      " allow leaving a buffer when it is unsaved
-	set mouse=a					" automatically enable mouse usage
-	"set autochdir				" always switch to the current file directory.. 
-	" not every vim is compiled with this, use the following line instead
-     "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+	" Windows Compatible {
+		" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+		" across (heterogeneous) systems easier. 
+		if has('win32') || has('win64')
+		  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+		endif
+	" }
 
+	" Setup Bundle Support {
+	" The next two lines ensure that the ~/.vim/bundle/ system works
+		runtime! autoload/pathogen.vim
+		silent! call pathogen#runtime_append_all_bundles()
+	" }
+" } 
+	
+" General {
+	set background=dark         " Assume a dark background
+	set term=builtin_ansi       " Make arrow and other keys work
+	filetype plugin indent on  	" Automatically detect file types.
+	syntax on 					" syntax highlighting
 	scriptencoding utf-8
-	" set autowrite
-	set shortmess+=filmnrxoOtT		" abbrev. of messages (avoids 'hit enter')
+	" set autowrite                  " automatically write a file when leaving a modified buffer
+	set shortmess+=filmnrxoOtT     	" abbrev. of messages (avoids 'hit enter')
 	set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
-	set virtualedit=onemore			" allow for cursor beyond last character
-	set history=1000				" Store a ton of history (default is 20)
-	" set spell						" spell checking on
+	set virtualedit=onemore 	   	" allow for cursor beyond last character
+	set history=1000  				" Store a ton of history (default is 20)
+	" set spell 		 	        	" spell checking on
 	
 	" Setting up the directories {
-		set backup						" backups are nice ...
+		set backup 						" backups are nice ...
+		set backupdir=$HOME/.vimbackup//  " but not when they clog .
+		set directory=$HOME/.vimswap// 	" Same for swap files
+		set viewdir=$HOME/.vimviews// 	" same for view files
 		
+		"" Creating directories if they don't exist
+		silent execute '!mkdir -p $HOME/.vimbackup'
+		silent execute '!mkdir -p $HOME/.vimswap'
+		silent execute '!mkdir -p $HOME/.vimviews'
 		au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
 		au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
 	" }
@@ -145,6 +165,8 @@
 	map [H g0
 	imap [H g0
 		
+	" For when you forget to sudo.. Really Write the file.
+	cmap w!! w !sudo tee % >/dev/null
 " }
 
 " Plugins {
@@ -328,41 +350,6 @@
 		set lines=40				" 40 lines of text instead of 24,
 	endif
 " }
-"
-
-function! InitializeDirectories()
-  let separator = "."
-  let parent = $HOME 
-  let prefix = '.vim'
-  let dir_list = { 
-			  \ 'backup': 'backupdir', 
-			  \ 'views': 'viewdir', 
-			  \ 'swap': 'directory' }
-
-  for [dirname, settingname] in items(dir_list)
-	  let directory = parent . '/' . prefix . dirname . "/"
-	  if exists("*mkdir")
-		  if !isdirectory(directory)
-			  call mkdir(directory)
-		  endif
-	  endif
-	  if !isdirectory(directory)
-		  echo "Warning: Unable to create backup directory: " . directory
-		  echo "Try: mkdir -p " . directory
-	  else  
-          if has('win32') || has('win64')
-              " Adding an extra trailing slash so it stores the path and not just the
-              " filename so there aren't collisions for backups
-              " Windows Vista / 7 has UAC issues, so setting $temp as fallback
-              exec "set " . settingname . "=\"" . directory . "\""
-          else
-              " For Linux/Mac OS (others?) these directives must not be quoted
-              exec "set " . settingname . "=" . directory
-          endif
-	  endif
-  endfor
-endfunction
-call InitializeDirectories() 
 
 function! NERDTreeInitAsNeeded()
     redir => bufoutput
