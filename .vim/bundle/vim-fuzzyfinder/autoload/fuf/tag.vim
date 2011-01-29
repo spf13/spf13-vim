@@ -1,13 +1,12 @@
 "=============================================================================
-" Copyright (c) 2007-2009 Takeshi NISHIDA
+" Copyright (c) 2007-2010 Takeshi NISHIDA
 "
 "=============================================================================
 " LOAD GUARD {{{1
 
-if exists('g:loaded_autoload_fuf_tag') || v:version < 702
+if !l9#guardScriptLoading(expand('<sfile>:p'), 0, 0, [])
   finish
 endif
-let g:loaded_autoload_fuf_tag = 1
 
 " }}}1
 "=============================================================================
@@ -24,6 +23,11 @@ function fuf#tag#getSwitchOrder()
 endfunction
 
 "
+function fuf#tag#getEditableDataNames()
+  return []
+endfunction
+
+"
 function fuf#tag#renewCache()
   let s:cache = {}
 endfunction
@@ -35,8 +39,8 @@ endfunction
 
 "
 function fuf#tag#onInit()
-  call fuf#defineLaunchCommand('FufTag'              , s:MODE_NAME, '""')
-  call fuf#defineLaunchCommand('FufTagWithCursorWord', s:MODE_NAME, 'expand(''<cword>'')')
+  call fuf#defineLaunchCommand('FufTag'              , s:MODE_NAME, '""', [])
+  call fuf#defineLaunchCommand('FufTagWithCursorWord', s:MODE_NAME, 'expand(''<cword>'')', [])
 endfunction
 
 " }}}1
@@ -47,29 +51,22 @@ let s:MODE_NAME = expand('<sfile>:t:r')
 
 "
 function s:getTagNames(tagFile)
-  let names = map(readfile(a:tagFile), 'matchstr(v:val, ''^[^!\t][^\t]*'')')
+  let names = map(l9#readFile(a:tagFile), 'matchstr(v:val, ''^[^!\t][^\t]*'')')
   return filter(names, 'v:val =~# ''\S''')
 endfunction
 
 "
 function s:parseTagFiles(tagFiles, key)
-  if !empty(g:fuf_tag_cache_dir)
-    if !isdirectory(expand(g:fuf_tag_cache_dir))
-      call mkdir(expand(g:fuf_tag_cache_dir), 'p')
-    endif
-    " NOTE: fnamemodify('a/b', ':p') returns 'a/b/' if the directory exists.
-    let cacheFile = fnamemodify(g:fuf_tag_cache_dir, ':p') . fuf#hash224(a:key)
-    if filereadable(cacheFile) && fuf#countModifiedFiles(a:tagFiles, getftime(cacheFile)) == 0
-      return map(readfile(cacheFile), 'eval(v:val)')
-    endif
+  let cacheName = 'cache-' . l9#hash224(a:key)
+  let cacheTime = fuf#getDataFileTime(s:MODE_NAME, cacheName)
+  if cacheTime != -1 && fuf#countModifiedFiles(a:tagFiles, cacheTime) == 0
+    return fuf#loadDataFile(s:MODE_NAME, cacheName)
   endif
-  let items = fuf#unique(fuf#concat(map(copy(a:tagFiles), 's:getTagNames(v:val)')))
+  let items = l9#unique(l9#concat(map(copy(a:tagFiles), 's:getTagNames(v:val)')))
   let items = map(items, 'fuf#makeNonPathItem(v:val, "")')
   call fuf#mapToSetSerialIndex(items, 1)
   let items = map(items, 'fuf#setAbbrWithFormattedWord(v:val, 1)')
-  if !empty(g:fuf_tag_cache_dir)
-    call writefile(map(copy(items), 'string(v:val)'), cacheFile)
-  endif
+  call fuf#saveDataFile(s:MODE_NAME, cacheName, items)
   return items
 endfunction
 
@@ -118,7 +115,7 @@ endfunction
 
 "
 function s:handler.getPrompt()
-  return fuf#formatPrompt(g:fuf_tag_prompt, self.partialMatching)
+  return fuf#formatPrompt(g:fuf_tag_prompt, self.partialMatching, '')
 endfunction
 
 "
@@ -127,8 +124,8 @@ function s:handler.getPreviewHeight()
 endfunction
 
 "
-function s:handler.targetsPath()
-  return 0
+function s:handler.isOpenable(enteredPattern)
+  return 1
 endfunction
 
 "

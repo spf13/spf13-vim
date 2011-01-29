@@ -1,13 +1,12 @@
 "=============================================================================
-" Copyright (c) 2007-2009 Takeshi NISHIDA
+" Copyright (c) 2007-2010 Takeshi NISHIDA
 "
 "=============================================================================
 " LOAD GUARD {{{1
 
-if exists('g:loaded_autoload_fuf_jumplist') || v:version < 702
+if !l9#guardScriptLoading(expand('<sfile>:p'), 0, 0, [])
   finish
 endif
-let g:loaded_autoload_fuf_jumplist = 1
 
 " }}}1
 "=============================================================================
@@ -24,6 +23,11 @@ function fuf#jumplist#getSwitchOrder()
 endfunction
 
 "
+function fuf#jumplist#getEditableDataNames()
+  return []
+endfunction
+
+"
 function fuf#jumplist#renewCache()
 endfunction
 
@@ -34,7 +38,7 @@ endfunction
 
 "
 function fuf#jumplist#onInit()
-  call fuf#defineLaunchCommand('FufJumpList', s:MODE_NAME, '""')
+  call fuf#defineLaunchCommand('FufJumpList', s:MODE_NAME, '""', [])
 endfunction
 
 " }}}1
@@ -101,7 +105,7 @@ endfunction
 
 "
 function s:handler.getPrompt()
-  return fuf#formatPrompt(g:fuf_jumplist_prompt, self.partialMatching)
+  return fuf#formatPrompt(g:fuf_jumplist_prompt, self.partialMatching, '')
 endfunction
 
 "
@@ -110,8 +114,8 @@ function s:handler.getPreviewHeight()
 endfunction
 
 "
-function s:handler.targetsPath()
-  return 0
+function s:handler.isOpenable(enteredPattern)
+  return 1
 endfunction
 
 "

@@ -1,13 +1,12 @@
 "=============================================================================
-" Copyright (c) 2007-2009 Takeshi NISHIDA
+" Copyright (c) 2007-2010 Takeshi NISHIDA
 "
 "=============================================================================
 " LOAD GUARD {{{1
 
-if exists('g:loaded_autoload_fuf_callbackitem') || v:version < 702
+if !l9#guardScriptLoading(expand('<sfile>:p'), 0, 0, [])
   finish
 endif
-let g:loaded_autoload_fuf_callbackitem = 1
 
 " }}}1
 "=============================================================================
@@ -21,6 +20,11 @@ endfunction
 "
 function fuf#callbackitem#getSwitchOrder()
   return -1
+endfunction
+
+"
+function fuf#callbackitem#getEditableDataNames()
+  return []
 endfunction
 
 "
@@ -73,7 +77,7 @@ endfunction
 
 "
 function s:handler.getPrompt()
-  return fuf#formatPrompt(s:prompt, self.partialMatching)
+  return fuf#formatPrompt(s:prompt, self.partialMatching, '')
 endfunction
 
 "
@@ -85,8 +89,8 @@ function s:handler.getPreviewHeight()
 endfunction
 
 "
-function s:handler.targetsPath()
-  return s:forPath
+function s:handler.isOpenable(enteredPattern)
+  return 1
 endfunction
 
 "
@@ -125,7 +129,7 @@ endfunction
 
 "
 function s:handler.onModeLeavePost(opened)
-  if !a:opened
+  if !a:opened && exists('s:listener.onAbort()')
     call s:listener.onAbort()
   endif
 endfunction

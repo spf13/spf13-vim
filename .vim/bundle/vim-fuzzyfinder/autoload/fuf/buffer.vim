@@ -1,13 +1,12 @@
 "=============================================================================
-" Copyright (c) 2007-2009 Takeshi NISHIDA
+" Copyright (c) 2007-2010 Takeshi NISHIDA
 "
 "=============================================================================
 " LOAD GUARD {{{1
 
-if exists('g:loaded_autoload_fuf_buffer') || v:version < 702
+if !l9#guardScriptLoading(expand('<sfile>:p'), 0, 0, [])
   finish
 endif
-let g:loaded_autoload_fuf_buffer = 1
 
 " }}}1
 "=============================================================================
@@ -24,6 +23,11 @@ function fuf#buffer#getSwitchOrder()
 endfunction
 
 "
+function fuf#buffer#getEditableDataNames()
+  return []
+endfunction
+
+"
 function fuf#buffer#renewCache()
 endfunction
 
@@ -34,7 +38,7 @@ endfunction
 
 "
 function fuf#buffer#onInit()
-  call fuf#defineLaunchCommand('FufBuffer', s:MODE_NAME, '""')
+  call fuf#defineLaunchCommand('FufBuffer', s:MODE_NAME, '""', [])
   augroup fuf#buffer
     autocmd!
     autocmd BufEnter     * call s:updateBufTimes()
@@ -47,6 +51,7 @@ endfunction
 " LOCAL FUNCTIONS/VARIABLES {{{1
 
 let s:MODE_NAME = expand('<sfile>:t:r')
+let s:OPEN_TYPE_DELETE = -1
 
 let s:bufTimes = {}
 
@@ -59,7 +64,7 @@ endfunction
 function s:makeItem(nr)
   let fname = (empty(bufname(a:nr))
         \      ? '[No Name]'
-        \      : fnamemodify(bufname(a:nr), ':~:.'))
+        \      : fnamemodify(bufname(a:nr), ':p:~:.'))
   let time = (exists('s:bufTimes[a:nr]') ? s:bufTimes[a:nr] : 0)
   let item = fuf#makePathItem(fname, strftime(g:fuf_timeFormat, time), 0)
   let item.index = a:nr
@@ -110,7 +115,7 @@ endfunction
 
 "
 function s:handler.getPrompt()
-  return fuf#formatPrompt(g:fuf_buffer_prompt, self.partialMatching)
+  return fuf#formatPrompt(g:fuf_buffer_prompt, self.partialMatching, '')
 endfunction
 
 "
@@ -119,7 +124,7 @@ function s:handler.getPreviewHeight()
 endfunction
 
 "
-function s:handler.targetsPath()
+function s:handler.isOpenable(enteredPattern)
   return 1
 endfunction
 
@@ -147,7 +152,12 @@ endfunction
 function s:handler.onOpen(word, mode)
   " not use bufnr(a:word) in order to handle unnamed buffer
   let item = s:findItem(self.items, a:word)
-  if !empty(item)
+  if empty(item)
+    " do nothing
+  elseif a:mode ==# s:OPEN_TYPE_DELETE
+    execute item.bufNr . 'bdelete'
+    let self.reservedMode = self.getModeName()
+  else
     call fuf#openBuffer(item.bufNr, a:mode, g:fuf_reuseWindow)
   endif
 endfunction
@@ -158,8 +168,10 @@ endfunction
 
 "
 function s:handler.onModeEnterPost()
+  call fuf#defineKeyMappingInHandler(g:fuf_buffer_keyDelete,
+        \                            'onCr(' . s:OPEN_TYPE_DELETE . ')')
   let self.items = range(1, bufnr('$'))
-  call filter(self.items, 'buflisted(v:val) && v:val != self.bufNrPrev')
+  call filter(self.items, 'buflisted(v:val) && v:val != self.bufNrPrev && v:val != bufnr("%")')
   call map(self.items, 's:makeItem(v:val)')
   if g:fuf_buffer_mruOrder
     call sort(self.items, 's:compareTimeDescending')

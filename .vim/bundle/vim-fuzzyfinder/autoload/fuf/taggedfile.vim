@@ -1,13 +1,12 @@
 "=============================================================================
-" Copyright (c) 2007-2009 Takeshi NISHIDA
+" Copyright (c) 2007-2010 Takeshi NISHIDA
 "
 "=============================================================================
 " LOAD GUARD {{{1
 
-if exists('g:loaded_autoload_fuf_taggedfile') || v:version < 702
+if !l9#guardScriptLoading(expand('<sfile>:p'), 0, 0, [])
   finish
 endif
-let g:loaded_autoload_fuf_taggedfile = 1
 
 " }}}1
 "=============================================================================
@@ -24,6 +23,11 @@ function fuf#taggedfile#getSwitchOrder()
 endfunction
 
 "
+function fuf#taggedfile#getEditableDataNames()
+  return []
+endfunction
+
+"
 function fuf#taggedfile#renewCache()
   let s:cache = {}
 endfunction
@@ -35,7 +39,7 @@ endfunction
 
 "
 function fuf#taggedfile#onInit()
-  call fuf#defineLaunchCommand('FufTaggedFile', s:MODE_NAME, '""')
+  call fuf#defineLaunchCommand('FufTaggedFile', s:MODE_NAME, '""', [])
 endfunction
 
 " }}}1
@@ -47,32 +51,25 @@ let s:MODE_NAME = expand('<sfile>:t:r')
 "
 function s:getTaggedFileList(tagfile)
   execute 'cd ' . fnamemodify(a:tagfile, ':h')
-  let result = map(readfile(a:tagfile), 'matchstr(v:val, ''^[^!\t][^\t]*\t\zs[^\t]\+'')')
-  call map(readfile(a:tagfile), 'fnamemodify(v:val, ":p")')
+  let result = map(l9#readFile(a:tagfile), 'matchstr(v:val, ''^[^!\t][^\t]*\t\zs[^\t]\+'')')
+  call map(l9#readFile(a:tagfile), 'fnamemodify(v:val, ":p")')
   cd -
-  call map(readfile(a:tagfile), 'fnamemodify(v:val, ":~:.")')
+  call map(l9#readFile(a:tagfile), 'fnamemodify(v:val, ":~:.")')
   return filter(result, 'v:val =~# ''[^/\\ ]$''')
 endfunction
 
 "
 function s:parseTagFiles(tagFiles, key)
-  if !empty(g:fuf_taggedfile_cache_dir)
-    if !isdirectory(expand(g:fuf_taggedfile_cache_dir))
-      call mkdir(expand(g:fuf_taggedfile_cache_dir), 'p')
-    endif
-    " NOTE: fnamemodify('a/b', ':p') returns 'a/b/' if the directory exists.
-    let cacheFile = fnamemodify(g:fuf_taggedfile_cache_dir, ':p') . fuf#hash224(a:key)
-    if filereadable(cacheFile) && fuf#countModifiedFiles(a:tagFiles, getftime(cacheFile)) == 0
-      return map(readfile(cacheFile), 'eval(v:val)')
-    endif
+  let cacheName = 'cache-' . l9#hash224(a:key)
+  let cacheTime = fuf#getDataFileTime(s:MODE_NAME, cacheName)
+  if cacheTime != -1 && fuf#countModifiedFiles(a:tagFiles, cacheTime) == 0
+    return fuf#loadDataFile(s:MODE_NAME, cacheName)
   endif
-  let items = fuf#unique(fuf#concat(map(copy(a:tagFiles), 's:getTaggedFileList(v:val)')))
+  let items = l9#unique(l9#concat(map(copy(a:tagFiles), 's:getTaggedFileList(v:val)')))
   call map(items, 'fuf#makePathItem(v:val, "", 0)')
   call fuf#mapToSetSerialIndex(items, 1)
   call fuf#mapToSetAbbrWithSnippedWordAsPath(items)
-  if !empty(g:fuf_taggedfile_cache_dir)
-    call writefile(map(copy(items), 'string(v:val)'), cacheFile)
-  endif
+  call fuf#saveDataFile(s:MODE_NAME, cacheName, items)
   return items
 endfunction
 
@@ -104,7 +101,7 @@ endfunction
 
 "
 function s:handler.getPrompt()
-  return fuf#formatPrompt(g:fuf_taggedfile_prompt, self.partialMatching)
+  return fuf#formatPrompt(g:fuf_taggedfile_prompt, self.partialMatching, '')
 endfunction
 
 "
@@ -113,7 +110,7 @@ function s:handler.getPreviewHeight()
 endfunction
 
 "
-function s:handler.targetsPath()
+function s:handler.isOpenable(enteredPattern)
   return 1
 endfunction
 
@@ -145,8 +142,8 @@ endfunction
 
 "
 function s:handler.onModeEnterPost()
-  " NOTE: Comparing filenames is faster than bufnr()
-  let bufNamePrev = fnamemodify(bufname(self.bufNrPrev), ':~')
+  " NOTE: Comparing filenames is faster than bufnr('^' . fname . '$')
+  let bufNamePrev = fnamemodify(bufname(self.bufNrPrev), ':p:~:.')
   " NOTE: Don't do this in onModeEnterPre()
   "       because that should return in a short time.
   let self.items = copy(s:enumTaggedFiles(self.tagFiles))

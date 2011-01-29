@@ -1,6 +1,6 @@
 *fuf.txt*       buffer/file/command/tag/etc explorer with fuzzy matching.
 
-        Copyright (c) 2007-2009 Takeshi NISHIDA
+        Copyright (c) 2007-2010 Takeshi NISHIDA
 
 FuzzyFinder                                                *fuzzyfinder* *fuf*
 
@@ -38,7 +38,7 @@ You will be happy when:
         "./OhLongLongLongLongLongFile.txt"
         "./OhLongLongLongLongLongName.txt" <- you want :O
 
-Type "ON" and "OhLongLongLongLongLongName.txt" will be select. :D
+Type "ON" and "OhLongLongLongLongLongName.txt" will be selected. :D
 
 FuzzyFinder can search:
 
@@ -46,8 +46,10 @@ FuzzyFinder can search:
         - files
         - directories
         - most recently used files
+        - files around most recently used files
         - most recently used command-lines
-        - bookmarks
+        - bookmarked files
+        - bookmarked directories
         - tags
         - files which are included in current tagfiles
         - jump list
@@ -71,36 +73,43 @@ it to your runtime directory.
 You should place the files as follows:
 >
         <your runtime directory>/plugin/fuf.vim
-        <your runtime directory>/autoload/fuf.vim
-        <your runtime directory>/autoload/fuf/buffer.vim
+        <your runtime directory>/doc/fuf.txt
         ...
 <
-If you disgust to jumble up this plugin and other plugins in your runtime
-directory, put the files into new directory and just add the directory path to
-'runtimepath'. It's easy to uninstall the plugin.
+If you are disgusted to make your runtime directory confused with a lot of
+plugins, put each of the plugins into a directory individually and just add
+the directory path to 'runtimepath'. It's easy to uninstall plugins.
 
-And then update your help tags files to enable fuzzyfinder help. See
+Then update your help tags files to enable help for this plugin. See
 |add-local-help| for details.
+
+Requirements: ~
+
+- L9 library (vimscript #3252)
+
 
 ==============================================================================
 USAGE                                                              *fuf-usage*
 
-You can launch FuzzyFinder by following commands:
+You can launch FuzzyFinder by the following commands:
 
          Command           Mode ~
-        |:FufBuffer|     - Buffer mode (|fuf-buffer-mode|)
-        |:FufFile|       - File mode (|fuf-file-mode|)
-        |:FufDir|        - Directory mode (|fuf-dir-mode|)
-        |:FufMruFile|    - MRU-File mode (|fuf-mrufile-mode|)
-        |:FufMruCmd|     - MRU-Command mode (|fuf-mrucmd-mode|)
-        |:FufBookmark|   - Bookmark mode (|fuf-bookmark-mode|)
-        |:FufTag|        - Tag mode (|fuf-tag-mode|)
-        |:FufTaggedFile| - Tagged-File mode (|fuf-taggedfile-mode|)
-        |:FufJumpList|   - Jump-List mode (|fuf-jumplist-mode|)
-        |:FufChangeList| - Change-List mode (|fuf-changelist-mode|)
-        |:FufQuickfix|   - Quickfix mode (|fuf-quickfix-mode|)
-        |:FufLine|       - Line mode (|fuf-line-mode|)
-        |:FufHelp|       - Help mode (|fuf-help-mode|)
+        |:FufBuffer|       - Buffer mode (|fuf-buffer-mode|)
+        |:FufFile|         - File mode (|fuf-file-mode|)
+        |:FufCoverageFile| - Coverage-File mode (|fuf-coveragefile-mode|)
+        |:FufDir|          - Directory mode (|fuf-dir-mode|)
+        |:FufMruFile|      - MRU-File mode (|fuf-mrufile-mode|)
+        |:FufMruCmd|       - MRU-Command mode (|fuf-mrucmd-mode|)
+        |:FufBookmarkFile| - Bookmark-File mode (|fuf-bookmarkfile-mode|)
+        |:FufBookmarkDir|  - Bookmark-Dir mode (|fuf-bookmarkdir-mode|)
+        |:FufTag|          - Tag mode (|fuf-tag-mode|)
+        |:FufBufferTag|    - Buffer-Tag mode (|fuf-buffertag-mode|)
+        |:FufTaggedFile|   - Tagged-File mode (|fuf-taggedfile-mode|)
+        |:FufJumpList|     - Jump-List mode (|fuf-jumplist-mode|)
+        |:FufChangeList|   - Change-List mode (|fuf-changelist-mode|)
+        |:FufQuickfix|     - Quickfix mode (|fuf-quickfix-mode|)
+        |:FufLine|         - Line mode (|fuf-line-mode|)
+        |:FufHelp|         - Help mode (|fuf-help-mode|)
 
 It is recommended to map these commands.
 
@@ -116,6 +125,9 @@ enumerating items (|g:fuf_enumeratingLimit|) to speed up a response time, and
 highlights the pattern with "Error" group.
 
 The first item in the completion menu will be selected automatically.
+
+Typing <C-w> deletes one block of an entered pattern before the cursor, like a
+directory name.
 
 with <C-s> (|g:fuf_keyPrevPattern|) and <C-^> (|g:fuf_keyNextPattern|), You
 can recall patterns which have been entered before from history.
@@ -136,9 +148,10 @@ With <C-t> (|g:fuf_keyNextMode|) and <C-y> (|g:fuf_keyPrevMode|), You can
 switch current mode without leaving Insert mode .
 
 You can preview selected item with <C-@> (|g:fuf_keyPreview|) in some modes.
-Repeating the key on the same item might show another information. The height
+Repeating the key on the same item shows another information. The height
 of command-line area is changed to |g:fuf_previewHeight| when you launch a
-mode supporting preview.
+mode supporting preview. This feature is available when |g:fuf_previewHeight|
+is not 0.
 
 
 ==============================================================================
@@ -150,43 +163,79 @@ Buffer mode ~
 This mode provides an interface to select a buffer from a list of existing
 buffers and open it.
 
+Press <C-]> (|g:fuf_buffer_keyDelete|) in this mode and selected buffer will
+be deleted.
+
                                                                *fuf-file-mode*
 File mode ~
 
-This mode provides an interface to search a file and open it.
+This mode provides an interface to search a file tree for a file and open it.
+
+                                                       *fuf-coveragefile-mode*
+Coverage-File mode ~
+
+This mode provides an interface to select a file from all files of a preset
+coverage and open it.
+
+By default, This mode lists all files under the current working directory
+recursively. (|g:fuf_coveragefile_globPatterns|)
+
+If you want to search other coverage, execute |FufCoverageFileRegister|
+command to register new search coverage and |FufCoverageFileChange| command to
+choose a search coverage and launch Coverage-File mode.
+
+In addition, there is another way to change a search coverage with
+|fuf#setOneTimeVariables()| function.
+
+Example: search only .h and .c files:
+>
+        call fuf#setOneTimeVariables(['g:fuf_coveragefile_globPatterns', ['**/*.h', '**/*.c']])
+              \ | FufCoverageFile
+<
+Example: search your home directory in addition to the default coverage:
+>
+        call fuf#setOneTimeVariables(['g:fuf_coveragefile_globPatterns', g:fuf_coveragefile_globPatterns + ['~/**/.*', '~/**/*']])
+              \ | FufCoverageFile
+<
 
                                                                 *fuf-dir-mode*
 Directory mode ~
 
-This mode provides an interface to search a directory and change the current
-directory.
+This mode provides an interface to search a file tree for a directory and
+change the current directory.
 
                                                             *fuf-mrufile-mode*
 MRU-File mode ~
 
-This mode provides an interface to select a file from most recently used files
-and open it.
+This mode provides an interface to select a file from the most recently used
+files and open it.
 
-This mode is set to disable in |g:fuf_modesDisable| by default because
+Press <C-]> (|g:fuf_mrufile_keyExpand|) in this mode and files around the most
+recently used files are listed. Each time the key is pressed, the search range
+are expanded one level along the directory tree upwardly/downwardly.
+
+This mode is set to disable by default (|g:fuf_modesDisable|) because
 processes for this mode in |BufEnter| and |BufWritePost| could cause
 Performance issue.
+
+See also: |FufMruFileInCwd|
 
                                                              *fuf-mrucmd-mode*
 MRU-Command mode ~
 
-This mode provides an interface to select a command from most recently used
-commands and execute it.
+This mode provides an interface to select a command from the most recently
+used commands and execute it.
 
-This mode is set to disable in |g:fuf_modesDisable| by default because mapping
+This mode is set to disable by default (|g:fuf_modesDisable|) because mapping
 <CR> of Command-line mode required by this mode has side effects.
 
-                                                           *fuf-bookmark-mode*
-Bookmark mode ~
+                                                       *fuf-bookmarkfile-mode*
+Bookmark-File mode ~
 
 This mode provides an interface to select one of the bookmarks you have added
 beforehand and jump there.
 
-You can add a cursor line to bookmarks by |:FufAddBookmark| command.
+You can add a cursor line to bookmarks by |:FufBookmarkFileAdd| command.
 Execute that command and you will be prompted to enter a bookmark name.
 
 FuzzyFinder adjusts a line number for jump. If a line of bookmarked position
@@ -194,10 +243,23 @@ does not match to a pattern when the bookmark was added, FuzzyFinder searches
 a matching line around bookmarked position. So you can jump to a bookmarked
 line even if the line is out of bookmarked position. If you want to jump to
 bookmarked line number without the adjustment, set
-|g:fuf_bookmark_searchRange| option to 0.
+|g:fuf_bookmarkfile_searchRange| option to 0.
 
-Press <C-]> (|g:fuf_bookmark_keyDelete|) in Bookmark mode and selected
+Press <C-]> (|g:fuf_bookmarkfile_keyDelete|) in this mode and selected
 bookmark will be deleted.
+
+                                                        *fuf-bookmarkdir-mode*
+Bookmark-Dir mode ~
+
+This mode provides an interface to select one of the bookmarks you have added
+beforehand and change the current directory.
+
+You can add a directory to bookmarks by |:FufBookmarkDirAdd| command. Execute
+that command and you will be prompted to enter a directory path and  a
+bookmark name.
+
+Press <C-]> (|g:fuf_bookmarkdir_keyDelete|) in this mode and selected bookmark
+will be deleted.
 
                                                                 *fuf-tag-mode*
 Tag mode ~
@@ -205,10 +267,33 @@ Tag mode ~
 This mode provides an interface to select a tag and jump to the definition of
 it.
 
-Following mapping is the replacement for <C-]>:
+Following mapping is a replacement for <C-]>:
 >
         noremap <silent> <C-]> :FufTagWithCursorWord!<CR>
 <
+
+                                                          *fuf-buffertag-mode*
+Buffer-Tag mode ~
+
+This mode provides an interface to select a tag of current buffer or all
+buffers and jump to the definition of it.
+
+Tag list is instantly created when FuzzyFinder is launched, so there is no
+need to make tags file in advance.
+
+|FufBufferTag| covers current buffer and |FufBufferTagAll| covers all buffers.
+
+Following mapping is a replacement for <C-]>:
+>
+        nnoremap <silent> <C-]> :FufBufferTagWithCursorWord!<CR>
+        vnoremap <silent> <C-]> :FufBufferTagAllWithSelectedText!<CR>
+<
+or
+>
+        nnoremap <silent> <C-]> :FufBufferTagAllWithCursorWord!<CR>
+        vnoremap <silent> <C-]> :FufBufferTagAllWithSelectedText!<CR>
+<
+This mode is inspired by taglist.vim (vimscript #273) and refered its codes.
 
                                                          *fuf-taggedfile-mode*
 Tagged-File mode ~
@@ -428,7 +513,7 @@ If you want to set one-time options only for the next FuzzyFinder,
 |fuf#setOneTimeVariables()| function will be of help. This function is used as
 follows:
 >
-        fuf#setOneTimeVariables(['g:fuf_ignoreCase', 0], ['&lines', 50])
+        call fuf#setOneTimeVariables(['g:fuf_ignoreCase', 0], ['&lines', 50])
 <
 This function takes 0 or more arguments and each of them is a pair of a
 variable name and its value. Specified options will be set practically next
@@ -450,8 +535,8 @@ A refining pattern is used to narrow down the list of matching items by
 another pattern.
 
 With a primary pattern, FuzzyFinder does fuzzy matching or partial matching,
-which you specified. With a refining pattern, FuzzyFinder always does partial
-matching.
+which you specified. With a refining pattern, FuzzyFinder does partial
+matching by default. (|g:fuf_fuzzyRefining|)
 
 When you enter a number as refining pattern, it also can match the index of
 each item.
@@ -533,7 +618,7 @@ For example, set as below:
               \   ],
               \ }
 <
-and enter "doc:txt" in File mode, then FuzzyFinder searches by following
+and enter "doc:txt" in File mode, then FuzzyFinder searches by the following
 patterns:
 
         "~/project/**/doc/*t*x*t*"
@@ -541,15 +626,15 @@ patterns:
 
 and show concatenated search results.
 
-                                                        *fuf-information-file*
-Information File ~
+                                                               *fuf-data-file*
+Data File ~
 
-FuzzyFinder writes completion statistics, MRU data, bookmark, etc to
-|g:fuf_infoFile|.
+FuzzyFinder writes completion statistics, MRU data, bookmark, etc to files
+under |g:fuf_dataDir|.
 
-|:FufEditInfo| command is helpful in editing your information file.
-This command reads the information file in new unnamed buffer. Write the
-buffer and the information file will be updated.
+|:FufEditDataFile| command is helpful in editing your data files. This command
+reads the data file in new unnamed buffer. Write the buffer and the data file
+will be updated.
 
                                                                    *fuf-cache*
 Cache ~
@@ -567,6 +652,12 @@ after a path separator is expanded to "../" sequence.
         /..             /../
         /...            /../../
         /....           /../../../
+
+                                                         *fuf-how-to-add-mode*
+How To Add Mode ~
+
+To add "mymode" mode, put the source file at autoload/fuf/mymode.vim and call
+fuf#addMode("mymode") .
 
                                                                   *fuf-migemo*
 What Is Migemo ~
@@ -607,6 +698,15 @@ See also: |fuf-vimrc-example|
         Is mostly the same as |:FufFile|, except that initial pattern is a
         path of directory current buffer is in.
 
+                                                            *:FufCoverageFile*
+:FufCoverageFile[!] [{pattern}]
+        Launchs Coverage-File mode.
+
+        If a command was executed with a ! modifier, it does partial matching
+        instead of fuzzy matching.
+
+        {pattern} will be inserted after launching FuzzyFinder.
+
                                                                      *:FufDir*
 :FufDir[!] [{pattern}]
         Launchs Directory mode.
@@ -635,6 +735,11 @@ See also: |fuf-vimrc-example|
 
         {pattern} will be inserted after launching FuzzyFinder.
 
+                                                            *:FufMruFileInCwd*
+:FufMruFileInCwd[!] [{pattern}]
+        Is mostly the same as |:FufMruFile|, except that files
+        only in current working directory are listed.
+
                                                                   *:FufMruCmd*
 :FufMruCmd[!] [{pattern}]
         Launchs MRU-Command mode.
@@ -644,9 +749,18 @@ See also: |fuf-vimrc-example|
 
         {pattern} will be inserted after launching FuzzyFinder.
 
-                                                                *:FufBookmark*
-:FufBookmark[!] [{pattern}]
-        Launchs Bookmark mode.
+                                                            *:FufBookmarkFile*
+:FufBookmarkFile[!] [{pattern}]
+        Launchs Bookmark-File mode.
+
+        If a command was executed with a ! modifier, it does partial matching
+        instead of fuzzy matching.
+
+        {pattern} will be inserted after launching FuzzyFinder.
+
+                                                             *:FufBookmarkDir*
+:FufBookmarkDir[!] [{pattern}]
+        Launchs Bookmark-Dir mode.
 
         If a command was executed with a ! modifier, it does partial matching
         instead of fuzzy matching.
@@ -664,7 +778,42 @@ See also: |fuf-vimrc-example|
 
                                                        *:FufTagWithCursorWord*
 :FufTagWithCursorWord[!] [{pattern}]
-        Is mostly the same as |:FufTag|, except that 
+        Is mostly the same as |:FufTag|, except that initial pattern is the
+        word under the cursor.
+
+                                                               *:FufBufferTag*
+:FufBufferTag[!] [{pattern}]
+        Launchs Buffer-Tag mode.
+
+        If a command was executed with a ! modifier, it does partial matching
+        instead of fuzzy matching.
+
+        {pattern} will be inserted after launching FuzzyFinder.
+
+                                                            *:FufBufferTagAll*
+:FufBufferTagAll[!] [{pattern}]
+        Is mostly the same as |:FufBufferTag|, except that tags are gathered
+        from all other buffers in addition to the current one.
+
+                                                 *:FufBufferTagWithCursorWord*
+:FufBufferTagWithCursorWord[!] [{pattern}]
+        Is mostly the same as |:FufBufferTag|, except that initial pattern is
+        the word under the cursor.
+
+                                              *:FufBufferTagAllWithCursorWord*
+:FufBufferTagAllWithCursorWord[!] [{pattern}]
+        Is mostly the same as |:FufBufferTagAll|, except that initial pattern
+        is the word under the cursor.
+
+                                               *:FufBufferTagWithSelectedText*
+:FufBufferTagWithSelectedText[!] [{pattern}]
+        Is mostly the same as |:FufBufferTag|, except that initial pattern is
+        the last selected text.
+
+                                            *:FufBufferTagAllWithSelectedText*
+:FufBufferTagAllWithSelectedText[!] [{pattern}]
+        Is mostly the same as |:FufBufferTagAll|, except that initial pattern
+        is the last selected text.
 
                                                               *:FufTaggedFile*
 :FufTaggedFile[!] [{pattern}]
@@ -720,20 +869,44 @@ See also: |fuf-vimrc-example|
 
         {pattern} will be inserted after launching FuzzyFinder.
 
-                                                                *:FufEditInfo*
-:FufEditInfo
-        Opens a buffer for editing your information file. See
-        |fuf-information-file| for details.
-
-                                                             *:FufAddBookmark*
-:FufAddBookmark [{name}]
-        Adds a cursor line to bookmarks. See |fuf-adding-bookmark| for
+                                                            *:FufEditDataFile*
+:FufEditDataFile
+        Opens a buffer for editing your data files. See |fuf-data-file| for
         details.
 
-                                               *:FufAddBookmarkAsSelectedText*
-:FufAddBookmarkAsSelectedText
-        Is mostly the same as |:FufAddBookmark|, except that initial pattern
-        is last selected one.
+                                                    *:FufCoverageFileRegister*
+:FufCoverageFileRegister
+        Registers new search coverage to be searched in Coverage-File mode.
+        First, input glob patterns, like ~/* . You can add patterns unless
+        typing <Esc>. Next, input coverage name.
+
+        See also: |glob()|, |fuf-coveragefile-mode|
+
+                                                      *:FufCoverageFileChange*
+:FufCoverageFileChange [{name}]
+        Launchs Coverage-File mode with a chosen coverage, registered with
+        |FufCoverageFileRegister| command.
+
+        If location name is given, the choise process will be skipped.
+
+        See also: |fuf-coveragefile-mode|
+
+                                                         *:FufBookmarkFileAdd*
+:FufBookmarkFileAdd [{name}]
+        Adds a cursor line to bookmarks.
+
+        See also: |fuf-bookmarkfile-mode|
+
+                                           *:FufBookmarkFileAddAsSelectedText*
+:FufBookmarkFileAddAsSelectedText
+        Is mostly the same as |:FufBookmarkFileAdd|, except that initial
+        pattern is the last selected one.
+
+                                                          *:FufBookmarkDirAdd*
+:FufBookmarkDirAdd [{name}]
+        Adds a directory to bookmarks.
+
+        See also: |fuf-bookmarkdir-mode|
 
                                                               *:FufRenewCache*
 :FufRenewCache
@@ -812,11 +985,11 @@ For All Modes ~
 <
         Key mapped to switch between fuzzy matching and partial matching.
 
-                                                           *g:fuf_infoFile*  >
-  let g:fuf_infoFile = '~/.vim-fuf'
+                                                           *g:fuf_dataDir*  >
+  let g:fuf_dataDir = '~/.vim-fuf-data'
 <
-        Filename to write completion statistics, MRU data, bookmark, etc. If
-        empty string, FuzzyFinder does not write to a file.
+        Directory path to which data files is put. If empty string,
+        FuzzyFinder does not write data files.
 
                                                           *g:fuf_abbrevMap*  >
   let g:fuf_abbrevMap = {}
@@ -848,12 +1021,13 @@ For All Modes ~
 
         See also: |fuf-search-patterns|
 
-                                                            *g:fuf_smartBs*  >
-  let g:fuf_smartBs = 1
+                                                      *g:fuf_fuzzyRefining*  >
+  let g:fuf_fuzzyRefining = 0
 <
-        If non-zero, pressing <BS> after a path separator deletes one
-        directory name and pressing <BS> after |g:fuf_patternSeparator|
-        deletes one pattern.
+        If non-zero, fuzzy matching is done with refining pattern instead of
+        partial matching.
+
+        See also: |fuf-search-patterns|
 
                                                         *g:fuf_reuseWindow*  >
   let g:fuf_reuseWindow = 1
@@ -884,16 +1058,16 @@ For All Modes ~
         completion menu.
 
                                                       *g:fuf_previewHeight*  >
-  let g:fuf_previewHeight = 5
+  let g:fuf_previewHeight = 0
 <
         'cmdheight' is set to this when a mode supporting preview is launched.
         Information of selected completion item will be shown on command-line
         area. If zero, preview feature is disabled.
 
                                                         *g:fuf_autoPreview*  >
-  let g:fuf_autoPreview = 1
+  let g:fuf_autoPreview = 0
 <
-        TODO
+        If non-zero, previews will be shown automatically.
 
                                                           *g:fuf_useMigemo*  >
   let g:fuf_useMigemo = 0
@@ -919,6 +1093,11 @@ For Buffer Mode ~
 <
         If non-zero, completion items is sorted in order of recently used.
 
+                                                   *g:fuf_buffer_keyDelete*  >
+  let g:fuf_buffer_keyDelete = '<C-]>'
+<
+        Key mapped to delete selected buffer.
+
                                                    *fuf-options-for-file-mode*
 For File Mode ~
 
@@ -934,10 +1113,37 @@ For File Mode ~
         number, Fuzzyfinder never switches to this mode.
 
                                                        *g:fuf_file_exclude*  >
-  let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+  let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
 <
         Regexp pattern for items which you want to exclude from completion
         list.
+
+                                                *fuf-options-for-coveragefile-mode*
+For Coverage-File Mode ~
+
+                                                     *g:fuf_coveragefile_prompt*  >
+  let g:fuf_coveragefile_prompt = '>CoverageFile[]>'
+<
+        Prompt string. "[]" will be substituted with indicators.
+
+                                                *g:fuf_coveragefile_switchOrder*  >
+  let g:fuf_coveragefile_switchOrder = 30
+<
+        Number of order for switching to the next/previous mode. If negative
+        number, Fuzzyfinder never switches to this mode.
+
+                                                    *g:fuf_coveragefile_exclude*  >
+  let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+<
+        Regexp pattern for items which you want to exclude from completion
+        list.
+
+                                               *g:fuf_coveragefile_globPatterns*  >
+  let g:fuf_coveragefile_globPatterns = ['**/.*', '**/*']
+<
+        List of glob patterns to get file paths to be searched.
+
+        See also: |glob()|
 
                                                     *fuf-options-for-dir-mode*
 For Directory Mode ~
@@ -948,7 +1154,7 @@ For Directory Mode ~
         Prompt string. "[]" will be substituted with indicators.
 
                                                     *g:fuf_dir_switchOrder*  >
-  let g:fuf_dir_switchOrder = 30
+  let g:fuf_dir_switchOrder = 40
 <
         Number of order for switching to the next/previous mode. If negative
         number, Fuzzyfinder never switches to this mode.
@@ -960,21 +1166,21 @@ For Directory Mode ~
         list.
 
                                                 *fuf-options-for-mrufile-mode*
-For Mru-File Mode ~
+For MRU-File Mode ~
 
                                                      *g:fuf_mrufile_prompt*  >
-  let g:fuf_mrufile_prompt = '>Mru-File[]>'
+  let g:fuf_mrufile_prompt = '>MRU-File[]>'
 <
         Prompt string. "[]" will be substituted with indicators.
 
                                                 *g:fuf_mrufile_switchOrder*  >
-  let g:fuf_mrufile_switchOrder = 40
+  let g:fuf_mrufile_switchOrder = 50
 <
         Number of order for switching to the next/previous mode. If negative
         number, Fuzzyfinder never switches to this mode.
 
                                                     *g:fuf_mrufile_exclude*  >
-  let g:fuf_mrufile_exclude = '\v\~$|\.(bak|sw[po])$|^(\/\/|\\\\|\/mnt\/|\/media\/)'
+  let g:fuf_mrufile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|sw[po])$|^(\/\/|\\\\|\/mnt\/|\/media\/)'
 <
         Regexp pattern for items which you want to exclude from completion
         list.
@@ -984,16 +1190,27 @@ For Mru-File Mode ~
 <
         Ceiling for the number of MRU items to be stored.
 
+                                                 *g:fuf_mrufile_maxItemDir*  >
+  let g:fuf_mrufile_maxItemDir = 50
+<
+        Ceiling for the number of parent directories of MRU items to be
+        stored, which are used for around search.
+
+                                                  *g:fuf_mrufile_keyExpand*  >
+  let g:fuf_mrufile_keyExpand = '<C-]>'
+<
+        Key mapped to expand search range.
+
                                                  *fuf-options-for-mrucmd-mode*
-For Mru-Cmd Mode ~
+For MRU-Cmd Mode ~
 
                                                       *g:fuf_mrucmd_prompt*  >
-  let g:fuf_mrucmd_prompt = '>Mru-Cmd[]>'
+  let g:fuf_mrucmd_prompt = '>MRU-Cmd[]>'
 <
         Prompt string. "[]" will be substituted with indicators.
 
                                                  *g:fuf_mrucmd_switchOrder*  >
-  let g:fuf_mrucmd_switchOrder = 50
+  let g:fuf_mrucmd_switchOrder = 60
 <
         Number of order for switching to the next/previous mode. If negative
         number, Fuzzyfinder never switches to this mode.
@@ -1009,28 +1226,47 @@ For Mru-Cmd Mode ~
 <
         This is the ceiling for the number of MRU items to be stored.
 
-                                               *fuf-options-for-Bookmark-mode*
-For Bookmark Mode ~
+                                           *fuf-options-for-bookmarkfile-mode*
+For Bookmark-File Mode ~
 
-                                                    *g:fuf_bookmark_prompt*  >
-  let g:fuf_bookmark_prompt = '>Bookmark[]>'
+                                                    *g:fuf_bookmarkfile_prompt*  >
+  let g:fuf_bookmarkfile_prompt = '>BookmarkFile[]>'
 <
         Prompt string. "[]" will be substituted with indicators.
 
-                                               *g:fuf_bookmark_switchOrder*  >
-  let g:fuf_bookmark_switchOrder = 60
+                                               *g:fuf_bookmarkfile_switchOrder*  >
+  let g:fuf_bookmarkfile_switchOrder = 70
 <
         Number of order for switching to the next/previous mode. If negative
         number, Fuzzyfinder never switches to this mode.
 
-                                               *g:fuf_bookmark_searchRange*  >
-  let g:fuf_bookmark_searchRange = 400
+                                               *g:fuf_bookmarkfile_searchRange*  >
+  let g:fuf_bookmarkfile_searchRange = 400
 <
         Number of lines which FuzzyFinder searches a matching line from
         bookmarked position within.
 
-                                                 *g:fuf_bookmark_keyDelete*  >
-  let g:fuf_bookmark_keyDelete = '<C-]>'
+                                                 *g:fuf_bookmarkfile_keyDelete*  >
+  let g:fuf_bookmarkfile_keyDelete = '<C-]>'
+<
+        Key mapped to delete selected bookmark.
+
+                                            *fuf-options-for-bookmarkdir-mode*
+For Bookmark-Dir Mode ~
+
+                                                    *g:fuf_bookmarkdir_prompt*  >
+  let g:fuf_bookmarkdir_prompt = '>BookmarkDir[]>'
+<
+        Prompt string. "[]" will be substituted with indicators.
+
+                                               *g:fuf_bookmarkdir_switchOrder*  >
+  let g:fuf_bookmarkdir_switchOrder = 80
+<
+        Number of order for switching to the next/previous mode. If negative
+        number, Fuzzyfinder never switches to this mode.
+
+                                                 *g:fuf_bookmarkdir_keyDelete*  >
+  let g:fuf_bookmarkdir_keyDelete = '<C-]>'
 <
         Key mapped to delete selected bookmark.
 
@@ -1043,16 +1279,29 @@ For Tag Mode ~
         Prompt string. "[]" will be substituted with indicators.
 
                                                     *g:fuf_tag_switchOrder*  >
-  let g:fuf_tag_switchOrder = 70
+  let g:fuf_tag_switchOrder = 90
 <
         Number of order for switching to the next/previous mode. If negative
         number, Fuzzyfinder never switches to this mode.
 
-                                                      *g:fuf_tag_cache_dir*  >
-  let g:fuf_tag_cache_dir = '~/.vim-fuf-cache/tag'
+                                              *fuf-options-for-buffertag-mode*
+For Buffer-Tag Mode ~
+
+                                                   *g:fuf_buffertag_prompt*  >
+  let g:fuf_buffertag_prompt = '>Buffer-Tag[]>'
 <
-        Cache files are created in this directory. If empty, they are not
-        created.
+        Prompt string. "[]" will be substituted with indicators.
+
+                                              *g:fuf_buffertag_switchOrder*  >
+  let g:fuf_buffertag_switchOrder = 100
+<
+        Number of order for switching to the next/previous mode. If negative
+        number, Fuzzyfinder never switches to this mode.
+
+                                                *g:fuf_buffertag_ctagsPath*  >
+  let g:fuf_buffertag_ctagsPath = 'ctags'
+<
+        Executable file path of Ctags.
 
                                              *fuf-options-for-taggedfile-mode*
 For Tagged-File Mode ~
@@ -1063,16 +1312,10 @@ For Tagged-File Mode ~
         Prompt string. "[]" will be substituted with indicators.
 
                                              *g:fuf_taggedfile_switchOrder*  >
-  let g:fuf_taggedfile_switchOrder = 80
+  let g:fuf_taggedfile_switchOrder = 110
 <
         Number of order for switching to the next/previous mode. If negative
         number, Fuzzyfinder never switches to this mode.
-
-                                               *g:fuf_taggedfile_cache_dir*  >
-  let g:fuf_taggedfile_cache_dir = '~/.vim-fuf-cache/taggedfile'
-<
-        Cache files are created in this directory. If empty, they are not
-        created.
 
                                                *fuf-options-for-jumplist-mode*
 For Jump-List Mode ~
@@ -1083,7 +1326,7 @@ For Jump-List Mode ~
         Prompt string. "[]" will be substituted with indicators.
 
                                                *g:fuf_jumplist_switchOrder*  >
-  let g:fuf_jumplist_switchOrder = 90
+  let g:fuf_jumplist_switchOrder = 120
 <
         Number of order for switching to the next/previous mode. If negative
         number, Fuzzyfinder never switches to this mode.
@@ -1097,7 +1340,7 @@ For Change-List Mode ~
         Prompt string. "[]" will be substituted with indicators.
 
                                              *g:fuf_changelist_switchOrder*  >
-  let g:fuf_changelist_switchOrder = 100
+  let g:fuf_changelist_switchOrder = 130
 <
         Number of order for switching to the next/previous mode. If negative
         number, Fuzzyfinder never switches to this mode.
@@ -1111,7 +1354,7 @@ For Quickfix Mode ~
         Prompt string. "[]" will be substituted with indicators.
 
                                              *g:fuf_quickfix_switchOrder*  >
-  let g:fuf_quickfix_switchOrder = 110
+  let g:fuf_quickfix_switchOrder = 140
 <
         Number of order for switching to the next/previous mode. If negative
         number, Fuzzyfinder never switches to this mode.
@@ -1125,7 +1368,7 @@ For Line Mode ~
         Prompt string. "[]" will be substituted with indicators.
 
                                                    *g:fuf_line_switchOrder*  >
-  let g:fuf_line_switchOrder = 120
+  let g:fuf_line_switchOrder = 150
 <
         Number of order for switching to the next/previous mode. If negative
         number, Fuzzyfinder never switches to this mode.
@@ -1139,16 +1382,10 @@ For Help Mode ~
         Prompt string. "[]" will be substituted with indicators.
 
                                                    *g:fuf_help_switchOrder*  >
-  let g:fuf_help_switchOrder = 130
+  let g:fuf_help_switchOrder = 160
 <
         Number of order for switching to the next/previous mode. If negative
         number, Fuzzyfinder never switches to this mode.
-
-                                                     *g:fuf_help_cache_dir*  >
-  let g:fuf_help_cache_dir = '~/.vim-fuf-cache/help'
-<
-        Cache files are created in this directory. If empty, they are not
-        created.
 
 
 ==============================================================================
@@ -1156,35 +1393,48 @@ VIMRC EXAMPLE                                              *fuf-vimrc-example*
 
 >
   let g:fuf_modesDisable = []
-  let g:fuf_abbrevMap = {
-        \   '^vr:' : map(filter(split(&runtimepath, ','), 'v:val !~ "after$"'), 'v:val . ''/**/'''),
-        \   '^m0:' : [ '/mnt/d/0/', '/mnt/j/0/' ],
-        \ }
-  let g:fuf_mrufile_maxItem = 300
+  let g:fuf_mrufile_maxItem = 400
   let g:fuf_mrucmd_maxItem = 400
-  nnoremap <silent> <C-n>      :FufBuffer<CR>
-  nnoremap <silent> <C-p>      :FufFileWithCurrentBufferDir<CR>
-  nnoremap <silent> <C-f><C-p> :FufFileWithFullCwd<CR>
-  nnoremap <silent> <C-f>p     :FufFile<CR>
-  nnoremap <silent> <C-f><C-d> :FufDirWithCurrentBufferDir<CR>
-  nnoremap <silent> <C-f>d     :FufDirWithFullCwd<CR>
-  nnoremap <silent> <C-f>D     :FufDir<CR>
-  nnoremap <silent> <C-j>      :FufMruFile<CR>
-  nnoremap <silent> <C-k>      :FufMruCmd<CR>
-  nnoremap <silent> <C-b>      :FufBookmark<CR>
-  nnoremap <silent> <C-f><C-t> :FufTag<CR>
-  nnoremap <silent> <C-f>t     :FufTag!<CR>
-  noremap  <silent> g]         :FufTagWithCursorWord!<CR>
-  nnoremap <silent> <C-f><C-f> :FufTaggedFile<CR>
-  nnoremap <silent> <C-f><C-j> :FufJumpList<CR>
-  nnoremap <silent> <C-f><C-g> :FufChangeList<CR>
-  nnoremap <silent> <C-f><C-q> :FufQuickfix<CR>
-  nnoremap <silent> <C-f><C-l> :FufLine<CR>
-  nnoremap <silent> <C-f><C-h> :FufHelp<CR>
-  nnoremap <silent> <C-f><C-b> :FufAddBookmark<CR>
-  vnoremap <silent> <C-f><C-b> :FufAddBookmarkAsSelectedText<CR>
-  nnoremap <silent> <C-f><C-e> :FufEditInfo<CR>
-  nnoremap <silent> <C-f><C-r> :FufRenewCache<CR>
+  nnoremap <silent> sj     :FufBuffer<CR>
+  nnoremap <silent> sk     :FufFileWithCurrentBufferDir<CR>
+  nnoremap <silent> sK     :FufFileWithFullCwd<CR>
+  nnoremap <silent> s<C-k> :FufFile<CR>
+  nnoremap <silent> sl     :FufCoverageFileChange<CR>
+  nnoremap <silent> sL     :FufCoverageFileChange<CR>
+  nnoremap <silent> s<C-l> :FufCoverageFileRegister<CR>
+  nnoremap <silent> sd     :FufDirWithCurrentBufferDir<CR>
+  nnoremap <silent> sD     :FufDirWithFullCwd<CR>
+  nnoremap <silent> s<C-d> :FufDir<CR>
+  nnoremap <silent> sn     :FufMruFile<CR>
+  nnoremap <silent> sN     :FufMruFileInCwd<CR>
+  nnoremap <silent> sm     :FufMruCmd<CR>
+  nnoremap <silent> su     :FufBookmarkFile<CR>
+  nnoremap <silent> s<C-u> :FufBookmarkFileAdd<CR>
+  vnoremap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<CR>
+  nnoremap <silent> si     :FufBookmarkDir<CR>
+  nnoremap <silent> s<C-i> :FufBookmarkDirAdd<CR>
+  nnoremap <silent> st     :FufTag<CR>
+  nnoremap <silent> sT     :FufTag!<CR>
+  nnoremap <silent> s<C-]> :FufTagWithCursorWord!<CR>
+  nnoremap <silent> s,     :FufBufferTag<CR>
+  nnoremap <silent> s<     :FufBufferTag!<CR>
+  vnoremap <silent> s,     :FufBufferTagWithSelectedText!<CR>
+  vnoremap <silent> s<     :FufBufferTagWithSelectedText<CR>
+  nnoremap <silent> s}     :FufBufferTagWithCursorWord!<CR>
+  nnoremap <silent> s.     :FufBufferTagAll<CR>
+  nnoremap <silent> s>     :FufBufferTagAll!<CR>
+  vnoremap <silent> s.     :FufBufferTagAllWithSelectedText!<CR>
+  vnoremap <silent> s>     :FufBufferTagAllWithSelectedText<CR>
+  nnoremap <silent> s]     :FufBufferTagAllWithCursorWord!<CR>
+  nnoremap <silent> sg     :FufTaggedFile<CR>
+  nnoremap <silent> sG     :FufTaggedFile!<CR>
+  nnoremap <silent> so     :FufJumpList<CR>
+  nnoremap <silent> sp     :FufChangeList<CR>
+  nnoremap <silent> sq     :FufQuickfix<CR>
+  nnoremap <silent> sy     :FufLine<CR>
+  nnoremap <silent> sh     :FufHelp<CR>
+  nnoremap <silent> se     :FufEditDataFile<CR>
+  nnoremap <silent> sr     :FufRenewCache<CR>
 <
 
 ==============================================================================
@@ -1201,9 +1451,58 @@ SPECIAL THANKS                                                    *fuf-thanks*
 ==============================================================================
 CHANGELOG                                                      *fuf-changelog*
 
-3.6: [TODO]
+4.2.2:
+  - Fixed a bug that unloaded buffers weren't covered by FufBufferTagAll.
+
+4.2.1:
+  - Improved response of Buffer-Tag mode.
+  - Fixed a bug that buffers which had been opened weren't listed in
+    Coverage-File mode
+  - Fixed a bug that tag entries including tab characters weren't parsed
+    correctly in Coverage-File mode
+
+4.2:
+  - L9 library (vimscript #3252) version 1.1 is required.
+  - Added Buffer-Tag mode, inspired by taglist.vim (vimscript #273).
+  - Added :FufMruFileInCwd command.
+
+4.1.1:
+  - Fixed a bug causing a error in MRU-File mode.
+
+4.1:
+  - Added Bookmark-Dir mode.
+  - Added Bookmark-File mode and removed Bookmark mode.
+  - Changed the filename to store data of Coverage-File mode, from
+    '~/.vim-fuf-data/coveragefile/items' to
+    '~/.vim-fuf-data/coveragefile/coverages' .
+  - Fixed a bug that floating point numbers weren't evaluated correctly and
+    caused errors on some non-English locales.
+  - Removed Around-MRU-File mode and integrated its feature to MRU-File mode.
+
+4.0:
+  - From this version, L9 library (vimscript #3252) is required.
+  - Added Coverage-File mode for users wanting something like TextMate's
+    command-t. (But I've never used it.)
+  - Added Around-MRU-File mode. (Too slow. There is room for improvement.)
+  - Added new feature which deletes selected buffer with FuzzyFinder and
+    g:fuf_buffer_keyDelete option.
   - Added new feature which allows to set one-time options/variables with
     fuf#setOneTimeVariables() function.
+  - Added g:fuf_dataDir option and removed g:fuf_infoFile,
+    g:g:fuf_tag_cache_dir, g:fuf_taggedfile_cache_dir, and
+    g:fuf_help_cache_dir options.
+  - Added :FufEditDataFile command and removed :FufEditInfo command.
+  - Added g:fuf_fuzzyRefining option.
+  - Added new feature which is auto-preview and g:fuf_autoPreview option.
+  - Changed the default value of g:fuf_previewHeight to 0 in order to disable
+    preview feature. There is an unfixable problem which is caused by a Vim's
+    bug.
+  - Changed the default value of g:fuf_modesDisable option.
+  - Changed the default value of g:fuf_*_switchOrder options.
+  - Improved speed of changing buffers.
+  - Improved the way to add user-defined mode.
+  - Fixed a bug that FuzzyFinder caused reseting window layout.
+  - Removed g:fuf_smartBs option. Use <C-w> instead.
 
 3.5:
   - Added Line mode.
@@ -1448,7 +1747,7 @@ CHANGELOG                                                      *fuf-changelog*
 
 2.3:
   - Added a key mapping to open items in a new tab page and
-    g:FuzzyFinderOptions.Base.key_open_tab opton.
+    g:FuzzyFinderOptions.Base.key_open_tab option.
   - Changed to show Fuzzyfinder window above last window even if 'splitbelow'
     was set.
   - Changed to set nocursorline and nocursorcolumn in Fuzzyfinder.
