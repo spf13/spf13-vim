@@ -23,7 +23,7 @@ if has("gui_running")
 	hi Normal         guibg=#1F1F1F guifg=#D0D0D0 gui=none
 	hi SpecialKey     guibg=#1F1F1F guifg=#E783E9 gui=none
 	hi VertSplit      guibg=#1F1F1F guifg=#FFEE68 gui=none
-	hi SignColumn     guibg=#1F1F1F guifg=#BF81FA gui=none
+	hi SignColumn     guibg=#1F1F1F guifg=#B8AFF9 gui=none
 	hi NonText        guibg=#1F1F1F guifg=#FC6984 gui=none
 	hi Directory      guibg=#1F1F1F guifg=#FFEE68 gui=none 
 	hi Title          guibg=#1F1F1F guifg=#6DF584 gui=bold
@@ -31,16 +31,16 @@ if has("gui_running")
 	" -> Cursor 
 	hi Cursor         guibg=#FFEE68 guifg=#1F1F1F gui=none
 	hi CursorIM       guibg=#FFEE68 guifg=#1F1F1F gui=none
-	hi CursorColumn   guibg=#000000               gui=none
-	hi CursorLine     guibg=#000000               gui=none
+	hi CursorColumn   guibg=#2d2d2d               gui=none
+	hi CursorLine     guibg=#2d2d2d               gui=none
 
 	" -> Folding
 	hi FoldColumn     guibg=#001336 guifg=#003DAD gui=none
 	hi Folded         guibg=#001336 guifg=#003DAD gui=none
 
 	" -> Line info  
-	hi LineNr         guibg=#000000 guifg=#696567 gui=none
-	hi StatusLine     guibg=#000000 guifg=#696567 gui=none
+	hi LineNr         guifg=#857b6f guibg=#101010 gui=none
+	hi StatusLine     guibg=#2d2d2d guifg=#696567 gui=none
 	hi StatusLineNC   guibg=#25365a guifg=#696567 gui=none
 
 	" -> Messages
@@ -71,23 +71,23 @@ if has("gui_running")
 	hi TabLine        guibg=#141414 guifg=#1F1F1F gui=none
 	hi TabLineFill    guibg=#000000               gui=none
 	hi TabLineSel     guibg=#1F1F1F guifg=#D0D0D0 gui=bold  
-	"
+
 	" -> Visual Mode
-	hi Visual         guibg=#000000 guifg=#FFB539 gui=none
+	hi Visual         guibg=#17425B guifg=#FFFFFF gui=none
 	hi VisualNOS      guibg=#000000 guifg=#696567 gui=none
 
 	" -> Code
-	hi Comment        guibg=#1F1F1F guifg=#696567 gui=none
+	hi Comment        guibg=#1F1F1F guifg=#99968b gui=italic
 	hi Constant       guibg=#1F1F1F guifg=#6DF584 gui=none
-	hi String         guibg=#1F1F1F guifg=#FFB539 gui=none
-	hi Error          guibg=#1F1F1F guifg=#FC4234 gui=none
+	hi String         guibg=#1F1F1F guifg=#FFB539 gui=italic
+	hi Error          guibg=#A32024 guifg=#D0D0D0 gui=none
 	hi Identifier     guibg=#1F1F1F guifg=#70BDF1 gui=none
 	hi Function       guibg=#1F1F1F guifg=#90CBF1 gui=none
 	hi Ignore         guibg=#1F1F1F guifg=#1F1F1F gui=none
 	hi MatchParen     guibg=#FFA500 guifg=#1F1F1F gui=none
-	hi PreProc        guibg=#1F1F1F guifg=#BF81FA gui=none
+	hi PreProc        guibg=#1F1F1F guifg=#B8AFF9 gui=none
 	hi Special        guibg=#1F1F1F guifg=#FFEE68 gui=none
-	hi Todo           guibg=#1F1F1F guifg=#FC4234 gui=bold
+	hi Todo           guibg=#1F1F1F guifg=#FC4234 gui=bold,italic
 	hi Underlined     guibg=#1F1F1F guifg=#FC4234 gui=underline
 	hi Statement      guibg=#1F1F1F guifg=#E783E9 gui=none
 	hi Operator       guibg=#1F1F1F guifg=#FC6984 gui=none
@@ -193,11 +193,11 @@ elseif &t_Co == 256
 
 elseif &t_Co == 16
 
-	" -> Text; Miscellaneous
-	hi Normal         ctermbg=8  ctermfg=15 cterm=none
-	hi SpecialKey     ctermbg=8  ctermfg=5  cterm=none
-	hi VertSplit      ctermbg=8  ctermfg=14  cterm=none
-	hi SignColumn     ctermbg=8  ctermfg=5  cterm=none
+  " -> Text; Miscellaneous
+  hi Normal         ctermbg=8  ctermfg=15 cterm=none
+  hi SpecialKey     ctermbg=8  ctermfg=5  cterm=none
+  hi VertSplit      ctermbg=8  ctermfg=14  cterm=none
+  hi SignColumn     ctermbg=8  ctermfg=5  cterm=none
   hi NonText        ctermbg=8  ctermfg=4  cterm=none
   hi Directory      ctermbg=8  ctermfg=14  cterm=none 
   hi Title          ctermbg=8  ctermfg=10 cterm=bold
@@ -282,10 +282,10 @@ elseif &t_Co == 16
 elseif &t_Co == 8
 
 	" -> Text; Miscellaneous
-	hi Normal         ctermbg=8  ctermfg=7  cterm=none
-	hi SpecialKey     ctermbg=8  ctermfg=5  cterm=none
-	hi VertSplit      ctermbg=8  ctermfg=6  cterm=none
-	hi SignColumn     ctermbg=8  ctermfg=5  cterm=none
+  hi Normal         ctermbg=8  ctermfg=7  cterm=none
+  hi SpecialKey     ctermbg=8  ctermfg=5  cterm=none
+  hi VertSplit      ctermbg=8  ctermfg=6  cterm=none
+  hi SignColumn     ctermbg=8  ctermfg=5  cterm=none
   hi NonText        ctermbg=8  ctermfg=4  cterm=none
   hi Directory      ctermbg=8  ctermfg=6  cterm=none 
   hi Title          ctermbg=8  ctermfg=2  cterm=bold
