@@ -379,6 +379,7 @@ function! InitializeDirectories()
               " filename so there aren't collisions for backups
               " Windows Vista / 7 has UAC issues, so setting $temp as fallback
               exec "set " . settingname . "=\"" . directory . "\""
+              print "Setting " . settingname . " = " . directory
           else
               " For Linux/Mac OS (others?) these directives must not be quoted
               exec "set " . settingname . "=" . directory
