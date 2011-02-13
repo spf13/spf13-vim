@@ -384,63 +384,52 @@
 	endif
 " }
 
-" Functions {
-	function! InitializeDirectories()
-		let separator = "."
-		let parent = $HOME 
-		let prefix = '.vim'
-		let dir_list = { 
-					\ 'backup': 'backupdir', 
-					\ 'views': 'viewdir', 
-					\ 'swap': 'directory' }
+function! InitializeDirectories()
+  let separator = "."
+  let parent = $HOME 
+  let prefix = '.vim'
+  let dir_list = { 
+			  \ 'backup': 'backupdir', 
+			  \ 'views': 'viewdir', 
+			  \ 'swap': 'directory' }
 
-		for [dirname, settingname] in items(dir_list)
-			let directory = parent . '/' . prefix . dirname . "/"
-			if exists("*mkdir")
-				if !isdirectory(directory)
-					call mkdir(directory)
-				endif
-			endif
-			if !isdirectory(directory)
-				echo "Warning: Unable to create backup directory: " . directory
-				echo "Try: mkdir -p " . directory
-			else  
-				if has('win32') || has('win64')
-					" Adding an extra trailing slash so it stores the path and not just the
-					" filename so there aren't collisions for backups
-					" Windows Vista / 7 has UAC issues, so setting $temp as fallback
-					exec "set " . settingname . "=\"" . directory . "\""
-				else
-					" For Linux/Mac OS (others?) these directives must not be quoted
-					exec "set " . settingname . "=" . directory
-				endif
-			endif
-		endfor
-	endfunction
-	call InitializeDirectories() 
+  for [dirname, settingname] in items(dir_list)
+	  let directory = parent . '/' . prefix . dirname . "/"
+	  if exists("*mkdir")
+		  if !isdirectory(directory)
+			  call mkdir(directory)
+		  endif
+	  endif
+	  if !isdirectory(directory)
+		  echo "Warning: Unable to create backup directory: " . directory
+		  echo "Try: mkdir -p " . directory
+	  else  
+          if has('win32') || has('win64')
+              " Adding an extra trailing slash so it stores the path and not just the
+              " filename so there aren't collisions for backups
+              " Windows Vista / 7 has UAC issues, so setting $temp as fallback
+              exec "set " . settingname . "=\"" . directory . "\""
+              print "Setting " . settingname . " = " . directory
+          else
+              " For Linux/Mac OS (others?) these directives must not be quoted
+              exec "set " . settingname . "=" . directory
+          endif
+	  endif
+  endfor
+endfunction
+call InitializeDirectories() 
 
-	function! NERDTreeInitAsNeeded()
-		redir => bufoutput
-		buffers!
-		redir END
-		let idx = stridx(bufoutput, "NERD_tree")
-		if idx > -1
-			NERDTreeMirror
-			NERDTreeFind
-			wincmd l
-		endif
-	endfunction
-" }
-
-" File type specific settings {
-	" Python helpers {
-		highlight BadWhitespace ctermbg=red guibg=red
-		" Display tabs at the beginning of a line in Python mode as bad.
-		au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-		au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
-		let python_highlight_all=1
-	" }
-" }
+function! NERDTreeInitAsNeeded()
+    redir => bufoutput
+    buffers!
+    redir END
+    let idx = stridx(bufoutput, "NERD_tree")
+    if idx > -1
+        NERDTreeMirror
+        NERDTreeFind
+        wincmd l
+    endif
+endfunction
 
 " Use local vimrc if available {
     if filereadable(expand("~/.vimrc.local"))
