@@ -404,16 +404,8 @@ function! InitializeDirectories()
 		  echo "Warning: Unable to create backup directory: " . directory
 		  echo "Try: mkdir -p " . directory
 	  else  
-          if has('win32') || has('win64')
-              " Adding an extra trailing slash so it stores the path and not just the
-              " filename so there aren't collisions for backups
-              " Windows Vista / 7 has UAC issues, so setting $temp as fallback
-              exec "set " . settingname . "=\"" . directory . "\""
-              print "Setting " . settingname . " = " . directory
-          else
-              " For Linux/Mac OS (others?) these directives must not be quoted
-              exec "set " . settingname . "=" . directory
-          endif
+          let directory = substitute(directory, " ", "\\\\ ", "")
+          exec "set " . settingname . "=" . directory
 	  endif
   endfor
 endfunction
