@@ -370,6 +370,10 @@
 			" Override how taglist does javascript
 			let g:tlist_javascript_settings = 'javascript;f:function;c:class;m:method;p:property;v:global'
 		 " }
+
+		" JSON {
+			nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+		 " }
 	" }
 " }
 
