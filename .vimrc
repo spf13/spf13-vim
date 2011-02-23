@@ -11,24 +11,16 @@
 " Environment {
 	" Basics {
 		set nocompatible 		" must be first line
+		set background=dark     " Assume a dark background
 	" }
 
-" Setup Bundle Support {
-" The next two lines ensure that the ~/.vim/bundle/ system works
-	runtime! autoload/pathogen.vim
-	silent! call pathogen#helptags()
-	silent! call pathogen#runtime_append_all_bundles()
-" }
+	" Setup Bundle Support {
+	" The next two lines ensure that the ~/.vim/bundle/ system works
+		runtime! autoload/pathogen.vim
+		silent! call pathogen#helptags()
+		silent! call pathogen#runtime_append_all_bundles()
+	" }
 
-" Basics {
-	set nocompatible		" must be first line
-	set background=dark     " Assume a dark background
-" }
- 
-" General {
-	filetype plugin indent on	" Automatically detect file types.
-	syntax on					" syntax highlighting
-    set hidden                      " allow leaving a buffer when it is unsaved
 	" Windows Compatible {
 		" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
 		" across (heterogeneous) systems easier. 
@@ -36,26 +28,25 @@
 		  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 		endif
 	" }
+" }
 
-	" Setup Bundle Support {
-	" The next two lines ensure that the ~/.vim/bundle/ system works
-		"runtime! autoload/pathogen.vim
-		silent! call pathogen#runtime_append_all_bundles()
-		call pathogen#helptags()
-	" }
-" } 
-	
 " General {
 	set background=dark         " Assume a dark background
 	filetype plugin indent on  	" Automatically detect file types.
 	syntax on 					" syntax highlighting
+	set mouse=a					" automatically enable mouse usage
+	"set autochdir 				" always switch to the current file directory.. Messes with some plugins, best left commented out
+	" not every vim is compiled with this, use the following line instead
+	" If you use command-t plugin, it conflicts with this, comment it out.
+     "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 	scriptencoding utf-8
+
 	" set autowrite                  " automatically write a file when leaving a modified buffer
 	set shortmess+=filmnrxoOtT     	" abbrev. of messages (avoids 'hit enter')
 	set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
 	set virtualedit=onemore 	   	" allow for cursor beyond last character
 	set history=1000  				" Store a ton of history (default is 20)
-	" set spell 		 	        	" spell checking on
+	set spell 		 	        	" spell checking on
 	
 	" Setting up the directories {
 		set backup 						" backups are nice ...
@@ -74,23 +65,29 @@
 " }
 
 " Vim UI {
-	color blackboard				" load a colorscheme
-	set tabpagemax=15				" only show 15 tabs
-	set showmode					" display the current mode
+	color molokai     	       		" load a colorscheme
+	set tabpagemax=15 				" only show 15 tabs
+	set showmode                   	" display the current mode
 
-	set cursorline					" highlight current line
-	hi cursorline guibg=#333333		" highlight bg color of current line
+	set cursorline  				" highlight current line
+	hi cursorline guibg=#333333 	" highlight bg color of current line
 	hi CursorColumn guibg=#333333   " highlight cursor
 
 	if has('cmdline_info')
-		set ruler					" show the ruler
+		set ruler                  	" show the ruler
 		set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-		set showcmd					" show partial commands in status line and
+		set showcmd                	" show partial commands in status line and
 									" selected characters/lines in visual mode
 	endif
 
-    set laststatus=2
-    set statusline=%f%m%r%h%w\ [%{&ff}/%Y]\ [%{getcwd()}]\ [A=\%03.3b/H=\%02.2B]\ [%04l,%04v]\ [%p%%]\ [LEN=%L]
+	if has('statusline')
+        set laststatus=2
+        set statusline=%f%m%r%h%w\ [%{&ff}/%Y]\ [%{getcwd()}]\ [A=\%03.3b/H=\%02.2B]\ [%04l,%04v]\ [%p%%]\ [LEN=%L]
+		"set laststatus=1           	" show statusline only if there are > 1 windows
+		" Use the commented line if fugitive isn't installed
+		"set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
+		"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+	endif
 
 	set backspace=indent,eol,start	" backspace for dummys
 	set linespace=0					" No extra spaces between rows
@@ -104,9 +101,9 @@
 	set wildmenu					" show list instead of just completing
 	set wildmode=list:longest,full	" comand <Tab> completion, list matches, then longest common part, then all.
 	set whichwrap=b,s,h,l,<,>,[,]	" backspace and cursor keys wrap to
-	set scrolljump=5				" lines to scroll when cursor leaves screen
-	set scrolloff=3					" minimum lines to keep above and below cursor
-	set nofoldenable				" disable auto fold code
+	set scrolljump=5 				" lines to scroll when cursor leaves screen
+	set scrolloff=3 				" minimum lines to keep above and below cursor
+	set foldenable  				" auto fold code
 	set gdefault					" the /g flag on :s substitutions by default
 
 " }
@@ -124,25 +121,31 @@
 	autocmd FileType c,cpp,java,php,js,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 " }
 
-" Python helpers {
-	highlight BadWhitespace ctermbg=red guibg=red
-	" Display tabs at the beginning of a line in Python mode as bad.
-	au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-	au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
-	let python_highlight_all=1
-" }
-
-" Key Mappings {
+" Key (re)Mappings {
 
 	"The default leader is '\', but many people prefer ',' as it's in a standard
 	"location
 	let mapleader = ','
 
 	" Easier moving in tabs and windows
-	map <C-J> :2 tabn
-	map <C-K> :2 tabp
-	map <C-L> :tabn
-	map <C-H> :tabp 
+	map <C-J> <C-W>j<C-W>_
+	map <C-K> <C-W>k<C-W>_
+	map <C-L> <C-W>l<C-W>_
+	map <C-H> <C-W>h<C-W>_
+	map <C-K> <C-W>k<C-W>_
+	
+	" The following two lines conflict with moving to top and bottom of the
+	" screen
+	" If you prefer that functionality, comment them out.
+	map <S-H> gT          
+	map <S-L> gt
+
+	" Stupid shift key fixes
+	cmap W w 						
+	cmap WQ wq
+	cmap wQ wq
+	cmap Q q
+	cmap Tabe tabe
 
 	" Yank from the cursor to the end of the line, to be consistent with C and D.
 	nnoremap Y y$
@@ -214,7 +217,7 @@
 	" ShowMarks {
 		let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		" Don't leave on by default, use :ShowMarksOn to enable
-		let g:showmarks_enable = 1
+		let g:showmarks_enable = 0
 		" For marks a-z
 		highlight ShowMarksHLl gui=bold guibg=LightBlue guifg=Blue
 		" For marks A-Z
@@ -225,6 +228,10 @@
 		highlight ShowMarksHLm gui=bold guibg=LightGreen guifg=DarkGreen
 	" }
 	
+	" Command-t {
+        let g:CommandTSearchPath = $HOME . '/Code'
+	" }
+
 	" OmniComplete {
 		"if has("autocmd") && exists("+omnifunc")
 			"autocmd Filetype *
@@ -268,7 +275,7 @@
 	" }
 
 	" Delimitmate {
-		"au FileType * let b:delimitMate_autoclose = 1
+		au FileType * let b:delimitMate_autoclose = 1
 
 		" If using html auto complete (complete closing tag)
         au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],{:}"
@@ -281,7 +288,8 @@
 
 	" SnipMate {
 		" Setting the author var
-		let g:snips_author = 'Richard Bateman <taxilian@gmail.com>'
+        " If forking, please overwrite in your .vimrc.local file
+		let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
 		" Shortcut for reloading snippets, useful when developing
 		nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
 	" }
@@ -294,10 +302,11 @@
 		let NERDTreeShowBookmarks=1
 		let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 		let NERDTreeChDirMode=0
-		let NERDTreeQuitOnOpen=0
+		let NERDTreeQuitOnOpen=1
 		let NERDTreeShowHidden=1
 		let NERDTreeKeepTreeInNewTab=1
-	
+	" }
+
 	" Richard's plugins {
 		" Fuzzy Finder {
 			""" Fuzzy Find file, tree, buffer, line
@@ -316,21 +325,6 @@
 		
 		" Buffer explorer {
 			nmap <leader>b :BufExplorer<CR>
-		" }
-		
-		" Project related {
-			map <C-p> <Plug>ToggleProject
-			map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-			map <leader>e :NERDTreeFind<CR>
-			nmap <leader>nt :NERDTreeFind<CR>
-
-            let NERDTreeShowBookmarks=1
-            let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-            let NERDTreeChDirMode=2
-            let NERDTreeQuitOnOpen=0
-            let NERDTreeShowHidden=1
-            let NERDTreeKeepTreeInNewTab=1
-			"au BufEnter * call NERDTreeInitAsNeeded()
 		" }
 		
 		" VCS commands {
@@ -386,51 +380,63 @@
 	endif
 " }
 
-function! InitializeDirectories()
-  let separator = "."
-  let parent = $HOME 
-  let prefix = '.vim'
-  let dir_list = { 
-			  \ 'backup': 'backupdir', 
-			  \ 'views': 'viewdir', 
-			  \ 'swap': 'directory' }
+" Functions {
+	function! InitializeDirectories()
+		let separator = "."
+		let parent = $HOME 
+		let prefix = '.vim'
+		let dir_list = { 
+					\ 'backup': 'backupdir', 
+					\ 'views': 'viewdir', 
+					\ 'swap': 'directory' }
 
-  for [dirname, settingname] in items(dir_list)
-	  let directory = parent . '/' . prefix . dirname . "/"
-	  if exists("*mkdir")
-		  if !isdirectory(directory)
-			  call mkdir(directory)
-		  endif
-	  endif
-	  if !isdirectory(directory)
-		  echo "Warning: Unable to create backup directory: " . directory
-		  echo "Try: mkdir -p " . directory
-	  else  
-          if has('win32') || has('win64')
-              " Adding an extra trailing slash so it stores the path and not just the
-              " filename so there aren't collisions for backups
-              " Windows Vista / 7 has UAC issues, so setting $temp as fallback
-              exec "set " . settingname . "=\"" . directory . "\""
-          else
-              " For Linux/Mac OS (others?) these directives must not be quoted
-              exec "set " . settingname . "=" . directory
-          endif
-	  endif
-  endfor
-endfunction
-call InitializeDirectories() 
+		for [dirname, settingname] in items(dir_list)
+			let directory = parent . '/' . prefix . dirname . "/"
+			if exists("*mkdir")
+				if !isdirectory(directory)
+					call mkdir(directory)
+				endif
+			endif
+			if !isdirectory(directory)
+				echo "Warning: Unable to create backup directory: " . directory
+				echo "Try: mkdir -p " . directory
+			else  
+				if has('win32') || has('win64')
+					" Adding an extra trailing slash so it stores the path and not just the
+					" filename so there aren't collisions for backups
+					" Windows Vista / 7 has UAC issues, so setting $temp as fallback
+					exec "set " . settingname . "=\"" . directory . "\""
+				else
+					" For Linux/Mac OS (others?) these directives must not be quoted
+					exec "set " . settingname . "=" . directory
+				endif
+			endif
+		endfor
+	endfunction
+	call InitializeDirectories() 
 
-function! NERDTreeInitAsNeeded()
-    redir => bufoutput
-    buffers!
-    redir END
-    let idx = stridx(bufoutput, "NERD_tree")
-    if idx > -1
-        NERDTreeMirror
-        NERDTreeFind
-        wincmd l
-    endif
-endfunction
+	function! NERDTreeInitAsNeeded()
+		redir => bufoutput
+		buffers!
+		redir END
+		let idx = stridx(bufoutput, "NERD_tree")
+		if idx > -1
+			NERDTreeMirror
+			NERDTreeFind
+			wincmd l
+		endif
+	endfunction
+" }
+
+" File type specific settings {
+	" Python helpers {
+		highlight BadWhitespace ctermbg=red guibg=red
+		" Display tabs at the beginning of a line in Python mode as bad.
+		au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+		au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
+		let python_highlight_all=1
+	" }
+" }
 
 " Use local vimrc if available {
     if filereadable(expand("~/.vimrc.local"))
