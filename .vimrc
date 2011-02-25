@@ -82,11 +82,15 @@
 
 	if has('statusline')
         set laststatus=2
-        set statusline=%f%m%r%h%w\ [%{&ff}/%Y]\ [%{getcwd()}]\ [A=\%03.3b/H=\%02.2B]\ [%04l,%04v]\ [%p%%]\ [LEN=%L]
-		"set laststatus=1           	" show statusline only if there are > 1 windows
-		" Use the commented line if fugitive isn't installed
-		"set statusline=%<%f\ %=\:\b%n%y%m%r%w\ %l,%c%V\ %P " a statusline, also on steroids
-		"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+		" Broken down into easily includeable segments
+		set statusline=%<%f\    " Filename
+		set statusline+=%w%h%m%r " Options
+		set statusline+=%{fugitive#statusline()} "  Git Hotness
+		set statusline+=\ [%{&ff}/%Y]            " filetype
+		set statusline+=\ [%{getcwd()}]          " current dir
+		"set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
+		set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 	endif
 
 	set backspace=indent,eol,start	" backspace for dummys
@@ -191,7 +195,7 @@
 	
 	" PIV {
 		let g:DisableAutoPHPFolding = 0
-		let cfu=phpcomplete#CompletePHP
+		"let cfu=phpcomplete#CompletePHP
 	" }
 	
 	" Supertab {
