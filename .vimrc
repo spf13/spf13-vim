@@ -11,24 +11,16 @@
 " Environment {
 	" Basics {
 		set nocompatible 		" must be first line
+		set background=dark     " Assume a dark background
 	" }
 
-" Setup Bundle Support {
-" The next two lines ensure that the ~/.vim/bundle/ system works
-	runtime! autoload/pathogen.vim
-	silent! call pathogen#helptags()
-	silent! call pathogen#runtime_append_all_bundles()
-" }
+	" Setup Bundle Support {
+	" The next two lines ensure that the ~/.vim/bundle/ system works
+		runtime! autoload/pathogen.vim
+		silent! call pathogen#helptags()
+		silent! call pathogen#runtime_append_all_bundles()
+	" }
 
-" Basics {
-	set nocompatible		" must be first line
-	set background=dark     " Assume a dark background
-" }
- 
-" General {
-	filetype plugin indent on	" Automatically detect file types.
-	syntax on					" syntax highlighting
-    set hidden                      " allow leaving a buffer when it is unsaved
 	" Windows Compatible {
 		" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
 		" across (heterogeneous) systems easier. 
@@ -36,14 +28,8 @@
 		  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 		endif
 	" }
+" }
 
-	" Setup Bundle Support {
-	" The next two lines ensure that the ~/.vim/bundle/ system works
-		runtime! autoload/pathogen.vim
-		silent! call pathogen#runtime_append_all_bundles()
-	" }
-" } 
-	
 " General {
 	set background=dark         " Assume a dark background
     if !has('win32') && !has('win64')
@@ -51,7 +37,13 @@
     endif
 	filetype plugin indent on  	" Automatically detect file types.
 	syntax on 					" syntax highlighting
+	set mouse=a					" automatically enable mouse usage
+	"set autochdir 				" always switch to the current file directory.. Messes with some plugins, best left commented out
+	" not every vim is compiled with this, use the following line instead
+	" If you use command-t plugin, it conflicts with this, comment it out.
+     "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 	scriptencoding utf-8
+
 	" set autowrite                  " automatically write a file when leaving a modified buffer
 	set shortmess+=filmnrxoOtT     	" abbrev. of messages (avoids 'hit enter')
 	set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
@@ -91,8 +83,18 @@
 									" selected characters/lines in visual mode
 	endif
 
-    set laststatus=2
-    set statusline=%f%m%r%h%w\ [%{&ff}/%Y]\ [%{getcwd()}]\ [A=\%03.3b/H=\%02.2B]\ [%04l,%04v]\ [%p%%]\ [LEN=%L]
+	if has('statusline')
+        set laststatus=2
+
+		" Broken down into easily includeable segments
+		set statusline=%<%f\    " Filename
+		set statusline+=%w%h%m%r " Options
+		set statusline+=%{fugitive#statusline()} "  Git Hotness
+		set statusline+=\ [%{&ff}/%Y]            " filetype
+		set statusline+=\ [%{getcwd()}]          " current dir
+		"set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
+		set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+	endif
 
 	set backspace=indent,eol,start	" backspace for dummys
 	set linespace=0					" No extra spaces between rows
@@ -160,6 +162,10 @@
 	" Change Working Directory to that of the current file
 	nmap cd. :lcd %:p:h<CR>:pwd<CR>
 
+	" visual shifting (does not exit Visual mode)
+	vnoremap < <gv
+	vnoremap > >gv 
+
 	" Fix home and end keybindings for screen, particularly on mac
 	" - for some reason this fixes the arrow keys too. huh.
 	map [F $
@@ -174,13 +180,13 @@
 " Plugins {
 
 	" VCSCommand {
-		let b:VCSCommandMapPrefix=',v'
-		let b:VCSCommandVCSType='git'
-		""let mapleader = "-"
+"		let b:VCSCommandMapPrefix=',v'
+"		let b:VCSCommandVCSType='git'
 	" } 
 	
 	" PIV {
-		let g:DisableAutoPHPFolding = 1
+		let g:DisableAutoPHPFolding = 0
+		"let cfu=phpcomplete#CompletePHP
 	" }
 	
 	" Supertab {
@@ -259,6 +265,13 @@
 		let g:easytags_cmd = 'ctags'
 	" }
 
+	" Delimitmate {
+		au FileType * let b:delimitMate_autoclose = 1
+
+		" If using html auto complete (complete closing tag)
+        au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],{:}"
+	" }
+	
 	" AutoCloseTag {
 		" Make it so AutoCloseTag works for xml and xhtml files as well
 		au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
@@ -289,21 +302,6 @@
 		
 		" Buffer explorer {
 			nmap <leader>b :BufExplorer<CR>
-		" }
-		
-		" Project related {
-			map <C-p> <Plug>ToggleProject
-			map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-			map <leader>e :NERDTreeFind<CR>
-			nmap <leader>nt :NERDTreeFind<CR>
-
-            let NERDTreeShowBookmarks=1
-            let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-            let NERDTreeChDirMode=2
-            let NERDTreeQuitOnOpen=0
-            let NERDTreeShowHidden=1
-            let NERDTreeKeepTreeInNewTab=1
-			"au BufEnter * call NERDTreeInitAsNeeded()
 		" }
 		
 		" VCS commands {
