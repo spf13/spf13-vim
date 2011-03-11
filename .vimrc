@@ -14,13 +14,6 @@
 		set background=dark     " Assume a dark background
 	" }
 
-	" Setup Bundle Support {
-	" The next two lines ensure that the ~/.vim/bundle/ system works
-		runtime! autoload/pathogen.vim
-		silent! call pathogen#helptags()
-		silent! call pathogen#runtime_append_all_bundles()
-	" }
-
 	" Windows Compatible {
 		" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
 		" across (heterogeneous) systems easier. 
@@ -28,6 +21,14 @@
 		  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 		endif
 	" }
+    " 
+	" Setup Bundle Support {
+	" The next two lines ensure that the ~/.vim/bundle/ system works
+		runtime! autoload/pathogen.vim
+		silent! call pathogen#helptags()
+		silent! call pathogen#runtime_append_all_bundles()
+	" }
+
 " }
 
 " General {
