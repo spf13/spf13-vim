@@ -26,7 +26,7 @@ If it returns 1 your vim supports ruby.
 
 ## Installation
 
-### Automatic Installation (*nix only)
+### Easy Installation (*nix only)
 
     curl https://github.com/spf13/spf13-vim/raw/master/bootstrap.sh -o - | sh
  
