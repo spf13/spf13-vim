@@ -26,4 +26,4 @@ ln -s ~/.spf13-vim/.vim ~/.vim
 echo "building command-t executable\n"
 echo "command-t depends on ruby and rake to be present\n"
 cd ~/.vim/bundle/command-t
-(ruby extconf.rb && make clean && make) || warn "Ruby compilation failed. Ruby not installed, maybe?"
+(rake make) || warn "Ruby compilation failed. Ruby, GCC or rake not installed?"
