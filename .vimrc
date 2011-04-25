@@ -107,12 +107,15 @@
 	set ignorecase					" case insensitive search
 	set smartcase					" case sensitive when uc present
 	set wildmenu					" show list instead of just completing
-	set wildmode=list:longest,full	" comand <Tab> completion, list matches, then longest common part, then all.
+	set wildmode=list:longest,full	" command <Tab> completion, list matches, then longest common part, then all.
 	set whichwrap=b,s,h,l,<,>,[,]	" backspace and cursor keys wrap to
 	set scrolljump=5 				" lines to scroll when cursor leaves screen
 	set scrolloff=3 				" minimum lines to keep above and below cursor
 	set foldenable  				" auto fold code
 	set gdefault					" the /g flag on :s substitutions by default
+    set list
+    set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+
 
 " }
 
@@ -136,6 +139,10 @@
 	"location
 	let mapleader = ','
 
+    " Making it so ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
+    nnoremap ; :
+
+
 	" Easier moving in tabs and windows
 	map <C-J> <C-W>j<C-W>_
 	map <C-K> <C-W>k<C-W>_
@@ -143,6 +150,10 @@
 	map <C-H> <C-W>h<C-W>_
 	map <C-K> <C-W>k<C-W>_
 	
+    " Wrapped lines goes down/up to next row, rather than next line in file.
+    nnoremap j gj
+    nnoremap k gk
+
 	" The following two lines conflict with moving to top and bottom of the
 	" screen
 	" If you prefer that functionality, comment them out.
@@ -170,6 +181,9 @@
 	nmap <leader>f7 :set foldlevel=7<CR>
 	nmap <leader>f8 :set foldlevel=8<CR>
 	nmap <leader>f9 :set foldlevel=9<CR>
+
+    "clearing highlighted search
+    nmap <silent> <leader>/ :nohlsearch<CR>
 
 	" Shortcuts
 	" Change Working Directory to that of the current file
