@@ -67,3 +67,6 @@
 [submodule ".vim/bundle/tabular"]
 	path = .vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule ".vim/bundle/vim-preview"]
+	path = .vim/bundle/vim-preview
+	url = https://github.com/greyblake/vim-preview.git
