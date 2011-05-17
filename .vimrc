@@ -65,9 +65,7 @@
         Bundle 'python.vim'
         Bundle 'python_match.vim'
         Bundle 'pythoncomplete'
-    " }
-    " non github repos { 
-        "Bundle 'git://git.wincent.com/command-t.git'"
+        Bundle 'autocomplpop'
     " }
 " }
 
@@ -483,7 +481,7 @@ function! InitializeDirectories()
 		  echo "Warning: Unable to create backup directory: " . directory
 		  echo "Try: mkdir -p " . directory
 	  else  
-          let directory = substitute(directory, " ", "\\\\ ", "")
+          let directory = substitute(directory, " ", "\\\\ ", "g")
           exec "set " . settingname . "=" . directory
 	  endif
   endfor
