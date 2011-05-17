@@ -24,11 +24,51 @@
     " 
 	" Setup Bundle Support {
 	" The next two lines ensure that the ~/.vim/bundle/ system works
-		runtime! autoload/pathogen.vim
-		silent! call pathogen#helptags()
-		silent! call pathogen#runtime_append_all_bundles()
+        set rtp+=~/.vim/vundle.git/ 
+        call vundle#rc()
 	" }
 
+" }
+
+" Bundles {
+    " GitHub Bundles {
+        Bundle 'spf13/snipmate.vim'
+        Bundle 'spf13/vim-colors'
+        Bundle 'spf13/snipmate-snippets'
+        Bundle 'spf13/vim-markdown'
+        Bundle 'spf13/vim-surround'
+        Bundle 'spf13/PIV'
+        Bundle 'spf13/nerdtree'
+        Bundle 'altercation/vim-colors-solarized'
+        Bundle 'tpope/vim-fugitive'
+        Bundle 'lokaltog/vim-easymotion'
+        Bundle 'scrooloose/nerdcommenter'
+        Bundle 'ervandew/supertab'
+        Bundle 'Raimondi/delimitMate'
+        Bundle 'tomtom/checksyntax_vim'
+        Bundle 'wincent/Command-T'
+        Bundle 'taxilian/VimDebugger'
+        Bundle 'bloveridge/jslint.vim'
+        Bundle 'bloveridge/pyflakes-vim'
+        Bundle 'mileszs/ack.vim'
+        Bundle 'leshill/vim-json'
+        Bundle 'fs111/pydoc.vim'
+        Bundle 'godlygeek/tabular'
+        Bundle 'greyblake/vim-preview'
+        Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+    " }
+    " vim-scripts repos {
+        Bundle 'L9'
+        Bundle 'FuzzyFinder'
+        Bundle 'rails.vim'
+        Bundle 'matchit.zip'
+        Bundle 'python.vim'
+        Bundle 'python_match.vim'
+        Bundle 'pythoncomplete'
+    " }
+    " non github repos { 
+        "Bundle 'git://git.wincent.com/command-t.git'"
+    " }
 " }
 
 " General {
