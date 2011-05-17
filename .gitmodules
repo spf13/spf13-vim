@@ -70,3 +70,6 @@
 [submodule ".vim/bundle/vim-preview"]
 	path = .vim/bundle/vim-preview
 	url = https://github.com/greyblake/vim-preview.git
+[submodule ".vim/vundle.git"]
+	path = .vim/vundle.git
+	url = http://github.com/gmarik/vundle.git
