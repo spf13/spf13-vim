@@ -92,15 +92,6 @@
 	
 	" Setting up the directories {
 		set backup 						" backups are nice ...
-        " Moved to function at bottom of the file
-		"set backupdir=$HOME/.vimbackup//  " but not when they clog .
-		"set directory=$HOME/.vimswap// 	" Same for swap files
-		"set viewdir=$HOME/.vimviews// 	" same for view files
-		
-		"" Creating directories if they don't exist
-		"silent execute '!mkdir -p $HVOME/.vimbackup'
-		"silent execute '!mkdir -p $HOME/.vimswap'
-		"silent execute '!mkdir -p $HOME/.vimviews'
 		au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
 		au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
 	" }
@@ -195,11 +186,11 @@
 	" The following two lines conflict with moving to top and bottom of the
 	" screen
 	" If you prefer that functionality, comment them out.
-	map <S-H> gT          
+	map <S-H> gT
 	map <S-L> gt
 
 	" Stupid shift key fixes
-	cmap W w 						
+	cmap W w
 	cmap WQ wq
 	cmap wQ wq
 	cmap Q q
@@ -316,7 +307,7 @@
 		inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 		inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
 		inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-		inoremap <expr> <C-d>	   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+		inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
 		inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
         " and make sure that it doesn't break supertab
@@ -487,7 +478,7 @@ function! InitializeDirectories()
 	  endif
   endfor
 endfunction
-call InitializeDirectories() 
+call InitializeDirectories()
 
 function! NERDTreeInitAsNeeded()
     redir => bufoutput
