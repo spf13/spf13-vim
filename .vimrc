@@ -34,7 +34,7 @@
     " GitHub Bundles {
         Bundle 'spf13/snipmate.vim'
         Bundle 'spf13/vim-colors'
-        Bundle 'spf13/snipmate-snippets'
+        Bundle 'garbas/vim-snipmate'
         Bundle 'spf13/vim-markdown'
         Bundle 'spf13/vim-surround'
         Bundle 'spf13/PIV'
@@ -65,7 +65,7 @@
         Bundle 'python.vim'
         Bundle 'python_match.vim'
         Bundle 'pythoncomplete'
-        Bundle 'autocomplpop'
+        "Bundle 'autocomplpop'
     " }
 " }
 
@@ -343,8 +343,9 @@
 	" }
 	
 	" AutoCloseTag {
-		" Make it so AutoCloseTag works for xml and xhtml files as well
-		au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+        " Make it so AutoCloseTag works for xml and xhtml files as well
+        au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+        nmap <Leader>ac <Plug>ToggleAutoCloseMappings
 	" }
 
 	" SnipMate {
