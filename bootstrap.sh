@@ -21,6 +21,8 @@ git clone --recursive git://github.com/spf13/spf13-vim.git ~/.spf13-vim
 ln -s ~/.spf13-vim/.vimrc ~/.vimrc
 ln -s ~/.spf13-vim/.vim ~/.vim
 
+echo "installing plugins using Vundle"
+vim +BundleInstall! +BundleClean +q
 
 # Build command-t for your system
 echo "building command-t executable\n"
