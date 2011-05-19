@@ -1,5 +1,7 @@
 #!/bin/env sh
 
+endpath='~/.spf13-vim'
+
 warn() {
     echo "$1" >&2
 }
@@ -17,9 +19,10 @@ for i in ~/.vim ~/.vimrc ~/.gvimrc; do [ -e $i ] && mv $i $i.old; done
 
 
 echo "cloning spf13-vim\n"
-git clone --recursive git://github.com/spf13/spf13-vim.git ~/.spf13-vim 
-ln -s ~/.spf13-vim/.vimrc ~/.vimrc
-ln -s ~/.spf13-vim/.vim ~/.vim
+#git clone --recursive git://github.com/spf13/spf13-vim.git ~/.spf13-vim 
+git clone --recursive -b 3.0 git://github.com/spf13/spf13-vim.git $endpath
+ln -s $endpath/.vimrc ~/.vimrc
+ln -s $endpath/.vim ~/.vim
 
 echo "installing plugins using Vundle"
 vim +BundleInstall! +BundleClean +q
