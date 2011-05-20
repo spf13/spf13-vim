@@ -32,6 +32,8 @@
 
 " Bundles {
     " GitHub Bundles {
+        Bundle "MarcWeber/vim-addon-mw-utils"
+        Bundle "tomtom/tlib_vim"
         Bundle 'spf13/snipmate.vim'
         Bundle 'spf13/vim-colors'
         Bundle 'garbas/vim-snipmate'
@@ -239,19 +241,22 @@
 	" VCSCommand {
 "		let b:VCSCommandMapPrefix=',v'
 "		let b:VCSCommandVCSType='git'
-	" } 
-	
+	" }
+
 	" PIV {
 		let g:DisableAutoPHPFolding = 0
 		"let cfu=phpcomplete#CompletePHP
 	" }
-	
+
 	" Supertab {
 		let g:SuperTabDefaultCompletionType = "context"
 		let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+        "let g:SuperTabContextDefaultCompletionType = "<c-x><c-p>"
+        "let g:SuperTabMappingForward = '<c-space>'
+        "let g:SuperTabMappingBackward = '<s-c-space>'
 	" }
 
-	" Misc { 
+	" Misc {
 		:map <C-F10> <Esc>:vsp<CR>:VTree<CR>
 		" map Control + F10 to Vtree
 
@@ -265,7 +270,7 @@
 
 		let b:match_ignorecase = 1
 	" }
-	
+
 	" ShowMarks {
 		let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		" Don't leave on by default, use :ShowMarksOn to enable
@@ -279,7 +284,7 @@
 		" For multiple marks on the same line.
 		highlight ShowMarksHLm gui=bold guibg=LightGreen guifg=DarkGreen
 	" }
-	
+
 	" Command-t {
         let g:CommandTSearchPath = $HOME . '/Code'
 	" }
@@ -302,7 +307,7 @@
 		hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
 		hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
-		" some convenient mappings 
+		" some convenient mappings
 		inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
 		inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 		inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
@@ -312,12 +317,12 @@
 
         " and make sure that it doesn't break supertab
         let g:SuperTabCrMapping = 0
-        
+
 		" automatically open and close the popup menu / preview window
 		au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 		set completeopt=menu,preview,longest
 	" }
-	
+
 	" Ctags {
 		set tags=./tags;/,~/.vimtags
 	" }
@@ -332,7 +337,7 @@
 		" If using html auto complete (complete closing tag)
         au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],{:}"
 	" }
-	
+
 	" AutoCloseTag {
         " Make it so AutoCloseTag works for xml and xhtml files as well
         au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
@@ -359,7 +364,7 @@
 		let NERDTreeShowHidden=1
 		let NERDTreeKeepTreeInNewTab=1
 	" }
-    
+
     " Tabularize {
         if exists(":Tabularize")
           nmap <Leader>a= :Tabularize /=<CR>
@@ -370,11 +375,18 @@
           vmap <Leader>a:: :Tabularize /:\zs<CR>
           nmap <Leader>a, :Tabularize /,<CR>
           vmap <Leader>a, :Tabularize /,<CR>
-          nmap <Leader>a| :Tabularize /|<CR>
-          vmap <Leader>a| :Tabularize /|<CR>
+          nmap <Leader>a| :Tabularize /                                                                    |<CR>
+          vmap <Leader>a| :Tabularize /                                                                    |<CR>
         endif
      " }
 
+    " Sparkup {
+        " Changing the worst defaults of any application I've seen
+        " Default values overwrite core vim functionality and break other
+        " plugins
+        let g:sparkupNextMapping = '<c-m>'
+        let g:sparkupExecuteMapping = '<c-s>'
+    " }"
 
 	" Richard's plugins {
 		" Fuzzy Finder {
@@ -391,11 +403,11 @@
 			nmap <leader>sl :SessionList<CR>
 			nmap <leader>ss :SessionSave<CR>
 		" }
-		
+
 		" Buffer explorer {
 			nmap <leader>b :BufExplorer<CR>
 		" }
-		
+
 		" VCS commands {
 			nmap <leader>vs :VCSStatus<CR>
 			nmap <leader>vc :VCSCommit<CR>
@@ -409,7 +421,7 @@
 			nmap <leader>pd :call PhpDocSingle()<CR>
 			vmap <leader>pd :call PhpDocRange()<CR>
 		" }
-		
+
 		" Debugging with VimDebugger {
 			map <F11> :DbgStepInto<CR>
 			map <F10> :DbgStepOver<CR>
@@ -453,6 +465,8 @@
 	endif
 " }
 
+ " Functions {
+
 function! InitializeDirectories()
   let separator = "."
   let parent = $HOME 
@@ -491,6 +505,7 @@ function! NERDTreeInitAsNeeded()
         wincmd l
     endif
 endfunction
+" }
 
 " Use local vimrc if available {
     if filereadable(expand("~/.vimrc.local"))
