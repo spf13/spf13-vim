@@ -198,6 +198,7 @@ function! s:ListSessions()
 	setlocal noswapfile
 	setlocal nowrap
 	setlocal nobuflisted
+	setlocal modifiable
 
 	nnoremap <buffer> <silent> q :bwipeout!<CR>
 	nnoremap <buffer> <silent> o :call <SID>OpenSession(getline('.'))<CR>
