@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for i in .ctags .gvimrc .vim .vimrc .vimbackup .vimswap .vimviews .vim; do
+    rm -rf ~/$i
+done
