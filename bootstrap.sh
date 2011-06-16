@@ -30,5 +30,5 @@ vim +BundleInstall! +BundleClean +q
 # Build command-t for your system
 echo "building command-t executable\n"
 echo "command-t depends on ruby and rake to be present\n"
-cd ~/.vim/bundle/command-t
+cd ~/.vim/bundle/Command-t
 (rake make) || warn "Ruby compilation failed. Ruby, GCC or rake not installed?"
