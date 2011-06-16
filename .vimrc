@@ -519,4 +519,4 @@ endfunction
             source ~/.gvimrc.local
         endif
     endif
-"}
+" }
