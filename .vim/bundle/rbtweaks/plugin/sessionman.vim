@@ -5,7 +5,7 @@
 "  Copyright (c) Yuri Klubakov
 "
 "  Author:      Yuri Klubakov <yuri.mlists at gmail dot com>
-"  Version:     1.04 (2008-06-21)
+"  Version:     1.06 (2011-05-06)
 "  Requires:    Vim 6
 "  License:     GPL
 "
@@ -30,7 +30,7 @@
 "
 "  :SessionList command creates a new window with session names.
 "  At the top of the window there is a help that shows normal mode mappings:
-"    q, <ESC>                 - close session list
+"    q                        - close session list
 "    o, <CR>, <2-LeftMouse>   - open session
 "    d                        - delete session
 "    e                        - edit session
@@ -38,7 +38,7 @@
 "  The name of an opened session is saved in g:LAST_SESSION variable which is
 "  saved in the viminfo file if 'viminfo' option contains '!'.  It is used to
 "  open last session by :SessionOpenLast command.  It can be done when Vim
-"  starts (gvim +bd -c OpenLastSession) or any time during a Vim session.
+"  starts (gvim +bd -c SessionOpenLast) or any time during a Vim session.
 "  You can edit an extra session script to specify additional settings and
 "  actions associated with a given session.  If you change values of
 "  'expandtab', 'tabstop' or 'shiftwidth', they will be restored to their
@@ -107,12 +107,25 @@ endfunction
 function! s:OpenSession(name)
 	if a:name != '' && a:name[0] != '"'
 		call s:RestoreDefaults()
-		execute 'silent! 1,' . bufnr('$') . 'bwipeout!'
-		let n = bufnr('%')
-		execute 'silent! so ' . s:sessions_path . '/' . a:name
-		execute 'silent! bwipeout! ' . n
 		if has('cscope')
 			silent! cscope kill -1
+		endif
+		try
+			set eventignore=all
+			execute 'silent! 1,' . bufnr('$') . 'bwipeout!'
+			let n = bufnr('%')
+			execute 'silent! so ' . s:sessions_path . '/' . a:name
+			execute 'silent! bwipeout! ' . n
+		finally
+			set eventignore=
+			doautoall BufRead
+			doautoall FileType
+			doautoall BufEnter
+			doautoall BufWinEnter
+			doautoall TabEnter
+			doautoall SessionLoadPost
+		endtry
+		if has('cscope')
 			silent! cscope add .
 		endif
 		let g:LAST_SESSION = a:name
@@ -164,7 +177,8 @@ endfunction
 function! s:EditSessionExtra(name)
 	if a:name != '' && a:name[0] != '"'
 		bwipeout!
-		execute 'silent! edit ' . s:sessions_path . '/' . a:name . 'x.vim'
+		let n = substitute(a:name, "\\.[^.]*$", '', '')
+		execute 'silent! edit ' . s:sessions_path . '/' . n . 'x.vim'
 	endif
 endfunction
 
@@ -184,8 +198,8 @@ function! s:ListSessions()
 	setlocal noswapfile
 	setlocal nowrap
 	setlocal nobuflisted
+	setlocal modifiable
 
-	nnoremap <buffer> <silent> <ESC> :bwipeout!<CR>
 	nnoremap <buffer> <silent> q :bwipeout!<CR>
 	nnoremap <buffer> <silent> o :call <SID>OpenSession(getline('.'))<CR>
 	nnoremap <buffer> <silent> <CR> :call <SID>OpenSession(getline('.'))<CR>
@@ -196,7 +210,7 @@ function! s:ListSessions()
 
 	syn match Comment "^\".*"
 	put ='\"-----------------------------------------------------'
-	put ='\" q, <ESC>                 - close session list'
+	put ='\" q                        - close session list'
 	put ='\" o, <CR>, <2-LeftMouse>   - open session'
 	put ='\" d                        - delete session'
 	put ='\" e                        - edit session'
@@ -217,6 +231,7 @@ function! s:ListSessions()
 	0,1d
 	execute l
 	setlocal nomodifiable
+	setlocal nospell
 endfunction
 
 "============================================================================"
@@ -279,7 +294,7 @@ an 10.371 &File.S&essions.&Open\.\.\.		:SessionList<CR>
 an 10.372 &File.S&essions.Open\ &Last		:SessionOpenLast<CR>
 an 10.373 &File.S&essions.&Close			:SessionClose<CR>
 an 10.374 &File.S&essions.&Save				:SessionSave<CR>
-an 10.374 &File.S&essions.Save\ &As\.\.\.	:SessionSaveAs<CR>
+an 10.375 &File.S&essions.Save\ &As\.\.\.	:SessionSaveAs<CR>
 
 aug sessionman
 	au VimLeavePre * if sessionman_save_on_exit && v:this_session != '' | call s:SaveSession() | endif
