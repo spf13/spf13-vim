@@ -31,49 +31,64 @@
 " }
 
 " Bundles {
-    " GitHub Bundles {
+    " Deps
         Bundle "MarcWeber/vim-addon-mw-utils"
         Bundle "tomtom/tlib_vim"
-        Bundle 'spf13/snipmate.vim'
+        Bundle 'mileszs/ack.vim'
+
+    " General
         Bundle 'spf13/vim-colors'
-        Bundle 'garbas/vim-snipmate'
-        Bundle 'spf13/vim-markdown'
         Bundle 'spf13/vim-surround'
-        Bundle 'spf13/PIV'
         Bundle 'spf13/nerdtree'
         Bundle 'altercation/vim-colors-solarized'
-        Bundle 'tpope/vim-fugitive'
         Bundle 'lokaltog/vim-easymotion'
-        Bundle 'scrooloose/nerdcommenter'
         Bundle 'ervandew/supertab'
         Bundle 'Raimondi/delimitMate'
-        Bundle 'tomtom/checksyntax_vim'
         Bundle 'wincent/Command-T'
-        Bundle 'taxilian/VimDebugger'
-        Bundle 'bloveridge/jslint.vim'
-        Bundle 'bloveridge/pyflakes-vim'
-        Bundle 'mileszs/ack.vim'
-        Bundle 'leshill/vim-json'
-        Bundle 'fs111/pydoc.vim'
-        Bundle 'godlygeek/tabular'
-        Bundle 'greyblake/vim-preview'
-        Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-    " }
-    " vim-scripts repos {
-        Bundle 'L9'
-        Bundle 'FuzzyFinder'
-        Bundle 'rails.vim'
+        Bundle 'spf13/vim-preview'
+        "Bundle 'greyblake/vim-preview'
         Bundle 'matchit.zip'
+        Bundle 'FuzzyFinder'
+        "Bundle 'autocomplpop'
+        Bundle 'L9'
+
+    " General Programming 
+        Bundle 'spf13/snipmate.vim'
+        "Bundle 'garbas/vim-snipmate'
+        Bundle 'spf13/snipmate-snippets'
+        Bundle 'tpope/vim-fugitive' 
+        Bundle 'scrooloose/nerdcommenter'
+        Bundle 'tomtom/checksyntax_vim'
+        Bundle 'godlygeek/tabular'
+
+    " PHP
+        Bundle 'spf13/PIV'
+        "Bundle 'taxilian/VimDebugger'
+
+    " Python
+        "Bundle 'bloveridge/pyflakes-vim'
+        Bundle 'generalov/pyflakes-vim'
+        Bundle 'fs111/pydoc.vim'
         Bundle 'python.vim'
         Bundle 'python_match.vim'
         Bundle 'pythoncomplete'
-        "Bundle 'autocomplpop'
-    " }
+
+    " Javascript
+        Bundle 'bloveridge/jslint.vim'
+        Bundle 'leshill/vim-json'
+
+    " Ruby
+        Bundle 'rails.vim'
+
+    " Misc
+        Bundle 'spf13/vim-markdown'
+        Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+        Bundle 'Puppet-Syntax-Highlighting'
 " }
 
 " General {
 	set background=dark         " Assume a dark background
-    if !has('win32') && !has('win64')
+    if !has('gui')
         set term=$TERM       " Make arrow and other keys work
     endif
 	filetype plugin indent on  	" Automatically detect file types.
@@ -91,7 +106,7 @@
 	set virtualedit=onemore 	   	" allow for cursor beyond last character
 	set history=1000  				" Store a ton of history (default is 20)
 	set spell 		 	        	" spell checking on
-	
+
 	" Setting up the directories {
 		set backup 						" backups are nice ...
 		au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
