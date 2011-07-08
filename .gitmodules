@@ -67,3 +67,9 @@
 [submodule ".vim/bundle/vcscommand"]
 	path = .vim/bundle/vcscommand
 	url = git://repo.or.cz/vcscommand
+[submodule ".vim/bundle/fuzzyfinder"]
+	path = .vim/bundle/fuzzyfinder
+	url = https://github.com/clones/vim-fuzzyfinder.git
+[submodule ".vim/bundle/l9"]
+	path = .vim/bundle/l9
+	url = https://github.com/clones/vim-l9.git
