@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# This script fetches or updates local vim scripts which are not git modules
+
+MYDIR="`dirname $(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")`"
+CURL="curl -O -J"
+
+
+#TODO install each download based on the file type
+#currently, the following are zips: bufexplorer, cvim, taglist
+
+VIMFILES=("sessionman.vim" "autoclose.vim" "a.vim" "showmarks.vim")
+VIMFILESURLS=("http://www.vim.org/scripts/download_script.php?src_id=15599"
+    "http://www.vim.org/scripts/download_script.php?src_id=10873"
+    "http://www.vim.org/scripts/download_script.php?src_id=7218"
+    "http://www.vim.org/scripts/script.php?script_id=152"
+)
+VIMFILESLOCATIONS=(".vim/bundle/rbtweaks/plugin/"
+    ".vim/bundle/rbtweaks/plugin/"
+    ".vim/bundle/rbtweaks/plugin/"
+    ".vim/bundle/rbtweaks/plugin/"
+)
+
+for (( i = 0 ; i < ${#VIMFILES[@]} ; i++ ))
+do
+    cd ${VIMFILESLOCATIONS[$i]}
+    if [ -e ${VIMFILES[$i]} ]
+    then rm ${VIMFILES[$i]} #TODO do a diff
+    fi
+    $CURL ${VIMFILESURLS[$i]}
+done

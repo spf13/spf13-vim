@@ -290,11 +290,20 @@
 	" }
 	
 	" Ctags {
-		set tags=./tags;/,~/.vimtags
+    " This will look in the current directory for 'tags', and work up the tree towards root until one is found. 
+		set tags=./tags;/,$HOME/vimtags
+        map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR> " C-\ - Open the definition in a new tab
+        map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>      " A-] - Open the definition in a vertical split
 	" }
 
 	" EasyTags {
+       " Disabling for now. It doesn't work well on large tag files 
+        let g:loaded_easytags = 1  " Disable until it's working better
 		let g:easytags_cmd = 'ctags'
+        let g:easytags_dynamic_files = 1
+		if !has('win32') && !has('win64')
+            let g:easytags_resolve_links = 1
+        endif
 	" }
 
 	" Delimitmate {
@@ -329,6 +338,22 @@
 		let NERDTreeShowHidden=1
 		let NERDTreeKeepTreeInNewTab=1
 	" }
+    
+    " Tabularize {
+        if exists(":Tabularize")
+          nmap <Leader>a= :Tabularize /=<CR>
+          vmap <Leader>a= :Tabularize /=<CR>
+          nmap <Leader>a: :Tabularize /:<CR>
+          vmap <Leader>a: :Tabularize /:<CR>
+          nmap <Leader>a:: :Tabularize /:\zs<CR>
+          vmap <Leader>a:: :Tabularize /:\zs<CR>
+          nmap <Leader>a, :Tabularize /,<CR>
+          vmap <Leader>a, :Tabularize /,<CR>
+          nmap <Leader>a| :Tabularize /|<CR>
+          vmap <Leader>a| :Tabularize /|<CR>
+        endif
+     " }
+
 
 	" Richard's plugins {
 		" Fuzzy Finder {
