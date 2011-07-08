@@ -28,6 +28,10 @@
     " Command-t {
         let g:CommandTSearchPath = $HOME . '/workspace/projects'
     " }
+
+    " Ack {
+        let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+    " }
 " }
 
 " GUI Settings {
