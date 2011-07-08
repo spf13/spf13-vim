@@ -10,7 +10,7 @@
 " }
 
 " Formatting {
-    set pastetoggle=,i
+    set pastetoggle=,p
 " }
 
 " Key (re)Mappings {
