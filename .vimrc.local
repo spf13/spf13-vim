@@ -1,0 +1,35 @@
+" Modeline and Notes {
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" }
+
+" Vim UI {
+    " colorscheme darktango
+    set t_Co=256
+    autocmd InsertLeave * se nocul
+    autocmd InsertEnter * se cul
+" }
+
+" Formatting {
+    set pastetoggle=,i
+" }
+
+" Key (re)Mappings {
+    unmap <S-H>
+    unmap <S-L>
+
+    cunmap W
+    cunmap WQ
+    cunmap wQ
+    cunmap Q
+    cunmap Tabe
+" }
+
+" Plugins {
+    " Command-t {
+        let g:CommandTSearchPath = $HOME . '/workspace/projects'
+    " }
+" }
+
+" GUI Settings {
+    set term=xterm-256color
+" }
