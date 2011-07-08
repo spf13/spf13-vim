@@ -25,6 +25,11 @@
 " }
 
 " Plugins {
+    " VCSCommand {
+        let b:VCSCommandMapPrefix=',v'
+        let b:VCSCommandVCSType='git'
+    " }
+
     " Command-t {
         let g:CommandTSearchPath = $HOME . '/workspace/projects'
     " }
