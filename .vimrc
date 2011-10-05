@@ -36,25 +36,21 @@
         Bundle "tomtom/tlib_vim"
         Bundle 'mileszs/ack.vim'
 
-    " General
-        Bundle 'spf13/vim-colors'
-        Bundle 'spf13/vim-surround'
-        Bundle 'spf13/nerdtree'
+"    " General
+        Bundle 'scrooloose/nerdtree'
         Bundle 'altercation/vim-colors-solarized'
-        Bundle 'lokaltog/vim-easymotion'
+        Bundle 'spf13/vim-colors'
+        Bundle 'tpope/vim-surround'
         Bundle 'ervandew/supertab'
         Bundle 'Raimondi/delimitMate'
         Bundle 'wincent/Command-T'
         Bundle 'spf13/vim-preview'
         "Bundle 'greyblake/vim-preview'
         Bundle 'matchit.zip'
-        Bundle 'FuzzyFinder'
-        "Bundle 'autocomplpop'
-        Bundle 'L9'
 
     " General Programming 
-        Bundle 'spf13/snipmate.vim'
-        "Bundle 'garbas/vim-snipmate'
+        "Bundle 'spf13/snipmate.vim'
+        Bundle 'garbas/vim-snipmate'
         Bundle 'spf13/snipmate-snippets'
         Bundle 'tpope/vim-fugitive' 
         Bundle 'scrooloose/nerdcommenter'
@@ -82,7 +78,7 @@
 
     " Misc
         Bundle 'spf13/vim-markdown'
-        Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+        "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
         Bundle 'Puppet-Syntax-Highlighting'
 " }
 
@@ -109,8 +105,9 @@
 
 	" Setting up the directories {
 		set backup 						" backups are nice ...
-		au BufWinLeave * silent! mkview  "make vim save view (state) (folds, cursor, etc)
-		au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc)
+        " Could use * rather than *.*, but I prefer to leave .files unsaved
+		au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
+		au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
 	" }
 " }
 
@@ -160,7 +157,7 @@
 	set foldenable  				" auto fold code
 	set gdefault					" the /g flag on :s substitutions by default
     set list
-    set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+    set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 
 
 " }
@@ -390,18 +387,26 @@
           vmap <Leader>a:: :Tabularize /:\zs<CR>
           nmap <Leader>a, :Tabularize /,<CR>
           vmap <Leader>a, :Tabularize /,<CR>
-          nmap <Leader>a| :Tabularize /                                                                    |<CR>
-          vmap <Leader>a| :Tabularize /                                                                    |<CR>
+          nmap <Leader>a| :Tabularize /                                                                                                                                                              |<CR>
+          vmap <Leader>a| :Tabularize /                                                                                                                                                              |<CR>
+
+          " The following function automatically aligns when typing a
+          " supported character
+          inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+          function! s:align()
+              let p = '^\s*|\s.*\s|\s*$'
+              if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+                  let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+                  let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+                  Tabularize/|/l1
+                  normal! 0
+                  call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+              endif
+          endfunction
+
         endif
      " }
-
-    " Sparkup {
-        " Changing the worst defaults of any application I've seen
-        " Default values overwrite core vim functionality and break other
-        " plugins
-        let g:sparkupNextMapping = '<c-m>'
-        let g:sparkupExecuteMapping = '<c-s>'
-    " }"
 
 	" Richard's plugins {
 		" Fuzzy Finder {
