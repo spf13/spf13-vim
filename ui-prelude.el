@@ -24,7 +24,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; custom Emacs 24 color themes support
-(add-to-list 'custom-theme-load-path (concat dotfiles-dir "themes/"))
+(add-to-list 'custom-theme-load-path (concat prelude-dir "themes/"))
 (load-theme 'zenburn t)
 
 (provide 'ui-prelude)
