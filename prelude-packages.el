@@ -41,9 +41,10 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar prelude-packages '(clojure-mode coffee-mode gist haml-mode
-                                  haskell-mode magit markdown-mode paredit
-                                  sass-mode scss-mode yaml-mode yari yasnippet)
+(defvar prelude-packages
+  '(clojure-mode coffee-mode deft gist haml-mode
+                 haskell-mode inf-ruby magit markdown-mode paredit
+                 sass-mode scss-mode yaml-mode yari yasnippet)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p prelude-packages)
