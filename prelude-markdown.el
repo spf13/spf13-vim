@@ -1,4 +1,4 @@
-;;; init.el --- Emacs Prelude: markdown-mode configuration.
+;;; prelude-markdown.el --- Emacs Prelude: markdown-mode configuration.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
