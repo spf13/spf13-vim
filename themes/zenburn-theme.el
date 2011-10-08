@@ -409,6 +409,18 @@
    ;; SLIME
    `(slime-repl-inputed-output-face ((,class (:foreground ,zenburn-red))))
 
+   ;; whitespace-mode
+   `(whitespace-space ((,class (:background ,zenburn-bg :foreground ,zenburn-bg+1))))
+   `(whitespace-hspace ((,class (:background ,zenburn-bg))))
+   `(whitespace-tab ((,class (:background ,zenburn-bg))))
+   `(whitespace-newline ((,class (:foreground ,zenburn-bg+1))))
+   `(whitespace-trailing ((,class (:background ,zenburn-red :foreground ,zenburn-yellow))))
+   `(whitespace-line ((,class (:background ,zenburn-bg-05 :foreground ,zenburn-magenta))))
+   `(whitespace-space-before-tab ((,class ())))
+   `(whitespace-indentation ((,class ())))
+   `(whitespace-empty ((,class ())))
+   `(whitespace-space-after-tab ((,class ())))
+
    ;; wanderlust
    `(wl-highlight-folder-few-face ((,class (:foreground ,zenburn-red-2))))
    `(wl-highlight-folder-many-face ((,class (:foreground ,zenburn-red-1))))
