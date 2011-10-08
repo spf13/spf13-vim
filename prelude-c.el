@@ -1,4 +1,4 @@
-;;; init.el --- Emacs Prelude: configuration entry point.
+;;; prelude-c.el --- Emacs Prelude: cc-mode configuration.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
@@ -11,8 +11,7 @@
 
 ;;; Commentary:
 
-;; This file simply sets up the default load path and requires
-;; the various modules defined within Emacs Prelude.
+;; Some basic configuration for cc-mode and the modes derived from it.
 
 ;;; License:
 
@@ -33,23 +32,14 @@
 
 ;;; Code:
 
-(defvar prelude-dir "~/.emacs.d/")
-(defvar vendor-dir (concat prelude-dir "vendor"))
+(defun prelude-c-coding-hook ()
+  (setq c-basic-offset 4)
+  (prelude-coding-hook))
 
-(add-to-list 'load-path prelude-dir)
+;; this will affect all modes derived from cc-mode, like
+;; java-mode, php-mode, etc
+(add-hook 'c-mode-common-hook 'prelude-c-coding-hook)
 
-(require 'prelude-ui)
-(require 'prelude-packages)
-(require 'prelude-core)
-(require 'prelude-editor)
-(require 'prelude-global-keybindings)
+(provide 'prelude-c)
 
-;; programming & markup languages support
-(require 'prelude-c)
-(require 'prelude-clojure)
-(require 'prelude-common-lisp)
-(require 'prelude-emacs-lisp)
-(require 'prelude-haskell)
-(require 'prelude-ruby)
-
-;;; init.el ends here
+;;; prelude-c.el ends here

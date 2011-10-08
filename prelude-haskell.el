@@ -1,4 +1,4 @@
-;;; init.el --- Emacs Prelude: configuration entry point.
+;;; prelude-haskell.el --- Emacs Prelude: Nice config for Haskell programming.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
@@ -11,8 +11,7 @@
 
 ;;; Commentary:
 
-;; This file simply sets up the default load path and requires
-;; the various modules defined within Emacs Prelude.
+;; Nice config for Haskell programming.
 
 ;;; License:
 
@@ -33,23 +32,9 @@
 
 ;;; Code:
 
-(defvar prelude-dir "~/.emacs.d/")
-(defvar vendor-dir (concat prelude-dir "vendor"))
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
-(add-to-list 'load-path prelude-dir)
+(provide 'prelude-haskell)
 
-(require 'prelude-ui)
-(require 'prelude-packages)
-(require 'prelude-core)
-(require 'prelude-editor)
-(require 'prelude-global-keybindings)
-
-;; programming & markup languages support
-(require 'prelude-c)
-(require 'prelude-clojure)
-(require 'prelude-common-lisp)
-(require 'prelude-emacs-lisp)
-(require 'prelude-haskell)
-(require 'prelude-ruby)
-
-;;; init.el ends here
+;;; prelude-haskell.el ends here

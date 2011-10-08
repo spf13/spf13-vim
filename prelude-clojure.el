@@ -1,4 +1,4 @@
-;;; init.el --- Emacs Prelude: configuration entry point.
+;;; prelude-clojure.el --- Emacs Prelude: Clojure programming configuration.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
@@ -11,8 +11,7 @@
 
 ;;; Commentary:
 
-;; This file simply sets up the default load path and requires
-;; the various modules defined within Emacs Prelude.
+;; Some basic configuration for clojure-mode.
 
 ;;; License:
 
@@ -33,23 +32,15 @@
 
 ;;; Code:
 
-(defvar prelude-dir "~/.emacs.d/")
-(defvar vendor-dir (concat prelude-dir "vendor"))
+(require 'prelude-lisp)
 
-(add-to-list 'load-path prelude-dir)
+;; To start SLIME in your Clojure project:
+;; 1. lein plugin install swank-clojure 1.3.1
+;; 2. Invoke M-x clojure-jack-in from a project
+(require 'clojure-mode)
 
-(require 'prelude-ui)
-(require 'prelude-packages)
-(require 'prelude-core)
-(require 'prelude-editor)
-(require 'prelude-global-keybindings)
+(add-hook 'clojure-mode-hook 'prelude-lisp-coding-hook)
 
-;; programming & markup languages support
-(require 'prelude-c)
-(require 'prelude-clojure)
-(require 'prelude-common-lisp)
-(require 'prelude-emacs-lisp)
-(require 'prelude-haskell)
-(require 'prelude-ruby)
+(provide 'prelude-clojure)
 
-;;; init.el ends here
+;;; prelude-clojure.el ends here

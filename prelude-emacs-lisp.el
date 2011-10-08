@@ -1,4 +1,4 @@
-;;; init.el --- Emacs Prelude: configuration entry point.
+;;; prelude-emacs-lisp.el --- Emacs Prelude: Nice config for Elisp programming.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
@@ -11,8 +11,7 @@
 
 ;;; Commentary:
 
-;; This file simply sets up the default load path and requires
-;; the various modules defined within Emacs Prelude.
+;; Nice config for Elisp Programming.
 
 ;;; License:
 
@@ -33,23 +32,27 @@
 
 ;;; Code:
 
-(defvar prelude-dir "~/.emacs.d/")
-(defvar vendor-dir (concat prelude-dir "vendor"))
 
-(add-to-list 'load-path prelude-dir)
+(require 'prelude-lisp)
 
-(require 'prelude-ui)
-(require 'prelude-packages)
-(require 'prelude-core)
-(require 'prelude-editor)
-(require 'prelude-global-keybindings)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'emacs-lisp-mode-hook 'prelude-remove-elc-on-save)
 
-;; programming & markup languages support
-(require 'prelude-c)
-(require 'prelude-clojure)
-(require 'prelude-common-lisp)
-(require 'prelude-emacs-lisp)
-(require 'prelude-haskell)
-(require 'prelude-ruby)
+(add-hook 'emacs-lisp-mode-hook 'prelude-lisp-coding-hook)
 
-;;; init.el ends here
+(add-hook 'ielm-mode-hook 'prelude-interactive-lisp-coding-hook)
+(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+
+(defun prelude-remove-elc-on-save ()
+  "If you're saving an elisp file, likely the .elc is no longer valid."
+  (make-local-variable 'after-save-hook)
+  (add-hook 'after-save-hook
+            (lambda ()
+              (if (file-exists-p (concat buffer-file-name "c"))
+                  (delete-file (concat buffer-file-name "c"))))))
+
+(define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
+
+(provide 'prelude-emacs-lisp)
+
+;;; prelude-emacs-lisp.el ends here

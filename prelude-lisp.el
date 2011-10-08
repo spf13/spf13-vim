@@ -1,4 +1,4 @@
-;;; init.el --- Emacs Prelude: configuration entry point.
+;;; prelude-lisp.el --- Emacs Prelude: Configuration common to all lisp modes.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
@@ -11,8 +11,7 @@
 
 ;;; Commentary:
 
-;; This file simply sets up the default load path and requires
-;; the various modules defined within Emacs Prelude.
+;; Configuration shared between all modes related to lisp-like languages.
 
 ;;; License:
 
@@ -33,23 +32,19 @@
 
 ;;; Code:
 
-(defvar prelude-dir "~/.emacs.d/")
-(defvar vendor-dir (concat prelude-dir "vendor"))
+;; Lisp configuration
+(define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 
-(add-to-list 'load-path prelude-dir)
+;; a great lisp coding hook
+(defun prelude-lisp-coding-hook ()
+  (prelude-coding-hook)
+  (paredit-mode +1))
 
-(require 'prelude-ui)
-(require 'prelude-packages)
-(require 'prelude-core)
-(require 'prelude-editor)
-(require 'prelude-global-keybindings)
+;; interactive modes don't need whitespace checks
+(defun prelude-interactive-lisp-coding-hook ()
+  (paredit-mode +1)
+  (prelude-turn-off-whitespace))
 
-;; programming & markup languages support
-(require 'prelude-c)
-(require 'prelude-clojure)
-(require 'prelude-common-lisp)
-(require 'prelude-emacs-lisp)
-(require 'prelude-haskell)
-(require 'prelude-ruby)
+(provide 'prelude-lisp)
 
-;;; init.el ends here
+;;; prelude-lisp.el ends here

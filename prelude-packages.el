@@ -1,4 +1,4 @@
-;;; init.el --- Emacs Prelude: configuration entry point.
+;;; prelude-packages.el --- Emacs Prelude: default package selection.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
@@ -11,8 +11,8 @@
 
 ;;; Commentary:
 
-;; This file simply sets up the default load path and requires
-;; the various modules defined within Emacs Prelude.
+;; Takes care of the automatic installation of all the packages required by
+;; Emacs Prelude.
 
 ;;; License:
 
@@ -33,23 +33,23 @@
 
 ;;; Code:
 
-(defvar prelude-dir "~/.emacs.d/")
-(defvar vendor-dir (concat prelude-dir "vendor"))
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(package-initialize)
 
-(add-to-list 'load-path prelude-dir)
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
-(require 'prelude-ui)
-(require 'prelude-packages)
-(require 'prelude-core)
-(require 'prelude-editor)
-(require 'prelude-global-keybindings)
+(defvar prelude-packages '(auctex clojure-mode coffee-mode gist haml-mode
+                                  haskell-mode magit markdown-mode paredit
+                                  sass-mode yaml yari yasnippet)
+  "A list of packages to ensure are installed at launch.")
 
-;; programming & markup languages support
-(require 'prelude-c)
-(require 'prelude-clojure)
-(require 'prelude-common-lisp)
-(require 'prelude-emacs-lisp)
-(require 'prelude-haskell)
-(require 'prelude-ruby)
+(dolist (p prelude-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
 
-;;; init.el ends here
+(provide 'packages-prelude)
+
+;;; prelude-packages.el ends here

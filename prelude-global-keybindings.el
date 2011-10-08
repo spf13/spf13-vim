@@ -1,3 +1,37 @@
+;;; prelude-global-keybindings.el --- Emacs Prelude: some useful keybindings.
+;;
+;; Copyright (c) 2011 Bozhidar Batsov
+;;
+;; Author: Bozhidar Batsov <bozhidar.batsov@gmail.com>
+;; URL: http://www.emacswiki.org/cgi-bin/wiki/Prelude
+;; Version: 1.0.0
+;; Keywords: convenience
+
+;; This file is not part of GNU Emacs.
+
+;;; Commentary:
+
+;; Lots of useful keybindings.
+
+;;; License:
+
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License
+;; as published by the Free Software Foundation; either version 3
+;; of the License, or (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to the
+;; Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+;; Boston, MA 02110-1301, USA.
+
+;;; Code:
+
 ;; You know, like Readline.
 (global-set-key (kbd "C-M-h") 'backward-kill-word)
 
@@ -12,12 +46,12 @@
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 
 ;; Jump to a definition in the current file. (This is awesome.)
-(global-set-key (kbd "M-i") 'ido-goto-symbol)
+(global-set-key (kbd "M-i") 'prelude-ido-goto-symbol)
 
 ;; File finding
 (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
 (global-set-key (kbd "C-x C-M-f") 'projectile-jump-to-project-file)
-(global-set-key (kbd "C-x f") 'recentf-ido-find-file)
+(global-set-key (kbd "C-x f") 'prelude-recentf-ido-find-file)
 (global-set-key (kbd "C-c r") 'bury-buffer)
 (global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
 
@@ -46,13 +80,13 @@
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
 ;; Fetch the contents at a URL, display it raw.
-(global-set-key (kbd "C-x C-h") 'view-url)
+(global-set-key (kbd "C-x C-h") 'prelude-view-url)
 
 ;; A complementary binding to the apropos-command(C-h a)
 (global-set-key (kbd "C-h A") 'apropos)
 
 ;; Should be able to eval-and-replace anywhere.
-(global-set-key (kbd "C-c e") 'eval-and-replace)
+(global-set-key (kbd "C-c e") 'prelude-eval-and-replace)
 
 ;; Magit rules!
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -80,33 +114,30 @@
 ;; replace buffer-menu with ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-;; interactive text replacement
-(global-set-key (kbd "C-c C-r") 'iedit-mode)
-
 ;; swap windows
-(global-set-key (kbd "C-c s") 'swap-windows)
+(global-set-key (kbd "C-c s") 'prelude-swap-windows)
 
 ;; duplicate the current line or region
-(global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
+(global-set-key (kbd "C-c d") 'prelude-duplicate-current-line-or-region)
 
 ;; rename buffer & visited file
-(global-set-key (kbd "C-c r") 'rename-file-and-buffer)
+(global-set-key (kbd "C-c r") 'prelude-rename-file-and-buffer)
 
 ;; open an ansi-term buffer
-(global-set-key (kbd "C-x t") 'visit-term-buffer)
+(global-set-key (kbd "C-x t") 'prelude-visit-term-buffer)
 
 ;; toggle input method
-(global-set-key (kbd "C-\\") 'toggle-bulgarian-input-method)
+(global-set-key (kbd "C-\\") 'prelude-toggle-bulgarian-input-method)
 
 ;; search with google
-(global-set-key (kbd "C-c g") 'google)
+(global-set-key (kbd "C-c g") 'prelude-google)
 
 ;; toggle menu-bar visibility
 (global-set-key (kbd "<f12>") 'menu-bar-mode)
 
 ;; real Emacs hackers don't use the arrow keys
-(global-set-key (kbd "<up>") (lambda () 
-                               (interactive) 
+(global-set-key (kbd "<up>") (lambda ()
+                               (interactive)
                                (message "Arrow key navigation is disabled. Use C-p instead.")))
 (global-set-key (kbd "<down>") (lambda ()
                                  (interactive)
@@ -114,8 +145,10 @@
 (global-set-key (kbd "<left>") (lambda ()
                                  (interactive)
                                  (message "Arrow key navigation is disabled. Use C-b instead.")))
-(global-set-key (kbd "<right>") (lambda () 
+(global-set-key (kbd "<right>") (lambda ()
                                   (interactive)
                                   (message "Arrow key navigation is disabled. Use C-f instead.")))
 
-(provide 'global-keybindings-prelude)
+(provide 'prelude-global-keybindings)
+
+;;; prelude-global-keybindings.el ends here

@@ -1,6 +1,40 @@
+;;; prelude-editor.el --- Emacs Prelude: enhanced core editing experience.
+;;
+;; Copyright (c) 2011 Bozhidar Batsov
+;;
+;; Author: Bozhidar Batsov <bozhidar.batsov@gmail.com>
+;; URL: http://www.emacswiki.org/cgi-bin/wiki/Prelude
+;; Version: 1.0.0
+;; Keywords: convenience
+
+;; This file is not part of GNU Emacs.
+
+;;; Commentary:
+
+;; Refinements of the core editing experience in Emacs.
+
+;;; License:
+
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License
+;; as published by the Free Software Foundation; either version 3
+;; of the License, or (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to the
+;; Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+;; Boston, MA 02110-1301, USA.
+
+;;; Code:
+
 ;; Emacs users obviously have little need for Command and Option keys,
 ;; but they do need Meta and Super
-(when (string= system-type "darwin") 
+(when (string= system-type "darwin")
   (setq mac-command-modifier 'super)
   (setq mac-option-modifier 'meta))
 
@@ -10,7 +44,7 @@
 ;; delete the selection with a keypress
 (delete-selection-mode t)
 ;; highlight when searching and replacing
-(setq search-highlight t                 
+(setq search-highlight t
       query-replace-highlight t)
 
 ;; store all backup and autosave files in the tmp dir
@@ -61,10 +95,10 @@
 
 ;; time-stamps
 ;; when there's "Time-stamp: <>" in the first 10 lines of the file
-(setq
- time-stamp-active t        ; do enable time-stamps
- time-stamp-line-limit 10   ; check first 10 buffer lines for Time-stamp: <>
- time-stamp-format "%04y-%02m-%02d %02H:%02M:%02S (%u)") ; date format
+(setq time-stamp-active t
+      ;; check first 10 buffer lines for Time-stamp: <>
+      time-stamp-line-limit 10
+      time-stamp-format "%04y-%02m-%02d %02H:%02M:%02S (%u)") ; date format
 (add-hook 'write-file-hooks 'time-stamp) ; update when saving
 
 ;; use shift + arrow keys to switch between visible buffers
@@ -79,18 +113,6 @@
 (require 'tramp)
 ;; keep in mind known issues with zsh - see emacs wiki
 (setq tramp-default-method "ssh")
-
-;; now we can use tramp to open files
-;; requiring root access
-(defun find-alternative-file-with-sudo ()
-  "Open current buffer as root!"
-  (interactive)
-  (when buffer-file-name
-    (find-alternate-file
-     sudo/su can be used as well, but they
-     do not work for me
-     (concat "/ssh:root@localhost:"
-             buffer-file-name))))
 
 ;; ido-mode
 (ido-mode t)
@@ -110,19 +132,22 @@
 (setq ispell-program-name "aspell" ; use aspell instead of ispell
       ispell-extra-args '("--sug-mode=ultra"))
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
-(add-hook 'message-mode-hook 'turn-on-flyspell)
-(add-hook 'text-mode-hook 'turn-on-flyspell)
 
-(defun turn-on-flyspell ()
+(defun prelude-turn-on-flyspell ()
   "Force flyspell-mode on using a positive argument.  For use in hooks."
   (interactive)
   (flyspell-mode 1))
+
+(add-hook 'message-mode-hook 'prelude-turn-on-flyspell)
+(add-hook 'text-mode-hook 'prelude-turn-on-flyspell)
 
 ;; enable narrow to region
 (put 'narrow-to-region 'disabled nil)
 
 ;; bookmarks
-(setq bookmark-default-file "~/.emacs.d/bookmarks" 
-      bookmark-save-flag 1)                        
+(setq bookmark-default-file "~/.emacs.d/bookmarks"
+      bookmark-save-flag 1)
 
-(provide 'editor-prelude)
+(provide 'prelude-editor)
+
+;;; prelude-editor.el ends here
