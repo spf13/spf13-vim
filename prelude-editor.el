@@ -153,6 +153,9 @@
 (setq bookmark-default-file "~/.emacs.d/bookmarks"
       bookmark-save-flag 1)
 
+;; enabled auto-fill mode in text-mode and all related modes
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+
 (provide 'prelude-editor)
 
 ;;; prelude-editor.el ends here

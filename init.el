@@ -33,6 +33,11 @@
 
 ;;; Code:
 
+;; on OS X Emacs doesn't use the shell PATH
+;; if you're using homebrew modifying the PATH is essential
+(if (string= system-type "darwin")
+    (push "/usr/local/bin" exec-path))
+
 (defvar prelude-dir "~/.emacs.d/")
 (defvar vendor-dir (concat prelude-dir "vendor"))
 
