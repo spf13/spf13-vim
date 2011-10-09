@@ -39,9 +39,11 @@
     (push "/usr/local/bin" exec-path))
 
 (defvar prelude-dir "~/.emacs.d/")
-(defvar vendor-dir (concat prelude-dir "vendor"))
+
+(defvar vendor-dir (concat prelude-dir "vendor/"))
 
 (add-to-list 'load-path prelude-dir)
+(add-to-list 'load-path vendor-dir)
 
 (require 'prelude-ui)
 (require 'prelude-packages)

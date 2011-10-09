@@ -46,8 +46,7 @@ Emacs load path."
                  (not (equal f ".")))
         (add-to-list 'load-path name)))))
 
-;; add the first level subfolders automatically
-(prelude-add-subfolders-to-load-path prelude-dir)
+;; add the first level subfolders of vendor automatically
 (prelude-add-subfolders-to-load-path vendor-dir)
 
 (defun prelude-open-with ()
