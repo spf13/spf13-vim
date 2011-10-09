@@ -1,0 +1,7 @@
+#name: Feature: Name
+# --
+Feature: ${1:Name}
+  In order to ${2:get some business value}
+  ${3:Role} will need ${4:this sweet new feature}
+
+  $0

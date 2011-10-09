@@ -1,0 +1,5 @@
+#name: Background
+# --
+Background:
+  Given ${1: a known starting condition}
+  $0

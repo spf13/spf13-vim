@@ -1,0 +1,575 @@
+# encoding: UTF-8
+#
+# We use ISO 639-1 (language) and ISO 3166 alpha-2 (region - if appliccable):
+# http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+# http://en.wikipedia.org/wiki/ISO_3166-1
+#
+# If you want several aliases for a keyword, just separate them
+# with a | character. Make sure there are no ambiguities in the
+# keywords.
+#
+# If you do *not* want a trailing space after a keyword, end it with a < character.
+# (See Chinese for examples).
+#
+"en":
+  name: English
+  native: English
+  feature: Feature
+  background: Background
+  scenario: Scenario
+  scenario_outline: Scenario Outline
+  examples: Examples|Scenarios
+  given: "*|Given"
+  when: "*|When"
+  then: "*|Then"
+  and: "*|And"
+  but: "*|But"
+
+# Please keep the grammars in alphabetical order by name from here and down.
+
+"ar":
+  name: Arabic
+  native: العربية
+  feature: خاصية
+  background: الخلفية
+  scenario: سيناريو
+  scenario_outline: سيناريو مخطط
+  examples: امثلة
+  given: "*|بفرض"
+  when: "*|متى|عندما"
+  then: "*|اذاً|ثم"
+  and: "*|و"
+  but: "*|لكن"
+"bg":
+  name: Bulgarian
+  native: български
+  feature: Функционалност
+  background: Предистория
+  scenario: Сценарий
+  scenario_outline: Рамка на сценарий
+  examples: Примери
+  given: "*|Дадено"
+  when: "*|Когато"
+  then: "*|То"
+  and: "*|И"
+  but: "*|Но"
+"ca":
+  name: Catalan
+  native: català
+  background: Rerefons|Antecedents
+  feature: Característica|Funcionalitat
+  scenario: Escenari
+  scenario_outline: Esquema de l'escenari
+  examples: Exemples
+  given: "*|Donat|Donada|Atès|Atesa"
+  when: "*|Quan"
+  then: "*|Aleshores|Cal"
+  and: "*|I"
+  but: "*|Però"
+"cy-GB":
+  name: Welsh
+  native: Cymraeg
+  background: Cefndir
+  feature: Arwedd
+  scenario: Scenario
+  scenario_outline: Scenario Amlinellol
+  examples: Enghreifftiau
+  given: "*|Anrhegedig a"
+  when: "*|Pryd"
+  then: "*|Yna"
+  and: "*|A"
+  but: "*|Ond"
+"cs":
+  name: Czech
+  native: Česky
+  feature: Požadavek
+  background: Pozadí|Kontext
+  scenario: Scénář
+  scenario_outline: Náčrt Scénáře|Osnova scénáře
+  examples: Příklady
+  given: "*|Pokud"
+  when: "*|Když"
+  then: "*|Pak"
+  and: "*|A|A také"
+  but: "*|Ale"
+"da":
+  name: Danish
+  native: dansk
+  feature: Egenskab
+  background: Baggrund
+  scenario: Scenarie
+  scenario_outline: Abstrakt Scenario
+  examples: Eksempler
+  given: "*|Givet"
+  when: "*|Når"
+  then: "*|Så"
+  and: "*|Og"
+  but: "*|Men"
+"de":
+  name: German
+  native: Deutsch
+  feature: Funktionalität
+  background: Grundlage
+  scenario: Szenario
+  scenario_outline: Szenariogrundriss
+  examples: Beispiele
+  given: "*|Angenommen|Gegeben sei"
+  when: "*|Wenn"
+  then: "*|Dann"
+  and: "*|Und"
+  but: "*|Aber"
+"en-au":
+  name: Australian
+  native: Australian
+  feature: Crikey
+  background: Background
+  scenario: Mate
+  scenario_outline: Blokes
+  examples: Cobber
+  given: "*|Ya know how"
+  when: "*|When"
+  then: "*|Ya gotta"
+  and: "*|N"
+  but: "*|Cept"
+"en-lol":
+  name: LOLCAT
+  native: LOLCAT
+  feature: OH HAI
+  background: B4
+  scenario: MISHUN
+  scenario_outline: MISHUN SRSLY
+  examples: EXAMPLZ
+  given: "*|I CAN HAZ"
+  when: "*|WEN"
+  then: "*|DEN"
+  and: "*|AN"
+  but: "*|BUT"
+"en-Scouse":
+  name: Scouse
+  native: Scouse
+  feature: Feature
+  background: "Dis is what went down"
+  scenario: "The thing of it is"
+  scenario_outline: "Wharrimean is"
+  examples: Examples
+  given: "*|Givun|Youse know when youse got"
+  when: "*|Wun|Youse know like when"
+  then: "*|Dun|Den youse gotta"
+  and: "*|An"
+  but: "*|Buh"
+"en-tx":
+  name: Texan
+  native: Texan
+  feature: Feature
+  background: Background
+  scenario: Scenario
+  scenario_outline: All y'all
+  examples: Examples
+  given: "*|Given y'all"
+  when: "*|When y'all"
+  then: "*|Then y'all"
+  and: "*|And y'all"
+  but: "*|But y'all"
+"eo":
+  name: Esperanto
+  native: Esperanto
+  feature: Trajto
+  background: Fono
+  scenario: Scenaro
+  scenario_outline: Konturo de la scenaro
+  examples: Ekzemploj
+  given: "*|Donitaĵo"
+  when: "*|Se"
+  then: "*|Do"
+  and: "*|Kaj"
+  but: "*|Sed"
+"es":
+  name: Spanish
+  native: español
+  background: Antecedentes
+  feature: Característica
+  scenario: Escenario
+  scenario_outline: Esquema del escenario
+  examples: Ejemplos
+  given: "*|Dado"
+  when: "*|Cuando"
+  then: "*|Entonces"
+  and: "*|Y"
+  but: "*|Pero"
+"et":
+  name: Estonian
+  native: eesti keel
+  feature: Omadus
+  background: Taust
+  scenario: Stsenaarium
+  scenario_outline: Raamstsenaarium
+  examples: Juhtumid
+  given: "*|Eeldades"
+  when: "*|Kui"
+  then: "*|Siis"
+  and: "*|Ja"
+  but: "*|Kuid"
+"fi":
+  name: Finnish
+  native: suomi
+  feature: Ominaisuus
+  background: Tausta
+  scenario: Tapaus
+  scenario_outline: Tapausaihio
+  examples: Tapaukset
+  given: "*|Oletetaan"
+  when: "*|Kun"
+  then: "*|Niin"
+  and: "*|Ja"
+  but: "*|Mutta"
+"fr":
+  name: French
+  native: français
+  feature: Fonctionnalité
+  background: Contexte
+  scenario: Scénario
+  scenario_outline: Plan du scénario|Plan du Scénario
+  examples: Exemples
+  given: "*|Soit|Etant donné"
+  when: "*|Quand|Lorsque|Lorsqu'<"
+  then: "*|Alors"
+  and: "*|Et"
+  but: "*|Mais"
+"he":
+  name: Hebrew
+  native: עברית
+  feature: תכונה
+  background: רקע
+  scenario: תרחיש
+  scenario_outline: תבנית תרחיש
+  examples: דוגמאות
+  given: "*|בהינתן"
+  when: "*|כאשר"
+  then: "*|אז|אזי"
+  and: "*|וגם"
+  but: "*|אבל"
+"hr":
+  name: Croatian
+  native: hrvatski
+  feature: Osobina|Mogućnost|Mogucnost
+  background: Pozadina
+  scenario: Scenarij
+  scenario_outline: Skica|Koncept
+  examples: Primjeri|Scenariji
+  given: "*|Zadan|Zadani|Zadano"
+  when: "*|Kada|Kad"
+  then: "*|Onda"
+  and: "*|I"
+  but: "*|Ali"
+"hu":
+  name: Hungarian
+  native: magyar
+  feature: Jellemző
+  background: Háttér
+  scenario: Forgatókönyv
+  scenario_outline: Forgatókönyv vázlat
+  examples: Példák
+  given: "*|Ha"
+  when: "*|Majd"
+  then: "*|Akkor"
+  and: "*|És"
+  but: "*|De"
+"id":
+  name: Indonesian
+  native: Bahasa Indonesia
+  feature: Fitur
+  background: Dasar
+  scenario: Skenario
+  scenario_outline: Skenario konsep
+  examples: Contoh
+  given: "*|Dengan"
+  when: "*|Ketika"
+  then: "*|Maka"
+  and: "*|Dan"
+  but: "*|Tapi"
+"it":
+  name: Italian
+  native: italiano
+  feature: Funzionalità
+  background: Contesto
+  scenario: Scenario
+  scenario_outline: Schema dello scenario
+  examples: Esempi
+  given: "*|Dato"
+  when: "*|Quando"
+  then: "*|Allora"
+  and: "*|E"
+  but: "*|Ma"
+"ja":
+  name: Japanese
+  native: 日本語
+  feature: フィーチャ|機能
+  background: 背景
+  scenario: シナリオ
+  scenario_outline: シナリオアウトライン|シナリオテンプレート|テンプレ|シナリオテンプレ
+  examples: 例|サンプル
+  given: "*|前提<"
+  when: "*|もし<"
+  then: "*|ならば<"
+  and: "*|かつ<"
+  but: "*|しかし<|但し<|ただし<"
+"ko":
+  name: Korean
+  native: 한국어
+  background: 배경
+  feature: 기능
+  scenario: 시나리오
+  scenario_outline: 시나리오 개요
+  examples: 예
+  given: "*|조건<|먼저<"
+  when: "*|만일<|만약<"
+  then: "*|그러면<"
+  and: "*|그리고<"
+  but: "*|하지만<|단<"
+"lt":
+  name: Lithuanian
+  native: lietuvių kalba
+  feature: Savybė
+  background: Kontekstas
+  scenario: Scenarijus
+  scenario_outline: Scenarijaus šablonas
+  examples: Pavyzdžiai|Scenarijai|Variantai
+  given: "*|Duota"
+  when: "*|Kai"
+  then: "*|Tada"
+  and: "*|Ir"
+  but: "*|Bet"
+"lv":
+  name: Latvian
+  native: latviešu
+  feature: Funkcionalitāte|Fīča
+  background: Konteksts|Situācija
+  scenario: Scenārijs
+  scenario_outline: Scenārijs pēc parauga
+  examples: Piemēri|Paraugs
+  given: "*|Kad"
+  when: "*|Ja"
+  then: "*|Tad"
+  and: "*|Un"
+  but: "*|Bet"
+"nl":
+  name: Dutch
+  native: Nederlands
+  feature: Functionaliteit
+  background: Achtergrond
+  scenario: Scenario
+  scenario_outline: Abstract Scenario
+  examples: Voorbeelden
+  given: "*|Gegeven|Stel"
+  when: "*|Als"
+  then: "*|Dan"
+  and: "*|En"
+  but: "*|Maar"
+"no":
+  name: Norwegian
+  native: norsk
+  feature: Egenskap
+  background: Bakgrunn
+  scenario: Scenario
+  scenario_outline: Abstrakt Scenario
+  examples: Eksempler
+  given: "*|Gitt"
+  when: "*|Når"
+  then: "*|Så"
+  and: "*|Og"
+  but: "*|Men"
+"pl":
+  name: Polish
+  native: polski
+  feature: Właściwość
+  background: Założenia
+  scenario: Scenariusz
+  scenario_outline: Szablon scenariusza
+  examples: Przykłady
+  given: "*|Zakładając"
+  when: "*|Jeżeli"
+  then: "*|Wtedy"
+  and: "*|Oraz"
+  but: "*|Ale"
+"pt":
+  name: Portuguese
+  native: português
+  background: Contexto
+  feature: Funcionalidade
+  scenario: Cenário|Cenario
+  scenario_outline: Esquema do Cenário|Esquema do Cenario
+  examples: Exemplos
+  given: "*|Dado"
+  when: "*|Quando"
+  then: "*|Então|Entao"
+  and: "*|E"
+  but: "*|Mas"
+"ro":
+  name: Romanian
+  native: română
+  background: Conditii
+  feature: Functionalitate
+  scenario: Scenariu
+  scenario_outline: Scenariul de sablon
+  examples: Exemplele
+  given: "*|Daca"
+  when: "*|Cand"
+  then: "*|Atunci"
+  and: "*|Si"
+  but: "*|Dar"
+"ro-RO":
+  name: Romanian (diacritical)
+  native: română (diacritical)
+  background: Condiţii
+  feature: Funcționalitate
+  scenario: Scenariu
+  scenario_outline: Scenariul de şablon
+  examples: Exemplele
+  given: "*|Dacă"
+  when: "*|Când"
+  then: "*|Atunci"
+  and: "*|Și"
+  but: "*|Dar"
+"ru":
+  name: Russian
+  native: русский
+  feature: Функционал|Фича
+  background: Предыстория
+  scenario: Сценарий
+  scenario_outline: Структура сценария
+  examples: Значения
+  given: "*|Допустим"
+  when: "*|Если"
+  then: "*|То"
+  and: "*|И|К тому же"
+  but: "*|Но|А"
+"sv":
+  name: Swedish
+  native: Svenska
+  feature: Egenskap
+  background: Bakgrund
+  scenario: Scenario
+  scenario_outline: Abstrakt Scenario
+  examples: Exempel
+  given: "*|Givet"
+  when: "*|När"
+  then: "*|Så"
+  and: "*|Och"
+  but: "*|Men"
+"sk":
+  name: Slovak
+  native: Slovensky
+  feature: Požiadavka
+  background: Pozadie
+  scenario: Scenár
+  scenario_outline: Náčrt Scenáru
+  examples: Príklady
+  given: "*|Pokiaľ"
+  when: "*|Keď"
+  then: "*|Tak"
+  and: "*|A"
+  but: "*|Ale"
+"sr-Latn":
+  name: Serbian (Latin)
+  native: Srpski (Latinica)
+  feature: Funkcionalnost|Mogućnost|Mogucnost|Osobina
+  background: Kontekst|Osnova|Pozadina
+  scenario: Scenario|Primer
+  scenario_outline: Struktura scenarija|Skica|Koncept
+  examples: Primeri|Scenariji
+  given: "*|Zadato|Zadate|Zatati"
+  when: "*|Kada|Kad"
+  then: "*|Onda"
+  and: "*|I"
+  but: "*|Ali"
+"sr-Cyrl":
+  name: Serbian
+  native: Српски
+  feature: Функционалност|Могућност|Особина
+  background: Контекст|Основа|Позадина
+  scenario: Сценарио|Пример
+  scenario_outline: Структура сценарија|Скица|Концепт
+  examples: Примери|Сценарији
+  given: "*|Задато|Задате|Задати"
+  when: "*|Када|Кад"
+  then: "*|Онда"
+  and: "*|И"
+  but: "*|Али"
+"tr":
+  name: Turkish
+  native: Türkçe
+  feature: Özellik
+  background: Geçmiş
+  scenario: Senaryo
+  scenario_outline: Senaryo taslağı
+  examples: Örnekler
+  given: "*|Diyelim ki"
+  when: "*|Eğer ki"
+  then: "*|O zaman"
+  and: "*|Ve"
+  but: "*|Fakat|Ama"
+"uk":
+  name: Ukrainian
+  native: Українська
+  feature: Функціонал
+  background: Передумова
+  scenario: Сценарій
+  scenario_outline: Структура сценарію
+  examples: Приклади
+  given: "*|Припустимо|Припустимо, що|Нехай"
+  when: "*|Якщо"
+  then: "*|То"
+  and: "*|І"
+  but: "*|Але"
+"uz":
+  name: Uzbek
+  native: Узбекча
+  feature: Функционал
+  background: Тарих
+  scenario: Сценарий
+  scenario_outline: Сценарий структураси
+  examples: Мисоллар
+  given: "*|Агар"
+  when: "*|Агар"
+  then: "*|Унда"
+  and: "*|Ва"
+  but: "*|Лекин|Бирок|Аммо"
+"vi":
+  name: Vietnamese
+  native: Tiếng Việt
+  feature: Tính năng
+  background: Bối cảnh
+  scenario: Tình huống|Kịch bản
+  scenario_outline: Khung tình huống|Khung kịch bản
+  examples: Dữ liệu
+  given: "*|Biết|Cho"
+  when: "*|Khi"
+  then: "*|Thì"
+  and: "*|Và"
+  but: "*|Nhưng"
+"zh-CN":
+  name: Chinese simplified
+  native: 简体中文
+  feature: 功能
+  background: 背景
+  scenario: 场景
+  scenario_outline: 场景大纲
+  examples: 例子
+  given: "*|假如<"
+  when: "*|当<"
+  then: "*|那么<"
+  and: "*|而且<"
+  but: "*|但是<"
+"zh-TW":
+  name: Chinese traditional
+  native: 繁體中文
+  feature: 功能
+  background: 背景
+  scenario: 場景|劇本
+  scenario_outline: 場景大綱|劇本大綱
+  examples: 例子
+  given: "*|假設<"
+  when: "*|當<"
+  then: "*|那麼<"
+  and: "*|而且<|並且<"
+  but: "*|但是<"
