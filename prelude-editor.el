@@ -156,6 +156,10 @@
 ;; enabled auto-fill mode in text-mode and all related modes
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
+;; load yasnippet
+(require 'yasnippet) ;; not yasnippet-bundle
+(yas/initialize)
+
 (provide 'prelude-editor)
 
 ;;; prelude-editor.el ends here
