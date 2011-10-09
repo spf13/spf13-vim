@@ -58,6 +58,7 @@
 (require 'prelude-emacs-lisp)
 (require 'prelude-haskell)
 (require 'prelude-markdown)
+(require 'prelude-perl)
 (require 'prelude-ruby)
 
 ;;; init.el ends here
