@@ -2,7 +2,7 @@
 
 ## Prelude
 
-Emacs is probably the best text edtitor in the world. However, the
+Emacs is probably the best text editor in the world. However, the
 process of coming up with a useful Emacs configuration is long and
 difficult. It's this process that separates you from truly taking
 advantage of Emacs's power. I like to refer to this process as the
