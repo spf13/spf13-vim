@@ -52,15 +52,15 @@
 (require 'yari)
 
 ; TODO fix ruby-end and package ruby-block for marmalade
-;(require 'ruby-block)
-;(require 'ruby-end)
+(require 'ruby-block)
+(require 'ruby-end)
 
 (defun prelude-ruby-mode-hook ()
   (prelude-coding-hook)
   (inf-ruby-keys)
   ;; turn off the annoying input echo in irb
   (setq comint-process-echoes t)
-  ;(ruby-block-mode t)
+  (ruby-block-mode t)
   (local-set-key (kbd "C-h r") 'yari))
 
 (add-hook 'ruby-mode-hook 'prelude-ruby-mode-hook)
