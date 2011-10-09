@@ -1,4 +1,4 @@
-;;; init.el --- Emacs Prelude: configuration entry point.
+;;; prelude-xml.el --- Emacs Prelude: XML editing configuration.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
@@ -11,8 +11,7 @@
 
 ;;; Commentary:
 
-;; This file simply sets up the default load path and requires
-;; the various modules defined within Emacs Prelude.
+;; Some basic nxml-mode configuration.
 
 ;;; License:
 
@@ -33,34 +32,17 @@
 
 ;;; Code:
 
-;; on OS X Emacs doesn't use the shell PATH
-;; if you're using homebrew modifying the PATH is essential
-(if (string= system-type "darwin")
-    (push "/usr/local/bin" exec-path))
+(push '("<\\?xml" . nxml-mode) magic-mode-alist)
 
-(defvar prelude-dir "~/.emacs.d/")
+;; pom files should be treated as xml files
+(add-to-list 'auto-mode-alist '("\\.pom$" . nxml-mode))
 
-(defvar vendor-dir (concat prelude-dir "vendor/"))
+(setq nxml-child-indent 4)
+(setq nxml-attribute-indent 4)
+(setq nxml-auto-insert-xml-declaration-flag nil)
+(setq nxml-bind-meta-tab-to-complete-flag t)
+(setq nxml-slash-auto-complete-flag t)
 
-(add-to-list 'load-path prelude-dir)
-(add-to-list 'load-path vendor-dir)
+(provide 'prelude-xml)
 
-(require 'prelude-ui)
-(require 'prelude-packages)
-(require 'prelude-core)
-(require 'prelude-editor)
-(require 'prelude-global-keybindings)
-
-;; programming & markup languages support
-(require 'prelude-c)
-(require 'prelude-clojure)
-(require 'prelude-coffee)
-(require 'prelude-common-lisp)
-(require 'prelude-emacs-lisp)
-(require 'prelude-haskell)
-(require 'prelude-markdown)
-(require 'prelude-perl)
-(require 'prelude-ruby)
-(require 'prelude-xml)
-
-;;; init.el ends here
+;;; prelude-xml.el ends here
