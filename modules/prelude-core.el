@@ -260,7 +260,7 @@ there's a region, all lines that region covers will be duplicated."
       (while (progn
                (imenu--cleanup)
                (setq imenu--index-alist nil)
-               (ido-goto-symbol (imenu--make-index-alist))
+               (prelude-ido-goto-symbol (imenu--make-index-alist))
                (setq selected-symbol
                      (ido-completing-read "Symbol? " symbol-names))
                (string= (car imenu--rescan-item) selected-symbol)))
@@ -277,7 +277,7 @@ there's a region, all lines that region covers will be duplicated."
       (let (name position)
         (cond
          ((and (listp symbol) (imenu--subalist-p symbol))
-          (ido-goto-symbol symbol))
+          (prelude-ido-goto-symbol symbol))
          ((listp symbol)
           (setq name (car symbol))
           (setq position (cdr symbol)))

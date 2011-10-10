@@ -43,7 +43,7 @@
 
 ;; TODO find a way to get inf-ruby 2.2.2 into Marmalade
 (defvar prelude-packages
-  '(clojure-mode coffee-mode deft gist haml-mode
+  '(auctex clojure-mode coffee-mode deft gist haml-mode
                  haskell-mode magit markdown-mode paredit projectile
                  sass-mode scss-mode yaml-mode yari yasnippet)
   "A list of packages to ensure are installed at launch.")
