@@ -62,7 +62,7 @@
 
 ;; Indentation help
 (global-set-key (kbd "C-x ^") 'join-line)
-(global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
+(global-set-key (kbd "C-M-\\") 'prelude-indent-region-or-buffer)
 
 ;; Start proced in a similar manner to dired
 (global-set-key (kbd "C-x p") 'proced)
