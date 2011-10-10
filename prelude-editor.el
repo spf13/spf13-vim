@@ -160,6 +160,10 @@
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
 
+;; projectile is a project management mode
+(require 'projectile)
+(projectile-global-mode t)
+
 (provide 'prelude-editor)
 
 ;;; prelude-editor.el ends here
