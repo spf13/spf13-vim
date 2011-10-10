@@ -50,7 +50,7 @@ Emacs load path."
 (prelude-add-subfolders-to-load-path vendor-dir)
 
 (defun prelude-open-with ()
-  "Simple function that allows us to open the underlying 
+  "Simple function that allows us to open the underlying
 file of a buffer in an external program."
   (interactive)
   (when buffer-file-name
@@ -67,6 +67,16 @@ file of a buffer in an external program."
   (if (not (get-buffer "*ansi-term*"))
       (ansi-term "/bin/zsh")
     (switch-to-buffer "*ansi-term*")))
+
+(defun prelude-google ()
+  "Googles a query or region if any."
+  (interactive)
+  (browse-url
+   (concat
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
+    (if mark-active
+        (buffer-substring (region-beginning) (region-end))
+      (read-string "Google: ")))))
 
 (defun prelude-indent-rigidly-and-copy-to-clipboard (begin end indent)
   "Copy the selected code region to the clipboard, indented according
