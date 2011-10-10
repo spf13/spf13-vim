@@ -58,6 +58,7 @@
 (require 'prelude-common-lisp)
 (require 'prelude-emacs-lisp)
 (require 'prelude-haskell)
+(require 'prelude-latex)
 (require 'prelude-markdown)
 (require 'prelude-perl)
 (require 'prelude-ruby)
