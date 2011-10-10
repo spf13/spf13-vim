@@ -63,4 +63,6 @@
 (require 'prelude-ruby)
 (require 'prelude-xml)
 
+(setq custom-file (concat prelude-dir "custom.el"))
+(load custom-file 'noerror)
 ;;; init.el ends here
