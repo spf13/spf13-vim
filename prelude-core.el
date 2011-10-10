@@ -323,7 +323,7 @@ there's a region, all lines that region covers will be duplicated."
   (interactive)
   (prelude-indent-buffer)
   (prelude-untabify-buffer)
-  (prelude-delete-trailing-whitespace))
+  (delete-trailing-whitespace))
 
 (defun prelude-eval-and-replace ()
   "Replace the preceding sexp with its value."

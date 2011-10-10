@@ -39,7 +39,7 @@
 (global-set-key (kbd "C-x \\") 'align-regexp)
 
 ;; Perform general cleanup.
-(global-set-key (kbd "C-c n") 'cleanup-buffer)
+(global-set-key (kbd "C-c n") 'prelude-cleanup-buffer)
 
 ;; Font size
 (define-key global-map (kbd "C-+") 'text-scale-increase)
