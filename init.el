@@ -38,13 +38,13 @@
 (if (string= system-type "darwin")
     (push "/usr/local/bin" exec-path))
 
-(defvar prelude-modules-dir (concat emacs-user-dir "modules/")
+(defvar prelude-modules-dir (concat user-emacs-directory "modules/")
   "This directory houses all of the built-in Prelude module. You should
 avoid modifying the configuration there.")
-(defvar prelude-vendor-dir (concat emacs-user-dir "vendor/")
+(defvar prelude-vendor-dir (concat user-emacs-directory "vendor/")
   "This directory house Emacs Lisp packages that are not yet available in
 ELPA (or Marmalade).")
-(defvar prelude-personal-dir (concat emacs-user-dir "personal/")
+(defvar prelude-personal-dir (concat user-emacs-directory "personal/")
   "Users of Emacs Prelude are encouraged to keep their personal configuration
 changes in this directory. All Emacs Lisp files there are loaded automatically
 by Prelude.")
@@ -78,7 +78,7 @@ by Prelude.")
 (when (file-exists-p prelude-personal-dir)
   (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$")))
 ;; config changes made through the customize UI will be store here
-(setq custom-file (concat prelude-dir "custom.el"))
+(setq custom-file (concat prelude-personal-dir "custom.el"))
 (load custom-file 'noerror)
 
 ;;; init.el ends here

@@ -93,7 +93,7 @@
 (savehist-mode t)                      ;; do customization before activation
 
 ;; save recent files
-(setq recentf-save-file (concat prelude-dir "recentf") ;; keep ~/ clean
+(setq recentf-save-file (concat user-emacs-directory "recentf") ;; keep ~/ clean
       recentf-max-saved-items 100          ;; max save 100
       recentf-max-menu-items 15)         ;; max 15 in menu
 (recentf-mode t)                  ;; turn it on
