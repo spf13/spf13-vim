@@ -59,7 +59,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; custom Emacs 24 color themes support
-(add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
+(add-to-list 'custom-theme-load-path (concat prelude-dir "themes/"))
 (load-theme 'zenburn t)
 
 (provide 'prelude-ui)

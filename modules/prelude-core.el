@@ -348,7 +348,7 @@ there's a region, all lines that region covers will be duplicated."
 (defun prelude-recompile-init ()
   "Byte-compile all your dotfiles again."
   (interactive)
-  (byte-recompile-directory user-emacs-directory 0)
+  (byte-recompile-directory prelude-dir 0)
   (byte-recompile-directory prelude-vendor-dir 0))
 
 (defun prelude-regen-autoloads (&optional force-regen)

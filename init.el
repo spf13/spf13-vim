@@ -38,13 +38,15 @@
 (if (string= system-type "darwin")
     (push "/usr/local/bin" exec-path))
 
-(defvar prelude-modules-dir (concat user-emacs-directory "modules/")
+(defvar prelude-dir (file-name-directory load-file-name)
+  "The root dir of the Emacs Prelude distribution.")
+(defvar prelude-modules-dir (concat prelude-dir "modules/")
   "This directory houses all of the built-in Prelude module. You should
 avoid modifying the configuration there.")
-(defvar prelude-vendor-dir (concat user-emacs-directory "vendor/")
+(defvar prelude-vendor-dir (concat prelude-dir "vendor/")
   "This directory house Emacs Lisp packages that are not yet available in
 ELPA (or Marmalade).")
-(defvar prelude-personal-dir (concat user-emacs-directory "personal/")
+(defvar prelude-personal-dir (concat prelude-dir "personal/")
   "Users of Emacs Prelude are encouraged to keep their personal configuration
 changes in this directory. All Emacs Lisp files there are loaded automatically
 by Prelude.")
