@@ -411,15 +411,15 @@
 
    ;; whitespace-mode
    `(whitespace-space ((,class (:background ,zenburn-bg :foreground ,zenburn-bg+1))))
-   `(whitespace-hspace ((,class (:background ,zenburn-bg))))
-   `(whitespace-tab ((,class (:background ,zenburn-bg))))
-   `(whitespace-newline ((,class (:foreground ,zenburn-bg+1))))
-   `(whitespace-trailing ((,class (:background ,zenburn-red :foreground ,zenburn-yellow))))
+   `(whitespace-hspace ((,class (:background ,zenburn-bg :foreground ,zenburn-bg+1))))
+   `(whitespace-tab ((,class (:background ,zenburn-bg :foreground ,zenburn-red))))
+   `(whitespace-newline ((,class (:foreground ,zenburn-bg+1 :background ,zenburn-bg))))
+   `(whitespace-trailing ((,class (:foreground ,zenburn-red :background ,zenburn-bg))))
    `(whitespace-line ((,class (:background ,zenburn-bg-05 :foreground ,zenburn-magenta))))
-   `(whitespace-space-before-tab ((,class ())))
-   `(whitespace-indentation ((,class ())))
-   `(whitespace-empty ((,class ())))
-   `(whitespace-space-after-tab ((,class ())))
+   `(whitespace-space-before-tab ((,class (:background ,zenburn-orange :foreground ,zenburn-orange))))
+   `(whitespace-indentation ((,class (:background ,zenburn-yellow, :foreground ,zenburn-red))))
+   `(whitespace-empty ((,class (:background ,zenburn-yellow :foreground ,zenburn-red))))
+   `(whitespace-space-after-tab ((,class (:background ,zenburn-yellow :foreground ,zenburn-red))))
 
    ;; wanderlust
    `(wl-highlight-folder-few-face ((,class (:foreground ,zenburn-red-2))))
