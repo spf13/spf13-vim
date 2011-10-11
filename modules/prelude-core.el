@@ -47,7 +47,7 @@ Emacs load path."
         (add-to-list 'load-path name)))))
 
 ;; add the first level subfolders of vendor automatically
-(prelude-add-subfolders-to-load-path vendor-dir)
+(prelude-add-subfolders-to-load-path prelude-vendor-dir)
 
 (defun prelude-open-with ()
   "Simple function that allows us to open the underlying
@@ -348,13 +348,13 @@ there's a region, all lines that region covers will be duplicated."
 (defun prelude-recompile-init ()
   "Byte-compile all your dotfiles again."
   (interactive)
-  (byte-recompile-directory prelude-dir 0)
-  (byte-recompile-directory vendor-dir 0))
+  (byte-recompile-directory emacs-user-dir 0)
+  (byte-recompile-directory prelude-vendor-dir 0))
 
 (defun prelude-regen-autoloads (&optional force-regen)
   "Regenerate the autoload definitions file if necessary and load it."
   (interactive "P")
-  (let ((autoload-dir vendor-dir)
+  (let ((autoload-dir prelude-vendor-dir)
         (generated-autoload-file autoload-file))
     (when (or force-regen
               (not (file-exists-p autoload-file))

@@ -33,19 +33,27 @@
 
 ;;; Code:
 
-;; on OS X Emacs doesn't use the shell PATH
-;; if you're using homebrew modifying the PATH is essential
+;; On OS X Emacs doesn't use the shell PATH if it's not started from
+;; the shell. If you're using homebrew modifying the PATH is essential.
 (if (string= system-type "darwin")
     (push "/usr/local/bin" exec-path))
 
-(defvar prelude-dir "~/.emacs.d/")
-(defvar modules-dir (concat prelude-dir "modules/"))
-(defvar vendor-dir (concat prelude-dir "vendor/"))
+(defvar prelude-modules-dir (concat emacs-user-dir "modules/")
+  "This directory houses all of the built-in Prelude module. You should
+avoid modifying the configuration there.")
+(defvar prelude-vendor-dir (concat emacs-user-dir "vendor/")
+  "This directory house Emacs Lisp packages that are not yet available in
+ELPA (or Marmalade).")
+(defvar prelude-personal-dir (concat emacs-user-dir "personal/")
+  "Users of Emacs Prelude are encouraged to keep their personal configuration
+changes in this directory. All Emacs Lisp files there are loaded automatically
+by Prelude.")
 
-(add-to-list 'load-path prelude-dir)
-(add-to-list 'load-path modules-dir)
-(add-to-list 'load-path vendor-dir)
+(add-to-list 'load-path prelude-modules-dir)
+(add-to-list 'load-path prelude-vendor-dir)
+(add-to-list 'load-path prelude-personal-dir)
 
+;; the core stuff
 (require 'prelude-ui)
 (require 'prelude-packages)
 (require 'prelude-core)
@@ -66,6 +74,11 @@
 (require 'prelude-scheme)
 (require 'prelude-xml)
 
+;; load the personal settings
+(when (file-exists-p prelude-personal-dir)
+  (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$")))
+;; config changes made through the customize UI will be store here
 (setq custom-file (concat prelude-dir "custom.el"))
 (load custom-file 'noerror)
+
 ;;; init.el ends here
