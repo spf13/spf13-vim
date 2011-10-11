@@ -63,6 +63,7 @@
 (require 'prelude-markdown)
 (require 'prelude-perl)
 (require 'prelude-ruby)
+(require 'prelude-scheme)
 (require 'prelude-xml)
 
 (setq custom-file (concat prelude-dir "custom.el"))
