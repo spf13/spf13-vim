@@ -32,8 +32,12 @@
 
 ;;; Code:
 
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(defun prelude-haskell-hook ()
+  (prelude-coding-hook)
+  (turn-on-haskell-doc-mode)
+  (turn-on-haskell-indentation))
+
+(add-hook 'haskell-mode-hook 'prelude-haskell-hook)
 
 (provide 'prelude-haskell)
 
