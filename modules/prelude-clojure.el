@@ -32,6 +32,16 @@
 
 ;;; Code:
 
+;; customize
+(defgroup clojure nil
+  "Emacs Prelude Clojure programming support"
+  :group 'prelude)
+
+(defcustom prelude-enable-clojure-hook t
+  "Enable Prelude's Clojure hook."
+  :type 'boolean
+  :group 'clojure)
+
 (require 'prelude-lisp)
 
 ;; To start SLIME in your Clojure project:
@@ -39,7 +49,8 @@
 ;; 2. Invoke M-x clojure-jack-in from a project
 (require 'clojure-mode)
 
-(add-hook 'clojure-mode-hook 'prelude-lisp-coding-hook)
+(when prelude-enable-clojure-hook
+  (add-hook 'clojure-mode-hook 'prelude-lisp-coding-hook))
 
 (provide 'prelude-clojure)
 

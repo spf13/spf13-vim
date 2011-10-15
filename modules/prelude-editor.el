@@ -32,6 +32,11 @@
 
 ;;; Code:
 
+;; customize
+(defgroup editor nil
+  "Emacs Prelude Editor enhancements"
+  :group 'prelude)
+
 ;; Emacs users obviously have little need for Command and Option keys,
 ;; but they do need Meta and Super
 (when (string= system-type "darwin")
@@ -159,6 +164,10 @@
 ;; load yasnippet
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
+
+;; dispense of trailing whitespace once and for all
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)
 
 ;; projectile is a project management mode
 (require 'projectile)

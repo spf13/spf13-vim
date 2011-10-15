@@ -32,9 +32,30 @@
 
 ;;; Code:
 
+(defgroup common-lisp nil
+  "Prelude's Common Lisp support"
+  :group 'prelude)
+
+(defcustom prelude-start-slime-automatically t
+  "Start SLIME automatically the first time a .list file is opened."
+  :type 'boolean
+  :group 'common-lisp)
+
+(defcustom prelude-enable-common-lisp-hook t
+  "Enable Prelude's Common Lisp hook"
+  :type 'boolean
+  :group 'common-lisp)
+
+(defcustom prelude-load-common-lisp-slime-automatically nil
+  "Load Common Lisp's SLIME by default. Setting this to `t' is not a
+very good idea if you're programming on occasion in both Clojure and
+Common Lisp."
+  :type 'boolean
+  :group 'common-lisp)
+
 (require 'prelude-lisp)
 
-;; the SBCL configuration file is in Common Lisp 
+;; the SBCL configuration file is in Common Lisp
 (add-to-list 'auto-mode-alist '("\\.sbclrc$" . lisp-mode))
 
 ;; Use SLIME from Quicklisp
@@ -43,8 +64,7 @@
   ;; Common Lisp support depends on SLIME being installed with Quicklisp
   (if (file-exists-p (expand-file-name "~/quicklisp/slime-helper.el"))
       (load (expand-file-name "~/quicklisp/slime-helper.el"))
-    (message "%s" "SLIME is not installed. Use Quicklisp to install it."))
-  )
+    (message "%s" "SLIME is not installed. Use Quicklisp to install it.")))
 
 ;; a list of alternative Common Lisp implementations that can be
 ;; used with SLIME. Note that their presence render
@@ -58,17 +78,23 @@
         (sbcl ("sbcl" "--noinform") :coding-system utf-8-unix)))
 
 ;; select the default value from slime-lisp-implementations
-(setq slime-default-lisp 'sbcl)
+(if (string= system-type "darwin")
+    ;; default to Clozure CL on OS X
+    (setq slime-default-lisp 'ccl)
+  ;; default to SBCL on Linux and Windows
+  (setq slime-default-lisp 'sbcl))
 
-(add-hook 'lisp-mode-hook 'prelude-lisp-coding-hook)
-(add-hook 'slime-repl-mode-hook 'prelude-interactive-lisp-coding-hook)
+(when prelude-enable-common-lisp-hook
+  (add-hook 'lisp-mode-hook 'prelude-lisp-coding-hook)
+  (add-hook 'slime-repl-mode-hook 'prelude-interactive-lisp-coding-hook))
 
 ;; start slime automatically when we open a lisp file
 (defun prelude-start-slime ()
   (unless (slime-connected-p)
     (save-excursion (slime))))
 
-(add-hook 'slime-mode-hook 'prelude-start-slime)
+(when prelude-start-slime-automatically
+  (add-hook 'slime-mode-hook 'prelude-start-slime))
 
 ;; Stop SLIME's REPL from grabbing DEL,
 ;; which is annoying when backspacing over a '('

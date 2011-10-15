@@ -32,16 +32,16 @@
 
 ;;; Code:
 
+(defgroup emacs-lisp nil
+  "Prelude support for Emacs Lisp"
+  :group 'prelude)
+
+(defcustom prelude-enable-emacs-lisp-hook t
+  "Enable Prelude's Emacs Lisp hook"
+  :type 'boolean
+  :group 'emacs-lisp)
 
 (require 'prelude-lisp)
-
-(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-(add-hook 'emacs-lisp-mode-hook 'prelude-remove-elc-on-save)
-
-(add-hook 'emacs-lisp-mode-hook 'prelude-lisp-coding-hook)
-
-(add-hook 'ielm-mode-hook 'prelude-interactive-lisp-coding-hook)
-(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
 
 (defun prelude-remove-elc-on-save ()
   "If you're saving an elisp file, likely the .elc is no longer valid."
@@ -50,6 +50,15 @@
             (lambda ()
               (if (file-exists-p (concat buffer-file-name "c"))
                   (delete-file (concat buffer-file-name "c"))))))
+
+(when prelude-enable-emacs-lisp-hook
+  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+  (add-hook 'emacs-lisp-mode-hook 'prelude-remove-elc-on-save)
+
+  (add-hook 'emacs-lisp-mode-hook 'prelude-lisp-coding-hook)
+
+  (add-hook 'ielm-mode-hook 'prelude-interactive-lisp-coding-hook)
+  (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode))
 
 (define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
 

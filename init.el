@@ -33,6 +33,10 @@
 
 ;;; Code:
 
+(defgroup prelude nil
+  "Emacs Prelude"
+  :group 'convenience)
+
 ;; On OS X Emacs doesn't use the shell PATH if it's not started from
 ;; the shell. If you're using homebrew modifying the PATH is essential.
 (if (string= system-type "darwin")
