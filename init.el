@@ -81,11 +81,10 @@ by Prelude.")
 (require 'prelude-scheme)
 (require 'prelude-xml)
 
-;; load the personal settings
-(when (file-exists-p prelude-personal-dir)
-  (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$")))
 ;; config changes made through the customize UI will be store here
 (setq custom-file (concat prelude-personal-dir "custom.el"))
-(load custom-file 'noerror)
+;; load the personal settings
+(when (file-exists-p prelude-personal-dir)
+  (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$"))
 
 ;;; init.el ends here
