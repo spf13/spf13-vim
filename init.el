@@ -85,6 +85,6 @@ by Prelude.")
 (setq custom-file (concat prelude-personal-dir "custom.el"))
 ;; load the personal settings
 (when (file-exists-p prelude-personal-dir)
-  (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$"))
+  (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$")))
 
 ;;; init.el ends here
