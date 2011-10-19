@@ -78,7 +78,7 @@ Common Lisp."
         (sbcl ("sbcl" "--noinform") :coding-system utf-8-unix)))
 
 ;; select the default value from slime-lisp-implementations
-(if (string= system-type "darwin")
+(if (eq system-type 'darwin)
     ;; default to Clozure CL on OS X
     (setq slime-default-lisp 'ccl)
   ;; default to SBCL on Linux and Windows

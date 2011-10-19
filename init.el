@@ -39,7 +39,7 @@
 
 ;; On OS X Emacs doesn't use the shell PATH if it's not started from
 ;; the shell. If you're using homebrew modifying the PATH is essential.
-(if (string= system-type "darwin")
+(if (eq system-type 'darwin)
     (push "/usr/local/bin" exec-path))
 
 (defvar prelude-dir (file-name-directory load-file-name)
