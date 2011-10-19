@@ -66,7 +66,7 @@ instead of Emacs's default theme."
  (tool-bar-mode -1)
  ;; the menu bar is mostly useless as well
  ;; but removing it under OS X doesn't make much sense
- (unless (string= system-type "darwin")
+ (unless (eq system-type 'darwin)
    (menu-bar-mode -1))
  ;; the blinking cursor is nothing, but an annoyance
  (blink-cursor-mode -1)
