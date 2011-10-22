@@ -48,9 +48,6 @@
 
 ;; delete the selection with a keypress
 (delete-selection-mode t)
-;; highlight when searching and replacing
-(setq search-highlight t
-      query-replace-highlight t)
 
 ;; store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
@@ -85,23 +82,27 @@
 (setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
-;; saveplace: save location in file when saving files
-(setq save-place-file "~/.emacs.d/saveplace")
-(setq-default save-place t)            ;; activate it for all buffers
-(require 'saveplace)                   ;; get the package
+;; saveplace remembers your location in a file when saving files
+(setq save-place-file (concat user-emacs-directory "saveplace"))
+;; activate it for all buffers
+(setq-default save-place t)
+(require 'saveplace)
 
-;; savehist: save some history
-(setq savehist-additional-variables    ;; also save...
-      '(search ring regexp-search-ring)    ;; ... my search entries
-      savehist-autosave-interval 60        ;; save every minute (default: 5 min)
-      savehist-file (concat "~/.emacs.d" "/savehist"))   ;; keep my home clean
-(savehist-mode t)                      ;; do customization before activation
+;; savehist keeps track of some history
+(setq savehist-additional-variables
+      ;; search entries
+      '(search ring regexp-search-ring)
+      ;; save every minute
+      savehist-autosave-interval 60
+      ;; keep the home clean
+      savehist-file (concat user-emacs-directory "savehist"))
+(savehist-mode t)
 
 ;; save recent files
-(setq recentf-save-file (concat user-emacs-directory "recentf") ;; keep ~/ clean
-      recentf-max-saved-items 100          ;; max save 100
-      recentf-max-menu-items 15)         ;; max 15 in menu
-(recentf-mode t)                  ;; turn it on
+(setq recentf-save-file (concat user-emacs-directory "recentf")
+      recentf-max-saved-items 200
+      recentf-max-menu-items 15)
+(recentf-mode t)
 
 ;; time-stamps
 ;; when there's "Time-stamp: <>" in the first 10 lines of the file
@@ -138,7 +139,7 @@
 
 (set-default 'imenu-auto-rescan t)
 
-;; flyspell-mode
+;; flyspell-mode does spell-checking on the fly as you type
 (setq ispell-program-name "aspell" ; use aspell instead of ispell
       ispell-extra-args '("--sug-mode=ultra"))
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
@@ -146,7 +147,7 @@
 (defun prelude-turn-on-flyspell ()
   "Force flyspell-mode on using a positive argument.  For use in hooks."
   (interactive)
-  (flyspell-mode 1))
+  (flyspell-mode +1))
 
 (add-hook 'message-mode-hook 'prelude-turn-on-flyspell)
 (add-hook 'text-mode-hook 'prelude-turn-on-flyspell)
@@ -155,7 +156,7 @@
 (put 'narrow-to-region 'disabled nil)
 
 ;; bookmarks
-(setq bookmark-default-file "~/.emacs.d/bookmarks"
+(setq bookmark-default-file (concat user-emacs-directory "bookmarks")
       bookmark-save-flag 1)
 
 ;; enabled auto-fill mode in text-mode and all related modes
