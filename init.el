@@ -59,6 +59,10 @@ by Prelude.")
 (add-to-list 'load-path prelude-vendor-dir)
 (add-to-list 'load-path prelude-personal-dir)
 
+;; config changes made through the customize UI will be store here
+(setq custom-file (concat prelude-personal-dir "custom.el"))
+(load custom-file 'noerror)
+
 ;; the core stuff
 (require 'prelude-ui)
 (require 'prelude-packages)
@@ -81,8 +85,6 @@ by Prelude.")
 (require 'prelude-scheme)
 (require 'prelude-xml)
 
-;; config changes made through the customize UI will be store here
-(setq custom-file (concat prelude-personal-dir "custom.el"))
 ;; load the personal settings
 (when (file-exists-p prelude-personal-dir)
   (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$")))
