@@ -141,6 +141,9 @@
   ;; search with google
   (global-set-key (kbd "C-c g") 'prelude-google)
 
+  ;; open in external application
+  (global-set-key (kbd "C-c o") 'prelude-open-with)
+
   ;; toggle menu-bar visibility
   (global-set-key (kbd "<f12>") 'menu-bar-mode))
 

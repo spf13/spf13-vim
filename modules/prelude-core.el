@@ -60,7 +60,9 @@ file of a buffer in an external program."
   (interactive)
   (when buffer-file-name
     (shell-command (concat
-                    (read-shell-command "Open current file with: ")
+                    (if (eq system-type 'darwin)
+                        "open"
+                      (read-shell-command "Open current file with: "))
                     " "
                     buffer-file-name))))
 
