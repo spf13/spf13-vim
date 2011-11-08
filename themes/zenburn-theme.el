@@ -136,13 +136,9 @@
                            :box (:line-width -1 :style released-button)))))
    `(mode-line-buffer-id ((,class (:foreground ,zenburn-yellow :weight bold))))
    `(mode-line-inactive
-<<<<<<< HEAD
      ((,class (:foreground ,zenburn-green-1
-                           :background ,zenburn-bg-1
+                           :background ,zenburn-bg-05
                            :box (:line-width -1 :style released-button)))))
-=======
-     ((,class (:foreground ,zenburn-green-1  :background ,zenburn-bg-05))))
->>>>>>> b1ccc0ac7975473c30e8555c550733e0b192a0ae
    `(region ((,class (:background ,zenburn-bg-1))))
    `(secondary-selection ((,class (:background ,zenburn-bg+2))))
    `(trailing-whitespace ((,class (:background ,zenburn-red))))
