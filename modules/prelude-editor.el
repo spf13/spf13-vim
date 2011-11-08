@@ -120,6 +120,9 @@
 (show-paren-mode t)
 (setq show-paren-style 'parenthesis)
 
+;; highlight the current line
+(global-hl-line-mode +1)
+
 ;; tramp, for sudo access
 (require 'tramp)
 ;; keep in mind known issues with zsh - see emacs wiki
