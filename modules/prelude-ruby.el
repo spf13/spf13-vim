@@ -60,6 +60,10 @@
 ;; yari provides a nice Emacs interface to ri
 (require 'yari)
 
+;; yaml-mode
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
 ; TODO fix ruby-end and package ruby-block for marmalade
 (require 'ruby-block)
 (require 'ruby-end)
