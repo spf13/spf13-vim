@@ -81,6 +81,8 @@
 
 (require 'haml-mode)
 (require 'scss-mode)
+;; most of the time the scss auto compilation is useless
+(setq scss-compile-at-save nil)
 
 ;; cucumber support
 (require 'feature-mode)
