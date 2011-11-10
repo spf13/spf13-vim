@@ -177,6 +177,9 @@
 (require 'projectile)
 (projectile-global-mode t)
 
+;; dired - reuse current buffer by pressing 'a'
+(put 'dired-find-alternate-file 'disabled nil)
+
 (provide 'prelude-editor)
 
 ;;; prelude-editor.el ends here
