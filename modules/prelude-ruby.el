@@ -81,8 +81,14 @@
 
 (require 'haml-mode)
 (require 'scss-mode)
-;; most of the time the scss auto compilation is useless
-(setq scss-compile-at-save nil)
+
+(defun prelude-scss-mode-hook ()
+  ;; indent like in Ruby
+  (setq css-indent-offset 2)
+  ;; turn off annoying auto-compile on save
+  (setq scss-compile-at-save nil))
+
+(add-hook 'scss-mode-hook 'prelude-scss-mode-hook)
 
 ;; cucumber support
 (require 'feature-mode)
