@@ -1,4 +1,4 @@
-;;; prelude-packages.el --- Emacs Prelude: default package selection.
+;;; prelude-python.el --- Emacs Prelude: python.el configuration.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
@@ -11,8 +11,8 @@
 
 ;;; Commentary:
 
-;; Takes care of the automatic installation of all the packages required by
-;; Emacs Prelude.
+;; Some basic configuration for python.el (the latest and greatest
+;; Python mode Emacs has to offer).
 
 ;;; License:
 
@@ -33,25 +33,24 @@
 
 ;;; Code:
 
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(package-initialize)
+;; customize
+(defgroup python nil
+  "Emacs Prelude C programming support"
+  :group 'prelude)
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+(defcustom prelude-enable-python-hook t
+  "Enable Prelude's default Python hook."
+  :type 'boolean
+  :group 'python)
 
-;; TODO find a way to get inf-ruby 2.2.2 into Marmalade
-(defvar prelude-packages
-  '(auctex clojure-mode coffee-mode deft gist haml-mode
-                 haskell-mode magit markdown-mode paredit projectile
-                 python sass-mode scss-mode yaml-mode yari yasnippet)
-  "A list of packages to ensure are installed at launch.")
+(require 'python)
 
-(dolist (p prelude-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
+;; (defun prelude-python-coding-hook ()
+;; )
 
-(provide 'prelude-packages)
+;; (when prelude-enable-python-hook
+;;   (add-hook 'python-mode-hook 'prelude-python-coding-hook))
 
-;;; prelude-packages.el ends here
+(provide 'prelude-python)
+
+;;; prelude-python.el ends here
