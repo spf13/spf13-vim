@@ -26,7 +26,7 @@ ln -s $endpath/.vimrc $HOME/.vimrc
 ln -s $endpath/.vim $HOME/.vim
 
 echo "Installing Vundle"
-git clone http://github.com/gmarik/vundle.git .vim/bundle/vundle
+git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 
 echo "installing plugins using Vundle"
 vim +BundleInstall! +BundleClean +q

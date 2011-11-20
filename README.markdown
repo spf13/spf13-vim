@@ -50,10 +50,14 @@ or
 #### Clone spf13-vim from github
     endpath="$HOME/.spf13-vim-3"
     git clone --recursive -b 3.0 git://github.com/spf13/spf13-vim.git $endpath
+    mkdir -p $endpath/.vim/bundle
     ln -s $endpath/.vimrc ~/.vimrc
     ln -s $endpath/.vim ~/.vim
 
 _Use ln -s on mac/unix or mklink on windows._
+
+#### Installing Vundle
+    git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 
 #### Install plugins using Vundle
     vim +BundleInstall! +BundleClean +q
