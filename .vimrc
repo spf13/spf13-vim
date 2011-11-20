@@ -24,7 +24,7 @@
     " 
 	" Setup Bundle Support {
 	" The next two lines ensure that the ~/.vim/bundle/ system works
-        set rtp+=~/.vim/vundle.git/ 
+        set rtp+=~/.vim/bundle/vundle
         call vundle#rc()
 	" }
 
@@ -32,6 +32,7 @@
 
 " Bundles {
     " Deps
+        Bundle 'gmarik/vundle'
         Bundle "MarcWeber/vim-addon-mw-utils"
         Bundle "tomtom/tlib_vim"
         Bundle 'mileszs/ack.vim'
