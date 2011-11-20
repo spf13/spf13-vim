@@ -2,13 +2,22 @@
 
 This is a distribution of vim plugins and tools intended to be run on top of VIM.  It is a good starting point for anyone intending to use VIM for development. 
 
-Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim uses [pathogen](http://www.vim.org/scripts/script.php?script_id=2332) to have a well organized vim directory (Similar to mac's app folders).
+Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses [Vundle] to have a well organized vim directory (Similar to mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
 
 Great care has been taken to ensure that each plugin plays nicely with others, and optional configuration has been provided for what we believe is the most efficient use. 
 
-It heavily uses git submodules where possible for all plugins. This makes for easy updating.
-
 Lastly (and perhaps, most importantly) It is completely cross platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim](http://code.google.com/p/macvim/) or Gvim additional features are enabled. So regardless of your environment just clone and run.
+
+## spf13-vim version 3?
+Wait, did we skip 2? No.. Version 1 was just my config prior to git. Version 2 was all git submodules.
+Version 3 is [Vundle] based. Prior to now there wasn't really a need to version them... it was just for me after all. Now hundreds of people are using this, so I figured with a major change I'd actually use version numbers.
+
+### Changes from 2 to 3
+The biggest change is the switch from using git submodules to using the excellent [Vundle] system. While git submodules seemed like a good idea at the time, it wasn't. It was always problematic. Additionally because a submodule points to a refspec and not a branch, it was a constant maintenance nightmare to keep everything up to date.
+
+[Vundle] has an excellent system built on the same principles as Pathogen, but with an integrated installer. [Vundle] supports git and has very easy configuration which happens in the vimrc file.
+
+There are also a bunch of small changes and a focus on keeping a tighter set of plugins and keeping true to the defaults and standards vim expects. The goal has always been to add functionality without changing all the features, functionality and keystrokes we all love. Using spf13-vim we've kept all the default behaviors (by and large), so if you ever find yourself on a vanilla environment you'll feel right at home.
 
 ## Pre-requisites
 
@@ -16,7 +25,7 @@ spf13-vim is built to be completely cross platform. It works equally well on con
 
 spf13-vim is dependent on a semi-recent version of VIM and should work well on anything above VIM 7.0.
 
-Git is required for installation. Certain plugins require python or ruby support to be compiled into VIM. 
+[Git] is required for installation. Certain plugins require python or ruby support to be compiled into VIM. 
 
 To check if you have python or ruby support run
 
@@ -26,7 +35,7 @@ If it returns 1 your vim supports ruby.
 
 ## Installation
 
-### Easy Installation (*nix only)
+### Easy Installation (\*nix only)
 
     curl https://raw.github.com/spf13/spf13-vim/3.0/bootstrap.sh -o - | sh
  
@@ -34,23 +43,72 @@ or
 
 ### Manual Installation
 
-    for i in ~/.vim ~/.vimrc ~/.gvimrc; do [ -e $i ] && mv $i $i.old; done
-    git clone --recursive git://github.com/spf13/spf13-vim.git 
+#### Backup existing vim configuration
+    today=`date +%Y%m%d`
+    for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv $i $i.$today; done
 
-I setup symlinks after this so I can maintain the repo outside of my actual config location.
+#### Clone spf13-vim from github
+    endpath="$HOME/.spf13-vim-3"
+    git clone --recursive -b 3.0 git://github.com/spf13/spf13-vim.git $endpath
+    ln -s $endpath/.vimrc ~/.vimrc
+    ln -s $endpath/.vim ~/.vim
 
-Use ln -s on mac/unix or mklink on windows.
+_Use ln -s on mac/unix or mklink on windows._
 
-    cd ~
-    ln -s /path/to/spf13-vim/.vimrc .vimrc
-    ln -s /path/to/spf13-vim/.vim .vim
+#### Install plugins using Vundle
+    vim +BundleInstall! +BundleClean +q
+
+#### Optionally build Command-t
+    cd $HOME/.vim/bundle/Command-t
+    (rake make) || warn "Ruby compilation failed. Ruby, GCC or rake not installed?"
+
+## Installing on Windows
+
+On Windows and \*nix [Git] and [Curl] are required. 
+
+### Install [msysgit]
+
+After installation try running `git --version` within _command prompt_ (press Win-R,  type `cmd`, press Enter) to make sure all good:
+
+    C:\> git --version
+    git version 1.7.4.msysgit.0
+
+### Setup [Curl]. 
+_Instructions blatently copied from vundle readme_
+Installing Curl on Windows is easy as [Curl] is bundled with [msysgit]!
+But before it can be used with [Vundle] it's required make `curl` run in _command prompt_.
+The easiest way is to create `curl.cmd` with [this content](https://gist.github.com/912993)
+
+    @rem Do not use "echo off" to not affect any child calls.
+    @setlocal
+
+    @rem Get the abolute path to the parent directory, which is assumed to be the
+    @rem Git installation root.
+    @for /F "delims=" %%I in ("%~dp0..") do @set git_install_root=%%~fI
+    @set PATH=%git_install_root%\bin;%git_install_root%\mingw\bin;%PATH%
+
+    @if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
+    @if not exist "%HOME%" @set HOME=%USERPROFILE%
+
+    @curl.exe %*
+
+
+
+And copy it to `C:\Program Files\Git\cmd\curl.cmd`, assuming [msysgit] was installed to `c:\Program Files\Git`
+
+to verify all good, run:
+
+    C:\> curl --version
+    curl 7.21.1 (i686-pc-mingw32) libcurl/7.21.1 OpenSSL/0.9.8k zlib/1.2.3
+    Protocols: dict file ftp ftps http https imap imaps ldap ldaps pop3 pop3s rtsp smtp smtps telnet tftp
+    Features: Largefile NTLM SSL SSPI libz
+
 
 ## Updating to the latest version
 
     cd /path/to/spf13-vim/
     git pull
-    git submodule sync 
-    git submodule update --init --recursive
+    vim +BundleInstall! +BundleClean +q
 
 ## Customization
 
@@ -324,3 +382,7 @@ Here's some tips if you've never used VIM before:
   convenient location.
 * Keyboard [cheat sheet](http://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
 
+[Vundle]:http://github.com/gmarik/vundle
+[Git]:http://git-scm.com
+[Curl]:http://curl.haxx.se
+[msysgit]:http://code.google.com/p/msysgit
