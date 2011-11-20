@@ -21,9 +21,9 @@ for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv $i $i.$today;
 
 echo "cloning spf13-vim\n"
 git clone --recursive -b 3.0 git://github.com/spf13/spf13-vim.git $endpath
+mkdir -p $endpath/.vim/bundle
 ln -s $endpath/.vimrc $HOME/.vimrc
 ln -s $endpath/.vim $HOME/.vim
-mkdir $HOME/.vim/bundle
 
 echo "Installing Vundle"
 git clone http://github.com/gmarik/vundle.git .vim/bundle/vundle
