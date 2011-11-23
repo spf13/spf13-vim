@@ -39,10 +39,6 @@
 (require 'erc-spelling)
 (require 'erc-autoaway)
 
-;; Join the a couple of interesting channels whenever connecting to Freenode.
-(setq erc-autojoin-channels-alist '(("freenode.net"
-                                     "#emacs" "#ruby" "#lisp")))
-
 ;; Interpret mIRC-style color commands in IRC chats
 (setq erc-interpret-mirc-color t)
 
@@ -75,9 +71,6 @@
 
 ;; truncate long irc buffers
 (erc-truncate-mode +1)
-
-;; share my real name
-(setq erc-user-full-name "Bozhidar Batsov")
 
 ;; enable spell checking
 (erc-spelling-mode 1)
@@ -140,16 +133,6 @@ that can occur between two notifications.  The default is
 (setq erc-autoaway-idle-seconds 600)
 (setq erc-autoaway-use-emacs-idle t)
 
-;; auto identify
-(when (file-exists-p (expand-file-name "~/.ercpass"))
-  (load "~/.ercpass")
-  (require 'erc-services)
-  (erc-services-mode 1)
-  (setq erc-prompt-for-nickserv-password nil)
-  (setq erc-nickserv-passwords
-        `((freenode (("bozhidar" . ,bozhidar-pass)))))
-)
-
 ;; utf-8 always and forever
 (setq erc-server-coding-system '(utf-8 . utf-8))
 
@@ -157,7 +140,7 @@ that can occur between two notifications.  The default is
   "Connect to IRC."
   (interactive)
   (when (y-or-n-p "Do you want to start IRC? ")
-    (erc :server "irc.freenode.net" :port 6667 :nick "bozhidar")))
+    (erc :server "irc.freenode.net" :port 6667 :nick erc-nick)))
 
 (defun filter-server-buffers ()
   (delq nil
