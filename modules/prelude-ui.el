@@ -39,7 +39,7 @@
   :group 'prelude)
 
 (defcustom prelude-use-minimalistic-ui t
-  "If set to true Prelude will dispense of most the UI that's mouse related - 
+  "If set to true Prelude will dispense of most the UI that's mouse related -
 menu bar, tool bar, etc"
   :type 'boolean
   :group 'ui)
@@ -63,7 +63,10 @@ instead of Emacs's default theme."
 
 (when prelude-use-minimalistic-ui
  ;; the toolbar is just a waste of valuable screen estate
- (tool-bar-mode -1)
+ ;; in a tty tool-bar-mode does not properly auto-load, and is
+ ;; already disabled anyway
+ (when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))
  ;; the menu bar is mostly useless as well
  ;; but removing it under OS X doesn't make much sense
  (unless (eq system-type 'darwin)

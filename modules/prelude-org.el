@@ -1,4 +1,4 @@
-;;; prelude-packages.el --- Emacs Prelude: default package selection.
+;;; prelude-org.el --- Emacs Prelude: org-mode configuration.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
@@ -11,8 +11,7 @@
 
 ;;; Commentary:
 
-;; Takes care of the automatic installation of all the packages required by
-;; Emacs Prelude.
+;; Some basic configuration for org-mode.
 
 ;;; License:
 
@@ -33,25 +32,16 @@
 
 ;;; Code:
 
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(package-initialize)
+(add-to-list 'auto-mode-alist '("\\.org\\’" . org-mode))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+(defun prelude-org-mode-hook ()
+  (electric-indent-mode -1))
 
-;; TODO find a way to get inf-ruby 2.2.2 into Marmalade
-(defvar prelude-packages
-  '(auctex clojure-mode coffee-mode deft gist haml-mode
-                 haskell-mode magit markdown-mode paredit projectile
-                 python sass-mode scss-mode yaml-mode yari yasnippet)
-  "A list of packages to ensure are installed at launch.")
+(add-hook 'org-mode-hook 'prelude-org-mode-hook)
 
-(dolist (p prelude-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
+(provide 'prelude-org)
 
-(provide 'prelude-packages)
-
-;;; prelude-packages.el ends here
+;;; prelude-org.el ends here
