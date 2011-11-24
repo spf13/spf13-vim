@@ -61,7 +61,6 @@ by Prelude.")
 
 ;; config changes made through the customize UI will be store here
 (setq custom-file (concat prelude-personal-dir "custom.el"))
-(load custom-file 'noerror)
 
 ;; the core stuff
 (require 'prelude-ui)
