@@ -69,25 +69,122 @@ by Prelude.")
 (require 'prelude-editor)
 (require 'prelude-global-keybindings)
 
-;; programming & markup languages support
-(require 'prelude-c)
-(require 'prelude-clojure)
-(require 'prelude-coffee)
-(require 'prelude-common-lisp)
-(require 'prelude-emacs-lisp)
-(require 'prelude-erc)
-(require 'prelude-haskell)
-(require 'prelude-js)
-(require 'prelude-latex)
-(require 'prelude-markdown)
-(require 'prelude-org)
-(require 'prelude-perl)
-(require 'prelude-python)
-(require 'prelude-ruby)
-(require 'prelude-scheme)
-(require 'prelude-xml)
+(defcustom prelude-c-module t
+  "Enable Prelude's C module."
+  :type 'boolean
+  :group 'prelude)
 
-;; load the personal settings
+(defcustom prelude-clojure-module t
+  "Enable Prelude's Clojure module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-coffee-script-module t
+  "Enable Prelude's CoffeeScript module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-common-lisp-module t
+  "Enable Prelude's Common Lisp module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-emacs-lisp-module t
+  "Enable Prelude's Emacs Lisp module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-erc-module t
+  "Enable Prelude's ERC module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-haskell-module t
+  "Enable Prelude's Haskell module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-js-module t
+  "Enable Prelude's JavaScript module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-latex-module t
+  "Enable Prelude's LaTeX module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-markdown-module t
+  "Enable Prelude's Markdown module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-org-module t
+  "Enable Prelude's org-mode module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-perl-module t
+  "Enable Prelude's Perl module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-python-module t
+  "Enable Prelude's Python module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-ruby-module t
+  "Enable Prelude's Ruby module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-scheme-module t
+  "Enable Prelude's Scheme module."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-xml-module t
+  "Enable Prelude's XML module."
+  :type 'boolean
+  :group 'prelude)
+
+
+;; programming & markup languages support
+(when prelude-c-module
+  (require 'prelude-c))
+(when prelude-clojure-module
+  (require 'prelude-clojure))
+(when prelude-coffee-script-module
+  (require 'prelude-coffee))
+(when prelude-common-lisp-module
+  (require 'prelude-common-lisp))
+(when prelude-emacs-lisp-module
+  (require 'prelude-emacs-lisp))
+(when prelude-erc-module
+  (require 'prelude-erc))
+(when prelude-haskell-module
+  (require 'prelude-haskell))
+(when prelude-js-module
+  (require 'prelude-js))
+(when prelude-latex-module
+  (require 'prelude-latex))
+(when prelude-markdown-module
+  (require 'prelude-markdown))
+(when prelude-org-module
+  (require 'prelude-org))
+(when prelude-perl-module
+  (require 'prelude-perl))
+(when prelude-perl-module
+  (require 'prelude-python))
+(when prelude-ruby-module
+  (require 'prelude-ruby))
+(when prelude-scheme-module
+  (require 'prelude-scheme))
+(when prelude-xml-module
+  (require 'prelude-xml))
+
+;; load the personal settings (this includes `custom-file')
 (when (file-exists-p prelude-personal-dir)
   (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$")))
 
