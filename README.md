@@ -188,7 +188,7 @@ use them.
 
 ### What is this terrible default theme?
 
-It's called Zenburn and I (and lots of hackers around) the world find it
+It's called Zenburn and I (and lots of hackers around the world) find it
 pretty neat (I also happen to be the maintainer of its Emacs port). I
 find the default theme pretty tiresome for the eyes, that's why I took
 that "controversial" decision to replace it. You can, of course,
