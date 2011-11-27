@@ -36,11 +36,6 @@
 (require 'thingatpt)
 (require 'imenu)
 
-;; customization
-(defgroup core nil
-  "Emacs Prelude core"
-  :group 'prelude)
-
 (defun prelude-add-subfolders-to-load-path (parent-dir)
   "Adds all first level `parent-dir' subdirs to the
 Emacs load path."

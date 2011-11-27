@@ -33,23 +33,12 @@
 
 ;;; Code:
 
-;; customize
-(defgroup python nil
-  "Emacs Prelude C programming support"
-  :group 'prelude)
-
-(defcustom prelude-enable-python-hook t
-  "Enable Prelude's default Python hook."
-  :type 'boolean
-  :group 'python)
-
 (require 'python)
 
 (defun prelude-python-coding-hook ()
   (electric-indent-mode -1))
 
-(when prelude-enable-python-hook
-  (add-hook 'python-mode-hook 'prelude-python-coding-hook))
+(add-hook 'python-mode-hook 'prelude-python-coding-hook)
 
 (provide 'prelude-python)
 

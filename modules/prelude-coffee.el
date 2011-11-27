@@ -32,15 +32,6 @@
 
 ;;; Code:
 
-(defgroup coffee nil
-  "Emacs Prelude CoffeeScript support"
-  :group 'prelude)
-
-(defcustom prelude-enable-coffee-hook t
-  "Enable Prelude's CoffeeScript's hook"
-  :type 'boolean
-  :group 'coffee)
-
 (require 'coffee-mode)
 
 (defun prelude-coffee-mode-hook ()
@@ -73,8 +64,7 @@
        (file-exists-p (coffee-compiled-file-name))
        (coffee-cos-mode t)))
 
-(when prelude-enable-coffee-hook
- (add-hook 'coffee-mode-hook 'prelude-coffee-mode-hook))
+(add-hook 'coffee-mode-hook 'prelude-coffee-mode-hook)
 
 (provide 'prelude-coffee)
 

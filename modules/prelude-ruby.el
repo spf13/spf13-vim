@@ -32,15 +32,6 @@
 
 ;;; Code:
 
-(defgroup ruby nil
-  "Emacs Prelude Ruby support"
-  :group 'prelude)
-
-(defcustom prelude-enable-ruby-hook t
-  "Enable Prelude's Ruby hook"
-  :type 'boolean
-  :group 'ruby)
-
 ;; Rake files are ruby, too, as are gemspecs, rackup files, and gemfiles.
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
@@ -76,8 +67,7 @@
   (ruby-block-mode t)
   (local-set-key (kbd "C-h r") 'yari))
 
-(when prelude-enable-ruby-hook
- (add-hook 'ruby-mode-hook 'prelude-ruby-mode-hook))
+(add-hook 'ruby-mode-hook 'prelude-ruby-mode-hook)
 
 (require 'haml-mode)
 (require 'scss-mode)

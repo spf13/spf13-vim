@@ -32,27 +32,6 @@
 
 ;;; Code:
 
-(defgroup common-lisp nil
-  "Prelude's Common Lisp support"
-  :group 'prelude)
-
-(defcustom prelude-start-slime-automatically t
-  "Start SLIME automatically the first time a .list file is opened."
-  :type 'boolean
-  :group 'common-lisp)
-
-(defcustom prelude-enable-common-lisp-hook t
-  "Enable Prelude's Common Lisp hook"
-  :type 'boolean
-  :group 'common-lisp)
-
-(defcustom prelude-load-common-lisp-slime-automatically nil
-  "Load Common Lisp's SLIME by default. Setting this to `t' is not a
-very good idea if you're programming on occasion in both Clojure and
-Common Lisp."
-  :type 'boolean
-  :group 'common-lisp)
-
 (require 'prelude-lisp)
 
 ;; the SBCL configuration file is in Common Lisp
@@ -84,17 +63,15 @@ Common Lisp."
   ;; default to SBCL on Linux and Windows
   (setq slime-default-lisp 'sbcl))
 
-(when prelude-enable-common-lisp-hook
-  (add-hook 'lisp-mode-hook 'prelude-lisp-coding-hook)
-  (add-hook 'slime-repl-mode-hook 'prelude-interactive-lisp-coding-hook))
+(add-hook 'lisp-mode-hook 'prelude-lisp-coding-hook)
+(add-hook 'slime-repl-mode-hook 'prelude-interactive-lisp-coding-hook)
 
 ;; start slime automatically when we open a lisp file
 (defun prelude-start-slime ()
   (unless (slime-connected-p)
     (save-excursion (slime))))
 
-(when prelude-start-slime-automatically
-  (add-hook 'slime-mode-hook 'prelude-start-slime))
+(add-hook 'slime-mode-hook 'prelude-start-slime)
 
 ;; Stop SLIME's REPL from grabbing DEL,
 ;; which is annoying when backspacing over a '('

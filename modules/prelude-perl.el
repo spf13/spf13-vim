@@ -32,15 +32,6 @@
 
 ;;; Code:
 
-(defgroup perl nil
-  "Emacs Prelude Perl support."
-  :group 'prelude)
-
-(defcustom prelude-enable-perl-hook t
-  "Enable Prelude's Perl hook"
-  :type 'boolean
-  :group 'perl)
-
 ;; use cperl-mode instead of perl-mode
 (defalias 'perl-mode 'cperl-mode)
 
@@ -65,8 +56,7 @@
   (set-face-background 'cperl-hash-face nil)
   (setq cperl-invalid-face nil))
 
-(when prelude-enable-perl-hook
- (add-hook 'cperl-mode-hook 'prelude-cperl-mode-hook t))
+(add-hook 'cperl-mode-hook 'prelude-cperl-mode-hook t)
 
 (provide 'prelude-perl)
 

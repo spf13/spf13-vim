@@ -32,135 +32,123 @@
 
 ;;; Code:
 
-(defcustom prelude-enable-additional-keybindings t
-  "Enable Prelude additional global keybindings"
-  :type 'boolean
-  :group 'prelude)
+;; You know, like Readline.
+(global-set-key (kbd "C-M-h") 'backward-kill-word)
 
-(defcustom prelude-disable-arrow-navigation t
-  "Disable arrow navigation"
-  :type 'boolean
-  :group 'prelude)
+;; Align your code in a pretty way.
+(global-set-key (kbd "C-x \\") 'align-regexp)
 
-(when prelude-enable-additional-keybindings
-  ;; You know, like Readline.
-  (global-set-key (kbd "C-M-h") 'backward-kill-word)
+;; Perform general cleanup.
+(global-set-key (kbd "C-c n") 'prelude-cleanup-buffer)
 
-  ;; Align your code in a pretty way.
-  (global-set-key (kbd "C-x \\") 'align-regexp)
+;; Font size
+(define-key global-map (kbd "C-+") 'text-scale-increase)
+(define-key global-map (kbd "C--") 'text-scale-decrease)
 
-  ;; Perform general cleanup.
-  (global-set-key (kbd "C-c n") 'prelude-cleanup-buffer)
+;; Jump to a definition in the current file. (This is awesome.)
+(global-set-key (kbd "M-i") 'prelude-ido-goto-symbol)
 
-  ;; Font size
-  (define-key global-map (kbd "C-+") 'text-scale-increase)
-  (define-key global-map (kbd "C--") 'text-scale-decrease)
+;; File finding
+(global-set-key (kbd "C-x f") 'prelude-recentf-ido-find-file)
+(global-set-key (kbd "C-c r") 'bury-buffer)
+(global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
 
-  ;; Jump to a definition in the current file. (This is awesome.)
-  (global-set-key (kbd "M-i") 'prelude-ido-goto-symbol)
+;; Window switching. (C-x o goes to the next window)
+(global-set-key (kbd "C-x O") (lambda ()
+                                (interactive)
+                                (other-window -1))) ;; back one
 
-  ;; File finding
-  (global-set-key (kbd "C-x f") 'prelude-recentf-ido-find-file)
-  (global-set-key (kbd "C-c r") 'bury-buffer)
-  (global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
+;; Indentation help
+(global-set-key (kbd "C-x ^") 'join-line)
+(global-set-key (kbd "C-M-\\") 'prelude-indent-region-or-buffer)
 
-  ;; Window switching. (C-x o goes to the next window)
-  (global-set-key (kbd "C-x O") (lambda ()
-                                  (interactive)
-                                  (other-window -1))) ;; back one
+;; Start proced in a similar manner to dired
+(global-set-key (kbd "C-x p") 'proced)
 
-  ;; Indentation help
-  (global-set-key (kbd "C-x ^") 'join-line)
-  (global-set-key (kbd "C-M-\\") 'prelude-indent-region-or-buffer)
+;; Start eshell or switch to it if it's active.
+(global-set-key (kbd "C-x m") 'eshell)
 
-  ;; Start proced in a similar manner to dired
-  (global-set-key (kbd "C-x p") 'proced)
+;; Start a new eshell even if one is active.
+(global-set-key (kbd "C-x M") (lambda () (interactive) (eshell t)))
 
-  ;; Start eshell or switch to it if it's active.
-  (global-set-key (kbd "C-x m") 'eshell)
+;; Start a regular shell if you prefer that.
+(global-set-key (kbd "C-x M-m") 'shell)
 
-  ;; Start a new eshell even if one is active.
-  (global-set-key (kbd "C-x M") (lambda () (interactive) (eshell t)))
+;; If you want to be able to M-x without meta
+(global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
-  ;; Start a regular shell if you prefer that.
-  (global-set-key (kbd "C-x M-m") 'shell)
+;; Fetch the contents at a URL, display it raw.
+(global-set-key (kbd "C-x C-h") 'prelude-view-url)
 
-  ;; If you want to be able to M-x without meta
-  (global-set-key (kbd "C-x C-m") 'execute-extended-command)
+;; A complementary binding to the apropos-command(C-h a)
+(global-set-key (kbd "C-h A") 'apropos)
 
-  ;; Fetch the contents at a URL, display it raw.
-  (global-set-key (kbd "C-x C-h") 'prelude-view-url)
+;; Should be able to eval-and-replace anywhere.
+(global-set-key (kbd "C-c e") 'prelude-eval-and-replace)
 
-  ;; A complementary binding to the apropos-command(C-h a)
-  (global-set-key (kbd "C-h A") 'apropos)
+;; Magit rules!
+(global-set-key (kbd "C-x g") 'magit-status)
 
-  ;; Should be able to eval-and-replace anywhere.
-  (global-set-key (kbd "C-c e") 'prelude-eval-and-replace)
+;; Activate occur easily inside isearch
+(define-key isearch-mode-map (kbd "C-o")
+  (lambda () (interactive)
+    (let ((case-fold-search isearch-case-fold-search))
+      (occur (if isearch-regexp
+                 isearch-string
+               (regexp-quote isearch-string))))))
 
-  ;; Magit rules!
-  (global-set-key (kbd "C-x g") 'magit-status)
+;; cycle through buffers
+(global-set-key (kbd "<C-tab>") 'bury-buffer)
 
-  ;; Activate occur easily inside isearch
-  (define-key isearch-mode-map (kbd "C-o")
-    (lambda () (interactive)
-      (let ((case-fold-search isearch-case-fold-search))
-        (occur (if isearch-regexp
-                   isearch-string
-                 (regexp-quote isearch-string))))))
+;; use hippie-expand instead of dabbrev
+(global-set-key (kbd "M-/") 'hippie-expand)
 
-  ;; cycle through buffers
-  (global-set-key (kbd "<C-tab>") 'bury-buffer)
+;; spell check Bulgarian text
+(global-set-key (kbd "C-c B")
+                (lambda()(interactive)
+                  (ispell-change-dictionary "bulgarian")
+                  (flyspell-buffer)))
 
-  ;; use hippie-expand instead of dabbrev
-  (global-set-key (kbd "M-/") 'hippie-expand)
+;; replace buffer-menu with ibuffer
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
-  ;; spell check Bulgarian text
-  (global-set-key (kbd "C-c B")
-                  (lambda()(interactive)
-                    (ispell-change-dictionary "bulgarian")
-                    (flyspell-buffer)))
+;; swap windows
+(global-set-key (kbd "C-c s") 'prelude-swap-windows)
 
-  ;; replace buffer-menu with ibuffer
-  (global-set-key (kbd "C-x C-b") 'ibuffer)
+;; duplicate the current line or region
+(global-set-key (kbd "C-c d") 'prelude-duplicate-current-line-or-region)
 
-  ;; swap windows
-  (global-set-key (kbd "C-c s") 'prelude-swap-windows)
+;; rename buffer & visited file
+(global-set-key (kbd "C-c r") 'prelude-rename-file-and-buffer)
 
-  ;; duplicate the current line or region
-  (global-set-key (kbd "C-c d") 'prelude-duplicate-current-line-or-region)
+;; open an ansi-term buffer
+(global-set-key (kbd "C-x t") 'prelude-visit-term-buffer)
 
-  ;; rename buffer & visited file
-  (global-set-key (kbd "C-c r") 'prelude-rename-file-and-buffer)
+;; toggle input method
+(global-set-key (kbd "C-\\") 'prelude-toggle-bulgarian-input-method)
 
-  ;; open an ansi-term buffer
-  (global-set-key (kbd "C-x t") 'prelude-visit-term-buffer)
+;; search with google
+(global-set-key (kbd "C-c g") 'prelude-google)
 
-  ;; toggle input method
-  (global-set-key (kbd "C-\\") 'prelude-toggle-bulgarian-input-method)
+;; open in external application
+(global-set-key (kbd "C-c o") 'prelude-open-with)
 
-  ;; search with google
-  (global-set-key (kbd "C-c g") 'prelude-google)
+;; toggle menu-bar visibility
+(global-set-key (kbd "<f12>") 'menu-bar-mode)
 
-  ;; open in external application
-  (global-set-key (kbd "C-c o") 'prelude-open-with)
-
-  ;; toggle menu-bar visibility
-  (global-set-key (kbd "<f12>") 'menu-bar-mode))
-
-(when prelude-disable-arrow-navigation
-  ;; real Emacs hackers don't use the arrow keys
-  (global-set-key (kbd "<up>") (lambda ()
+;; real Emacs hackers don't use the arrow keys
+(global-set-key (kbd "<up>") (lambda ()
+                               (interactive)
+                               (message "Arrow key navigation is disabled. Use C-p instead.")))
+(global-set-key (kbd "<down>") (lambda ()
                                  (interactive)
-                                 (message "Arrow key navigation is disabled. Use C-p instead.")))
-  (global-set-key (kbd "<down>") (lambda ()
-                                   (interactive)
-                                   (message "Arrow key navigation is disabled. Use C-n instead.")))
-  (global-set-key (kbd "<left>") (lambda ()
-                                   (interactive)
-                                   (message "Arrow key navigation is disabled. Use C-b instead.")))
-  (global-set-key (kbd "<right>") (lambda ()
-                                    (interactive)
-                                    (message "Arrow key navigation is disabled. Use C-f instead."))))
+                                 (message "Arrow key navigation is disabled. Use C-n instead.")))
+(global-set-key (kbd "<left>") (lambda ()
+                                 (interactive)
+                                 (message "Arrow key navigation is disabled. Use C-b instead.")))
+(global-set-key (kbd "<right>") (lambda ()
+                                  (interactive)
+                                  (message "Arrow key navigation is disabled. Use C-f instead.")))
 
 (provide 'prelude-global-keybindings)
 

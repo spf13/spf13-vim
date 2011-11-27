@@ -33,62 +33,30 @@
 
 ;;; Code:
 
-;; customization
-(defgroup ui nil
-  "Emacs Prelude UI"
-  :group 'prelude)
-
-(defcustom prelude-use-minimalistic-ui t
-  "If set to true Prelude will dispense of most the UI that's mouse related -
-menu bar, tool bar, etc"
-  :type 'boolean
-  :group 'ui)
-
-(defcustom prelude-use-smooth-scrolling t
-  "Overrides the default scrolling behavior with a much more common one."
-  :type 'boolean
-  :group 'ui)
-
-(defcustom prelude-use-default-prelude-theme t
-  "If set to true Prelude will load up its default theme (Zenburn),
-instead of Emacs's default theme."
-  :type 'boolean
-  :group 'ui)
-
-(defcustom prelude-enhance-modeline t
-  "If set to true Prelude will augment the default modeline settings."
-  :type 'boolean
-  :group 'ui)
-
-
-(when prelude-use-minimalistic-ui
- ;; the toolbar is just a waste of valuable screen estate
- ;; in a tty tool-bar-mode does not properly auto-load, and is
- ;; already disabled anyway
- (when (fboundp 'tool-bar-mode)
+;; the toolbar is just a waste of valuable screen estate
+;; in a tty tool-bar-mode does not properly auto-load, and is
+;; already disabled anyway
+(when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
- ;; the menu bar is mostly useless as well
- ;; but removing it under OS X doesn't make much sense
- (unless (eq system-type 'darwin)
-   (menu-bar-mode -1))
- ;; the blinking cursor is nothing, but an annoyance
- (blink-cursor-mode -1)
+;; the menu bar is mostly useless as well
+;; but removing it under OS X doesn't make much sense
+(unless (eq system-type 'darwin)
+  (menu-bar-mode -1))
+;; the blinking cursor is nothing, but an annoyance
+(blink-cursor-mode -1)
 
- ;; disable startup screen
- (setq inhibit-startup-screen t))
+;; disable startup screen
+(setq inhibit-startup-screen t)
 
+;; nice scrolling
+(setq scroll-margin 0
+      scroll-conservatively 100000
+      scroll-preserve-screen-position 1)
 
-(when prelude-use-smooth-scrolling
- ;; nice scrolling
- (setq scroll-margin 0
-       scroll-conservatively 100000
-       scroll-preserve-screen-position 1))
-
-(when prelude-enhance-modeline
- ;; mode line settings
- (line-number-mode t)
- (column-number-mode t)
- (size-indication-mode t))
+;; mode line settings
+(line-number-mode t)
+(column-number-mode t)
+(size-indication-mode t)
 
 ;; enable y/n answers
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -96,8 +64,8 @@ instead of Emacs's default theme."
 ;; custom Emacs 24 color themes support
 (add-to-list 'custom-theme-load-path (concat prelude-dir "themes/"))
 
-(when prelude-use-default-prelude-theme
-  (load-theme 'zenburn t))
+;; use zenburn as the default theme
+(load-theme 'zenburn t)
 
 (provide 'prelude-ui)
 ;;; prelude-ui.el ends here

@@ -32,24 +32,13 @@
 
 ;;; Code:
 
-;; customize
-(defgroup c nil
-  "Emacs Prelude C programming support"
-  :group 'prelude)
-
-(defcustom prelude-enable-c-hook t
-  "Enable Prelude's default C hook."
-  :type 'boolean
-  :group 'c)
-
 (defun prelude-c-coding-hook ()
   (setq c-basic-offset 4)
   (prelude-coding-hook))
 
-(when prelude-enable-c-hook
-  ;; this will affect all modes derived from cc-mode, like
-  ;; java-mode, php-mode, etc
-  (add-hook 'c-mode-common-hook 'prelude-c-coding-hook))
+;; this will affect all modes derived from cc-mode, like
+;; java-mode, php-mode, etc
+(add-hook 'c-mode-common-hook 'prelude-c-coding-hook)
 
 (provide 'prelude-c)
 
