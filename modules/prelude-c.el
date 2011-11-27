@@ -32,13 +32,13 @@
 
 ;;; Code:
 
-(defun prelude-c-coding-hook ()
+(defun prelude-c-mode-common-hook ()
   (setq c-basic-offset 4)
   (prelude-coding-hook))
 
 ;; this will affect all modes derived from cc-mode, like
 ;; java-mode, php-mode, etc
-(add-hook 'c-mode-common-hook 'prelude-c-coding-hook)
+(add-hook 'c-mode-common-hook 'prelude-c-mode-common-hook)
 
 (provide 'prelude-c)
 

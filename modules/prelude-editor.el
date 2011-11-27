@@ -166,7 +166,7 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; load yasnippet
-(require 'yasnippet) ;; not yasnippet-bundle
+(require 'yasnippet)
 (yas/initialize)
 
 ;; keep the whitespace decent all the time

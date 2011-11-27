@@ -32,12 +32,12 @@
 
 ;;; Code:
 
-(defun prelude-js-coding-hook ()
+(defun prelude-js-mode-hook ()
   (prelude-coding-hook)
   ;; electric-layout-mode doesn't play nice with js-mode
   (electric-layout-mode -1))
 
-(add-hook 'js-mode-hook 'prelude-js-coding-hook)
+(add-hook 'js-mode-hook 'prelude-js-mode-hook)
 
 (provide 'prelude-js)
 

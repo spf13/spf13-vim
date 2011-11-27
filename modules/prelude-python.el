@@ -35,10 +35,11 @@
 
 (require 'python)
 
-(defun prelude-python-coding-hook ()
+(defun prelude-python-mode-hook ()
+  (prelude-coding-hook)
   (electric-indent-mode -1))
 
-(add-hook 'python-mode-hook 'prelude-python-coding-hook)
+(add-hook 'python-mode-hook 'prelude-python-mode-hook)
 
 (provide 'prelude-python)
 
