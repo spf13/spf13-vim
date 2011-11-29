@@ -34,6 +34,7 @@
 
 (defun prelude-haskell-mode-hook ()
   (prelude-coding-hook)
+  (subword-mode +1)
   (turn-on-haskell-doc-mode)
   (turn-on-haskell-indentation))
 
