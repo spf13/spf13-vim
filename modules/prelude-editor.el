@@ -169,9 +169,6 @@
 (require 'yasnippet)
 (yas/initialize)
 
-;; keep the whitespace decent all the time
-(add-hook 'before-save-hook 'whitespace-cleanup)
-
 ;; projectile is a project management mode
 (require 'projectile)
 (projectile-global-mode t)

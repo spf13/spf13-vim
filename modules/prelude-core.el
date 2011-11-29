@@ -324,7 +324,9 @@ there's a region, all lines that region covers will be duplicated."
   (prelude-local-comment-auto-fill)
   (prelude-turn-on-whitespace)
   (prelude-turn-on-abbrev)
-  (prelude-add-watchwords))
+  (prelude-add-watchwords)
+  ;; keep the whitespace decent all the time
+  (add-hook 'before-save-hook 'whitespace-cleanup nil t))
 
 (defun prelude-untabify-buffer ()
   (interactive)
