@@ -33,7 +33,6 @@
 ;;; Code:
 
 (defun prelude-js-mode-hook ()
-  (prelude-coding-hook)
   ;; electric-layout-mode doesn't play nice with js-mode
   (electric-layout-mode -1))
 

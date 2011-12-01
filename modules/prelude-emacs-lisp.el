@@ -43,12 +43,13 @@
                   (delete-file (concat buffer-file-name "c"))))))
 
 (defun prelude-emacs-lisp-mode-hook ()
+  (prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
-  (prelude-remove-elc-on-save)
-  (prelude-lisp-coding-hook))
+  (prelude-remove-elc-on-save))
 
 (add-hook 'emacs-lisp-mode-hook 'prelude-emacs-lisp-mode-hook)
 
+;; ielm is an interactive Emacs Lisp shell
 (defun prelude-ielm-mode-hook ()
   (prelude-interactive-lisp-coding-hook)
   (turn-on-eldoc-mode))

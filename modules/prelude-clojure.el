@@ -40,7 +40,7 @@
 (require 'clojure-mode)
 
 (defun prelude-clojure-mode-hook ()
-  (prelude-list-coding-hook))
+  (prelude-lisp-coding-hook))
 
 (add-hook 'clojure-mode-hook 'prelude-clojure-mode-hook)
 

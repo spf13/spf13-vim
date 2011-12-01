@@ -37,7 +37,6 @@
 
 ;; a great lisp coding hook
 (defun prelude-lisp-coding-hook ()
-  (prelude-coding-hook)
   (paredit-mode +1))
 
 ;; interactive modes don't need whitespace checks

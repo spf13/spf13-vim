@@ -318,7 +318,7 @@ there's a region, all lines that region covers will be duplicated."
    nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\):"
           1 font-lock-warning-face t))))
 
-(defun prelude-coding-hook ()
+(defun prelude-prog-mode-hook ()
   "Default coding hook, useful with any programming language."
   (flyspell-prog-mode)
   (prelude-local-comment-auto-fill)
@@ -327,6 +327,10 @@ there's a region, all lines that region covers will be duplicated."
   (prelude-add-watchwords)
   ;; keep the whitespace decent all the time
   (add-hook 'before-save-hook 'whitespace-cleanup nil t))
+
+;; in Emacs 24 programming major modes generally derive
+;; from a common mode named prog-mode
+(add-hook 'prog-mode-hook 'prelude-prog-mode-hook)
 
 (defun prelude-untabify-buffer ()
   (interactive)

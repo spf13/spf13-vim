@@ -36,7 +36,6 @@
 (defalias 'perl-mode 'cperl-mode)
 
 (defun prelude-cperl-mode-hook ()
-  (prelude-coding-hook)
   (setq cperl-indent-level 4)
   (setq cperl-continued-statement-offset 8)
   ;; cperl-hairy affects all those variables, but I prefer
