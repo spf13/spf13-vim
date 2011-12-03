@@ -59,9 +59,9 @@ by Prelude.")
 (setq custom-file (concat prelude-personal-dir "custom.el"))
 
 ;; the core stuff
-(require 'prelude-ui)
 (require 'prelude-packages)
 (require 'prelude-el-get)
+(require 'prelude-ui)
 (require 'prelude-core)
 (require 'prelude-editor)
 (require 'prelude-global-keybindings)
