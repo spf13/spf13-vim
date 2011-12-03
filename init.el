@@ -61,6 +61,7 @@ by Prelude.")
 ;; the core stuff
 (require 'prelude-ui)
 (require 'prelude-packages)
+(require 'prelude-el-get)
 (require 'prelude-core)
 (require 'prelude-editor)
 (require 'prelude-global-keybindings)

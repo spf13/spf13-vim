@@ -86,9 +86,6 @@
 ;; Should be able to eval-and-replace anywhere.
 (global-set-key (kbd "C-c e") 'prelude-eval-and-replace)
 
-;; Magit rules!
-(global-set-key (kbd "C-x g") 'magit-status)
-
 ;; Activate occur easily inside isearch
 (define-key isearch-mode-map (kbd "C-o")
   (lambda () (interactive)
@@ -102,12 +99,6 @@
 
 ;; use hippie-expand instead of dabbrev
 (global-set-key (kbd "M-/") 'hippie-expand)
-
-;; spell check Bulgarian text
-(global-set-key (kbd "C-c B")
-                (lambda()(interactive)
-                  (ispell-change-dictionary "bulgarian")
-                  (flyspell-buffer)))
 
 ;; replace buffer-menu with ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -123,9 +114,6 @@
 
 ;; open an ansi-term buffer
 (global-set-key (kbd "C-x t") 'prelude-visit-term-buffer)
-
-;; toggle input method
-(global-set-key (kbd "C-\\") 'prelude-toggle-bulgarian-input-method)
 
 ;; search with google
 (global-set-key (kbd "C-c g") 'prelude-google)
