@@ -127,6 +127,9 @@
 
     " Setting up the directories {
         set backup                      " backups are nice ...
+		set undofile					" so is persistent undo ...
+		set undolevels=1000 "maximum number of changes that can be undone
+		set undoreload=10000 "maximum number lines to save for undo on a buffer reload
         " Could use * rather than *.*, but I prefer to leave .files unsaved
         au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
         au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
@@ -503,10 +506,11 @@ function! InitializeDirectories()
   let separator = "."
   let parent = $HOME
   let prefix = '.vim'
-  let dir_list = {
-              \ 'backup': 'backupdir',
-              \ 'views': 'viewdir',
-              \ 'swap': 'directory' }
+  let dir_list = { 
+			  \ 'backup': 'backupdir', 
+			  \ 'views': 'viewdir', 
+			  \ 'swap': 'directory', 
+			  \ 'undo': 'undodir' }
 
   for [dirname, settingname] in items(dir_list)
       let directory = parent . '/' . prefix . dirname . "/"
