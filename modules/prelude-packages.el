@@ -38,8 +38,10 @@
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+;; check for new packages (package versions)
+(message "%s" "Emacs Prelude is now refreshing its package database...")
+(package-refresh-contents)
+(message "%s" " done.")
 
 ;; TODO find a way to get inf-ruby 2.2.2 into Marmalade
 (defvar prelude-packages

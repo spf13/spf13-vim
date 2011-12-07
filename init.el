@@ -33,6 +33,8 @@
 
 ;;; Code:
 
+(message "%s" "Emacs Prelude is powering up. Be patient, Master.")
+
 ;; On OS X Emacs doesn't use the shell PATH if it's not started from
 ;; the shell. If you're using homebrew modifying the PATH is essential.
 (if (eq system-type 'darwin)
@@ -88,5 +90,7 @@ by Prelude.")
 ;; load the personal settings (this includes `custom-file')
 (when (file-exists-p prelude-personal-dir)
   (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$")))
+
+(message "%s" "Emacs Prelude is ready to do thy bidding, Master!")
 
 ;;; init.el ends here
