@@ -67,6 +67,7 @@ by Prelude.")
 (require 'prelude-global-keybindings)
 
 ;; programming & markup languages support
+(require 'prelude-programming)
 (require 'prelude-c)
 (require 'prelude-clojure)
 (require 'prelude-coffee)
