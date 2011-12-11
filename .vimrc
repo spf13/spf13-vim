@@ -37,13 +37,15 @@
         Bundle 'tomtom/tlib_vim'
         Bundle 'mileszs/ack.vim'
 
-"    " General
+    " General
         Bundle 'scrooloose/nerdtree'
-        Bundle 'altercation/vim-colors-solariz'
+        Bundle 'altercation/vim-colors-solarized'
         Bundle 'spf13/vim-colors'
         Bundle 'tpope/vim-surround'
         Bundle 'ervandew/supertab'
-        Bundle 'Raimondi/delimitMate'
+        " Pick one of delimitMate or AutoClose
+        "Bundle 'Raimondi/delimitMate'
+        Bundle 'AutoClose'
         Bundle 'wincent/Command-T'
         Bundle 'spf13/vim-preview'
         bundle 'vim-scripts/sessionman.vim'
@@ -56,15 +58,19 @@
         Bundle 'spf13/snipmate-snippets'
         Bundle 'tpope/vim-fugitive'
         Bundle 'scrooloose/nerdcommenter'
-        Bundle 'tomtom/checksyntax_vim'
         Bundle 'godlygeek/tabular'
+        Bundle 'majutsushi/tagbar'
+
+        " Pick one of the checksyntax, jslint, or syntastic
+        "Bundle 'tomtom/checksyntax_vim'
+        "Bundle 'bloveridge/jslint.vim'
+        Bundle 'Syntastic'
 
     " PHP
         Bundle 'spf13/PIV'
         "Bundle 'taxilian/VimDebugger'
 
     " Python
-        "Bundle 'bloveridge/pyflakes-vim'
         Bundle 'generalov/pyflakes-vim'
         Bundle 'fs111/pydoc.vim'
         Bundle 'python.vim'
@@ -72,8 +78,12 @@
         Bundle 'pythoncomplete'
 
     " Javascript
-        Bundle 'bloveridge/jslint.vim'
         Bundle 'leshill/vim-json'
+        Bundle 'groenewege/vim-less'
+        Bundle 'taxilian/vim-web-indent'
+
+    " HTML
+        Bundle 'HTML-AutoCloseTag'
 
     " Ruby
         Bundle 'rails.vim'
@@ -194,7 +204,7 @@
     map <C-L> <C-W>l<C-W>_
     map <C-H> <C-W>h<C-W>_
     map <C-K> <C-W>k<C-W>_
-    
+
     " Wrapped lines goes down/up to next row, rather than next line in file.
     nnoremap j gj
     nnoremap k gk
@@ -214,7 +224,7 @@
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
-        
+
     """ Code folding options
     nmap <leader>f0 :set foldlevel=0<CR>
     nmap <leader>f1 :set foldlevel=1<CR>
@@ -245,7 +255,7 @@
     imap [F $
     map [H g0
     imap [H g0
-        
+
     " For when you forget to sudo.. Really Write the file.
     cmap w!! w !sudo tee % >/dev/null
 " }
