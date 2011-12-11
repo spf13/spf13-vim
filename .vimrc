@@ -48,7 +48,7 @@
         Bundle 'AutoClose'
         Bundle 'wincent/Command-T'
         Bundle 'spf13/vim-preview'
-        bundle 'vim-scripts/sessionman.vim'
+        Bundle 'vim-scripts/sessionman.vim'
         "Bundle 'greyblake/vim-preview'
         Bundle 'matchit.zip'
 
@@ -114,6 +114,7 @@
     set virtualedit=onemore         " allow for cursor beyond last character
     set history=1000                " Store a ton of history (default is 20)
     set spell                       " spell checking on
+    set hidden                      " allow buffer swtiching without saving
 
     " Setting up the directories {
         set backup                      " backups are nice ...
