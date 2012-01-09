@@ -1,10 +1,10 @@
 # spf13-vim : Steve Francia's Vim Distribution
 
-This is a distribution of vim plugins and tools intended to be run on top of VIM.  It is a good starting point for anyone intending to use VIM for development. 
+This is a distribution of vim plugins and tools intended to be run on top of VIM.  It is a good starting point for anyone intending to use VIM for development.
 
 Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses [Vundle] to have a well organized vim directory (Similar to mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
 
-Great care has been taken to ensure that each plugin plays nicely with others, and optional configuration has been provided for what we believe is the most efficient use. 
+Great care has been taken to ensure that each plugin plays nicely with others, and optional configuration has been provided for what we believe is the most efficient use.
 
 Lastly (and perhaps, most importantly) It is completely cross platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim](http://code.google.com/p/macvim/) or Gvim additional features are enabled. So regardless of your environment just clone and run.
 
@@ -33,12 +33,12 @@ To check if you have python or ruby support run
 
 If it returns 1 your vim supports ruby.
 
-## Installation
+## Installing on \*nix (MacOS X, Linux, etc)
 
 ### Easy Installation (\*nix only)
 
     curl https://raw.github.com/spf13/spf13-vim/3.0/bootstrap.sh -o - | sh
- 
+
 or
 
 ### Manual Installation
@@ -70,14 +70,16 @@ _Use ln -s on mac/unix or mklink on windows._
 
 On Windows and \*nix [Git] and [Curl] are required. 
 
-### Install [msysgit]
+### Installing dependencies
+
+#### Install [msysgit]
 
 After installation try running `git --version` within _command prompt_ (press Win-R,  type `cmd`, press Enter) to make sure all good:
 
     C:\> git --version
     git version 1.7.4.msysgit.0
 
-### Setup [Curl]. 
+#### Setup [Curl]
 _Instructions blatently copied from vundle readme_
 Installing Curl on Windows is easy as [Curl] is bundled with [msysgit]!
 But before it can be used with [Vundle] it's required make `curl` run in _command prompt_.
@@ -97,7 +99,6 @@ The easiest way is to create `curl.cmd` with [this content](https://gist.github.
     @curl.exe %*
 
 
-
 And copy it to `C:\Program Files\Git\cmd\curl.cmd`, assuming [msysgit] was installed to `c:\Program Files\Git`
 
 to verify all good, run:
@@ -107,6 +108,10 @@ to verify all good, run:
     Protocols: dict file ftp ftps http https imap imaps ldap ldaps pop3 pop3s rtsp smtp smtps telnet tftp
     Features: Largefile NTLM SSL SSPI libz
 
+
+#### Installing  spf13-vim on Windows
+
+The easiest way is to download and run the spf13-vim-windows-install.cmd file.
 
 ## Updating to the latest version
 
