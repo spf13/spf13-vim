@@ -21,7 +21,7 @@
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
     " }
-    " 
+    "
     " Setup Bundle Support {
     " The next two lines ensure that the ~/.vim/bundle/ system works
         set rtp+=~/.vim/bundle/vundle
@@ -60,6 +60,7 @@
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'godlygeek/tabular'
         Bundle 'majutsushi/tagbar'
+        Bundle 'Shougo/neocomplcache'
 
         " Pick one of the checksyntax, jslint, or syntastic
         "Bundle 'tomtom/checksyntax_vim'
@@ -71,8 +72,9 @@
         "Bundle 'taxilian/VimDebugger'
 
     " Python
-        Bundle 'generalov/pyflakes-vim'
-        Bundle 'fs111/pydoc.vim'
+        "Bundle 'generalov/pyflakes-vim'
+        "Bundle 'fs111/pydoc.vim'
+        Bundle 'klen/python-mode'
         Bundle 'python.vim'
         Bundle 'python_match.vim'
         Bundle 'pythoncomplete'
@@ -103,7 +105,8 @@
     syntax on                   " syntax highlighting
     set mouse=a                 " automatically enable mouse usage
     "set autochdir              " always switch to the current file directory.. Messes with some plugins, best left commented out
-    " not every vim is compiled with this, use the following line instead
+                                " not every vim is compiled with this, use the following line instead
+
     " If you use command-t plugin, it conflicts with this, comment it out.
      "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
     scriptencoding utf-8
@@ -400,8 +403,8 @@
           vmap <Leader>a:: :Tabularize /:\zs<CR>
           nmap <Leader>a, :Tabularize /,<CR>
           vmap <Leader>a, :Tabularize /,<CR>
-          nmap <Leader>a| :Tabularize /                                                                                                                                                              |<CR>
-          vmap <Leader>a| :Tabularize /                                                                                                                                                              |<CR>
+          nmap <Leader>a| :Tabularize /                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |<CR>
+          vmap <Leader>a| :Tabularize /                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |<CR>
 
           " The following function automatically aligns when typing a
           " supported character
@@ -434,6 +437,66 @@
      " JSON {
         nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
      " }
+
+     " } PyMode
+        g:pymode_lint_checker = "pyflakes"
+     " }
+
+     " neocomplcache {
+        let g:neocomplcache_enable_at_startup = 1
+        let g:neocomplcache_enable_camel_case_completion = 1
+        let g:neocomplcache_enable_smart_case = 1
+        let g:neocomplcache_enable_underbar_completion = 1
+        let g:neocomplcache_min_syntax_length = 3
+        let g:neocomplcache_enable_auto_delimiter = 1
+
+        " AutoComplPop like behavior.
+        let g:neocomplcache_enable_auto_select = 1
+
+        " SuperTab like snippets behavior.
+        imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+        " Plugin key-mappings.
+        imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+        smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+        inoremap <expr><C-g>     neocomplcache#undo_completion()
+        inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+        " Recommended key-mappings.
+        " <CR>: close popup and save indent.
+        inoremap <expr><CR>  neocomplcache#close_popup() . "\<CR>"
+        " <TAB>: completion.
+        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+        " <C-h>, <BS>: close popup and delete backword char.
+        inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+        inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+        inoremap <expr><C-y>  neocomplcache#close_popup()
+        inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+        " Enable omni completion.
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+        " Enable heavy omni completion.
+        if !exists('g:neocomplcache_omni_patterns')
+            let g:neocomplcache_omni_patterns = {}
+        endif
+        let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+        "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+        let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+        let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+        let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+        " For snippet_complete marker.
+        if has('conceal')
+            set conceallevel=2 concealcursor=i
+        endif
+
+     " }
+
 " }
 
 " GUI Settings {
@@ -441,7 +504,9 @@
     if has('gui_running')
         set guioptions-=T           " remove the toolbar
         set lines=40                " 40 lines of text instead of 24,
-        set transparency=5          " Make the window slightly transparent
+        if has('gui_macvim')
+            set transparency=5          " Make the window slightly transparent
+        endif
     else
         set term=builtin_ansi       " Make arrow and other keys work
     endif
@@ -451,11 +516,11 @@
 
 function! InitializeDirectories()
   let separator = "."
-  let parent = $HOME 
+  let parent = $HOME
   let prefix = '.vim'
-  let dir_list = { 
-              \ 'backup': 'backupdir', 
-              \ 'views': 'viewdir', 
+  let dir_list = {
+              \ 'backup': 'backupdir',
+              \ 'views': 'viewdir',
               \ 'swap': 'directory' }
 
   for [dirname, settingname] in items(dir_list)
@@ -468,7 +533,7 @@ function! InitializeDirectories()
       if !isdirectory(directory)
           echo "Warning: Unable to create backup directory: " . directory
           echo "Try: mkdir -p " . directory
-      else  
+      else
           let directory = substitute(directory, " ", "\\\\ ", "g")
           exec "set " . settingname . "=" . directory
       endif
