@@ -46,7 +46,8 @@
 (defvar prelude-packages
   '(auctex clojure-mode coffee-mode deft gist groovy-mode haml-mode
            haskell-mode inf-ruby markdown-mode paredit projectile
-           python sass-mode scss-mode solarized-theme yaml-mode yari zenburn-theme)
+           python sass-mode rainbow-mode scss-mode solarized-theme
+           yaml-mode yari zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p prelude-packages)

@@ -71,9 +71,14 @@
 (require 'haml-mode)
 (require 'scss-mode)
 
-(defun prelude-scss-mode-hook ()
-  ;; indent like in Ruby
+(defun prelude-css-mode-hook ()
   (setq css-indent-offset 2)
+  (rainbow-mode +1))
+
+(add-hook 'css-mode-hook 'prelude-css-mode-hook)
+
+(defun prelude-scss-mode-hook ()
+  (prelude-css-mode-hook)
   ;; turn off annoying auto-compile on save
   (setq scss-compile-at-save nil))
 
