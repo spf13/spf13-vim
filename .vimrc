@@ -398,8 +398,8 @@
         nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
      " }
 
-     " PyMode {
-        g:pymode_lint_checker = "pyflakes"
+     " } PyMode
+        let g:pymode_lint_checker = "pyflakes"
      " }
 
      " ctrlp {
