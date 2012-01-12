@@ -1,6 +1,13 @@
 " Modeline and Notes {
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
+"                    __ _ _____              _
+"         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
+"        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
+"        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
+"        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
+"            |_|
+"
 "   This is the personal .vimrc file of Steve Francia.
 "   While much of it is beneficial for general use, I would
 "   recommend picking out the parts you want and understand.
@@ -56,8 +63,9 @@
         Bundle 'Lokaltog/vim-powerline'
         Bundle 'Lokaltog/vim-easymotion'
         Bundle 'godlygeek/csapprox'
+        Bundle 'jistr/vim-nerdtree-tabs'
 
-    " General Programming 
+    " General Programming
         " Pick one of the checksyntax, jslint, or syntastic
         Bundle 'Syntastic'
         Bundle 'garbas/vim-snipmate'
@@ -355,8 +363,8 @@
           vmap <Leader>a:: :Tabularize /:\zs<CR>
           nmap <Leader>a, :Tabularize /,<CR>
           vmap <Leader>a, :Tabularize /,<CR>
-          nmap <Leader>a| :Tabularize /                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |<CR>
-          vmap <Leader>a| :Tabularize /                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |<CR>
+          nmap <Leader>a| :Tabularize /                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |<CR>
+          vmap <Leader>a| :Tabularize /                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |<CR>
 
           " The following function automatically aligns when typing a
           " supported character
@@ -398,6 +406,9 @@
         let g:ctrlp_working_path_mode = 2
         nnoremap <silent> <D-t> :CtrlP<CR>
         nnoremap <silent> <D-r> :CtrlPMRU<CR>
+        let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+            \ 'file': '\.exe$\|\.so$\|\.dll$' }
      "}
 
      " TagBar {
