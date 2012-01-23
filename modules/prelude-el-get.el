@@ -1,4 +1,5 @@
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(add-to-list 'load-path (concat prelude-dir "el-get/el-get"))
+(setq el-get-dir (concat prelude-dir "el-get/"))
 
 (unless (require 'el-get nil t)
   (with-current-buffer
