@@ -52,9 +52,9 @@ $ cp -r /usr/local/Cellar/emacs/HEAD/Emacs.app /Applications/
 
 The second step is optional, but it's recommended if you like to start
 Emacs from the launchpad or from Spotlight. Personally I prefer to
-start Emacs in daemon mode (emacs --daemon), so that I could share a
-single Emacs instance between several Emacs clients (emacsclient
--c/t).
+start Emacs in daemon mode (`emacs --daemon`), so that I could share a
+single Emacs instance between several Emacs clients (`emacsclient
+-c/t`).
 
 That's all folk! You may now proceed to the configuration section.
 
@@ -110,6 +110,7 @@ The following list will be expanded greatly in the future.
 
 * Clojure
 * CoffeeScript
+* Groovy
 * Haskell
 
 ### Additional markup languages support
@@ -123,11 +124,20 @@ The following list will be expanded greatly in the future.
 ### Enhanced configuration
 
 * C
+* Clojure
+* CoffeeScript
 * Common Lisp
+* ERC
+* JavaScript
+* Python
 * Ruby
 * Scheme
+* XML
 
 ## Enhanced productivity
+
+* Projectile
+* yasnippet
 
 ## Bundled packages
 
@@ -136,12 +146,14 @@ The following list will be expanded greatly in the future.
 * coffee-mode
 * deft (note taking)
 * gist (snippet sharing on github.com)
+* groovy-mode
 * haml-mode
 * haskell-mode
 * magit (enhanced git integration)
 * markdown-mode
 * paredit
 * projectile (project management mode)
+* python.el (improved Python mode)
 * sass-mode
 * scss-mode
 * yaml-mode
@@ -150,8 +162,14 @@ The following list will be expanded greatly in the future.
 
 ## Installation
 
-    git clone git://github.com/bbatsov/emacs-prelude.git path/to/local/repo
-    ln -s path/to/local/repo ~/.emacs.d
+```bash
+$ git clone git://github.com/bbatsov/emacs-prelude.git path/to/local/repo
+$ ln -s path/to/local/repo ~/.emacs.d
+```
+
+You'd do well to replace `~/.emacs.d` with the value of
+`user-emacs-directory` for your OS. You can check the value by doing
+`C-h v user-emacs-directory` inside Emacs.
 
 You might have to install the `make` and `makeinfo` packages if you
 don't have them already, since the build of some packages obtained via
@@ -162,19 +180,37 @@ don't have them already, since the build of some packages obtained via
 Nothing fancy here. Just start Emacs as usual. Personally I run Emacs
 in daemon mode:
 
-`emacs --daemon`
+`$ emacs --daemon`
 
 Afterwards I connect to the server with either a terminal or a GUI
 client like this:
 
-    emacsclient -t
-    emacsclient -c
+```bash
+$ emacsclient -t
+$ emacsclient -c
+```
+
+## Color Themes
+
+Emacs 24 ships with a new theming facility that effectively renders
+the old color-theme package obsolete. Emacs 24 provides a dozen of
+built-in themes you can use out-of-the-box by invoking the `M-x
+load-theme` command. Emacs Prelude adds two more popular themes to the
+mix - zenburn and solarized (I'm the maintainer of the Emacs ports
+included).
+
+Zenburn is the default color theme in Prelude, but you can change it
+at your discretion. Why Zenburn? I (and lots of hackers around the
+world) find it pretty neat for some reason. Personally I find the
+default theme pretty tiresome for the eyes, that's why I took that
+"controversial" decision to replace it. You can, of course, easily go
+back to the default (or select another theme entirely).
 
 ## Personalizing
 
 If you'd like to change some of the setting in Prelude (or simply add
 more) the proper way to do so would be to create Emacs Lisp files
-under the **personal** directory in ~/.emacs.d. They will be loaded
+under the **personal** directory in `prelude-dir`. They will be loaded
 automatically be Prelude on startup.
 
 Avoid modifying the Prelude config itself - this will make it hard for
@@ -190,25 +226,25 @@ far as navigation is concerned at least). That's why I've disabled all
 movement commands with arrows - to prevent you from being tempted to
 use them.
 
-### What is this terrible default theme?
+### Windows compatibility
 
-It's called Zenburn and I (and lots of hackers around the world) find it
-pretty neat (I also happen to be the maintainer of its Emacs port). I
-find the default theme pretty tiresome for the eyes, that's why I took
-that "controversial" decision to replace it. You can, of course,
-easily go back to the default (or select another theme entirely).
+While everything in Prelude should work fine in Windows I test it only
+with Linux & OSX so there are Windows related problems from time to
+time. This situation will probably improve over time.
 
 ## Known issues
 
-None so far.
+Check out the project's issue list for that. :-)
 
 ## Bugs & Improvements
 
 Bug reports and suggestions for improvements are always
-welcome. github pull requests are even better! ;-)
+welcome. github pull requests are even better! :-)
 
 I'd like to include a nice variety of Emacs 24 themes into Prelude -
 so if you've developed (or simply found) one - give me a shout and
 I'll take a look at it.
 
+Cheers,
 Bozhidar
+  
