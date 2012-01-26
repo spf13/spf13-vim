@@ -351,5 +351,12 @@ there's a region, all lines that region covers will be duplicated."
       (set-window-start w2 s1)))
   (other-window 1))
 
+(defun prelude-kill-other-buffers ()
+  "Kill all buffers but the current one"
+  (interactive)
+  (dolist (buffer (buffer-list))
+    (unless (eql buffer (current-buffer))
+      (kill-buffer buffer))))
+
 (provide 'prelude-core)
 ;;; prelude-core.el ends here

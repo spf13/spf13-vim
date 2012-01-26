@@ -115,6 +115,9 @@
 ;; open an ansi-term buffer
 (global-set-key (kbd "C-x t") 'prelude-visit-term-buffer)
 
+;; kill other buffers
+(global-set-key (kbd "C-c k o") 'prelude-kill-other-buffers)
+
 ;; search with google
 (global-set-key (kbd "C-c g") 'prelude-google)
 
