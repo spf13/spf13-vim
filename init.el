@@ -32,6 +32,7 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
+(require 'cl)
 
 (message "%s" "Emacs Prelude is powering up. Be patient, Master.")
 
