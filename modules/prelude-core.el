@@ -352,10 +352,10 @@ there's a region, all lines that region covers will be duplicated."
   (other-window 1))
 
 (defun prelude-kill-other-buffers ()
-  "Kill all buffers but the current one"
+  "Kill all buffers but the current one. Doesn't mess with special buffers."
   (interactive)
   (dolist (buffer (buffer-list))
-    (unless (eql buffer (current-buffer))
+    (unless (or (eql buffer (current-buffer)) (not (buffer-file-name buffer)))
       (kill-buffer buffer))))
 
 (provide 'prelude-core)
