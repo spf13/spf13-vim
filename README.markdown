@@ -28,7 +28,7 @@ If it returns 1 your vim supports ruby.
 
 ### Easy Installation (*nix only)
 
-    curl https://raw.github.com/spf13/spf13-vim/master/bootstrap.sh -o - | sh
+    curl http://j.mp/spf13-vim -o - | sh
  
 or
 
