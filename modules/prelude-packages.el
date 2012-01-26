@@ -38,17 +38,23 @@
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
-;; check for new packages (package versions)
-(message "%s" "Emacs Prelude is now refreshing its package database...")
-(package-refresh-contents)
-(message "%s" " done.")
-
 (defvar prelude-packages
-  '(auctex clojure-mode coffee-mode deft gist groovy-mode haml-mode
+  '(auctex clojure-mode coffee-mode deft full-ack gist groovy-mode haml-mode
            haskell-mode inf-ruby markdown-mode paredit projectile
            python sass-mode rainbow-mode scss-mode solarized-theme
            yaml-mode yari zenburn-theme)
   "A list of packages to ensure are installed at launch.")
+
+(defun prelude-packages-installled-p ()
+  (loop for p in prelude-packages
+        when (package-installed-p p) do (return nil)
+        finally (return t)))
+
+(unless prelude-packages-installed-p
+  ;; check for new packages (package versions)
+  (message "%s" "Emacs Prelude is now refreshing its package database...")
+  (package-refresh-contents)
+  (message "%s" " done."))
 
 (dolist (p prelude-packages)
   (when (not (package-installed-p p))
