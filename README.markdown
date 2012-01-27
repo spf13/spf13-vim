@@ -1,6 +1,6 @@
 # spf13-vim : Steve Francia's Vim Distribution
 
-This is a distribution of vim plugins and tools intended to be run on top of VIM.  It is a good starting point for anyone intending to use VIM for development.
+spf13-vim is a distribution of vim plugins and resources intended to be run on top of VIM.  It is a good starting point for anyone intending to use VIM for development.
 
 Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses [Vundle] to have a well organized vim directory (Similar to mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
 
@@ -37,7 +37,7 @@ If it returns 1 your vim supports ruby.
 
 ### Easy Installation (\*nix only)
 
-    curl https://raw.github.com/spf13/spf13-vim/3.0/bootstrap.sh -o - | sh
+    curl http://j.mp/spf13-vim3 -o - | sh
 
 or
 

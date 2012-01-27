@@ -42,21 +42,25 @@
         Bundle 'altercation/vim-colors-solarized'
         Bundle 'spf13/vim-colors'
         Bundle 'tpope/vim-surround'
-        Bundle 'ervandew/supertab'
+        "Bundle 'ervandew/supertab'
         " Pick one of delimitMate or AutoClose
         "Bundle 'Raimondi/delimitMate'
         Bundle 'AutoClose'
-        Bundle 'wincent/Command-T'
+        "Bundle 'wincent/Command-T'
+        Bundle 'kien/ctrlp.vim'
         Bundle 'spf13/vim-preview'
         Bundle 'vim-scripts/sessionman.vim'
         "Bundle 'greyblake/vim-preview'
         Bundle 'matchit.zip'
+        Bundle 'Lokaltog/vim-powerline'
+        Bundle 'Lokaltog/vim-easymotion'
 
     " General Programming 
         "Bundle 'spf13/snipmate.vim'
         Bundle 'garbas/vim-snipmate'
         Bundle 'spf13/snipmate-snippets'
         Bundle 'tpope/vim-fugitive'
+        Bundle 'tpope/vim-cucumber'
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'godlygeek/tabular'
         Bundle 'majutsushi/tagbar'
@@ -108,7 +112,7 @@
                                 " not every vim is compiled with this, use the following line instead
 
     " If you use command-t plugin, it conflicts with this, comment it out.
-     "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
     scriptencoding utf-8
 
     " set autowrite                  " automatically write a file when leaving a modified buffer
@@ -273,12 +277,13 @@
 
     " PIV {
         let g:DisableAutoPHPFolding = 0
+        let g:PIVAutoClose = 0
         "let cfu=phpcomplete#CompletePHP
     " }
 
     " Supertab {
-        let g:SuperTabDefaultCompletionType = "context"
-        let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+        "let g:SuperTabDefaultCompletionType = "context"
+        "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
         "let g:SuperTabContextDefaultCompletionType = "<c-x><c-p>"
         "let g:SuperTabMappingForward = '<c-space>'
         "let g:SuperTabMappingBackward = '<s-c-space>'
@@ -344,7 +349,7 @@
         inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
         " and make sure that it doesn't break supertab
-        let g:SuperTabCrMapping = 0
+        "let g:SuperTabCrMapping = 0
 
         " automatically open and close the popup menu / preview window
         au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -438,9 +443,13 @@
         nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
      " }
 
-     " } PyMode
+     " PyMode {
         g:pymode_lint_checker = "pyflakes"
      " }
+
+     " ctrlp { 
+        let g:ctrlp_working_path_mode = 2
+     "}
 
      " neocomplcache {
         let g:neocomplcache_enable_at_startup = 1
@@ -451,7 +460,7 @@
         let g:neocomplcache_enable_auto_delimiter = 1
 
         " AutoComplPop like behavior.
-        let g:neocomplcache_enable_auto_select = 1
+        let g:neocomplcache_enable_auto_select = 0
 
         " SuperTab like snippets behavior.
         imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -462,11 +471,13 @@
         inoremap <expr><C-g>     neocomplcache#undo_completion()
         inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
-        " Recommended key-mappings.
-        " <CR>: close popup and save indent.
-        inoremap <expr><CR>  neocomplcache#close_popup() . "\<CR>"
+        " <CR>: close popup 
+        " <s-CR>: close popup and save indent.
+        inoremap <expr><CR>  neocomplcache#close_popup()
+        inoremap <expr><s-CR>  neocomplcache#close_popup() . "\<CR>"
         " <TAB>: completion.
-        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+        "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
         " <C-h>, <BS>: close popup and delete backword char.
         inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
         inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
