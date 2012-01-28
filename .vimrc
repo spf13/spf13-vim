@@ -48,21 +48,18 @@
         Bundle 'altercation/vim-colors-solarized'
         Bundle 'spf13/vim-colors'
         Bundle 'tpope/vim-surround'
-        "Bundle 'ervandew/supertab'
-        " Pick one of delimitMate or AutoClose
-        "Bundle 'Raimondi/delimitMate'
         Bundle 'AutoClose'
-        "Bundle 'wincent/Command-T'
         Bundle 'kien/ctrlp.vim'
         Bundle 'spf13/vim-preview'
         Bundle 'vim-scripts/sessionman.vim'
-        "Bundle 'greyblake/vim-preview'
         Bundle 'matchit.zip'
         Bundle 'Lokaltog/vim-powerline'
         Bundle 'Lokaltog/vim-easymotion'
+        Bundle 'godlygeek/csapprox'
 
     " General Programming 
-        "Bundle 'spf13/snipmate.vim'
+        " Pick one of the checksyntax, jslint, or syntastic
+        Bundle 'Syntastic'
         Bundle 'garbas/vim-snipmate'
         Bundle 'spf13/snipmate-snippets'
         Bundle 'tpope/vim-fugitive'
@@ -71,17 +68,11 @@
         Bundle 'majutsushi/tagbar'
         Bundle 'Shougo/neocomplcache'
 
-        " Pick one of the checksyntax, jslint, or syntastic
-        Bundle 'Syntastic'
-
     " PHP
         Bundle 'spf13/PIV'
-        "Bundle 'taxilian/VimDebugger'
 
     " Python
         " Pick either python-mode or pyflakes & pydoc
-        "Bundle 'generalov/pyflakes-vim'
-        "Bundle 'fs111/pydoc.vim'
         Bundle 'klen/python-mode'
         Bundle 'python.vim'
         Bundle 'python_match.vim'
@@ -94,6 +85,7 @@
 
     " HTML
         Bundle 'HTML-AutoCloseTag'
+        Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 
     " Ruby
         Bundle 'rails.vim'
@@ -101,7 +93,6 @@
     " Misc
         Bundle 'spf13/vim-markdown'
         Bundle 'tpope/vim-cucumber'
-        "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
         Bundle 'Puppet-Syntax-Highlighting'
 " }
 
@@ -146,8 +137,6 @@
     set showmode                    " display the current mode
 
     set cursorline                  " highlight current line
-    "hi cursorline guibg=#333333     " highlight bg color of current line
-    "hi CursorColumn guibg=#333333   " highlight cursor
 
     if has('cmdline_info')
         set ruler                   " show the ruler
@@ -165,7 +154,6 @@
         set statusline+=%{fugitive#statusline()} "  Git Hotness
         set statusline+=\ [%{&ff}/%Y]            " filetype
         set statusline+=\ [%{getcwd()}]          " current dir
-        "set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
     endif
 
@@ -287,55 +275,14 @@
 
 " Plugins {
 
-    " VCSCommand {
-"       let b:VCSCommandMapPrefix=',v'
-"       let b:VCSCommandVCSType='git'
-    " }
-
     " PIV {
         let g:DisableAutoPHPFolding = 0
         let g:PIVAutoClose = 0
     " }
 
-    " Supertab {
-        "let g:SuperTabDefaultCompletionType = "context"
-        "let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-        "let g:SuperTabContextDefaultCompletionType = "<c-x><c-p>"
-        "let g:SuperTabMappingForward = '<c-space>'
-        "let g:SuperTabMappingBackward = '<s-c-space>'
-    " }
-
     " Misc {
-        :map <C-F10> <Esc>:vsp<CR>:VTree<CR>
-        " map Control + F10 to Vtree
-
-        noremap <leader><F5> :CheckSyntax<cr>
-        let g:checksyntax_auto = 1
-
-        "comment out line(s) in visual mode -RB: If you do this, you can't
-        "switch sides of the comment block in visual mode.
-        "vmap  o  :call NERDComment(1, 'toggle')<CR>
         let g:NERDShutUp=1
-
         let b:match_ignorecase = 1
-    " }
-
-    " ShowMarks {
-        let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        " Don't leave on by default, use :ShowMarksOn to enable
-        let g:showmarks_enable = 0
-        " For marks a-z
-        highlight ShowMarksHLl gui=bold guibg=LightBlue guifg=Blue
-        " For marks A-Z
-        highlight ShowMarksHLu gui=bold guibg=LightRed guifg=DarkRed
-        " For all other marks
-        highlight ShowMarksHLo gui=bold guibg=LightYellow guifg=DarkYellow
-        " For multiple marks on the same line.
-        highlight ShowMarksHLm gui=bold guibg=LightGreen guifg=DarkGreen
-    " }
-
-    " Command-t {
-        let g:CommandTSearchPath = $HOME . '/Code'
     " }
 
     " OmniComplete {
@@ -345,12 +292,6 @@
                 \setlocal omnifunc=syntaxcomplete#Complete |
                 \endif
         endif
-
-        " Popup menu hightLight Group
-        "highlight Pmenu    ctermbg=13  guibg=DarkBlue
-        "highlight PmenuSel ctermbg=7   guibg=DarkBlue      guifg=LightBlue
-        "highlight PmenuSbar ctermbg=7  guibg=DarkGray
-        "highlight PmenuThumb           guibg=Black
 
         hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
         hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
@@ -364,9 +305,6 @@
         inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
         inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
-        " and make sure that it doesn't break supertab
-        "let g:SuperTabCrMapping = 0
-
         " automatically open and close the popup menu / preview window
         au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
         set completeopt=menu,preview,longest
@@ -378,13 +316,6 @@
 
     " EasyTags {
         let g:easytags_cmd = 'ctags'
-    " }
-
-    " Delimitmate {
-        au FileType * let b:delimitMate_autoclose = 1
-
-        " If using html auto complete (complete closing tag)
-        au FileType xml,html,xhtml let b:delimitMate_matchpairs = "(:),[:],{:}"
     " }
 
     " AutoCloseTag {
