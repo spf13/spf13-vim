@@ -1,6 +1,10 @@
 # spf13-vim : Steve Francia's Vim Distribution
 
-spf13-vim is a distribution of vim plugins and resources intended to be run on top of VIM.  It is a good starting point for anyone intending to use VIM for development.
+spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and MacVim.  
+
+It is a good starting point for anyone intending to use VIM for development running equally well on Windows, Linux, *nix and Mac.
+
+The distribution is completely customisable using a `~/.vimrc.local` and `~/.vimrc.bundles.local` Vim RC files.
 
 Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses [Vundle] to have a well organized vim directory (Similar to mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
 
@@ -25,7 +29,7 @@ spf13-vim is built to be completely cross platform. It works equally well on con
 
 spf13-vim is dependent on a semi-recent version of VIM and should work well on anything above VIM 7.0.
 
-[Git] is required for installation. Certain plugins require python or ruby support to be compiled into VIM. 
+[Git] is required for installation. Certain plugins may require python or ruby support to be compiled into VIM.
 
 To check if you have python or ruby support run
 
@@ -37,34 +41,41 @@ If it returns 1 your vim supports ruby.
 
 ### Easy Installation (\*nix only)
 
+```bash
     curl http://j.mp/spf13-vim3 -o - | sh
+```
 
 or
 
 ### Manual Installation
 
 #### Backup existing vim configuration
+
+```bash
     today=`date +%Y%m%d`
     for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv $i $i.$today; done
+```
 
 #### Clone spf13-vim from github
+```bash
     endpath="$HOME/.spf13-vim-3"
     git clone --recursive -b 3.0 git://github.com/spf13/spf13-vim.git $endpath
     mkdir -p $endpath/.vim/bundle
     ln -s $endpath/.vimrc ~/.vimrc
     ln -s $endpath/.vim ~/.vim
+```
 
 _Use ln -s on mac/unix or mklink on windows._
 
 #### Installing Vundle
+```bash
     git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+```
 
 #### Install plugins using Vundle
+```bash
     vim +BundleInstall! +BundleClean +q
-
-#### Optionally build Command-t
-    cd $HOME/.vim/bundle/Command-t
-    (rake make) || warn "Ruby compilation failed. Ruby, GCC or rake not installed?"
+```
 
 ## Installing on Windows
 
@@ -115,9 +126,11 @@ The easiest way is to download and run the spf13-vim-windows-install.cmd file.
 
 ## Updating to the latest version
 
+```bash
     cd /path/to/spf13-vim/
     git pull
     vim +BundleInstall! +BundleClean +q
+```
 
 ## Customization
 
@@ -126,8 +139,10 @@ customizations.
 
 For example, to override the default color schemes:
 
+```bash
     echo color desert  > ~/.vimrc.local
     echo color molokai > ~/.gvimrc.local
+```
 
 ### Fork me on GitHub
 

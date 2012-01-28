@@ -37,6 +37,12 @@
         Bundle 'tomtom/tlib_vim'
         Bundle 'mileszs/ack.vim'
 
+    " Use local bundles if available {
+        if filereadable(expand("~/.vimrc.bundles.local"))
+            source ~/.vimrc.bundles.local
+        endif
+    " }
+
     " General
         Bundle 'scrooloose/nerdtree'
         Bundle 'altercation/vim-colors-solarized'
@@ -132,12 +138,16 @@
 
 " Vim UI {
     color solarized                 " load a colorscheme
+        let g:solarized_termtrans=1
+        let g:solarized_termcolors=256
+        let g:solarized_contrast="high"
+        let g:solarized_visibility="high"
     set tabpagemax=15               " only show 15 tabs
     set showmode                    " display the current mode
 
     set cursorline                  " highlight current line
-    hi cursorline guibg=#333333     " highlight bg color of current line
-    hi CursorColumn guibg=#333333   " highlight cursor
+    "hi cursorline guibg=#333333     " highlight bg color of current line
+    "hi CursorColumn guibg=#333333   " highlight cursor
 
     if has('cmdline_info')
         set ruler                   " show the ruler
@@ -165,7 +175,7 @@
     set showmatch                   " show matching brackets/parenthesis
     set incsearch                   " find as you type search
     set hlsearch                    " highlight search terms
-    set winminheight=0              " windows can be 0 line high 
+    set winminheight=0              " windows can be 0 line high
     set ignorecase                  " case insensitive search
     set smartcase                   " case sensitive when uc present
     set wildmenu                    " show list instead of just completing
@@ -203,13 +213,11 @@
     " Making it so ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
     nnoremap ; :
 
-
     " Easier moving in tabs and windows
     map <C-J> <C-W>j<C-W>_
     map <C-K> <C-W>k<C-W>_
     map <C-L> <C-W>l<C-W>_
     map <C-H> <C-W>h<C-W>_
-    map <C-K> <C-W>k<C-W>_
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
     nnoremap j gj
@@ -264,6 +272,17 @@
 
     " For when you forget to sudo.. Really Write the file.
     cmap w!! w !sudo tee % >/dev/null
+
+    " Some helpers to edit mode
+    " http://vimcasts.org/e/14
+    cnoremap %% <C-R>=expand('%:h').'/'<cr>
+    map <leader>ew :e %%
+    map <leader>es :sp %%
+    map <leader>ev :vsp %%
+    map <leader>et :tabe %%
+
+    " Adjust viewports to the same size
+    map <Leader>= <C-w>=
 " }
 
 " Plugins {
@@ -405,8 +424,8 @@
           vmap <Leader>a:: :Tabularize /:\zs<CR>
           nmap <Leader>a, :Tabularize /,<CR>
           vmap <Leader>a, :Tabularize /,<CR>
-          nmap <Leader>a| :Tabularize /                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |<CR>
-          vmap <Leader>a| :Tabularize /                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |<CR>
+          nmap <Leader>a| :Tabularize /                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |<CR>
+          vmap <Leader>a| :Tabularize /                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |<CR>
 
           " The following function automatically aligns when typing a
           " supported character
@@ -444,8 +463,23 @@
         g:pymode_lint_checker = "pyflakes"
      " }
 
-     " ctrlp { 
+     " ctrlp {
         let g:ctrlp_working_path_mode = 2
+        nnoremap <silent> <D-t> :CtrlP<CR>
+        nnoremap <silent> <D-r> :CtrlPMRU<CR>
+     "}
+
+     " TagBar {
+        nnoremap <silent> <leader>tt :TagbarToggle<CR>
+     "}
+
+     " Fugitive {
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gd :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR>
      "}
 
      " neocomplcache {
@@ -468,7 +502,7 @@
         inoremap <expr><C-g>     neocomplcache#undo_completion()
         inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
-        " <CR>: close popup 
+        " <CR>: close popup
         " <s-CR>: close popup and save indent.
         inoremap <expr><CR>  neocomplcache#close_popup()
         inoremap <expr><s-CR>  neocomplcache#close_popup() . "\<CR>"
@@ -505,6 +539,7 @@
 
      " }
 
+
 " }
 
 " GUI Settings {
@@ -512,7 +547,7 @@
     if has('gui_running')
         set guioptions-=T           " remove the toolbar
         set lines=40                " 40 lines of text instead of 24,
-        set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15, Courier\ New\ Regular:h18
+        set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
         if has('gui_macvim')
             set transparency=5          " Make the window slightly transparent
         endif
