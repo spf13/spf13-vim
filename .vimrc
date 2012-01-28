@@ -60,15 +60,12 @@
         Bundle 'garbas/vim-snipmate'
         Bundle 'spf13/snipmate-snippets'
         Bundle 'tpope/vim-fugitive'
-        Bundle 'tpope/vim-cucumber'
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'godlygeek/tabular'
         Bundle 'majutsushi/tagbar'
         Bundle 'Shougo/neocomplcache'
 
         " Pick one of the checksyntax, jslint, or syntastic
-        "Bundle 'tomtom/checksyntax_vim'
-        "Bundle 'bloveridge/jslint.vim'
         Bundle 'Syntastic'
 
     " PHP
@@ -76,6 +73,7 @@
         "Bundle 'taxilian/VimDebugger'
 
     " Python
+        " Pick either python-mode or pyflakes & pydoc
         "Bundle 'generalov/pyflakes-vim'
         "Bundle 'fs111/pydoc.vim'
         Bundle 'klen/python-mode'
@@ -96,6 +94,7 @@
 
     " Misc
         Bundle 'spf13/vim-markdown'
+        Bundle 'tpope/vim-cucumber'
         "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
         Bundle 'Puppet-Syntax-Highlighting'
 " }
@@ -277,7 +276,6 @@
     " PIV {
         let g:DisableAutoPHPFolding = 0
         let g:PIVAutoClose = 0
-        "let cfu=phpcomplete#CompletePHP
     " }
 
     " Supertab {
@@ -514,6 +512,7 @@
     if has('gui_running')
         set guioptions-=T           " remove the toolbar
         set lines=40                " 40 lines of text instead of 24,
+        set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15, Courier\ New\ Regular:h18
         if has('gui_macvim')
             set transparency=5          " Make the window slightly transparent
         endif
