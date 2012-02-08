@@ -1,80 +1,44 @@
 # spf13-vim : Steve Francia's Vim Distribution
 
-spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and MacVim.  
+                    __ _ _____              _
+         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
+        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
+        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
+        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
+            |_|
+
+spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and [MacVim].
 
 It is a good starting point for anyone intending to use VIM for development running equally well on Windows, Linux, *nix and Mac.
 
 The distribution is completely customisable using a `~/.vimrc.local` and `~/.vimrc.bundles.local` Vim RC files.
 
-Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses [Vundle] to have a well organized vim directory (Similar to mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
+![spf13-vim image][spf13-vim-img]
+
+Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses the [Vundle] plugin management system to have a well organized vim directory (Similar to mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
 
 Great care has been taken to ensure that each plugin plays nicely with others, and optional configuration has been provided for what we believe is the most efficient use.
 
-Lastly (and perhaps, most importantly) It is completely cross platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim](http://code.google.com/p/macvim/) or Gvim additional features are enabled. So regardless of your environment just clone and run.
+Lastly (and perhaps, most importantly) It is completely cross platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim] or Gvim additional features are enabled. So regardless of your environment just clone and run.
 
-## spf13-vim version 3?
-Wait, did we skip 2? No.. Version 1 was just my config prior to git. Version 2 was all git submodules.
-Version 3 is [Vundle] based. Prior to now there wasn't really a need to version them... it was just for me after all. Now hundreds of people are using this, so I figured with a major change I'd actually use version numbers.
+# spf13-vim 3.0
+January 2012 spf13-vim released it's third major iteration. **This is important as it requires a reinstall**, but trust me it's worth it.
 
-### Changes from 2 to 3
 The biggest change is the switch from using git submodules to using the excellent [Vundle] system. While git submodules seemed like a good idea at the time, it wasn't. It was always problematic. Additionally because a submodule points to a refspec and not a branch, it was a constant maintenance nightmare to keep everything up to date.
 
-[Vundle] has an excellent system built on the same principles as Pathogen, but with an integrated installer. [Vundle] supports git and has very easy configuration which happens in the vimrc file.
+[Vundle] has an excellent system built on the same principles as Pathogen, but with an integrated plugin management system that is Git and Github aware.
 
-There are also a bunch of small changes and a focus on keeping a tighter set of plugins and keeping true to the defaults and standards vim expects. The goal has always been to add functionality without changing all the features, functionality and keystrokes we all love. Using spf13-vim we've kept all the default behaviors (by and large), so if you ever find yourself on a vanilla environment you'll feel right at home.
+We have also changed out most of the plugins in favor of newer more stable alternatives. Additionally we have significantly reduced the number of plugins requiring python or ruby.
 
-## Pre-requisites
+The goal has always been to add functionality without changing all the features, functionality and keystrokes we all love. Using spf13-vim we've kept all the default behaviors (by and large), so if you ever find yourself on a vanilla environment you'll feel right at home.
 
-spf13-vim is built to be completely cross platform. It works equally well on console vim as it does on gVim for Windows, \*nix or MacVim. 
+# Installation 
 
-spf13-vim is dependent on a semi-recent version of VIM and should work well on anything above VIM 7.0.
-
-[Git] is required for installation. Certain plugins may require python or ruby support to be compiled into VIM.
-
-To check if you have python or ruby support run
-
-    :echo has('ruby')
-
-If it returns 1 your vim supports ruby.
-
-## Installing on \*nix (MacOS X, Linux, etc)
-
-### Easy Installation (\*nix only)
+## Linux, \*nix, Mac OSX Installation
 
 ```bash
+
     curl http://j.mp/spf13-vim3 -o - | sh
-```
-
-or
-
-### Manual Installation
-
-#### Backup existing vim configuration
-
-```bash
-    today=`date +%Y%m%d`
-    for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv $i $i.$today; done
-```
-
-#### Clone spf13-vim from github
-```bash
-    endpath="$HOME/.spf13-vim-3"
-    git clone --recursive -b 3.0 git://github.com/spf13/spf13-vim.git $endpath
-    mkdir -p $endpath/.vim/bundle
-    ln -s $endpath/.vimrc ~/.vimrc
-    ln -s $endpath/.vim ~/.vim
-```
-
-_Use ln -s on mac/unix or mklink on windows._
-
-#### Installing Vundle
-```bash
-    git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
-```
-
-#### Install plugins using Vundle
-```bash
-    vim +BundleInstall! +BundleClean +q
 ```
 
 ## Installing on Windows
@@ -120,14 +84,14 @@ to verify all good, run:
     Features: Largefile NTLM SSL SSPI libz
 
 
-#### Installing  spf13-vim on Windows
+#### Installing spf13-vim on Windows
 
 The easiest way is to download and run the spf13-vim-windows-install.cmd file.
 
 ## Updating to the latest version
 
 ```bash
-    cd /path/to/spf13-vim/
+    cd $HOME/to/spf13-vim/
     git pull
     vim +BundleInstall! +BundleClean +q
 ```
@@ -137,28 +101,35 @@ The easiest way is to download and run the spf13-vim-windows-install.cmd file.
 Create `~/.vimrc.local` and `~/.gvimrc.local` for any local
 customizations.
 
+Create `~/.vimrc.bundles.local` for any additional bundles.
+
 For example, to override the default color schemes:
 
 ```bash
-    echo color desert  > ~/.vimrc.local
-    echo color molokai > ~/.gvimrc.local
+    echo colorscheme ir_black  >> ~/.vimrc.local
+```
+Or to add a new bundle
+
+```bash
+    echo Bundle \'spf13/vim-colors\' >> ~/.vimrc.bundles.local
 ```
 
 ### Fork me on GitHub
 
-I'm always happy to take pull requests from others. A good number of people have already contributed to spf13-vim. Go ahead and fork me.
-
+I'm always happy to take pull requests from others. A good number of people are already [contributors] to [spf13-vim]. Go ahead and fork me.
 
 # spf13-vim Features
 
 ## A highly optimized .vimrc config file
+
+![spf13-vimrc image][spf13-vimrc-img]
 
 The .vimrc file is suited to programming. It is extremely well organized and folds in sections.
 Each section is labeled and each option is commented.
 
 It fixes many of the inconveniences of vanilla vim including
 
- * One config can be used across Windows, Mac and linux
+ * A single config can be used across Windows, Mac and linux
  * Eliminates swap and backup files from littering directories, preferring to store in a central location.
  * Fixes common typos like :W, :Q, etc
  * Setup a solid set of settings for Formatting (change to meet your needs) 
@@ -174,19 +145,20 @@ It fixes many of the inconveniences of vanilla vim including
 
 spf13-vim contains a curated set of popular vim plugins, colors, snippets and syntaxes. Great care has been made to ensure that these plugins play well together and have optimal configuration.
 
-Most of the bundles are git submodules facilitating easy updating and configuration. 
+Here are a few of the plugins:
 
  * [PIV (PHP Integration for VIM)](http://github.com/spf13/PIV)
- * [Snipmate](http://github.com/msanders/snipmate.vim)
  * [NerdCommenter](http://github.com/scrooloose/nerdcommenter)
  * [NerdTree](http://github.com/scrooloose/nerdtree)
- * [SuperTab](http://www.vim.org/scripts/script.php?script_id=1643)
+ * [ctrlp](http://github.com/kien/ctrlp)
+ * [solarized](http://github.com/altercation/vim-colors-solarized)
+ * [neocomplcache](http://github.com/shougo/neocomplcache)
  * [Fugitive](http://github.com/tpope/vim-fugitive)
- * [DelimitMate](http://github.com/Raimondi/delimitMate)
+ * [Surround](https://github.com/tpope/vim-surround)
+ * [tabular](http://github.com/godlygeek/tagbar)
+ * [syntastic](http://github.com/scrooloose/syntastic)
+ * [vim-easymotion](http://github.com/Lokaltog/vim-easymotion)
  * [Matchit](http://www.vim.org/scripts/script.php?script_id=39)
- * [CheckSyntax](http://www.vim.org/scripts/script.php?script_id=1431)
- * [Surrounding](http://github.com/msanders/vim-files/blob/master/plugin/surrounding.vim)
- * [AutoCloseTag](http://www.vim.org/scripts/script.php?script_id=2591)
 
 ### NERDTree
 
@@ -410,3 +382,13 @@ Here's some tips if you've never used VIM before:
 [Git]:http://git-scm.com
 [Curl]:http://curl.haxx.se
 [msysgit]:http://code.google.com/p/msysgit
+[MacVim]:http://code.google.com/p/macvim/
+[spf13-vim]:https://github.com/spf13/spf13-vim
+[contributors]:https://github.com/spf13/spf13-vim/contributors
+[spf13-vim-img]:http://i.imgur.com/UKToY.png
+[spf13-vimrc-img]:http://i.imgur.com/kZWj1.png
+[autocomplete-img]:http://i.imgur.com/90Gg7.png
+[tagbar-img]:http://i.imgur.com/cjbrC.png
+[fugitive-img]:http://i.imgur.com/4NrxV.png
+[nerdtree-img]:http://i.imgur.com/9xIfu.png
+[phpmanual-img]:http://i.imgur.com/c0GGP.png

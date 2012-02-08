@@ -64,10 +64,11 @@
         Bundle 'Lokaltog/vim-easymotion'
         Bundle 'godlygeek/csapprox'
         Bundle 'jistr/vim-nerdtree-tabs'
+        Bundle 'flazz/vim-colorschemes'
 
     " General Programming
         " Pick one of the checksyntax, jslint, or syntastic
-        Bundle 'Syntastic'
+        Bundle 'scrooloose/syntastic'
         Bundle 'garbas/vim-snipmate'
         Bundle 'spf13/snipmate-snippets'
         Bundle 'tpope/vim-fugitive'
@@ -107,17 +108,14 @@
 " General {
     set background=dark         " Assume a dark background
     if !has('gui')
-        set term=$TERM          " Make arrow and other keys work
+        "set term=$TERM          " Make arrow and other keys work
     endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " syntax highlighting
     set mouse=a                 " automatically enable mouse usage
-    "set autochdir              " always switch to the current file directory.. Messes with some plugins, best left commented out
-                                " not every vim is compiled with this, use the following line instead
-
-    " If you use command-t plugin, it conflicts with this, comment it out.
-    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
     scriptencoding utf-8
+    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+    " always switch to the current file directory.
 
     " set autowrite                  " automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
@@ -398,7 +396,7 @@
         nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
      " }
 
-     " } PyMode
+     " PyMode {
         let g:pymode_lint_checker = "pyflakes"
      " }
 
@@ -494,7 +492,7 @@
             set transparency=5          " Make the window slightly transparent
         endif
     else
-        set term=builtin_ansi       " Make arrow and other keys work
+        "set term=builtin_ansi       " Make arrow and other keys work
     endif
 " }
 
