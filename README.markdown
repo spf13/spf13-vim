@@ -161,13 +161,12 @@ functionality to your vim editing.  You can learn more about it with
 
 **QuickStart** Launch using `<Leader>e`.
 
-**Customizations**: spf13-vim adds a number of customizations to the core
-NERDTree:
+**Customizations**: 
 
 * Use `<C-E>` to toggle NERDTree
 * Use `<leader>e` or `<leader>nt` to load NERDTreeFind which opens NERDTree where the current file is located.
 * Hide clutter ('\.pyc', '\.git', '\.hg', '\.svn', '\.bzr')
-* Treat NT more like a panel than a split.
+* Treat NERDTree more like a panel than a split.
 
 ## [ctrlp]
 Ctrlp replaces the Command-T plugin with a 100% viml plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files. 
@@ -194,7 +193,7 @@ examples.  An asterisk (*) is used to denote the cursor position.
 For instance, if the cursor was inside `"foo bar"`, you could type
 `cs"'` to convert the text to `'foo bar'`.
 
-There's a lot more; check it out at `:help surround` 
+There's a lot more, check it out at `:help surround` 
 
 ## [NERDCommenter]
 
@@ -210,6 +209,7 @@ NeoComplCache is an amazing autocomplete plugin with additional support for snip
 **QuickStart** Just start typing, it will autocomplete where possible
 
 **Customizations**: 
+
  * Automatically present the autocomplete menu
  * Support tab and enter for autocomplete
  * `<C-k>` for completing snippets.
@@ -238,6 +238,7 @@ file
 **QuickStart** <leader>gs to bring up git status
 
 **Customizations**: 
+
  * `<leader>gs` :Gstatus<CR>
  * `<leader>gd` :Gdiff<CR>
  * `<leader>gc` :Gcommit<CR>
@@ -252,7 +253,7 @@ file
 
 The most feature complete and up to date PHP Integration for Vim with proper support for PHP 5.3+ including latest syntax, functions, better fold support, etc.
 
-PIV provides 
+PIV provides:
 
  * PHP 5.3 support
  * Auto generation of PHP Doc (,pd on (function, variable, class) definition line)
@@ -274,6 +275,7 @@ You can learn more about it with :help Ack
 Tabularize lets you align statements on their equal signs and other characters
 
 **Customizations**:
+
  * `<Leader>a=` :Tabularize /=<CR>
  * `<Leader>a:` :Tabularize /:<CR>
  * `<Leader>a::` :Tabularize /:\zs<CR>
