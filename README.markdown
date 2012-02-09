@@ -36,9 +36,12 @@ The goal has always been to add functionality without changing all the features,
 
 ## Linux, \*nix, Mac OSX Installation
 
+The easiest way to install spf13-vim is to use our [automatic installer](http://j.mp/spf13-vim) by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration. If you are upgrading from a prior version (before 3.0) this is also the recommended installation.
+
 ```bash
 
     curl http://j.mp/spf13-vim3 -o - | sh
+
 ```
 
 ## Installing on Windows
@@ -96,31 +99,12 @@ The easiest way is to download and run the spf13-vim-windows-install.cmd file.
     vim +BundleInstall! +BundleClean +q
 ```
 
-## Customization
-
-Create `~/.vimrc.local` and `~/.gvimrc.local` for any local
-customizations.
-
-Create `~/.vimrc.bundles.local` for any additional bundles.
-
-For example, to override the default color schemes:
-
-```bash
-    echo colorscheme ir_black  >> ~/.vimrc.local
-```
-Or to add a new bundle
-
-```bash
-    echo Bundle \'spf13/vim-colors\' >> ~/.vimrc.bundles.local
-```
 
 ### Fork me on GitHub
 
 I'm always happy to take pull requests from others. A good number of people are already [contributors] to [spf13-vim]. Go ahead and fork me.
 
-# spf13-vim Features
-
-## A highly optimized .vimrc config file
+# A highly optimized .vimrc config file
 
 ![spf13-vimrc image][spf13-vimrc-img]
 
@@ -141,26 +125,35 @@ It fixes many of the inconveniences of vanilla vim including
    * & more
  * Configuring included plugins
 
-## Plugins
+## Customization
+
+Create `~/.vimrc.local` and `~/.gvimrc.local` for any local
+customizations.
+
+For example, to override the default color schemes:
+
+```bash
+    echo colorscheme ir_black  >> ~/.vimrc.local
+```
+
+# Plugins
 
 spf13-vim contains a curated set of popular vim plugins, colors, snippets and syntaxes. Great care has been made to ensure that these plugins play well together and have optimal configuration.
 
+## Adding new plugins
+
+Create `~/.vimrc.bundles.local` for any additional bundles.
+
+To add a new bundle
+
+```bash
+    echo Bundle \'spf13/vim-colors\' >> ~/.vimrc.bundles.local
+```
+
 Here are a few of the plugins:
 
- * [PIV (PHP Integration for VIM)](http://github.com/spf13/PIV)
- * [NerdCommenter](http://github.com/scrooloose/nerdcommenter)
- * [NerdTree](http://github.com/scrooloose/nerdtree)
- * [ctrlp](http://github.com/kien/ctrlp)
- * [solarized](http://github.com/altercation/vim-colors-solarized)
- * [neocomplcache](http://github.com/shougo/neocomplcache)
- * [Fugitive](http://github.com/tpope/vim-fugitive)
- * [Surround](https://github.com/tpope/vim-surround)
- * [tabular](http://github.com/godlygeek/tagbar)
- * [syntastic](http://github.com/scrooloose/syntastic)
- * [vim-easymotion](http://github.com/Lokaltog/vim-easymotion)
- * [Matchit](http://www.vim.org/scripts/script.php?script_id=39)
 
-### NERDTree
+## [NERDTree]
 
 NERDTree is a file explorer plugin that provides "project drawer"
 functionality to your vim editing.  You can learn more about it with
@@ -172,25 +165,16 @@ functionality to your vim editing.  You can learn more about it with
 NERDTree:
 
 * Use `<C-E>` to toggle NERDTree
-* Use `<leader>e` or `<leader>nt` to load NERDTreeFind which opens NERDTree 
-  where the current file is located.
-* Ignore  '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr' files
-* Disallow `:e`ing files into the NERDTree buffer
-* Adding Mirroring... Keep your NERDTree window in sync across your tabs (on by default)
-* If NERDTree is open in the current tab, open it in a new one.
-* In general, assume that there is a single NERDTree buffer on the left
-  and one or more editing buffers on the right
+* Use `<leader>e` or `<leader>nt` to load NERDTreeFind which opens NERDTree where the current file is located.
+* Hide clutter ('\.pyc', '\.git', '\.hg', '\.svn', '\.bzr')
+* Treat NT more like a panel than a split.
 
-### Command-T
+## [ctrlp]
+Ctrlp replaces the Command-T plugin with a 100% viml plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files. 
 
-The Command-T plug-in provides an extremely fast, intuitive mechanism for
-opening files with a minimal number of keystrokes. It's named "Command-T"
-because it is inspired by the "Go to File" window bound to Command-T in
-TextMate.
+**QuickStart** Launch using `<c-p>`.
 
-**QuickStart** Launch using `<Leader>t`.
-
-### Surround
+## [Surround]
 
 This plugin is a tool for dealing with pairs of "surroundings."  Examples
 of surroundings include parentheses, quotes, and HTML tags.  They are
@@ -212,46 +196,34 @@ For instance, if the cursor was inside `"foo bar"`, you could type
 
 There's a lot more; check it out at `:help surround` 
 
-### NERDCommenter
+## [NERDCommenter]
 
 NERDCommenter allows you to wrangle your code comments, regardless of
 filetype. View `help :NERDCommenter` for all the details.
 
 **QuickStart** Toggle comments using `<Leader>c<space>` in Visual or Normal mode.
 
-**Customizations**: spf13-vim binds command-/ (`<D-/>`) to toggle comments.
+## [neocomplcache]
 
-### SuperTab
+NeoComplCache is an amazing autocomplete plugin with additional support for snippets. It can complete simulatiously from the dictionary, buffer, omnicomplete and snippets. This is the one true plugin that brings Vim autocomplete on par with the best editors. 
 
-In insert mode, start typing something and hit `<TAB>` to tab-complete
-based on the current context.
+**QuickStart** Just start typing, it will autocomplete where possible
 
-**QuickStart** Hit the tab key in Insert mode.
+**Customizations**: 
+ * Automatically present the autocomplete menu
+ * Support tab and enter for autocomplete
+ * `<C-k>` for completing snippets.
 
-### SnipMate
+![neocomplcache image][autocomplete-img]
 
-Snipmate provides snippet support similar to TextMate.
-A snippet is a piece of often-typed text that you can insert into your
-document using a trigger word followed by a <tab>.
+## [Syntastic]
 
-Spf13-vim ships with a very large library of snippets for dozens of languages. 
+Syntastic is a syntax checking plugin that runs buffers through external syntax 
+checkers as they are saved and opened. If syntax errors are detected, the user 
+is notified and is happy because they didn't have to compile their code or 
+execute their script to find them.
 
-
-For instance, in a C file using the default installation of snipMate.vim, if
-you type "for<tab>" in insert mode, it will expand a typical for loop in C: >
-
-    for (i = 0; i < count; i++) {
-
-    }
-
-To go to the next item in the loop, simply <tab> over to it; if there is
-repeated code, such as the "i" variable in this example, you can simply
-start typing once it's highlighted and all the matches specified in the
-snippet will be updated. To go in reverse, use <shift-tab>.
-
-**QuickStart** Type a keyword (try something like `class`) and hit tab in insert mode.
-
-### Git Support (Fugitive)
+## [Fugitive]   (Git integration)
 
 Fugitive adds pervasive git support to git directories in vim. For more
 information, use `:help fugitive`
@@ -263,10 +235,20 @@ hunks in the file.
 Use `:Gdiff` on an open file to see what changes have been made to that
 file
 
-**QuickStart** :Gstatus (in command mode)
+**QuickStart** <leader>gs to bring up git status
 
+**Customizations**: 
+ * `<leader>gs` :Gstatus<CR>
+ * `<leader>gd` :Gdiff<CR>
+ * `<leader>gc` :Gcommit<CR>
+ * `<leader>gb` :Gblame<CR>
+ * `<leader>gl` :Glog<CR>
+ * `<leader>gp` :Git push<CR>
+ * :Git ___ will pass anything along to git.
 
-### PIV (PHP Integration for VIM)
+![fugitive image][fugitive-img]
+
+## [PIV]  (PHP Integration for VIM)
 
 The most feature complete and up to date PHP Integration for Vim with proper support for PHP 5.3+ including latest syntax, functions, better fold support, etc.
 
@@ -278,39 +260,35 @@ PIV provides
  * Better indenting
  * Full PHP documentation manual (hit K on any function for full docs)
 
-### DelimitMate
-DelimitMate provides automatic closing of quotes, parenthesis, brackets,
-etc.; besides some other related features that should make your time in insert
-mode a little bit easier.
+![php vim itegration image][phpmanual-img]
 
-Most of the features can be modified or disabled permanently, using global
-variables, or on a FileType basis, using autocommands. With a couple of
-exceptions and limitations, this features don't brake undo, redo or history.
-
-**QuickStart** Enabled by default, just works. see :help delimitmate for options
-
-### Ack.vim
+## Ack.vim
 
 Ack.vim uses ack to search inside the current directory for a pattern.
 You can learn more about it with :help Ack
 
-**Customizations**: spf13-vim rebinds command-shift-f (`<D-F>`) to bring up
-`:Ack `.
+**QuickStart** :Ack
 
-### Align
+## Tabularize
 
-Align lets you align statements on their equal signs, make comment
-boxes, align comments, align declarations, etc.
+Tabularize lets you align statements on their equal signs and other characters
 
-* `:5,10Align =>` to align lines 5-10 on `=>`'s
+**Customizations**:
+ * `<Leader>a=` :Tabularize /=<CR>
+ * `<Leader>a:` :Tabularize /:<CR>
+ * `<Leader>a::` :Tabularize /:\zs<CR>
+ * `<Leader>a,` :Tabularize /,<CR>
+ * `<Leader>a<Bar>` :Tabularize /<Bar><CR>
 
-### CTags
+## [Tagbar]
 
-spf13-vim includes the TagList plugin, which binds `:Tlist` to an overview
-panel that lists all ctags for easy navigation.
+spf13-vim includes the Tagbar plugin. This plugin requires exuberant-ctags and will automatically generate tags for your open files. It also provides a panel to navigate easily via tags
 
-**Customizations**: spf13-vim binds `<Leader>rt` to the ctags command to
-update tags.
+**QuickStart** `CTRL-]` while the cursor is on a keyword (such as a function name) to jump to it's definition.
+
+**Customizations**: spf13-vim binds `<Leader>tt` to toggle the tagbar panel
+
+![tagbar image][tagbar-img]
 
 **Note**: For full language support, run `brew install ctags` to install
 exuberant-ctags.
@@ -320,14 +298,18 @@ ctag support. Tag navigation creates a stack which can traversed via
 `Ctrl-]` (to find the source of a token) and `Ctrl-T` (to jump back up
 one level).
 
-### EasyTags
+## [EasyMotion]
 
-Automated tag generation and syntax highlighting in Vim
+EasyMotion provides an interactive way to use motions in Vim. 
 
-**Note**: Depends on exuberant Ctags. On OSX, For full language support, run `brew install ctags` to install
-exuberant-ctags. If you don't have ctags support disable this plugin.
+It quickly maps each possible jump destination to a key allowing very fast and 
+straightforward movement.
 
-**QuickStart** CTRL-] while the cursor is on a keyword (such as a function name) to jump to it's definition.
+**QuickStart** EasyMotion is triggered using the normal movements, but prefixing them with `<leader><leader>`
+
+For example this screen shot demonstrates pressing `,,w`
+
+![easymotion image][easymotion-img]
 
 ## Additional Syntaxes
 
@@ -337,9 +319,9 @@ spf13-vim ships with a few additional syntaxes:
 * Twig
 * Git commits (set your `EDITOR` to `mvim -f`)
 
-## Color schemes
+## Amazing Colors
 
-spf13-vim includes [spf13 vim color pack](https://github.com/spf13/vim-colors/): 
+spf13-vim includes [solarized] and [spf13 vim color pack](https://github.com/spf13/vim-colors/): 
 
 * ir_black
 * molokai
@@ -349,7 +331,7 @@ Use `:color molokai` to switch to a color scheme.
 
 ## Snippets
 
-It also contains a very complete set of [snippets](http://github.com/spf13/snipmate-snippets) for use with snipmate.
+It also contains a very complete set of [snippets](http://github.com/spf13/snipmate-snippets) for use with snipmate or [NeoComplCache].
 
 
 # Intro to VIM
@@ -378,13 +360,29 @@ Here's some tips if you've never used VIM before:
   convenient location.
 * Keyboard [cheat sheet](http://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
 
-[Vundle]:http://github.com/gmarik/vundle
 [Git]:http://git-scm.com
 [Curl]:http://curl.haxx.se
 [msysgit]:http://code.google.com/p/msysgit
 [MacVim]:http://code.google.com/p/macvim/
 [spf13-vim]:https://github.com/spf13/spf13-vim
 [contributors]:https://github.com/spf13/spf13-vim/contributors
+
+[Vundle]:http://github.com/gmarik/vundle
+[PIV]:http://github.com/spf13/PIV
+[NERDCommenter]:http://github.com/scrooloose/nerdcommenter
+[NERDTree]:http://github.com/scrooloose/nerdtree
+[ctrlp]:http://github.com/kien/ctrlp
+[solarized]:http://github.com/altercation/vim-colors-solarized
+[neocomplcache]:http://github.com/shougo/neocomplcache
+[Fugitive]:http://github.com/tpope/vim-fugitive
+[Surround]:https://github.com/tpope/vim-surround
+[Tagbar]:http://github.com/godlygeek/tagbar
+[Syntastic]:http://github.com/scrooloose/syntastic
+[vim-easymotion]:http://github.com/Lokaltog/vim-easymotion
+[Matchit]:http://www.vim.org/scripts/script.php?script_id=39
+[Tabularize]:http://github.com/godlygeek/tabular
+[EasyMotion]:https://github.com/Lokaltog/vim-easymotion
+
 [spf13-vim-img]:http://i.imgur.com/UKToY.png
 [spf13-vimrc-img]:http://i.imgur.com/kZWj1.png
 [autocomplete-img]:http://i.imgur.com/90Gg7.png
@@ -392,3 +390,4 @@ Here's some tips if you've never used VIM before:
 [fugitive-img]:http://i.imgur.com/4NrxV.png
 [nerdtree-img]:http://i.imgur.com/9xIfu.png
 [phpmanual-img]:http://i.imgur.com/c0GGP.png
+[easymotion-img]:http://i.imgur.com/ZsrVL.png
