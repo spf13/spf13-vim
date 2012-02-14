@@ -1,0 +1,55 @@
+User configuration notes
+========================
+
+Below is a quick guide to necessary configurations for getting
+started with the Erlang mode for Emacs. Please refer to the
+Users guide and reference manual in the documentation for the
+Erlang/OTP application tools for more information.
+
+
+For UNIX users
+--------------
+
+To set up the Erlang Emacs mode on UNIX systems, edit/create the file
+.emacs in the your home directory.
+    
+Below is a complete example of what should be added to a user's .emacs
+provided that OTP is installed in the directory /usr/local/otp:
+        
+      (setq load-path (cons "/usr/local/otp/lib/tools-<ToolsVer>/emacs"
+      load-path))
+      (setq erlang-root-dir "/usr/local/otp")
+      (setq exec-path (cons "/usr/local/otp/bin" exec-path))
+      (require 'erlang-start)
+
+
+For Windows users
+-----------------
+   
+To set up the Erlang Emacs mode on Windows systems, edit/create the
+file .emacs, the location of the file depends on the configuration of
+the system. If the HOME environment variable is set, Emacs will look
+for the .emacs file in the directory indicated by the HOME
+variable. If HOME is not set, Emacs will look for the .emacs file in
+C:\.
+    
+Below is a complete example of what should be added to a user's .emacs
+provided that OTP is installed in the directory C:\Program
+Files\erl-<Ver>:
+      
+      (setq load-path (cons  "C:/Program Files/erl<Ver>/lib/tools-<ToolsVer>/emacs"
+      load-path))
+      (setq erlang-root-dir "C:/Program Files/erl<Ver>")
+      (setq exec-path (cons "C:/Program Files/erl<Ver>/bin" exec-path))
+      (require 'erlang-start)
+
+
+Miscellaneous addons
+--------------------
+
+In order to check erlang source code on the fly, add the following
+line to your .emacs file (after erlang-start, see above).  See
+erlang-flymake.el for more information on how to customize the syntax
+check.
+
+      (require 'erlang-flymake)

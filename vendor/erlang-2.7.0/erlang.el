@@ -1,4 +1,10 @@
-;; erlang.el --- Major modes for editing and running Erlang
+;;; erlang.el --- Major modes for editing and running Erlang
+
+;; Copyright (C) 2004  Free Software Foundation, Inc.
+;; Author:   Anders Lindgren
+;; Keywords: erlang, languages, processes
+;; Date:     2011-12-11
+
 ;; %CopyrightBegin%
 ;;
 ;; Copyright Ericsson AB 1996-2011. All Rights Reserved.
@@ -15,10 +21,7 @@
 ;; under the License.
 ;;
 ;; %CopyrightEnd%
-;; 
-;; Copyright (C) 2004  Free Software Foundation, Inc.
-;; Author:   Anders Lindgren
-;; Keywords: erlang, languages, processes
+;;
 
 ;; Lars Thorsén's modifications of 2000-06-07 included.
 ;; The original version of this package was written by Robert Virding.
