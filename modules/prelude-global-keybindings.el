@@ -141,6 +141,8 @@
                                   (interactive)
                                   (message "Arrow key navigation is disabled. Use C-f instead.")))
 
+(global-set-key (kbd "C-x g") 'magit-status)
+
 (provide 'prelude-global-keybindings)
 
 ;;; prelude-global-keybindings.el ends here

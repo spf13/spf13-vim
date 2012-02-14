@@ -88,9 +88,6 @@
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
-;; load bundle snippets
-(yas/load-directory  (concat prelude-vendor-dir "feature-mode/snippets"))
-
 (provide 'prelude-ruby)
 
 ;;; prelude-ruby.el ends here
