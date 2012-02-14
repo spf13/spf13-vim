@@ -34,7 +34,8 @@
 ;;; Code:
 (require 'cl)
 
-(message "%s" "Emacs Prelude is powering up. Be patient, Master.")
+(message "Emacs Prelude is powering up... Be patient, Master %s!"
+         (getenv "USER"))
 
 ;; On OS X Emacs doesn't use the shell PATH if it's not started from
 ;; the shell. If you're using homebrew modifying the PATH is essential.
@@ -54,6 +55,7 @@ ELPA (or Marmalade).")
 changes in this directory. All Emacs Lisp files there are loaded automatically
 by Prelude.")
 
+;; add Prelude's directories to Emacs's `load-path'
 (add-to-list 'load-path prelude-modules-dir)
 (add-to-list 'load-path prelude-vendor-dir)
 (add-to-list 'load-path prelude-personal-dir)
@@ -92,6 +94,7 @@ by Prelude.")
 (when (file-exists-p prelude-personal-dir)
   (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$")))
 
-(message "%s" "Emacs Prelude is ready to do thy bidding, Master!")
+(message "Emacs Prelude is ready to do thy bidding, Master, %s!"
+         (getenv "USER"))
 
 ;;; init.el ends here
