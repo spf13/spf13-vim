@@ -357,8 +357,8 @@ Here's some tips if you've never used VIM before:
 ## Useful commands
 
 * Use `:q` to exit vim
-* Certain commands are prefixed with a `<Leader>` key, which by default maps to `\`
-  by default. Spf13-vim uses `let mapleader = ","` to change this to `,` which is in a consistent and 
+* Certain commands are prefixed with a `<Leader>` key, which by default maps to `\`.
+  Spf13-vim uses `let mapleader = ","` to change this to `,` which is in a consistent and 
   convenient location.
 * Keyboard [cheat sheet](http://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
 
