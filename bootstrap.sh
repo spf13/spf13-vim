@@ -30,9 +30,3 @@ git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 
 echo "installing plugins using Vundle"
 vim +BundleInstall! +BundleClean +q
-
-# Build command-t for your system
-echo "building command-t executable\n"
-echo "command-t depends on ruby and rake to be present\n"
-cd $HOME/.vim/bundle/Command-T
-(rake make) || warn "Ruby compilation failed. Ruby, GCC or rake not installed?"
