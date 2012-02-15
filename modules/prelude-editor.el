@@ -123,6 +123,9 @@
 ;; highlight the current line
 (global-hl-line-mode +1)
 
+(require 'volatile-highlights)
+(volatile-highlights-mode t)
+
 ;; tramp, for sudo access
 (require 'tramp)
 ;; keep in mind known issues with zsh - see emacs wiki
