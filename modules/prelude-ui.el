@@ -40,8 +40,15 @@
   (tool-bar-mode -1))
 ;; the menu bar is mostly useless as well
 ;; but removing it under OS X doesn't make much sense
-(unless (eq system-type 'darwin)
-  (menu-bar-mode -1))
+(defun prelude-frame-config (frame)
+  "Custom behaviours for new frames."
+  (unless (and (display-graphic-p) (eq system-type 'darwin))
+     (menu-bar-mode -1)))
+;; run now
+(prelude-frame-config (selected-frame))
+;; and later
+(add-hook 'after-make-frame-functions 'prelude-frame-config)
+
 ;; the blinking cursor is nothing, but an annoyance
 (blink-cursor-mode -1)
 
