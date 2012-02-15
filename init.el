@@ -60,12 +60,6 @@ by Prelude.")
 (add-to-list 'load-path prelude-vendor-dir)
 (add-to-list 'load-path prelude-personal-dir)
 
-;; config changes made through the customize UI will be store here
-(setq custom-file (concat prelude-personal-dir "custom.el"))
-
-(when (file-exists-p custom-file)
-  (load custom-file))
-
 ;; the core stuff
 (require 'prelude-packages)
 (require 'prelude-ui)
@@ -96,6 +90,9 @@ by Prelude.")
 ;; tools & utilities support
 (require 'prelude-ack)
 (require 'prelude-erc)
+
+;; config changes made through the customize UI will be store here
+(setq custom-file (concat prelude-personal-dir "custom.el"))
 
 ;; load the personal settings (this includes `custom-file')
 (when (file-exists-p prelude-personal-dir)
