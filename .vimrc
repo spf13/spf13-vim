@@ -127,9 +127,11 @@
 
     " Setting up the directories {
         set backup                      " backups are nice ...
-		set undofile					" so is persistent undo ...
-		set undolevels=1000 "maximum number of changes that can be undone
-		set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+        if has('persistent_undo')
+            set undofile                "so is persistent undo ...
+            set undolevels=1000         "maximum number of changes that can be undone
+            set undoreload=10000        "maximum number lines to save for undo on a buffer reload
+        endif
         " Could use * rather than *.*, but I prefer to leave .files unsaved
         au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
         au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
@@ -503,30 +505,33 @@
  " Functions {
 
 function! InitializeDirectories()
-  let separator = "."
-  let parent = $HOME
-  let prefix = '.vim'
-  let dir_list = { 
-			  \ 'backup': 'backupdir', 
-			  \ 'views': 'viewdir', 
-			  \ 'swap': 'directory', 
-			  \ 'undo': 'undodir' }
+    let separator = "."
+    let parent = $HOME
+    let prefix = '.vim'
+    let dir_list = {
+                \ 'backup': 'backupdir',
+                \ 'views': 'viewdir',
+                \ 'swap': 'directory' }
 
-  for [dirname, settingname] in items(dir_list)
-      let directory = parent . '/' . prefix . dirname . "/"
-      if exists("*mkdir")
-          if !isdirectory(directory)
-              call mkdir(directory)
-          endif
-      endif
-      if !isdirectory(directory)
-          echo "Warning: Unable to create backup directory: " . directory
-          echo "Try: mkdir -p " . directory
-      else
-          let directory = substitute(directory, " ", "\\\\ ", "g")
-          exec "set " . settingname . "=" . directory
-      endif
-  endfor
+    if has('persistent_undo')
+        let dir_list['undo'] = 'undodir'
+    endif
+
+    for [dirname, settingname] in items(dir_list)
+        let directory = parent . '/' . prefix . dirname . "/"
+        if exists("*mkdir")
+            if !isdirectory(directory)
+                call mkdir(directory)
+            endif
+        endif
+        if !isdirectory(directory)
+            echo "Warning: Unable to create backup directory: " . directory
+            echo "Try: mkdir -p " . directory
+        else
+            let directory = substitute(directory, " ", "\\\\ ", "g")
+            exec "set " . settingname . "=" . directory
+        endif
+    endfor
 endfunction
 call InitializeDirectories()
 
