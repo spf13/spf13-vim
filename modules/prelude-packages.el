@@ -39,7 +39,7 @@
 (package-initialize)
 
 (defvar prelude-packages
-  '(auctex clojure-mode coffee-mode deft gist groovy-mode haml-mode
+  '(auctex clojure-mode coffee-mode deft expand-region gist groovy-mode haml-mode
            haskell-mode inf-ruby magit markdown-mode paredit projectile
            python sass-mode rainbow-mode scss-mode solarized-theme
            yaml-mode yari zenburn-theme)
