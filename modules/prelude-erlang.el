@@ -1,4 +1,4 @@
-;;; prelude-coffee.el --- Emacs Prelude: Erlang programming support.
+;;; prelude-erlang.el --- Emacs Prelude: Erlang programming support.
 ;;
 ;; Copyright (c) 2011 Gleb Peregud
 ;;
@@ -10,7 +10,7 @@
 
 ;;; Commentary:
 
-;; Erlang is a concurrent functional language
+;; Erlang is a concurrent functional language.
 
 ;;; License:
 
