@@ -77,7 +77,6 @@ by Prelude.")
 (require 'prelude-coffee)
 (require 'prelude-common-lisp)
 (require 'prelude-emacs-lisp)
-(require 'prelude-erc)
 (require 'prelude-groovy)
 (require 'prelude-haskell)
 (require 'prelude-js)
@@ -89,6 +88,10 @@ by Prelude.")
 (require 'prelude-ruby)
 (require 'prelude-scheme)
 (require 'prelude-xml)
+
+;; tools & utilities support
+(require 'prelude-ack)
+(require 'prelude-erc)
 
 ;; load the personal settings (this includes `custom-file')
 (when (file-exists-p prelude-personal-dir)
