@@ -63,6 +63,9 @@ by Prelude.")
 ;; config changes made through the customize UI will be store here
 (setq custom-file (concat prelude-personal-dir "custom.el"))
 
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 ;; the core stuff
 (require 'prelude-packages)
 (require 'prelude-ui)
@@ -79,6 +82,7 @@ by Prelude.")
 (require 'prelude-emacs-lisp)
 (require 'prelude-groovy)
 (require 'prelude-haskell)
+(require 'prelude-erlang)
 (require 'prelude-js)
 (require 'prelude-latex)
 (require 'prelude-markdown)

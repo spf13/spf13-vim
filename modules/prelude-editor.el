@@ -158,6 +158,9 @@
 ;; enable narrow to region
 (put 'narrow-to-region 'disabled nil)
 
+(require 'expand-region)
+(global-set-key (kbd "C-@") 'er/expand-region)
+
 ;; bookmarks
 (setq bookmark-default-file (concat user-emacs-directory "bookmarks")
       bookmark-save-flag 1)
