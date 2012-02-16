@@ -358,5 +358,14 @@ there's a region, all lines that region covers will be duplicated."
     (unless (or (eql buffer (current-buffer)) (not (buffer-file-name buffer)))
       (kill-buffer buffer))))
 
+(defun prelude-restore-arrow-keys ()
+  "Restores arrow keys navigation in buffers."
+  (interactive)
+  (global-set-key (kbd "<up>") 'previous-line)
+  (global-set-key (kbd "<down>") 'next-line)
+  (global-set-key (kbd "<left>") 'backward-char)
+  (global-set-key (kbd "<right>") 'forward-char)
+  (message "Arrow keys navigation in buffers in now allowed."))
+
 (provide 'prelude-core)
 ;;; prelude-core.el ends here

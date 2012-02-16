@@ -226,6 +226,11 @@ far as navigation is concerned at least). That's why I've disabled all
 movement commands with arrows - to prevent you from being tempted to
 use them.
 
+If you'd still like to use the arrow keys just invoke `M-x
+prelude-restore-arrow-keys` to enable them for the duration of your
+current Emacs session or add `(prelude-restore-arrow-keys)` to your
+personal Emacs customization to enable them permanently.
+
 ### Windows compatibility
 
 While everything in Prelude should work fine in Windows I test it only
