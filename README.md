@@ -162,6 +162,20 @@ The following list will be expanded greatly in the future.
 
 ## Installation
 
+### Automated
+
+You can install Emacs via the command line with either `curl` or `wget`.
+
+If you're using `curl` type the following command:
+
+`curl -L https://github.com/bbatsov/emacs-prelude/raw/master/utils/installer.sh | sh`
+
+If you're using `wget` type:
+
+`wget --no-check-certificate https://github.com/bbatsov/emacs-prelude/raw/master/utils/installer.sh -O - | sh`
+
+### Manual
+
 ```bash
 $ git clone git://github.com/bbatsov/emacs-prelude.git path/to/local/repo
 $ ln -s path/to/local/repo ~/.emacs.d
