@@ -65,6 +65,10 @@
 (column-number-mode t)
 (size-indication-mode t)
 
+;; make the fringe (gutter) smaller
+;; the argument is a width in pixels (the default is 8)
+(fringe-mode 4)
+
 ;; enable y/n answers
 (fset 'yes-or-no-p 'y-or-n-p)
 
