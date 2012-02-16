@@ -175,6 +175,9 @@
 ;; dired - reuse current buffer by pressing 'a'
 (put 'dired-find-alternate-file 'disabled nil)
 
+;; ediff - don't start another frame
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
 (provide 'prelude-editor)
 
 ;;; prelude-editor.el ends here
