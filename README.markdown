@@ -223,7 +223,7 @@ checkers as they are saved and opened. If syntax errors are detected, the user
 is notified and is happy because they didn't have to compile their code or 
 execute their script to find them.
 
-## [Fugitive]   (Git integration)
+## [Fugitive]
 
 Fugitive adds pervasive git support to git directories in vim. For more
 information, use `:help fugitive`
@@ -235,7 +235,7 @@ hunks in the file.
 Use `:Gdiff` on an open file to see what changes have been made to that
 file
 
-**QuickStart** <leader>gs to bring up git status
+**QuickStart** `<leader>gs` to bring up git status
 
 **Customizations**: 
 
@@ -249,7 +249,7 @@ file
 
 ![fugitive image][fugitive-img]
 
-## [PIV]  (PHP Integration for VIM)
+## [PIV]
 
 The most feature complete and up to date PHP Integration for Vim with proper support for PHP 5.3+ including latest syntax, functions, better fold support, etc.
 
