@@ -162,6 +162,7 @@ The following list will be expanded greatly in the future.
 * deft (note taking)
 * gist (snippet sharing on github.com)
 * groovy-mode
+* expand-region
 * haml-mode
 * haskell-mode
 * magit (enhanced git integration)
@@ -179,7 +180,8 @@ The following list will be expanded greatly in the future.
 
 ### Automated
 
-You can install Emacs via the command line with either `curl` or `wget`.
+You can install Emacs via the command line with either `curl` or
+`wget`. Naturally `git` is also required.
 
 If you're using `curl` type the following command:
 
@@ -273,6 +275,12 @@ you to receive automatic updates in the future.
 
 ## Caveats & Pitfalls
 
+### Marmalade error on initial startup
+
+If you get some http connection error related to the Marmalade repo
+just do a manual `M-x package-refresh-contents` and restart Emacs
+afterwards. 
+
 ### No arrow navigation in editor buffers
 
 This is not a bug - it's a feature! I firmly believe that the one true
@@ -312,4 +320,3 @@ I'll take a look at it.
 
 Cheers,
 Bozhidar
-  
