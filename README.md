@@ -28,11 +28,16 @@ extend, highly modular, highly comprehensible).
 ## Fast Forward
 
 Assuming you're using an Unix-like OS (*BSD, GNU/Linux, OS X, Solaris,
-etc), you already have Emacs 24 installed, as well as git & curl you
+etc), you already have Emacs 24 installed, as well as `git` & `curl` you
 can skip the whole manual and just type in your favorite shell the
 following command:
 
-``
+`curl -L
+https://github.com/bbatsov/emacs-prelude/raw/master/utils/installer.sh
+| sh`
+
+You can now power up your Emacs, sit back and enjoy Prelude,
+forgetting about the rest of this manual.
 
 ## Getting Emacs 24
 
