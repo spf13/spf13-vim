@@ -2,7 +2,11 @@
 
 PRELUDE_INSTALL_DIR="$HOME/.emacs.d"
 
-echo "Looking for an existing Emacs config..."
+echo -n "Checking to see if git is installed... "
+hash git 2>&- || { echo >&2 "not found.  Aborting installation!'."; exit 1; }
+echo "found"
+
+echo -n "Looking for an existing Emacs config..."
 if [ -f $PRELUDE_INSTALL_DIR ]
 then
   echo "Found $PRELUDE_INSTALL_DIR. Backing up to $PRELUDE_INSTALL_DIR.pre-prelude"
@@ -16,8 +20,9 @@ then
 fi
 
 
-echo "Cloning Emacs Prelude from GitHub..."
-/usr/bin/env git clone https://github.com/bbatsov/emacs-prelude.git $PRELUDE_INSTALL_DIR
+echo -n "Cloning Emacs Prelude from GitHub... "
+/usr/bin/env git clone https://github.com/bbatsov/emacs-prelude.git $PRELUDE_INSTALL_DIR > /dev/null
+echo "done."
 
 echo ' _____                            ____           _           _      '
 echo '| ____|_ __ ___   __ _  ___ ___  |  _ \ _ __ ___| |_   _  __| | ___ '
