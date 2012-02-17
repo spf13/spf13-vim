@@ -25,6 +25,15 @@ similar to Emacs Starter Kit) and the totally new philosophy I have in
 store for the Prelude (easy to update, easy to personalize, easy to
 extend, highly modular, highly comprehensible).
 
+## Fast Forward
+
+Assuming you're using an Unix-like OS (*BSD, GNU/Linux, OS X, Solaris,
+etc), you already have Emacs 24 installed, as well as git & curl you
+can skip the whole manual and just type in your favorite shell the
+following command:
+
+``
+
 ## Getting Emacs 24
 
 Obviously to use the Emacs Prelude you have to install Emacs 24
@@ -108,10 +117,11 @@ The following list will be expanded greatly in the future.
 
 ### Additional programming languages support
 
-* Clojure
-* CoffeeScript
-* Groovy
-* Haskell
+* [Clojure](https://github.com/technomancy/clojure-mode)
+* [CoffeeScript](https://github.com/defunkt/coffee-mode)
+* [Erlang](http://www.erlang.org/doc/apps/tools/erlang_mode_chapter.html)
+* [Groovy](http://groovy.codehaus.org/Emacs+Groovy+Mode)
+* [Haskell](http://www.haskell.org/haskellwiki/Haskell_mode_for_Emacs)
 
 ### Additional markup languages support
 
@@ -136,7 +146,7 @@ The following list will be expanded greatly in the future.
 
 ## Enhanced productivity
 
-* Projectile
+* [Projectile](https://github.com/bbatsov/projectile)
 * yasnippet
 
 ## Bundled packages
@@ -204,6 +214,19 @@ $ emacsclient -t
 $ emacsclient -c
 ```
 
+You'd probably do well to put a few aliases in your `.zshrc` (or
+`.bashrc`):
+
+```bash
+alias e=emacsclient -t
+alias ec=emacsclient -c
+alias vim=emacsclient -t
+alias vi=emacsclient -t
+```
+
+The last two aliases are helpful if you're used to editing files from
+the command line using `vi(m)`.
+
 ## Color Themes
 
 Emacs 24 ships with a new theming facility that effectively renders
@@ -219,6 +242,19 @@ world) find it pretty neat for some reason. Personally I find the
 default theme pretty tiresome for the eyes, that's why I took that
 "controversial" decision to replace it. You can, of course, easily go
 back to the default (or select another theme entirely).
+
+To disable Zenburn just put in your personal config the following
+line:
+
+```elisp
+(disable-theme 'zenburn)
+```
+
+Or you can use another theme altogether by adding something like:
+
+```elisp
+(enable-theme 'solarized-dark t)
+```
 
 ## Personalizing
 
@@ -253,7 +289,12 @@ time. This situation will probably improve over time.
 
 ## Known issues
 
-Check out the project's issue list for that. :-)
+Check out the project's [issue list](https://github.com/bbatsov/emacs-prelude/issues?sort=created&direction=desc&state=open) for that. :-)
+
+## Contributors
+
+Here's a [list](https://github.com/bbatsov/emacs-prelude/contributors) of all the people who have contributed to the
+development of Emacs Prelude.
 
 ## Bugs & Improvements
 
