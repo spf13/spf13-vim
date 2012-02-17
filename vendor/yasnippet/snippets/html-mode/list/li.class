@@ -1,0 +1,5 @@
+# contributor: Jimmy Wu <frozenthrone88@gmail.com>
+# name: <li class="...">...</li>
+# key: li
+# --
+<li class="$1">$2</li>

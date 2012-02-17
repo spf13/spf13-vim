@@ -1,0 +1,5 @@
+# Author: Jonas Bonèr <jonas@jonasboner.com>
+# name: case class T(arg: A)
+# key: cc
+# --
+case class ${1:name}(${2:arg}: ${3:type}) $0

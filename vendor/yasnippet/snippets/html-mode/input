@@ -1,0 +1,5 @@
+# contributor: Jimmy Wu <frozenthrone88@gmail.com>
+# name: <input ... />
+# key: input
+# --
+<input type="$1" name="$2" value="$3" />

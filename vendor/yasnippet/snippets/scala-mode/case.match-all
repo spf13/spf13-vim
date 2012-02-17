@@ -1,0 +1,5 @@
+# Author: Jonas Bonèr <jonas@jonasboner.com>
+# name: case _ => 
+# key: case
+# --
+case _ => $0

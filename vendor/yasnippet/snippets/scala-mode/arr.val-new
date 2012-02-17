@@ -1,0 +1,5 @@
+# Author: Jonas Bonèr <jonas@jonasboner.com>
+# name: val a = Array[T](..)
+# key: arr
+# --
+val ${1:arr} = Array[${2:value}](${3:args}) $0

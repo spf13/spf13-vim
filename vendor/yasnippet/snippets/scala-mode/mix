@@ -1,0 +1,7 @@
+# Author: Jonas Bonèr <jonas@jonasboner.com>
+# name: trait T { .. }
+# key: mix
+# --
+trait ${1:name} {
+  $0
+}

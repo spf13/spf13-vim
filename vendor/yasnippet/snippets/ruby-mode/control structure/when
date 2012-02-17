@@ -1,0 +1,6 @@
+# name: when ... end
+# key: when
+# --
+when ${condition}
+  $0
+end

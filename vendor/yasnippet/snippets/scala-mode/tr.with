@@ -1,0 +1,7 @@
+# Author: Anders Bach Nielsen <andersbach.nielsen@epfl.ch>
+# name: trait T1 with T2 { .. }
+# key: tr
+# --
+trait ${1:name} with ${2:trait} {
+  $0
+}

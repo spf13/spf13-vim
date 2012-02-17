@@ -1,0 +1,4 @@
+# name: v.begin(), v.end()
+# key: beginend
+# --
+${1:v}.begin(), $1.end

@@ -1,0 +1,7 @@
+# Author: Jonas Bonèr <jonas@jonasboner.com>
+# name: def f: R = {...}
+# key: def
+# --
+def ${1:name}: ${3:Unit} = {
+  $0
+}

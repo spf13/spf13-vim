@@ -1,0 +1,7 @@
+# contributor: Jimmy Wu <frozenthrone88@gmail.com>
+# name: <ol class="...">...</ol>
+# key: ol
+# --
+<ol class="$1">
+  $0
+</ol>

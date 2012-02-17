@@ -1,0 +1,5 @@
+# contributor: rejeep <johan.rejeep@gmail.com>
+# name: padding: ...
+# key: pad
+# --
+padding: $1;

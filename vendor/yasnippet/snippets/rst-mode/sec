@@ -1,0 +1,7 @@
+# name: Section title
+# key: sec
+# --
+${1:Section}
+${1:$(make-string (string-width text) ?\-)}
+
+$0

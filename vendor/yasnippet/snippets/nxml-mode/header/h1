@@ -1,0 +1,5 @@
+# contributor: Anders Bach Nielsen <abachn@abachn.net>
+# name: <h1>...</h1>
+# key: h1
+# --
+<h1>$1</h1>

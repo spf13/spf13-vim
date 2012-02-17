@@ -1,0 +1,5 @@
+# contributor: Li Zhu <http://www.zhuli.name>
+# name: implicit complex
+# key: ic
+# --
+implicit complex $0

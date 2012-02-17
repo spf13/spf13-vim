@@ -1,0 +1,8 @@
+# name: Document title
+# key: tit
+# --
+${1:$(make-string (string-width text) ?\=)}
+${1:Title}
+${1:$(make-string (string-width text) ?\=)}
+
+$0

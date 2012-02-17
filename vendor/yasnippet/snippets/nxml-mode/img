@@ -1,0 +1,5 @@
+# contributor: Anders Bach Nielsen <abachn@abachn.net>
+# name: <img src="..." alt="..." />
+# key: img
+# --
+<img src="$1" alt="$2" />

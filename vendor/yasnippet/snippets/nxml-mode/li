@@ -1,0 +1,5 @@
+# contributor: Anders Bach Nielsen <abachn@abachn.net>
+# name: <li>...</li>
+# key: li
+# --
+<li>$1</li>

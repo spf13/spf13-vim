@@ -1,0 +1,5 @@
+# contributor: Jimmy Wu <frozenthrone88@gmail.com>
+# name: <span class="...">...</span>
+# key: span
+# --
+<span class="$1">$2</span>

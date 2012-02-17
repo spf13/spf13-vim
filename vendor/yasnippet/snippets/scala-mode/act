@@ -1,0 +1,11 @@
+# Author: Jonas Bonèr <jonas@jonasboner.com>
+# name: def act = { ..}
+# key: act
+# --
+def act = {
+  loop {
+    react {
+      $0
+    }
+  }
+}

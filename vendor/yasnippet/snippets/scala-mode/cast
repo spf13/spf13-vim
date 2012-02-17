@@ -1,0 +1,5 @@
+# Author: Jonas Bonèr <jonas@jonasboner.com>
+# name: asInstanceOf[T] 
+# key: cast
+# --
+asInstanceOf[${1:type}] $0

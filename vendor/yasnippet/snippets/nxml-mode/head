@@ -1,0 +1,7 @@
+# contributor: Anders Bach Nielsen <abachn@abachn.net>
+# name: <head>...</head>
+# key: head
+# --
+<head>
+  $0
+</head>

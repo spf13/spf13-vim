@@ -1,0 +1,5 @@
+# Author: Jonas Bonèr <jonas@jonasboner.com>
+# name: x <- xs
+# key: for
+# --
+${1:x} <- ${2:xs}

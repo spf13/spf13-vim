@@ -1,0 +1,17 @@
+# Author: Anders Bach Nielsen <andersbach.nielsen@epfl.ch>
+# name: /** scala file */
+# key: doc
+# --
+/*                     __                                               *\
+**     ________ ___   / /  ___     Scala $3                               **
+**    / __/ __// _ | / /  / _ |    (c) 2005-`(format-time-string "%Y")` , LAMP/EPFL             **
+**  __\ \/ /__/ __ |/ /__/ __ |    http://scala-lang.org/               **
+** /____/\___/_/ |_/____/_/ | |                                         **
+**                          |/                                          **
+\*                                                                      */
+/** 
+ * $0
+ * @author ${1:name} 
+ * @version ${2:0.1}
+ * $Id$
+ */

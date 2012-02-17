@@ -1,0 +1,7 @@
+# contributor: Anders Bach Nielsen <abachn@abachn.net>
+# name: <blockquote>...</blockquote>
+# key: quote
+# --
+<blockquote>
+  $1
+</blockquote>

@@ -1,0 +1,5 @@
+# Author: Jonas Bonèr <jonas@jonasboner.com>
+# name: def f(arg: T) = ...
+# key: def
+# --
+def ${1:name}(${2:args}) = $0

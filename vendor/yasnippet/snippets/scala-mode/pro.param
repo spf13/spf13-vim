@@ -1,0 +1,5 @@
+# Author: Jonas Bonèr <jonas@jonasboner.com>
+# name: protected[this]
+# key: pro
+# --
+protected[${1:this}] $0

@@ -1,0 +1,7 @@
+# contributor: Jimmy Wu <frozenthrone88@gmail.com>
+# name: <tr>...</tr>
+# key: tr
+# --
+<tr>
+  $0
+</tr>

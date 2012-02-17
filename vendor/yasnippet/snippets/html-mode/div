@@ -1,0 +1,4 @@
+# name: <div...>...</div>
+# key: div
+# --
+<div${1: id="${2:some_id}"}${3: class="${4:some_class}"}>$0</div> 

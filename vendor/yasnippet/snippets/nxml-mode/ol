@@ -1,0 +1,7 @@
+# contributor: Anders Bach Nielsen <abachn@abachn.net>
+# name: <ol>...</ol>
+# key: ol
+# --
+<ol>
+  $0
+</ol>

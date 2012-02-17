@@ -1,0 +1,7 @@
+# contributor: Li Zhu <http://www.zhuli.name>
+# name: do while (...) end do
+# key: do
+# --
+do while (${1:condition})
+   $0
+end do
