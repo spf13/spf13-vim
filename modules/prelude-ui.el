@@ -42,8 +42,13 @@
 ;; but removing it under OS X doesn't make much sense
 (defun prelude-frame-config (frame)
   "Custom behaviours for new frames."
-  (unless (and (display-graphic-p) (eq system-type 'darwin))
-     (menu-bar-mode -1)))
+  (if (eq system-type 'darwin)
+      (with-selected-frame frame
+        (if (display-graphic-p)
+            (modify-frame-parameters frame '((menu-bar-lines . 1)))
+          (modify-frame-parameters frame '((menu-bar-lines . 0)))))
+    (menu-bar-mode -1)))
+
 ;; run now
 (prelude-frame-config (selected-frame))
 ;; and later
