@@ -185,6 +185,9 @@
 ;; ediff - don't start another frame
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+;; enable Prelude's keybindings
+(prelude-global-mode t)
+
 (provide 'prelude-editor)
 
 ;;; prelude-editor.el ends here
