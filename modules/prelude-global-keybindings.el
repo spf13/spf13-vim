@@ -128,18 +128,14 @@
 (global-set-key (kbd "<f12>") 'menu-bar-mode)
 
 ;; real Emacs hackers don't use the arrow keys
-(global-set-key (kbd "<up>") (lambda ()
-                               (interactive)
-                               (message "Arrow key navigation is disabled. Use C-p instead.")))
-(global-set-key (kbd "<down>") (lambda ()
-                                 (interactive)
-                                 (message "Arrow key navigation is disabled. Use C-n instead.")))
-(global-set-key (kbd "<left>") (lambda ()
-                                 (interactive)
-                                 (message "Arrow key navigation is disabled. Use C-b instead.")))
-(global-set-key (kbd "<right>") (lambda ()
-                                  (interactive)
-                                  (message "Arrow key navigation is disabled. Use C-f instead.")))
+(global-unset-key [up])
+(global-unset-key [down])
+(global-unset-key [left])
+(global-unset-key [right])
+
+;; use M-f and M-b instead
+(global-unset-key [M-left])
+(global-unset-key [M-right])
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
