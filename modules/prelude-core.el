@@ -352,10 +352,12 @@ there's a region, all lines that region covers will be duplicated."
 (defun prelude-restore-arrow-keys ()
   "Restores arrow keys navigation in buffers."
   (interactive)
-  (global-set-key (kbd "<up>") 'previous-line)
-  (global-set-key (kbd "<down>") 'next-line)
-  (global-set-key (kbd "<left>") 'backward-char)
-  (global-set-key (kbd "<right>") 'forward-char)
+  (global-set-key [up]      'previous-line)
+  (global-set-key [down]    'next-line)
+  (global-set-key [left]    'backward-char)
+  (global-set-key [right]   'forward-char)
+  (global-set-key [M-right] 'right-word)
+  (global-set-key [M-left]  'left-word)
   (message "Arrow keys navigation in buffers in now allowed."))
 
 (provide 'prelude-core)
