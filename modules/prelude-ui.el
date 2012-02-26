@@ -72,9 +72,8 @@
 
 ;; make the fringe (gutter) smaller
 ;; the argument is a width in pixels (the default is 8)
-(condition-case nil
-    (fringe-mode 4)
-  (error nil))
+(if (fboundp 'fringe-mode)
+    (fringe-mode 4))
 
 ;; enable y/n answers
 (fset 'yes-or-no-p 'y-or-n-p)
