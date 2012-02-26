@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PRELUDE_INSTALL_DIR="$HOME/.emacs.d"
+PRELUDE_URL=git://github.com/bbatsov/emacs-prelude.git
 
 echo -n "Checking to see if git is installed... "
 hash git 2>&- || { echo >&2 "not found.  Aborting installation!'."; exit 1; }
@@ -21,7 +22,7 @@ fi
 
 
 echo -n "Cloning Emacs Prelude from GitHub... "
-/usr/bin/env git clone https://github.com/bbatsov/emacs-prelude.git $PRELUDE_INSTALL_DIR > /dev/null
+/usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR > /dev/null
 echo "done."
 
 echo ' _____                            ____           _           _      '
