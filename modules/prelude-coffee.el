@@ -34,8 +34,8 @@
 
 (require 'coffee-mode)
 
-(defun prelude-coffee-mode-hook ()
-  "coffee-mode-hook"
+(defun prelude-coffee-mode-defaults ()
+  "coffee-mode-defaults"
 
   ;; CoffeeScript uses two spaces.
   (set (make-local-variable 'tab-width) 2)
@@ -64,7 +64,9 @@
        (file-exists-p (coffee-compiled-file-name))
        (coffee-cos-mode t)))
 
-(add-hook 'coffee-mode-hook 'prelude-coffee-mode-hook)
+(setq prelude-coffee-mode-hook 'prelude-coffee-mode-defaults)
+
+(add-hook 'coffee-mode-hook (lambda () (run-hooks 'prelude-coffee-mode-hook)))
 
 (provide 'prelude-coffee)
 

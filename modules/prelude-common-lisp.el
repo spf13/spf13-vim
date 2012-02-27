@@ -63,8 +63,8 @@
   ;; default to SBCL on Linux and Windows
   (setq slime-default-lisp 'sbcl))
 
-(add-hook 'lisp-mode-hook 'prelude-lisp-coding-hook)
-(add-hook 'slime-repl-mode-hook 'prelude-interactive-lisp-coding-hook)
+(add-hook 'lisp-mode-hook (lambda () (run-hooks 'prelude-lisp-coding-hook)))
+(add-hook 'slime-repl-mode-hook (lambda () (run-hooks 'prelude-interactive-lisp-coding-hook)))
 
 ;; start slime automatically when we open a lisp file
 (defun prelude-start-slime ()

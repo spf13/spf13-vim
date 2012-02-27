@@ -35,11 +35,13 @@
 
 (require 'python)
 
-(defun prelude-python-mode-hook ()
-  (prelude-prog-mode-hook)
+(defun prelude-python-mode-defaults ()
+  (run-hooks 'prelude-prog-mode-hook) ;; run manually; not derived from prog-mode
   (electric-indent-mode -1))
 
-(add-hook 'python-mode-hook 'prelude-python-mode-hook)
+(setq prelude-python-mode-hook 'prelude-python-mode-defaults)
+
+(add-hook 'python-mode-hook (lambda () (run-hooks 'prelude-python-mode-hook)))
 
 (provide 'prelude-python)
 

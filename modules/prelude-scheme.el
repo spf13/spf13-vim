@@ -32,7 +32,7 @@
 
 ;;; Code:
 
-(add-hook 'scheme-mode-hook 'prelude-lisp-coding-hook)
+(add-hook 'scheme-mode-hook (lambda () (run-hooks 'prelude-lisp-coding-hook)))
 
 (provide 'prelude-scheme)
 

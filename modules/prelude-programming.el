@@ -95,19 +95,29 @@
 (require 'which-func)
 (which-func-mode 1)
 
-(defun prelude-prog-mode-hook ()
+;; in Emacs 24 programming major modes generally derive from a common
+;; mode named prog-mode; for others, we'll arrange for our mode
+;; defaults function to run prelude-prog-mode-hook directly.  To
+;; augment and/or counteract these defaults your own function
+;; to prelude-prog-mode-hook, using:
+;;
+;;     (add-hook 'prelude-prog-mode-hook 'my-prog-mode-defaults t)
+;;
+;; (the final optional t sets the *append* argument)
+
+(defun prelude-prog-mode-defaults ()
   "Default coding hook, useful with any programming language."
   (flyspell-prog-mode)
   (prelude-local-comment-auto-fill)
   (prelude-turn-on-whitespace)
   (prelude-turn-on-abbrev)
   (prelude-add-watchwords)
-  ;; keep the whitespace decent all the time
+  ;; keep the whitespace decent all the time (in this buffer)
   (add-hook 'before-save-hook 'whitespace-cleanup nil t))
 
-;; in Emacs 24 programming major modes generally derive
-;; from a common mode named prog-mode
-(add-hook 'prog-mode-hook 'prelude-prog-mode-hook)
+(setq prelude-prog-mode-hook 'prelude-prog-mode-defaults)
+
+(add-hook 'prog-mode-hook (lambda () (run-hooks 'prelude-prog-mode-hook)))
 
 (provide 'prelude-programming)
 ;;; prelude-programming.el ends here

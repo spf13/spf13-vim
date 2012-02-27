@@ -32,18 +32,22 @@
 
 ;;; Code:
 
-(defun prelude-c-mode-common-hook ()
+(defun prelude-c-mode-common-defaults ()
+  (setq indent-tabs-mode t)
   (setq c-basic-offset 4))
+
+(setq prelude-c-mode-common-hook 'prelude-c-mode-common-defaults)
 
 ;; this will affect all modes derived from cc-mode, like
 ;; java-mode, php-mode, etc
-(add-hook 'c-mode-common-hook 'prelude-c-mode-common-hook)
+(add-hook 'c-mode-common-hook (lambda () (run-hooks 'prelude-c-mode-common-hook)))
 
-(defun prelude-makefile-mode-hook ()
-  (setq indent-tabs-mode t)
-  (setq tab-width 4))
+(defun prelude-makefile-mode-defaults ()
+  (setq indent-tabs-mode t))
 
-(add-hook 'makefile-mode-hook 'prelude-makefile-mode-hook)
+(setq prelude-makefile-mode-hook 'prelude-makefile-mode-defaults)
+
+(add-hook 'makefile-mode-hook (lambda () (run-hook 'prelude-makefile-mode-hook)))
 
 (provide 'prelude-c)
 

@@ -39,10 +39,12 @@
 ;; 2. Invoke M-x clojure-jack-in from a project
 (require 'clojure-mode)
 
-(defun prelude-clojure-mode-hook ()
-  (prelude-lisp-coding-hook))
+(defun prelude-clojure-mode-defaults ()
+  (run-hooks 'prelude-lisp-coding-hook))
 
-(add-hook 'clojure-mode-hook 'prelude-clojure-mode-hook)
+(setq prelude-clojure-mode-hook 'prelude-clojure-mode-defaults)
+
+(add-hook 'clojure-mode-hook (lambda () (run-hooks 'prelude-clojure-mode-hook)))
 
 (provide 'prelude-clojure)
 
