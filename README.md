@@ -41,9 +41,8 @@ first. Here's a few tips on doing so:
 Obtaining Emacs 24 on OS X is really simple. There are two popular
 ways to do it. The first is to simply download a pretest (or a nightly
 build) from [Emacs for OSX](http://emacsformacosx.com). My personal
-recommendation would be to get the latest pretest (which is ironically
-the first pretest as well) from
-[here](http://emacsformacosx.com/emacs-builds/Emacs-pretest-24.0.90-universal-10.6.7.dmg).
+recommendation would be to get the latest pretest from
+[here](http://emacsformacosx.com/builds).
 
 That was really easy, right?
 
@@ -88,14 +87,21 @@ That said, few distributions include in their primary repositories
 builds of Emacs 24. Luckily there are some unofficial repos that come
 to the rescue.
 
-Debian/Ubuntu users should look no further than the amazing
+Debian users should look no further than the amazing
 [emacs-snapshot APT repo](http://emacs.naquadah.org/). You'll find
-installation instructions there for all the relevant Debian and Ubuntu
+installation instructions there for all the relevant Debian
 versions out there. High quality, highly recommended builds! After
 you've added the repo you can install Emacs 24 with the following
 command:
 
 ```bash
+$ sudo apt-get install emacs-snapshot
+```
+
+Ubuntu users have easy access to Emacs 24 as well:
+
+```bash
+$ sudo apt-add-repository ppa:cassou/emacs
 $ sudo apt-get install emacs-snapshot
 ```
 
@@ -293,10 +299,21 @@ under the **personal** directory in `prelude-dir`. They will be loaded
 automatically be Prelude on startup.
 
 Avoid modifying the Prelude config itself (unless you're not
-intimidated to maintain a personal fork on GitHub)- this will make it
+intimidated to maintain a personal fork on GitHub) - this will make it
 hard for you to receive automatic updates in the future.
 
 ## Caveats & Pitfalls
+
+### Ugly colors in the terminal Emacs version
+
+If your Emacs looks considerably uglier in a terminal (compared to the
+GUI version) try adding this to your `.bashrc` or `.zshrc`:
+
+```bash
+export TERM=xterm-256color
+```
+
+Source the `.bashrc` file and start Emacs again.
 
 ### Marmalade error on initial startup
 
@@ -325,7 +342,10 @@ time. This situation will probably improve over time.
 
 ## Known issues
 
-Check out the project's [issue list](https://github.com/bbatsov/emacs-prelude/issues?sort=created&direction=desc&state=open) for that. :-)
+Check out the project's
+[issue list](https://github.com/bbatsov/emacs-prelude/issues?sort=created&direction=desc&state=open)
+a list of unresolved issues. By the way - feel free to fix any of them
+and sent me a pull request. :-)
 
 ## Contributors
 
