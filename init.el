@@ -99,7 +99,7 @@ by Prelude.")
 (when (file-exists-p prelude-personal-dir)
   (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$")))
 
-(message "Emacs Prelude is ready to do thy bidding, Master, %s!"
+(message "Emacs Prelude is ready to do thy bidding, Master %s!"
          (getenv "USER"))
 
 ;;; init.el ends here

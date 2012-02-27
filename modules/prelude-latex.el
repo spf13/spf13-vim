@@ -52,11 +52,13 @@
         ("PDF Viewer" "open %o")
         ("HTML Viewer" "open %o")))
 
-(defun prelude-latex-mode-hook ()
+(defun prelude-latex-mode-defaults ()
   (turn-on-auto-fill)
   (abbrev-mode +1))
 
-(add-hook 'LaTeX-mode-hook 'prelude-latex-mode-hook)
+(setq prelude-latex-mode-hook 'prelude-latex-mode-defaults)
+
+(add-hook 'LaTeX-mode-hook (lambda () (run-hooks 'prelude-latex-mode-hook)))
 
 (provide 'prelude-latex)
 

@@ -59,30 +59,36 @@
 (require 'ruby-block)
 (require 'ruby-end)
 
-(defun prelude-ruby-mode-hook ()
+(defun prelude-ruby-mode-defaults ()
   (inf-ruby-keys)
   ;; turn off the annoying input echo in irb
   (setq comint-process-echoes t)
   (ruby-block-mode t)
   (local-set-key (kbd "C-h r") 'yari))
 
-(add-hook 'ruby-mode-hook 'prelude-ruby-mode-hook)
+(setq prelude-ruby-mode-hook 'prelude-ruby-mode-defaults)
+
+(add-hook 'ruby-mode-hook (lambda () (run-hooks 'prelude-ruby-mode-hook)))
 
 (require 'haml-mode)
 (require 'scss-mode)
 
-(defun prelude-css-mode-hook ()
+(defun prelude-css-mode-defaults ()
   (setq css-indent-offset 2)
   (rainbow-mode +1))
 
-(add-hook 'css-mode-hook 'prelude-css-mode-hook)
+(setq prelude-css-mode-hook 'prelude-css-mode-defaults)
 
-(defun prelude-scss-mode-hook ()
+(add-hook 'css-mode-hook (lambda () (run-hooks 'prelude-css-mode-hook)))
+
+(defun prelude-scss-mode-defaults ()
   (prelude-css-mode-hook)
   ;; turn off annoying auto-compile on save
   (setq scss-compile-at-save nil))
 
-(add-hook 'scss-mode-hook 'prelude-scss-mode-hook)
+(setq prelude-scss-mode-hook 'prelude-scss-mode-defaults)
+
+(add-hook 'scss-mode-hook (lambda () (run-hooks 'prelude-scss-mode-hook)))
 
 ;; cucumber support
 (require 'feature-mode)

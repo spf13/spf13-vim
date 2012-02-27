@@ -36,13 +36,17 @@
 (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 
 ;; a great lisp coding hook
-(defun prelude-lisp-coding-hook ()
+(defun prelude-lisp-coding-defaults ()
   (paredit-mode +1))
 
+(setq prelude-lisp-coding-hook 'prelude-lisp-coding-defaults)
+
 ;; interactive modes don't need whitespace checks
-(defun prelude-interactive-lisp-coding-hook ()
+(defun prelude-interactive-lisp-coding-defaults ()
   (paredit-mode +1)
   (prelude-turn-off-whitespace))
+
+(setq prelude-interactive-lisp-coding-hook 'prelude-interactive-lisp-coding-defaults)
 
 (provide 'prelude-lisp)
 

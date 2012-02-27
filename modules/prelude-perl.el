@@ -35,7 +35,7 @@
 ;; use cperl-mode instead of perl-mode
 (defalias 'perl-mode 'cperl-mode)
 
-(defun prelude-cperl-mode-hook ()
+(defun prelude-cperl-mode-defaults ()
   (setq cperl-indent-level 4)
   (setq cperl-continued-statement-offset 8)
   ;; cperl-hairy affects all those variables, but I prefer
@@ -56,7 +56,9 @@
   (set-face-background 'cperl-hash-face nil)
   (setq cperl-invalid-face nil))
 
-(add-hook 'cperl-mode-hook 'prelude-cperl-mode-hook t)
+(setq prelude-cperl-mode-hook 'prelude-cperl-mode-defaults)
+
+(add-hook 'cperl-mode-hook (lambda () (run-hooks 'prelude-cperl-mode-hook)) t)
 
 (provide 'prelude-perl)
 

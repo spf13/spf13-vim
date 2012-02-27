@@ -42,20 +42,24 @@
               (if (file-exists-p (concat buffer-file-name "c"))
                   (delete-file (concat buffer-file-name "c"))))))
 
-(defun prelude-emacs-lisp-mode-hook ()
-  (prelude-lisp-coding-hook)
+(defun prelude-emacs-lisp-mode-defaults ()
+  (run-hooks 'prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
   (prelude-remove-elc-on-save)
   (rainbow-mode +1))
 
-(add-hook 'emacs-lisp-mode-hook 'prelude-emacs-lisp-mode-hook)
+(setq prelude-emacs-lisp-mode-hook 'prelude-emacs-lisp-mode-defaults)
+
+(add-hook 'emacs-lisp-mode-hook (lambda () (run-hooks 'prelude-emacs-lisp-mode-hook)))
 
 ;; ielm is an interactive Emacs Lisp shell
-(defun prelude-ielm-mode-hook ()
-  (prelude-interactive-lisp-coding-hook)
+(defun prelude-ielm-mode-defaults ()
+  (run-hooks 'prelude-interactive-lisp-coding-hook)
   (turn-on-eldoc-mode))
 
-(add-hook 'ielm-mode-hook 'prelude-ielm-mode-hook)
+(setq prelude-ielm-mode-hook 'prelude-ielm-mode-defaults)
+
+(add-hook 'ielm-mode-hook (lambda () (run-hooks 'prelude-ielm-mode-hook)))
 
 (define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
 
