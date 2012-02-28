@@ -47,7 +47,7 @@
 
 (setq prelude-makefile-mode-hook 'prelude-makefile-mode-defaults)
 
-(add-hook 'makefile-mode-hook (lambda () (run-hook 'prelude-makefile-mode-hook)))
+(add-hook 'makefile-mode-hook (lambda () (run-hooks 'prelude-makefile-mode-hook)))
 
 (provide 'prelude-c)
 
