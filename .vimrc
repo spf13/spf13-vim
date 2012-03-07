@@ -50,59 +50,87 @@
         endif
     " }
 
+    " In your .vimrc.bundles.local file"
+    " list only the plugin groups you will use
+    if !exists('g:spf13_bundle_groups')
+        let g:spf13_bundle_groups=['general', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc']
+    endif
+
+    " To override all the included bundles, put 
+    " g:override_spf13_bundles = 1 
+    " in your .vimrc.bundles.local file"
+    if !exists("g:override_spf13_bundles")
+
     " General
-        Bundle 'scrooloose/nerdtree'
-        Bundle 'altercation/vim-colors-solarized'
-        Bundle 'spf13/vim-colors'
-        Bundle 'tpope/vim-surround'
-        Bundle 'AutoClose'
-        Bundle 'kien/ctrlp.vim'
-        Bundle 'spf13/vim-preview'
-        Bundle 'vim-scripts/sessionman.vim'
-        Bundle 'matchit.zip'
-        Bundle 'Lokaltog/vim-powerline'
-        Bundle 'Lokaltog/vim-easymotion'
-        Bundle 'godlygeek/csapprox'
-        Bundle 'jistr/vim-nerdtree-tabs'
-        Bundle 'flazz/vim-colorschemes'
+        if count(g:spf13_bundle_groups, 'general')
+            Bundle 'scrooloose/nerdtree'
+            Bundle 'altercation/vim-colors-solarized'
+            Bundle 'spf13/vim-colors'
+            Bundle 'tpope/vim-surround'
+            Bundle 'AutoClose'
+            Bundle 'kien/ctrlp.vim'
+            Bundle 'spf13/vim-preview'
+            Bundle 'vim-scripts/sessionman.vim'
+            Bundle 'matchit.zip'
+            Bundle 'Lokaltog/vim-powerline'
+            Bundle 'Lokaltog/vim-easymotion'
+            Bundle 'godlygeek/csapprox'
+            Bundle 'jistr/vim-nerdtree-tabs'
+            Bundle 'flazz/vim-colorschemes'
+        endif
 
     " General Programming
-        " Pick one of the checksyntax, jslint, or syntastic
-        Bundle 'scrooloose/syntastic'
-        Bundle 'garbas/vim-snipmate'
-        Bundle 'spf13/snipmate-snippets'
-        Bundle 'tpope/vim-fugitive'
-        Bundle 'scrooloose/nerdcommenter'
-        Bundle 'godlygeek/tabular'
-        Bundle 'majutsushi/tagbar'
-        Bundle 'Shougo/neocomplcache'
+        if count(g:spf13_bundle_groups, 'programming')
+            " Pick one of the checksyntax, jslint, or syntastic
+            Bundle 'scrooloose/syntastic'
+            Bundle 'garbas/vim-snipmate'
+            Bundle 'spf13/snipmate-snippets'
+            Bundle 'tpope/vim-fugitive'
+            Bundle 'scrooloose/nerdcommenter'
+            Bundle 'godlygeek/tabular'
+            Bundle 'majutsushi/tagbar'
+            Bundle 'Shougo/neocomplcache'
+        endif
 
     " PHP
-        Bundle 'spf13/PIV'
+        if count(g:spf13_bundle_groups, 'php')
+            Bundle 'spf13/PIV'
+        endif
 
     " Python
-        " Pick either python-mode or pyflakes & pydoc
-        Bundle 'klen/python-mode'
-        Bundle 'python.vim'
-        Bundle 'python_match.vim'
-        Bundle 'pythoncomplete'
+        if count(g:spf13_bundle_groups, 'python')
+            " Pick either python-mode or pyflakes & pydoc
+            Bundle 'klen/python-mode'
+            Bundle 'python.vim'
+            Bundle 'python_match.vim'
+            Bundle 'pythoncomplete'
+        endif
 
     " Javascript
-        Bundle 'leshill/vim-json'
-        Bundle 'groenewege/vim-less'
-        Bundle 'taxilian/vim-web-indent'
+        if count(g:spf13_bundle_groups, 'javascript')
+            Bundle 'leshill/vim-json'
+            Bundle 'groenewege/vim-less'
+            Bundle 'taxilian/vim-web-indent'
+        endif
 
     " HTML
-        Bundle 'HTML-AutoCloseTag'
-        Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+        if count(g:spf13_bundle_groups, 'html')
+            Bundle 'HTML-AutoCloseTag'
+            Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+        endif
 
     " Ruby
-        Bundle 'rails.vim'
+        if count(g:spf13_bundle_groups, 'ruby')
+            Bundle 'rails.vim'
+        endif
 
     " Misc
-        Bundle 'spf13/vim-markdown'
-        Bundle 'tpope/vim-cucumber'
-        Bundle 'Puppet-Syntax-Highlighting'
+        if count(g:spf13_bundle_groups, 'misc')
+            Bundle 'spf13/vim-markdown'
+            Bundle 'tpope/vim-cucumber'
+            Bundle 'Puppet-Syntax-Highlighting'
+        endif
+    endif
 " }
 
 " General {
@@ -422,7 +450,7 @@
      " Disable if python support not present
         if !has('python')
            let g:pymode = 1
-       endif
+        endif
      " }
 
      " Fugitive {
