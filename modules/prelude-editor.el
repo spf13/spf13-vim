@@ -216,6 +216,51 @@
 ;; ediff - don't start another frame
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+;; clean up obsolete buffers automatically
+(require 'midnight)
+
+;; automatically indenting yanked text if in programming-modes
+(defvar yank-indent-modes '(python-mode LaTeX-mode TeX-mode)
+  "Modes in which to indent regions that are yanked (or yank-popped). Only
+modes that don't derive from `prog-mode' should be listed here.")
+
+(defvar yank-advised-indent-threshold 1000
+  "Threshold (# chars) over which indentation does not automatically occur.")
+
+(defun yank-advised-indent-function (beg end)
+  "Do indentation, as long as the region isn't too large."
+  (if (<= (- end beg) yank-advised-indent-threshold)
+      (indent-region beg end nil)))
+
+(defadvice yank (after yank-indent activate)
+  "If current mode is one of 'yank-indent-modes,
+indent yanked text (with prefix arg don't indent)."
+  (if (and (not (ad-get-arg 0))
+           (or (derived-mode-p 'prog-mode)
+               (member major-mode yank-indent-modes)))
+      (let ((transient-mark-mode nil))
+    (yank-advised-indent-function (region-beginning) (region-end)))))
+
+(defadvice yank-pop (after yank-pop-indent activate)
+  "If current mode is one of 'yank-indent-modes,
+indent yanked text (with prefix arg don't indent)."
+  (if (and (not (ad-get-arg 0))
+           (or (derived-mode-p 'prog-mode)
+               (member major-mode yank-indent-modes)))
+    (let ((transient-mark-mode nil))
+    (yank-advised-indent-function (region-beginning) (region-end)))))
+
+;; abbrev config
+(add-hook 'text-mode-hook 'prelude-turn-on-abbrev)
+
+;; make a shell script executable automatically on save
+(add-hook 'after-save-hook
+          'executable-make-buffer-file-executable-if-script-p)
+
+;; saner regex syntax
+(require 're-builder)
+(setq reb-re-syntax 'string)
+
 ;; enable Prelude's keybindings
 (prelude-global-mode t)
 
