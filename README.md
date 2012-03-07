@@ -288,7 +288,7 @@ line:
 Or you can use another theme altogether by adding something like:
 
 ```elisp
-(enable-theme 'solarized-dark t)
+(load-theme 'solarized-dark t)
 ```
 
 ## Personalizing
