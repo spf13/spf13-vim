@@ -104,6 +104,8 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
+(global-set-key (kbd "C-c w") (make-repeatable-command 'er/expand-region))
+
 (provide 'prelude-global-keybindings)
 
 ;;; prelude-global-keybindings.el ends here
