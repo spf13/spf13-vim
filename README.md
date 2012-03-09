@@ -1,4 +1,10 @@
-# Emacs Prelude
+```
+ _____                            ____           _           _
+| ____|_ __ ___   __ _  ___ ___  |  _ \ _ __ ___| |_   _  __| | ___
+|  _| | '_ ` _ \ / _` |/ __/ __| | |_) | '__/ _ \ | | | |/ _` |/ _ \
+| |___| | | | | | (_| | (__\__ \ |  __/| | |  __/ | |_| | (_| |  __/
+|_____|_| |_| |_|\__,_|\___|___/ |_|   |_|  \___|_|\__,_|\__,_|\___|
+```
 
 ## Prelude
 
@@ -288,7 +294,7 @@ line:
 Or you can use another theme altogether by adding something like:
 
 ```elisp
-(enable-theme 'solarized-dark t)
+(load-theme 'solarized-dark t)
 ```
 
 ## Personalizing
