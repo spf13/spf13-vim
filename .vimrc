@@ -84,6 +84,8 @@
             Bundle 'scrooloose/syntastic'
             Bundle 'garbas/vim-snipmate'
             Bundle 'spf13/snipmate-snippets'
+            " Source support_function.vim to support snipmate-snippets.
+            source $HOME/.vim/bundle/snipmate-snippets/snippets/support_functions.vim 
             Bundle 'tpope/vim-fugitive'
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'godlygeek/tabular'
