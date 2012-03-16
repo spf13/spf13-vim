@@ -310,6 +310,20 @@ hard for you to receive automatic updates in the future.
 
 ## Caveats & Pitfalls
 
+### Problems with flyspell-mode
+
+Prelude makes heavy use of the flyspell-mode package for spell
+checking of various things. The proper operation of flyspell depends
+on the presence of the `aspell` program and an `en` dictionary on your
+system. You can install `aspell` and the dictionary on OS X with
+`homebrew` like this:
+
+```bash
+$ brew install aspell --lang=en
+```
+
+On Linux distros - just use your distro's package manager.
+
 ### Ugly colors in the terminal Emacs version
 
 If your Emacs looks considerably uglier in a terminal (compared to the
