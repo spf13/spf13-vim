@@ -205,6 +205,9 @@
 (require 'yasnippet)
 (yas/initialize)
 
+;; Helm makes finding stuff in Emacs much simpler
+(require 'helm-config)
+
 ;; projectile is a project management mode
 (require 'projectile)
 (projectile-global-mode t)
