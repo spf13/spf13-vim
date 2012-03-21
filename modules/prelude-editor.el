@@ -204,6 +204,8 @@
 ;; load yasnippet
 (require 'yasnippet)
 (yas/initialize)
+(add-to-list 'yas/snippet-dirs prelude-snippets-dir)
+(add-to-list 'yas/snippet-dirs prelude-personal-snippets-dir)
 
 ;; Helm makes finding stuff in Emacs much simpler
 (require 'helm-config)
