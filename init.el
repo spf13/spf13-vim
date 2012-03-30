@@ -93,6 +93,7 @@ by Prelude.")
 ;; tools & utilities support
 (require 'prelude-ack)
 (require 'prelude-erc)
+(require 'prelude-mediawiki)
 
 ;; config changes made through the customize UI will be store here
 (setq custom-file (concat prelude-personal-dir "custom.el"))
