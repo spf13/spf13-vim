@@ -40,4 +40,6 @@
 ;; Emacs users care more for WikEmacs than Wikipedia :-)
 (setq mediawiki-site-default "WikEmacs")
 
+(provide 'prelude-mediawiki)
+
 ;;; prelude-mediawiki.el ends here
