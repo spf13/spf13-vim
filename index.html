@@ -1,88 +1,613 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8'>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>spf13-vim - The Ultimate Vim Distribution</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Ultimate Vim Distribution containing the best vim plugins for php, python, git, ruby, and development">
+    <meta name="author" content="Steve Francia">
 
-  <title>spf13/spf13-vim @ GitHub</title>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #1b6be3;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #e4941c; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #e4941c; }
-    h3 { text-align: center; color: #e4941c; }
-    a { color: #e4941c; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/spf13.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-<body>
-  <a href="https://github.com/spf13/spf13-vim"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png">
+  </head>
 
-  <div id="container">
+  <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-    <div class="download">
-      <a href="https://github.com/spf13/spf13-vim/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/spf13/spf13-vim/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
+    <div class="container">
+
+<!-- Masthead
+================================================== -->
+<header id="overview">
+  <div class="row">
+    <div class="span6">
+      <div class="row">
+          <div class="span5 offset1">
+              <h4><a href="http://spf13.com">spf13</a> presents</h4>
+              <h1 style="font-size: +40pt; line-height: 1.1;">The Ultimate Vim Distribtion</h1>
+              <p style="padding-top: 10px; font-size: larger;">
+            spf13-vim is a distribution of vim plugins and resources for Vim, GVim and MacVim.
+            <br> <br>
+            It is a completely cross platform distribution that stays true to the feel of vim while providing modern features like a plugin management system, autocomplete, tags and tons more.
+            </p>
+          </div>
+      </div>
+      <div class="row"> 
+        <div class="span4 offset1 ctr" style="padding-top: 2em;">
+           <div class="well" style="background-color:#fcf8ed;">
+               <a class="btn btn-large btn-primary" href="#install">Install Now</a>
+               &nbsp; &nbsp; 
+               or 
+               &nbsp; &nbsp; 
+               <h3 style="display:inline;"> <a href="#vimrc">Learn More</a> </h3>
+           </div>
+        </div>
+      </div>
     </div>
-
-    <h1><a href="https://github.com/spf13/spf13-vim">spf13-vim</a>
-      <span class="small">by <a href="https://github.com/spf13">spf13</a></span></h1>
-
-    <div class="description">
-      The ultimate vim distribution
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>Adam Comerford (adamc@10gen.com)<br/>Baptiste Pizzighini (baptiste@bpizzi.fr)<br/>Ben Loveridge (bloveridge@movenetworks.com)<br/>Dusty Leary (dleary@gmail.com)<br/>lihuazhang (lihuazhang@hotmail.com)<br/>Scott (munkt0n@gmail.com)<br/>Francisco J (nflamel@otrobloggeek.com)<br/>herman (parherman@gmail.com)<br/>Ramon Marco Navarro (ramonmaruko@gmail.com)<br/>Rory O’Kane (rory@roryokane.com)<br/>Steve Francia (steve.francia@gmail.com)<br/>Aamir Khan (syst3m.w0rm@gmail.com)<br/>Richard Bateman (taxilian@gmail.com)<br/>Wolfgang Pfnür (wpfnuer@vz.net)<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>Steve Francia (spf13-vim@spf13.com)<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/spf13/spf13-vim/zipball/master">zip</a> or
-      <a href="https://github.com/spf13/spf13-vim/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/spf13/spf13-vim</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/spf13/spf13-vim">spf13/spf13-vim</a>
-    </div>
-
+    <div class="span6"><img src="resources/spf13-mac-logo.png" alt="logo-small" /></div>
   </div>
 
-</body>
+<div class="navbar">
+<div class="navbar-inner">
+<div class="container">
+    <ul class="nav">
+      <li><a href="#install"><i class="icon-download-alt icon-white"></i> Installation</a></li>
+      <!--<li><a href="#screenshots"><i class="icon-picture icon-white"></i> Screenshots</a></li>-->
+      <li><a href="#vimrc"><i class="icon-cog icon-white"></i> Configuration</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-plus icon-white"></i> Featured Plugins <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#vundle">Vundle</a></li>
+          <li><a href="#nerdtree">NERDtree</a></li>
+          <li><a href="#ctrlp">ctrlP</a></li>
+          <li><a href="#surround">Surround</a></li>
+          <li><a href="#nerdcommenter">NERDcommenter</a></li>
+          <li><a href="#neocomplcache">Neocomplcache</a></li>
+          <li><a href="#syntastic">Syntastic</a></li>
+          <li><a href="#fugitive">Fugitive</a></li>
+          <li><a href="#piv">PIV</a></li>
+          <li><a href="#tabularize">Tabularize</a></li>
+          <li><a href="#tagbar">Tagbar</a></li>
+          <li><a href="#easymotion">Easymotion</a></li>
+        </ul>
+      </li>
+      <li><a href="#custom"><i class="icon-pencil icon-white"></i> Customizing</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-asterisk icon-white"></i> Other Awesome stuff <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#additionalSyntaxes">Additional Syntaxes</a></li>
+          <li><a href="#amazingColors">Amazing Colors</a></li>
+          <li><a href="#snippets">Snippets</a></li>
+          <li><a href="#vimIntro">Intro to vim</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-heart icon-white"></i> Community <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#mailinglist">Mailing List</a></li>
+          <li><a href="#discusion">Discussion Group</a></li>
+          <li><a href="#contributing">Contributing</a></li>
+        </ul>
+      </li>
+    </ul>
+  <a class="brand pull-right" style="display: none;" href="./index.html">spf13-vim</a>
+</div> </div> </div>
+</header>
+
+
+
+
+
+
+
+<!-- Installation
+================================================== -->
+<section id="install">
+  <div class="page-header">
+    <h1> Installation <small>easily installed on *nix, os x and windows</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h2 id="easyInstall">Easy Installation <small>*nix and os x</small></h2>
+      <p>The easiest way to install spf13-vim is to use our <a href="http://j.mp/spf13-vim">automatic installer</a> by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration.</p>
+      <p>If you are upgrading from a prior version (before 3.0) this is also the recommended installation.</p>
+        <pre class="prettyprint" data-content=" Just copy and paste this line into a terminal and run it" data-original-title="Installing is Easy" rel="popover"> curl http://j.mp/spf13-vim3 -o - | sh </pre>
+
+
+
+    <h2>Updating to the latest version</h2>
+
+    <div class="highlight">
+<pre>
+$HOME/to/spf13-vim/
+git pull
+vim +BundleInstall! +BundleClean +q
+</pre>
+    </div>
+    </div><!--/span-->
+    <div class="span8">
+    <h2 id="windowsInstall">Installing on Windows</h2>
+
+<p>On Windows and *nix <a href="http://git-scm.com">Git</a> and <a href="http://curl.haxx.se">Curl</a> are required. </p>
+
+<h3>Installing dependencies</h3>
+
+<h4>Install <a href="http://code.google.com/p/msysgit">msysgit</a>
+</h4>
+
+<p>After installation try running <code>git --version</code> within <em>command prompt</em> (press Win-R,  type <code>cmd</code>, press Enter) to make sure all good:</p>
+
+<pre><code>C:\&gt; git --version
+git version 1.7.4.msysgit.0
+</code></pre>
+
+<h4>Setup <a href="http://curl.haxx.se">Curl</a>
+</h4>
+
+<p><em>Instructions blatently copied from vundle readme</em>
+Installing Curl on Windows is easy as <a href="http://curl.haxx.se">Curl</a> is bundled with <a href="http://code.google.com/p/msysgit">msysgit</a>!
+But before it can be used with <a href="http://github.com/gmarik/vundle">Vundle</a> it's required make <code>curl</code> run in <em>command prompt</em>.
+The easiest way is to create <code>curl.cmd</code> with <a href="https://gist.github.com/912993">this content</a></p>
+
+<pre><code>@rem Do not use "echo off" to not affect any child calls.
+@setlocal
+
+@rem Get the abolute path to the parent directory, which is assumed to be the
+@rem Git installation root.
+@for /F "delims=" %%I in ("%~dp0..") do @set git_install_root=%%~fI
+@set PATH=%git_install_root%\bin;%git_install_root%\mingw\bin;%PATH%
+
+@if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
+@if not exist "%HOME%" @set HOME=%USERPROFILE%
+
+@curl.exe %*
+</code></pre>
+
+<p>And copy it to <code>C:\Program Files\Git\cmd\curl.cmd</code>, assuming <a href="http://code.google.com/p/msysgit">msysgit</a> was installed to <code>c:\Program Files\Git</code></p>
+
+<p>to verify all good, run:</p>
+
+<pre><code>C:\&gt; curl --version
+curl 7.21.1 (i686-pc-mingw32) libcurl/7.21.1 OpenSSL/0.9.8k zlib/1.2.3
+Protocols: dict file ftp ftps http https imap imaps ldap ldaps pop3 pop3s rtsp smtp smtps telnet tftp
+Features: Largefile NTLM SSL SSPI libz
+</code></pre>
+
+<h3>Installing spf13-vim on Windows</h3>
+
+<p>The easiest way is to download and run the spf13-vim-windows-install.cmd file.</p>
+
+    </div><!--/span-->
+  </div><!--/row-->
+</section>
+
+
+
+<!-- Skeleton
+================================================== -->
+<section id="vimrc">
+  <div class="page-header">
+    <h1> Excellent Configuration <small>A highly optimized .vimrc config file</small></h1>
+  </div>
+  <div class="row">
+    <div class="span6">
+        <p>The .vimrc file is suited to programming. It is extremely well organized and folds in sections.
+        Each section is labeled and each option is commented.</p>
+
+        <p>It fixes many of the inconveniences of vanilla vim including</p>
+
+        <ul>
+        <li>A single config can be used across Windows, Mac and linux</li>
+        <li>Eliminates swap and backup files from littering directories, preferring to store in a central location.</li>
+        <li>Fixes common typos like :W, :Q, etc</li>
+        <li>Setup a solid set of settings for Formatting (change to meet your needs) </li>
+        <li>Setup the interface to take advantage of vim's features including
+
+        <ul>
+        <li>omnicomplete</li>
+        <li>line numbers</li>
+        <li>syntax highlighting</li>
+        <li>A better ruler &amp; status line</li>
+        <li>&amp; more</li>
+        </ul>
+        </li>
+        <li>Configuring included plugins</li>
+        </ul><h2>Customization</h2>
+
+        <p>Create <code>~/.vimrc.local</code> and <code>~/.gvimrc.local</code> for any local
+        customizations.</p>
+
+        <p>For example, to override the default color schemes:</p>
+
+        <div class="highlight">
+        <pre>echo colorscheme ir_black  &gt;&gt; ~/.vimrc.local </pre>
+        </div>
+    </div><!--/span-->
+    <div class="span6">
+<p><img src="https://a248.e.akamai.net/assets.github.com/img/b366a89a9b0de9bf3d572034e9af9e85948d2066/687474703a2f2f692e696d6775722e636f6d2f6b5a576a312e706e67" alt="spf13-vimrc image"></p>
+    </div><!--/span-->
+  </div><!--/row-->
+</section>
+
+<!-- Skeleton
+================================================== -->
+<section id="plugins">
+  <div class="page-header">
+    <h1> Featured Plugins <small>All the modern features you expect from your IDE, now in Vim</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h2 id="vundle"> Vundle <small>The best plugin manager</small></h2>
+      <p>
+Vundle is an excellent system built on the same principles as Pathogen, but with an integrated plugin management system that is Git and Github aware.
+      </p> <p>
+spf13-vim uses the Vundle plugin management system to have a well organized vim directory (Similar to mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
+      </p>
+    </div><!--/span-->
+    <div class="span4">
+      <h2 id="nerdtree"><a href="http://github.com/scrooloose/nerdtree">NERDTree</a> <small>file navigation</small></h2>
+      <h2></h2>
+
+        <p>NERDTree is a file explorer plugin that provides "project drawer"
+        functionality to your vim editing.  You can learn more about it with
+        :help NERDTree or checkout my post on <a href="http://spf13.com/post/vim-plugins-nerd-commenter">NERDTree</a>.</p>
+
+        <p><strong>QuickStart</strong> Launch using <code>&lt;Leader&gt;e</code>.</p>
+
+        <p><strong>Customizations</strong>: </p>
+
+        <ul>
+        <li>Use <code>&lt;C-E&gt;</code> to toggle NERDTree</li>
+        <li>Use <code>&lt;leader&gt;e</code> or <code>&lt;leader&gt;nt</code> to load NERDTreeFind which opens NERDTree where the current file is located.</li>
+        <li>Hide clutter ('.pyc', '.git', '.hg', '.svn', '.bzr')</li>
+        <li>Treat NERDTree more like a panel than a split.</li>
+        </ul>
+    </div><!--/span-->
+    <div class="span4">
+      <h2 id="ctrlp"><a href="http://github.com/kien/ctrlp">ctrlp</a> <small>fast file finder</small></h2>
+      <p>Ctrlp replaces the Command-T plugin with a 100% viml plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files. </p>
+
+        <p><strong>QuickStart</strong> Launch using <code>&lt;c-p&gt;</code>.</p>
+    </div><!--/span-->
+  </div><!--/row-->
+  <div class="row">
+    <div class="span6">
+        <h2 id="surround"><a href="https://github.com/tpope/vim-surround">Surround</a> <small>managing all the '"[{}]"' etc</small></h2>
+    
+        <p>This plugin is a tool for dealing with pairs of "surroundings."  Examples
+        of surroundings include parentheses, quotes, and HTML tags.  They are
+        closely related to what Vim refers to as text-objects.  Provided
+        are mappings to allow for removing, changing, and adding surroundings.</p>
+
+        <p>Details follow on the exact semantics, but first, consider the following
+        examples.  An asterisk (*) is used to denote the cursor position.</p>
+
+<pre><code>  Old text                  Command     New text ~
+  "Hello *world!"           ds"         Hello world!
+  [123+4*56]/2              cs])        (123+456)/2
+  "Look ma, I'm *HTML!"     cs"&lt;q&gt;      &lt;q&gt;Look ma, I'm HTML!&lt;/q&gt;
+  if *x&gt;3 {                 ysW(        if ( x&gt;3 ) {
+  my $str = *whee!;         vlllls'     my $str = 'whee!';
+</code></pre>
+
+        <p>For instance, if the cursor was inside <code>"foo bar"</code>, you could type
+        <code>cs"'</code> to convert the text to <code>'foo bar'</code>.</p>
+
+        <p>There's a lot more, check it out at <code>:help surround</code> </p>
+    </div><!--/span-->
+    <div class="span6">
+      <div class="row">
+        <div class="span6">
+          <h2 id="nerdcommenter"><a href="http://github.com/scrooloose/nerdcommenter">NERDCommenter</a> <small>comment++</small></h2>
+
+            <p>NERDCommenter allows you to wrangle your code comments, regardless of
+            filetype. View <code>help :NERDCommenter</code> for all the details.</p>
+
+            <p><strong>QuickStart</strong> Toggle comments using <code>&lt;Leader&gt;c&lt;space&gt;</code> in Visual or Normal mode.</p>
+            <p>&nbsp;</p>
+        </div><!--/span-->
+        <div class="span6">
+          <h2 id="syntastic"><a href="http://github.com/scrooloose/syntastic">Syntastic</a> <small>integrated syntax checking</small></h2>
+
+            <p>Syntastic is a syntax checking plugin that runs buffers through external syntax 
+            checkers as they are saved and opened. If syntax errors are detected, the user 
+            is notified and is happy because they didn't have to compile their code or 
+            execute their script to find them.</p>
+
+        </div><!--/span-->
+      </div><!--/row-->
+    </div><!--/span-->
+  </div><!--/row-->
+  <div class="row">
+    <div class="span4">
+      <h2 id="neocomplcache"><a href="http://github.com/shougo/neocomplcache">neocomplcache</a> <small>autocomplete++</small></h2>
+
+        <p>NeoComplCache is an amazing autocomplete plugin with additional support for snippets. It can complete simulatiously from the dictionary, buffer, omnicomplete and snippets. This is the one true plugin that brings Vim autocomplete on par with the best editors. </p>
+
+        <p><strong>QuickStart</strong> Just start typing, it will autocomplete where possible</p>
+
+        <p><strong>Customizations</strong>: </p>
+
+        <ul>
+        <li>Automatically present the autocomplete menu</li>
+        <li>Support tab and enter for autocomplete</li>
+        <li>
+        <code>&lt;C-k&gt;</code> for completing snippets.</li>
+        </ul><p><img src="https://a248.e.akamai.net/assets.github.com/img/8767de0bfd1b52a6eb0dfddba6d1133230c9d450/687474703a2f2f692e696d6775722e636f6d2f39304767372e706e67" alt="neocomplcache image"></p>
+    </div><!--/span-->
+    <div class="span4">
+      <h2 id="fugitive">Fugitive <small>deep git integration</small></h2>
+      
+        <p>Fugitive adds pervasive git support to git directories in vim. For more
+        information, use <code>:help fugitive</code></p>
+
+        <p>Use <code>:Gstatus</code> to view <code>git status</code> and type <code>-</code> on any file to stage or
+        unstage it. Type <code>p</code> on a file to enter <code>git add -p</code> and stage specific
+        hunks in the file.</p>
+
+        <p>Use <code>:Gdiff</code> on an open file to see what changes have been made to that
+        file</p>
+
+        <p><strong>QuickStart</strong> <code>&lt;leader&gt;gs</code> to bring up git status</p>
+
+        <p><strong>Customizations</strong>: </p>
+
+        <ul>
+        <li>
+        <code>&lt;leader&gt;gs</code> :Gstatus</li>
+        <li>
+        <code>&lt;leader&gt;gd</code> :Gdiff</li>
+        <li>
+        <code>&lt;leader&gt;gc</code> :Gcommit</li>
+        <li>
+        <code>&lt;leader&gt;gb</code> :Gblame</li>
+        <li>
+        <code>&lt;leader&gt;gl</code> :Glog</li>
+        <li>
+        <code>&lt;leader&gt;gp</code> :Git push</li>
+        <li>:Git ___ will pass anything along to git.</li>
+        </ul><p><img src="https://a248.e.akamai.net/assets.github.com/img/86f71d49b81fb0dc4b7e648551f6bbb208f1ab89/687474703a2f2f692e696d6775722e636f6d2f344e7278562e706e67" alt="fugitive image"></p>
+    </div><!--/span-->
+    <div class="span4">
+      <h2 id="piv">PIV <small>PHP editing </small></h2>
+        <p>The most feature complete and up to date PHP Integration for Vim with proper support for PHP 5.3+ including latest syntax, functions, better fold support, etc.</p>
+
+        <p>PIV provides:</p>
+
+        <ul>
+        <li>PHP 5.3 support</li>
+        <li>Auto generation of PHP Doc (,pd on (function, variable, class) definition line)</li>
+        <li>Autocomplete of classes, functions, variables, constants and language keywords</li>
+        <li>Better indenting</li>
+        <li>Full PHP documentation manual (hit K on any function for full docs)</li>
+        </ul><p><img src="https://a248.e.akamai.net/assets.github.com/img/10af376e3ccf7bf04c4216b3d20fe12931c94824/687474703a2f2f692e696d6775722e636f6d2f63304747502e706e67" alt="php vim itegration image"></p>      
+    </div><!--/span-->
+  </div><!--/row-->
+  <div class="row">
+    <div class="span4">
+      <h2 id="tabularize">Tabularize <small>align everything</small></h2>
+        <p>Tabularize lets you align statements on their equal signs and other characters</p>
+
+        <p><strong>Customizations</strong>:</p>
+
+        <ul>
+        <li>
+        <code>&lt;Leader&gt;a=</code> :Tabularize /=</li>
+        <li>
+        <code>&lt;Leader&gt;a:</code> :Tabularize /:</li>
+        <li>
+        <code>&lt;Leader&gt;a::</code> :Tabularize /:\zs</li>
+        <li>
+        <code>&lt;Leader&gt;a,</code> :Tabularize /,</li>
+        <li>
+        <code>&lt;Leader&gt;a&lt;Bar&gt;</code> :Tabularize /</li>
+        </ul>
+    </div><!--/span-->
+    <div class="span4">
+      <h2 id="tagbar"><a href="http://github.com/godlygeek/tagbar">Tagbar</a> <small>tag generation and navigation</small></h2>
+
+        <p>spf13-vim includes the Tagbar plugin. This plugin requires exuberant-ctags and will automatically generate tags for your open files. It also provides a panel to navigate easily via tags</p>
+
+        <p><strong>QuickStart</strong> <code>CTRL-]</code> while the cursor is on a keyword (such as a function name) to jump to it's definition.</p>
+
+        <p><strong>Customizations</strong>: spf13-vim binds <code>&lt;Leader&gt;tt</code> to toggle the tagbar panel</p>
+
+        <p><img src="https://a248.e.akamai.net/assets.github.com/img/4af324810f6073d6cb844da7aa99e898d7aef36e/687474703a2f2f692e696d6775722e636f6d2f636a6272432e706e67" alt="tagbar image"></p>
+
+        <p><strong>Note</strong>: For full language support, run <code>brew install ctags</code> to install
+        exuberant-ctags.</p>
+
+        <p><strong>Tip</strong>: Check out <code>:help ctags</code> for information about VIM's built-in
+        ctag support. Tag navigation creates a stack which can traversed via
+        <code>Ctrl-]</code> (to find the source of a token) and <code>Ctrl-T</code> (to jump back up
+        one level).</p>
+    </div><!--/span-->
+    <div class="span4">
+      <h2 id="easymotion"><a href="https://github.com/Lokaltog/vim-easymotion">EasyMotion</a> <small>jump anywhere</small></h2>
+        <p>EasyMotion provides an interactive way to use motions in Vim. </p>
+
+        <p>It quickly maps each possible jump destination to a key allowing very fast and 
+        straightforward movement.</p>
+
+        <p><strong>QuickStart</strong> EasyMotion is triggered using the normal movements, but prefixing them with <code>&lt;leader&gt;&lt;leader&gt;</code></p>
+
+        <p>For example this screen shot demonstrates pressing <code>,,w</code></p>
+
+        <p><img src="https://a248.e.akamai.net/assets.github.com/img/41ae344a5bd0e723c4ca2cf4bd77dda8d5e7a729/687474703a2f2f692e696d6775722e636f6d2f5a7372564c2e706e67" alt="easymotion image"></p>
+    </div><!--/span-->
+  </div><!--/row-->
+</section>
+
+<!-- custom
+================================================== -->
+<section id="custom">
+  <div class="page-header">
+    <h1> Customize <small>spf13-vim is easily customizable to completely to fit your needs</small></h1>
+  </div>
+  <div class="row">
+    <div class="span6">
+      <h2>Adding Your Own Bundles </h2>
+        <p>Create <code>~/.vimrc.bundles.local</code> for any additional bundles.</p>
+
+        <p>To add a new bundle</p>
+
+        <div class="highlight">
+        <pre><span class="nb">echo </span>Bundle <span class="se">\'</span>spf13/vim-colors<span class="se">\'</span> &gt;&gt; ~/.vimrc.bundles.local
+        </pre>
+        </div>
+    </div><!--/span-->
+    <div class="span6">
+      <h2>Custom Settings </h2>
+        <p>Create <code>~/.vimrc.local</code> and <code>~/.gvimrc.local</code> for any local
+        customizations.</p>
+
+        <p>For example, to override the default color schemes:</p>
+
+        <div class="highlight">
+        <pre><span class="nb">echo </span>colorscheme ir_black  &gt;&gt; ~/.vimrc.local
+        </pre>
+        </div>
+    </div><!--/span-->
+  </div><!--/row-->
+</section>
+
+<!-- Other Awesome stuff
+================================================== -->
+<section id="awesome">
+  <div class="page-header">
+    <h1> Other Awesome Stuff <small></small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+        <h2 id="additionalSyntaxes">Additional Syntaxes</h2>
+
+        <p>spf13-vim ships with a few additional syntaxes:</p>
+
+        <ul>
+        <li>Markdown (bound to *.markdown, *.md, and *.mk)</li>
+        <li>Twig</li>
+        <li>Git commits (set your <code>EDITOR</code> to <code>mvim -f</code>)</li></ul>
+    </div><!--/span-->
+    <div class="span4">
+        <h2 id="amazingColors">Amazing Colors</h2>
+
+        <p>spf13-vim includes <a href="http://github.com/altercation/vim-colors-solarized">solarized</a> and <a href="https://github.com/spf13/vim-colors/">spf13 vim color pack</a>: </p>
+
+        <ul>
+        <li>ir_black</li>
+        <li>molokai</li>
+        <li>peaksea</li>
+        </ul><p>Use <code>:color molokai</code> to switch to a color scheme.</p>
+    </div><!--/span-->
+    <div class="span4">
+        <a id="snippets" style="padding-top:60px;"></a>
+        <h2 id="xsnippets">Snippets</h2>
+
+        <p>It also contains a very complete set of <a href="http://github.com/spf13/snipmate-snippets">snippets</a> for use with snipmate or <a href="http://github.com/shougo/neocomplcache">NeoComplCache</a>.</p>
+    </div><!--/span-->
+  </div><!--/row-->
+  <div class="page-header">
+    <h1 id="vimIntro"> VIM Introduction <small>New to Vim? Here's how to get started</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+        <h2>Tutorials</h2>
+
+        <ul>
+        <li>Type <code>vimtutor</code> into a shell to go through a brief interactive
+        tutorial inside VIM.</li>
+        <li>Read the slides at <a href="http://walking-without-crutches.heroku.com/#1">VIM: Walking Without Crutches</a>.</li>
+        </ul>
+    </div><!--/span-->
+    <div class="span4">
+        <h2>Modes</h2>
+
+        <ul>
+        <li>VIM has two (common) modes:
+
+        <ul>
+        <li>insert mode- stuff you type is added to the buffer</li>
+        <li>normal mode- keys you hit are interpreted as commands</li>
+        </ul>
+        </li>
+        <li>To enter insert mode, hit <code>i</code>
+        </li>
+        <li>To exit insert mode, hit <code>&lt;ESC&gt;</code>
+        </li>
+        </ul>
+    </div><!--/span-->
+    <div class="span4">
+        <h2>Useful commands</h2>
+
+        <ul>
+        <li>Use <code>:q</code> to exit vim</li>
+        <li>Certain commands are prefixed with a <code>&lt;Leader&gt;</code> key, which by default maps to <code>\</code>.</li>
+        <li>Spf13-vim uses <code>let mapleader = ","</code> to change this to <code>,</code> which is in a consistent and 
+        convenient location.</li>
+        <li>Keyboard <a href="http://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png">cheat sheet</a>.</li>
+        </ul>
+    </div><!--/span-->
+  </div><!--/row-->
+</section>
+
+<!-- Skeleton
+================================================== -->
+<section id="community">
+  <div class="page-header">
+    <h1> Community <small>For the greater good</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h2 id="mailinglist">Mailing List <br><small>Be notified of major updates</small></h2>
+      <p>We use google for this list</p>
+    </div><!--/span-->
+    <div class="span4">
+      <h2 id="discussion">Discussion Group <br><small>Discuss issues, ideas, plugins</small></h2>
+      <p>The easiest way to install spf13-vim is to use our <a href="http://j.mp/spf13-vim">automatic installer</a> by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration.</p>
+    </div><!--/span-->
+    <div class="span4">
+      <h2 id="contributing">Contributing <br><small>GitHub makes for easy contribution</small></h2>
+      <p>All development is done via <a href="http://github.com/spf13/spf13-vim" target="_blank">GitHub</a>. Fork and issue a pull request or file an issue.</p>
+    </div><!--/span-->
+  </div><!--/row-->
+</section>
+
+     <!-- Footer
+      ================================================== -->
+      <footer class="footer">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Site and distribution by <a href="http://twitter.com/spf13" target="_blank">@spf13</a></p> 
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+      </footer>
+
+    </div><!-- /container -->
+
+
+
+    <!-- javascript
+    ================================================== -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/spf13.js"></script>
+
+
+  </body>
 </html>
