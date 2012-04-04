@@ -1,0 +1,3 @@
+[submodule "personal"]
+	path = personal
+	url = https://github.com/bbatsov/emacs-prelude-personal.git

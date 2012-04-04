@@ -7,7 +7,5 @@ eshell
 elpa
 el-get
 semanticdb
-custom.el
 url
-personal/*.el
 ede-projects.el
