@@ -53,7 +53,9 @@ recommendation would be to get the latest pretest from
 That was really easy, right?
 
 The second easy way to obtain Emacs 24 is via
-[homebrew](http://mxcl.github.com/homebrew/). Just type the following
+[homebrew](http://mxcl.github.com/homebrew/) (keep in mind though that
+**snapshot builds are often buggy** to some extend - installing a pretest
+is generally a better option). Just type the following
 incantation in your shell and you're done:
 
 ```bash
