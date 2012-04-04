@@ -1,7 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: while(cond) { .. }
-# key: whi
-# --
-while (${1:condition}) {
-  $0
-}

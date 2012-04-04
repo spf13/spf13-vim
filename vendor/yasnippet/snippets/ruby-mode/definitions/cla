@@ -1,6 +1,0 @@
-# name: class << self ... end
-# key: cla
-# --
-class << ${self}
-  $0
-end

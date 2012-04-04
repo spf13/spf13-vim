@@ -1,7 +1,0 @@
-# Author: Anders Bach Nielsen <andersbach.nielsen@epfl.ch>
-# name: trait T1 extends C with T2 { .. }
-# key: tr
-# --
-trait ${1:name} extends ${2:class} with ${3:trait} {
-  $0
-}

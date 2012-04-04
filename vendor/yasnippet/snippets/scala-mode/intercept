@@ -1,7 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: intercept(classOf[T]) { ..}
-# key: intercept
-# --
-intercept(classOf[${1:Exception]}) {
-  $0
-}

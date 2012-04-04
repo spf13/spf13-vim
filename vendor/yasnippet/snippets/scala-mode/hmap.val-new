@@ -1,5 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: val m = new HashMap[K, V]
-# key: hmap
-# --
-val ${1:m} = new HashMap[${2:key}, ${3:value}] $0

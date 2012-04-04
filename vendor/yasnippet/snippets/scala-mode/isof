@@ -1,5 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: isInstanceOf[T] 
-# key: isof
-# --
-isInstanceOf[${1:type}] $0

@@ -1,8 +1,0 @@
-# name: include Comparable; def <=> ... end
-# key: Comp
-# --
-include Comparable
-
-def <=> other
-  $0
-end

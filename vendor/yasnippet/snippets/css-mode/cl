@@ -1,5 +1,0 @@
-# contributor: rejeep <johan.rejeep@gmail.com>
-# name: clear: ...
-# key: cl
-# --
-clear: $1;

@@ -1,4 +1,0 @@
-# name: delete_if { |...| ... }
-# key: deli
-# --
-delete_if { |${e} $0 }

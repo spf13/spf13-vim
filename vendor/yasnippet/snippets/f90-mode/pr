@@ -1,7 +1,0 @@
-# contributor: Li Zhu <http://www.zhuli.name>
-# name: program ... end program ...
-# key: pr
-# --
-program ${1:name}
-  $0
-end program ${1:name}

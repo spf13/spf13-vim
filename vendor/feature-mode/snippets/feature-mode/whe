@@ -1,4 +1,0 @@
-#name: When some action
-# --
-When ${1:some action}
-$0

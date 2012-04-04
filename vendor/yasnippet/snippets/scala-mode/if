@@ -1,7 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: if (cond) { .. }
-# key: if
-# --
-if (${1:condition}) {
-  $0
-}

@@ -1,4 +1,0 @@
-# name: select { |...| ... }
-# key: select
-# --
-select { |${1:element}| $0 }

@@ -1,7 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: class T { .. }
-# key: cl
-# --
-class ${1:name} {
-  $0
-}

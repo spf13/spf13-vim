@@ -1,5 +1,0 @@
-# contributor: Alejandro Espinoza Esparza <aespinoza@structum.com.mx>
-# name: REFERENCES ...
-# key: references
-# --
-REFERENCES ${1:TableName}([${2:ColumnName}])

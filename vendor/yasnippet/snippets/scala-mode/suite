@@ -1,9 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: class T extends Suite { .. }
-# key: suite
-# --
-import org.scalatest._
-
-class ${1:name} extends Suite {
-  $0
-}

@@ -1,5 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: def f = ...
-# key: def
-# --
-def ${1:name} = $0

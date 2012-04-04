@@ -1,5 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: classOf[T] 
-# key: clof
-# --
-classOf[${1:type}] $0

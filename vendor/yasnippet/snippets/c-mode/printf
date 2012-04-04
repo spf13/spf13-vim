@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: printf 
-# contributor: joaotavora
-# key: printf
-# --
-printf ("${1:%s}\\n"${1:$(if (string-match "%" text) "," "\);")
-}$2${1:$(if (string-match "%" text) "\);" "")}

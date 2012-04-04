@@ -1,5 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: println(..)
-# key: pr
-# --
-println(${1:obj}) $0

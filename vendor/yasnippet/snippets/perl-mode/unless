@@ -1,6 +1,0 @@
-# name: unless (...) { ... }
-# key: unless
-# --
-unless ($1) {
-    $0
-}

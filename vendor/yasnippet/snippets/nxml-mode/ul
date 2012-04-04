@@ -1,7 +1,0 @@
-# contributor: Anders Bach Nielsen <abachn@abachn.net>
-# name: <ul>...</ul>
-# key: ul
-# --
-<ul>
-  $0
-</ul>

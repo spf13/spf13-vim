@@ -1,7 +1,0 @@
-# contributor: Jimmy Wu <frozenthrone88@gmail.com>
-# name: <div id="...">...</div>
-# key: div
-# --
-<div id="$1">
-  $0
-</div>

@@ -1,4 +1,0 @@
-# name: border size style color
-# key: bor
-# --
-border: ${1:1px} ${2:solid} #${3:999};

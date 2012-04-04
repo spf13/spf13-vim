@@ -1,5 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: new HashSet[K]
-# key: hset
-# --
-new HashSet[${1:key}] $0

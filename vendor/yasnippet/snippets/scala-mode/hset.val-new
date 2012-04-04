@@ -1,5 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: val m = new HashSet[K]
-# key: hset
-# --
-val ${1:m} = new HashSet[${2:key}] $0

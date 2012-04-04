@@ -1,4 +1,0 @@
-# name: each_value { |val| ... }
-# key: eav
-# --
-each_value { |${val}| $0 }

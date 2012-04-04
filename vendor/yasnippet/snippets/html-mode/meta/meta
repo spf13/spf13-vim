@@ -1,5 +1,0 @@
-# contributor: Jimmy Wu <frozenthrone88@gmail.com>
-# name: <meta name="..." content="..." />
-# key: meta
-# --
-<meta name="${1:generator}" content="${2:content}" />

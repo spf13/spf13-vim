@@ -1,4 +1,0 @@
-# name: each_index { |i| ... }
-# key: eai
-# --
-each_index { |${i}| $0 }

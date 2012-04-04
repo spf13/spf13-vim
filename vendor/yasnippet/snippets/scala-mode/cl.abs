@@ -1,7 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: abstract class T { .. }
-# key: cl
-# --
-abstract class ${1:name} {
-  $0
-}

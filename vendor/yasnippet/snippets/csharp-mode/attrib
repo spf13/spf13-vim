@@ -1,8 +1,0 @@
-# contributor: Alejandro Espinoza Esparza <aespinoza@structum.com.mx>
-# name: private attribute ....;
-# key: attrib
-# --
-/// <summary>
-/// $3
-/// </summary>
-private $1 $2;

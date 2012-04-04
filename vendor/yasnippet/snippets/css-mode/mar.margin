@@ -1,5 +1,0 @@
-# contributor: rejeep <johan.rejeep@gmail.com>
-# name: margin top right bottom left
-# key: mar
-# --
-margin: ${top} ${right} ${bottom} ${left};

@@ -1,6 +1,0 @@
-# name: Benchmark.bmbm(...) do ... end
-# key: bm
-# --
-Benchmark.bmbm(${1:10}) do |x|
-  $0
-end

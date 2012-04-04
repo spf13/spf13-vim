@@ -1,5 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: actor ! message
-# key: bang
-# --
-${1:actor} ! ${2:message} $0

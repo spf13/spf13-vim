@@ -1,5 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: Array[T](..)
-# key: arr
-# --
-Array[${1:value}](${2:args}) $0

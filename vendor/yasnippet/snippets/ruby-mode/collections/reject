@@ -1,4 +1,0 @@
-# name: reject { |...| ... }
-# key: reject
-# --
-reject { |${1:element}| $0 }

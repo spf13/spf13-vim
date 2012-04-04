@@ -1,4 +1,0 @@
-# name: classify { |...| ... }
-# key: classify
-# --
-classify { |${e}| $0 }

@@ -1,6 +1,0 @@
-# name: if __FILE__ == $PROGRAM_NAME ... end
-# key: app
-# --
-if __FILE__ == $PROGRAM_NAME
-  $0
-end

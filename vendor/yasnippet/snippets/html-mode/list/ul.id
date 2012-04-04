@@ -1,7 +1,0 @@
-# contributor: Jimmy Wu <frozenthrone88@gmail.com>
-# name: <ul id="...">...</ul>
-# key: ul
-# --
-<ul id="$1">
-  $0
-</ul>

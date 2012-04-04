@@ -1,4 +1,0 @@
-# name: detect { |...| ... }
-# key: det
-# --
-detect { |${e}| $0 }

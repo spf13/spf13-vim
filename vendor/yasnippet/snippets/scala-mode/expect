@@ -1,7 +1,0 @@
-# Author: Jonas Bonèr <jonas@jonasboner.com>
-# name: expect(value) { ..}
-# key: expect
-# --
-expect(${1:reply}) {
-  $0
-}
