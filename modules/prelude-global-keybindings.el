@@ -100,7 +100,7 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-c w") (make-repeatable-command 'er/expand-region))
 
-(global-set-key (kbd "C-x j") 'helm)
+(global-set-key (kbd "C-c h") 'helm-mini)
 
 (provide 'prelude-global-keybindings)
 
