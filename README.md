@@ -221,6 +221,9 @@ If you're using `wget` type:
 ```bash
 $ git clone git://github.com/bbatsov/emacs-prelude.git path/to/local/repo
 $ ln -s path/to/local/repo ~/.emacs.d
+$ cd ~/emacs.d
+$ git submodule init
+$ git submodule update
 ```
 
 You'd do well to replace `~/.emacs.d` with the value of
@@ -304,7 +307,9 @@ Or you can use another theme altogether by adding something like:
 If you'd like to change some of the setting in Prelude (or simply add
 more) the proper way to do so would be to create Emacs Lisp files
 under the **personal** directory in `prelude-dir`. They will be loaded
-automatically be Prelude on startup.
+automatically be Prelude on startup. The directory is backed by a git
+submodule, so you can easily track your own personalizations via
+git.
 
 Avoid modifying the Prelude config itself (unless you're not
 intimidated to maintain a personal fork on GitHub) - this will make it

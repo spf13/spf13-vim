@@ -20,9 +20,11 @@ then
   mv ~/.emacs ~/.emacs.pre-prelude
 fi
 
-
 echo -n "Cloning Emacs Prelude from GitHub... "
 /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR > /dev/null
+cd $PRELUDE_INSTALL_DIR
+/usr/bin/env git submodule init
+/usr/bin/env git submodule update
 echo "done."
 
 echo ' _____                            ____           _           _      '
