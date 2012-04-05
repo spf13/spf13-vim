@@ -8,15 +8,15 @@ hash git 2>&- || { echo >&2 "not found.  Aborting installation!'."; exit 1; }
 echo "found"
 
 echo -n "Looking for an existing Emacs config..."
-if [ -f $PRELUDE_INSTALL_DIR ]
+if [ -d $PRELUDE_INSTALL_DIR ]
 then
-  echo "Found $PRELUDE_INSTALL_DIR. Backing up to $PRELUDE_INSTALL_DIR.pre-prelude"
+  echo "Found an existing $PRELUDE_INSTALL_DIR. Backing it up to $PRELUDE_INSTALL_DIR.pre-prelude"
   mv $PRELUDE_INSTALL_DIR $PRELUDE_INSTALL_DIR.pre-prelude
 fi
 
 if [ -f ~/.emacs ]
 then
-  echo "Found ~/.emacs. Backing up to ~/.emacs.pre-prelude"
+  echo "Found an existing ~/.emacs. Backing it up to ~/.emacs.pre-prelude"
   mv ~/.emacs ~/.emacs.pre-prelude
 fi
 
