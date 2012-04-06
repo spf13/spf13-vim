@@ -43,10 +43,10 @@
 
 (defvar prelude-packages
   '(ack-and-a-half auctex clojure-mode coffee-mode deft expand-region
-                   gist haml-mode haskell-mode inf-ruby
+                   gist haml-mode haskell-mode helm helm-projectile inf-ruby
                    magit magithub markdown-mode paredit projectile
                    python sass-mode rainbow-mode scss-mode solarized-theme
-                   volatile-highlights yaml-mode yari zenburn-theme)
+                   volatile-highlights yaml-mode yari yasnippet zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
 (defun prelude-packages-installed-p ()
