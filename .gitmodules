@@ -1,12 +1,6 @@
 [submodule "personal"]
 	path = personal
 	url = https://github.com/bbatsov/emacs-prelude-personal.git
-[submodule "vendor/helm"]
-	path = vendor/helm
-	url = https://github.com/emacs-helm/helm
-[submodule "vendor/yasnippet"]
-	path = vendor/yasnippet
-	url = https://github.com/capitaomorte/yasnippet
 [submodule "vendor/feature-mode"]
 	path = vendor/feature-mode
 	url = https://github.com/michaelklishin/cucumber.el
