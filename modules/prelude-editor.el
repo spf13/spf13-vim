@@ -212,6 +212,9 @@
 ;; projectile is a project management mode
 (require 'projectile)
 (projectile-global-mode t)
+;; FIXME - helm sources
+(require 'helm-locate)
+(require 'helm-buffers)
 (require 'helm-projectile)
 
 (defun helm-prelude ()
@@ -226,10 +229,7 @@
                            helm-c-source-buffer-not-found)
                          "*helm prelude*")
     ;; otherwise fallback to helm-mini
-    (helm-other-buffer '(helm-c-source-buffers-list
-                         helm-c-source-recentf
-                         helm-c-source-buffer-not-found)
-                       "*helm mini*")))
+    (helm-mini)))
 
 
 ;; dired - reuse current buffer by pressing 'a'
