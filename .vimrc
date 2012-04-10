@@ -76,6 +76,7 @@
             Bundle 'godlygeek/csapprox'
             Bundle 'jistr/vim-nerdtree-tabs'
             Bundle 'flazz/vim-colorschemes'
+            Bundle 'corntrace/bufexplorer'
         endif
 
     " General Programming
@@ -85,7 +86,10 @@
             Bundle 'garbas/vim-snipmate'
             Bundle 'spf13/snipmate-snippets'
             " Source support_function.vim to support snipmate-snippets.
-            source $HOME/.vim/bundle/snipmate-snippets/snippets/support_functions.vim 
+            if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
+                source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
+            endif
+
             Bundle 'tpope/vim-fugitive'
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'godlygeek/tabular'
@@ -169,7 +173,9 @@
 " }
 
 " Vim UI {
-    color solarized                 " load a colorscheme
+    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim")) 
+        color solarized                 " load a colorscheme
+    endif
         let g:solarized_termtrans=1
         let g:solarized_termcolors=256
         let g:solarized_contrast="high"

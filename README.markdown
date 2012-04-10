@@ -373,7 +373,7 @@ Here's some tips if you've never used VIM before:
 [PIV]:http://github.com/spf13/PIV
 [NERDCommenter]:http://github.com/scrooloose/nerdcommenter
 [NERDTree]:http://github.com/scrooloose/nerdtree
-[ctrlp]:http://github.com/kien/ctrlp
+[ctrlp]:http://github.com/kien/ctrlp.vim
 [solarized]:http://github.com/altercation/vim-colors-solarized
 [neocomplcache]:http://github.com/shougo/neocomplcache
 [Fugitive]:http://github.com/tpope/vim-fugitive
