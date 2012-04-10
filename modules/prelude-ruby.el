@@ -60,7 +60,7 @@
 (require 'ruby-end)
 
 (defun prelude-ruby-mode-defaults ()
-  (inf-ruby-keys)
+  (inf-ruby-setup-keybindings)
   ;; turn off the annoying input echo in irb
   (setq comint-process-echoes t)
   (ruby-block-mode t)
