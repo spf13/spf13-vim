@@ -212,6 +212,25 @@
 ;; projectile is a project management mode
 (require 'projectile)
 (projectile-global-mode t)
+(require 'helm-projectile)
+
+(defun helm-prelude ()
+  "Preconfigured `helm'."
+  (interactive)
+  (if (projectile-get-project-root)
+      ;; add project files and buffers when in project
+      (helm-other-buffer '(helm-c-source-projectile-files-list
+                           helm-c-source-projectile-buffers-list
+                           helm-c-source-buffers-list
+                           helm-c-source-recentf
+                           helm-c-source-buffer-not-found)
+                         "*helm prelude*")
+    ;; otherwise fallback to helm-mini
+    (helm-other-buffer '(helm-c-source-buffers-list
+                         helm-c-source-recentf
+                         helm-c-source-buffer-not-found)
+                       "*helm mini*")))
+
 
 ;; dired - reuse current buffer by pressing 'a'
 (put 'dired-find-alternate-file 'disabled nil)

@@ -51,6 +51,7 @@
     (define-key map (kbd "C-c r") 'prelude-rename-file-and-buffer)
     (define-key map (kbd "C-c t") 'prelude-visit-term-buffer)
     (define-key map (kbd "C-c k") 'prelude-kill-other-buffers)
+    (define-key map (kbd "C-c h") 'helm-prelude)
     map)
   "Keymap for Prelude mode.")
 
@@ -81,7 +82,8 @@
 
     ("Navigation"
      ["Enable arrow keys" prelude-restore-arrow-keys]
-     ["Go to symbol" prelude-ido-goto-symbol])
+     ["Go to symbol" prelude-ido-goto-symbol]
+     ["Helm" helm-prelude])
 
     ("Windows"
      ["Swap windows" prelude-swap-windows])
