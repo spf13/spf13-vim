@@ -48,51 +48,17 @@
 (autoload 'inf-ruby-keys "inf-ruby"
   "Set local key defs for inf-ruby in ruby-mode")
 
-;; yari provides a nice Emacs interface to ri
-(require 'yari)
-
-;; yaml-mode
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-
-; TODO fix ruby-end and package ruby-block for marmalade
-(require 'ruby-block)
-(require 'ruby-end)
-
 (defun prelude-ruby-mode-defaults ()
   (inf-ruby-setup-keybindings)
   ;; turn off the annoying input echo in irb
   (setq comint-process-echoes t)
   (ruby-block-mode t)
+  ;; bind yari in the local keymap
   (local-set-key (kbd "C-h r") 'yari))
 
 (setq prelude-ruby-mode-hook 'prelude-ruby-mode-defaults)
 
 (add-hook 'ruby-mode-hook (lambda () (run-hooks 'prelude-ruby-mode-hook)))
-
-(require 'haml-mode)
-(require 'scss-mode)
-
-(defun prelude-css-mode-defaults ()
-  (setq css-indent-offset 2)
-  (rainbow-mode +1))
-
-(setq prelude-css-mode-hook 'prelude-css-mode-defaults)
-
-(add-hook 'css-mode-hook (lambda () (run-hooks 'prelude-css-mode-hook)))
-
-(defun prelude-scss-mode-defaults ()
-  (prelude-css-mode-hook)
-  ;; turn off annoying auto-compile on save
-  (setq scss-compile-at-save nil))
-
-(setq prelude-scss-mode-hook 'prelude-scss-mode-defaults)
-
-(add-hook 'scss-mode-hook (lambda () (run-hooks 'prelude-scss-mode-hook)))
-
-;; cucumber support
-(require 'feature-mode)
-(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 (provide 'prelude-ruby)
 

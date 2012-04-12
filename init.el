@@ -50,17 +50,20 @@ avoid modifying the configuration there.")
 (defvar prelude-vendor-dir (concat prelude-dir "vendor/")
   "This directory house Emacs Lisp packages that are not yet available in
 ELPA (or Marmalade).")
+(defvar prelude-snippets-dir (concat prelude-dir "snippets/")
+  "This folder houses addition yasnippet bundles distributed with Prelude.")
 (defvar prelude-personal-dir (concat prelude-dir "personal/")
   "Users of Emacs Prelude are encouraged to keep their personal configuration
 changes in this directory. All Emacs Lisp files there are loaded automatically
 by Prelude.")
-(defvar prelude-snippets-dir (concat prelude-dir "snippets/"))
 (defvar prelude-personal-snippets-dir (concat prelude-personal-dir "snippets/"))
+(defvar prelude-personal-vendor-dir (concat prelude-personal-dir "vendor/"))
 
 ;; add Prelude's directories to Emacs's `load-path'
 (add-to-list 'load-path prelude-modules-dir)
 (add-to-list 'load-path prelude-vendor-dir)
 (add-to-list 'load-path prelude-personal-dir)
+(add-to-list 'load-path prelude-personal-vendor-dir)
 
 ;; the core stuff
 (require 'prelude-packages)
@@ -73,11 +76,14 @@ by Prelude.")
 ;; programming & markup languages support
 (require 'prelude-programming)
 (require 'prelude-c)
+(require 'prelude-css)
 (require 'prelude-clojure)
 (require 'prelude-coffee)
 (require 'prelude-common-lisp)
+(require 'prelude-cucumber)
 (require 'prelude-emacs-lisp)
 (require 'prelude-groovy)
+(require 'prelude-haml)
 (require 'prelude-haskell)
 (require 'prelude-erlang)
 (require 'prelude-js)
@@ -88,7 +94,9 @@ by Prelude.")
 (require 'prelude-python)
 (require 'prelude-ruby)
 (require 'prelude-scheme)
+(require 'prelude-scss)
 (require 'prelude-xml)
+(require 'prelude-yaml)
 
 ;; tools & utilities support
 (require 'prelude-ack)
