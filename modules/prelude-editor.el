@@ -206,15 +206,11 @@
 (setq yas/snippet-dirs prelude-snippets-dir prelude-personal-snippets-dir)
 (yas/global-mode 1)
 
-;; Helm makes finding stuff in Emacs much simpler
-(require 'helm-config)
-
 ;; projectile is a project management mode
 (require 'projectile)
 (projectile-global-mode t)
-;; FIXME - helm sources
-(require 'helm-locate)
-(require 'helm-buffers)
+
+(require 'helm-misc)
 (require 'helm-projectile)
 
 (defun helm-prelude ()
