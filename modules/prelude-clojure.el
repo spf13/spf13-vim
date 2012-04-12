@@ -35,16 +35,18 @@
 (require 'prelude-lisp)
 
 ;; To start SLIME in your Clojure project:
-;; 1. lein plugin install swank-clojure 1.3.1
+;; 1. lein plugin install swank-clojure 1.3.1 (or newer)
 ;; 2. Invoke M-x clojure-jack-in from a project
-(require 'clojure-mode)
 
-(defun prelude-clojure-mode-defaults ()
-  (run-hooks 'prelude-lisp-coding-hook))
+(eval-after-load 'clojure-mode
+  '(progn
+     (defun prelude-clojure-mode-defaults ()
+       (run-hooks 'prelude-lisp-coding-hook))
 
-(setq prelude-clojure-mode-hook 'prelude-clojure-mode-defaults)
+     (setq prelude-clojure-mode-hook 'prelude-clojure-mode-defaults)
 
-(add-hook 'clojure-mode-hook (lambda () (run-hooks 'prelude-clojure-mode-hook)))
+     (add-hook 'clojure-mode-hook (lambda ()
+                                    (run-hooks 'prelude-clojure-mode-hook)))))
 
 (provide 'prelude-clojure)
 

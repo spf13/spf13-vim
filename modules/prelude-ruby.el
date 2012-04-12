@@ -47,19 +47,23 @@
   "Run an inferior Ruby process")
 (autoload 'inf-ruby-keys "inf-ruby"
   "Set local key defs for inf-ruby in ruby-mode")
+(autoload 'ruby-block-mode "ruby-block")
+(require 'ruby-end)
 
-(defun prelude-ruby-mode-defaults ()
-  (inf-ruby-setup-keybindings)
-  ;; turn off the annoying input echo in irb
-  (setq comint-process-echoes t)
-  (ruby-block-mode t)
-  ;; bind yari in the local keymap
-  (local-set-key (kbd "C-h r") 'yari))
+(eval-after-load 'ruby-mode
+  '(progn
+     (defun prelude-ruby-mode-defaults ()
+       (inf-ruby-setup-keybindings)
+       ;; turn off the annoying input echo in irb
+       (setq comint-process-echoes t)
+       (ruby-block-mode t)
+       ;; bind yari in the local keymap
+       (local-set-key (kbd "C-h r") 'yari))
 
-(setq prelude-ruby-mode-hook 'prelude-ruby-mode-defaults)
+     (setq prelude-ruby-mode-hook 'prelude-ruby-mode-defaults)
 
-(add-hook 'ruby-mode-hook (lambda () (run-hooks 'prelude-ruby-mode-hook)))
-
+     (add-hook 'ruby-mode-hook (lambda ()
+                                 (run-hooks 'prelude-ruby-mode-hook)))))
 (provide 'prelude-ruby)
 
 ;;; prelude-ruby.el ends here

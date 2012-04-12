@@ -32,15 +32,19 @@
 
 ;;; Code:
 
-(defun prelude-haskell-mode-defaults ()
-  (run-hooks 'prelude-prog-mode-hook) ;; run manually; not derived from prog-mode
-  (subword-mode +1)
-  (turn-on-haskell-doc-mode)
-  (turn-on-haskell-indentation))
+(eval-after-load 'haskell-mode
+  '(progn
+     (defun prelude-haskell-mode-defaults ()
+       ;; run manually since haskell-mode is not derived from prog-mode
+       (run-hooks 'prelude-prog-mode-hook)
+       (subword-mode +1)
+       (turn-on-haskell-doc-mode)
+       (turn-on-haskell-indentation))
 
-(setq prelude-haskell-mode-hook 'prelude-haskell-mode-defaults)
+     (setq prelude-haskell-mode-hook 'prelude-haskell-mode-defaults)
 
-(add-hook 'haskell-mode-hook (lambda () (run-hooks 'prelude-haskell-mode-hook)))
+     (add-hook 'haskell-mode-hook (lambda ()
+                                    (run-hooks 'prelude-haskell-mode-hook)))))
 
 (provide 'prelude-haskell)
 
