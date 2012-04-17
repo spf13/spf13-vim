@@ -1,9 +1,9 @@
 ;;; prelude-ui.el --- Emacs Prelude: UI optimizations and tweaks.
 ;;
-;; Copyright (c) 2011 Bozhidar Batsov
+;; Copyright (c) 2011-2012 Bozhidar Batsov
 ;;
-;; Author: Bozhidar Batsov <bozhidar.batsov@gmail.com>
-;; URL: http://www.emacswiki.org/cgi-bin/wiki/Prelude
+;; Author: Bozhidar Batsov <bozhidar@batsov.com>
+;; URL: http://batsov.com/emacs-prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
 
@@ -84,9 +84,6 @@
       '("" invocation-name " Prelude - " (:eval (if (buffer-file-name)
                                             (abbreviate-file-name (buffer-file-name))
                                           "%b"))))
-
-;; custom Emacs 24 color themes support
-(add-to-list 'custom-theme-load-path (concat prelude-dir "themes/"))
 
 ;; use zenburn as the default theme
 (load-theme 'zenburn t)

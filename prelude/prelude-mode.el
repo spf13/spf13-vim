@@ -1,9 +1,9 @@
 ;;; prelude-mode.el --- Emacs Prelude: minor mode
 ;;
-;; Copyright (c) 2011 Bozhidar Batsov
+;; Copyright (c) 2011-2012 Bozhidar Batsov
 ;;
-;; Author: Bozhidar Batsov <bozhidar.batsov@gmail.com>
-;; URL: http://www.emacswiki.org/cgi-bin/wiki/Prelude
+;; Author: Bozhidar Batsov <bozhidar@batsov.com>
+;; URL: http://batsov.com/emacs-prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
 
