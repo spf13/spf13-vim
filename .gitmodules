@@ -1,6 +1,0 @@
-[submodule "personal"]
-	path = personal
-	url = https://github.com/bbatsov/emacs-prelude-personal.git
-[submodule "vendor/feature-mode"]
-	path = vendor/feature-mode
-	url = https://github.com/michaelklishin/cucumber.el

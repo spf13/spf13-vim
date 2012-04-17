@@ -32,9 +32,8 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
-
+(require 'cl)
 (require 'package)
-(require 'melpa)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
@@ -42,7 +41,7 @@
 (setq url-http-attempt-keepalives nil)
 
 (defvar prelude-packages
-  '(expand-region gist helm helm-projectile magit magithub
+  '(melpa expand-region gist helm helm-projectile magit magithub
                   rainbow-mode volatile-highlights yasnippet zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
