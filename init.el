@@ -64,7 +64,7 @@ by Prelude.")
 
 ;; load the personal settings (this includes `custom-file')
 (when (file-exists-p prelude-personal-dir)
-  (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$")))
+  (mapc 'load (directory-files prelude-personal-dir 't "^[^#].*el$")))
 
 (message "Emacs Prelude is ready to do thy bidding, Master %s!"
          (getenv "USER"))
