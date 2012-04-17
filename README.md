@@ -12,13 +12,13 @@ Emacs is probably the best text editor in the world. However, the
 process of coming up with a useful Emacs configuration is long and
 difficult. It's this process that separates you from truly taking
 advantage of Emacs's power. I like to refer to this process as the
-**Prelude**. The **Emacs Prelude** has the goal to ease the initial
-Emacs setup process and to provide you with a much more powerful and
-productive experience than that you get out of the box. By using **Emacs
-Prelude** you're basically getting a "Get me out of the Prelude, I
-just want to use Emacs" card.
+**Prelude**. **Prelude** has the goal to ease the initial Emacs setup
+process and to provide you with a much more powerful and productive
+experience than that you get out of the box. By using **Prelude**
+you're basically getting a "Get me out of the Prelude, I just want to
+use Emacs" card.
 
-Emacs Prelude is compatible **ONLY with GNU Emacs 24**. While Emacs 24
+**Prelude** is compatible **ONLY with GNU Emacs 24**. While Emacs 24
 is not yet officially released it's a rock solid piece of software
 more than suitable for everyday work. There is no good excuse not to
 use Emacs 24!
@@ -31,7 +31,7 @@ can skip the whole manual and just type in your favorite shell the
 following command:
 
 `curl -L
-https://github.com/bbatsov/emacs-prelude/raw/master/utils/installer.sh
+https://github.com/bbatsov/prelude/raw/master/utils/installer.sh
 | sh`
 
 You can now power up your Emacs, sit back and enjoy Prelude.
@@ -43,13 +43,13 @@ Check out the [Prelude's project page](http://batsov.com/emacs-prelude).
 ## Known issues
 
 Check out the project's
-[issue list](https://github.com/bbatsov/emacs-prelude/issues?sort=created&direction=desc&state=open)
+[issue list](https://github.com/bbatsov/prelude/issues?sort=created&direction=desc&state=open)
 a list of unresolved issues. By the way - feel free to fix any of them
 and sent me a pull request. :-)
 
 ## Contributors
 
-Here's a [list](https://github.com/bbatsov/emacs-prelude/contributors) of all the people who have contributed to the
+Here's a [list](https://github.com/bbatsov/prelude/contributors) of all the people who have contributed to the
 development of Emacs Prelude.
 
 ## Bugs & Improvements
