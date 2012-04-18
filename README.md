@@ -38,7 +38,7 @@ You can now power up your Emacs, sit back and enjoy Prelude.
 
 ## Would you like to know more?
 
-Check out the [Prelude's project page](http://batsov.com/emacs-prelude).
+Check out the [Prelude's project page](http://batsov.com/prelude).
 
 ## Known issues
 
