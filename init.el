@@ -44,9 +44,15 @@ avoid modifying the configuration there.")
   "Users of Emacs Prelude are encouraged to keep their personal configuration
 changes in this directory. All Emacs Lisp files there are loaded automatically
 by Prelude.")
+(defvar prelude-vendor-dir (concat prelude-dir "vendor/")
+  "This directory house Emacs Lisp packages that are not yet available in
+ELPA (or MELPA).")
+(defvar prelude-snippets-dir (concat prelude-dir "snippets/")
+  "This folder houses addition yasnippet bundles distributed with Prelude.")
 
 ;; add Prelude's directories to Emacs's `load-path'
 (add-to-list 'load-path prelude-modules-dir)
+(add-to-list 'load-path prelude-vendor-dir)
 
 ;; the core stuff
 (require 'prelude-packages)
