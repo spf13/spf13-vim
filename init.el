@@ -61,6 +61,7 @@ ELPA (or MELPA).")
 (require 'prelude-mode)
 (require 'prelude-editor)
 (require 'prelude-global-keybindings)
+(require 'prelude-auto-install)
 
 (when (eq system-type 'darwin)
   (require 'prelude-osx))
