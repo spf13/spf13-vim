@@ -23,7 +23,7 @@
 
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier. 
+        " across (heterogeneous) systems easier.
         if has('win32') || has('win64')
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
@@ -42,7 +42,9 @@
         Bundle 'gmarik/vundle'
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
-        Bundle 'mileszs/ack.vim'
+        if executable('ack')
+            Bundle 'mileszs/ack.vim'
+        endif
 
     " Use local bundles if available {
         if filereadable(expand("~/.vimrc.bundles.local"))
@@ -56,8 +58,8 @@
         let g:spf13_bundle_groups=['general', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc']
     endif
 
-    " To override all the included bundles, put 
-    " g:override_spf13_bundles = 1 
+    " To override all the included bundles, put
+    " g:override_spf13_bundles = 1
     " in your .vimrc.bundles.local file"
     if !exists("g:override_spf13_bundles")
 
@@ -93,7 +95,9 @@
             Bundle 'tpope/vim-fugitive'
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'godlygeek/tabular'
-            Bundle 'majutsushi/tagbar'
+            if executable('ctags')
+                Bundle 'majutsushi/tagbar'
+            endif
             Bundle 'Shougo/neocomplcache'
         endif
 
@@ -173,7 +177,7 @@
 " }
 
 " Vim UI {
-    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim")) 
+    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         color solarized                 " load a colorscheme
     endif
         let g:solarized_termtrans=1
@@ -232,7 +236,7 @@
     set expandtab                   " tabs are spaces, not tabs
     set tabstop=4                   " an indentation every four columns
     set softtabstop=4               " let backspace delete indent
-    "set matchpairs+=<:>                " match, to be used with % 
+    "set matchpairs+=<:>                " match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
@@ -296,7 +300,7 @@
 
     " visual shifting (does not exit Visual mode)
     vnoremap < <gv
-    vnoremap > >gv 
+    vnoremap > >gv
 
     " Fix home and end keybindings for screen, particularly on mac
     " - for some reason this fixes the arrow keys too. huh.
@@ -491,10 +495,10 @@
         inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 
-        " <CR>: close popup 
+        " <CR>: close popup
         " <s-CR>: close popup and save indent.
         inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-        inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>" 
+        inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
         " <TAB>: completion.
         inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
@@ -598,8 +602,8 @@ endfunction
 " }
 
 " Use local gvimrc if available and gui is running {
-    if has('gui_running') 
-        if filereadable(expand("~/.gvimrc.local")) 
+    if has('gui_running')
+        if filereadable(expand("~/.gvimrc.local"))
             source ~/.gvimrc.local
         endif
     endif
