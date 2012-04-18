@@ -65,7 +65,6 @@
 
     " General
         if count(g:spf13_bundle_groups, 'general')
-            Bundle 'scrooloose/nerdtree'
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
@@ -76,7 +75,6 @@
             Bundle 'Lokaltog/vim-powerline'
             Bundle 'Lokaltog/vim-easymotion'
             Bundle 'godlygeek/csapprox'
-            Bundle 'jistr/vim-nerdtree-tabs'
             Bundle 'flazz/vim-colorschemes'
             Bundle 'corntrace/bufexplorer'
         endif
@@ -93,7 +91,6 @@
             endif
 
             Bundle 'tpope/vim-fugitive'
-            Bundle 'scrooloose/nerdcommenter'
             Bundle 'godlygeek/tabular'
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
@@ -322,6 +319,10 @@
 
     " Adjust viewports to the same size
     map <Leader>= <C-w>=
+
+    " map <Leader>f to display all lines with keyword under cursor
+    " and ask which one to jump to
+    nmap <Leader>f [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 " }
 
 " Plugins {
@@ -332,7 +333,6 @@
     " }
 
     " Misc {
-        let g:NERDShutUp=1
         let b:match_ignorecase = 1
     " }
 
@@ -381,19 +381,6 @@
         let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
         " Shortcut for reloading snippets, useful when developing
         nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
-    " }
-
-    " NerdTree {
-        map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-        map <leader>e :NERDTreeFind<CR>
-        nmap <leader>nt :NERDTreeFind<CR>
-
-        let NERDTreeShowBookmarks=1
-        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-        let NERDTreeChDirMode=0
-        let NERDTreeQuitOnOpen=1
-        let NERDTreeShowHidden=1
-        let NERDTreeKeepTreeInNewTab=1
     " }
 
     " Tabularize {
@@ -581,18 +568,6 @@ function! InitializeDirectories()
     endfor
 endfunction
 call InitializeDirectories()
-
-function! NERDTreeInitAsNeeded()
-    redir => bufoutput
-    buffers!
-    redir END
-    let idx = stridx(bufoutput, "NERD_tree")
-    if idx > -1
-        NERDTreeMirror
-        NERDTreeFind
-        wincmd l
-    endif
-endfunction
 " }
 
 " Use local vimrc if available {
