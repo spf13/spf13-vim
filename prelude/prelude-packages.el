@@ -41,8 +41,8 @@
 (setq url-http-attempt-keepalives nil)
 
 (defvar prelude-packages
-  '(melpa expand-region gist helm helm-projectile magit magithub
-                  rainbow-mode volatile-highlights yasnippet zenburn-theme)
+  '(ack-and-a-half expand-region gist helm helm-projectile magit magithub melpa
+                   rainbow-mode volatile-highlights yasnippet zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
 (defun prelude-packages-installed-p ()

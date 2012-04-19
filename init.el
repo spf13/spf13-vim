@@ -1,9 +1,9 @@
-;;; init.el --- Emacs Prelude: configuration entry point.
+;;; init.el --- Prelude's configuration entry point.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
-;; Author: Bozhidar Batsov <bozhidar.batsov@gmail.com>
-;; URL: http://batsov.com/emacs-prelude
+;; Author: Bozhidar Batsov <bozhidar@batsov.com>
+;; URL: http://batsov.com/prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
 
@@ -32,8 +32,8 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
-(message "Emacs Prelude is powering up... Be patient, Master %s!"
-         (getenv "USER"))
+
+(message "Prelude is powering up... Be patient, Master %s!" (getenv "USER"))
 
 (defvar prelude-dir (file-name-directory load-file-name)
   "The root dir of the Emacs Prelude distribution.")
@@ -63,6 +63,7 @@ ELPA (or MELPA).")
 (require 'prelude-global-keybindings)
 (require 'prelude-auto-install)
 
+;; OSX specific settings
 (when (eq system-type 'darwin)
   (require 'prelude-osx))
 
@@ -73,7 +74,6 @@ ELPA (or MELPA).")
 (when (file-exists-p prelude-personal-dir)
   (mapc 'load (directory-files prelude-personal-dir 't "^[^#].*el$")))
 
-(message "Emacs Prelude is ready to do thy bidding, Master %s!"
-         (getenv "USER"))
+(message "Prelude is ready to do thy bidding, Master %s!" (getenv "USER"))
 
 ;;; init.el ends here
