@@ -53,6 +53,12 @@
     ("\\.less\\'" . less-css-mode)
     ("\\.lua\\'" . lua-mode)))
 
+;; markdown-mode doesn't have autoloads for the auto-mode-alist
+;; so we add them manually if it's already installed
+(when (package-installed-p 'markdown-mode)
+  (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
+
 (dolist (entry prelude-auto-install-alist)
   (let ((ext (car entry))
         (mode (cdr entry)))
