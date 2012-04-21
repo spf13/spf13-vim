@@ -51,6 +51,7 @@
     ("\\.php\\'" . php-mode)
     ("\\.hs\\'" . haskell-mode)
     ("\\.less\\'" . less-css-mode)
+    ("\\.coffee\\'" . coffee-mode)
     ("\\.lua\\'" . lua-mode)))
 
 ;; markdown-mode doesn't have autoloads for the auto-mode-alist
