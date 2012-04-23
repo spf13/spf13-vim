@@ -135,8 +135,8 @@
 (defadvice windmove-right (before other-window-now activate)
   (when buffer-file-name (save-buffer)))
 
-;; show-paren-mode: subtle highlighting of matching parens
-(show-paren-mode t)
+;; show-paren-mode: subtle highlighting of matching parens (global-mode)
+(show-paren-mode +1)
 (setq show-paren-style 'parenthesis)
 
 ;; highlight the current line
