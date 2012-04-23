@@ -52,6 +52,7 @@
     ("\\.hs\\'" . haskell-mode)
     ("\\.less\\'" . less-css-mode)
     ("\\.lua\\'" . lua-mode)
+    ("\\.coffee\\'" . coffee-mode)
     ("\\.erl\\'" . erlang-mode)
     ("\\.feature\\'" . feature-mode)))
 
