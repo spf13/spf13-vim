@@ -50,15 +50,52 @@
         when (not (package-installed-p p)) do (return nil)
         finally (return t)))
 
-(unless (prelude-packages-installed-p)
-  ;; check for new packages (package versions)
-  (message "%s" "Emacs Prelude is now refreshing its package database...")
-  (package-refresh-contents)
-  (message "%s" " done.")
-  ;; install the missing packages
-  (dolist (p prelude-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
+(defun prelude-install-packages ()
+  (unless (prelude-packages-installed-p)
+    ;; check for new packages (package versions)
+    (message "%s" "Emacs Prelude is now refreshing its package database...")
+    (package-refresh-contents)
+    (message "%s" " done.")
+    ;; install the missing packages
+    (dolist (p prelude-packages)
+      (unless (package-installed-p p)
+        (package-install p)))))
+
+(prelude-install-packages)
+
+(defmacro prelude-auto-install (ext mode)
+  `(add-to-list 'auto-mode-alist
+                `(,ext . (lambda ()
+                           (package-install ',mode)
+                           (,mode)))))
+
+(defvar prelude-auto-install-alist
+  '(("\\.markdown\\'" . markdown-mode)
+    ("\\.md\\'" . markdown-mode)
+    ("\\.haml\\'" . haml-mode)
+    ("\\.scss\\'" . scss-mode)
+    ("\\.sass\\'" . sass-mode)
+    ("\\.groovy\\'" . groovy-mode)
+    ("\\.yml\\'" . yaml-mode)
+    ("\\.php\\'" . php-mode)
+    ("\\.hs\\'" . haskell-mode)
+    ("\\.less\\'" . less-css-mode)
+    ("\\.lua\\'" . lua-mode)
+    ("\\.coffee\\'" . coffee-mode)
+    ("\\.erl\\'" . erlang-mode)
+    ("\\.feature\\'" . feature-mode)))
+
+;; markdown-mode doesn't have autoloads for the auto-mode-alist
+;; so we add them manually if it's already installed
+(when (package-installed-p 'markdown-mode)
+  (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
+
+(dolist (entry prelude-auto-install-alist)
+  (let ((ext (car entry))
+        (mode (cdr entry)))
+    (unless (package-installed-p mode)
+      (prelude-auto-install ext mode))))
 
 (provide 'prelude-packages)
 ;;; prelude-packages.el ends here
