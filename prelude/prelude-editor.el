@@ -118,7 +118,7 @@
 
 ;; use shift + arrow keys to switch between visible buffers
 (require 'windmove)
-(windmove-default-keybindings 'super)
+(windmove-default-keybindings)
 
 ;; automatically save buffers associated with files on buffer switch
 ;; and on windows switch
