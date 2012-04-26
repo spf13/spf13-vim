@@ -74,10 +74,8 @@
                                          try-complete-lisp-symbol-partially
                                          try-complete-lisp-symbol))
 
-;; smart indenting and pairing for all
+;; smart pairing for all
 (electric-pair-mode t)
-(electric-indent-mode t)
-(electric-layout-mode t)
 
 ;; meaningful names for buffers with the same name
 (require 'uniquify)
