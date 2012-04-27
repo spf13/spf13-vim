@@ -42,7 +42,6 @@
     (define-key map [(control shift down)]  'prelude-move-line-down)
     (define-key map (kbd "C-c n") 'prelude-cleanup-buffer)
     (define-key map (kbd "C-c f")  'prelude-recentf-ido-find-file)
-    (define-key map (kbd "C-c i") 'prelude-ido-goto-symbol)
     (define-key map (kbd "C-M-\\") 'prelude-indent-region-or-buffer)
     (define-key map (kbd "C-c u") 'prelude-view-url)
     (define-key map (kbd "C-c e") 'prelude-eval-and-replace)
@@ -82,7 +81,6 @@
 
     ("Navigation"
      ["Enable arrow keys" prelude-restore-arrow-keys]
-     ["Go to symbol" prelude-ido-goto-symbol]
      ["Helm" helm-prelude])
 
     ("Windows"
