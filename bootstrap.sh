@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/usr/bin/env sh
 
 endpath="$HOME/.spf13-vim-3"
 
