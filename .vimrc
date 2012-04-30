@@ -322,6 +322,10 @@
 
     " Adjust viewports to the same size
     map <Leader>= <C-w>=
+
+    " Easier horizontal scrolling
+    map zl zL
+    map zh zH
 " }
 
 " Plugins {
