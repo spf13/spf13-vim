@@ -369,10 +369,6 @@
         set tags=./tags;/,~/.vimtags
     " }
 
-    " EasyTags {
-        let g:easytags_cmd = 'ctags'
-    " }
-
     " AutoCloseTag {
         " Make it so AutoCloseTag works for xml and xhtml files as well
         au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
@@ -383,8 +379,6 @@
         " Setting the author var
         " If forking, please overwrite in your .vimrc.local file
         let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
-        " Shortcut for reloading snippets, useful when developing
-        nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
     " }
 
     " NerdTree {
