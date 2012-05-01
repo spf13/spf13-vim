@@ -45,9 +45,9 @@ If you're looking for more info on Emacs in general - consult
 ## More goodies
 
 The [Prelude Modules](https://github.com/bbatsov/prelude-modules)
-projects contains a lot of additional packages for Prelude
-(installable via the `package-list-packages`) - enhanced programming
-modes configs, latex config, erc config, etc.
+project contains a lot of additional packages for Prelude
+(install-able via the `package-list-packages` command) - enhanced programming
+mode configs, latex config, erc config, etc.
 
 ## Known issues
 
