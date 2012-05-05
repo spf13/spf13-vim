@@ -1,9 +1,9 @@
-;;; init.el --- Emacs Prelude: configuration entry point.
+;;; init.el --- Prelude's configuration entry point.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
-;; Author: Bozhidar Batsov <bozhidar.batsov@gmail.com>
-;; URL: http://batsov.com/emacs-prelude
+;; Author: Bozhidar Batsov <bozhidar@batsov.com>
+;; URL: http://batsov.com/prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
 
@@ -32,8 +32,8 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
-(message "Emacs Prelude is powering up... Be patient, Master %s!"
-         (getenv "USER"))
+
+(message "Prelude is powering up... Be patient, Master %s!" (getenv "USER"))
 
 (defvar prelude-dir (file-name-directory load-file-name)
   "The root dir of the Emacs Prelude distribution.")
@@ -44,9 +44,15 @@ avoid modifying the configuration there.")
   "Users of Emacs Prelude are encouraged to keep their personal configuration
 changes in this directory. All Emacs Lisp files there are loaded automatically
 by Prelude.")
+(defvar prelude-vendor-dir (concat prelude-dir "vendor/")
+  "This directory house Emacs Lisp packages that are not yet available in
+ELPA (or MELPA).")
+(defvar prelude-snippets-dir (concat prelude-dir "snippets/")
+  "This folder houses addition yasnippet bundles distributed with Prelude.")
 
 ;; add Prelude's directories to Emacs's `load-path'
 (add-to-list 'load-path prelude-modules-dir)
+(add-to-list 'load-path prelude-vendor-dir)
 
 ;; the core stuff
 (require 'prelude-packages)
@@ -56,6 +62,7 @@ by Prelude.")
 (require 'prelude-editor)
 (require 'prelude-global-keybindings)
 
+;; OSX specific settings
 (when (eq system-type 'darwin)
   (require 'prelude-osx))
 
@@ -66,7 +73,6 @@ by Prelude.")
 (when (file-exists-p prelude-personal-dir)
   (mapc 'load (directory-files prelude-personal-dir 't "^[^#].*el$")))
 
-(message "Emacs Prelude is ready to do thy bidding, Master %s!"
-         (getenv "USER"))
+(message "Prelude is ready to do thy bidding, Master %s!" (getenv "USER"))
 
 ;;; init.el ends here
