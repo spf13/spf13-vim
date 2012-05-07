@@ -366,5 +366,18 @@ and so on."
            (repeat nil)))
   (intern (concat (symbol-name cmd) "-repeat")))
 
+(defvar prelude-tips
+  '("Press <C-c o> to open a file with external program."
+    "Press <C-c p f> to navigate a project's files with ido."
+    "Press <C-c h> to navigate a project in Helm."
+    "Press <C-c g> to search in Google."
+    "Press <C-c r> to rename the current buffer and file it's visiting."
+    "Press <C-c t> to open a terminal in Emacs."
+    "Explore the Prelude menu to find out about some of Prelude extensions to Emacs."))
+
+(defun prelude-tip-of-the-day ()
+  (interactive)
+  (message (concat "Prelude tip: " (nth (random (length prelude-tips)) prelude-tips))))
+
 (provide 'prelude-core)
 ;;; prelude-core.el ends here
