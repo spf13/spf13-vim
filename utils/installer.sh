@@ -4,7 +4,15 @@ PRELUDE_INSTALL_DIR="$HOME/.emacs.d"
 PRELUDE_URL=https://github.com/bbatsov/prelude.git
 
 echo -n "Checking to see if git is installed... "
-hash git 2>&- || { echo >&2 "not found.  Aborting installation!'."; exit 1; }
+hash git 2>&- || { echo >&2 "not found. Aborting installation!"; exit 1; }
+echo "found"
+
+echo -n "Checking to see if aspell is installed... "
+hash aspell 2>&- || { echo >&2 "not found. Install aspell to benefit from flyspell-mode!"; }
+echo "found"
+
+echo -n "Checking to see if ack is installed... "
+hash ack 2>&- || { echo >&2 "not found. You'll need it to use ack-and-a-half!"; }
 echo "found"
 
 echo -n "Looking for an existing Emacs config..."
@@ -23,15 +31,13 @@ fi
 echo -n "Cloning Emacs Prelude from GitHub... "
 /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR > /dev/null
 cd $PRELUDE_INSTALL_DIR
-/usr/bin/env git submodule init
-/usr/bin/env git submodule update
 echo "done."
 
-echo ' _____                            ____           _           _      '
-echo '| ____|_ __ ___   __ _  ___ ___  |  _ \ _ __ ___| |_   _  __| | ___ '
-echo '|  _| |  _   _ \ / _  |/ __/ __| | |_) |  __/ _ \ | | | |/ _  |/ _ \'
-echo '| |___| | | | | | (_| | (__\__ \ |  __/| | |  __/ | |_| | (_| |  __/'
-echo '|_____|_| |_| |_|\__,_|\___|___/ |_|   |_|  \___|_|\__,_|\__,_|\___|'
+echo '\e[34m ____           _           _      '
+echo '\e[34m|  _ \ _ __ ___| |_   _  __| | ___ '
+echo '\e[34m| |_) |  __/ _ \ | | | |/ _  |/ _ \'
+echo '\e[34m|  __/| | |  __/ | |_| | (_| |  __/'
+echo '\e[34m|_|   |_|  \___|_|\__,_|\__,_|\___|'
 
 
-echo '... is now installed!'
+echo '\e[32m... is now installed and ready to do thy bidding!'
