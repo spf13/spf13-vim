@@ -38,6 +38,7 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
+;; required because of a package.el bug
 (setq url-http-attempt-keepalives nil)
 
 (defvar prelude-packages
@@ -82,7 +83,7 @@
     ("\\.less\\'" . less-css-mode)
     ("\\.lua\\'" . lua-mode)
     ("\\.coffee\\'" . coffee-mode)
-    ("\\.erl\\'" . erlang-mode)
+    ("\\.erl\\'" . erlang)
     ("\\.feature\\'" . feature-mode)))
 
 ;; markdown-mode doesn't have autoloads for the auto-mode-alist
