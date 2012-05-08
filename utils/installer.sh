@@ -33,11 +33,12 @@ echo -n "Cloning Emacs Prelude from GitHub... "
 cd $PRELUDE_INSTALL_DIR
 echo "done."
 
-echo '\e[34m ____           _           _      '
-echo '\e[34m|  _ \ _ __ ___| |_   _  __| | ___ '
-echo '\e[34m| |_) |  __/ _ \ | | | |/ _  |/ _ \'
-echo '\e[34m|  __/| | |  __/ | |_| | (_| |  __/'
-echo '\e[34m|_|   |_|  \___|_|\__,_|\__,_|\___|'
+echo -e '\e[34m ____           _           _      '
+echo -e '\e[34m|  _ \ _ __ ___| |_   _  __| | ___ '
+echo -e '\e[34m| |_) |  __/ _ \ | | | |/ _  |/ _ \'
+echo -e '\e[34m|  __/| | |  __/ | |_| | (_| |  __/'
+echo -e '\e[34m|_|   |_|  \___|_|\__,_|\__,_|\___|'
 
 
-echo '\e[32m... is now installed and ready to do thy bidding!'
+echo -e '\e[32m... is now installed and ready to do thy bidding!'
+echo -e '\e[0m'
