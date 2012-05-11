@@ -1,7 +1,7 @@
 PRELUDE_INSTALL_DIR="$HOME/.emacs.d"
 PRELUDE_URL=https://github.com/bbatsov/prelude.git
 
-if [ -d $PRELUDE_INSTALL_DIR ]
+if [ -d $PRELUDE_INSTALL_DIR/prelude ]
 then
     printf "\e[33m You already have Prelude installed.\e[0m You'll need to remove $PRELUDE_INSTALL_DIR if you want to install Prelude again.\n"
     exit 1;
