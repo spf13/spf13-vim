@@ -35,7 +35,14 @@ fi
 printf "Cloning Emacs Prelude from GitHub... "
 /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR > /dev/null 2>&1
 cd $PRELUDE_INSTALL_DIR
-printf "done.\n\n"
+printf "done.\n"
+
+if which emacs 2>&1 > /dev/null
+then
+    printf "Byte compiling Prelude... "
+    emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/prelude/*.el
+    printf "done.\n\n"
+fi
 
 printf "\e[34m ____           _           _       \n"
 printf "\e[34m|  _ \ _ __ ___| |_   _  __| | ___  \n"
