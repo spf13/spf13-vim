@@ -1,4 +1,5 @@
 *~
+*.elc
 auto-save-list
 recentf
 savehist
