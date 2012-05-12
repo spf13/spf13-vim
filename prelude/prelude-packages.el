@@ -64,27 +64,31 @@
 
 (prelude-install-packages)
 
-(defmacro prelude-auto-install (ext mode)
+(defmacro prelude-auto-install (extension package mode)
   `(add-to-list 'auto-mode-alist
-                `(,ext . (lambda ()
-                           (package-install ',mode)
-                           (,mode)))))
+                `(,extension . (lambda ()
+                                 (package-install ',package)
+                                 (,mode)))))
 
 (defvar prelude-auto-install-alist
-  '(("\\.markdown\\'" . markdown-mode)
-    ("\\.md\\'" . markdown-mode)
-    ("\\.haml\\'" . haml-mode)
-    ("\\.scss\\'" . scss-mode)
-    ("\\.sass\\'" . sass-mode)
-    ("\\.groovy\\'" . groovy-mode)
-    ("\\.yml\\'" . yaml-mode)
-    ("\\.php\\'" . php-mode)
-    ("\\.hs\\'" . haskell-mode)
-    ("\\.less\\'" . less-css-mode)
-    ("\\.lua\\'" . lua-mode)
-    ("\\.coffee\\'" . coffee-mode)
-    ("\\.erl\\'" . erlang)
-    ("\\.feature\\'" . feature-mode)))
+  '(("\\.markdown\\'" markdown-mode markdown-mode)
+    ("\\.md\\'" markdown-mode markdown-mode)
+    ("\\.haml\\'" haml-mode haml-mode)
+    ("\\.scss\\'" prelude-scss scss-mode)
+    ("\\.sass\\'" sass-mode sass-mode)
+    ("\\.groovy\\'" groovy-mode groovy-mode)
+    ("\\.yml\\'" yaml-mode yaml-mode)
+    ("\\.php\\'" php-mode php-mode)
+    ("\\.hs\\'" prelude-haskell haskell-mode)
+    ("\\.less\\'" less-css-mode less-css-mode)
+    ("\\.lua\\'" lua-mode lua-mode)
+    ("\\.coffee\\'" prelude-coffe coffee-mode)
+    ("\\.erl\\'" erlang erlang-mode)
+    ("\\.feature\\'" feature-mode feature-mode)
+    ("\\.css\\'" prelude-css css-mode)
+    ("\\.rb\\'" prelude-ruby ruby-mode)
+    ("\\.pl\\'" prelude-perl cperl-mode)
+    ("\\.clj\\'" prelude-clojure clojure-mode)))
 
 ;; markdown-mode doesn't have autoloads for the auto-mode-alist
 ;; so we add them manually if it's already installed
@@ -93,10 +97,11 @@
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
 
 (dolist (entry prelude-auto-install-alist)
-  (let ((ext (car entry))
-        (mode (cdr entry)))
-    (unless (package-installed-p mode)
-      (prelude-auto-install ext mode))))
+  (let ((extension (first entry))
+        (package (second entry))
+        (mode (third entry)))
+    (unless (package-installed-p package)
+      (prelude-auto-install extension package mode))))
 
 (provide 'prelude-packages)
 ;;; prelude-packages.el ends here
