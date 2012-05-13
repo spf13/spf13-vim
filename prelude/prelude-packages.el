@@ -72,7 +72,7 @@
 
 (defvar prelude-auto-install-alist
   '(("\\.clj\\'" prelude-clojure clojure-mode)
-    ("\\.coffee\\'" prelude-coffe coffee-mode)
+    ("\\.coffee\\'" prelude-coffee coffee-mode)
     ("\\.css\\'" prelude-css css-mode)
     ("\\.el\\'" prelude-emacs-lisp emacs-lisp-mode)
     ("\\.erl\\'" erlang erlang-mode)
