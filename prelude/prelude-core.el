@@ -381,5 +381,14 @@ and so on."
   (interactive)
   (message (concat "Prelude tip: " (nth (random (length prelude-tips)) prelude-tips))))
 
+(defun prelude-eval-after-init (form)
+  "Add `(lambda () FORM)' to `after-init-hook'.
+
+    If Emacs has already finished initialization, also eval FORM immediately."
+  (let ((func (list 'lambda nil form)))
+    (add-hook 'after-init-hook func)
+    (when after-init-time
+      (eval form))))
+
 (provide 'prelude-core)
 ;;; prelude-core.el ends here
