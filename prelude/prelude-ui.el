@@ -43,10 +43,9 @@
 (defun prelude-frame-config (frame)
   "Custom behaviours for new frames."
   (if (eq system-type 'darwin)
-      (with-selected-frame frame
-        (if (display-graphic-p)
-            (modify-frame-parameters frame '((menu-bar-lines . 1)))
-          (modify-frame-parameters frame '((menu-bar-lines . 0)))))
+      (if (display-graphic-p)
+          (modify-frame-parameters frame '((menu-bar-lines . 1)))
+        (modify-frame-parameters frame '((menu-bar-lines . 0))))
     (menu-bar-mode -1)))
 
 ;; run now
