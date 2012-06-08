@@ -35,10 +35,17 @@ https://github.com/bbatsov/prelude/raw/master/utils/installer.sh
 You can now power up your Emacs, sit back and enjoy Prelude.
 
 There are two environment variables you can use to control the 
-source repository and the installation directory.  For instance:
+source repository and the installation directory. To change the 
+installation directory:
 
-`PRELUDE_URL="https://github.com/yourname/prelude.git" && 
- PRELUDE_INSTALL_DIR="$HOME/.emacs.d" && 
+`PRELUDE_INSTALL_DIR="$HOME/.emacs.d" && 
+ curl -L
+https://github.com/bbatsov/prelude/raw/master/utils/installer.sh
+| sh`
+
+To change the source repository:
+
+`PRELUDE_URL="https://github.com/yourname/prelude.git" &&
  curl -L
 https://github.com/bbatsov/prelude/raw/master/utils/installer.sh
 | sh`
