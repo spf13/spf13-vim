@@ -130,7 +130,7 @@
 
     " Ruby
         if count(g:spf13_bundle_groups, 'ruby')
-            Bundle 'rails.vim'
+            Bundle 'tpope/vim-rails'
         endif
 
     " Misc
