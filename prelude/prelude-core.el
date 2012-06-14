@@ -331,17 +331,6 @@ there's a region, all lines that region covers will be duplicated."
     (unless (or (eql buffer (current-buffer)) (not (buffer-file-name buffer)))
       (kill-buffer buffer))))
 
-(defun prelude-restore-arrow-keys ()
-  "Restores arrow keys navigation in buffers."
-  (interactive)
-  (global-set-key [up]      'previous-line)
-  (global-set-key [down]    'next-line)
-  (global-set-key [left]    'backward-char)
-  (global-set-key [right]   'forward-char)
-  (global-set-key [M-right] 'right-word)
-  (global-set-key [M-left]  'left-word)
-  (message "Arrow keys navigation in buffers in now allowed."))
-
 (require 'repeat)
 
 (defun make-repeatable-command (cmd)

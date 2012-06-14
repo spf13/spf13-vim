@@ -198,6 +198,10 @@
 (add-to-list 'yas/snippet-dirs prelude-snippets-dir)
 (yas/global-mode 1)
 
+;; became an Emacs guru in the keystroke department
+(require 'guru-mode)
+(guru-mode +1)
+
 ;; projectile is a project management mode
 (require 'projectile)
 (projectile-global-mode t)
