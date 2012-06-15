@@ -85,7 +85,7 @@
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
 ;; saveplace remembers your location in a file when saving files
-(setq save-place-file (concat user-emacs-directory "saveplace"))
+(setq save-place-file (concat prelude-savefile-dir "saveplace"))
 ;; activate it for all buffers
 (setq-default save-place t)
 (require 'saveplace)
@@ -97,11 +97,11 @@
       ;; save every minute
       savehist-autosave-interval 60
       ;; keep the home clean
-      savehist-file (concat user-emacs-directory "savehist"))
+      savehist-file (concat prelude-savefile-dir "savehist"))
 (savehist-mode t)
 
 ;; save recent files
-(setq recentf-save-file (concat user-emacs-directory "recentf")
+(setq recentf-save-file (concat prelude-savefile-dir "recentf")
       recentf-max-saved-items 200
       recentf-max-menu-items 15)
 (recentf-mode t)
@@ -155,6 +155,7 @@
       ido-create-new-buffer 'always
       ido-use-filename-at-point 'guess
       ido-max-prospects 10
+      ido-save-directory-list-file (concat prelude-savefile-dir "ido.hist")
       ido-default-file-method 'selected-window)
 
 ;; auto-completion in minibuffer
@@ -187,7 +188,7 @@
 (require 'expand-region)
 
 ;; bookmarks
-(setq bookmark-default-file (concat user-emacs-directory "bookmarks")
+(setq bookmark-default-file (concat prelude-savefile-dir "bookmarks")
       bookmark-save-flag 1)
 
 ;; enabled auto-fill mode in text-mode and all related modes
@@ -279,6 +280,12 @@ indent yanked text (with prefix arg don't indent)."
 ;; saner regex syntax
 (require 're-builder)
 (setq reb-re-syntax 'string)
+
+(require 'eshell)
+(setq eshell-directory-name (concat prelude-savefile-dir "/eshell/"))
+
+(setq semanticdb-default-save-directory 
+      (concat prelude-savefile-dir "semanticdb"))
 
 ;; enable Prelude's keybindings
 (prelude-global-mode t)
