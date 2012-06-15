@@ -49,6 +49,8 @@ by Prelude.")
 ELPA (or MELPA).")
 (defvar prelude-snippets-dir (concat prelude-dir "snippets/")
   "This folder houses addition yasnippet bundles distributed with Prelude.")
+(defvar prelude-savefile-dir (concat prelude-dir "savefile/")
+  "This folder stores all the automatically generated save/history-files.")
 
 ;; add Prelude's directories to Emacs's `load-path'
 (add-to-list 'load-path prelude-modules-dir)
