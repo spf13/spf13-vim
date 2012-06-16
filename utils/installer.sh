@@ -32,6 +32,11 @@ else
     printf "\e[32mnot found.\e[0m\n"
 fi
 
+if [ $(emacs --version 2>/dev/null | sed -n 's/.*[^0-9.]\([0-9]*\.[0-9.]*\).*/\1/p;q' | sed 's/\..*//g') -lt 24 ]
+then
+    printf "\e[31mWarning.\e[0m Prelude depends on emacs \e[31m24\e[0m!\n"
+fi
+
 printf "Cloning Emacs Prelude from GitHub... "
 /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR > /dev/null 2>&1
 cd $PRELUDE_INSTALL_DIR
