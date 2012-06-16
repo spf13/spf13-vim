@@ -63,7 +63,7 @@ file of a buffer in an external program."
 (defun prelude-visit-term-buffer ()
   (interactive)
   (if (not (get-buffer "*ansi-term*"))
-      (ansi-term "/bin/bash")
+      (ansi-term (getenv "SHELL"))
     (switch-to-buffer "*ansi-term*")))
 
 (defun prelude-google ()
