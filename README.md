@@ -16,10 +16,7 @@ experience than that you get out of the box. By using **Prelude**
 you're basically getting a "Get me out of the Prelude, I just want to
 use Emacs" card.
 
-**Prelude** is compatible **ONLY with GNU Emacs 24**. While Emacs 24
-is not yet officially released it's a rock solid piece of software
-more than suitable for everyday work. There is no good excuse not to
-use Emacs 24!
+**Prelude** is compatible **ONLY with GNU Emacs 24**. 
 
 ## Fast Forward
 
