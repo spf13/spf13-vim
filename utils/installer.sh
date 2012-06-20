@@ -1,59 +1,243 @@
-[ -z "$PRELUDE_INSTALL_DIR" ] && PRELUDE_INSTALL_DIR="$HOME/.emacs.d"
-[ -z "$PRELUDE_URL" ] && PRELUDE_URL=https://github.com/bbatsov/prelude.git
+install_prelude () {
+    printf " Cloning the repository.\n$RESET"
+    if [ x$PRELUDE_VERBOSE != x ]
+    then
+        /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR
+    else
+        /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR > /dev/null 2>&1
+    fi
+    if ! [ $? -eq 0 ]
+    then
+        printf "$RED Unkown git error occured during installation, "
+        printf "please check the source url: $PRELUDE_URL\n$RESET"
+        exit 1
+    fi
+}
 
+make_prelude_dirs () {
+    printf " Making the required directories.\n$RESET"
+    mkdir $PRELUDE_INSTALL_DIR/vendor $PRELUDE_INSTALL_DIR/personal > /dev/null 2>&1
+    mkdir $PRELUDE_INSTALL_DIR/themes $PRELUDE_INSTALL_DIR/snippets > /dev/null 2>&1
+    if ! [ $? -eq 0 ]
+    then
+        printf "$RED failed to create directories.\n$RESET"
+    fi
+}
+
+colors () {
+# Reset
+    RESET='\e[0m'
+    RED='\e[0;31m'          # Red
+    GREEN='\e[0;32m'        # Green
+    YELLOW='\e[0;33m'       # Yellow
+    BLUE='\e[0;34m'         # Blue
+    PURPLE='\e[0;35m'       # Purple
+    CYAN='\e[0;36m'         # Cyan
+    WHITE='\e[0;37m'        # White
+
+# Bold
+    BRED='\e[1;31m'         # Red
+    BGREEN='\e[1;32m'       # Green
+    BYELLOW='\e[1;33m'      # Yellow
+    BBLUE='\e[1;34m'        # Blue
+    BPURPLE='\e[1;35m'      # Purple
+    BCYAN='\e[1;36m'        # Cyan
+    BWHITE='\e[1;37m'       # White
+}
+
+# Commandline args:
+# -d/--directory [dir]
+#   Install prelude into the specified directory. If 'dir' is a relative path prefix it with $HOME.
+#   Defaults to '$HOME/.emacs.d'
+# -c/--colors
+#   Enable colors
+# -s/--source [url]
+#   Clone prelude from 'url'.
+#   Defaults to 'https://github.com/bbatsov/prelude.git'
+# -i/--into
+#   If one exists, install into the existing config
+# -n/--no-bytecompile
+#   Skip the compilation of the prelude files.
+# -h/--help
+#   Print help
+# -v/--verbose
+#   Verbose output, for debugging
+
+usage() {
+    printf "Usage: $0 [OPTION]\n"
+    printf "  -c, --colors \t \t \t Enable colors."
+    printf "  -d, --directory [dir] \t Install prelude into the specified directory.\n"
+    printf "  \t \t \t \t If 'dir' is a relative path prefix with $HOME.\n"
+    printf "  \t \t \t \t Defaults to $HOME/.emacs.d\n"
+    printf "  -s, --source [url] \t \t Clone prelude from 'url'.\n"
+    printf "  \t \t \t \t Defaults to 'https://github.com/bbatsov/prelude.git'.\n"
+    printf "  -n, --no-bytecompile \t \t Skip the bytecompilation step of prelude.\n"
+    printf "  -i, --into \t \t \t Install Prelude into the existing configuration\n"
+    printf "  \t \t \t \t The default behavious is to install prelude into the existing\n"
+    printf "  \t \t \t \t emacs configuration.\n"
+    printf "  -h, --help \t \t \t Display this help and exit\n"
+    printf "  -v, --verbose \t \t Display verbose information\n"
+    printf "\n"
+}
+
+### Parse cli
+while [ $# -gt 0 ]
+do
+    case $1 in
+        -d | --directory)
+            PRELUDE_INSTALL_DIR=$2
+            shift 2
+            ;;
+        -c | --colors)
+            colors
+            shift 1
+            ;;
+        -s | --source)
+            PRELUDE_URL=$2
+            shift 2
+            ;;
+        -i | --into)
+            PRELUDE_INTO='true'
+            shift 1
+            ;;
+        -n | --no-bytecompile)
+            PRELUDE_SKIP_BC='true'
+            shift 1
+            ;;
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        -v | --verbose)
+            echo "prelude verbose $PRELUDE_VERBOSE"
+            PRELUDE_VERBOSE='true';
+            shift 1
+            ;;
+        *)
+            printf "Unkown option: $1\n"
+            shift 1
+            ;;
+    esac
+done
+
+VERBOSE_COLOR=$BBLUE
+
+[ -z $PRELUDE_URL ] && PRELUDE_URL='https://github.com/bbatsov/prelude.git'
+[ -z $PRELUDE_INSTALL_DIR ] && PRELUDE_INSTALL_DIR='$HOME/.emacs.d'
+
+if [ x$PRELUDE_VERBOSE != x ]
+then
+    printf "$PRELUDE_VERBOSE\n"
+    printf "$VERBOSE_COLOR"
+    printf "INSTALL_DIR = $PRELUDE_INSTALL_DIR\n"
+    printf "SOURCE_URL  = $PRELUDE_URL\n"
+    if [ -n $PRELUDE_SKIP_BC ]
+    then
+        printf "Skipping bytecompilation.\n"
+    fi
+    if [ -n $PRELUDE_INTO ]
+    then
+        printf "Replacing existing config (if one exists).\n"
+    fi
+    printf "$RESET"
+fi
+
+### Check dependencies
+printf  "$CYAN Checking to see if git is installed... $RESET"
+if hash git 2>&-
+then
+    printf "$GREEN found.$RESET\n"
+else
+    printf "$RED not found. Aborting installation!$RESET\n"
+    exit 1
+fi;
+
+printf  "$CYAN Checking to see if aspell is installed... "
+if hash aspell 2>&-
+then
+    printf "$GREEN found.$RESET\n"
+else
+    print "$RED not found. Install aspell to benefit from flyspell-mode!$RESET\n"
+fi
+
+printf  "$CYAN Checking to see if ack is installed... "
+if hash ack 2>&-
+then
+    printf "$GREEN found.$RESET\n"
+else
+    printf "$RED not found. You'll need it to use ack-and-a-half!$RESET\n"
+fi
+
+### Check emacs version
+if [ $(emacs --version 2>/dev/null | sed -n 's/.*[^0-9.]\([0-9]*\.[0-9.]*\).*/\1/p;q' | sed 's/\..*//g') -lt 24 ]
+then
+    printf "$YELLOW WARNING:$RESET Prelude depends on emacs $RED 24$RESET !\n"
+fi
+
+# If prelude is already installed
 if [ -d $PRELUDE_INSTALL_DIR/prelude ]
 then
-    printf "\e[33m You already have Prelude installed.\e[0m You'll need to remove $PRELUDE_INSTALL_DIR/prelude if you want to install Prelude again.\n"
+    printf "\n\n$BRED"
+    printf "You already have Prelude installed.$RESET\nYou'll need to remove $PRELUDE_INSTALL_DIR/prelude if you want to install Prelude again.\n"
+    printf "If you want to update your copy of prelude, run 'git pull origin master' from your prelude directory\n\n"
     exit 1;
 fi
 
-printf "Checking to see if git is installed... "
-hash git 2>&- || { printf >&2 "\e[33mnot found. Aborting installation!\e[0m"; exit 1; }
-printf "\e[32mfound.\e[0m\n"
-
-printf "Checking to see if aspell is installed... "
-hash aspell 2>&- || { printf >&2 "\e[33mnot found. Install aspell to benefit from flyspell-mode!\e[0m"; }
-printf "\e[32mfound.\e[0m\n"
-
-printf "Checking to see if ack is installed... "
-hash ack 2>&- || { printf >&2 "\e[33mnot found. You'll need it to use ack-and-a-half!\e[0m"; }
-printf "\e[32mfound.\e[0m\n"
-
-printf "Looking for an existing Emacs config... "
-if [ -d $PRELUDE_INSTALL_DIR ]
+if [ -d $PRELUDE_INSTALL_DIR ] || [ -f $PRELUDE_INSTALL_DIR ]
 then
-    printf "\e[33mfound an existing $PRELUDE_INSTALL_DIR.\e[0m Backing it up to $PRELUDE_INSTALL_DIR.pre-prelude.\n"
-    mv $PRELUDE_INSTALL_DIR $PRELUDE_INSTALL_DIR.pre-prelude
-elif [ -f ~/.emacs ]
+    # Existing file/directory found -> backup
+    printf " Backing up the existing config to $PRELUDE_INSTALL_DIR.pre-prelude.tar.\n"
+    tar -cf $PRELUDE_INSTALL_DIR.pre-prelude.tar $PRELUDE_INSTALL_DIR > /dev/null 2>&1
+    # Overwrite existing?
+    if [ -n $PRELUDE_INTO ]
+    then
+        # Install into existing config
+        PRELUDE_INSTALL_DIR+='/prelude/'
+        install_prelude
+    else
+        # Replace existing config
+        install_prelude
+        make_prelude_dirs
+    fi
+elif [ -e $PRELUDE_INSTALL_DIR ]
 then
-    printf "\e[33mfound an existing ~/.emacs.\e[0m Backing it up to ~/.emacs.pre-prelude.\n"
-    mv ~/.emacs ~/.emacs.pre-prelude
+    # File exist but not a regular file or directory
+    # WTF NOW?
+    printf "$BRED $PRELUDE_INSTALL_DIR exist but isn't a file or directory.\n"
+    printf "$BRED please remove this file or install prelude in a different directory"
+    printf "$BRED (-d flag)\n$RESET"
+    exit 1
 else
-    printf "\e[32mnot found.\e[0m\n"
+    # Nothing yet so just install prelude
+    install_prelude
+    make_prelude_dirs
 fi
 
-if [ $(emacs --version 2>/dev/null | sed -n 's/.*[^0-9.]\([0-9]*\.[0-9.]*\).*/\1/p;q' | sed 's/\..*//g') -lt 24 ]
+if [ -z $PRELUDE_SKIP_BC ];
 then
-    printf "\e[31mWarning.\e[0m Prelude depends on emacs \e[31m24\e[0m!\n"
+    if which emacs 2>&1 > /dev/null
+    then
+        printf " Bytecompiling Prelude.\n"
+        emacs -batch -f batch-byte-compile $PRELUDE_BYTECOMPILE_DIR > /dev/null 2>&1
+    else
+        printf "$YELLOW Emacs not found.$RESET Skipping bytecompilation.\n"
+    fi
+else
+    printf "Skipping bytecompilation.\n"
 fi
 
-printf "Cloning Emacs Prelude from GitHub... "
-/usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR > /dev/null 2>&1
-cd $PRELUDE_INSTALL_DIR
-printf "done.\n"
-
-if which emacs 2>&1 > /dev/null
+# Print usage message if prelude didn't replace .emacs.d
+if [ $PRELUDE_INSTALL_DIR != "$HOME/.emacs.d" ]
 then
-    printf "Byte compiling Prelude... "
-    emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/prelude/*.el
-    printf "done.\n\n"
+    printf "\n To use prelude, add: $CYAN\n (defvar prelude-dir \"$PRELUDE_INSTALL_DIR/\")\n"
+    printf " (load-file (concat prelude-dir \"init.el\"))\n$RESET"
+    printf " To your emacs init file.\n\n"
 fi
 
-printf "\e[34m ____           _           _       \n"
-printf "\e[34m|  _ \ _ __ ___| |_   _  __| | ___  \n"
-printf "\e[34m| |_) |  __/ _ \ | | | |/ _  |/ _ \ \n"
-printf "\e[34m|  __/| | |  __/ | |_| | (_| |  __/ \n"
-printf "\e[34m|_|   |_|  \___|_|\__,_|\__,_|\___| \n"
-
-printf "\e[32m... is now installed and ready to do thy bidding, Master $USER!\n"
-printf "\e[0m"
+printf "\n"
+printf "$BBLUE  ____           _           _       \n"
+printf "$BBLUE |  _ \ _ __ ___| |_   _  __| | ___  \n"
+printf "$BBLUE | |_) |  __/ _ \ | | | |/ _  |/ _ \ \n"
+printf "$BBLUE |  __/| | |  __/ | |_| | (_| |  __/ \n"
+printf "$BBLUE |_|   |_|  \___|_|\__,_|\__,_|\___| \n\n"
+printf "$GREEN ... is now installed and ready to do thy bidding, Master $USER!$RESET\n"
