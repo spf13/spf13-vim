@@ -80,7 +80,6 @@
      ["Eval and replace" prelude-eval-and-replace])
 
     ("Navigation"
-     ["Enable arrow keys" prelude-restore-arrow-keys]
      ["Helm" helm-prelude])
 
     ("Windows"
