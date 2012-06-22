@@ -192,7 +192,7 @@ then
     if [ -n $PRELUDE_INTO ]
     then
         # Install into existing config
-        PRELUDE_INSTALL_DIR+='/prelude/'
+        PRELUDE_INSTALL_DIR+='/prelude'
         install_prelude
     else
         # Replace existing config
@@ -218,7 +218,13 @@ then
     if which emacs 2>&1 > /dev/null
     then
         printf " Bytecompiling Prelude.\n"
-        emacs -batch -f batch-byte-compile $PRELUDE_BYTECOMPILE_DIR > /dev/null 2>&1
+        if [ x$PRELUDE_VERBOSE != x ]
+        then
+            emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/prelude/*.el
+            emacs -batch -f batch-byte-compile "$PRELUDE_INSTALL_DIR/prelude/*.el"
+        else
+            emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/prelude/*.el > /dev/null 2>&1
+        fi
     else
         printf "$YELLOW Emacs not found.$RESET Skipping bytecompilation.\n"
     fi
