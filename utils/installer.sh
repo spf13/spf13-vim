@@ -139,6 +139,15 @@ then
     printf "$RESET"
 fi
 
+# If prelude is already installed
+if [ -d $PRELUDE_INSTALL_DIR/prelude ]
+then
+    printf "\n\n$BRED"
+    printf "You already have Prelude installed.$RESET\nYou'll need to remove $PRELUDE_INSTALL_DIR/prelude if you want to install Prelude again.\n"
+    printf "If you want to update your copy of prelude, run 'git pull origin master' from your prelude directory\n\n"
+    exit 1;
+fi
+
 ### Check dependencies
 printf  "$CYAN Checking to see if git is installed... $RESET"
 if hash git 2>&-
@@ -169,15 +178,6 @@ fi
 if [ $(emacs --version 2>/dev/null | sed -n 's/.*[^0-9.]\([0-9]*\.[0-9.]*\).*/\1/p;q' | sed 's/\..*//g') -lt 24 ]
 then
     printf "$YELLOW WARNING:$RESET Prelude depends on emacs $RED 24$RESET !\n"
-fi
-
-# If prelude is already installed
-if [ -d $PRELUDE_INSTALL_DIR/prelude ]
-then
-    printf "\n\n$BRED"
-    printf "You already have Prelude installed.$RESET\nYou'll need to remove $PRELUDE_INSTALL_DIR/prelude if you want to install Prelude again.\n"
-    printf "If you want to update your copy of prelude, run 'git pull origin master' from your prelude directory\n\n"
-    exit 1;
 fi
 
 if [ -d $PRELUDE_INSTALL_DIR ] || [ -f $PRELUDE_INSTALL_DIR ]
