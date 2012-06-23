@@ -18,6 +18,7 @@ make_prelude_dirs () {
     printf " Making the required directories.\n$RESET"
     mkdir $PRELUDE_INSTALL_DIR/vendor $PRELUDE_INSTALL_DIR/personal > /dev/null 2>&1
     mkdir $PRELUDE_INSTALL_DIR/themes $PRELUDE_INSTALL_DIR/snippets > /dev/null 2>&1
+    mkdir $PRELUDE_INSTALL_DIR/savefile > /dev/null 2>&1
     if ! [ $? -eq 0 ]
     then
 	printf "$RED failed to create directories.\n$RESET"
