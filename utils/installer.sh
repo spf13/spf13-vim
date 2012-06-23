@@ -229,12 +229,12 @@ else
 fi
 
 # Print usage message if prelude didn't replace .emacs.d
-if [ $PRELUDE_INSTALL_DIR != "$HOME/.emacs.d" ]
-then
-    printf "\n To use prelude, add: $CYAN\n (defvar prelude-dir \"$PRELUDE_INSTALL_DIR/\")\n"
-    printf " (load-file (concat prelude-dir \"init.el\"))\n$RESET"
-    printf " To your emacs init file.\n\n"
-fi
+# if [ $PRELUDE_INSTALL_DIR != "$HOME/.emacs.d" ]
+# then
+#     printf "\n To use prelude, add: $CYAN\n (defvar prelude-dir \"$PRELUDE_INSTALL_DIR/\")\n"
+#     printf " (load-file (concat prelude-dir \"init.el\"))\n$RESET"
+#     printf " To your emacs init file.\n\n"
+# fi
 
 printf "\n"
 printf "$BBLUE  ____           _           _       \n"
