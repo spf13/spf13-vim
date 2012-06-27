@@ -157,7 +157,7 @@ Here are a few of the plugins:
 
 NERDTree is a file explorer plugin that provides "project drawer"
 functionality to your vim editing.  You can learn more about it with
-:help NERDTree or checkout my post on [NERDTree](http://spf13.com/post/vim-plugins-nerd-commenter).
+:help NERDTree.
 
 **QuickStart** Launch using `<Leader>e`.
 
@@ -198,7 +198,7 @@ There's a lot more, check it out at `:help surround`
 ## [NERDCommenter]
 
 NERDCommenter allows you to wrangle your code comments, regardless of
-filetype. View `help :NERDCommenter` for all the details.
+filetype. View `help :NERDCommenter` or checkout my post on [NERDCommenter](http://spf13.com/post/vim-plugins-nerd-commenter).
 
 **QuickStart** Toggle comments using `<Leader>c<space>` in Visual or Normal mode.
 
