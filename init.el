@@ -52,6 +52,9 @@ ELPA (or MELPA).")
 (defvar prelude-savefile-dir (concat prelude-dir "savefile/")
   "This folder stores all the automatically generated save/history-files.")
 
+(unless (file-exists-p prelude-savefile-dir)
+  (make-directory prelude-savefile-dir))
+
 ;; add Prelude's directories to Emacs's `load-path'
 (add-to-list 'load-path prelude-modules-dir)
 (add-to-list 'load-path prelude-vendor-dir)
