@@ -67,7 +67,8 @@
 (defmacro prelude-auto-install (extension package mode)
   `(add-to-list 'auto-mode-alist
                 `(,extension . (lambda ()
-                                 (package-install ',package)
+                                 (unless (package-installed-p ',package)
+                                   (package-install ',package))
                                  (,mode)))))
 
 (defvar prelude-auto-install-alist
