@@ -99,6 +99,7 @@
                 Bundle 'majutsushi/tagbar'
             endif
             Bundle 'Shougo/neocomplcache'
+            Bundle 'Shougo/neocomplcache-snippets-complete'
         endif
 
     " PHP
