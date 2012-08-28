@@ -392,6 +392,9 @@
         " Setting the author var
         " If forking, please overwrite in your .vimrc.local file
         let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
+
+        "remap trigger to avoid collision with neocomplcache
+        let g:snips_trigger_key='<c-space>'
     " }
 
     " NerdTree {
