@@ -82,6 +82,7 @@
             Bundle 'jistr/vim-nerdtree-tabs'
             Bundle 'flazz/vim-colorschemes'
             Bundle 'corntrace/bufexplorer'
+            Bundle 'mbbill/undotree'
         endif
 
     " General Programming
@@ -542,6 +543,9 @@
 
      " }
 
+     " UndoTree {
+        nnoremap <c-u> :UndotreeToggle<CR>
+     " }
 
 " }
 
