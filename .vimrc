@@ -83,6 +83,7 @@
             Bundle 'flazz/vim-colorschemes'
             Bundle 'corntrace/bufexplorer'
             Bundle 'mbbill/undotree'
+            Bundle 'myusuf3/numbers.vim'
         endif
 
     " General Programming
