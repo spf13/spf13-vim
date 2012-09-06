@@ -355,6 +355,13 @@ and so on."
            (repeat nil)))
   (intern (concat (symbol-name cmd) "-repeat")))
 
+(defun prelude-create-scratch-buffer ()
+  "Create a new scratch buffer."
+  (interactive)
+  (progn
+    (switch-to-buffer (get-buffer-create (generate-new-buffer-name "*scratch*")))
+    (emacs-lisp-mode)))
+
 (defvar prelude-tips
   '("Press <C-c o> to open a file with external program."
     "Press <C-c p f> to navigate a project's files with ido."
