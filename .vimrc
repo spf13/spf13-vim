@@ -283,10 +283,10 @@
     map <S-L> gt
 
     " Stupid shift key fixes
-    cmap W w
-    cmap WQ wq
-    cmap wQ wq
-    cmap Q q
+    command -nargs=* -complete=file W w <args>
+    command -nargs=* -complete=file Q q <args>
+    command -nargs=* -complete=file WQ wq <args>
+    command -nargs=* -complete=file Wq wq <args>
     cmap Tabe tabe
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
