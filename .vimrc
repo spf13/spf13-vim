@@ -58,7 +58,7 @@
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['general', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc']
+        let g:spf13_bundle_groups=['general', 'snippets', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc']
     endif
 
     " To override all the included bundles, put
@@ -86,12 +86,16 @@
             Bundle 'myusuf3/numbers.vim'
         endif
 
+    " Snippets 
+        if count(g:spf13_bundle_groups, 'snippets')
+            Bundle 'spf13/snipmate-snippets'
+        endif
+
     " General Programming
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
             Bundle 'scrooloose/syntastic'
             Bundle 'garbas/vim-snipmate'
-            Bundle 'spf13/snipmate-snippets'
             " Source support_function.vim to support snipmate-snippets.
             if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
                 source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
