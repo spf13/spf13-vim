@@ -183,9 +183,6 @@
             set undolevels=1000         "maximum number of changes that can be undone
             set undoreload=10000        "maximum number lines to save for undo on a buffer reload
         endif
-        " Could use * rather than *.*, but I prefer to leave .files unsaved
-        au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
-        au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
     " }
 " }
 
