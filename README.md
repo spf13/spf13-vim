@@ -6,7 +6,7 @@
 |_|   |_|  \___|_|\__,_|\__,_|\___|
 ```
 
-## Prelude
+# Prelude
 
 Emacs is probably the best text editor in the world. However, the
 process of coming up with a useful Emacs configuration is long and
@@ -20,14 +20,16 @@ just want to use Emacs" card.
 
 Emacs Prelude is compatible **ONLY with GNU Emacs 24.x**. 
 
-## Fast Forward
+# Fast Forward
 
 Assuming you're using an Unix-like OS (`*BSD`, `GNU/Linux`, `OS X`, `Solaris`,
 etc), you already have Emacs 24 installed, as well as `git` & `curl` you
 can skip the whole manual and just type in your favorite shell the
 following command:
 
-`curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh`
+```bash
+$ curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+```
 
 You can now power up your Emacs, sit back and enjoy Prelude,
 forgetting about the rest of this manual.
@@ -36,55 +38,66 @@ There are two environment variables you can use to control the
 source repository and the installation directory. To change the 
 installation directory:
 
-`PRELUDE_INSTALL_DIR="$HOME/.emacs.d" && 
+```bash
+$ PRELUDE_INSTALL_DIR="$HOME/.emacs.d" && 
  curl -L
 https://github.com/bbatsov/prelude/raw/master/utils/installer.sh
-| sh`
+| sh
+```
 
 To change the source repository:
 
-`PRELUDE_URL="https://github.com/yourname/prelude.git" &&
+```bash
+$ PRELUDE_URL="https://github.com/yourname/prelude.git" &&
  curl -L
 https://github.com/bbatsov/prelude/raw/master/utils/installer.sh
-| sh`
+| sh
+```
 
 Note that the installer will back up any existing `.emacs` file or
 `.emacs.d` since it will unpack Prelude's code in `.emacs.d`. If
 you're doing a manual install make sure you don't have a `.emacs` file
 or back up your existing `.emacs.d` directory manually.
 
-## More goodies
+# More goodies
 
 The [Prelude Modules](https://github.com/bbatsov/prelude-modules)
 project contains a lot of additional packages for Prelude
 (install-able via the `package-list-packages` command) - enhanced programming
 mode configs, latex config, erc config, etc.
 
-## Installing Emacs 24
+# Installing Emacs 24
 
 Obviously to use the Emacs Prelude you have to install Emacs 24
 first. Have a look at the [WikEmacs articles on installing Emacs](http://wikemacs.org/wiki/Installing_Emacs).
  
-## Installation
+# Installation
 
-### Automated
+## Automated
 
 You can install Emacs via the command line with either `curl` or
 `wget`. Naturally `git` is also required.
 
-#### Via Curl
+### Via Curl
 
 If you're using `curl` type the following command:
 
-`curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh`
+```bash
+$ curl -L
+https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+```
 
-#### Via Wget
+### Via Wget
 
 If you're using `wget` type:
 
-`wget --no-check-certificate https://github.com/bbatsov/prelude/raw/master/utils/installer.sh -O - | sh`
+```bash
+$ wget --no-check-certificate
+https://github.com/bbatsov/prelude/raw/master/utils/installer.sh -O -
+| sh
+```
 
-### Manual
+## Manual
 
 ```bash
 $ git clone git://github.com/bbatsov/prelude.git path/to/local/repo
@@ -96,12 +109,14 @@ You'd do well to replace `~/.emacs.d` with the value of
 `user-emacs-directory` for your OS. You can check the value by doing
 `C-h v user-emacs-directory` inside Emacs.
 
-## Running
+# Running
 
 Nothing fancy here. Just start Emacs as usual. Personally I run Emacs
 in daemon mode:
 
-`$ emacs --daemon`
+```bash
+$ emacs --daemon
+```
 
 Afterwards I connect to the server with either a terminal or a GUI
 client like this:
@@ -124,7 +139,7 @@ alias vi=emacsclient -t
 The last two aliases are helpful if you're used to editing files from
 the command line using `vi(m)`.
 
-## Getting to know Prelude
+# Getting to know Prelude
 
 Certainly the best way to understand how Prelude enhances the default
 Emacs experience is to peruse Prelude's source code (which is
@@ -133,6 +148,16 @@ obviously written in Emacs Lisp). If you're intimidated by the source
 which collects some of the additional functionality added by
 Prelude. It also adds an additional keymap that binds many of those
 extensions to keybindings.
+
+## Automatic package installation
+
+The default Prelude installation comes with a bare minimum of
+functionality. It will however install add-ons for various programming
+languages and frameworks on demand. For instance - if you try to open
+a `.clj` file `clojure-mode`, `nrepl.el` and prelude's enhanced Lisp
+configuration will be installed automatically for you.
+
+You can, of course, install anything you wish manually as well.
 
 ## Color Themes
 
@@ -151,13 +176,13 @@ back to the default (or select another theme entirely).
 To disable Zenburn just put in your personal config the following
 line:
 
-```elisp
+```lisp
 (disable-theme 'zenburn)
 ```
 
 Or you can use another theme altogether by adding something like:
 
-```elisp
+```lisp
 (load-theme 'solarized-dark t)
 ```
 
@@ -172,9 +197,9 @@ personal folder to avoid having to deal with git merge conflicts in the future.
 
 Additional settings for various programming languages are available for installation via MELPA. You might take a look at the [Prelude Modules project](https://github.com/bbatsov/prelude-modules) for further info.
 
-## Caveats & Pitfalls
+# Caveats & Pitfalls
 
-### Problems with flyspell-mode
+## Problems with flyspell-mode
 
 Prelude makes heavy use of the flyspell-mode package for spell
 checking of various things. The proper operation of flyspell depends
@@ -188,24 +213,24 @@ $ brew install aspell --lang=en
 
 On Linux distros - just use your distro's package manager.
 
-### Ugly colors in the terminal Emacs version
+## Ugly colors in the terminal Emacs version
 
 If your Emacs looks considerably uglier in a terminal (compared to the
 GUI version) try adding this to your `.bashrc` or `.zshrc`:
 
 ```bash
-export TERM=xterm-256color
+$ export TERM=xterm-256color
 ```
 
 Source the `.bashrc` file and start Emacs again.
 
-### MELPA error on initial startup
+## MELPA error on initial startup
 
 If you get some http connection error related to the MELPA repo
 just do a manual `M-x package-refresh-contents` and restart Emacs
 afterwards. 
 
-### No arrow navigation in editor buffers
+## No arrow navigation in editor buffers
 
 This is not a bug - it's a feature! I firmly believe that the one true
 way to use Emacs is by using it the way it was intended to be used (as
@@ -215,16 +240,39 @@ use them.
 
 If you'd still like to use the arrow keys just invoke `M-x
 guru-mode` to enable them for the duration of your
-current Emacs session or add `(guru-mode -1)` to your
-personal Emacs customization to enable them permanently.
+current Emacs session or add the following snippet to your
+personal Emacs customization to enable them permanently:
 
-### Windows compatibility
+```lisp
+(add-hook 'prog-mode-hook 'turn-off-guru-mode t)
+```
+
+## Disable whitespace-mode
+
+Some people find `whitespace-mode` too intrusive and might want to
+disable it. It come be done from your personal config with the
+following bit of code:
+
+```lisp
+(add-hook 'prog-mode-hook 'prelude-turn-off-whitespace t)
+```
+
+## Disable flyspell-mode
+
+If you're not fond of spellchecking on the fly:
+
+```lisp
+(add-hook 'text-mode-hook 'turn-off-flyspell t)
+(add-hook 'prog-mode-hook 'turn-off-flyspell t)
+```
+
+## Windows compatibility
 
 While everything in Prelude should work fine in Windows, I test it only
 with Linux & OSX, so there are Windows related problems from time to
 time. This situation will probably improve over time.
 
-## Share the knowledge
+# Share the knowledge
 
 [WikEmacs](http://wikemacs.org) collects useful resources for working
 with GNU Emacs. Please, take the time to peruse and improve them as
@@ -233,22 +281,22 @@ easy, since it bundles
 [MediaWiki support](http://wikemacs.org/wiki/Mediawiki.el) + the
 settings required to access WikEmacs right away.
 
-## Known issues
+# Known issues
 
 Check out the project's
 [issue list](https://github.com/bbatsov/prelude/issues?sort=created&direction=desc&state=open)
 a list of unresolved issues. By the way - feel free to fix any of them
-and sent me a pull request. :-)
+and send me a pull request. :-)
 
-## Contributors
+# Contributors
 
 Here's a [list](https://github.com/bbatsov/prelude/contributors) of all the people who have contributed to the
 development of Emacs Prelude.
 
-## Bugs & Improvements
+# Bugs & Improvements
 
 Bug reports and suggestions for improvements are always
-welcome. github pull requests are even better! :-)
+welcome. GitHub pull requests are even better! :-)
 
-Cheers,<br>
+Cheers,<br/>
 Bozhidar
