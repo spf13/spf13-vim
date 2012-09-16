@@ -62,7 +62,7 @@ first. Have a look at the [WikEmacs articles on installing Emacs](http://wikemac
 
 ### Automated
 
-You can install Emacs via the command line with either `curl` or
+You can install **Emacs Prelude** via the command line with either `curl` or
 `wget`. Naturally `git` is also required.
 
 #### Via Curl
