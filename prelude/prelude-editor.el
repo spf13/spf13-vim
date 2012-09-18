@@ -209,7 +209,7 @@
 (defun helm-prelude ()
   "Preconfigured `helm'."
   (interactive)
-  (if (projectile-get-project-root)
+  (if (projectile-project-root)
       ;; add project files and buffers when in project
       (helm-other-buffer '(helm-c-source-projectile-files-list
                            helm-c-source-projectile-buffers-list
@@ -280,7 +280,7 @@ indent yanked text (with prefix arg don't indent)."
 (require 'eshell)
 (setq eshell-directory-name (concat prelude-savefile-dir "/eshell/"))
 
-(setq semanticdb-default-save-directory 
+(setq semanticdb-default-save-directory
       (concat prelude-savefile-dir "semanticdb"))
 
 ;; enable Prelude's keybindings
