@@ -40,6 +40,11 @@
 
 " Bundles {
     " Use local bundles if available {
+        if filereadable(expand("~/.vimrc.bundles.local"))
+            source ~/.vimrc.bundles.local
+        endif
+    " }
+    " Use bundles config {
         if filereadable(expand("~/.vimrc.bundles"))
             source ~/.vimrc.bundles
         endif
