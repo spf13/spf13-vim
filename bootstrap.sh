@@ -23,10 +23,11 @@ echo "cloning spf13-vim\n"
 git clone --recursive -b 3.0 http://github.com/spf13/spf13-vim.git $endpath
 mkdir -p $endpath/.vim/bundle
 ln -s $endpath/.vimrc $HOME/.vimrc
+ln -s $endpath/.vimrc.bundles $HOME/.vimrc.bundles
 ln -s $endpath/.vim $HOME/.vim
 
 echo "Installing Vundle"
 git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 
 echo "installing plugins using Vundle"
-vim +BundleInstall! +BundleClean +qall
+vim -u $endpath/.vimrc.bundles - +BundleInstall! +BundleClean +qall
