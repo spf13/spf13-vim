@@ -92,13 +92,21 @@ to verify all good, run:
 The easiest way is to download and run the spf13-vim-windows-install.cmd file.
 
 ## Updating to the latest version
+The simpliest (and safest) way to update is to simply rerun the installer. It will completely and non destructively upgrade to the latest version. 
+
+```bash
+
+    curl http://j.mp/spf13-vim3 -L -o - | sh
+
+```
+
+Alternatively you can manually perform the following steps. If anything has changed with the structure of the configuration you will need to create the appropriate symlinks.
 
 ```bash
     cd $HOME/to/spf13-vim/
     git pull
     vim +BundleInstall! +BundleClean +q
 ```
-
 
 ### Fork me on GitHub
 
