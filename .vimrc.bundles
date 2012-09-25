@@ -134,6 +134,12 @@
             Bundle 'taxilian/vim-web-indent'
         endif
 
+    " Java
+        if count(g:spf13_bundle_groups, 'scala')
+            Bundle 'derekwyatt/vim-scala'
+            Bundle 'derekwyatt/vim-sbt'
+        endif
+
     " HTML
         if count(g:spf13_bundle_groups, 'html')
             Bundle 'amirh/HTML-AutoCloseTag'
