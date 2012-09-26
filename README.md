@@ -272,6 +272,10 @@ Check out the project's
 a list of unresolved issues. By the way - feel free to fix any of them
 and send me a pull request. :-)
 
+## Support
+
+Support is available via the Prelude Google Group <emacs-prelude@googlegroups.com>.
+
 ## Contributors
 
 Here's a [list](https://github.com/bbatsov/prelude/contributors) of all the people who have contributed to the
