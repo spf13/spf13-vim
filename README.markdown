@@ -168,7 +168,7 @@ For an example of a fork of spf13-vim that provides customization in this manner
 
 # Plugins
 
-spf13-vim contains a curated set of popular vim pluugins, colors, snippets and syntaxes. Great care has been made to ensure that these plugins play well together and have optimal configuration.
+spf13-vim contains a curated set of popular vim plugins, colors, snippets and syntaxes. Great care has been made to ensure that these plugins play well together and have optimal configuration.
 
 ## Adding new plugins
 
