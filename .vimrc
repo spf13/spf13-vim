@@ -544,7 +544,7 @@ endfunction
 
 " Use fork vimrc if available {
     if filereadable(expand("~/.vimrc.fork"))
-        source ~/.vimrc.local
+        source ~/.vimrc.fork
     endif
 " }
 " Use local vimrc if available {

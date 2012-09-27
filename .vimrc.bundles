@@ -55,6 +55,11 @@
             source ~/.vimrc.bundles.local
         endif
     " }
+    " Use fork bundles if available {
+        if filereadable(expand("~/.vimrc.bundles.fork"))
+            source ~/.vimrc.bundles.fork
+        endif
+    " }
 
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
