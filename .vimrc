@@ -60,8 +60,14 @@
     syntax on                   " syntax highlighting
     set mouse=a                 " automatically enable mouse usage
     scriptencoding utf-8
-    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-    " always switch to the current file directory.
+
+    " Most prefer to automatically switch to the current file directory when
+    " a new buffer is opened; to prevent this behavior, add
+    " let g:spf13_no_autochdir = 1 to your .vimrc.bundles.local file
+    if !exists('g:spf13_no_autochdir')
+        autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+        " always switch to the current file directory.
+    endif
 
     " set autowrite                  " automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
@@ -161,8 +167,13 @@
 " Key (re)Mappings {
 
     "The default leader is '\', but many people prefer ',' as it's in a standard
-    "location
-    let mapleader = ','
+    "location. To override this behavior and set it back to '\' (or any other
+    "character) add let g:spf13_leader='\' in your .vimrc.bundles.local file
+    if !exists('g:spf13_leader')
+        let mapleader = ','
+    else
+        let mapleader=g:spf13_leader
+    endif
 
     " Easier moving in tabs and windows
     map <C-J> <C-W>j<C-W>_
@@ -176,24 +187,30 @@
 
     " The following two lines conflict with moving to top and bottom of the
     " screen
-    " If you prefer that functionality, comment them out.
-    map <S-H> gT
-    map <S-L> gt
+    " If you prefer that functionality, add let g:spf13_no_fastTabs = 1 in
+    " your .vimrc.bundles.local file
 
-    " Stupid shift key fixes
-    if has("user_commands")
-        command! -bang -nargs=* -complete=file E e<bang> <args>
-        command! -bang -nargs=* -complete=file W w<bang> <args>
-        command! -bang -nargs=* -complete=file Wq wq<bang> <args>
-        command! -bang -nargs=* -complete=file WQ wq<bang> <args>
-        command! -bang Wa wa<bang>
-        command! -bang WA wa<bang>
-        command! -bang Q q<bang>
-        command! -bang QA qa<bang>
-        command! -bang Qa qa<bang>
+    if !exists('g:spf13_no_fastTabs')
+        map <S-H> gT
+        map <S-L> gt
     endif
 
-    cmap Tabe tabe
+    " Stupid shift key fixes
+    if !exists('g:spf13_no_keyfixes')
+        if has("user_commands")
+            command! -bang -nargs=* -complete=file E e<bang> <args>
+            command! -bang -nargs=* -complete=file W w<bang> <args>
+            command! -bang -nargs=* -complete=file Wq wq<bang> <args>
+            command! -bang -nargs=* -complete=file WQ wq<bang> <args>
+            command! -bang Wa wa<bang>
+            command! -bang WA wa<bang>
+            command! -bang Q q<bang>
+            command! -bang QA qa<bang>
+            command! -bang Qa qa<bang>
+        endif
+
+        cmap Tabe tabe
+    endif
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
