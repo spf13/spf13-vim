@@ -144,9 +144,31 @@ For example, to override the default color schemes:
     echo colorscheme ir_black  >> ~/.vimrc.local
 ```
 
+### Fork Customization
+
+There is an additional tier of customization available to those who want to maintain a
+fork of spf13-vim specialized for a particular group. These users can create `.vimrc.fork`
+and `.vimrc.bundles.fork` files in the root of their fork.  The load order for the configuration is:
+
+1. `.vimrc.bundles.local` - local user bundle configuration
+2. `.vimrc.bundles.fork` - fork bundle configuration
+3. `.vimrc.bundles` - spf13-vim bundle configuration
+4. `.vimrc` - spf13-vim vim configuration 
+5. `.vimrc.fork` - fork vim configuration
+6. `.vimrc.local` - local user configuration 
+
+See `.vimrc.bundles` for specifics on what options can be set to override bundle configuration. See `.vimrc` for specifics 
+on what options can be overridden. Most vim configuration options should be set in your `.vimrc.fork` file, bundle configuration
+needs to be set in your `.vimrc.bundles.fork` file.
+
+You may also want to update your `README.markdown` file so that the `bootstrap.sh` link points to your repository and your `bootstrap.sh`
+file to pull down your fork.
+
+For an example of a fork of spf13-vim that provides customization in this manner see [taxilian's fork](https://github.com/taxilian/spf13-vim).
+
 # Plugins
 
-spf13-vim contains a curated set of popular vim plugins, colors, snippets and syntaxes. Great care has been made to ensure that these plugins play well together and have optimal configuration.
+spf13-vim contains a curated set of popular vim pluugins, colors, snippets and syntaxes. Great care has been made to ensure that these plugins play well together and have optimal configuration.
 
 ## Adding new plugins
 
