@@ -132,7 +132,8 @@
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'leshill/vim-json'
             Bundle 'groenewege/vim-less'
-            Bundle 'taxilian/vim-web-indent'
+            Bundle 'pangloss/vim-javascript'
+            Bundle 'briancollins/vim-jst'
         endif
 
     " Java
