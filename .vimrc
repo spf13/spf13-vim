@@ -19,6 +19,10 @@
     " Basics {
         set nocompatible        " must be first line
         set background=dark     " Assume a dark background
+        
+        " use the system clipboard as default clipboard.
+        set clipboard=unnamed
+
     " }
 
     " Windows Compatible {
