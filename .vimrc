@@ -19,18 +19,12 @@
     " Basics {
         set nocompatible        " must be first line
         set background=dark     " Assume a dark background
-        if has("unix")
-            let s:uname = system("echo -n \"$(uname)\"")
-            if s:uname == "Darwin"
-                " on osx -> use * register (cmd-c/x/v)
-                set clipboard=unnamed
-            else
-                " on linux -> use + register (ctrl-c/x/v)
-                set clipboard=unnamedplus
-            endif
+        if has ("unix") && "Darwin" != system("echo -n \"$(uname)\"")
+          " on Linux use + register for copy-paste
+          set clipboard=unnamedplus
         else
-            " on windows -> use * register (ctrl-c/x/v)
-            set clipboard=unnamed
+          " one mac and windows, use * register for copy-paste
+          set clipboard=unnamed
         endif
     " }
 
