@@ -62,7 +62,7 @@ colors () {
 
 usage() {
     printf "Usage: $0 [OPTION]\n"
-    printf "  -c, --colors \t \t \t Enable colors."
+    printf "  -c, --colors \t \t \t Enable colors.\n"
     printf "  -d, --directory [dir] \t Install prelude into the specified directory.\n"
     printf "  \t \t \t \t If 'dir' is a relative path prefix with $HOME.\n"
     printf "  \t \t \t \t Defaults to $HOME/.emacs.d\n"
