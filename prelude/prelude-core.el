@@ -231,23 +231,6 @@ there's a region, all lines that region covers will be duplicated."
     (cond ((search-forward "<?xml" nil t) (xml-mode))
           ((search-forward "<html" nil t) (html-mode)))))
 
-;; We have a number of turn-on-* functions since it's advised that lambda
-;; functions not go in hooks. Repeatedly evaluating an add-to-list with a
-;; hook value will repeatedly add it since there's no way to ensure
-;; that a lambda doesn't already exist in the list.
-
-(defun prelude-turn-on-whitespace ()
-  (whitespace-mode +1))
-
-(defun prelude-turn-off-whitespace ()
-  (whitespace-mode -1))
-
-(defun prelude-turn-on-abbrev ()
-  (abbrev-mode +1))
-
-(defun prelude-turn-off-abbrev ()
-  (abbrev-mode -1))
-
 (defun prelude-untabify-buffer ()
   (interactive)
   (untabify (point-min) (point-max)))

@@ -168,13 +168,8 @@
       ispell-extra-args '("--sug-mode=ultra"))
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 
-(defun prelude-turn-on-flyspell ()
-  "Force flyspell-mode on using a positive argument.  For use in hooks."
-  (interactive)
-  (flyspell-mode +1))
-
-(add-hook 'message-mode-hook 'prelude-turn-on-flyspell)
-(add-hook 'text-mode-hook 'prelude-turn-on-flyspell)
+(add-hook 'message-mode-hook 'flyspell-mode)
+(add-hook 'text-mode-hook 'flyspell-mode)
 
 ;; enable narrowing commands
 (put 'narrow-to-region 'disabled nil)
@@ -190,9 +185,6 @@
 ;; bookmarks
 (setq bookmark-default-file (concat prelude-savefile-dir "bookmarks")
       bookmark-save-flag 1)
-
-;; enabled auto-fill mode in text-mode and all related modes
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; load yasnippet
 (require 'yasnippet)
@@ -267,7 +259,7 @@ indent yanked text (with prefix arg don't indent)."
     (yank-advised-indent-function (region-beginning) (region-end)))))
 
 ;; abbrev config
-(add-hook 'text-mode-hook 'prelude-turn-on-abbrev)
+(add-hook 'text-mode-hook 'abbrev-mode)
 
 ;; make a shell script executable automatically on save
 (add-hook 'after-save-hook
