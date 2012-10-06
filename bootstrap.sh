@@ -22,7 +22,7 @@ echo "Thanks for installing spf13-vim\n"
 # Backup existing .vim stuff
 echo "backing up current vim config\n"
 today=`date +%Y%m%d`
-for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && [ ! -L $file ] && mv $i $i.$today; done
+for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && [ ! -L $i ] && mv $i $i.$today; done
 
 
 if [ ! -e $endpath/.git ]; then
