@@ -499,6 +499,20 @@
         nnoremap <c-u> :UndotreeToggle<CR>
      " }
 
+     " indent_guides {
+        if !exists('g:spf13_no_indent_guides_autocolor')
+            let g:indent_guides_auto_colors = 1
+        else
+            " for some colorscheme ,autocolor will not work,like 'desert','ir_black'.
+            autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121   ctermbg=3
+            autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
+        endif
+        set ts=4 sw=4 et
+        let g:indent_guides_start_level = 2
+        let g:indent_guides_guide_size = 1
+        let g:indent_guides_enable_on_vim_startup = 1
+     " }
+
 " }
 
 " GUI Settings {
