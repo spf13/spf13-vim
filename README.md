@@ -184,7 +184,7 @@ disable it. It come be done from your personal config with the
 following bit of code:
 
 ```lisp
-(add-hook 'prog-mode-hook 'prelude-turn-off-whitespace t)
+(add-hook 'prog-mode-hook 'whitespace-turn-off t)
 ```
 
 #### Disable flyspell-mode
