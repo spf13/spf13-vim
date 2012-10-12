@@ -411,8 +411,12 @@
             \ 'file': '\.exe$\|\.so$\|\.dll$' }
      "}
 
+     " numbers {
+        nnoremap <F3> :NumbersToggle<CR>
+     " }
+
      " TagBar {
-        nnoremap <silent> <leader>tt :TagbarToggle<CR>
+        nnoremap <silent> <F9> :TagbarToggle<CR>
      "}
 
      " PythonMode {
@@ -521,6 +525,14 @@
         let g:indent_guides_enable_on_vim_startup = 1
      " }
 
+    " SQL {
+        if count(g:spf13_bundle_groups, 'sql')
+            let g:sqlutil_align_where = 0
+            let g:sqlutil_keyword_case = '\U'
+            let g:sqlutil_align_comma = 1
+            let g:sqlutil_align_keyword_right = 0
+        endif
+    " }
 " }
 
 " GUI Settings {
