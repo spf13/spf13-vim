@@ -34,7 +34,15 @@
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
     " }
-    "
+
+    " Filetype Workarounds {
+        " Temporary workaround to Better-CSS-Syntax-for-Vim
+        " See https://github.com/ChrisYip/Better-CSS-Syntax-for-Vim/issues/9
+        " for more information
+        autocmd BufNewFile,BufRead *.scss set filetype=css
+        autocmd BufNewFile,BufRead *.sass set filetype=css
+    " }
+
     " Setup Bundle Support {
     " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype on
