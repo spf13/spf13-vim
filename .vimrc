@@ -37,6 +37,7 @@
     "
     " Setup Bundle Support {
     " The next three lines ensure that the ~/.vim/bundle/ system works
+        filetype on
         filetype off
         set rtp+=~/.vim/bundle/vundle
         call vundle#rc()
