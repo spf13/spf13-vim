@@ -181,10 +181,10 @@ let g:spf13_bundle_groups=['general', 'programming', 'neocomplcache', 'php', 'py
 ```
 The following bundle groups are avaliable:
 
-[General](#general)/n
-[programming](#programming)\n
-snipmate OR neocomplcache (not both)
-php
+[General](#general)  
+[programming](#programming)  
+snipmate OR neocomplcache (not both)  
+php  
 python
 javascript
 scala
