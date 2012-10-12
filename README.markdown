@@ -427,7 +427,7 @@ NeoComplCache is an amazing autocomplete plugin with additional support for snip
 
 ### [piv]
 
-the most feature complete and up to date php integration for vim with proper support for php 5.3+ including latest syntax, functions, better fold support, etc.
+The most feature complete and up to date php integration for vim with proper support for php 5.3+ including latest syntax, functions, better fold support, etc.
 
 piv provides:
 
