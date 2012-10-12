@@ -181,18 +181,18 @@ let g:spf13_bundle_groups=['general', 'programming', 'neocomplcache', 'php', 'py
 ```
 The following bundle groups are avaliable:
 
-[General](#general)  
+[general](#general)  
 [programming](#programming)  
-snipmate OR neocomplcache (not both)  
-php  
-python
-javascript
-scala
-html
-ruby
-misc
-twig
-sql
+[snipmate OR neocomplcache](#snipmate-or-neocomplcache)  
+[php](#php)  
+[python](#python)  
+[javascript](#javascript)  
+[scala](#java)  
+[html](#html)  
+[ruby](#ruby)  
+[misc](#misc)  
+[twig](#twig)  
+[sql](#sql)  
 
 
 ## Adding new plugins
@@ -399,7 +399,7 @@ ctag support. Tag navigation creates a stack which can traversed via
 one level).
 
 
-## Snippets & AutoComplete
+## Snipmate OR Neocomplcache
 
 neocomplcache is the defualt for spf13-vim, vim-snipmate is avaliable, simply
 change neocomplcache to snipmate in your .vimrc.bundles.local plugin
