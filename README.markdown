@@ -173,7 +173,7 @@ syntaxes. Great care has been made to ensure that these plugins play well
 together and have optimal configuration.
 
 The default plugin bundles are listed in the following line, which if you want
-to customize, simply copy and place at the top of your .vimrc.bundles.local
+to customize, simply double click, copy and paste at the top of your .vimrc.bundles.local
 file.
 
 ```vim
@@ -181,7 +181,7 @@ let g:spf13_bundle_groups=['general', 'programming', 'neocomplcache', 'php', 'py
 ```
 The following bundle groups are avaliable:
 
-[General](#general)\n
+[General](#general)/n
 [programming](#programming)\n
 snipmate OR neocomplcache (not both)
 php
