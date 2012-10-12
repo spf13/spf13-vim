@@ -101,9 +101,31 @@
     " g:spf13_no_views = 1
     " in your .vimrc.bundles.local file"
     if !exists('g:spf13_no_views')
-        " Could use * rather than *.*, but I prefer to leave .files unsaved
-        au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
-        au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
+        " Do not make views for the following patterns
+        let g:skipview_files = [
+                    \ '[EXAMPLE PATTERN]'
+                    \ ]
+        function! MakeViewCheck()
+            if has('quickfix') && &buftype =~ 'nofile'
+                " Buffer is marked as not a file
+                return 0
+            endif
+            if empty(glob(expand('%:p')))
+                " File does not exist on disk
+                return 0
+            endif
+            if index(g:skipview_files, expand('%')) >= 0
+                " File is in skip list
+                return 0
+            endif
+            return 1
+        endfunction
+        augroup vimrcAutoView
+            autocmd!
+            " Autosave & Load Views.
+            autocmd BufWritePost,BufLeave,WinLeave ?* if MakeViewCheck() | mkview | endif
+            autocmd BufWinEnter ?* if MakeViewCheck() | silent loadview | endif
+        augroup end
     endif
     " }
 " }
