@@ -18,7 +18,6 @@
 " Environment {
     " Basics {
         set nocompatible        " must be first line
-        set background=dark     " Assume a dark background
         if has ("unix") && "Darwin" != system("echo -n \"$(uname)\"")
           " on Linux use + register for copy-paste
           set clipboard=unnamedplus
