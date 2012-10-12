@@ -182,7 +182,7 @@ let g:spf13_bundle_groups=['general', 'programming', 'neocomplcache', 'php', 'py
 The following bundle groups are avaliable:
 
 [General]
-programming
+[programming]
 snipmate OR neocomplcache (not both)
 php
 python
