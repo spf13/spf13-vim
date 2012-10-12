@@ -36,7 +36,9 @@ fi
 
 echo "setting up symlinks"
 lnif $endpath/.vimrc $HOME/.vimrc
+lnif $endpath/.vimrc.fork $HOME/.vimrc.fork
 lnif $endpath/.vimrc.bundles $HOME/.vimrc.bundles
+lnif $endpath/.vimrc.bundles.fork $HOME/.vimrc.bundles.fork
 lnif $endpath/.vim $HOME/.vim
 if [ ! -d $endpath/.vim/bundle ]; then
     mkdir -p $endpath/.vim/bundle
