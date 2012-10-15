@@ -411,6 +411,10 @@
             \ 'file': '\.exe$\|\.so$\|\.dll$' }
      "}
 
+     " numbers {
+            nnoremap <F3> :NumbersToggle<CR>
+     " }
+
      " TagBar {
         nnoremap <silent> <leader>tt :TagbarToggle<CR>
      "}
