@@ -2,6 +2,16 @@
 @if not exist "%HOME%" @set HOME=%USERPROFILE%
 
 @set BASE_DIR=%HOME%\.spf13-vim-3
+
+@if not exist "%BASE_DIR%" (
+        echo backing up existing vim config
+        @set today=%DATE%
+        @if exist "%HOME%\.vim" call xcopy /s/e/h/y/r/q/i "%HOME%\.vim" "%HOME%\.vim.%today%"
+        @if exist "%HOME%\.vimrc" call copy "%HOME%\.vimrc" "%HOME%\.vimrc.%today%"
+        @if exist "%HOME%\_vimrc" call copy "%HOME%\_vimrc" "%HOME%\_vimrc.%today%"
+        @if exist "%HOME%\.gvimrc" call copy "%HOME%\.gvimrc" "%HOME%\.gvimrc.%today%"
+        )
+
 call git clone --recursive -b 3.0 git://github.com/spf13/spf13-vim.git "%BASE_DIR%"
 call mkdir "%BASE_DIR%\.vim\bundle"
 call copy "%BASE_DIR%\.vim" "%HOME%\.vim"
