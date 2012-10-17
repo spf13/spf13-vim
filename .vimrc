@@ -109,9 +109,11 @@
     " g:spf13_no_views = 1
     " in your .vimrc.bundles.local file"
     if !exists('g:spf13_no_views')
-        " Could use * rather than *.*, but I prefer to leave .files unsaved
-        au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
-        au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
+        " Add exclusions to mkview and loadview
+        " eg: *.*, svn-commit.tmp
+        let g:skipview_files = [
+            \ '[example pattern]'
+            \ ]
     endif
     " }
 " }
