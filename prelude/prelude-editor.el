@@ -85,7 +85,7 @@
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
 ;; saveplace remembers your location in a file when saving files
-(setq save-place-file (concat prelude-savefile-dir "saveplace"))
+(setq save-place-file (expand-file-name "saveplace" prelude-savefile-dir))
 ;; activate it for all buffers
 (setq-default save-place t)
 (require 'saveplace)
@@ -97,11 +97,11 @@
       ;; save every minute
       savehist-autosave-interval 60
       ;; keep the home clean
-      savehist-file (concat prelude-savefile-dir "savehist"))
+      savehist-file (expand-file-name "savehist" prelude-savefile-dir))
 (savehist-mode t)
 
 ;; save recent files
-(setq recentf-save-file (concat prelude-savefile-dir "recentf")
+(setq recentf-save-file (expand-file-name "recentf" prelude-savefile-dir)
       recentf-max-saved-items 200
       recentf-max-menu-items 15)
 (recentf-mode t)
@@ -172,7 +172,7 @@
       ido-create-new-buffer 'always
       ido-use-filename-at-point 'guess
       ido-max-prospects 10
-      ido-save-directory-list-file (concat prelude-savefile-dir "ido.hist")
+      ido-save-directory-list-file (expand-file-name "ido.hist" prelude-savefile-dir)
       ido-default-file-method 'selected-window)
 
 ;; auto-completion in minibuffer
@@ -200,7 +200,7 @@
 (require 'expand-region)
 
 ;; bookmarks
-(setq bookmark-default-file (concat prelude-savefile-dir "bookmarks")
+(setq bookmark-default-file (expand-file-name "bookmarks" prelude-savefile-dir)
       bookmark-save-flag 1)
 
 ;; load yasnippet
@@ -210,6 +210,7 @@
 
 ;; projectile is a project management mode
 (require 'projectile)
+(setq projectile-cache-file (expand-file-name  "projectile.cache" prelude-savefile-dir))
 (projectile-global-mode t)
 
 (require 'helm-misc)
@@ -287,10 +288,10 @@ indent yanked text (with prefix arg don't indent)."
 (setq reb-re-syntax 'string)
 
 (require 'eshell)
-(setq eshell-directory-name (concat prelude-savefile-dir "/eshell/"))
+(setq eshell-directory-name (expand-file-name "eshell" prelude-savefile-dir))
 
 (setq semanticdb-default-save-directory
-      (concat prelude-savefile-dir "semanticdb"))
+      (expand-file-name "semanticdb" prelude-savefile-dir))
 
 ;; enable Prelude's keybindings
 (prelude-global-mode t)

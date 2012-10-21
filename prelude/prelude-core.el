@@ -39,7 +39,7 @@
   "Adds all first level `parent-dir' subdirs to the
 Emacs load path."
   (dolist (f (directory-files parent-dir))
-    (let ((name (concat parent-dir f)))
+    (let ((name (expand-file-name f parent-dir)))
       (when (and (file-directory-p name)
                  (not (equal f ".."))
                  (not (equal f ".")))
