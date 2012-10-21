@@ -93,6 +93,7 @@
     ("\\.py\\'" python python-mode)
     ("\\.rb\\'" prelude-ruby ruby-mode)
     ("\\.sass\\'" sass-mode sass-mode)
+    ("\\.scala\\'" prelude-scala scala-mode)
     ("\\.scm\\'" prelude-scheme scheme-mode)
     ("\\.scss\\'" prelude-scss scss-mode)
     ("\\.xml\\'" prelude-xml nxml-mode)
