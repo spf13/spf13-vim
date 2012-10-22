@@ -117,7 +117,7 @@
             endif
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
             Bundle 'Shougo/neocomplcache'
-            Bundle 'Shougo/neocomplcache-snippets-complete'
+            Bundle 'Shougo/neosnippet'
             Bundle 'honza/snipmate-snippets'
         endif
 
