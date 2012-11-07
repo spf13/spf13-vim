@@ -183,6 +183,16 @@ To add a new bundle
 Here are a few of the plugins:
 
 
+## [Undotree]
+
+If you undo changes and then make a new change, in most editors the changes you undid are gone forever, as their undo-history is a simple list.
+Since version 7.0 vim uses an undo-tree instead. If you make a new change after undoing changes, a new branch is created in that tree.
+Combined with persistent undo, this is nearly as flexible and safe as git ;-)
+
+Undotree makes that feature more accessible by creating a visual representation of said undo-tree.
+
+**QuickStart** Launch using `<Leader>u`.
+
 ## [NERDTree]
 
 NERDTree is a file explorer plugin that provides "project drawer"
@@ -402,6 +412,7 @@ Here's some tips if you've never used VIM before:
 [Vundle]:http://github.com/gmarik/vundle
 [PIV]:http://github.com/spf13/PIV
 [NERDCommenter]:http://github.com/scrooloose/nerdcommenter
+[Undotree]:https://github.com/mbbill/undotree
 [NERDTree]:http://github.com/scrooloose/nerdtree
 [ctrlp]:http://github.com/kien/ctrlp.vim
 [solarized]:http://github.com/altercation/vim-colors-solarized
