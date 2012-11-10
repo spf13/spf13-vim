@@ -274,6 +274,10 @@
     " Adjust viewports to the same size
     map <Leader>= <C-w>=
 
+    " map <Leader>f to display all lines with keyword under cursor
+    " and ask which one to jump to
+    nmap <Leader>f [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+
     " Easier horizontal scrolling
     map zl zL
     map zh zH
