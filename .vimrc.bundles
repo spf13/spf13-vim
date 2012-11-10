@@ -91,6 +91,7 @@
             Bundle 'mbbill/undotree'
             Bundle 'myusuf3/numbers.vim'
             Bundle 'nathanaelkane/vim-indent-guides'
+            Bundle 'vim-scripts/restore_view.vim'
         endif
 
     " General Programming
