@@ -40,14 +40,24 @@
 
 " Bundles {
     " Deps
-        Bundle 'gmarik/vundle'
-        Bundle 'MarcWeber/vim-addon-mw-utils'
-        Bundle 'tomtom/tlib_vim'
+        if !exists("g:override_spf13_bundle_vundle")
+            Bundle 'gmarik/vundle'
+        endif
+        if !exists("g:override_spf13_bundle_vim_addon_mw_utils")
+            Bundle 'MarcWeber/vim-addon-mw-utils'
+        endif
+        if !exists("g:override_spf13_bundle_tlib_vim")
+            Bundle 'tomtom/tlib_vim'
+        endif
         if executable('ack-grep')
             let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-            Bundle 'mileszs/ack.vim'
+            if !exists("g:override_spf13_bundle_ack")
+                Bundle 'mileszs/ack.vim'
+            endif
         elseif executable('ack')
-            Bundle 'mileszs/ack.vim'
+            if !exists("g:override_spf13_bundle_ack")
+                Bundle 'mileszs/ack.vim'
+            endif
         endif
 
     " Use local bundles if available {
@@ -74,90 +84,178 @@
 
     " General
         if count(g:spf13_bundle_groups, 'general')
-            Bundle 'scrooloose/nerdtree'
-            Bundle 'altercation/vim-colors-solarized'
-            Bundle 'spf13/vim-colors'
-            Bundle 'tpope/vim-surround'
-            Bundle 'AutoClose'
-            Bundle 'kien/ctrlp.vim'
-            Bundle 'vim-scripts/sessionman.vim'
-            Bundle 'matchit.zip'
-            Bundle 'Lokaltog/vim-powerline'
-            Bundle 'Lokaltog/vim-easymotion'
-            Bundle 'godlygeek/csapprox'
-            Bundle 'jistr/vim-nerdtree-tabs'
-            Bundle 'flazz/vim-colorschemes'
-            Bundle 'mbbill/undotree'
-            Bundle 'myusuf3/numbers.vim'
-            Bundle 'nathanaelkane/vim-indent-guides'
-            Bundle 'vim-scripts/restore_view.vim'
+            if !exists("g:override_spf13_bundle_nerdtree")
+                Bundle 'scrooloose/nerdtree'
+            endif
+            if !exists("g:override_spf13_bundle_vim_colors_solarized")
+                Bundle 'altercation/vim-colors-solarized'
+            endif
+            if !exists("g:override_spf13_bundle_vim_colors")
+                Bundle 'spf13/vim-colors'
+            endif
+            if !exists("g:override_spf13_bundle_vim_surround")
+                Bundle 'tpope/vim-surround'
+            endif
+            if !exists("g:override_spf13_bundle_AutoClose")
+                Bundle 'AutoClose'
+            endif
+            if !exists("g:override_spf13_bundle_ctrlp")
+                Bundle 'kien/ctrlp.vim'
+            endif
+            if !exists("g:override_spf13_bundle_sessionman")
+                Bundle 'vim-scripts/sessionman.vim'
+            endif
+            if !exists("g:override_spf13_bundle_matchit")
+                Bundle 'matchit.zip'
+            endif
+            if !exists("g:override_spf13_bundle_vim_powerline")
+                Bundle 'Lokaltog/vim-powerline'
+            endif
+            if !exists("g:override_spf13_bundle_vim_easymotion")
+                Bundle 'Lokaltog/vim-easymotion'
+            endif
+            if !exists("g:override_spf13_bundle_csapprox")
+                Bundle 'godlygeek/csapprox'
+            endif
+            if !exists("g:override_spf13_bundle_vim_nerdtree_tabs")
+                Bundle 'jistr/vim-nerdtree-tabs'
+            endif
+            if !exists("g:override_spf13_bundle_vim_colorschemes")
+                Bundle 'flazz/vim-colorschemes'
+            endif
+            if !exists("g:override_spf13_bundle_undotree")
+                Bundle 'mbbill/undotree'
+            endif
+            if !exists("g:override_spf13_bundle_numbers")
+                Bundle 'myusuf3/numbers.vim'
+            endif
+            if !exists("g:override_spf13_bundle_vim_indent_guides")
+                Bundle 'nathanaelkane/vim-indent-guides'
+            endif
+            if !exists("g:override_spf13_bundle_restore_view")
+                Bundle 'vim-scripts/restore_view.vim'
+            endif
         endif
 
     " General Programming
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
-            Bundle 'scrooloose/syntastic'
-            Bundle 'tpope/vim-fugitive'
-            Bundle 'mattn/webapi-vim'
-            Bundle 'mattn/gist-vim'
-            Bundle 'scrooloose/nerdcommenter'
-            Bundle 'godlygeek/tabular'
-            if executable('ctags')
-                Bundle 'majutsushi/tagbar'
+            if !exists("g:override_spf13_bundle_syntastic")
+                Bundle 'scrooloose/syntastic'
+            endif
+            if !exists("g:override_spf13_bundle_vim_fugitive")
+                Bundle 'tpope/vim-fugitive'
+            endif
+            if !exists("g:override_spf13_bundle_webapi_vim")
+                Bundle 'mattn/webapi-vim'
+            endif
+            if !exists("g:override_spf13_bundle_gist_vim")
+                Bundle 'mattn/gist-vim'
+            endif
+            if !exists("g:override_spf13_bundle_nerdcommenter")
+                Bundle 'scrooloose/nerdcommenter'
+            endif
+            if !exists("g:override_spf13_bundle_tabular")
+                Bundle 'godlygeek/tabular'
+            endif
+            if !exists("g:override_spf13_bundle_tagbar")
+                if executable('ctags')
+                    Bundle 'majutsushi/tagbar'
+                endif
             endif
         endif
 
     " Snippets & AutoComplete
         if count(g:spf13_bundle_groups, 'snipmate')
-            Bundle 'garbas/vim-snipmate'
-            Bundle 'honza/snipmate-snippets'
-            " Source support_function.vim to support snipmate-snippets.
-            if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
-                source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
+            if !exists("g:override_spf13_bundle_vim_snipmate")
+                Bundle 'garbas/vim-snipmate'
+            endif
+            if !exists("g:override_spf13_bundle_snipmate_snippets")
+                Bundle 'honza/snipmate-snippets'
+                if !exists("g:override_spf13_bundle_snipmate_support_functions")
+                    " Source support_function.vim to support snipmate-snippets.
+                    if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
+                        source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
+                    endif
+                endif
             endif
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
-            Bundle 'Shougo/neocomplcache'
-            Bundle 'Shougo/neosnippet'
-            Bundle 'honza/snipmate-snippets'
+            if !exists("g:override_spf13_bundle_neocomplcache")
+                Bundle 'Shougo/neocomplcache'
+            endif
+            if !exists("g:override_spf13_bundle_neosnippet")
+                Bundle 'Shougo/neosnippet'
+            endif
+            if !exists("g:override_spf13_bundle_snipmate_snippets")
+                Bundle 'honza/snipmate-snippets'
+            endif
         endif
 
     " PHP
         if count(g:spf13_bundle_groups, 'php')
-            Bundle 'spf13/PIV'
+            if !exists("g:override_spf13_bundle_PIV")
+                Bundle 'spf13/PIV'
+            endif
         endif
 
     " Python
         if count(g:spf13_bundle_groups, 'python')
             " Pick either python-mode or pyflakes & pydoc
-            Bundle 'klen/python-mode'
-            Bundle 'python.vim'
-            Bundle 'python_match.vim'
-            Bundle 'pythoncomplete'
+            if !exists("g:override_spf13_bundle_python_mode")
+                Bundle 'klen/python-mode'
+            endif
+            if !exists("g:override_spf13_bundle_python")
+                Bundle 'python.vim'
+            endif
+            if !exists("g:override_spf13_bundle_python_match")
+                Bundle 'python_match.vim'
+            endif
+            if !exists("g:override_spf13_bundle_pythoncomplete")
+                Bundle 'pythoncomplete'
+            endif
         endif
 
     " Javascript
         if count(g:spf13_bundle_groups, 'javascript')
-            Bundle 'leshill/vim-json'
-            Bundle 'groenewege/vim-less'
-            Bundle 'pangloss/vim-javascript'
-            Bundle 'briancollins/vim-jst'
+            if !exists("g:override_spf13_bundle_vim_json")
+                Bundle 'leshill/vim-json'
+            endif
+            if !exists("g:override_spf13_bundle_vim_less")
+                Bundle 'groenewege/vim-less'
+            endif
+            if !exists("g:override_spf13_bundle_vim_javascript")
+                Bundle 'pangloss/vim-javascript'
+            endif
+            if !exists("g:override_spf13_bundle_vim_jst")
+                Bundle 'briancollins/vim-jst'
+            endif
         endif
 
     " Java
         if count(g:spf13_bundle_groups, 'scala')
-            Bundle 'derekwyatt/vim-scala'
-            Bundle 'derekwyatt/vim-sbt'
+            if !exists("g:override_spf13_bundle_vim_scala")
+                Bundle 'derekwyatt/vim-scala'
+            endif
+            if !exists("g:override_spf13_bundle_vim_sbt")
+                Bundle 'derekwyatt/vim-sbt'
+            endif
         endif
 
     " HTML
         if count(g:spf13_bundle_groups, 'html')
-            Bundle 'amirh/HTML-AutoCloseTag'
-            Bundle 'hail2u/vim-css3-syntax'
+            if !exists("g:override_spf13_bundle_HTML_AutoCloseTag")
+                Bundle 'amirh/HTML-AutoCloseTag'
+            endif
+            if !exists("g:override_spf13_bundle_vim_css3_syntax")
+                Bundle 'hail2u/vim-css3-syntax'
+            endif
         endif
 
     " Ruby
         if count(g:spf13_bundle_groups, 'ruby')
-            Bundle 'tpope/vim-rails'
+            if !exists("g:override_spf13_bundle_vim_rails")
+                Bundle 'tpope/vim-rails'
+            endif
             let g:rubycomplete_buffer_loading = 1
             "let g:rubycomplete_classes_in_global = 1
             "let g:rubycomplete_rails = 1
@@ -165,16 +263,28 @@
 
     " Misc
         if count(g:spf13_bundle_groups, 'misc')
-            Bundle 'tpope/vim-markdown'
-            Bundle 'spf13/vim-preview'
-            Bundle 'tpope/vim-cucumber'
-            Bundle 'quentindecock/vim-cucumber-align-pipes'
-            Bundle 'Puppet-Syntax-Highlighting'
+            if !exists("g:override_spf13_bundle_vim_markdown")
+                Bundle 'tpope/vim-markdown'
+            endif
+            if !exists("g:override_spf13_bundle_vim_preview")
+                Bundle 'spf13/vim-preview'
+            endif
+            if !exists("g:override_spf13_bundle_vim_cucumber")
+                Bundle 'tpope/vim-cucumber'
+                if !exists("g:override_spf13_bundle_vim_cucumber_align_pipes")
+                    Bundle 'quentindecock/vim-cucumber-align-pipes'
+                endif
+            endif
+            if !exists("g:override_spf13_bundle_Puppet_Syntax_Highlighting")
+                Bundle 'Puppet-Syntax-Highlighting'
+            endif
         endif
 
     " Twig
         if count(g:spf13_bundle_groups, 'twig')
-            Bundle 'beyondwords/vim-twig'
+            if !exists("g:override_spf13_bundle_vim_twig")
+                Bundle 'beyondwords/vim-twig'
+            endif
         endif
     endif
 " }
