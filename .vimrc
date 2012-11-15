@@ -281,6 +281,12 @@
     " Easier horizontal scrolling
     map zl zL
     map zh zH
+
+    " search very magic like perl default, and use g/ to search very no magic
+    nnoremap / /\v
+    nnoremap ? ?\v
+    nnoremap g/ /\V
+    nnoremap g? ?\V
 " }
 
 " Plugins {
