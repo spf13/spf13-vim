@@ -497,7 +497,7 @@
      " }
 
      " UndoTree {
-        nnoremap <c-u> :UndotreeToggle<CR>
+        nnoremap <c-h> :UndotreeToggle<CR>
      " }
 
 " }
