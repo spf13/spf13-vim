@@ -91,6 +91,7 @@
             Bundle 'myusuf3/numbers.vim'
             Bundle 'nathanaelkane/vim-indent-guides'
             Bundle 'vim-scripts/restore_view.vim'
+            Bundle 'tpope/vim-abolish.git'
         endif
 
     " General Programming
