@@ -71,6 +71,7 @@
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " syntax highlighting
     set mouse=a                 " automatically enable mouse usage
+    set mousehide               " hide the mouse cursor while typing
     scriptencoding utf-8
 
     " Most prefer to automatically switch to the current file directory when
