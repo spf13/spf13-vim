@@ -29,4 +29,4 @@ call copy "%BASE_DIR%\.vimrc" "%HOME%\_vimrc"
 call copy "%BASE_DIR%\.vimrc.bundles" "%HOME%\.vimrc.bundles"
 
 @if not exist "%HOME%/.vim/bundle/vundle" call git clone http://github.com/gmarik/vundle.git "%HOME%/.vim/bundle/vundle"
-call vim -u "$BASE_DIR/.vimrc.bundles" - +BundleInstall! +BundleClean +qall
+call vim -u "%BASE_DIR%/.vimrc.bundles" - +BundleInstall! +BundleClean +qall
