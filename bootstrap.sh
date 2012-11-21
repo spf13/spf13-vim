@@ -40,6 +40,15 @@ lnif $endpath/.vimrc.fork $HOME/.vimrc.fork
 lnif $endpath/.vimrc.bundles $HOME/.vimrc.bundles
 lnif $endpath/.vimrc.bundles.fork $HOME/.vimrc.bundles.fork
 lnif $endpath/.vim $HOME/.vim
+
+if [ -e $endpath/.vimrc.local ]; then
+    lnif $endpath/.vimrc.local $HOME/.vimrc.local
+fi
+
+if [ -e $endpath/.vimrc.bundles.local ]; then
+    lnif $endpath/.vimrc.bundles.local $HOME/.vimrc.bundles.local
+fi
+
 if [ ! -d $endpath/.vim/bundle ]; then
     mkdir -p $endpath/.vim/bundle
 fi
