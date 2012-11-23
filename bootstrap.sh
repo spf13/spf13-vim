@@ -50,4 +50,4 @@ if [ ! -e $HOME/.vim/bundle/vundle ]; then
 fi
 
 echo "update/install plugins using Vundle"
-vim -u $endpath/.vimrc.bundles - +BundleInstall! +BundleClean +qall
+vim -u $endpath/.vimrc.bundles +BundleInstall! +BundleClean +qall
