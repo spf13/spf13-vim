@@ -577,15 +577,20 @@ endfunction
 
 " Strip whitespace
 function! StripTrailingWhitespace()
-" Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-" Do the business:
-    %s/\s\+$//e
-" Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+    " To disable the stripping of whitespace, add the following to your
+    " .vimrc.local file:
+    "   let g:spf13_keep_trailing_whitespace = 1
+    if !exists('g:spf13_keep_trailing_whitespace')
+        " Preparation: save last search, and cursor position.
+        let _s=@/
+        let l = line(".")
+        let c = col(".")
+        " do the business:
+        %s/\s\+$//e
+        " clean up: restore previous search history, and cursor position
+        let @/=_s
+        call cursor(l, c)
+    endif
 endfunction
 
 " }
