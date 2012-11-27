@@ -532,6 +532,14 @@
 
  " Functions {
 
+function! UnBundle(arg, ...)
+  let bundle = vundle#config#init_bundle(a:arg, a:000)
+  call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
+endfunction
+
+com! -nargs=+         UnBundle
+\ call UnBundle(<args>)
+
 function! InitializeDirectories()
     let separator = "."
     let parent = $HOME

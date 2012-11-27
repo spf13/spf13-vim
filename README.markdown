@@ -180,6 +180,22 @@ To add a new bundle
     echo Bundle \'spf13/vim-colors\' >> ~/.vimrc.bundles.local
 ```
 
+## Removing (disabling) an included plugin
+
+Create `~/.vimrc.local` if it doesn't already exist.
+
+Add the UnBundle command to this line. It takes the same input as the Bundle line, so simply copy the line you want to disable and add 'Un' to the beginning.
+
+For example, disabling the 'AutoClose' and 'scrooloose/syntastic' plugins
+
+```bash
+    echo UnBundle \'AutoClose\' >> ~/.vimrc.local
+    echo UnBundle \'scrooloose/syntastic\' >> ~/.vimrc.local
+```
+
+**Remember to run ':BundleClean!' after this to remove the existing directories**
+
+
 Here are a few of the plugins:
 
 
