@@ -18,13 +18,6 @@
 " Environment {
     " Basics {
         set nocompatible        " must be first line
-        if has ("unix") && "Darwin" != system("echo -n \"$(uname)\"")
-          " on Linux use + register for copy-paste
-          set clipboard=unnamedplus
-        else
-          " one mac and windows, use * register for copy-paste
-          set clipboard=unnamed
-        endif
     " }
 
     " Windows Compatible {
@@ -73,6 +66,12 @@
     set mouse=a                 " automatically enable mouse usage
     set mousehide               " hide the mouse cursor while typing
     scriptencoding utf-8
+
+    if has ('x') && has ('gui') " on Linux use + register for copy-paste
+        set clipboard=unnamedplus
+    elseif has ('gui') " one mac and windows, use * register for copy-paste
+        set clipboard=unnamed
+    endif
 
     " Most prefer to automatically switch to the current file directory when
     " a new buffer is opened; to prevent this behavior, add
