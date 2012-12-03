@@ -89,7 +89,7 @@ to verify all good, run:
 
 #### Installing spf13-vim on Windows
 
-The easiest way is to download and run the spf13-vim-windows-install.cmd file.
+The easiest way is to download and run the spf13-vim-windows-install.cmd file. Remember to run this file in **Administrator Mode** if you want the symlinks to be created successfully.
 
 ## Updating to the latest version
 The simpliest (and safest) way to update is to simply rerun the installer. It will completely and non destructively upgrade to the latest version. 
@@ -278,6 +278,12 @@ Syntastic is a syntax checking plugin that runs buffers through external syntax
 checkers as they are saved and opened. If syntax errors are detected, the user 
 is notified and is happy because they didn't have to compile their code or 
 execute their script to find them.
+
+## [AutoClose]
+
+AutoClose does what you expect. It's simple, if you open a bracket, paren, brace, quote,
+etc, it automatically closes it. It handles curlys correctly and doesn't get in the 
+way of double curlies for things like jinja and twig.
 
 ## [Fugitive]
 
