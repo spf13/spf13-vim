@@ -90,7 +90,9 @@
             Bundle 'mbbill/undotree'
             Bundle 'myusuf3/numbers.vim'
             Bundle 'nathanaelkane/vim-indent-guides'
-            Bundle 'vim-scripts/restore_view.vim'
+            if !exists('g:spf13_no_views')
+                Bundle 'vim-scripts/restore_view.vim'
+            endif
             Bundle 'tpope/vim-abolish.git'
         endif
 
