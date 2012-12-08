@@ -250,8 +250,7 @@ personal config with the following bit of code:
 If you're not fond of spellchecking on the fly:
 
 ```lisp
-(add-hook 'text-mode-hook 'turn-off-flyspell t)
-(add-hook 'prog-mode-hook 'turn-off-flyspell t)
+(setq prelude-flyspell nil)
 ```
 
 ### Prelude Modules

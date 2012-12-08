@@ -49,7 +49,12 @@
   :group 'prelude)
 
 (defcustom prelude-whitespace nil
-  "Non-nil values enable Prelude's whitespace visualisation."
+  "Non-nil values enable Prelude's whitespace visualization."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-flyspell t
+  "Non-nil values enable Prelude's flyspell support."
   :type 'boolean
   :group 'prelude)
 
@@ -209,7 +214,7 @@
       ispell-extra-args '("--sug-mode=ultra"))
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 
-(when (executable-find ispell-program-name)
+(when (and prelude-flyspell (executable-find ispell-program-name))
   (add-hook 'message-mode-hook 'flyspell-mode)
   (add-hook 'text-mode-hook 'flyspell-mode))
 
