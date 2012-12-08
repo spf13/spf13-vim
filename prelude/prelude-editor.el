@@ -249,7 +249,8 @@
 (require 'midnight)
 
 ;; automatically indenting yanked text if in programming-modes
-(defvar yank-indent-modes '(python-mode LaTeX-mode TeX-mode)
+(defvar yank-indent-modes
+  '(clojure-mode scala-mode python-mode LaTeX-mode TeX-mode)
   "Modes in which to indent regions that are yanked (or yank-popped). Only
 modes that don't derive from `prog-mode' should be listed here.")
 
