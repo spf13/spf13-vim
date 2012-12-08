@@ -48,7 +48,9 @@ by Prelude.")
   "This directory house Emacs Lisp packages that are not yet available in
 ELPA (or MELPA).")
 (defvar prelude-snippets-dir (expand-file-name "snippets" prelude-dir)
-  "This folder houses addition yasnippet bundles distributed with Prelude.")
+  "This folder houses additional yasnippet bundles distributed with Prelude.")
+(defvar prelude-personal-snippets-dir (expand-file-name prelude-personal-dir "snippets")
+  "This folder houses additional yasnippet bundles added by the users.")
 (defvar prelude-savefile-dir (expand-file-name "savefile" prelude-dir)
   "This folder stores all the automatically generated save/history-files.")
 
