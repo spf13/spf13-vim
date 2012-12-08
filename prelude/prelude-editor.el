@@ -198,8 +198,9 @@
       ispell-extra-args '("--sug-mode=ultra"))
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 
-(add-hook 'message-mode-hook 'flyspell-mode)
-(add-hook 'text-mode-hook 'flyspell-mode)
+(when (executable-find ispell-program-name)
+  (add-hook 'message-mode-hook 'flyspell-mode)
+  (add-hook 'text-mode-hook 'flyspell-mode))
 
 ;; enable narrowing commands
 (put 'narrow-to-region 'disabled nil)
