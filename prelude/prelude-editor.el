@@ -37,6 +37,11 @@
   "Emacs Prelude Editor enhancements"
   :group 'prelude)
 
+(defcustom prelude-auto-save t
+  "Non-nil values enable Prelude's auto save."
+  :type 'boolean
+  :group 'prelude)
+
 ;; Death to the tabs!  However, tabs historically indent to the next
 ;; 8-character offset; specifying anything else will cause *mass*
 ;; confusion, as it will change the appearance of every existing file.
@@ -120,18 +125,26 @@
 
 ;; automatically save buffers associated with files on buffer switch
 ;; and on windows switch
+(defun prelude-auto-save-command ()
+  (when (and prelude-auto-save
+             buffer-file-name
+             (buffer-modified-p (current-buffer)))
+    (save-buffer)))
+
 (defadvice switch-to-buffer (before save-buffer-now activate)
-  (when buffer-file-name (save-buffer)))
+  (prelude-auto-save-command))
 (defadvice other-window (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
+  (prelude-auto-save-command))
 (defadvice windmove-up (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
+  (prelude-auto-save-command))
 (defadvice windmove-down (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
+  (prelude-auto-save-command))
 (defadvice windmove-left (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
+  (prelude-auto-save-command))
 (defadvice windmove-right (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
+  (prelude-auto-save-command))
+
+(add-hook 'mouse-leave-buffer-hook 'prelude-auto-save-command)
 
 ;; show-paren-mode: subtle highlighting of matching parens (global-mode)
 (show-paren-mode +1)
