@@ -33,12 +33,23 @@
 ;;; Code:
 
 ;; customize
-(defgroup editor nil
-  "Emacs Prelude Editor enhancements"
-  :group 'prelude)
+(defgroup prelude nil
+  "Emacs Prelude configuration."
+  :prefix "prelude-"
+  :group "convenience")
 
 (defcustom prelude-auto-save t
   "Non-nil values enable Prelude's auto save."
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-guru t
+  "Non-nil values enable guru-mode"
+  :type 'boolean
+  :group 'prelude)
+
+(defcustom prelude-whitespace nil
+  "Non-nil values enable Prelude's whitespace visualisation."
   :type 'boolean
   :group 'prelude)
 
