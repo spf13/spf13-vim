@@ -2,15 +2,15 @@ install_prelude () {
     printf " Cloning the repository.\n$RESET"
     if [ x$PRELUDE_VERBOSE != x ]
     then
-	/usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR
+        /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR
     else
-	/usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR > /dev/null 2>&1
+        /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR > /dev/null 2>&1
     fi
     if ! [ $? -eq 0 ]
     then
-	printf "$RED Unkown git error occured during installation, "
-	printf "please check the source url: $PRELUDE_URL\n$RESET"
-	exit 1
+        printf "$RED Unkown git error occured during installation, "
+        printf "please check the source url: $PRELUDE_URL\n$RESET"
+        exit 1
     fi
 }
 
@@ -22,7 +22,7 @@ make_prelude_dirs () {
 }
 
 colors () {
-# Reset
+    # Reset
     RESET='\e[0m'
     RED='\e[0;31m'          # Red
     GREEN='\e[0;32m'        # Green
@@ -32,7 +32,7 @@ colors () {
     CYAN='\e[0;36m'         # Cyan
     WHITE='\e[0;37m'        # White
 
-# Bold
+    # Bold
     BRED='\e[1;31m'         # Red
     BGREEN='\e[1;32m'       # Green
     BYELLOW='\e[1;33m'      # Yellow
@@ -81,39 +81,39 @@ usage() {
 while [ $# -gt 0 ]
 do
     case $1 in
-	-d | --directory)
-	    PRELUDE_INSTALL_DIR=$2
-	    shift 2
-	    ;;
-	-c | --colors)
-	    colors
-	    shift 1
-	    ;;
-	-s | --source)
-	    PRELUDE_URL=$2
-	    shift 2
-	    ;;
-	-i | --into)
-	    PRELUDE_INTO='true'
-	    shift 1
-	    ;;
-	-n | --no-bytecompile)
-	    PRELUDE_SKIP_BC='true'
-	    shift 1
-	    ;;
-	-h | --help)
-	    usage
-	    exit 0
-	    ;;
-	-v | --verbose)
-	    echo "prelude verbose $PRELUDE_VERBOSE"
-	    PRELUDE_VERBOSE='true';
-	    shift 1
-	    ;;
-	*)
-	    printf "Unkown option: $1\n"
-	    shift 1
-	    ;;
+        -d | --directory)
+            PRELUDE_INSTALL_DIR=$2
+            shift 2
+            ;;
+        -c | --colors)
+            colors
+            shift 1
+            ;;
+        -s | --source)
+            PRELUDE_URL=$2
+            shift 2
+            ;;
+        -i | --into)
+            PRELUDE_INTO='true'
+            shift 1
+            ;;
+        -n | --no-bytecompile)
+            PRELUDE_SKIP_BC='true'
+            shift 1
+            ;;
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        -v | --verbose)
+            echo "prelude verbose $PRELUDE_VERBOSE"
+            PRELUDE_VERBOSE='true';
+            shift 1
+            ;;
+        *)
+            printf "Unkown option: $1\n"
+            shift 1
+            ;;
     esac
 done
 
@@ -130,11 +130,11 @@ then
     printf "SOURCE_URL  = $PRELUDE_URL\n"
     if [ -n $PRELUDE_SKIP_BC ]
     then
-	printf "Skipping bytecompilation.\n"
+        printf "Skipping bytecompilation.\n"
     fi
     if [ -n $PRELUDE_INTO ]
     then
-	printf "Replacing existing config (if one exists).\n"
+        printf "Replacing existing config (if one exists).\n"
     fi
     printf "$RESET"
 fi
@@ -188,13 +188,13 @@ then
     # Overwrite existing?
     if [ -n $PRELUDE_INTO ]
     then
-	# Replace existing config
-	install_prelude
-	make_prelude_dirs
+        # Replace existing config
+        install_prelude
+        make_prelude_dirs
     else
-	# Install into existing config
-	PRELUDE_INSTALL_DIR=$PRELUDE_INSTALL_DIR"/prelude"
-	install_prelude
+        # Install into existing config
+        PRELUDE_INSTALL_DIR=$PRELUDE_INSTALL_DIR"/prelude"
+        install_prelude
     fi
 elif [ -e $PRELUDE_INSTALL_DIR ]
 then
@@ -214,15 +214,15 @@ if [ -z $PRELUDE_SKIP_BC ];
 then
     if which emacs 2>&1 > /dev/null
     then
-	printf " Bytecompiling Prelude.\n"
-	if [ x$PRELUDE_VERBOSE != x ]
-	then
-	    emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/prelude/*.el
-	else
-	    emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/prelude/*.el > /dev/null 2>&1
-	fi
+        printf " Bytecompiling Prelude.\n"
+        if [ x$PRELUDE_VERBOSE != x ]
+        then
+            emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/prelude/*.el
+        else
+            emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/prelude/*.el > /dev/null 2>&1
+        fi
     else
-	printf "$YELLOW Emacs not found.$RESET Skipping bytecompilation.\n"
+        printf "$YELLOW Emacs not found.$RESET Skipping bytecompilation.\n"
     fi
 else
     printf "Skipping bytecompilation.\n"
