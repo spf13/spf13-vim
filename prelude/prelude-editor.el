@@ -214,9 +214,12 @@
       ispell-extra-args '("--sug-mode=ultra"))
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 
-(when (and prelude-flyspell (executable-find ispell-program-name))
-  (add-hook 'message-mode-hook 'flyspell-mode)
-  (add-hook 'text-mode-hook 'flyspell-mode))
+(defun prelude-enable-flyspell ()
+  (when (and prelude-flyspell (executable-find ispell-program-name))
+    (flyspell-mode +1)))
+
+(add-hook 'message-mode-hook 'prelude-enable-flyspell)
+(add-hook 'text-mode-hook 'prelude-enable-flyspell)
 
 ;; enable narrowing commands
 (put 'narrow-to-region 'disabled nil)
@@ -234,10 +237,10 @@
       bookmark-save-flag 1)
 
 ;; load yasnippet
-(require 'yasnippet)
-(add-to-list 'yas-snippet-dirs prelude-snippets-dir)
-(add-to-list 'yas-snippet-dirs prelude-personal-snippets-dir)
-(yas-global-mode 1)
+;(require 'yasnippet)
+;(add-to-list 'yas-snippet-dirs prelude-snippets-dir)
+;(add-to-list 'yas-snippet-dirs prelude-personal-snippets-dir)
+;(yas-global-mode 1)
 
 ;; projectile is a project management mode
 (require 'projectile)
