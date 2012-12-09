@@ -36,7 +36,7 @@
 (defgroup prelude nil
   "Emacs Prelude configuration."
   :prefix "prelude-"
-  :group "convenience")
+  :group 'convenience)
 
 (defcustom prelude-auto-save t
   "Non-nil values enable Prelude's auto save."
