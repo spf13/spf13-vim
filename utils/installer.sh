@@ -1,15 +1,14 @@
 install_prelude () {
-    printf " Cloning the repository.\n$RESET"
+    printf " Cloning the Prelude's GitHub repository...\n$RESET"
     if [ x$PRELUDE_VERBOSE != x ]
     then
         /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR
     else
-        /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR > /dev/null 2>&1
+        /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR > /dev/null
     fi
     if ! [ $? -eq 0 ]
     then
-        printf "$RED Unkown git error occured during installation, "
-        printf "please check the source url: $PRELUDE_URL\n$RESET"
+        printf "$RED A fatal error occurred during Prelude's installation. Aborting..."
         exit 1
     fi
 }
