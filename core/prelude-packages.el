@@ -59,7 +59,7 @@
     ;; install the missing packages
     (-each
      (-reject #'package-installed-p prelude-packages)
-     #'package-install-p)))
+     #'package-install)))
 
 (prelude-install-packages)
 
