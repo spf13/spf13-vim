@@ -253,10 +253,6 @@ If you're not fond of spellchecking on the fly:
 (setq prelude-flyspell nil)
 ```
 
-### Prelude Modules
-
-Additional settings for various programming languages are available for installation via MELPA. You might take a look at the [Prelude Modules project](https://github.com/bbatsov/prelude-modules) for further info.
-
 ## Caveats & Pitfalls
 
 ### Problems with flyspell-mode

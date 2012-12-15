@@ -139,7 +139,7 @@ then
 fi
 
 # If prelude is already installed
-if [ -d $PRELUDE_INSTALL_DIR/prelude ]
+if [ -d $PRELUDE_INSTALL_DIR/core/prelude-core.el ]
 then
     printf "\n\n$BRED"
     printf "You already have Prelude installed.$RESET\nYou'll need to remove $PRELUDE_INSTALL_DIR/prelude if you want to install Prelude again.\n"

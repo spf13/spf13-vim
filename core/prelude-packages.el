@@ -71,31 +71,24 @@
                                  (,mode)))))
 
 (defvar prelude-auto-install-alist
-  '(("\\.clj\\'" prelude-clojure clojure-mode)
-    ("\\.coffee\\'" prelude-coffee coffee-mode)
-    ("\\.css\\'" prelude-css css-mode)
-    ("\\.el\\'" prelude-emacs-lisp emacs-lisp-mode)
+  '(("\\.clj\\'" clojure-mode clojure-mode)
+    ("\\.coffee\\'" coffee-mode coffee-mode)
+    ("\\.css\\'" css-mode css-mode)
     ("\\.erl\\'" erlang erlang-mode)
     ("\\.feature\\'" feature-mode feature-mode)
     ("\\.groovy\\'" groovy-mode groovy-mode)
     ("\\.haml\\'" haml-mode haml-mode)
-    ("\\.hs\\'" prelude-haskell haskell-mode)
-    ("\\.js\\'" prelude-js js-mode)
-    ("\\.latex\\'" prelude-latex LaTeX-mode)
+    ("\\.hs\\'" haskell-mode haskell-mode)
+    ("\\.latex\\'" auctex LaTeX-mode)
     ("\\.less\\'" less-css-mode less-css-mode)
-    ("\\.lisp\\'" prelude-common-lisp lisp-mode)
     ("\\.lua\\'" lua-mode lua-mode)
     ("\\.markdown\\'" markdown-mode markdown-mode)
     ("\\.md\\'" markdown-mode markdown-mode)
     ("\\.php\\'" php-mode php-mode)
-    ("\\.pl\\'" prelude-perl cperl-mode)
     ("\\.py\\'" python python-mode)
-    ("\\.rb\\'" prelude-ruby ruby-mode)
     ("\\.sass\\'" sass-mode sass-mode)
-    ("\\.scala\\'" prelude-scala scala-mode)
-    ("\\.scm\\'" prelude-scheme scheme-mode)
-    ("\\.scss\\'" prelude-scss scss-mode)
-    ("\\.xml\\'" prelude-xml nxml-mode)
+    ("\\.scala\\'" scala-mode scala-mode)
+    ("\\.scss\\'" scss-mode scss-mode)
     ("\\.yml\\'" yaml-mode yaml-mode)))
 
 ;; markdown-mode doesn't have autoloads for the auto-mode-alist
@@ -111,6 +104,9 @@
           (mode (third entry)))
       (unless (package-installed-p package)
         (prelude-auto-install extension package mode)))))
+
+(defun prelude-ensure-module-deps (packages)
+  (-each (-remove #'package-installed-p packages) #'package-install))
 
 (provide 'prelude-packages)
 ;;; prelude-packages.el ends here

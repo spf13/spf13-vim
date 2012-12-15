@@ -37,9 +37,10 @@
 
 (defvar prelude-dir (file-name-directory load-file-name)
   "The root dir of the Emacs Prelude distribution.")
-(defvar prelude-modules-dir (expand-file-name  "prelude" prelude-dir)
-  "This directory houses all of the built-in Prelude module. You should
-avoid modifying the configuration there.")
+(defvar prelude-core-dir (expand-file-name "core" prelude-dir)
+  "The home of Prelude's core functionality.")
+(defvar prelude-modules-dir (expand-file-name  "modules" prelude-dir)
+  "This directory houses all of the built-in Prelude modules.")
 (defvar prelude-personal-dir (expand-file-name "personal" prelude-dir)
   "Users of Emacs Prelude are encouraged to keep their personal configuration
 changes in this directory. All Emacs Lisp files there are loaded automatically
@@ -58,6 +59,7 @@ ELPA (or MELPA).")
   (make-directory prelude-savefile-dir))
 
 ;; add Prelude's directories to Emacs's `load-path'
+(add-to-list 'load-path prelude-core-dir)
 (add-to-list 'load-path prelude-modules-dir)
 (add-to-list 'load-path prelude-vendor-dir)
 
@@ -75,6 +77,30 @@ ELPA (or MELPA).")
 ;; OSX specific settings
 (when (eq system-type 'darwin)
   (require 'prelude-osx))
+
+;; the modules
+(require 'prelude-programming)
+(require 'prelude-c)
+(require 'prelude-clojure)
+(require 'prelude-coffee)
+(require 'prelude-common-lisp)
+(require 'prelude-css)
+(require 'prelude-emacs-lisp)
+(require 'prelude-erc)
+(require 'prelude-erlang)
+(require 'prelude-haskell)
+(require 'prelude-js)
+(require 'prelude-latex)
+(require 'prelude-lisp)
+(require 'prelude-mediawiki)
+(require 'prelude-org)
+(require 'prelude-perl)
+(require 'prelude-python)
+(require 'prelude-ruby)
+(require 'prelude-scala)
+(require 'prelude-scheme)
+(require 'prelude-scss)
+(require 'prelude-xml)
 
 ;; config changes made through the customize UI will be store here
 (setq custom-file (expand-file-name "custom.el" prelude-personal-dir))
