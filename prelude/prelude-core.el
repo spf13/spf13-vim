@@ -32,18 +32,7 @@
 
 ;;; Code:
 
-(require 'cl)
 (require 'thingatpt)
-
-(defun prelude-add-subfolders-to-load-path (parent-dir)
-  "Adds all first level `parent-dir' subdirs to the
-Emacs load path."
-  (dolist (f (directory-files parent-dir))
-    (let ((name (expand-file-name f parent-dir)))
-      (when (and (file-directory-p name)
-                 (not (equal f ".."))
-                 (not (equal f ".")))
-        (add-to-list 'load-path name)))))
 
 (defun prelude-open-with ()
   "Simple function that allows us to open the underlying

@@ -32,7 +32,6 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
-(require 'cl)
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -49,9 +48,7 @@
   "A list of packages to ensure are installed at launch.")
 
 (defun prelude-packages-installed-p ()
-  (loop for p in prelude-packages
-        when (not (package-installed-p p)) do (return nil)
-        finally (return t)))
+  (-all? #'package-installed-p prelude-packages))
 
 (defun prelude-install-packages ()
   (unless (prelude-packages-installed-p)
@@ -60,9 +57,9 @@
     (package-refresh-contents)
     (message "%s" " done.")
     ;; install the missing packages
-    (dolist (p prelude-packages)
-      (unless (package-installed-p p)
-        (package-install p)))))
+    (-each
+     (-reject #'package-installed-p prelude-packages)
+     #'package-install-p)))
 
 (prelude-install-packages)
 

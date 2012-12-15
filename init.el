@@ -61,6 +61,9 @@ ELPA (or MELPA).")
 (add-to-list 'load-path prelude-modules-dir)
 (add-to-list 'load-path prelude-vendor-dir)
 
+(require 'cl)
+(require 'dash)
+
 ;; the core stuff
 (require 'prelude-packages)
 (require 'prelude-ui)
