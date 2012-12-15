@@ -104,12 +104,13 @@
   (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
 
-(dolist (entry prelude-auto-install-alist)
-  (let ((extension (first entry))
-        (package (second entry))
-        (mode (third entry)))
-    (unless (package-installed-p package)
-      (prelude-auto-install extension package mode))))
+(-each prelude-auto-install-alist
+  (lambda (entry)
+    (let ((extension (first entry))
+          (package (second entry))
+          (mode (third entry)))
+      (unless (package-installed-p package)
+        (prelude-auto-install extension package mode)))))
 
 (provide 'prelude-packages)
 ;;; prelude-packages.el ends here

@@ -160,11 +160,12 @@ there's a region, all lines that region covers will be duplicated."
         (exchange-point-and-mark))
     (setq end (line-end-position))
     (let ((region (buffer-substring-no-properties beg end)))
-      (dotimes (i arg)
-        (goto-char end)
-        (newline)
-        (insert region)
-        (setq end (point)))
+      (-dotimes arg
+                (lambda ()
+                  (goto-char end)
+                  (newline)
+                  (insert region)
+                  (setq end (point))))
       (goto-char (+ origin (* (length region) arg) arg)))))
 
 ;; TODO doesn't work with uniquify
@@ -283,9 +284,11 @@ there's a region, all lines that region covers will be duplicated."
 (defun prelude-kill-other-buffers ()
   "Kill all buffers but the current one. Doesn't mess with special buffers."
   (interactive)
-  (dolist (buffer (buffer-list))
-    (unless (or (eql buffer (current-buffer)) (not (buffer-file-name buffer)))
-      (kill-buffer buffer))))
+  (-each
+   (->> (buffer-list)
+     (-filter #'buffer-file-name)
+     (--remove (eql (current-buffer) it)))
+   #'kill-buffer))
 
 (require 'repeat)
 
