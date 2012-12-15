@@ -104,7 +104,7 @@
         " Add exclusions to mkview and loadview
         " eg: *.*, svn-commit.tmp
         let g:skipview_files = [
-            \ '[example pattern]'
+            \ '\[example pattern\]'
             \ ]
     endif
     " }
