@@ -59,7 +59,6 @@ ELPA (or MELPA).")
   (make-directory prelude-savefile-dir))
 
 (require 'cl)
-(require 'dash)
 
 (defun prelude-add-subfolders-to-load-path (parent-dir)
  "Adds all first level `parent-dir' subdirs to the
@@ -76,6 +75,8 @@ Emacs load path."
 (add-to-list 'load-path prelude-modules-dir)
 (add-to-list 'load-path prelude-vendor-dir)
 (prelude-add-subfolders-to-load-path prelude-vendor-dir)
+
+(require 'dash)
 
 ;; the core stuff
 (require 'prelude-packages)
