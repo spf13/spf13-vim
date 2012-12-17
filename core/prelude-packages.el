@@ -99,9 +99,9 @@
 
 (-each prelude-auto-install-alist
   (lambda (entry)
-    (let ((extension (first entry))
-          (package (second entry))
-          (mode (third entry)))
+    (let ((extension (car entry))
+          (package (cadr entry))
+          (mode (cadr (cdr entry))))
       (unless (package-installed-p package)
         (prelude-auto-install extension package mode)))))
 

@@ -58,8 +58,6 @@ ELPA (or MELPA).")
 (unless (file-exists-p prelude-savefile-dir)
   (make-directory prelude-savefile-dir))
 
-(require 'cl)
-
 (defun prelude-add-subfolders-to-load-path (parent-dir)
  "Adds all first level `parent-dir' subdirs to the
 Emacs load path."
