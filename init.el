@@ -58,13 +58,24 @@ ELPA (or MELPA).")
 (unless (file-exists-p prelude-savefile-dir)
   (make-directory prelude-savefile-dir))
 
+(require 'cl)
+(require 'dash)
+
+(defun prelude-add-subfolders-to-load-path (parent-dir)
+ "Adds all first level `parent-dir' subdirs to the
+Emacs load path."
+ (dolist (f (directory-files parent-dir))
+   (let ((name (expand-file-name f parent-dir)))
+     (when (and (file-directory-p name)
+     (not (equal f ".."))
+     (not (equal f ".")))
+       (add-to-list 'load-path name)))))
+
 ;; add Prelude's directories to Emacs's `load-path'
 (add-to-list 'load-path prelude-core-dir)
 (add-to-list 'load-path prelude-modules-dir)
 (add-to-list 'load-path prelude-vendor-dir)
-
-(require 'cl)
-(require 'dash)
+(prelude-add-subfolders-to-load-path prelude-vendor-dir)
 
 ;; the core stuff
 (require 'prelude-packages)
