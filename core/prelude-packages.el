@@ -87,7 +87,7 @@
     ("\\.php\\'" php-mode php-mode)
     ("\\.py\\'" python python-mode)
     ("\\.sass\\'" sass-mode sass-mode)
-    ("\\.scala\\'" scala-mode scala-mode)
+    ("\\.scala\\'" scala-mode2 scala-mode)
     ("\\.scss\\'" scss-mode scss-mode)
     ("\\.yml\\'" yaml-mode yaml-mode)))
 
