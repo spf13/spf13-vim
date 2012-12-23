@@ -47,6 +47,7 @@
   (run-hooks 'prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
   (prelude-remove-elc-on-save)
+  (elisp-slime-nav-mode +1)
   (rainbow-mode +1))
 
 (setq prelude-emacs-lisp-mode-hook 'prelude-emacs-lisp-mode-defaults)
