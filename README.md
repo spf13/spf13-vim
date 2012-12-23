@@ -235,14 +235,14 @@ P.S. Solarized is not available by default - you'll have to install it from MELP
 Fork the official Prelude repo and add your own touch to it. You're advised to avoid changing stuff outside of the
 personal folder to avoid having to deal with git merge conflicts in the future.
 
-#### Enabling whitespace-mode
+#### Disabling whitespace-mode
 
-Although `whitespace-mode` is awesome some people find it too
-intrusive so it's disabled by default. You can enable it in your
+Although `whitespace-mode` is awesome some people might find it too
+intrusive. You can disable it in your
 personal config with the following bit of code:
 
 ```lisp
-(setq prelude-whitespace t)
+(setq prelude-whitespace nil)
 ```
 
 #### Disable flyspell-mode

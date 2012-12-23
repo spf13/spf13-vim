@@ -115,11 +115,11 @@
   (when prelude-guru
     (guru-mode +1))
   (when prelude-whitespace
+    ;; keep the whitespace decent all the time (in this buffer)
+    (add-hook 'before-save-hook 'whitespace-cleanup nil t)
     (whitespace-mode +1))
   (prelude-local-comment-auto-fill)
-  (prelude-add-watchwords)
-  ;; keep the whitespace decent all the time (in this buffer)
-  (add-hook 'before-save-hook 'whitespace-cleanup nil t))
+  (prelude-add-watchwords))
 
 (setq prelude-prog-mode-hook 'prelude-prog-mode-defaults)
 

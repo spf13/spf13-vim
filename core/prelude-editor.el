@@ -48,7 +48,7 @@
   :type 'boolean
   :group 'prelude)
 
-(defcustom prelude-whitespace nil
+(defcustom prelude-whitespace t
   "Non-nil values enable Prelude's whitespace visualization."
   :type 'boolean
   :group 'prelude)
@@ -320,6 +320,10 @@ indent yanked text (with prefix arg don't indent)."
 ;; make a shell script executable automatically on save
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
+
+;; whitespace-mode config
+(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-style '(face tabs empty trailing lines-tail))
 
 ;; saner regex syntax
 (require 're-builder)
