@@ -100,7 +100,9 @@
   (easy-menu-remove))
 
 (define-minor-mode prelude-mode
-  "Minor mode to consolidate Emacs Prelude extensions."
+  "Minor mode to consolidate Emacs Prelude extensions.
+
+\\{prelude-mode-map}"
   :lighter " Prelude"
   :keymap prelude-mode-map
   (if prelude-mode
