@@ -34,12 +34,13 @@
 ;;; Code:
 
 (require 'prelude-lisp)
-(prelude-ensure-module-deps '(clojure-mode nrepl))
+(prelude-ensure-module-deps '(clojure-mode clojure-test-mode nrepl))
 
 (eval-after-load 'clojure-mode
   '(progn
      (defun prelude-clojure-mode-defaults ()
        (subword-mode +1)
+       (clojure-test-mode +1)
        (run-hooks 'prelude-lisp-coding-hook))
 
      (setq prelude-clojure-mode-hook 'prelude-clojure-mode-defaults)
