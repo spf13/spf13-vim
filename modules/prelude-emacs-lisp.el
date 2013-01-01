@@ -47,12 +47,12 @@
   (run-hooks 'prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
   (prelude-remove-elc-on-save)
-  (elisp-slime-nav-mode +1)
   (rainbow-mode +1))
 
 (setq prelude-emacs-lisp-mode-hook 'prelude-emacs-lisp-mode-defaults)
 
-(add-hook 'emacs-lisp-mode-hook (lambda () (run-hooks 'prelude-emacs-lisp-mode-hook)))
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+                                  (run-hooks 'prelude-emacs-lisp-mode-hook)))
 
 ;; ielm is an interactive Emacs Lisp shell
 (defun prelude-ielm-mode-defaults ()
