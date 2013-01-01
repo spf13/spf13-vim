@@ -338,6 +338,9 @@ indent yanked text (with prefix arg don't indent)."
 ;; enable Prelude's keybindings
 (prelude-global-mode t)
 
+;; enable winner-mode to manage window configurations
+(winner-mode +1)
+
 (provide 'prelude-editor)
 
 ;;; prelude-editor.el ends here
