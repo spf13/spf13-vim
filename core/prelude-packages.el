@@ -43,8 +43,10 @@
 (setq url-http-attempt-keepalives nil)
 
 (defvar prelude-packages
-  '(ack-and-a-half elisp-slime-nav exec-path-from-shell expand-region gist guru-mode helm helm-projectile magit magithub melpa
-                   rainbow-mode volatile-highlights yasnippet solarized-theme zenburn-theme)
+  '(ack-and-a-half elisp-slime-nav exec-path-from-shell expand-region gist
+                   guru-mode helm helm-projectile magit magithub melpa
+                   rainbow-mode solarized-theme volatile-highlights yasnippet
+                   zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
 (defun prelude-packages-installed-p ()
