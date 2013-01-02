@@ -6,7 +6,6 @@
 ;; URL: http://www.batsov.com/emacs-prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
-;; Package-Requires: ((prelude-css "1.0.0") (scss-mode "0.5.0"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -34,6 +33,7 @@
 ;;; Code:
 
 (require 'prelude-css)
+(prelude-ensure-module-deps '(scss-mode))
 
 (defun prelude-scss-mode-defaults ()
   (prelude-css-mode-defaults)

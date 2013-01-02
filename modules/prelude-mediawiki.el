@@ -6,7 +6,6 @@
 ;; URL: http://batsov.com/emacs-prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
-;; Package-Requires: ((mediawiki "2.2.3"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -32,6 +31,8 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
+
+(prelude-ensure-module-deps '(mediawiki))
 
 (eval-after-load 'mediawiki
   '(progn

@@ -6,7 +6,6 @@
 ;; URL: http://batsov.com/emacs-prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
-;; Package-Requires: ((prelude-programming "1.0.0") (python "23.1"))
 
 ;; This file is not part of GNU Emacs.
 

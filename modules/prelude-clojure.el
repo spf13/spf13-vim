@@ -6,7 +6,6 @@
 ;; URL: http://batsov.com/prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
-;; Package-Requires: ((prelude-lisp "1.0.0") (clojure-mode "1.11.5") (nrepl "0.1.4"))
 
 ;; This file is not part of GNU Emacs.
 
