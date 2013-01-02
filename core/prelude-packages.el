@@ -44,7 +44,7 @@
 
 (defvar prelude-packages
   '(ack-and-a-half elisp-slime-nav exec-path-from-shell expand-region
-                   flycheck-mode gist
+                   flycheck gist
                    guru-mode helm helm-projectile magit magithub melpa
                    rainbow-mode solarized-theme volatile-highlights yasnippet
                    zenburn-theme)
