@@ -6,7 +6,6 @@
 ;; URL: http://batsov.com/emacs-prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
-;; Package-Requires: ((guru-mode "0.1"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -32,6 +31,8 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
+
+(prelude-ensure-module-deps '(guru-mode))
 
 (defun prelude-ido-goto-symbol (&optional symbol-list)
   "Refresh imenu and jump to a place in the buffer using Ido."
