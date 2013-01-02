@@ -9,7 +9,7 @@
 
 spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and [MacVim].
 
-It is a good starting point for anyone intending to use VIM for development running equally well on Windows, Linux, *nix and Mac.
+It is a good starting point for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
 
 The distribution is completely customisable using a `~/.vimrc.local` and `~/.vimrc.bundles.local` Vim RC files.
 
@@ -32,21 +32,26 @@ We have also changed out most of the plugins in favor of newer more stable alter
 
 The goal has always been to add functionality without changing all the features, functionality and keystrokes we all love. Using spf13-vim we've kept all the default behaviors (by and large), so if you ever find yourself on a vanilla environment you'll feel right at home.
 
-# Installation 
+# Installation
 
 ## Linux, \*nix, Mac OSX Installation
 
 The easiest way to install spf13-vim is to use our [automatic installer](http://j.mp/spf13-vim3) by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration. If you are upgrading from a prior version (before 3.0) this is also the recommended installation.
 
 ```bash
+    
+    curl http://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+```
 
-    curl http://j.mp/spf13-vim3 -L -o - | sh
+If you have a bash-compatible shell you can run the script directly:
+```bash
 
+    sh <(curl http://j.mp/spf13-vim3 -L)
 ```
 
 ## Installing on Windows
 
-On Windows and \*nix [Git] and [Curl] are required. 
+On Windows and \*nix [Git] and [Curl] are required.
 
 ### Installing dependencies
 
@@ -92,7 +97,7 @@ to verify all good, run:
 The easiest way is to download and run the spf13-vim-windows-install.cmd file. Remember to run this file in **Administrator Mode** if you want the symlinks to be created successfully.
 
 ## Updating to the latest version
-The simpliest (and safest) way to update is to simply rerun the installer. It will completely and non destructively upgrade to the latest version. 
+The simpliest (and safest) way to update is to simply rerun the installer. It will completely and non destructively upgrade to the latest version.
 
 ```bash
 
@@ -124,7 +129,7 @@ It fixes many of the inconveniences of vanilla vim including
  * A single config can be used across Windows, Mac and linux
  * Eliminates swap and backup files from littering directories, preferring to store in a central location.
  * Fixes common typos like :W, :Q, etc
- * Setup a solid set of settings for Formatting (change to meet your needs) 
+ * Setup a solid set of settings for Formatting (change to meet your needs)
  * Setup the interface to take advantage of vim's features including
    * omnicomplete
    * line numbers
@@ -153,11 +158,11 @@ and `.vimrc.bundles.fork` files in the root of their fork.  The load order for t
 1. `.vimrc.bundles.local` - local user bundle configuration
 2. `.vimrc.bundles.fork` - fork bundle configuration
 3. `.vimrc.bundles` - spf13-vim bundle configuration
-4. `.vimrc` - spf13-vim vim configuration 
+4. `.vimrc` - spf13-vim vim configuration
 5. `.vimrc.fork` - fork vim configuration
-6. `.vimrc.local` - local user configuration 
+6. `.vimrc.local` - local user configuration
 
-See `.vimrc.bundles` for specifics on what options can be set to override bundle configuration. See `.vimrc` for specifics 
+See `.vimrc.bundles` for specifics on what options can be set to override bundle configuration. See `.vimrc` for specifics
 on what options can be overridden. Most vim configuration options should be set in your `.vimrc.fork` file, bundle configuration
 needs to be set in your `.vimrc.bundles.fork` file.
 
@@ -217,7 +222,7 @@ functionality to your vim editing.  You can learn more about it with
 
 **QuickStart** Launch using `<Leader>e`.
 
-**Customizations**: 
+**Customizations**:
 
 * Use `<C-E>` to toggle NERDTree
 * Use `<leader>e` or `<leader>nt` to load NERDTreeFind which opens NERDTree where the current file is located.
@@ -225,7 +230,7 @@ functionality to your vim editing.  You can learn more about it with
 * Treat NERDTree more like a panel than a split.
 
 ## [ctrlp]
-Ctrlp replaces the Command-T plugin with a 100% viml plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files. 
+Ctrlp replaces the Command-T plugin with a 100% viml plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files.
 
 **QuickStart** Launch using `<c-p>`.
 
@@ -249,7 +254,7 @@ examples.  An asterisk (*) is used to denote the cursor position.
 For instance, if the cursor was inside `"foo bar"`, you could type
 `cs"'` to convert the text to `'foo bar'`.
 
-There's a lot more, check it out at `:help surround` 
+There's a lot more, check it out at `:help surround`
 
 ## [NERDCommenter]
 
@@ -260,11 +265,11 @@ filetype. View `help :NERDCommenter` or checkout my post on [NERDCommenter](http
 
 ## [neocomplcache]
 
-NeoComplCache is an amazing autocomplete plugin with additional support for snippets. It can complete simulatiously from the dictionary, buffer, omnicomplete and snippets. This is the one true plugin that brings Vim autocomplete on par with the best editors. 
+NeoComplCache is an amazing autocomplete plugin with additional support for snippets. It can complete simulatiously from the dictionary, buffer, omnicomplete and snippets. This is the one true plugin that brings Vim autocomplete on par with the best editors.
 
 **QuickStart** Just start typing, it will autocomplete where possible
 
-**Customizations**: 
+**Customizations**:
 
  * Automatically present the autocomplete menu
  * Support tab and enter for autocomplete
@@ -274,15 +279,15 @@ NeoComplCache is an amazing autocomplete plugin with additional support for snip
 
 ## [Syntastic]
 
-Syntastic is a syntax checking plugin that runs buffers through external syntax 
-checkers as they are saved and opened. If syntax errors are detected, the user 
-is notified and is happy because they didn't have to compile their code or 
+Syntastic is a syntax checking plugin that runs buffers through external syntax
+checkers as they are saved and opened. If syntax errors are detected, the user
+is notified and is happy because they didn't have to compile their code or
 execute their script to find them.
 
 ## [AutoClose]
 
 AutoClose does what you expect. It's simple, if you open a bracket, paren, brace, quote,
-etc, it automatically closes it. It handles curlys correctly and doesn't get in the 
+etc, it automatically closes it. It handles curlys correctly and doesn't get in the
 way of double curlies for things like jinja and twig.
 
 ## [Fugitive]
@@ -299,7 +304,7 @@ file
 
 **QuickStart** `<leader>gs` to bring up git status
 
-**Customizations**: 
+**Customizations**:
 
  * `<leader>gs` :Gstatus<CR>
  * `<leader>gd` :Gdiff<CR>
@@ -364,9 +369,9 @@ one level).
 
 ## [EasyMotion]
 
-EasyMotion provides an interactive way to use motions in Vim. 
+EasyMotion provides an interactive way to use motions in Vim.
 
-It quickly maps each possible jump destination to a key allowing very fast and 
+It quickly maps each possible jump destination to a key allowing very fast and
 straightforward movement.
 
 **QuickStart** EasyMotion is triggered using the normal movements, but prefixing them with `<leader><leader>`
@@ -385,7 +390,7 @@ spf13-vim ships with a few additional syntaxes:
 
 ## Amazing Colors
 
-spf13-vim includes [solarized] and [spf13 vim color pack](https://github.com/spf13/vim-colors/): 
+spf13-vim includes [solarized] and [spf13 vim color pack](https://github.com/spf13/vim-colors/):
 
 * ir_black
 * molokai
@@ -420,7 +425,7 @@ Here's some tips if you've never used VIM before:
 
 * Use `:q` to exit vim
 * Certain commands are prefixed with a `<Leader>` key, which by default maps to `\`.
-  Spf13-vim uses `let mapleader = ","` to change this to `,` which is in a consistent and 
+  Spf13-vim uses `let mapleader = ","` to change this to `,` which is in a consistent and
   convenient location.
 * Keyboard [cheat sheet](http://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
 
