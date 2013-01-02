@@ -1,6 +1,6 @@
 ;;; prelude-css.el --- Emacs Prelude: css support
 ;;
-;; Copyright (c) 2011-2012 Bozhidar Batsov
+;; Copyright © 2011-2013 Bozhidar Batsov
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: http://www.batsov.com/emacs-prelude
