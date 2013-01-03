@@ -551,9 +551,8 @@ com! -nargs=+         UnBundle
 \ call UnBundle(<args>)
 
 function! InitializeDirectories()
-    let separator = "."
     let parent = $HOME
-    let prefix = '.vim'
+    let prefix = 'vim'
     let dir_list = {
                 \ 'backup': 'backupdir',
                 \ 'views': 'viewdir',
@@ -563,8 +562,19 @@ function! InitializeDirectories()
         let dir_list['undo'] = 'undodir'
     endif
 
+    " To specify a different directory in which to place the vimbackup,
+    " vimviews, vimundo, and vimswap files/directories, add the following to
+    " your .vimrc.local file:
+    "   let g:spf13_consolidated_directory = <full path to desired directory>
+    "   eg: let g:spf13_consolidated_directory = $HOME . '/.vim/'
+    if exists('g:spf13_consolidated_directory')
+        let common_dir = g:spf13_consolidated_directory . prefix
+    else
+        let common_dir = parent . '/.' . prefix
+    endif
+
     for [dirname, settingname] in items(dir_list)
-        let directory = parent . '/' . prefix . dirname . "/"
+        let directory = common_dir . dirname . '/'
         if exists("*mkdir")
             if !isdirectory(directory)
                 call mkdir(directory)
@@ -579,7 +589,6 @@ function! InitializeDirectories()
         endif
     endfor
 endfunction
-call InitializeDirectories()
 
 function! NERDTreeInitAsNeeded()
     redir => bufoutput
@@ -631,4 +640,8 @@ endfunction
             source ~/.gvimrc.local
         endif
     endif
+" }
+
+" Finish local initializations {
+    call InitializeDirectories()
 " }
