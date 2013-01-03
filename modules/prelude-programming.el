@@ -120,7 +120,7 @@
     ;; keep the whitespace decent all the time (in this buffer)
     (add-hook 'before-save-hook 'whitespace-cleanup nil t)
     (whitespace-mode +1))
-  (flycheck-mode +1)
+  ;;(flycheck-mode +1)
   (prelude-local-comment-auto-fill)
   (prelude-add-watchwords))
 
