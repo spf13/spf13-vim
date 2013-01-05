@@ -218,8 +218,14 @@
   (when (and prelude-flyspell (executable-find ispell-program-name))
     (flyspell-mode +1)))
 
-(add-hook 'message-mode-hook 'prelude-enable-flyspell)
+(defun prelude-enable-whitespace ()
+  (when prelude-whitespace
+    ;; keep the whitespace decent all the time (in this buffer)
+    (add-hook 'before-save-hook 'whitespace-cleanup nil t)
+    (whitespace-mode +1)))
+
 (add-hook 'text-mode-hook 'prelude-enable-flyspell)
+(add-hook 'text-mode-hook 'prelude-enable-whitespace)
 
 ;; enable narrowing commands
 (put 'narrow-to-region 'disabled nil)
