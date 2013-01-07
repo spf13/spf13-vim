@@ -11,7 +11,7 @@ productive experience than the one you get out of the box. By using
 **Emacs Prelude** you're basically getting a *"Get me out of the
 Prelude, I just want to use Emacs"* card.
 
-Emacs Prelude is compatible **ONLY with GNU Emacs 24.x**. 
+Emacs Prelude is compatible **ONLY with GNU Emacs 24.x**.
 
 ## Fast Forward
 
@@ -27,8 +27,8 @@ $ curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
 You can now power up your Emacs, sit back and enjoy Prelude,
 forgetting about the rest of this manual.
 
-There are two environment variables you can use to control the 
-source repository and the installation directory. To change the 
+There are two environment variables you can use to control the
+source repository and the installation directory. To change the
 installation directory:
 
 ```bash
@@ -46,18 +46,11 @@ Note that the installer will back up any existing `.emacs` file or
 you're doing a manual install make sure you don't have a `.emacs` file
 or back up your existing `.emacs.d` directory manually.
 
-## More goodies
-
-The [Prelude Modules](https://github.com/bbatsov/prelude-modules)
-project contains a lot of additional packages for Prelude
-(install-able via the `package-list-packages` command) - enhanced programming
-mode configs, latex config, erc config, etc.
-
 ## Installing Emacs 24
 
 Obviously to use the Emacs Prelude you have to install Emacs 24
 first. Have a look at the [WikEmacs articles on installing Emacs](http://wikemacs.org/wiki/Installing_Emacs).
- 
+
 ## Installation
 
 ### Automated
@@ -284,7 +277,7 @@ Source the `.bashrc` file and start Emacs again.
 
 If you get some http connection error related to the MELPA repo
 just do a manual `M-x package-refresh-contents` and restart Emacs
-afterwards. 
+afterwards.
 
 ### No arrow navigation in editor buffers
 
