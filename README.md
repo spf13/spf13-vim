@@ -46,6 +46,9 @@ Note that the installer will back up any existing `.emacs` file or
 you're doing a manual install make sure you don't have a `.emacs` file
 or back up your existing `.emacs.d` directory manually.
 
+Don't forget to adjust your `prelude-modules.el` file once the installation is done.
+By default most of the modules that ship with Prelude are not loaded.
+
 ## Installing Emacs 24
 
 Obviously to use the Emacs Prelude you have to install Emacs 24
@@ -85,6 +88,39 @@ $ cd ~/emacs.d
 You'd do well to replace `~/.emacs.d` with the value of
 `user-emacs-directory` for your OS. You can check the value by doing
 `C-h v user-emacs-directory` inside Emacs.
+
+## Enabling additional modules
+
+By default most of the modules that ship with Prelude are not loaded.
+
+```lisp
+;;; Uncomment the modules you'd like to use and restart Prelude afterwards
+
+(require 'prelude-c)
+;; (require 'prelude-clojure)
+;; (require 'prelude-coffee)
+;; (require 'prelude-common-lisp)
+;; (require 'prelude-css)
+(require 'prelude-emacs-lisp)
+(require 'prelude-erc)
+;; (require 'prelude-erlang)
+;; (require 'prelude-haskell)
+(require 'prelude-js)
+;; (require 'prelude-latex)
+(require 'prelude-lisp)
+;; (require 'prelude-markdown)
+;; (require 'prelude-mediawiki)
+(require 'prelude-org)
+(require 'prelude-perl)
+;; (require 'prelude-python)
+;; (require 'prelude-ruby)
+;; (require 'prelude-scala)
+(require 'prelude-scheme)
+;; (require 'prelude-scss)
+(require 'prelude-xml)
+```
+
+You'll need to adjust your `prelude-modules.el` file once the installation is done.
 
 ## Running
 

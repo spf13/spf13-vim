@@ -207,6 +207,7 @@ else
     # Nothing yet so just install prelude
     install_prelude
     make_prelude_dirs
+    cp $PRELUDE_INSTALL_DIR/sample/prelude-modules.el $PRELUDE_INSTALL_DIR
 fi
 
 if [ -z $PRELUDE_SKIP_BC ];
@@ -216,9 +217,9 @@ then
         printf " Bytecompiling Prelude.\n"
         if [ x$PRELUDE_VERBOSE != x ]
         then
-            emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/prelude/*.el
+            emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/core/*.el
         else
-            emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/prelude/*.el > /dev/null 2>&1
+            emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/core/*.el > /dev/null 2>&1
         fi
     else
         printf "$YELLOW Emacs not found.$RESET Skipping bytecompilation.\n"
@@ -242,3 +243,4 @@ printf "$BBLUE | |_) |  __/ _ \ | | | |/ _  |/ _ \ \n"
 printf "$BBLUE |  __/| | |  __/ | |_| | (_| |  __/ \n"
 printf "$BBLUE |_|   |_|  \___|_|\__,_|\__,_|\___| \n\n"
 printf "$GREEN ... is now installed and ready to do thy bidding, Master $USER!$RESET\n"
+printf "$GREEN Don't forget to adjust the modules you want to use in $PRELUDE_INSTALL_DIR/prelude-modules.el!$RESET\n"
