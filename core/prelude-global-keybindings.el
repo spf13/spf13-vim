@@ -99,6 +99,9 @@
   [remap exchange-point-and-mark]
   'prelude-exchange-point-and-mark)
 
+(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+(global-set-key (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+
 (provide 'prelude-global-keybindings)
 
 ;;; prelude-global-keybindings.el ends here
