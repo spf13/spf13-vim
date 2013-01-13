@@ -54,8 +54,7 @@
     map)
   "Keymap for Prelude mode.")
 
-(easy-menu-define prelude-mode-menu prelude-mode-map
-  "Menu for Prelude mode"
+(easy-menu-add-item nil '("Tools")
   '("Prelude"
     ("Files"
      ["Open with..." prelude-open-with]
@@ -88,7 +87,10 @@
     ("General"
      ["Visit term buffer" prelude-visit-term-buffer]
      ["Search in Google" prelude-google]
-     ["View URL" prelude-view-url])))
+     ["View URL" prelude-view-url]))
+  "Search Files (Grep)...")
+
+(easy-menu-add-item nil '("Tools") '("----") "Search Files (Grep)...")
 
 ;; define minor mode
 (define-globalized-minor-mode prelude-global-mode prelude-mode prelude-on)
@@ -107,7 +109,6 @@
   :keymap prelude-mode-map
   (if prelude-mode
       ;; on start
-      (easy-menu-add prelude-mode-menu prelude-mode-map)
     ;; on stop
     (prelude-off)))
 
