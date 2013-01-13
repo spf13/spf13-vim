@@ -54,52 +54,57 @@
     map)
   "Keymap for Prelude mode.")
 
-(easy-menu-add-item nil '("Tools")
-  '("Prelude"
-    ("Files"
-     ["Open with..." prelude-open-with]
-     ["Delete file and buffer" prelude-delete-file-and-buffer]
-     ["Rename file and buffer" prelude-rename-file-and-buffer]
-     ["Copy file name to clipboard" prelude-copy-file-name-to-clipboard])
+(defun prelude-mode-add-menu ()
+  (easy-menu-add-item nil '("Tools")
+                      '("Prelude"
+                        ("Files"
+                         ["Open with..." prelude-open-with]
+                         ["Delete file and buffer" prelude-delete-file-and-buffer]
+                         ["Rename file and buffer" prelude-rename-file-and-buffer]
+                         ["Copy file name to clipboard" prelude-copy-file-name-to-clipboard])
 
-    ("Buffers"
-     ["Clean up buffer" prelude-cleanup-buffer]
-     ["Kill other buffers" prelude-kill-other-buffers])
+                        ("Buffers"
+                         ["Clean up buffer" prelude-cleanup-buffer]
+                         ["Kill other buffers" prelude-kill-other-buffers])
 
-    ("Editing"
-     ["Insert empty line" prelude-insert-empty-line]
-     ["Move line up" prelude-move-line-up]
-     ["Move line down" prelude-move-line-down]
-     ["Indent buffer" prelude-indent-buffer]
-     ["Indent buffer or region" prelude-indent-buffer-or-region]
-     ["Duplicate line or region" prelude-duplicate-current-line-or-region]
-     ["Copy to clipboard as blockquote" prelude-indent-blockquote-and-copy-to-clipboard]
-     ["Copy to clipboard as nested blockqoute" prelude-indent-nested-blockquote-and-copy-to-clipboard]
-     ["Insert date" prelude-insert-date]
-     ["Eval and replace" prelude-eval-and-replace])
+                        ("Editing"
+                         ["Insert empty line" prelude-insert-empty-line]
+                         ["Move line up" prelude-move-line-up]
+                         ["Move line down" prelude-move-line-down]
+                         ["Indent buffer" prelude-indent-buffer]
+                         ["Indent buffer or region" prelude-indent-buffer-or-region]
+                         ["Duplicate line or region" prelude-duplicate-current-line-or-region]
+                         ["Copy to clipboard as blockquote" prelude-indent-blockquote-and-copy-to-clipboard]
+                         ["Copy to clipboard as nested blockqoute" prelude-indent-nested-blockquote-and-copy-to-clipboard]
+                         ["Insert date" prelude-insert-date]
+                         ["Eval and replace" prelude-eval-and-replace])
 
-    ("Navigation"
-     ["Helm" helm-prelude])
+                        ("Navigation"
+                         ["Helm" helm-prelude])
 
-    ("Windows"
-     ["Swap windows" prelude-swap-windows])
+                        ("Windows"
+                         ["Swap windows" prelude-swap-windows])
 
-    ("General"
-     ["Visit term buffer" prelude-visit-term-buffer]
-     ["Search in Google" prelude-google]
-     ["View URL" prelude-view-url]))
-  "Search Files (Grep)...")
+                        ("General"
+                         ["Visit term buffer" prelude-visit-term-buffer]
+                         ["Search in Google" prelude-google]
+                         ["View URL" prelude-view-url]))
+                      "Search Files (Grep)...")
 
-(easy-menu-add-item nil '("Tools") '("----") "Search Files (Grep)...")
+ (easy-menu-add-item nil '("Tools") '("--") "Search Files (Grep)..."))
+
+(defun prelude-mode-remove-menu ()
+  (easy-menu-remove-item nil '("Tools") "Prelude")
+  (easy-menu-remove-item nil '("Tools") "--"))
 
 ;; define minor mode
 (define-globalized-minor-mode prelude-global-mode prelude-mode prelude-on)
 
 (defun prelude-on ()
-  (prelude-mode t))
+  (prelude-mode +1))
 
 (defun prelude-off ()
-  (easy-menu-remove))
+  (prelude-mode -1))
 
 (define-minor-mode prelude-mode
   "Minor mode to consolidate Emacs Prelude extensions.
@@ -109,8 +114,9 @@
   :keymap prelude-mode-map
   (if prelude-mode
       ;; on start
+      (prelude-mode-add-menu)
     ;; on stop
-    (prelude-off)))
+    (prelude-mode-remove-menu)))
 
 (provide 'prelude-mode)
 ;;; prelude-mode.el ends here
