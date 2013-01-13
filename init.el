@@ -102,6 +102,7 @@ Emacs load path."
 (require 'prelude-js)
 (require 'prelude-latex)
 (require 'prelude-lisp)
+(require 'prelude-markdown)
 (require 'prelude-mediawiki)
 (require 'prelude-org)
 (require 'prelude-perl)
