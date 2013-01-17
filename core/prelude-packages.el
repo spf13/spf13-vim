@@ -39,9 +39,6 @@
 (setq package-user-dir (expand-file-name "elpa" prelude-dir))
 (package-initialize)
 
-;; required because of a package.el bug
-(setq url-http-attempt-keepalives nil)
-
 (defvar prelude-packages
   '(ace-jump-mode ack-and-a-half elisp-slime-nav exec-path-from-shell
                   expand-region flycheck gist guru-mode helm helm-projectile
