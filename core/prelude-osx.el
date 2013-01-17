@@ -2,9 +2,8 @@
 ;; the shell. Let's fix that:
 (exec-path-from-shell-initialize)
 
-;; Emacs users obviously have little need for Command and Option keys,
-;; but they do need Meta and Super
-(setq mac-command-modifier 'super)
+;; It's all in the Meta
+(setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'meta)
 
 (defun prelude-swap-meta-and-super ()
