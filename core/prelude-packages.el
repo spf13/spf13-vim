@@ -92,6 +92,7 @@
     ("\\.sass\\'" sass-mode sass-mode)
     ("\\.scala\\'" scala-mode2 scala-mode)
     ("\\.scss\\'" scss-mode scss-mode)
+    ("\\.slim\\'" slim-mode slim-mode)
     ("\\.yml\\'" yaml-mode yaml-mode)))
 
 ;; markdown-mode doesn't have autoloads for the auto-mode-alist
