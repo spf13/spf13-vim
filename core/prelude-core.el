@@ -161,7 +161,7 @@ there's a region, all lines that region covers will be duplicated."
     (setq end (line-end-position))
     (let ((region (buffer-substring-no-properties beg end)))
       (-dotimes arg
-                (lambda ()
+                (lambda (n)
                   (goto-char end)
                   (newline)
                   (insert region)
