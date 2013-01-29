@@ -53,7 +53,7 @@ file of a buffer in an external program."
   (interactive)
   (if (not (get-buffer "*ansi-term*"))
       (ansi-term (getenv "SHELL"))
-    (switch-to-buffer "*ansi-term*")))
+    (switch-to-buffer-other-window "*ansi-term*")))
 
 (defun prelude-google ()
   "Googles a query or region if any."
