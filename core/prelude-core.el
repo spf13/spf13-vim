@@ -336,6 +336,8 @@ and so on."
 
 (defun prelude-tip-of-the-day ()
   (interactive)
+  ;; pick a new random seed
+  (random t)
   (message
    (concat "Prelude tip: " (nth (random (length prelude-tips)) prelude-tips))))
 
