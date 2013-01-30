@@ -43,6 +43,14 @@
               (if (file-exists-p (concat buffer-file-name "c"))
                   (delete-file (concat buffer-file-name "c"))))))
 
+(defun prelude-visit-ielm ()
+  (interactive)
+  (if (not (get-buffer "*ielm*"))
+      (ielm)
+    (switch-to-buffer-other-window "*ielm*")))
+
+(define-key emacs-lisp-mode-map (kbd "C-c C-z") 'prelude-visit-ielm)
+
 (defun prelude-emacs-lisp-mode-defaults ()
   (run-hooks 'prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
