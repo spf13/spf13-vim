@@ -46,7 +46,10 @@
 (defun prelude-visit-ielm ()
   (interactive)
   (if (not (get-buffer "*ielm*"))
-      (ielm)
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (ielm))
     (switch-to-buffer-other-window "*ielm*")))
 
 (define-key emacs-lisp-mode-map (kbd "C-c C-z") 'prelude-visit-ielm)
