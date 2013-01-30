@@ -293,7 +293,7 @@ system. You can install `aspell` and the dictionary on OS X with
 `homebrew` like this:
 
 ```bash
-$ brew install aspell --lang=en
+$ brew install aspell --with-lang=en
 ```
 
 On Linux distros - just use your distro's package manager.
