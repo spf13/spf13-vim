@@ -51,7 +51,7 @@ If you have a bash-compatible shell you can run the script directly:
 
 ## Installing on Windows
 
-On Windows and \*nix [Git] and [Curl] are required.
+On Windows and \*nix [Git] and [Curl] are required. Also, if you haven't already, you'll need to install [Vim].
 
 ### Installing dependencies
 
@@ -431,6 +431,7 @@ Here's some tips if you've never used VIM before:
 
 [Git]:http://git-scm.com
 [Curl]:http://curl.haxx.se
+[Vim]:http://www.vim.org/download.php#pc
 [msysgit]:http://code.google.com/p/msysgit
 [MacVim]:http://code.google.com/p/macvim/
 [spf13-vim]:https://github.com/spf13/spf13-vim
