@@ -290,9 +290,13 @@
 
 ;; automatically indenting yanked text if in programming-modes
 (defvar yank-indent-modes
-  '(clojure-mode scala-mode python-mode LaTeX-mode TeX-mode)
-  "Modes in which to indent regions that are yanked (or yank-popped). Only
-modes that don't derive from `prog-mode' should be listed here.")
+  '(LaTeX-mode TeX-mode)
+  "Modes in which to indent regions that are yanked (or yank-popped).
+Only modes that don't derive from `prog-mode' should be listed here.")
+
+(defvar yank-indent-blacklisted-modes
+  '(python-mode slim-mode haml-mode)
+  "Modes for which auto-indenting is suppressed.")
 
 (defvar yank-advised-indent-threshold 1000
   "Threshold (# chars) over which indentation does not automatically occur.")
@@ -306,6 +310,7 @@ modes that don't derive from `prog-mode' should be listed here.")
   "If current mode is one of 'yank-indent-modes,
 indent yanked text (with prefix arg don't indent)."
   (if (and (not (ad-get-arg 0))
+           (not (member major-mode yank-indent-blacklisted-modes))
            (or (derived-mode-p 'prog-mode)
                (member major-mode yank-indent-modes)))
       (let ((transient-mark-mode nil))
@@ -315,6 +320,7 @@ indent yanked text (with prefix arg don't indent)."
   "If current mode is one of 'yank-indent-modes,
 indent yanked text (with prefix arg don't indent)."
   (if (and (not (ad-get-arg 0))
+           (not (member major-mode yank-indent-blacklisted-modes))
            (or (derived-mode-p 'prog-mode)
                (member major-mode yank-indent-modes)))
     (let ((transient-mark-mode nil))
