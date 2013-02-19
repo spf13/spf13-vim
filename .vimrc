@@ -442,8 +442,17 @@
         let g:neocomplcache_keyword_patterns._ = '\h\w*'
 
         " Plugin key-mappings.
-        imap <C-k> <Plug>(neosnippet_expand_or_jump)
-        smap <C-k> <Plug>(neosnippet_expand_or_jump)
+
+        " These two lines conflict with the default digraph mapping of <C-K>
+        " If you prefer that functionality, add
+        " let g:spf13_no_neosnippet_expand = 1
+        " in your .vimrc.bundles.local file
+
+        if !exists('g:spf13_no_neosnippet_expand')
+            imap <C-k> <Plug>(neosnippet_expand_or_jump)
+            smap <C-k> <Plug>(neosnippet_expand_or_jump)
+        endif
+
         inoremap <expr><C-g> neocomplcache#undo_completion()
         inoremap <expr><C-l> neocomplcache#complete_common_string()
         inoremap <expr><CR> neocomplcache#complete_common_string()
