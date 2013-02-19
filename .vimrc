@@ -503,6 +503,9 @@
         " Use honza's snippets.
         let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 
+        " Enable neosnippet snipmate compatibility mode
+        let g:neosnippet#enable_snipmate_compatibility = 1        
+
         " For snippet_complete marker.
         if has('conceal')
             set conceallevel=2 concealcursor=i
