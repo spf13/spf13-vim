@@ -48,6 +48,9 @@
             Bundle 'mileszs/ack.vim'
         elseif executable('ack')
             Bundle 'mileszs/ack.vim'
+        elseif executable('ag')
+            Bundle 'mileszs/ack.vim'
+            let g:ackprg = 'ag --nogroup --nocolor --column'
         endif
 
     " Use local bundles if available {
