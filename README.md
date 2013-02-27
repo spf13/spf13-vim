@@ -369,4 +369,4 @@ Bug reports and suggestions for improvements are always
 welcome. GitHub pull requests are even better! :-)
 
 Cheers,<br/>
-Bozhidar
+[Bozhidar](https://twitter.com/bbatsov)
