@@ -41,7 +41,9 @@
 
 (defvar prelude-packages
   '(ace-jump-mode ack-and-a-half elisp-slime-nav exec-path-from-shell
-                  expand-region flycheck gist guru-mode helm helm-projectile
+                  expand-region flycheck gist
+                  git-commit-mode gitconfig-mode gitignore-mode
+                  guru-mode helm helm-projectile
                   magit magithub melpa
                   rainbow-mode solarized-theme undo-tree
                   volatile-highlights yasnippet zenburn-theme)
