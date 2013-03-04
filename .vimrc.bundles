@@ -48,6 +48,9 @@
             Bundle 'mileszs/ack.vim'
         elseif executable('ack')
             Bundle 'mileszs/ack.vim'
+        elseif executable('ag')
+            Bundle 'mileszs/ack.vim'
+            let g:ackprg = 'ag --nogroup --nocolor --column'
         endif
 
     " Use local bundles if available {
@@ -144,6 +147,7 @@
             Bundle 'groenewege/vim-less'
             Bundle 'pangloss/vim-javascript'
             Bundle 'briancollins/vim-jst'
+            Bundle 'kchmck/vim-coffee-script'
         endif
 
     " Java
