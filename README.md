@@ -89,6 +89,22 @@ You'd do well to replace `~/.emacs.d` with the value of
 `user-emacs-directory` for your OS. You can check the value by doing
 `C-h v user-emacs-directory` inside Emacs.
 
+## Updating Prelude
+
+The update procedure is fairly straightforward:
+
+```bash
+$ cd path/to/prelude/installation
+$ git pull
+```
+
+The `path/to/prelude/installation` is usually `~/.emacs.d` (at least
+on Unix systems).
+
+It's generally a good idea to stop Emacs before you do the update. The
+next time Prelude starts it will install any new dependencies (if
+there are such).
+
 ## Enabling additional modules
 
 By default most of the modules that ship with Prelude are not loaded.
