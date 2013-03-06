@@ -543,6 +543,10 @@
         let g:indent_guides_enable_on_vim_startup = 1
     " }
 
+    "numbers {
+        nnoremap <F3> :NumbersToggle<CR>
+    "}
+
 " }
 
 " GUI Settings {
