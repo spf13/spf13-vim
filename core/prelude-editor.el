@@ -171,6 +171,7 @@
 
 (require 'volatile-highlights)
 (volatile-highlights-mode t)
+(diminish 'volatile-highlights-mode)
 
 ;; note - this should be after volatile-highlights is required
 ;; add the ability to copy and cut the current line, without marking it
@@ -252,6 +253,7 @@
 (require 'projectile)
 (setq projectile-cache-file (expand-file-name  "projectile.cache" prelude-savefile-dir))
 (projectile-global-mode t)
+(diminish 'projectile-mode "Prjl")
 
 (require 'helm-misc)
 (require 'helm-projectile)
@@ -352,6 +354,7 @@ indent yanked text (with prefix arg don't indent)."
 
 ;; sensible undo
 (global-undo-tree-mode)
+(diminish 'undo-tree-mode)
 
 ;; enable winner-mode to manage window configurations
 (winner-mode +1)

@@ -110,7 +110,7 @@
   "Minor mode to consolidate Emacs Prelude extensions.
 
 \\{prelude-mode-map}"
-  :lighter " Prelude"
+  :lighter " Pre"
   :keymap prelude-mode-map
   (if prelude-mode
       ;; on start

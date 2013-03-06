@@ -58,7 +58,8 @@
   (run-hooks 'prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
   (prelude-remove-elc-on-save)
-  (rainbow-mode +1))
+  (rainbow-mode +1)
+  (setq mode-name "EL"))
 
 (setq prelude-emacs-lisp-mode-hook 'prelude-emacs-lisp-mode-defaults)
 
@@ -75,6 +76,14 @@
 (add-hook 'ielm-mode-hook (lambda () (run-hooks 'prelude-ielm-mode-hook)))
 
 (define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
+
+(eval-after-load "elisp-slime-nav"
+  '(diminish 'elisp-slime-nav-mode))
+(eval-after-load "rainbow-mode"
+  '(diminish 'rainbow-mode))
+(eval-after-load "eldoc"
+  '(diminish 'eldoc-mode))
+
 (provide 'prelude-emacs-lisp)
 
 ;;; prelude-emacs-lisp.el ends here

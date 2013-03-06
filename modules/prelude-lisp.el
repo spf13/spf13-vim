@@ -53,6 +53,9 @@
 
 (setq prelude-interactive-lisp-coding-hook 'prelude-interactive-lisp-coding-defaults)
 
+(eval-after-load "paredit"
+  '(diminish 'paredit-mode " π"))
+
 (provide 'prelude-lisp)
 
 ;;; prelude-lisp.el ends here
