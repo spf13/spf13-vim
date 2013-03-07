@@ -1,9 +1,9 @@
-;;; prelude-core.el --- Emacs Prelude: core Prelude defuns.
+;;; prelude-core.el --- Emacs Prelude: Core Prelude functions.
 ;;
 ;; Copyright © 2011-2013 Bozhidar Batsov
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
-;; URL: http://batsov.com/emacs-prelude
+;; URL: https://github.com/bbatsov/prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
 
@@ -35,8 +35,7 @@
 (require 'thingatpt)
 
 (defun prelude-open-with ()
-  "Simple function that allows us to open the underlying
-file of a buffer in an external program."
+  "Open visited file in external program."
   (interactive)
   (when buffer-file-name
     (shell-command (concat
@@ -47,9 +46,11 @@ file of a buffer in an external program."
                     buffer-file-name))))
 
 (defun prelude-buffer-mode (buffer-or-name)
+  "Retrieve the `major-mode' of BUFFER-OR-NAME."
   (with-current-buffer buffer-or-name major-mode))
 
 (defun prelude-visit-term-buffer ()
+  "Create or visit a terminal buffer."
   (interactive)
   (if (not (get-buffer "*ansi-term*"))
       (progn
@@ -112,12 +113,12 @@ the curson at its beginning, according to the current mode."
   (forward-line -1))
 
 (defun prelude-indent-buffer ()
-  "Indents the entire buffer."
+  "Indent the currently visited buffer."
   (interactive)
   (indent-region (point-min) (point-max)))
 
 (defun prelude-indent-region-or-buffer ()
-  "Indents a region if selected, otherwise the whole buffer."
+  "Indent a region if selected, otherwise the whole buffer."
   (interactive)
   (save-excursion
     (if (region-active-p)
@@ -152,7 +153,7 @@ the curson at its beginning, according to the current mode."
 
 (defun prelude-duplicate-current-line-or-region (arg)
   "Duplicates the current line or region ARG times.
-If there's no region, the current line will be duplicated. However, if
+If there's no region, the current line will be duplicated.  However, if
 there's a region, all lines that region covers will be duplicated."
   (interactive "p")
   (let (beg end (origin (point)))
@@ -189,7 +190,7 @@ there's a region, all lines that region covers will be duplicated."
                (set-buffer-modified-p nil)))))))
 
 (defun prelude-delete-file-and-buffer ()
-  "Kills the current buffer and deletes the file it is visiting"
+  "Kill the current buffer and deletes the file it is visiting."
   (interactive)
   (let ((filename (buffer-file-name)))
     (when filename
@@ -209,6 +210,7 @@ there's a region, all lines that region covers will be duplicated."
           ((search-forward "<html" nil t) (html-mode)))))
 
 (defun prelude-untabify-buffer ()
+  "Remove all tabs from the current buffer."
   (interactive)
   (untabify (point-min) (point-max)))
 
@@ -241,7 +243,7 @@ there's a region, all lines that region covers will be duplicated."
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 (defun prelude-switch-or-start (function buffer)
-  "If the buffer is current, bury it, otherwise invoke the function."
+  "If BUFFER is current, bury it, otherwise invoke FUNCTION."
   (if (equal (buffer-name (current-buffer)) buffer)
       (bury-buffer)
     (if (get-buffer buffer)
@@ -249,12 +251,12 @@ there's a region, all lines that region covers will be duplicated."
       (funcall function))))
 
 (defun prelude-insert-date ()
-  "Insert a time-stamp according to locale's date and time format."
+  "Insert a timestamp according to locale's date and time format."
   (interactive)
   (insert (format-time-string "%c" (current-time))))
 
 (defun prelude-conditionally-enable-paredit-mode ()
-  "Enable paredit-mode in the minibuffer, during eval-expression."
+  "Enable `paredit-mode' in the minibuffer, during `eval-expression'."
   (if (eq this-command 'eval-expression)
       (paredit-mode 1)))
 
@@ -285,38 +287,14 @@ there's a region, all lines that region covers will be duplicated."
   (other-window 1))
 
 (defun prelude-kill-other-buffers ()
-  "Kill all buffers but the current one. Doesn't mess with special buffers."
+  "Kill all buffers but the current one.
+Doesn't mess with special buffers."
   (interactive)
   (-each
    (->> (buffer-list)
      (-filter #'buffer-file-name)
      (--remove (eql (current-buffer) it)))
    #'kill-buffer))
-
-(require 'repeat)
-
-(defun make-repeatable-command (cmd)
-  "Returns a new command that is a repeatable version of CMD.
-The new command is named CMD-repeat.  CMD should be a quoted
-command.
-
-This allows you to bind the command to a compound keystroke andб
-repeat it with just the final key.  For example:
-
-  (global-set-key (kbd \"C-c a\") (make-repeatable-command 'foo))
-
-will create a new command called foo-repeat.  Typing C-c a will
-just invoke foo.  Typing C-c a a a will invoke foo three times,
-and so on."
-  (fset (intern (concat (symbol-name cmd) "-repeat"))
-        `(lambda ,(help-function-arglist cmd) ;; arg list
-           ,(format "A repeatable version of `%s'."
-                    (symbol-name cmd)) ;; doc string
-           ,(interactive-form cmd) ;; interactive form
-           ;; see also repeat-message-function
-           (setq last-repeatable-command ',cmd)
-           (repeat nil)))
-  (intern (concat (symbol-name cmd) "-repeat")))
 
 (defun prelude-create-scratch-buffer ()
   "Create a new scratch buffer."
@@ -338,6 +316,7 @@ and so on."
     "Visit WikEmacs at http://wikemacs.org to find out even more about Emacs."))
 
 (defun prelude-tip-of-the-day ()
+  "Display a random entry from `prelude-tips'."
   (interactive)
   ;; pick a new random seed
   (random t)

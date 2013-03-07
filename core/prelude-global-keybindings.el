@@ -3,7 +3,7 @@
 ;; Copyright © 2011-2013 Bozhidar Batsov
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
-;; URL: http://batsov.com/emacs-prelude
+;; URL: https://github.com/bbatsov/prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
 
@@ -92,7 +92,6 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-c w") (make-repeatable-command 'er/expand-region))
 
 ;; make C-x C-x usable with transient-mark-mode
 (define-key global-map
