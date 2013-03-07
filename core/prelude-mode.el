@@ -31,6 +31,7 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
+(require 'easymenu)
 
 (defvar prelude-mode-map
   (let ((map (make-sparse-keymap)))
@@ -50,11 +51,13 @@
     (define-key map (kbd "C-c r") 'prelude-rename-file-and-buffer)
     (define-key map (kbd "C-c t") 'prelude-visit-term-buffer)
     (define-key map (kbd "C-c k") 'prelude-kill-other-buffers)
+    (define-key map (kbd "C-c TAB") 'prelude-indent-rigidly-and-copy-to-clipboard)
     (define-key map (kbd "C-c h") 'helm-prelude)
     map)
   "Keymap for Prelude mode.")
 
 (defun prelude-mode-add-menu ()
+  "Add a menu entry for `prelude-mode' under Tools."
   (easy-menu-add-item nil '("Tools")
                       '("Prelude"
                         ("Files"
@@ -74,8 +77,7 @@
                          ["Indent buffer" prelude-indent-buffer]
                          ["Indent buffer or region" prelude-indent-buffer-or-region]
                          ["Duplicate line or region" prelude-duplicate-current-line-or-region]
-                         ["Copy to clipboard as blockquote" prelude-indent-blockquote-and-copy-to-clipboard]
-                         ["Copy to clipboard as nested blockqoute" prelude-indent-nested-blockquote-and-copy-to-clipboard]
+                         ["Indent rigidly and copy to clipboard" prelude-indent-rigidly-and-copy-to-clipboard]
                          ["Insert date" prelude-insert-date]
                          ["Eval and replace" prelude-eval-and-replace])
 
@@ -94,18 +96,11 @@
  (easy-menu-add-item nil '("Tools") '("--") "Search Files (Grep)..."))
 
 (defun prelude-mode-remove-menu ()
+  "Remove `prelude-mode' menu entry."
   (easy-menu-remove-item nil '("Tools") "Prelude")
   (easy-menu-remove-item nil '("Tools") "--"))
 
 ;; define minor mode
-(define-globalized-minor-mode prelude-global-mode prelude-mode prelude-on)
-
-(defun prelude-on ()
-  (prelude-mode +1))
-
-(defun prelude-off ()
-  (prelude-mode -1))
-
 (define-minor-mode prelude-mode
   "Minor mode to consolidate Emacs Prelude extensions.
 
@@ -117,6 +112,16 @@
       (prelude-mode-add-menu)
     ;; on stop
     (prelude-mode-remove-menu)))
+
+(define-globalized-minor-mode prelude-global-mode prelude-mode prelude-on)
+
+(defun prelude-on ()
+  "Turn on `prelude-mode'."
+  (prelude-mode +1))
+
+(defun prelude-off ()
+  "Turn off `prelude-mode'."
+  (prelude-mode -1))
 
 (provide 'prelude-mode)
 ;;; prelude-mode.el ends here

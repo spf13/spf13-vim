@@ -69,30 +69,19 @@
          (buffer-substring (region-beginning) (region-end))
        (read-string "Google: "))))))
 
-(defun prelude-indent-rigidly-and-copy-to-clipboard (begin end indent)
-  "Copy the selected code region to the clipboard, indented according
-to Markdown blockquote rules."
-  (let ((buffer (current-buffer)))
+(defun prelude-indent-rigidly-and-copy-to-clipboard (begin end arg)
+  "Indent region between BEGIN and END by ARG columns and copy to clipboard."
+  (interactive "r\nP")
+  (let ((arg (or arg 4))
+        (buffer (current-buffer)))
     (with-temp-buffer
       (insert-buffer-substring-no-properties buffer begin end)
-      (indent-rigidly (point-min) (point-max) indent)
+      (indent-rigidly (point-min) (point-max) arg)
       (clipboard-kill-ring-save (point-min) (point-max)))))
 
-(defun prelude-indent-blockquote-and-copy-to-clipboard (begin end)
-  "Copy the selected code region to the clipboard, indented according
-to markdown blockquote rules (useful to copy snippets to StackOverflow, Assembla, Github."
-  (interactive "r")
-  (prelude-indent-rigidly-and-copy-to-clipboard begin end 4))
-
-(defun prelude-indent-nested-blockquote-and-copy-to-clipboard (begin end)
-  "Copy the selected code region to the clipboard, indented according
-to markdown blockquote rules. Useful to add snippets under bullet points."
-  (interactive "r")
-  (prelude-indent-rigidly-and-copy-to-clipboard begin end 6))
-
 (defun prelude-insert-empty-line ()
-  "Insert an empty line after the current line and positon
-the curson at its beginning, according to the current mode."
+  "Insert an empty line after the current line.
+Position the cursor at its beginning, according to the current mode."
   (interactive)
   (move-end-of-line nil)
   (open-line 1)
