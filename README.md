@@ -293,6 +293,13 @@ P.S. Solarized is not available by default - you'll have to install it from MELP
 Fork the official Prelude repo and add your own touch to it. You're advised to avoid changing stuff outside of the
 personal folder to avoid having to deal with git merge conflicts in the future.
 
+If you'd like to add some auto installation of packages in your
+personal config use the following code:
+
+```lisp
+(prelude-ensure-module-deps '(some-package some-other-package))
+```
+
 #### Disabling whitespace-mode
 
 Although `whitespace-mode` is awesome some people might find it too
