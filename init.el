@@ -42,12 +42,13 @@
 (defvar prelude-modules-dir (expand-file-name  "modules" prelude-dir)
   "This directory houses all of the built-in Prelude modules.")
 (defvar prelude-personal-dir (expand-file-name "personal" prelude-dir)
-  "Users of Emacs Prelude are encouraged to keep their personal configuration
-changes in this directory. All Emacs Lisp files there are loaded automatically
+  "This directory is for your personal configuration.
+
+Users of Emacs Prelude are encouraged to keep their personal configuration
+changes in this directory.  All Emacs Lisp files there are loaded automatically
 by Prelude.")
 (defvar prelude-vendor-dir (expand-file-name "vendor" prelude-dir)
-  "This directory house Emacs Lisp packages that are not yet available in
-ELPA (or MELPA).")
+  "This directory houses packages that are not yet available in ELPA (or MELPA).")
 (defvar prelude-snippets-dir (expand-file-name "snippets" prelude-dir)
   "This folder houses additional yasnippet bundles distributed with Prelude.")
 (defvar prelude-personal-snippets-dir (expand-file-name "snippets" prelude-personal-dir)
@@ -61,8 +62,7 @@ ELPA (or MELPA).")
   (make-directory prelude-savefile-dir))
 
 (defun prelude-add-subfolders-to-load-path (parent-dir)
- "Adds all first level `parent-dir' subdirs to the
-Emacs load path."
+ "Add all first level PARENT-DIR subdirs to the `load-path'."
  (dolist (f (directory-files parent-dir))
    (let ((name (expand-file-name f parent-dir)))
      (when (and (file-directory-p name)

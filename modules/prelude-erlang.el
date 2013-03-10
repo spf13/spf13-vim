@@ -35,7 +35,7 @@
 (prelude-ensure-module-deps '(erlang))
 
 (defcustom wrangler-path nil
-  "*The location of wrangler elisp directory"
+  "The location of wrangler elisp directory."
   :group 'prelude-erlang
   :type 'string
   :safe 'stringp)
