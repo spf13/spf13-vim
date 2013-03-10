@@ -182,59 +182,72 @@ extensions to keybindings.
 
 #### Global
 
-* `C-M-h` - `backward-kill-word` (as in Bash/Zsh)
-* `C-x \` - `align-regexp`
-* `C-+` - `text-scale-increase`
-* `C--` - `text-scale-decrease`
-* `C-x O` - return you to the previous window (the inverse of `other-window` (`C-x o`))
-* `C-x ^` - `join-line`
-* `C-x p` - `proced` (manage processes form Emacs, works only in Linux)
-* `C-x m` - start eshell
-* `C-x M-m` - start your default shell
-* `C-x C-m` - sames as `M-x`
-* `C-h A` - `apropos` (search in all Emacs symbols)
-* `M-\` - `hippie-expand` (a replacement for the default `dabbrev-expand`)
-* `C-x C-b` - `ibuffer` (a replacement for the default `buffer-list`)
-* `F12` - toggle the Emacs menu bar
-* `C-x g` - open Magit's status buffer
-* `C-=` - `expand-region` (incremental text selection)
+Keybinding         | Description
+-------------------|------------------------------------------------------------
+<kbd>C-M-h</kbd>   | Kill the previous word(`backward-kill-word`). (as in Bash/Zsh)
+<kbd>C-x \</kbd>   | `align-regexp`
+<kbd>C-+</kbd>     | Increase font size(`text-scale-increase`).
+<kbd>C--</kbd>     | Decrease font size(`text-scale-decrease`).
+<kbd>C-x O</kbd>   | Go back to previous window (the inverse of `other-window` (`C-x o`)).
+<kbd>C-x ^</kbd>   | Join two lines into one(`join-line`).
+<kbd>C-x p</kbd>   | Start `proced` (manage processes form Emacs, works only in Linux).
+<kbd>C-x m</kbd>   | Start `eshell`.
+<kbd>C-x M-m</kbd> | Start your default shell.
+<kbd>C-x C-m</kbd> | Alias for `M-x`.
+<kbd>C-h A</kbd>   | Run `apropos` (search in all Emacs symbols).
+<kbd>M-\</kbd>     | Run `hippie-expand` (a replacement for the default `dabbrev-expand`).
+<kbd>C-x C-b</kbd> | Open `ibuffer` (a replacement for the default `buffer-list`).
+<kbd>F12</kbd>     | Toggle the Emacs menu bar.
+<kbd>C-x g</kbd>   | Open Magit's status buffer.
+<kbd>C-=</kbd>     | Run `expand-region` (incremental text selection).
 
 #### Prelude Mode
 
-* `C-c o` - open the currently visited file with external program
-* `C-c g` - search in Google for the thing under point (or an interactive query)
-* `shift+return` - insert an empty line and indent it properly (as in most IDEs)
-* `control+shift+up` - move the current line up
-* `control+shift+down` - move the current line down
-* `C-c n` - fix indentation in buffer and strip whitespace
-* `C-c f` - open recently visitted file
-* `C-M-\` - indent region (if selected) or the entire buffer
-* `C-c u` - open URL in your default browser
-* `C-c e` - eval a bit of Emacs Lisp code and replace it with its result
-* `C-c s` - swap two active windows
-* `C-c d` - duplicate the current line (or region)
-* `C-c r` - rename the currently visited file and buffer
-* `C-c t` - open a terminal emulator (`ansi-term`)
-* `C-c k` - kill all open buffers except the one you're currently in
-* `C-c h` - open Helm (a useful means of navigating your buffers and project files)
+Keybinding         | Description
+-------------------|------------------------------------------------------------
+<kbd>C-c o</kbd>   | Open the currently visited file with an external program.
+<kbd>C-c g</kbd>   | Search in Google for the thing under point (or an interactive query).
+<kbd>S-RET</kbd>   | Insert an empty line and indent it properly (as in most IDEs).
+<kbd>C-S-up</kbd>  | Move the current line up.
+<kbd>C-S-down</kbd> | Move the current line down.
+<kbd>C-c n</kbd> | Fix indentation in buffer and strip whitespace.
+<kbd>C-c f</kbd> | Open recently visitted file.
+<kbd>C-M-\</kbd> | Indent region (if selected) or the entire buffer.
+<kbd>C-c u</kbd> | Open URL in your default browser.
+<kbd>C-c e</kbd> | Eval a bit of Emacs Lisp code and replace it with its result.
+<kbd>C-c s</kbd> | Swap two active windows.
+<kbd>C-c d</kbd> | Duplicate the current line (or region).
+<kbd>C-c r</kbd> | Rename the currently visited file and buffer.
+<kbd>C-c t</kbd> | Open a terminal emulator (`ansi-term`).
+<kbd>C-c k</kbd> | Kill all open buffers except the one you're currently in.
+<kbd>C-c h</kbd> | Open Helm (a useful means of navigating your buffers and project files).
 
 #### Projectile
 
-Here's a list of the interactive Emacs Lisp functions, provided by projectile:
+Here's a list of functionality provided by [Projectile](https://github.com/bbatsov/prelude):
 
-* `projectile-find-file` <kbd>C-c p f</kbd>
-* `projectile-grep` <kbd>C-c p g</kbd>
-* `projectile-switch-to-buffer` <kbd>C-c p b</kbd>
-* `projectile-multi-occur` <kbd>C-c p o</kbd>
-* `projectile-replace` <kbd>C-c p r</kbd>
-* `projectile-invalidate-cache` <kbd>C-c p i</kbd>
-* `projectile-regenerate-tags` <kbd>C-c p t</kbd>
-* `projectile-kill-buffers` <kbd>C-c p k</kbd>
-* `projectile-dired` <kbd>C-c p d</kbd>
-* `projectile-recentf` <kbd>C-c p e</kbd>
-* `projectile-ack` <kbd>C-c p a</kbd>
-* `projectile-compile-project` <kbd>C-c p l</kbd>
-* `projectile-test-project` <kbd>C-c p p</kbd>
+Keybinding         | Description
+-------------------|------------------------------------------------------------
+<kbd>C-c p f</kbd> | Display a list of all files in the project. With a prefix argument it will clear the cache first.
+<kbd>C-c p T</kbd> | Display a list of all test files(specs, features, etc) in the project.
+<kbd>C-c p g</kbd> | Run grep on the files in the project.
+<kbd>C-c p b</kbd> | Display a list of all project buffers currently open.
+<kbd>C-c p o</kbd> | Runs `multi-occur` on all project buffers currently open.
+<kbd>C-c p r</kbd> | Runs interactive query-replace on all files in the projects.
+<kbd>C-c p i</kbd> | Invalidates the project cache (if existing).
+<kbd>C-c p R</kbd> | Regenerates the projects `TAGS` file.
+<kbd>C-c p k</kbd> | Kills all project buffers.
+<kbd>C-c p d</kbd> | Opens the root of the project in `dired`.
+<kbd>C-c p e</kbd> | Shows a list of recently visited project files.
+<kbd>C-c p a</kbd> | Runs `ack` on the project. Requires the presence of `ack-and-a-half`.
+<kbd>C-c p l</kbd> | Runs a standard compilation command for your type of project.
+<kbd>C-c p p</kbd> | Runs a standard test command for your type of project.
+<kbd>C-c p z</kbd> | Adds the currently visited to the cache.
+<kbd>C-c p s</kbd> | Display a list of known projects you can switch to.
+
+If you ever forget any of Projectile's keybindings just do a:
+
+<kbd>C-c p C-h</kbd>
 
 ### Automatic package installation
 
