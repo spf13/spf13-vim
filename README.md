@@ -140,6 +140,9 @@ By default most of the modules that ship with Prelude are not loaded.
 
 You'll need to adjust your `prelude-modules.el` file once the installation is done.
 
+After you've uncommented a module you should either restart Emacs or evaluate the module
+`require` expression with <kbd>C-x C-e</kbd>.
+
 ## Running
 
 Nothing fancy here. Just start Emacs as usual. Personally I run Emacs
