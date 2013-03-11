@@ -327,5 +327,14 @@ Doesn't mess with special buffers."
   (exchange-point-and-mark)
   (deactivate-mark nil))
 
+(defun prelude-update ()
+  "Update Prelude to its latest version."
+  (interactive)
+  (when (y-or-n-p "Do you want to update Prelude?")
+    (message "Updating Prelude...")
+    (cd prelude-dir)
+    (shell-command "git pull")
+    (message "Update finished. Restart Emacs to complete the process.")))
+
 (provide 'prelude-core)
 ;;; prelude-core.el ends here
