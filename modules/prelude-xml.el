@@ -32,6 +32,8 @@
 
 ;;; Code:
 
+(require 'nxml-mode)
+
 (push '("<\\?xml" . nxml-mode) magic-mode-alist)
 
 ;; pom files should be treated as xml files

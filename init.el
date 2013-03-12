@@ -91,8 +91,6 @@ by Prelude.")
   (require 'prelude-osx))
 
 ;; the modules
-(require 'prelude-programming)
-
 (when (file-exists-p prelude-modules-file)
   (load prelude-modules-file))
 
