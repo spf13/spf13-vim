@@ -447,7 +447,7 @@ Here's some tips if you've never used VIM before:
 [neocomplcache]:http://github.com/shougo/neocomplcache
 [Fugitive]:http://github.com/tpope/vim-fugitive
 [Surround]:https://github.com/tpope/vim-surround
-[Tagbar]:http://github.com/godlygeek/tagbar
+[Tagbar]:http://github.com/majutsushi/tagbar
 [Syntastic]:http://github.com/scrooloose/syntastic
 [vim-easymotion]:http://github.com/Lokaltog/vim-easymotion
 [Matchit]:http://www.vim.org/scripts/script.php?script_id=39
