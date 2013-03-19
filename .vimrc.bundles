@@ -173,6 +173,11 @@
             "let g:rubycomplete_rails = 1
         endif
 
+    " Go Lang 
+        if count(g:spf13_bundle_groups, 'go')
+            Bundle 'jnwhiteh/vim-golang'
+        endif
+
     " Misc
         if count(g:spf13_bundle_groups, 'misc')
             Bundle 'tpope/vim-markdown'
@@ -181,6 +186,7 @@
             Bundle 'quentindecock/vim-cucumber-align-pipes'
             Bundle 'Puppet-Syntax-Highlighting'
         endif
+
 
     " Twig
         if count(g:spf13_bundle_groups, 'twig')
