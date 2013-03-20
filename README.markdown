@@ -398,6 +398,17 @@ spf13-vim includes [solarized] and [spf13 vim color pack](https://github.com/spf
 
 Use `:color molokai` to switch to a color scheme.
 
+Terminal Vim users will benefit from solarizing their terminal emulators and setting solarized support to 16 colors:
+
+    let g:solarized_termcolors=16
+    color solarized
+
+Terminal emulator colorschemes:
+
+* http://ethanschoonover.com/solarized (iTerm2, Terminal.app)
+* https://github.com/phiggins/konsole-colors-solarized (KDE Konsole)
+* https://github.com/sigurdga/gnome-terminal-colors-solarized (Gnome Terminal)
+
 ## Snippets
 
 It also contains a very complete set of [snippets](http://github.com/spf13/snipmate-snippets) for use with snipmate or [NeoComplCache].
