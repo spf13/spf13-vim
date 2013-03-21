@@ -178,6 +178,11 @@
             Bundle 'jnwhiteh/vim-golang'
         endif
 
+    " VDebug - Multi-purpose debugger
+        if count(g:spf13_bundle_groups, 'debugger')
+            Bundle 'joonty/vdebug'
+        endif
+
     " Misc
         if count(g:spf13_bundle_groups, 'misc')
             Bundle 'tpope/vim-markdown'
