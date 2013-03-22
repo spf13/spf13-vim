@@ -39,29 +39,7 @@
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
 
-;; the menu bar is mostly useless as well
-;; but removing it under OS X doesn't make much sense
-
-;; For daemon mode, with-selected-frame seems to be required.  Normal
-;; mode seems to require with-selected-frame to be absent.
-(require 'server) ;;for server-running-p
-(defun prelude-frame-config (frame)
-  "Custom behaviours for new frames."
-  (if (eq system-type 'darwin)
-      (if (server-running-p)
-          (with-selected-frame frame
-            (if (display-graphic-p)
-                (modify-frame-parameters frame '((menu-bar-lines . 1)))
-              (modify-frame-parameters frame '((menu-bar-lines . 0)))))
-        (if (display-graphic-p)
-            (modify-frame-parameters frame '((menu-bar-lines . 1)))
-          (modify-frame-parameters frame '((menu-bar-lines . 0)))))
-    (menu-bar-mode -1)))
-
-;; run now
-(prelude-frame-config (selected-frame))
-;; and later
-(add-hook 'after-make-frame-functions 'prelude-frame-config)
+(menu-bar-mode -1)
 
 ;; the blinking cursor is nothing, but an annoyance
 (blink-cursor-mode -1)
