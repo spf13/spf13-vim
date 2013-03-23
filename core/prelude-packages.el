@@ -40,7 +40,7 @@
 (package-initialize)
 
 (defvar prelude-packages
-  '(ace-jump-mode ack-and-a-half diminish elisp-slime-nav exec-path-from-shell
+  '(ace-jump-mode ack-and-a-half diminish elisp-slime-nav
                   expand-region flycheck gist
                   git-commit-mode gitconfig-mode gitignore-mode
                   guru-mode helm helm-projectile
