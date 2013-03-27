@@ -44,7 +44,7 @@
   :group 'prelude)
 
 (defcustom prelude-guru t
-  "Non-nil values enable guru-mode"
+  "Non-nil values enable guru-mode."
   :type 'boolean
   :group 'prelude)
 
