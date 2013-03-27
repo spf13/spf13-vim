@@ -225,7 +225,7 @@
     (flyspell-mode +1)))
 
 (defun prelude-cleanup-maybe ()
-    (when prelude-clean-whitespace-on-save (whitespace-cleanup)))
+  (when prelude-clean-whitespace-on-save (whitespace-cleanup)))
 
 (defun prelude-enable-whitespace ()
   (when prelude-whitespace
