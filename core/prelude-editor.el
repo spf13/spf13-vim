@@ -56,8 +56,7 @@
 (defcustom prelude-clean-whitespace-on-save t
   "Cleanup whitespace from file before it's saved.  Will only occur if prelude-whitespace is also enabled"
   :type 'boolean
-  :group 'prelude
-)
+  :group 'prelude)
 
 (defcustom prelude-flyspell t
   "Non-nil values enable Prelude's flyspell support."
@@ -225,7 +224,8 @@
     (flyspell-mode +1)))
 
 (defun prelude-cleanup-maybe ()
-  (when prelude-clean-whitespace-on-save (whitespace-cleanup)))
+  (when prelude-clean-whitespace-on-save
+    (whitespace-cleanup)))
 
 (defun prelude-enable-whitespace ()
   (when prelude-whitespace
