@@ -44,7 +44,7 @@
     (define-key map (kbd "C-c n") 'prelude-cleanup-buffer)
     (define-key map (kbd "C-c f")  'prelude-recentf-ido-find-file)
     (define-key map (kbd "C-M-\\") 'prelude-indent-region-or-buffer)
-    (define-key map (kbd "C-M-z") 'indent-defun)
+    (define-key map (kbd "C-M-z") 'prelude-indent-defun)
     (define-key map (kbd "C-c u") 'prelude-view-url)
     (define-key map (kbd "C-c e") 'prelude-eval-and-replace)
     (define-key map (kbd "C-c s") 'prelude-swap-windows)
