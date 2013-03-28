@@ -116,6 +116,13 @@ Position the cursor at its beginning, according to the current mode."
         (prelude-indent-buffer)
         (message "Indented buffer.")))))
 
+(defun prelude-indent-defun ()
+  "Indent the current defun."
+  (interactive)
+  (save-excursion
+    (mark-defun)
+    (indent-region (region-beginning) (region-end))))
+
 (defun prelude-annotate-todo ()
   "Put fringe marker on TODO: lines in the curent buffer."
   (interactive)
