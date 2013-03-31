@@ -96,13 +96,13 @@ Position the cursor at its beginning, according to the current mode."
   (newline-and-indent))
 
 (defun prelude-move-line-up ()
-  "Move up the current line."
+  "Move the current line up."
   (interactive)
   (transpose-lines 1)
   (forward-line -2))
 
 (defun prelude-move-line-down ()
-  "Move down the current line."
+  "Move the current line down."
   (interactive)
   (forward-line 1)
   (transpose-lines 1)
