@@ -83,10 +83,8 @@
   "Insert an empty line above the current line.
 Position the cursor at it's beginning, according to the current mode"
   (interactive)
-  (beginning-of-line)
-  (newline)
-  (forward-line -1)
-  (indent-according-to-mode))
+  (previous-line)
+  (prelude-smart-open-line))
 
 (defun prelude-smart-open-line ()
   "Insert an empty line after the current line.
