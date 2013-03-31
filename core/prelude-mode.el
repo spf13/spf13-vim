@@ -39,6 +39,7 @@
     (define-key map (kbd "C-c g") 'prelude-google)
     ;; mimic popular IDEs binding, note that it doesn't work in a terminal session
     (define-key map [(shift return)] 'prelude-smart-open-line)
+    (define-key map [(control shift return)] 'prelude-smart-open-line-above)
     (define-key map [(control shift up)]  'prelude-move-line-up)
     (define-key map [(control shift down)]  'prelude-move-line-down)
     (define-key map (kbd "C-c n") 'prelude-cleanup-buffer)

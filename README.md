@@ -209,6 +209,7 @@ Keybinding         | Description
 -------------------|------------------------------------------------------------
 <kbd>C-c o</kbd>   | Open the currently visited file with an external program.
 <kbd>C-c g</kbd>   | Search in Google for the thing under point (or an interactive query).
+<kbd>C-S-RET</kbd> | Insert an empty line above the current line and indent it properly
 <kbd>S-RET</kbd>   | Insert an empty line and indent it properly (as in most IDEs).
 <kbd>C-S-up</kbd>  | Move the current line up.
 <kbd>C-S-down</kbd> | Move the current line down.
