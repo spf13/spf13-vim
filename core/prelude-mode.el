@@ -41,6 +41,8 @@
     (define-key map [(shift return)] 'prelude-smart-open-line)
     (define-key map [(control shift up)]  'prelude-move-line-up)
     (define-key map [(control shift down)]  'prelude-move-line-down)
+    (define-key map [(meta shift up)]  'prelude-move-line-up)
+    (define-key map [(meta shift down)]  'prelude-move-line-down)
     (define-key map (kbd "C-c n") 'prelude-cleanup-buffer)
     (define-key map (kbd "C-c f")  'prelude-recentf-ido-find-file)
     (define-key map (kbd "C-M-\\") 'prelude-indent-region-or-buffer)
