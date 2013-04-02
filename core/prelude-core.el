@@ -79,6 +79,13 @@
       (indent-rigidly (point-min) (point-max) arg)
       (clipboard-kill-ring-save (point-min) (point-max)))))
 
+(defun prelude-smart-open-line-above ()
+  "Insert an empty line above the current line.
+Position the cursor at it's beginning, according to the current mode"
+  (interactive)
+  (previous-line)
+  (prelude-smart-open-line))
+
 (defun prelude-smart-open-line ()
   "Insert an empty line after the current line.
 Position the cursor at its beginning, according to the current mode."
@@ -87,14 +94,14 @@ Position the cursor at its beginning, according to the current mode."
   (newline-and-indent))
 
 (defun prelude-move-line-up ()
-  "Move up the current line."
+  "Move the current line up."
   (interactive)
   (transpose-lines 1)
   (forward-line -2)
   (indent-according-to-mode))
 
 (defun prelude-move-line-down ()
-  "Move down the current line."
+  "Move the current line down."
   (interactive)
   (forward-line 1)
   (transpose-lines 1)
