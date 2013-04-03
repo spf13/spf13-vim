@@ -197,9 +197,12 @@ there's a region, all lines that region covers will be duplicated."
   (interactive)
   (let ((filename (buffer-file-name)))
     (when filename
-      (delete-file filename)
-      (message "Deleted file %s" filename)))
-  (kill-buffer))
+      (if (vc-backend filename)
+          (vc-delete-file filename)
+        (progn
+          (delete-file filename)
+          (message "Deleted file %s" filename)
+          (kill-buffer))))))
 
 (defun prelude-view-url ()
   "Open a new buffer containing the contents of URL."
