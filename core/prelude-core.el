@@ -81,9 +81,9 @@
 
 (defun prelude-smart-open-line-above ()
   "Insert an empty line above the current line.
-Position the cursor at it's beginning, according to the current mode"
+Position the cursor at it's beginning, according to the current mode."
   (interactive)
-  (previous-line)
+  (forward-line -1)
   (prelude-smart-open-line))
 
 (defun prelude-smart-open-line ()
