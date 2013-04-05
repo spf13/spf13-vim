@@ -67,7 +67,7 @@
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc', 'scala']
+        let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'html', 'misc', 'scala']
     endif
 
     " To override all the included bundles, put
@@ -173,9 +173,10 @@
             "let g:rubycomplete_rails = 1
         endif
 
-    " Go Lang 
+    " Go Lang
         if count(g:spf13_bundle_groups, 'go')
             Bundle 'jnwhiteh/vim-golang'
+            Bundle 'spf13/vim-gocode'
         endif
 
     " Misc
