@@ -47,7 +47,8 @@
 
 (defun prelude-buffer-mode (buffer-or-name)
   "Retrieve the `major-mode' of BUFFER-OR-NAME."
-  (with-current-buffer buffer-or-name major-mode))
+  (with-current-buffer buffer-or-name
+    major-mode))
 
 (defun prelude-visit-term-buffer ()
   "Create or visit a terminal buffer."
@@ -211,8 +212,7 @@ there's a region, all lines that region covers will be duplicated."
          (url (read-from-minibuffer "URL: " default)))
     (switch-to-buffer (url-retrieve-synchronously url))
     (rename-buffer url t)
-    ;; TODO: switch to nxml/nxhtml mode
-    (cond ((search-forward "<?xml" nil t) (xml-mode))
+    (cond ((search-forward "<?xml" nil t) (nxml-mode))
           ((search-forward "<html" nil t) (html-mode)))))
 
 (defun prelude-untabify-buffer ()
