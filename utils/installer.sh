@@ -2,9 +2,9 @@ install_prelude () {
     printf " Cloning the Prelude's GitHub repository...\n$RESET"
     if [ x$PRELUDE_VERBOSE != x ]
     then
-        /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR
+        /usr/bin/env git clone $PRELUDE_URL "$PRELUDE_INSTALL_DIR"
     else
-        /usr/bin/env git clone $PRELUDE_URL $PRELUDE_INSTALL_DIR > /dev/null
+        /usr/bin/env git clone $PRELUDE_URL "$PRELUDE_INSTALL_DIR" > /dev/null
     fi
     if ! [ $? -eq 0 ]
     then
@@ -15,9 +15,9 @@ install_prelude () {
 
 make_prelude_dirs () {
     printf " Making the required directories.\n$RESET"
-    mkdir $PRELUDE_INSTALL_DIR/vendor $PRELUDE_INSTALL_DIR/personal
-    mkdir $PRELUDE_INSTALL_DIR/themes $PRELUDE_INSTALL_DIR/snippets
-    mkdir $PRELUDE_INSTALL_DIR/savefile
+    mkdir "$PRELUDE_INSTALL_DIR/vendor" "$PRELUDE_INSTALL_DIR/personal"
+    mkdir "$PRELUDE_INSTALL_DIR/themes" "$PRELUDE_INSTALL_DIR/snippets"
+    mkdir "$PRELUDE_INSTALL_DIR/savefile"
 }
 
 colors () {
@@ -119,7 +119,7 @@ done
 VERBOSE_COLOR=$BBLUE
 
 [ -z $PRELUDE_URL ] && PRELUDE_URL="https://github.com/bbatsov/prelude.git"
-[ -z $PRELUDE_INSTALL_DIR ] && PRELUDE_INSTALL_DIR="$HOME/.emacs.d"
+[ -z "$PRELUDE_INSTALL_DIR" ] && PRELUDE_INSTALL_DIR="$HOME/.emacs.d"
 
 if [ x$PRELUDE_VERBOSE != x ]
 then
@@ -139,7 +139,7 @@ then
 fi
 
 # If prelude is already installed
-if [ -d $PRELUDE_INSTALL_DIR/core/prelude-core.el ]
+if [ -d "$PRELUDE_INSTALL_DIR/core/prelude-core.el" ]
 then
     printf "\n\n$BRED"
     printf "You already have Prelude installed.$RESET\nYou'll need to remove $PRELUDE_INSTALL_DIR/prelude if you want to install Prelude again.\n"
@@ -179,11 +179,11 @@ then
     printf "$YELLOW WARNING:$RESET Prelude depends on emacs $RED 24$RESET !\n"
 fi
 
-if [ -d $PRELUDE_INSTALL_DIR ] || [ -f $PRELUDE_INSTALL_DIR ]
+if [ -d "$PRELUDE_INSTALL_DIR" ] || [ -f "$PRELUDE_INSTALL_DIR" ]
 then
     # Existing file/directory found -> backup
     printf " Backing up the existing config to $PRELUDE_INSTALL_DIR.pre-prelude.tar.\n"
-    tar -cf $PRELUDE_INSTALL_DIR.pre-prelude.tar $PRELUDE_INSTALL_DIR > /dev/null 2>&1
+    tar -cf "$PRELUDE_INSTALL_DIR.pre-prelude.tar" "$PRELUDE_INSTALL_DIR" > /dev/null 2>&1
     # Overwrite existing?
     if [ -n $PRELUDE_INTO ]
     then
@@ -192,10 +192,10 @@ then
         make_prelude_dirs
     else
         # Install into existing config
-        PRELUDE_INSTALL_DIR=$PRELUDE_INSTALL_DIR"/prelude"
+        PRELUDE_INSTALL_DIR="$PRELUDE_INSTALL_DIR/prelude"
         install_prelude
     fi
-elif [ -e $PRELUDE_INSTALL_DIR ]
+elif [ -e "$PRELUDE_INSTALL_DIR" ]
 then
     # File exist but not a regular file or directory
     # WTF NOW?
@@ -207,7 +207,7 @@ else
     # Nothing yet so just install prelude
     install_prelude
     make_prelude_dirs
-    cp $PRELUDE_INSTALL_DIR/sample/prelude-modules.el $PRELUDE_INSTALL_DIR
+    cp "$PRELUDE_INSTALL_DIR/sample/prelude-modules.el" "$PRELUDE_INSTALL_DIR"
 fi
 
 if [ -z $PRELUDE_SKIP_BC ];
@@ -217,9 +217,9 @@ then
         printf " Bytecompiling Prelude.\n"
         if [ x$PRELUDE_VERBOSE != x ]
         then
-            emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/core/*.el
+            emacs -batch -f batch-byte-compile "$PRELUDE_INSTALL_DIR/core/*.el"
         else
-            emacs -batch -f batch-byte-compile $PRELUDE_INSTALL_DIR/core/*.el > /dev/null 2>&1
+            emacs -batch -f batch-byte-compile "$PRELUDE_INSTALL_DIR/core/*.el" > /dev/null 2>&1
         fi
     else
         printf "$YELLOW Emacs not found.$RESET Skipping bytecompilation.\n"
@@ -227,14 +227,6 @@ then
 else
     printf "Skipping bytecompilation.\n"
 fi
-
-# Print usage message if prelude didn't replace .emacs.d
-# if [ $PRELUDE_INSTALL_DIR != "$HOME/.emacs.d" ]
-# then
-#     printf "\n To use prelude, add: $CYAN\n (defvar prelude-dir \"$PRELUDE_INSTALL_DIR/\")\n"
-#     printf " (load-file (concat prelude-dir \"init.el\"))\n$RESET"
-#     printf " To your emacs init file.\n\n"
-# fi
 
 printf "\n"
 printf "$BBLUE  ____           _           _       \n"
