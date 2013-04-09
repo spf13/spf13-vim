@@ -192,7 +192,7 @@ Keybinding         | Description
 <kbd>C--</kbd>     | Decrease font size(`text-scale-decrease`).
 <kbd>C-x O</kbd>   | Go back to previous window (the inverse of `other-window` (`C-x o`)).
 <kbd>C-x ^</kbd>   | Join two lines into one(`join-line`).
-<kbd>C-x p</kbd>   | Start `proced` (manage processes form Emacs, works only in Linux).
+<kbd>C-x p</kbd>   | Start `proced` (manage processes from Emacs; works only in Linux).
 <kbd>C-x m</kbd>   | Start `eshell`.
 <kbd>C-x M-m</kbd> | Start your default shell.
 <kbd>C-x C-m</kbd> | Alias for `M-x`.
