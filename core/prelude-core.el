@@ -109,6 +109,13 @@ Position the cursor at its beginning, according to the current mode."
   (forward-line -1)
   (indent-according-to-mode))
 
+(defun prelude-kill-whole-line (&optional arg)
+  "A simple wrapper around command `kill-whole-line' that respects indentation.
+Passes ARG to command `kill-whole-line' when provided."
+  (interactive "P")
+  (kill-whole-line arg)
+  (back-to-indentation))
+
 (defun prelude-indent-buffer ()
   "Indent the currently visited buffer."
   (interactive)
