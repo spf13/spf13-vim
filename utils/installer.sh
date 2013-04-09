@@ -15,9 +15,9 @@ install_prelude () {
 
 make_prelude_dirs () {
     printf " Making the required directories.\n$RESET"
-    mkdir "$PRELUDE_INSTALL_DIR/vendor" "$PRELUDE_INSTALL_DIR/personal"
-    mkdir "$PRELUDE_INSTALL_DIR/themes" "$PRELUDE_INSTALL_DIR/snippets"
-    mkdir "$PRELUDE_INSTALL_DIR/savefile"
+    mkdir -p "$PRELUDE_INSTALL_DIR/vendor" "$PRELUDE_INSTALL_DIR/personal"
+    mkdir -p "$PRELUDE_INSTALL_DIR/themes" "$PRELUDE_INSTALL_DIR/snippets"
+    mkdir -p "$PRELUDE_INSTALL_DIR/savefile"
 }
 
 colors () {
