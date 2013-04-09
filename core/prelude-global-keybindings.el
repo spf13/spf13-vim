@@ -77,7 +77,8 @@
 ;; kill lines backward
 (global-set-key (kbd "C-<backspace>") (lambda ()
                                         (interactive)
-                                        (kill-line 0)))
+                                        (kill-line 0)
+                                        (indent-according-to-mode)))
 
 ;; Activate occur easily inside isearch
 (define-key isearch-mode-map (kbd "C-o")
