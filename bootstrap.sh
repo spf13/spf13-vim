@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-endpath="$HOME/.spf13-vim-3"
-
 warn() {
     echo "$1" >&2
 }
@@ -27,8 +25,10 @@ echo "backing up current vim config"
 today=`date +%Y%m%d`
 for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && [ ! -L $i ] && mv $i $i.$today; done
 
+endpath="$( cd "$( dirname "$0" )" && pwd)"
 
 if [ ! -e $endpath/.git ]; then
+    endpath="$HOME/.spf13-vim-3"
     echo "cloning spf13-vim"
     git clone --recursive -b 3.0 http://github.com/spf13/spf13-vim.git $endpath
 else
