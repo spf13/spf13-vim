@@ -85,7 +85,12 @@
             Bundle 'kien/ctrlp.vim'
             Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
-            Bundle 'Lokaltog/vim-powerline'
+            if has("python") || has("python3")
+                Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
+            else
+                Bundle 'Lokaltog/vim-powerline'
+            endif
+
             Bundle 'Lokaltog/vim-easymotion'
             Bundle 'godlygeek/csapprox'
             Bundle 'jistr/vim-nerdtree-tabs'
