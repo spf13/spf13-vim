@@ -111,6 +111,13 @@
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 (global-set-key (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
+;; key chords
+(require 'key-chord)
+
+(key-chord-define-global "jj" 'ace-jump-mode)
+
+(key-chord-mode +1)
+
 (provide 'prelude-global-keybindings)
 
 ;;; prelude-global-keybindings.el ends here
