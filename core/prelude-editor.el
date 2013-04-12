@@ -179,7 +179,7 @@ Will only occur if prelude-whitespace is also enabled."
 
 ;; note - this should be after volatile-highlights is required
 ;; add the ability to copy and cut the current line, without marking it
-(defadvice kill-ring-save (before slick-copy activate compile)
+(defadvice kill-ring-save (before smart-copy activate compile)
   "When called interactively with no active region, copy a single line instead."
   (interactive
    (if mark-active (list (region-beginning) (region-end))
@@ -187,7 +187,7 @@ Will only occur if prelude-whitespace is also enabled."
      (list (line-beginning-position)
            (line-beginning-position 2)))))
 
-(defadvice kill-region (before slick-cut activate compile)
+(defadvice kill-region (before smart-cut activate compile)
   "When called interactively with no active region, kill a single line instead."
   (interactive
    (if mark-active (list (region-beginning) (region-end))
