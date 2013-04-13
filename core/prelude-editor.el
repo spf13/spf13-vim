@@ -294,6 +294,9 @@ Will only occur if prelude-whitespace is also enabled."
 ;; dired - reuse current buffer by pressing 'a'
 (put 'dired-find-alternate-file 'disabled nil)
 
+;; enable some really cool extensions like C-x C-j(dired-jump)
+(require 'dired-x)
+
 ;; ediff - don't start another frame
 (require 'ediff)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
