@@ -1,19 +1,4 @@
 " Modeline and Notes {
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
-"
-"                    __ _ _____              _
-"         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
-"        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
-"        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
-"        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
-"            |_|
-"
-"   This is the personal .vimrc.bundles file of Steve Francia.
-"   While much of it is beneficial for general use, I would
-"   recommend picking out the parts you want and understand.
-"
-"   You can find me at http://spf13.com
-" }
 
 " Environment {
     " Basics {
@@ -43,15 +28,13 @@
         Bundle 'gmarik/vundle'
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
-        if executable('ack-grep')
-            let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-            Bundle 'mileszs/ack.vim'
-        elseif executable('ack')
-            Bundle 'mileszs/ack.vim'
-        elseif executable('ag')
-            Bundle 'mileszs/ack.vim'
-            let g:ackprg = 'ag --nogroup --nocolor --column'
-        endif
+        " no ack
+        "if executable('ack-grep')
+            "let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+            "Bundle 'mileszs/ack.vim'
+        "elseif executable('ack')
+            "Bundle 'mileszs/ack.vim'
+        "endif
 
     " Use local bundles if available {
         if filereadable(expand("~/.vimrc.bundles.local"))
@@ -67,7 +50,8 @@
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'html', 'misc', 'scala']
+        "let g:spf13_bundle_groups=['general',  'programming', 'snip', 'php', 'ruby', 'python', 'javascript', 'html', 'coffeescript', 'ios', 'document', 'twig', 'scala', 'bash', 'potion']
+        let g:spf13_bundle_groups=['general', 'programming', 'javascript', 'css', 'html', 'coffeescript', 'ios', 'document', 'bash']
     endif
 
     " To override all the included bundles, put
@@ -78,65 +62,100 @@
     " General
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'scrooloose/nerdtree'
-            Bundle 'altercation/vim-colors-solarized'
-            Bundle 'spf13/vim-colors'
+            "Bundle 'altercation/vim-colors-solarized'
+            "Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
-            Bundle 'spf13/vim-autoclose'
+            "Bundle 'spf13/vim-autoclose'
             Bundle 'kien/ctrlp.vim'
-            Bundle 'vim-scripts/sessionman.vim'
+            "Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
-            if has("python") || has("python3")
-                Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
-            else
-                Bundle 'Lokaltog/vim-powerline'
-            endif
-
-            Bundle 'Lokaltog/vim-easymotion'
-            Bundle 'godlygeek/csapprox'
-            Bundle 'jistr/vim-nerdtree-tabs'
-            Bundle 'flazz/vim-colorschemes'
-            Bundle 'mbbill/undotree'
-            Bundle 'myusuf3/numbers.vim'
-            Bundle 'nathanaelkane/vim-indent-guides'
-            if !exists('g:spf13_no_views')
-                Bundle 'vim-scripts/restore_view.vim'
-            endif
-            Bundle 'airblade/vim-gitgutter'
-            Bundle 'tpope/vim-abolish.git'
+            "Bundle 'Lokaltog/vim-powerline'
+            "Bundle 'Lokaltog/vim-easymotion'
+            "NOTE: csapprox cause errors
+            "Bundle 'godlygeek/csapprox'
+            "Bundle 'jistr/vim-nerdtree-tabs'
+            "Bundle 'flazz/vim-colorschemes'
+            "Bundle 'mbbill/undotree'
+            "Bundle 'myusuf3/numbers.vim'
+            "Bundle 'nathanaelkane/vim-indent-guides'
+            "if !exists('g:spf13_no_views')
+                "Bundle 'vim-scripts/restore_view.vim'
+            "endif
+            "Bundle 'tpope/vim-abolish.git'
+            "
+            "added by fudesign2008
+            "
+            "Bundle 'vim-scripts/ShowMarks'
+            Bundle 'ervandew/supertab'
+            "Provides tab completion while inside the “/” search
+            Bundle 'vim-scripts/SearchComplete'
+            " to zoomin/out guifont size
+            Bundle 'vim-scripts/zoom.vim'
+            Bundle 'vim-scripts/IndentAnything'
+            Bundle 'mattn/calendar-vim'
+            Bundle 'FuDesign2008/AutoClose.vim'
+            Bundle 'FuDesign2008/WebSearch.vim'
+            Bundle 'FuDesign2008/OpenUrl.vim'
+            Bundle 'FuDesign2008/ToogleNumber.vim'
+            Bundle 'FuDesign2008/SpaceControl.vim'
+            "light color schemes
+            Bundle 'therubymug/vim-pyte'
+            Bundle 'vim-scripts/summerfruit.vim'
+            Bundle 'vim-scripts/autumnleaf_modified.vim'
+            Bundle 'FuDesign2008/ironman.vim'
+            Bundle 'FuDesign2008/proton.vim'
+            Bundle 'vim-scripts/mayansmoke'
+            "dark color schemes
+            Bundle 'FuDesign2008/codeschool.vim'
+            Bundle 'Lokaltog/vim-distinguished'
+            Bundle 'nanotech/jellybeans.vim'
+            Bundle 'jpo/vim-railscasts-theme'
+            Bundle 'matthewtodd/vim-twilight'
+            Bundle 'tpope/vim-vividchalk'
+            Bundle 'twerth/ir_black'
+            Bundle 'tomasr/molokai'
+            Bundle 'jnurmine/Zenburn'
+            Bundle 'vim-scripts/desert.vim'
+            Bundle 'briancarper/gentooish.vim'
+            Bundle 'cschlueter/vim-wombat'
+            Bundle 'jonathanfilip/vim-lucius'
+            Bundle 'altercation/vim-colors-solarized'
+            Bundle 'FuDesign2008/GoodColors.vim'
+            "color schemes end
+            Bundle 'FuDesign2008/translator.vim'
+            Bundle 'FuDesign2008/vimKit'
         endif
 
     " General Programming
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
-            Bundle 'scrooloose/syntastic'
-            Bundle 'tpope/vim-fugitive'
-            Bundle 'mattn/webapi-vim'
-            Bundle 'mattn/gist-vim'
+            " so disable it
+            "Bundle 'scrooloose/syntastic'
+            "Bundle 'tpope/vim-fugitive'
+            "Bundle 'mattn/webapi-vim'
+            "Bundle 'mattn/gist-vim'
             Bundle 'scrooloose/nerdcommenter'
+            "@see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
             Bundle 'godlygeek/tabular'
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
             endif
+            Bundle 'Yggdroot/indentLine'
+            Bundle 'FuDesign2008/GotoFile.vim'
         endif
-
-    " Snippets & AutoComplete
-        if count(g:spf13_bundle_groups, 'snipmate')
+    " Snippets
+        if count(g:spf13_bundle_groups, 'snip')
             Bundle 'garbas/vim-snipmate'
-            Bundle 'honza/vim-snippets'
-            " Source support_function.vim to support vim-snippets.
-            if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
-                source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
+            Bundle 'honza/snipmate-snippets'
+            "Source support_function.vim to support snipmate-snippets.
+            if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
+                source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
             endif
-        elseif count(g:spf13_bundle_groups, 'neocomplcache')
-            Bundle 'Shougo/neocomplcache'
-            Bundle 'Shougo/neosnippet'
-            Bundle 'honza/vim-snippets'
         endif
 
     " PHP
         if count(g:spf13_bundle_groups, 'php')
             Bundle 'spf13/PIV'
-            Bundle 'arnaud-lb/vim-php-namespace'
         endif
 
     " Python
@@ -150,11 +169,18 @@
 
     " Javascript
         if count(g:spf13_bundle_groups, 'javascript')
-            Bundle 'leshill/vim-json'
-            Bundle 'groenewege/vim-less'
-            Bundle 'pangloss/vim-javascript'
+            "Bundle 'leshill/vim-json'
+            "Bundle 'pangloss/vim-javascript'
+            Bundle 'jelera/vim-javascript-syntax'
+            Bundle 'FuDesign2008/jslint.vim'
+            Bundle 'FuDesign2008/WriteJSDocComment.vim'
             Bundle 'briancollins/vim-jst'
-            Bundle 'kchmck/vim-coffee-script'
+        endif
+
+    " css
+        if count(g:spf13_bundle_groups, 'css')
+            Bundle 'groenewege/vim-less'
+            Bundle 'hail2u/vim-css3-syntax'
         endif
 
     " Java
@@ -166,8 +192,11 @@
     " HTML
         if count(g:spf13_bundle_groups, 'html')
             Bundle 'amirh/HTML-AutoCloseTag'
-            Bundle 'hail2u/vim-css3-syntax'
-            Bundle 'tpope/vim-haml'
+        endif
+
+    " coffeescript
+        if count(g:spf13_bundle_groups, 'coffeescript')
+            Bundle 'kchmck/vim-coffee-script'
         endif
 
     " Ruby
@@ -178,31 +207,46 @@
             "let g:rubycomplete_rails = 1
         endif
 
-    " Go Lang
-        if count(g:spf13_bundle_groups, 'go')
-            Bundle 'jnwhiteh/vim-golang'
-            Bundle 'spf13/vim-gocode'
-        endif
-
-    " Misc
-        if count(g:spf13_bundle_groups, 'misc')
+    " Document
+        if count(g:spf13_bundle_groups, 'document')
+            Bundle 'FuDesign2008/PreviewMarkdown.vim'
             Bundle 'tpope/vim-markdown'
-            Bundle 'spf13/vim-preview'
-            Bundle 'tpope/vim-cucumber'
-            Bundle 'quentindecock/vim-cucumber-align-pipes'
-            Bundle 'Puppet-Syntax-Highlighting'
+            Bundle 'vim-scripts/Figlet.vim'
+            Bundle 'vim-scripts/wiki.vim'
+            "Bundle 'spf13/vim-preview'
+            "Bundle 'tpope/vim-cucumber'
+            "Bundle 'quentindecock/vim-cucumber-align-pipes'
+            "Bundle 'Puppet-Syntax-Highlighting'
         endif
-
 
     " Twig
-        if count(g:spf13_bundle_groups, 'twig')
-            Bundle 'beyondwords/vim-twig'
+        "if count(g:spf13_bundle_groups, 'twig')
+            "Bundle 'beyondwords/vim-twig'
+        "endif
+
+    "iOS
+        " has('mac') makes no effects, why ???
+        if !has('win32') && has('unix') && count(g:spf13_bundle_groups, 'ios')
+            "Bundle 'eraserhd/vim-ios'
+            Bundle  'msanders/cocoa.vim'
+            Bundle 'Rip-Rip/clang_complete'
         endif
+
+    "potion
+        if count(g:spf13_bundle_groups, 'potion')
+            Bundle 'FuDesign2008/potion.vim'
+        endif
+
+    " bash
+        if count(g:spf13_bundle_groups, 'bash')
+            Bundle 'vim-scripts/bash-support.vim'
+        endif
+
     endif
 " }
 
 " General {
     " set autowrite                  " automatically write a file when leaving a modified buffer
-    set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
+    "set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
 " }
 
