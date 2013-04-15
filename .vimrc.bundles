@@ -239,7 +239,7 @@
 
     " bash
         if count(g:spf13_bundle_groups, 'bash')
-            Bundle 'vim-scripts/bash-support.vim'
+            Bundle 'FuDesign2008/bash_kit.vim'
         endif
 
     endif
