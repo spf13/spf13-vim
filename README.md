@@ -135,7 +135,7 @@ By default most of the modules that ship with Prelude are not loaded.
 (require 'prelude-xml)
 ```
 
-You'll need to adjust your `prelude-modules.el` file once the installation is done.
+You'll need to adjust your `prelude-modules.el` file once the installation is done. If you are doing a manual install then you first need to copy the `prelude-modules.el` available in the sample directory to the root of `path/to/prelude/installation` and then adjust that one.
 
 After you've uncommented a module you should either restart Emacs or evaluate the module
 `require` expression with <kbd>C-x C-e</kbd>.
