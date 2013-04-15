@@ -1,7 +1,7 @@
 @if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
 @if not exist "%HOME%" @set HOME=%USERPROFILE%
 
-@set BASE_DIR=%HOME%\.fd-vim
+@set BASE_DIR=%HOME%\.fudesign2008.vim
 
 @if not exist "%BASE_DIR%" (
         echo backing up existing vim config
@@ -14,12 +14,12 @@
 
 @if exist "%BASE_DIR%" (
         @set ORIGINAL_DIR=%CD%
-        echo updating fd-vim
+        echo updating fudesign2008.vim
         chdir /d "%BASE_DIR%" && git pull
         chdir /d "%ORIGINAL_DIR%"
         ) else (
-            echo cloning fd-vim
-            call git clone --recursive -b 3.0 git://github.com/FuDesign2008/fd-vim.git "%BASE_DIR%"
+            echo cloning fudesign2008.vim
+            call git clone --recursive -b 3.0 git://github.com/FuDesign2008/fudesign2008.vim.git "%BASE_DIR%"
         )
 
 @if not exist  "%BASE_DIR%\.vim\bundle" call mkdir "%BASE_DIR%\.vim\bundle"

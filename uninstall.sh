@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-endpath="$HOME/fd-vim"
+endpath="$HOME/fudesign2008.vim"
 
 warn() {
     echo "$1" >&2

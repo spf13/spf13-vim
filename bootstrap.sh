@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-endpath="$HOME/.fd-vim"
+endpath="$HOME/.fudesign2008.vim"
 
 warn() {
     echo "$1" >&2
@@ -17,7 +17,7 @@ lnif() {
     fi
 }
 
-echo "Thanks for installing fd-vim"
+echo "Thanks for installing fudesign2008.vim"
 
 # Backup existing .vim stuff
 echo "backing up current vim config"
@@ -26,10 +26,10 @@ for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && [ ! -L $i ] && m
 
 
 if [ ! -e $endpath/.git ]; then
-    echo "cloning fd-vim"
-    git clone --recursive -b 3.0 https://github.com/FuDesign2008/fd-vim.git $endpath
+    echo "cloning fudesign2008.vim"
+    git clone --recursive -b 3.0 https://github.com/FuDesign2008/fudesign2008.vim.git $endpath
 else
-    echo "updating fd-vim"
+    echo "updating fudesign2008.vim"
     cd $endpath && git pull
 fi
 
