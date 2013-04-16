@@ -165,7 +165,7 @@
     "set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     "autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd BufNewFile,BufRead *.wiki set filetype=wiki
+    autocmd BufNewFile,BufRead,BufWrite *.wiki set filetype=wiki
 " }
 
 " Key (re)Mappings {
