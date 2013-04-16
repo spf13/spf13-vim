@@ -267,9 +267,12 @@
             \ 'ganji': 'http://bj.ganji.com/site/s/_<QUERY>',
             \ '58': 'http://bj.58.com/sou/jh_<QUERY>/'
             \}
-
-
     " }
+
+    "indentLine {
+        let g:indentLine_char = '┆'
+        let g:indentLine_first_char = '┆'
+    "}
 
     " FuDesign2008/translator.vim {
         nnoremap <leader>tr :TranCursor<CR>
