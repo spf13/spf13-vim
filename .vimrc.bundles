@@ -50,8 +50,8 @@
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        "let g:spf13_bundle_groups=['general',  'programming', 'snip', 'php', 'ruby', 'python', 'javascript', 'html', 'coffeescript', 'ios', 'document', 'twig', 'scala', 'bash', 'potion']
-        let g:spf13_bundle_groups=['general', 'programming', 'javascript', 'css', 'html', 'coffeescript', 'ios', 'document', 'bash']
+        "let g:spf13_bundle_groups=['general', 'colors',  'programming', 'snip', 'php', 'ruby', 'python', 'javascript', 'html', 'coffeescript', 'ios', 'document', 'twig', 'scala', 'bash', 'potion']
+        let g:spf13_bundle_groups=['general', 'colors', 'programming', 'javascript', 'css', 'html', 'coffeescript', 'ios', 'document', 'bash']
     endif
 
     " To override all the included bundles, put
@@ -98,6 +98,13 @@
             Bundle 'FuDesign2008/OpenUrl.vim'
             Bundle 'FuDesign2008/ToogleNumber.vim'
             Bundle 'FuDesign2008/SpaceControl.vim'
+            Bundle 'FuDesign2008/translator.vim'
+            Bundle 'FuDesign2008/MPlan.vim'
+            Bundle 'FuDesign2008/vimKit'
+        endif
+
+    "Colors
+        if count(g:spf13_bundle_groups, 'colors')
             "light color schemes
             Bundle 'therubymug/vim-pyte'
             Bundle 'vim-scripts/summerfruit.vim'
@@ -122,9 +129,8 @@
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'FuDesign2008/GoodColors.vim'
             "color schemes end
-            Bundle 'FuDesign2008/translator.vim'
-            Bundle 'FuDesign2008/vimKit'
         endif
+
 
     " General Programming
         if count(g:spf13_bundle_groups, 'programming')

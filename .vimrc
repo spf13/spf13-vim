@@ -245,9 +245,13 @@
         "let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '`': '`'}
     " }
 
+    " FuDesign2008/MPlan.vim {
+        let g:mplan_file = '/Users/new/fuyg/Dropbox/月度规划/2013/2013-04/2013-04.md'
+    "}
+
     " FuDesign2008/vimKit {
         "  include syntax  jquery underscore
-        au BufRead,BufNewFile *.js set ft=javascript syntax=jslib
+        au BufRead,BufNewFile,BufWrite *.js set ft=javascript syntax=jslib
     "}
     " FuDesign2008/webSearch.vim {
         let g:webSearchEngines = {
