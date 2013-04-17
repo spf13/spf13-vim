@@ -246,7 +246,7 @@
     " }
 
     " FuDesign2008/MPlan.vim {
-        let g:mplan_file = '/Users/new/fuyg/Dropbox/月度规划/2013/2013-04/2013-04.md'
+        let g:plan_file = '/Users/new/fuyg/Dropbox/月度规划/2013/2013-04/2013-04.md'
     "}
 
     " FuDesign2008/vimKit {
