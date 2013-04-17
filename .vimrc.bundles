@@ -50,8 +50,8 @@
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        "let g:spf13_bundle_groups=['general', 'colors',  'programming', 'snip', 'php', 'ruby', 'python', 'javascript', 'html', 'coffeescript', 'ios', 'document', 'twig', 'scala', 'bash', 'potion']
-        let g:spf13_bundle_groups=['general', 'colors', 'programming', 'javascript', 'css', 'html', 'coffeescript', 'ios', 'document', 'bash']
+        "let g:spf13_bundle_groups=['general', 'colors',  'programming', 'snip', 'php', 'ruby', 'python', 'javascript', 'html', 'coffeescript', 'ios', 'document', 'twig', 'scala', 'bash', 'potion', 'ynote']
+        let g:spf13_bundle_groups=['general', 'colors', 'programming', 'javascript', 'css', 'html', 'coffeescript', 'ios', 'document', 'bash', 'ynote']
     endif
 
     " To override all the included bundles, put
@@ -246,6 +246,11 @@
     " bash
         if count(g:spf13_bundle_groups, 'bash')
             Bundle 'FuDesign2008/bash_kit.vim'
+        endif
+
+    " ynote
+        if count(g:spf13_bundle_groups, 'ynote')
+            Bundle 'FuDesign2008/ynoteKit.vim'
         endif
 
     endif
