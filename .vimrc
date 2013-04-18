@@ -129,7 +129,8 @@
 
     set backspace=indent,eol,start  " backspace for dummies
     set linespace=0                 " No extra spaces between rows
-    set nu                          " Line numbers on
+    "set nu                          " Line numbers on
+    set relativenumber               " Relative number on
     "set showmatch                   " show matching brackets/parenthesis
     set noshowmatch
     set incsearch                   " find as you type search
