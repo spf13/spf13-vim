@@ -62,14 +62,15 @@
     set noautochdir
     " Set to auto read when a file is changed from the outside
     set autoread
-    set autowrite                  " automatically write a file when leaving a modified buffer
+    "set autowrite                  " automatically write a file when leaving a modified buffer
     "set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     "set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
     "set virtualedit=onemore         " allow for cursor beyond last character
     set history=1000                " Store a ton of history (default is 20)
     "set spell                       " spell checking on
     set nospell
-    set hidden                      " allow buffer switching without saving
+    autocmd FileType text,wiki,markdown setlocal spell
+    "set hidden                      " allow buffer switching without saving
 
     " Setting up the directories {
         set backup                      " backups are nice ...
