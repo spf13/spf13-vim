@@ -165,7 +165,7 @@
     "set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     "autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd BufNewFile,BufRead,BufWrite *.wiki set filetype=wiki
+    autocmd BufNewFile,BufRead *.wiki set filetype=wiki
 " }
 
 " Key (re)Mappings {
@@ -251,7 +251,7 @@
 
     " FuDesign2008/vimKit {
         "  include syntax  jquery underscore
-        au BufRead,BufNewFile,BufWrite *.js set ft=javascript syntax=jslib
+        au BufRead,BufNewFile *.js set ft=javascript syntax=jslib
     "}
     " FuDesign2008/webSearch.vim {
         let g:webSearchEngines = {
