@@ -277,8 +277,6 @@
 
 
     " FuDesign2008/translator.vim {
-        nnoremap <leader>tr :TranCursor<CR>
-        vnoremap <leader>tr :TranBlock<CR>
     " }
 
 
