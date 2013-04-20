@@ -69,7 +69,7 @@
     set history=1000                " Store a ton of history (default is 20)
     "set spell                       " spell checking on
     set nospell
-    autocmd FileType text,wiki,markdown setlocal spell
+    autocmd FileType text,wiki,markdown,mkd setlocal spell
     "set hidden                      " allow buffer switching without saving
 
     " Setting up the directories {
@@ -320,7 +320,7 @@
         elseif has('win32') || has('win64')
             let g:markdown_preview_app = 'D:/Program Files/MarkdownPad 2/MarkdownPad2.exe'
         endif
-        autocmd FileType markdown nnoremap <buffer> <silent> <leader>p :PreviewMarkdown<CR>
+        autocmd FileType markdown,mkd nnoremap <buffer> <silent> <leader>p :PreviewMarkdown<CR>
     " }
 
 
