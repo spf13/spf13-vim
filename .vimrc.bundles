@@ -227,8 +227,7 @@
     " Document
         if count(g:spf13_bundle_groups, 'document')
             Bundle 'FuDesign2008/PreviewMarkdown.vim'
-            "Bundle 'tpope/vim-markdown'
-            Bundle 'plasticboy/vim-markdown'
+            Bundle 'tpope/vim-markdown'
             Bundle 'vim-scripts/Figlet.vim'
             Bundle 'vim-scripts/wiki.vim'
             "Bundle 'spf13/vim-preview'
