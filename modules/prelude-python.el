@@ -34,10 +34,9 @@
 ;;; Code:
 
 (require 'prelude-programming)
-(prelude-ensure-module-deps '(python))
 
 (defun prelude-python-mode-defaults ()
-  (run-hooks 'prelude-prog-mode-hook) ;; run manually; not derived from prog-mode
+  "Defaults for Python programming."
   (electric-indent-mode -1))
 
 (setq prelude-python-mode-hook 'prelude-python-mode-defaults)
