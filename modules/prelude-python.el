@@ -37,6 +37,7 @@
 
 (defun prelude-python-mode-defaults ()
   "Defaults for Python programming."
+  (subword-mode +1)
   (electric-indent-mode -1))
 
 (setq prelude-python-mode-hook 'prelude-python-mode-defaults)
