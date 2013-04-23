@@ -131,6 +131,9 @@
 
     set cursorline                  " Highlight current line
 
+    highlight clear SignColumn      " SignColumn should match background for
+                                    " things like vim-gitgutter
+
     if has('cmdline_info')
         set ruler                   " Show the ruler
         set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
@@ -166,7 +169,7 @@
     set scrolloff=3                 " Minimum lines to keep above and below cursor
     set foldenable                  " Auto fold code
     set list
-    set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+    set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
 " }
 
@@ -182,7 +185,8 @@
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
-    autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+    autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+    autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
 
 " }
@@ -389,10 +393,6 @@
         nmap <leader>ss :SessionSave<CR>
     " }
 
-    " Buffer explorer {
-        nmap <leader>b :BufExplorer<CR>
-    " }
-
     " JSON {
         nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
     " }
@@ -422,6 +422,21 @@
 
     " TagBar {
         nnoremap <silent> <leader>tt :TagbarToggle<CR>
+
+        " If using go please install the gotags program using the following
+        " go install github.com/jstemmer/gotags
+        " And make sure gotags is in your path
+        let g:tagbar_type_go = {
+            \ 'ctagstype' : 'go',
+            \ 'kinds'     : [  'p:package', 'i:imports:1', 'c:constants', 'v:variables',
+                \ 't:types',  'n:interfaces', 'w:fields', 'e:embedded', 'm:methods',
+                \ 'r:constructor', 'f:functions' ],
+            \ 'sro' : '.',
+            \ 'kind2scope' : { 't' : 'ctype', 'n' : 'ntype' },
+            \ 'scope2kind' : { 'ctype' : 't', 'ntype' : 'n' },
+            \ 'ctagsbin'  : 'gotags',
+            \ 'ctagsargs' : '-sort -silent'
+            \ }
     "}
 
     " PythonMode {
@@ -517,15 +532,20 @@
         let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
         " Use honza's snippets.
-        let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
+        let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
         " Enable neosnippet snipmate compatibility mode
-        let g:neosnippet#enable_snipmate_compatibility = 1        
+        let g:neosnippet#enable_snipmate_compatibility = 1
 
         " For snippet_complete marker.
         if has('conceal')
             set conceallevel=2 concealcursor=i
         endif
+
+        " Disable the neosnippet preview candidate window
+        " When enabled, there can be too much visual noise
+        " especially when splits are used.
+        set completeopt-=preview
     " }
 
     " UndoTree {
@@ -557,8 +577,10 @@
         set lines=40                " 40 lines of text instead of 24
         if has("gui_gtk2")
             set guifont=Andale\ Mono\ Regular\ 16,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
-        else
+        elseif has("gui_mac")
             set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
+        elseif has("gui_win32")
+            set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
         endif
         if has('gui_macvim')
             set transparency=5      " Make the window slightly transparent
