@@ -133,6 +133,7 @@
             Bundle 'briancarper/gentooish.vim'
             Bundle 'cschlueter/vim-wombat'
             Bundle 'jonathanfilip/vim-lucius'
+            Bundle 'vim-scripts/peaksea'
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'FuDesign2008/GoodColors.vim'
             "color schemes end
@@ -152,7 +153,7 @@
             Bundle 'FuDesign2008/GotoFile.vim'
             if !g:spf13_performance_first
                 Bundle 'Yggdroot/indentLine'
-                Bundle 'tpope/vim-fugitive'
+                "Bundle 'tpope/vim-fugitive'
                 if executable('ctags')
                     Bundle 'majutsushi/tagbar'
                 endif
