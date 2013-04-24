@@ -311,6 +311,12 @@ buffer is not visiting a file."
       (set-window-start w2 s1)))
   (other-window 1))
 
+(defun prelude-switch-to-previous-buffer ()
+  "Switch to previously open buffer.
+Repeated invocations toggle between the two most recently open buffers."
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
+
 (defun prelude-kill-other-buffers ()
   "Kill all buffers but the current one.
 Doesn't mess with special buffers."
