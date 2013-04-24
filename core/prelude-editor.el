@@ -209,6 +209,13 @@ Will only occur if prelude-whitespace is also enabled."
       ido-save-directory-list-file (expand-file-name "ido.hist" prelude-savefile-dir)
       ido-default-file-method 'selected-window)
 (ido-mode +1)
+(ido-ubiquitous +1)
+
+;; smex, remember recently and most frequently used commands
+(setq smex-save-file (concat user-emacs-directory ".smex-items"))
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;; auto-completion in minibuffer
 (icomplete-mode +1)
