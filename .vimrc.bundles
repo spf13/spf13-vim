@@ -85,7 +85,7 @@
             Bundle 'kien/ctrlp.vim'
             Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
-            if has("python") || has("python3")
+            if (has("python") || has("python3")) && !exists('g:spf13_use_old_powerline')
                 Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
             else
                 Bundle 'Lokaltog/vim-powerline'
