@@ -99,7 +99,7 @@
             Bundle 'FuDesign2008/AutoClose.vim'
             Bundle 'FuDesign2008/OpenUrl.vim'
             Bundle 'FuDesign2008/translator.vim'
-            Bundle 'FuDesign2008/ToogleNumber.vim'
+            Bundle 'FuDesign2008/ToggleNumber.vim'
             Bundle 'FuDesign2008/SpaceControl.vim'
             Bundle 'FuDesign2008/vimKit'
             if !g:spf13_performance_first
