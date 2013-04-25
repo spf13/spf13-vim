@@ -453,7 +453,7 @@
         nnoremap <silent> <leader>gb :Gblame<CR>
         nnoremap <silent> <leader>gl :Glog<CR>
         nnoremap <silent> <leader>gp :Git push<CR>
-        nnoremap <silent> <leader>gw :Gwrite<CR>
+        nnoremap <silent> <leader>gw :Gwrite<CR>:GitGutter<CR>
     "}
 
     " neocomplcache {
