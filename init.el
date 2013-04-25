@@ -76,8 +76,6 @@ by Prelude.")
 (add-to-list 'load-path prelude-vendor-dir)
 (prelude-add-subfolders-to-load-path prelude-vendor-dir)
 
-(require 'dash)
-
 ;; the core stuff
 (require 'prelude-packages)
 (require 'prelude-ui)

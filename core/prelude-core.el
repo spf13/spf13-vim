@@ -33,6 +33,7 @@
 ;;; Code:
 
 (require 'thingatpt)
+(require 'dash)
 
 (defun prelude-open-with ()
   "Open visited file in external program."
