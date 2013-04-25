@@ -95,6 +95,7 @@
             " to zoomin/out guifont size
             Bundle 'vim-scripts/zoom.vim'
             Bundle 'vim-scripts/IndentAnything'
+            Bundle 'FuDesign2008/WebSearch.vim'
             Bundle 'FuDesign2008/AutoClose.vim'
             Bundle 'FuDesign2008/OpenUrl.vim'
             Bundle 'FuDesign2008/translator.vim'
@@ -105,7 +106,6 @@
                 Bundle 'tpope/vim-surround'
                 Bundle 'kien/ctrlp.vim'
                 Bundle 'mattn/calendar-vim'
-                Bundle 'FuDesign2008/WebSearch.vim'
                 Bundle 'FuDesign2008/plan.vim'
             endif
         endif
@@ -257,7 +257,9 @@
 
     " bash
         if count(g:spf13_bundle_groups, 'bash')
-            Bundle 'FuDesign2008/bash_kit.vim'
+            if !has('win32') && has('unix')
+                Bundle 'FuDesign2008/bash_kit.vim'
+            endif
         endif
 
     " ynote
