@@ -171,6 +171,10 @@
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
+    " Absolute line numbers in insert mode, and relative in normal mode
+    autocmd InsertEnter * :set number
+    autocmd InsertLeave * :set relativenumber
+
 " }
 
 " Formatting {
