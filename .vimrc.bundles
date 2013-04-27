@@ -151,8 +151,8 @@
             "@see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
             Bundle 'godlygeek/tabular'
             Bundle 'FuDesign2008/GotoFile.vim'
+            Bundle 'Yggdroot/indentLine'
             if !g:spf13_performance_first
-                Bundle 'Yggdroot/indentLine'
                 "Bundle 'tpope/vim-fugitive'
                 if executable('ctags')
                     Bundle 'majutsushi/tagbar'
