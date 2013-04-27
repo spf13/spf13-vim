@@ -78,7 +78,7 @@
             "Bundle 'Lokaltog/vim-powerline'
             "Bundle 'Lokaltog/vim-easymotion'
             "NOTE: csapprox cause errors
-            "Bundle 'godlygeek/csapprox'
+            Bundle 'godlygeek/csapprox'
             "Bundle 'jistr/vim-nerdtree-tabs'
             "Bundle 'flazz/vim-colorschemes'
             "Bundle 'mbbill/undotree'
