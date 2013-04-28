@@ -291,7 +291,9 @@ buffer is not visiting a file."
 (defun prelude-recentf-ido-find-file ()
   "Find a recent file using ido."
   (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+  (let ((file (ido-completing-read "Choose recent file: "
+                                   (-map 'abbreviate-file-name recentf-list)
+                                   nil t)))
     (when file
       (find-file file))))
 
