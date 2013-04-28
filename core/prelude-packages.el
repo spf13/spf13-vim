@@ -32,7 +32,7 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
-(require 'cl-lib)
+(require 'cl)
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -52,7 +52,7 @@
 
 (defun prelude-packages-installed-p ()
   "Check if all packages in `prelude-packages' are installed."
-  (cl-every #'package-installed-p prelude-packages))
+  (every #'package-installed-p prelude-packages))
 
 (defun prelude-install-packages ()
   "Install all packages listed in `prelude-packages'."
@@ -63,7 +63,7 @@
     (message "%s" " done.")
     ;; install the missing packages
     (mapc #'package-install
-     (cl-remove-if #'package-installed-p prelude-packages))))
+     (remove-if #'package-installed-p prelude-packages))))
 
 (prelude-install-packages)
 
@@ -116,7 +116,11 @@ PACKAGE is installed only if not already present.  The file is opened in MODE."
 (defun prelude-ensure-module-deps (packages)
   "Ensure PACKAGES are installed.
 Missing packages are installed automatically."
-  (mapc #'package-install (cl-remove-if #'package-installed-p packages)))
+  (mapc #'package-install (remove-if #'package-installed-p packages)))
 
 (provide 'prelude-packages)
+;; Local Variables:
+;; byte-compile-warnings: (not cl-functions)
+;; End:
+
 ;;; prelude-packages.el ends here
