@@ -86,7 +86,16 @@
 " File {
     "Setup bomb "保留bomb头a
     set nobomb "去掉bomb头
-    "set termencoding=chinese  "vim 在与屏幕/键盘交互使用的编码
+    let &termencoding=&encoding  "vim 在与屏幕/键盘交互使用的编码
+    set encoding=utf-8
+    if has('win32') || has('win64')
+        "set encoding=utf-8 will cause displaying invalid characters
+        "fix it in windows
+        "@see http://www.douban.com/note/145491549/
+        source $VIMRUNTIME/delmenu.vim
+        source $VIMRUNTIME/menu.vim
+        language message zh_CN.UTF-8
+    endif
     set fileencoding=utf-8  "vim当前编辑的文件在存储时的编码
     set fileencodings=utf-8,gb2312,gbk,gb18030,big5   "vim 打开文件时的尝试使用的编码
     "set fileformat=unix,dos
