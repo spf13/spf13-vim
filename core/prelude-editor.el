@@ -145,22 +145,29 @@ Will only occur if prelude-whitespace is also enabled."
 ;; automatically save buffers associated with files on buffer switch
 ;; and on windows switch
 (defun prelude-auto-save-command ()
+  "Save the current buffer if `prelude-auto-save' is not nil."
   (when (and prelude-auto-save
              buffer-file-name
              (buffer-modified-p (current-buffer)))
     (save-buffer)))
 
 (defadvice switch-to-buffer (before save-buffer-now activate)
+  "Invoke `prelude-auto-save-command' before `switch-to-window'."
   (prelude-auto-save-command))
 (defadvice other-window (before other-window-now activate)
+  "Invoke `prelude-auto-save-command' before `other-window'."
   (prelude-auto-save-command))
 (defadvice windmove-up (before other-window-now activate)
+  "Invoke `prelude-auto-save-command' before `windmove-up'."
   (prelude-auto-save-command))
 (defadvice windmove-down (before other-window-now activate)
+  "Invoke `prelude-auto-save-command' before `windmove-down'."
   (prelude-auto-save-command))
 (defadvice windmove-left (before other-window-now activate)
+  "Invoke `prelude-auto-save-command' before `windmove-left'."
   (prelude-auto-save-command))
 (defadvice windmove-right (before other-window-now activate)
+  "Invoke `prelude-auto-save-command' before `windmove-right'."
   (prelude-auto-save-command))
 
 (add-hook 'mouse-leave-buffer-hook 'prelude-auto-save-command)
@@ -227,14 +234,17 @@ Will only occur if prelude-whitespace is also enabled."
       ispell-extra-args '("--sug-mode=ultra"))
 
 (defun prelude-enable-flyspell ()
+  "Enable command `flyspell-mode' if `prelude-flyspell' is not nil."
   (when (and prelude-flyspell (executable-find ispell-program-name))
     (flyspell-mode +1)))
 
 (defun prelude-cleanup-maybe ()
+  "Invoke `whitespace-cleanup' if `prelude-clean-whitespace-on-save' is not nil."
   (when prelude-clean-whitespace-on-save
     (whitespace-cleanup)))
 
 (defun prelude-enable-whitespace ()
+  "Enable `whitespace-mode' if `prelude-whitespace' is not nil."
   (when prelude-whitespace
     ;; keep the whitespace decent all the time (in this buffer)
     (add-hook 'before-save-hook 'prelude-cleanup-maybe nil t)
