@@ -201,6 +201,7 @@ Will only occur if prelude-whitespace is also enabled."
 
 ;; ido-mode
 (require 'ido)
+(require 'ido-ubiquitous)
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t
       ido-create-new-buffer 'always
@@ -212,13 +213,11 @@ Will only occur if prelude-whitespace is also enabled."
 (ido-ubiquitous +1)
 
 ;; smex, remember recently and most frequently used commands
-(setq smex-save-file (concat user-emacs-directory ".smex-items"))
+(require 'smex)
+(setq smex-save-file (expand-file-name ".smex-items" prelude-savefile-dir))
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
-;; auto-completion in minibuffer
-(icomplete-mode +1)
 
 (set-default 'imenu-auto-rescan t)
 
