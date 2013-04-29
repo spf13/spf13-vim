@@ -275,6 +275,10 @@ Will only occur if prelude-whitespace is also enabled."
 (add-to-list 'yas-snippet-dirs prelude-personal-snippets-dir)
 (yas-global-mode 1)
 
+;; term-mode does not play well with yasnippet
+(add-hook 'term-mode-hook (lambda ()
+                            (yas-minor-mode -1)))
+
 ;; projectile is a project management mode
 (require 'projectile)
 (setq projectile-cache-file (expand-file-name  "projectile.cache" prelude-savefile-dir))
