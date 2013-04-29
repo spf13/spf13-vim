@@ -51,13 +51,20 @@ Start `ielm' if it's not already running."
 
 (define-key emacs-lisp-mode-map (kbd "C-c C-z") 'prelude-visit-ielm)
 
+(defun prelude-conditional-emacs-lisp-checker ()
+  "Don't check doc style in Emacs Lisp test files."
+  (let ((file-name (buffer-file-name)))
+    (when (and (file-name) (string-match-p ".*-tests?\\.el\\'" file-name))
+      (setq-local flycheck-checkers '(emacs-lisp)))))
+
 (defun prelude-emacs-lisp-mode-defaults ()
   "Sensible defaults for `emacs-lisp-mode'."
   (run-hooks 'prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
   (prelude-remove-elc-on-save)
   (rainbow-mode +1)
-  (setq mode-name "EL"))
+  (setq mode-name "EL")
+  (prelude-conditional-emacs-lisp-checker))
 
 (setq prelude-emacs-lisp-mode-hook 'prelude-emacs-lisp-mode-defaults)
 
