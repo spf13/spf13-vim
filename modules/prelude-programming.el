@@ -63,7 +63,8 @@
        ((overlayp position)
         (goto-char (overlay-start position)))
        (t
-        (goto-char position)))))
+        (goto-char position)))
+      (recenter)))
    ((listp symbol-list)
     (dolist (symbol symbol-list)
       (let (name position)
