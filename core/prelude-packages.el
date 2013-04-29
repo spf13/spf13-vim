@@ -94,6 +94,7 @@ PACKAGE is installed only if not already present.  The file is opened in MODE."
     ("\\.lua\\'" lua-mode lua-mode)
     ("\\.markdown\\'" markdown-mode markdown-mode)
     ("\\.md\\'" markdown-mode markdown-mode)
+    ("\\.ml\\'" tuareg tuareg-mode)
     ("\\.php\\'" php-mode php-mode)
     ("\\.sass\\'" sass-mode sass-mode)
     ("\\.scala\\'" scala-mode2 scala-mode)
