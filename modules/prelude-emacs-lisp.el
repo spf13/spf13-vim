@@ -44,17 +44,15 @@
                   (delete-file (concat buffer-file-name "c"))))))
 
 (defun prelude-visit-ielm ()
+  "Switch to default `ielm' buffer.
+Start `ielm' if it's not already running."
   (interactive)
-  (if (not (get-buffer "*ielm*"))
-      (progn
-        (split-window-sensibly (selected-window))
-        (other-window 1)
-        (ielm))
-    (switch-to-buffer-other-window "*ielm*")))
+  (prelude-start-or-switch-to 'ielm "*ielm*"))
 
 (define-key emacs-lisp-mode-map (kbd "C-c C-z") 'prelude-visit-ielm)
 
 (defun prelude-emacs-lisp-mode-defaults ()
+  "Sensible defaults for `emacs-lisp-mode'."
   (run-hooks 'prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
   (prelude-remove-elc-on-save)
@@ -68,14 +66,14 @@
 
 ;; ielm is an interactive Emacs Lisp shell
 (defun prelude-ielm-mode-defaults ()
+  "Sensible defaults for `ielm'."
   (run-hooks 'prelude-interactive-lisp-coding-hook)
   (turn-on-eldoc-mode))
 
 (setq prelude-ielm-mode-hook 'prelude-ielm-mode-defaults)
 
-(add-hook 'ielm-mode-hook (lambda () (run-hooks 'prelude-ielm-mode-hook)))
-
-(define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
+(add-hook 'ielm-mode-hook (lambda ()
+                            (run-hooks 'prelude-ielm-mode-hook)))
 
 (eval-after-load "elisp-slime-nav"
   '(diminish 'elisp-slime-nav-mode))
