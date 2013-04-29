@@ -54,7 +54,7 @@ Start `ielm' if it's not already running."
 (defun prelude-conditional-emacs-lisp-checker ()
   "Don't check doc style in Emacs Lisp test files."
   (let ((file-name (buffer-file-name)))
-    (when (and (file-name) (string-match-p ".*-tests?\\.el\\'" file-name))
+    (when (and file-name (string-match-p ".*-tests?\\.el\\'" file-name))
       (setq-local flycheck-checkers '(emacs-lisp)))))
 
 (defun prelude-emacs-lisp-mode-defaults ()
