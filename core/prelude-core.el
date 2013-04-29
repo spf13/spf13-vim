@@ -54,12 +54,9 @@
 (defun prelude-visit-term-buffer ()
   "Create or visit a terminal buffer."
   (interactive)
-  (if (not (get-buffer "*ansi-term*"))
-      (progn
-        (split-window-sensibly (selected-window))
-        (other-window 1)
-        (ansi-term (getenv "SHELL")))
-    (switch-to-buffer-other-window "*ansi-term*")))
+  (prelude-start-or-switch-to (lambda ()
+                                (ansi-term (getenv "SHELL")))
+                              "*ansi-term*"))
 
 (defun prelude-google ()
   "Googles a query or region if any."
