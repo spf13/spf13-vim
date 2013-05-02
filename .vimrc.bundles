@@ -92,7 +92,9 @@
             endif
 
             Bundle 'Lokaltog/vim-easymotion'
-            Bundle 'godlygeek/csapprox'
+            if has('gui')
+                Bundle 'godlygeek/csapprox'
+            endif
             Bundle 'jistr/vim-nerdtree-tabs'
             Bundle 'flazz/vim-colorschemes'
             Bundle 'mbbill/undotree'
