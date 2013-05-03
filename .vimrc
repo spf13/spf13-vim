@@ -259,8 +259,8 @@
 
     " FuDesign2008/MPlan.vim {
         let cur_year = strftime('%Y')
+        "01-12
         let cur_month = strftime('%m')
-        let cur_month = (cur_month + 0 ) < 10 ? ('0' . cur_month) : cur_month
         let cur_month = cur_year . '-' . cur_month
         "let g:plan_file = '/Users/new/fuyg/Dropbox/月度规划/2013/2013-04/2013-04.md'
         let g:plan_file = '/Users/new/fuyg/Dropbox/月度规划/' . cur_year .'/' . cur_month . '/' . cur_month. '.md'
