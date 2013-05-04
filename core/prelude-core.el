@@ -181,22 +181,20 @@ there's a region, all lines that region covers will be duplicated."
                   (setq end (point))))
       (goto-char (+ origin (* (length region) arg) arg)))))
 
-;; TODO doesn't work with uniquify
 (defun prelude-rename-file-and-buffer ()
   "Renames current buffer and file it is visiting."
   (interactive)
-  (let ((name (buffer-name))
-        (filename (buffer-file-name)))
+  (let ((filename (buffer-file-name)))
     (if (not (and filename (file-exists-p filename)))
-        (message "Buffer '%s' is not visiting a file!" name)
+        (message "Buffer is not visiting a file!")
       (let ((new-name (read-file-name "New name: " filename)))
-        (cond ((get-buffer new-name)
-               (message "A buffer named '%s' already exists!" new-name))
-              (t
-               (rename-file name new-name 1)
-               (rename-buffer new-name)
-               (set-visited-file-name new-name)
-               (set-buffer-modified-p nil)))))))
+        (cond
+         ((vc-backend filename) (vc-rename-file filename new-name))
+         (t
+          (rename-file filename new-name t)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil)))))))
 
 (defun prelude-delete-file-and-buffer ()
   "Kill the current buffer and deletes the file it is visiting."
