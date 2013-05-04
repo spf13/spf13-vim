@@ -262,9 +262,11 @@ If you ever forget any of Projectile's keybindings just do a:
 
 Keybinding         | Description
 -------------------|----------------------------------------------
-<kbd>jj</kbd>      | ace-jump-mode
-<kbd>JJ</kbd>      | prelude-switch-to-previous-buffer
-<kbd>uu</kbd>      | undo-tree-visualize
+<kbd>jj</kbd>      | Jump to the beginning of a word(`ace-jump-word-mode`)
+<kbd>jk</kbd>      | Jump to a character(`ace-jump-char-mode`)
+<kbd>jl</kbd>      | Jump to the beginning of a line(`ace-jump-line-mode`)
+<kbd>JJ</kbd>      | Jump back to previous buffer(`prelude-switch-to-previous-buffer`)
+<kbd>uu</kbd>      | View edits as a tree(`undo-tree-visualize`)
 
 ### Automatic package installation
 
