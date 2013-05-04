@@ -262,6 +262,9 @@ Will only occur if prelude-whitespace is also enabled."
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+;; enable erase-buffer command
+(put 'erase-buffer 'disabled nil)
+
 (require 'expand-region)
 
 ;; bookmarks
