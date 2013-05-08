@@ -148,7 +148,8 @@ Will only occur if prelude-whitespace is also enabled."
   "Save the current buffer if `prelude-auto-save' is not nil."
   (when (and prelude-auto-save
              buffer-file-name
-             (buffer-modified-p (current-buffer)))
+             (buffer-modified-p (current-buffer))
+             (file-writable-p buffer-file-name))
     (save-buffer)))
 
 (defadvice switch-to-buffer (before save-buffer-now activate)
