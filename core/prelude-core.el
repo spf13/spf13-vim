@@ -195,9 +195,7 @@ there's a region, all lines that region covers will be duplicated."
          ((vc-backend filename) (vc-rename-file filename new-name))
          (t
           (rename-file filename new-name t)
-          (rename-buffer new-name)
-          (set-visited-file-name new-name)
-          (set-buffer-modified-p nil)))))))
+          (set-visited-file-name new-name t t)))))))
 
 (defun prelude-delete-file-and-buffer ()
   "Kill the current buffer and deletes the file it is visiting."
