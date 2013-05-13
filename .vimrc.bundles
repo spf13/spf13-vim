@@ -107,6 +107,7 @@
                 Bundle 'kien/ctrlp.vim'
                 Bundle 'mattn/calendar-vim'
                 Bundle 'FuDesign2008/plan.vim'
+                Bundle 'vim-scripts/grep.vim'
             endif
         endif
 
