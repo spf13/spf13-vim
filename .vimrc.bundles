@@ -102,12 +102,13 @@
             Bundle 'FuDesign2008/ToggleNumber.vim'
             Bundle 'FuDesign2008/SpaceControl.vim'
             Bundle 'FuDesign2008/vimKit'
+            "ack is more portable than grep
+            Bundle 'mileszs/ack.vim'
             if !g:spf13_performance_first
                 Bundle 'tpope/vim-surround'
                 Bundle 'kien/ctrlp.vim'
                 Bundle 'mattn/calendar-vim'
                 Bundle 'FuDesign2008/plan.vim'
-                Bundle 'vim-scripts/grep.vim'
             endif
         endif
 
