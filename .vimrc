@@ -157,6 +157,8 @@
     set scrolloff=3                 " minimum lines to keep above and below cursor
     "set nofoldenable                "不启用折叠
     set foldenable
+    set foldlevelstart=1
+    set foldmethod=syntax
     set list
     set listchars=tab:\:\ ,trail:~,extends:>,precedes:<,nbsp:.
     set path=.,,,**                 " set path for find file
