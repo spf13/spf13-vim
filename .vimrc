@@ -158,7 +158,8 @@
     "set nofoldenable                "不启用折叠
     set foldenable
     set foldlevelstart=1
-    set foldmethod=syntax
+    set foldmethod=indent
+    set foldnestmax=10
     set list
     set listchars=tab:\:\ ,trail:~,extends:>,precedes:<,nbsp:.
     set path=.,,,**                 " set path for find file
