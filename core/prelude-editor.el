@@ -381,6 +381,9 @@ indent yanked text (with prefix arg don't indent)."
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
 
+;; .zsh file is shell script too
+(add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))
+
 ;; whitespace-mode config
 (require 'whitespace)
 (setq whitespace-line-column 80) ;; limit line length
