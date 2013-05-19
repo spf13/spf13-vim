@@ -352,10 +352,11 @@ Doesn't mess with special buffers."
 (defun prelude-tip-of-the-day ()
   "Display a random entry from `prelude-tips'."
   (interactive)
-  ;; pick a new random seed
-  (random t)
-  (message
-   (concat "Prelude tip: " (nth (random (length prelude-tips)) prelude-tips))))
+  (unless (window-minibuffer-p)
+    ;; pick a new random seed
+    (random t)
+    (message
+     (concat "Prelude tip: " (nth (random (length prelude-tips)) prelude-tips)))))
 
 (defun prelude-eval-after-init (form)
   "Add `(lambda () FORM)' to `after-init-hook'.
