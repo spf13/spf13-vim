@@ -266,6 +266,8 @@ Keybinding         | Description
 <kbd>jk</kbd>      | Jump to a character(`ace-jump-char-mode`)
 <kbd>jl</kbd>      | Jump to the beginning of a line(`ace-jump-line-mode`)
 <kbd>JJ</kbd>      | Jump back to previous buffer(`prelude-switch-to-previous-buffer`)
+<kbd>kk</kbd>      | Delete tabs and spaces around point except one(`just-one-space`)
+<kbd>KK</kbd>      | Delete tabs and spaces around point(`delete-horizontal-space`)
 <kbd>uu</kbd>      | View edits as a tree(`undo-tree-visualize`)
 
 ### Automatic package installation
