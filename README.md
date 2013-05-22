@@ -270,7 +270,16 @@ Keybinding         | Description
 <kbd>KK</kbd>      | Delete tabs and spaces around point(`delete-horizontal-space`)
 <kbd>uu</kbd>      | View edits as a tree(`undo-tree-visualize`)
 
-### Automatic package installation
+##### Disabling key-chords
+
+In some cases you may not want to have a key-chord that is defined by prelude,
+in which case you can disable the binding in your `personal.el` file by setting
+its command to `nil`. For example, to disable the `kk` key-chord add the
+following line:
+
+    (key-chord-define-global "kk" nil)
+
+## Automatic package installation
 
 The default Prelude installation comes with a bare minimum of
 functionality. It will however install add-ons for various programming
