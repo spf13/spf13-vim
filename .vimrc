@@ -404,12 +404,12 @@
     " }
 
     " ctrlp {
-        let g:ctrlp_working_path_mode = 2
+        let g:ctrlp_working_path_mode = 'ra'
         nnoremap <silent> <D-t> :CtrlP<CR>
         nnoremap <silent> <D-r> :CtrlPMRU<CR>
         let g:ctrlp_custom_ignore = {
             \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-            \ 'file': '\.exe$\|\.so$\|\.dll$' }
+            \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
         let g:ctrlp_user_command = {
             \ 'types': {
