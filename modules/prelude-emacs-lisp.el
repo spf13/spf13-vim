@@ -90,6 +90,10 @@ Start `ielm' if it's not already running."
 (eval-after-load "eldoc"
   '(diminish 'eldoc-mode))
 
+;; enable elisp-slime-nav-mode
+(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+  (add-hook hook 'elisp-slime-nav-mode))
+
 (provide 'prelude-emacs-lisp)
 
 ;;; prelude-emacs-lisp.el ends here
