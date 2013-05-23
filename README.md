@@ -208,6 +208,7 @@ Keybinding         | Description
 <kbd>F12</kbd>     | Toggle the Emacs menu bar.
 <kbd>C-x g</kbd>   | Open Magit's status buffer.
 <kbd>C-=</kbd>     | Run `expand-region` (incremental text selection).
+<kbd>C-a</kbd>     | Run `prelude-move-beginning-of-line`. Read [this](http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/) for details.
 
 #### Prelude Mode
 
@@ -415,6 +416,17 @@ personal Emacs customization to enable them permanently:
 
 ```lisp
 (setq prelude-guru nil)
+```
+
+### Customized C-a behavior
+
+Prelude overrides `C-a` to behave as described
+[here](http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/). If
+you don't like that simply add this to your personal config:
+
+```lisp
+(global-set-key [remap move-beginning-of-line]
+                'move-beginning-of-line)
 ```
 
 ### Windows compatibility
