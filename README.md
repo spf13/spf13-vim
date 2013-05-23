@@ -266,8 +266,6 @@ Keybinding         | Description
 <kbd>jk</kbd>      | Jump to a character(`ace-jump-char-mode`)
 <kbd>jl</kbd>      | Jump to the beginning of a line(`ace-jump-line-mode`)
 <kbd>JJ</kbd>      | Jump back to previous buffer(`prelude-switch-to-previous-buffer`)
-<kbd>kk</kbd>      | Delete tabs and spaces around point except one(`just-one-space`)
-<kbd>KK</kbd>      | Delete tabs and spaces around point(`delete-horizontal-space`)
 <kbd>uu</kbd>      | View edits as a tree(`undo-tree-visualize`)
 
 ##### Disabling key-chords
@@ -277,7 +275,15 @@ in which case you can disable the binding in your `personal.el` file by setting
 its command to `nil`. For example, to disable the `kk` key-chord add the
 following line:
 
-    (key-chord-define-global "kk" nil)
+    ```lisp
+    (key-chord-define-global "jj" nil)
+    ```
+
+If you're an `evil-mode` user you'll probably do well to disable `key-chord-mode` altogether:
+
+    ```lisp
+    (key-chord-mode -1)
+    ```
 
 ## Automatic package installation
 
