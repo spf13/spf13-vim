@@ -402,7 +402,7 @@ Doesn't mess with special buffers."
 (defun prelude-update ()
   "Update Prelude to its latest version."
   (interactive)
-  (when (y-or-n-p "Do you want to update Prelude?")
+  (when (y-or-n-p "Do you want to update Prelude? ")
     (message "Updating Prelude...")
     (cd prelude-dir)
     (shell-command "git pull")
