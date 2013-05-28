@@ -155,11 +155,11 @@
     set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
     set scrolljump=5                " lines to scroll when cursor leaves screen
     set scrolloff=3                 " minimum lines to keep above and below cursor
-    "set nofoldenable                "不启用折叠
-    set foldenable
-    set foldlevelstart=1
-    set foldmethod=indent
-    set foldnestmax=5
+    set nofoldenable                "不启用折叠
+    "set foldenable
+    "set foldlevelstart=1
+    "set foldmethod=indent
+    "set foldnestmax=5
     set list
     set listchars=tab:\:\ ,trail:~,extends:>,precedes:<,nbsp:.
     set path=.,,,**                 " set path for find file
