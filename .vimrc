@@ -156,10 +156,21 @@
     set scrolljump=5                " lines to scroll when cursor leaves screen
     set scrolloff=3                 " minimum lines to keep above and below cursor
     set nofoldenable                "不启用折叠
-    "set foldenable
-    "set foldlevelstart=1
-    "set foldmethod=indent
-    "set foldnestmax=5
+
+    "making folding enabled for the file that has more than 100 lines
+    function! SetFolding()
+        let lines = line('$')
+        if lines > 100
+            setlocal foldenable
+            setlocal foldlevelstart=1
+            setlocal foldmethod=indent
+            setlocal foldnestmax=5
+        else
+            setlocal nofoldenable
+        endif
+    endfunction
+    autocmd BufNewFile,BufRead * call SetFolding()
+
     set list
     set listchars=tab:\:\ ,trail:~,extends:>,precedes:<,nbsp:.
     set path=.,,,**                 " set path for find file
