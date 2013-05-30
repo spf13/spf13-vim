@@ -85,8 +85,10 @@ With a prefix ARG always prompt for command to use."
   "Insert an empty line above the current line.
 Position the cursor at it's beginning, according to the current mode."
   (interactive)
+  (move-beginning-of-line nil)
+  (newline-and-indent)
   (forward-line -1)
-  (prelude-smart-open-line))
+  (funcall indent-line-function))
 
 (defun prelude-smart-open-line ()
   "Insert an empty line after the current line.
