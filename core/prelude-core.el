@@ -97,6 +97,11 @@ Position the cursor at its beginning, according to the current mode."
   (move-end-of-line nil)
   (newline-and-indent))
 
+(defun prelude-top-join-line ()
+  "Join the current line with the line beneath it."
+  (interactive)
+  (delete-indentation 1))
+
 (defun prelude-move-line-up ()
   "Move the current line up."
   (interactive)
