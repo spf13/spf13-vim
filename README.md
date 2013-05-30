@@ -273,7 +273,7 @@ Keybinding         | Description
 
 In some cases you may not want to have a key-chord that is defined by prelude,
 in which case you can disable the binding in your `personal.el` file by setting
-its command to `nil`. For example, to disable the `kk` key-chord add the
+its command to `nil`. For example, to disable the `jj` key-chord add the
 following line:
 
 ```lisp
