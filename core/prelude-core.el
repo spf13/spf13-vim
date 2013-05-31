@@ -413,6 +413,7 @@ Doesn't mess with special buffers."
     (message "Updating Prelude...")
     (cd prelude-dir)
     (shell-command "git pull")
+    (prelude-recompile-init)
     (message "Update finished. Restart Emacs to complete the process.")))
 
 (provide 'prelude-core)
