@@ -20,7 +20,7 @@ can skip the whole manual and just type in your favorite shell the
 following command:
 
 ```bash
-$ curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+$ curl -L http://git.io/epre | sh
 ```
 
 You can now power up your Emacs, sit back and enjoy Prelude,
