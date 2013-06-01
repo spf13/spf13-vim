@@ -20,7 +20,7 @@ can skip the whole manual and just type in your favorite shell the
 following command:
 
 ```bash
-$ curl -L http://git.io/epre | sh
+curl -L http://git.io/epre | sh
 ```
 
 You can now power up your Emacs, sit back and enjoy Prelude,
@@ -31,13 +31,13 @@ source repository and the installation directory. To change the
 installation directory:
 
 ```bash
-$ export PRELUDE_INSTALL_DIR="$HOME/.emacs.d" && curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+export PRELUDE_INSTALL_DIR="$HOME/.emacs.d" && curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
 ```
 
 To change the source repository:
 
 ```bash
-$ export PRELUDE_URL="https://github.com/yourname/prelude.git" && curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+export PRELUDE_URL="https://github.com/yourname/prelude.git" && curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
 ```
 
 Note that the installer will back up any existing `.emacs` file or
@@ -65,7 +65,7 @@ You can install **Emacs Prelude** via the command line with either `curl` or
 If you're using `curl` type the following command:
 
 ```bash
-$ curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
 ```
 
 #### Via Wget
@@ -73,15 +73,15 @@ $ curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
 If you're using `wget` type:
 
 ```bash
-$ wget --no-check-certificate https://github.com/bbatsov/prelude/raw/master/utils/installer.sh -O - | sh
+wget --no-check-certificate https://github.com/bbatsov/prelude/raw/master/utils/installer.sh -O - | sh
 ```
 
 ### Manual
 
 ```bash
-$ git clone git://github.com/bbatsov/prelude.git path/to/local/repo
-$ ln -s path/to/local/repo ~/.emacs.d
-$ cd ~/.emacs.d
+git clone git://github.com/bbatsov/prelude.git path/to/local/repo
+ln -s path/to/local/repo ~/.emacs.d
+cd ~/.emacs.d
 ```
 
 You'd do well to replace `~/.emacs.d` with the value of
@@ -93,8 +93,8 @@ You'd do well to replace `~/.emacs.d` with the value of
 The update procedure is fairly straightforward:
 
 ```bash
-$ cd path/to/prelude/installation
-$ git pull
+cd path/to/prelude/installation
+git pull
 ```
 
 The `path/to/prelude/installation` is usually `~/.emacs.d` (at least
@@ -152,15 +152,15 @@ Nothing fancy here. Just start Emacs as usual. Personally I run Emacs
 in daemon mode:
 
 ```bash
-$ emacs --daemon
+emacs --daemon
 ```
 
 Afterwards I connect to the server with either a terminal or a GUI
 client like this:
 
 ```bash
-$ emacsclient -t
-$ emacsclient -c
+emacsclient -t
+emacsclient -c
 ```
 
 You'd probably do well to put a few aliases in your `.zshrc` (or
@@ -379,7 +379,7 @@ system. You can install `aspell` and the dictionary on OS X with
 `homebrew` like this:
 
 ```bash
-$ brew install aspell --with-lang=en
+brew install aspell --with-lang=en
 ```
 
 On Linux distros - just use your distro's package manager.
@@ -390,7 +390,7 @@ If your Emacs looks considerably uglier in a terminal (compared to the
 GUI version) try adding this to your `.bashrc` or `.zshrc`:
 
 ```bash
-$ export TERM=xterm-256color
+export TERM=xterm-256color
 ```
 
 Source the `.bashrc` file and start Emacs again.
