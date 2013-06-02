@@ -45,7 +45,7 @@
                                 (other-window -1))) ;; back one
 
 ;; Indentation help
-(global-set-key (kbd "M-^") 'prelude-top-join-line)
+(global-set-key (kbd "C-^") 'prelude-top-join-line)
 
 ;; Start proced in a similar manner to dired
 (global-set-key (kbd "C-x p") 'proced)
