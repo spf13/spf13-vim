@@ -69,7 +69,7 @@
     set history=1000                " Store a ton of history (default is 20)
     "set spell                       " spell checking on
     set nospell
-    autocmd FileType text,wiki,markdown,mkd setlocal spell
+    "autocmd FileType text,wiki,markdown,mkd setlocal spell
     "set hidden                      " allow buffer switching without saving
 
     " Setting up the directories {
