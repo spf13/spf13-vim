@@ -88,7 +88,7 @@ Position the cursor at it's beginning, according to the current mode."
   (move-beginning-of-line nil)
   (newline-and-indent)
   (forward-line -1)
-  (funcall indent-line-function))
+  (indent-according-to-mode))
 
 (defun prelude-smart-open-line ()
   "Insert an empty line after the current line.
