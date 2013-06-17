@@ -78,7 +78,7 @@
             "Bundle 'Lokaltog/vim-powerline'
             "Bundle 'Lokaltog/vim-easymotion'
             "NOTE: csapprox cause errors
-            Bundle 'godlygeek/csapprox'
+            "Bundle 'godlygeek/csapprox'
             "Bundle 'jistr/vim-nerdtree-tabs'
             "Bundle 'flazz/vim-colorschemes'
             "Bundle 'mbbill/undotree'
@@ -91,21 +91,21 @@
             "added by fudesign2008
             Bundle 'ervandew/supertab'
             "Provides tab completion while inside the “/” search
-            Bundle 'vim-scripts/SearchComplete'
+            "Bundle 'vim-scripts/SearchComplete'
             " to zoomin/out guifont size
             Bundle 'vim-scripts/zoom.vim'
             Bundle 'vim-scripts/IndentAnything'
             Bundle 'FuDesign2008/WebSearch.vim'
             Bundle 'FuDesign2008/AutoClose.vim'
             Bundle 'FuDesign2008/OpenUrl.vim'
-            Bundle 'FuDesign2008/translator.vim'
+            "Bundle 'FuDesign2008/translator.vim'
             Bundle 'FuDesign2008/ToggleNumber.vim'
             Bundle 'FuDesign2008/SpaceControl.vim'
             Bundle 'FuDesign2008/vimKit'
             if !g:spf13_performance_first
                 Bundle 'tpope/vim-surround'
-                Bundle 'kien/ctrlp.vim'
-                Bundle 'mattn/calendar-vim'
+                "Bundle 'kien/ctrlp.vim'
+                "Bundle 'mattn/calendar-vim'
                 Bundle 'FuDesign2008/plan.vim'
                 Bundle 'FuDesign2008/grep.vim'
             endif
@@ -152,7 +152,7 @@
             "@see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
             Bundle 'godlygeek/tabular'
             Bundle 'FuDesign2008/GotoFile.vim'
-            Bundle 'Yggdroot/indentLine'
+            "Bundle 'Yggdroot/indentLine'
             if !g:spf13_performance_first
                 "Bundle 'tpope/vim-fugitive'
                 if executable('ctags')
@@ -191,8 +191,8 @@
             Bundle 'jelera/vim-javascript-syntax'
             Bundle 'FuDesign2008/jslint.vim'
             if !g:spf13_performance_first
-                Bundle 'FuDesign2008/WriteJSDocComment.vim'
-                Bundle 'briancollins/vim-jst'
+                "Bundle 'FuDesign2008/WriteJSDocComment.vim'
+                "Bundle 'briancollins/vim-jst'
             endif
         endif
 
@@ -231,7 +231,7 @@
             Bundle 'FuDesign2008/PreviewMarkdown.vim'
             Bundle 'tpope/vim-markdown'
             Bundle 'vim-scripts/Figlet.vim'
-            Bundle 'vim-scripts/wiki.vim'
+            "Bundle 'vim-scripts/wiki.vim'
             "Bundle 'spf13/vim-preview'
             "Bundle 'tpope/vim-cucumber'
             "Bundle 'quentindecock/vim-cucumber-align-pipes'
@@ -247,13 +247,13 @@
         " has('mac') makes no effects, why ???
         if !has('win32') && has('unix') && count(g:spf13_bundle_groups, 'ios')
             "Bundle 'eraserhd/vim-ios'
-            Bundle  'msanders/cocoa.vim'
-            Bundle 'Rip-Rip/clang_complete'
+            "Bundle  'msanders/cocoa.vim'
+            "Bundle 'Rip-Rip/clang_complete'
         endif
 
     "potion
         if count(g:spf13_bundle_groups, 'potion')
-            Bundle 'FuDesign2008/potion.vim'
+            "Bundle 'FuDesign2008/potion.vim'
         endif
 
     " bash
