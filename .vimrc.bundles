@@ -103,7 +103,7 @@
             Bundle 'FuDesign2008/SpaceControl.vim'
             Bundle 'FuDesign2008/vimKit'
             if !g:spf13_performance_first
-                Bundle 'tpope/vim-surround'
+                "Bundle 'tpope/vim-surround'
                 "Bundle 'kien/ctrlp.vim'
                 Bundle 'mattn/calendar-vim'
                 Bundle 'FuDesign2008/plan.vim'

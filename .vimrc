@@ -308,6 +308,21 @@
     " FuDesign2008/translator.vim {
     " }
 
+    " FuDesign2008/GoodColors.vim {
+        let g:random_color_schemes = ['pyte',
+                        \ 'summerfruit',
+                        \ 'codeschool',
+                        \ 'jellybeans',
+                        \ 'railscasts',
+                        \ 'twilight',
+                        \ 'ir_black',
+                        \ 'molokai',
+                        \ 'zenburn',
+                        \ 'desert',
+                        \ 'wombat',
+                        \ 'peaksea']
+    " }
+
 
     " FuDesign2008/WriteJSDocComment {
         au FileType javascript nnoremap <leader>cc :call WriteJSDocComment()<CR>
