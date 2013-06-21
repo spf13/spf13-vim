@@ -173,8 +173,6 @@
             Bundle 'Shougo/vimproc'
             Bundle 'adinapoli/cumino'
             Bundle 'bitc/vim-hdevtools'
-            autocmd FileType haskell setlocal expandtab shiftwidth=2 softtabstop=2
-            autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
         endif
 
     " HTML
