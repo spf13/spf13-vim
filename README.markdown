@@ -36,17 +36,17 @@ The goal has always been to add functionality without changing all the features,
 
 ## Linux, \*nix, Mac OSX Installation
 
-The easiest way to install spf13-vim is to use our [automatic installer](http://j.mp/spf13-vim3) by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration. If you are upgrading from a prior version (before 3.0) this is also the recommended installation.
+The easiest way to install spf13-vim is to use our [automatic installer](https://j.mp/spf13-vim3) by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration. If you are upgrading from a prior version (before 3.0) this is also the recommended installation.
 
 ```bash
     
-    curl http://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+    curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 ```
 
 If you have a bash-compatible shell you can run the script directly:
 ```bash
 
-    sh <(curl http://j.mp/spf13-vim3 -L)
+    sh <(curl https://j.mp/spf13-vim3 -L)
 ```
 
 ## Installing on Windows
@@ -101,7 +101,7 @@ The simpliest (and safest) way to update is to simply rerun the installer. It wi
 
 ```bash
 
-    curl http://j.mp/spf13-vim3 -L -o - | sh
+    curl https://j.mp/spf13-vim3 -L -o - | sh
 
 ```
 
@@ -411,7 +411,7 @@ Terminal emulator colorschemes:
 
 ## Snippets
 
-It also contains a very complete set of [snippets](http://github.com/spf13/vim-snippets) for use with snipmate or [NeoComplCache].
+It also contains a very complete set of [snippets](https://github.com/spf13/vim-snippets) for use with snipmate or [NeoComplCache].
 
 
 # Intro to VIM
@@ -422,7 +422,7 @@ Here's some tips if you've never used VIM before:
 
 * Type `vimtutor` into a shell to go through a brief interactive
   tutorial inside VIM.
-* Read the slides at [VIM: Walking Without Crutches](http://walking-without-crutches.heroku.com/#1).
+* Read the slides at [VIM: Walking Without Crutches](https://walking-without-crutches.heroku.com/#1).
 
 ## Modes
 
@@ -438,7 +438,7 @@ Here's some tips if you've never used VIM before:
 * Certain commands are prefixed with a `<Leader>` key, which by default maps to `\`.
   Spf13-vim uses `let mapleader = ","` to change this to `,` which is in a consistent and
   convenient location.
-* Keyboard [cheat sheet](http://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
+* Keyboard [cheat sheet](https://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
 
 [Git]:http://git-scm.com
 [Curl]:http://curl.haxx.se
@@ -448,28 +448,28 @@ Here's some tips if you've never used VIM before:
 [spf13-vim]:https://github.com/spf13/spf13-vim
 [contributors]:https://github.com/spf13/spf13-vim/contributors
 
-[Vundle]:http://github.com/gmarik/vundle
-[PIV]:http://github.com/spf13/PIV
-[NERDCommenter]:http://github.com/scrooloose/nerdcommenter
+[Vundle]:https://github.com/gmarik/vundle
+[PIV]:https://github.com/spf13/PIV
+[NERDCommenter]:https://github.com/scrooloose/nerdcommenter
 [Undotree]:https://github.com/mbbill/undotree
-[NERDTree]:http://github.com/scrooloose/nerdtree
-[ctrlp]:http://github.com/kien/ctrlp.vim
-[solarized]:http://github.com/altercation/vim-colors-solarized
-[neocomplcache]:http://github.com/shougo/neocomplcache
-[Fugitive]:http://github.com/tpope/vim-fugitive
+[NERDTree]:https://github.com/scrooloose/nerdtree
+[ctrlp]:https://github.com/kien/ctrlp.vim
+[solarized]:https://github.com/altercation/vim-colors-solarized
+[neocomplcache]:https://github.com/shougo/neocomplcache
+[Fugitive]:https://github.com/tpope/vim-fugitive
 [Surround]:https://github.com/tpope/vim-surround
-[Tagbar]:http://github.com/majutsushi/tagbar
-[Syntastic]:http://github.com/scrooloose/syntastic
-[vim-easymotion]:http://github.com/Lokaltog/vim-easymotion
+[Tagbar]:https://github.com/majutsushi/tagbar
+[Syntastic]:https://github.com/scrooloose/syntastic
+[vim-easymotion]:https://github.com/Lokaltog/vim-easymotion
 [Matchit]:http://www.vim.org/scripts/script.php?script_id=39
-[Tabularize]:http://github.com/godlygeek/tabular
+[Tabularize]:https://github.com/godlygeek/tabular
 [EasyMotion]:https://github.com/Lokaltog/vim-easymotion
 
-[spf13-vim-img]:http://i.imgur.com/UKToY.png
-[spf13-vimrc-img]:http://i.imgur.com/kZWj1.png
-[autocomplete-img]:http://i.imgur.com/90Gg7.png
-[tagbar-img]:http://i.imgur.com/cjbrC.png
-[fugitive-img]:http://i.imgur.com/4NrxV.png
-[nerdtree-img]:http://i.imgur.com/9xIfu.png
-[phpmanual-img]:http://i.imgur.com/c0GGP.png
-[easymotion-img]:http://i.imgur.com/ZsrVL.png
+[spf13-vim-img]:https://i.imgur.com/UKToY.png
+[spf13-vimrc-img]:https://i.imgur.com/kZWj1.png
+[autocomplete-img]:https://i.imgur.com/90Gg7.png
+[tagbar-img]:https://i.imgur.com/cjbrC.png
+[fugitive-img]:https://i.imgur.com/4NrxV.png
+[nerdtree-img]:https://i.imgur.com/9xIfu.png
+[phpmanual-img]:https://i.imgur.com/c0GGP.png
+[easymotion-img]:https://i.imgur.com/ZsrVL.png
