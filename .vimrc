@@ -192,6 +192,7 @@
     autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
     autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
+    autocmd FileType haskell setlocal expandtab shiftwidth=2 softtabstop=2
 
 " }
 
@@ -538,6 +539,7 @@
             autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+            autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
             " Enable heavy omni completion.
             if !exists('g:neocomplcache_omni_patterns')

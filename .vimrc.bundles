@@ -67,7 +67,7 @@
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'html', 'misc', 'scala']
+        let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'haskell', 'html', 'misc', 'scala']
     endif
 
     " To override all the included bundles, put
@@ -161,6 +161,18 @@
         if count(g:spf13_bundle_groups, 'scala')
             Bundle 'derekwyatt/vim-scala'
             Bundle 'derekwyatt/vim-sbt'
+        endif
+
+    " Haskell
+        if count(g:spf13_bundle_groups, 'haskell')
+            Bundle 'dag/vim2hs'
+            Bundle 'Twinside/vim-haskellConceal'
+            Bundle 'lukerandall/haskellmode-vim'
+            Bundle 'ujihisa/neco-ghc'
+            Bundle 'eagletmt/ghcmod-vim'
+            Bundle 'Shougo/vimproc'
+            Bundle 'adinapoli/cumino'
+            Bundle 'bitc/vim-hdevtools'
         endif
 
     " HTML
