@@ -119,6 +119,12 @@
         endif
     " }
 
+    " Set up PATH on *nix for cabal Haskell external tools {
+        if !has('win32')
+            let $PATH = $PATH . ':' . expand("~/.cabal/bin")
+        endif
+    " }
+
 " }
 
 " Vim UI {
@@ -193,6 +199,10 @@
     autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell setlocal expandtab shiftwidth=2 softtabstop=2
+    " Workaround vim-commentary for Haskell
+    autocmd FileType haskell setlocal commentstring=--\ %s
+    " Workaround broken colour highlighting in Haskell
+    autocmd FileType haskell setlocal nospell
 
 " }
 
@@ -540,6 +550,12 @@
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+            " Haskell post write lint and check with ghcmod
+            " $ `cabal install ghcmod` if missing.
+            if !executable("ghcmod")
+                autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+            endif
 
             " Enable heavy omni completion.
             if !exists('g:neocomplcache_omni_patterns')
