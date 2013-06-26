@@ -19,7 +19,7 @@
 
     " Basics {
         set nocompatible        " Must be first line
-        set shell="/bin/sh"
+        set shell=/bin/sh
     " }
 
     " Windows Compatible {
