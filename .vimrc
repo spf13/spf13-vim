@@ -119,12 +119,6 @@
         endif
     " }
 
-    " Set up PATH on *nix for cabal Haskell external tools {
-        if !has('win32')
-            let $PATH = $PATH . ':' . expand("~/.cabal/bin")
-        endif
-    " }
-
 " }
 
 " Vim UI {
@@ -552,7 +546,8 @@
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
             " Haskell post write lint and check with ghcmod
-            " $ `cabal install ghcmod` if missing.
+            " $ `cabal install ghcmod` if missing and ensure
+            " ~/.cabal/bin is in your $PATH.
             if !executable("ghcmod")
                 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
             endif
