@@ -194,6 +194,7 @@
     autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell setlocal expandtab shiftwidth=2 softtabstop=2
+    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 
 " }
 
