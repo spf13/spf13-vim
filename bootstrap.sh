@@ -31,7 +31,7 @@ branch="3.0"
 if [ ! -e $endpath/.git ]; then
     endpath="$HOME/.spf13-vim-3"
     echo "cloning spf13-vim"
-    git clone --recursive -b $branch http://github.com/spf13/spf13-vim.git $endpath
+    git clone --recursive -b $branch https://github.com/spf13/spf13-vim.git $endpath
 else
     echo "updating spf13-vim"
     cd $endpath && git pull origin $branch
@@ -50,7 +50,7 @@ fi
 
 if [ ! -e $HOME/.vim/bundle/vundle ]; then
     echo "Installing Vundle"
-    git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+    git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 fi
 
 echo "update/install plugins using Vundle"
