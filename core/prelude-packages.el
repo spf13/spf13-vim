@@ -47,7 +47,7 @@
     guru-mode helm helm-projectile ido-ubiquitous
     key-chord magit melpa rainbow-mode
     smartparens smex solarized-theme undo-tree
-    volatile-highlights yasnippet zenburn-theme)
+    volatile-highlights zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
 (defun prelude-packages-installed-p ()
