@@ -100,8 +100,7 @@ With a prefix ARG open line above the current line."
       (prelude-smart-open-line-above)
     (progn
       (move-end-of-line nil)
-      (newline-and-indent)
-      (shit))))
+      (newline-and-indent))))
 
 (defun prelude-top-join-line ()
   "Join the current line with the line beneath it."
