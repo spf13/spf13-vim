@@ -41,7 +41,6 @@
     (define-key map [(shift return)] 'prelude-smart-open-line)
     (define-key map (kbd "M-o") 'prelude-smart-open-line)
     (define-key map [(control shift return)] 'prelude-smart-open-line-above)
-    (define-key map (kbd "M-O") 'prelude-smart-open-line-above)
     (define-key map [(control shift up)]  'prelude-move-line-up)
     (define-key map [(control shift down)]  'prelude-move-line-down)
     (define-key map [(meta shift up)]  'prelude-move-line-up)
