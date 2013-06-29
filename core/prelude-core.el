@@ -100,7 +100,8 @@ With a prefix ARG open line above the current line."
       (prelude-smart-open-line-above)
     (progn
       (move-end-of-line nil)
-      (newline-and-indent))))
+      (newline-and-indent)
+      (shit))))
 
 (defun prelude-top-join-line ()
   "Join the current line with the line beneath it."
@@ -321,12 +322,12 @@ the current buffer."
   (interactive)
   (insert (format-time-string "%c" (current-time))))
 
-(defun prelude-conditionally-enable-paredit-mode ()
-  "Enable `paredit-mode' in the minibuffer, during `eval-expression'."
-  (if (eq this-command 'eval-expression)
-      (paredit-mode 1)))
+;; (defun prelude-conditionally-enable-paredit-mode ()
+;;   "Enable `paredit-mode' in the minibuffer, during `eval-expression'."
+;;   (if (eq this-command 'eval-expression)
+;;       (paredit-mode 1)))
 
-(add-hook 'minibuffer-setup-hook 'prelude-conditionally-enable-paredit-mode)
+;; (add-hook 'minibuffer-setup-hook 'prelude-conditionally-enable-paredit-mode)
 
 (defun prelude-recentf-ido-find-file ()
   "Find a recent file using ido."
