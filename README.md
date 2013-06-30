@@ -203,7 +203,7 @@ Keybinding         | Description
 <kbd>C-x M-m</kbd> | Start your default shell.
 <kbd>C-x C-m</kbd> | Alias for `M-x`.
 <kbd>C-h A</kbd>   | Run `apropos` (search in all Emacs symbols).
-<kbd>M-\\</kbd>     | Run `hippie-expand` (a replacement for the default `dabbrev-expand`).
+<kbd>M-/</kbd>     | Run `hippie-expand` (a replacement for the default `dabbrev-expand`).
 <kbd>C-x C-b</kbd> | Open `ibuffer` (a replacement for the default `buffer-list`).
 <kbd>F12</kbd>     | Toggle the Emacs menu bar.
 <kbd>C-x g</kbd>   | Open Magit's status buffer.
@@ -239,6 +239,7 @@ Here's a list of functionality provided by [Projectile](https://github.com/bbats
 Keybinding         | Description
 -------------------|------------------------------------------------------------
 <kbd>C-c p f</kbd> | Display a list of all files in the project. With a prefix argument it will clear the cache first.
+<kbd>C-c p d</kbd> | Display a list of all directories in the project. With a prefix argument it will clear the cache first.
 <kbd>C-c p T</kbd> | Display a list of all test files(specs, features, etc) in the project.
 <kbd>C-c p g</kbd> | Run grep on the files in the project.
 <kbd>C-c p b</kbd> | Display a list of all project buffers currently open.
@@ -247,10 +248,10 @@ Keybinding         | Description
 <kbd>C-c p i</kbd> | Invalidates the project cache (if existing).
 <kbd>C-c p R</kbd> | Regenerates the projects `TAGS` file.
 <kbd>C-c p k</kbd> | Kills all project buffers.
-<kbd>C-c p d</kbd> | Opens the root of the project in `dired`.
+<kbd>C-c p D</kbd> | Opens the root of the project in `dired`.
 <kbd>C-c p e</kbd> | Shows a list of recently visited project files.
 <kbd>C-c p a</kbd> | Runs `ack` on the project. Requires the presence of `ack-and-a-half`.
-<kbd>C-c p l</kbd> | Runs a standard compilation command for your type of project.
+<kbd>C-c p c</kbd> | Runs a standard compilation command for your type of project.
 <kbd>C-c p p</kbd> | Runs a standard test command for your type of project.
 <kbd>C-c p z</kbd> | Adds the currently visited to the cache.
 <kbd>C-c p s</kbd> | Display a list of known projects you can switch to.
