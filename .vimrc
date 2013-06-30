@@ -19,7 +19,9 @@
 
     " Basics {
         set nocompatible        " Must be first line
-        set shell=/bin/sh
+        if !(has('win16') || has('win32') || has('win64'))
+            set shell=/bin/sh
+        endif
     " }
 
     " Windows Compatible {
