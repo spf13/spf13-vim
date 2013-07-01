@@ -160,7 +160,8 @@
     "making folding enabled for the file that has more than 100 lines
     function! SetFolding()
         let lines = line('$')
-        let types = ['help']
+        " help may be set as `text`
+        let types = ['text', 'help']
         if lines < 100 || index(types, tolower(&filetype)) > -1
             setlocal nofoldenable
         else
