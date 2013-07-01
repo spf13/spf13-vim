@@ -320,6 +320,7 @@
                         \ 'zenburn',
                         \ 'desert',
                         \ 'wombat',
+                        \ 'lucius',
                         \ 'peaksea']
     " }
 
