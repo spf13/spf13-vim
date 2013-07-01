@@ -160,13 +160,14 @@
     "making folding enabled for the file that has more than 100 lines
     function! SetFolding()
         let lines = line('$')
-        if lines > 100
+        let types = ['help']
+        if lines < 100 || index(types, tolower(&filetype)) > -1
+            setlocal nofoldenable
+        else
             setlocal foldenable
             setlocal foldlevelstart=1
             setlocal foldmethod=indent
             setlocal foldnestmax=5
-        else
-            setlocal nofoldenable
         endif
     endfunction
     autocmd BufNewFile,BufRead * call SetFolding()
