@@ -433,6 +433,7 @@
      " }
 
      " JSON {
+        au BufNewFile,BufRead .jshintrc set filetype=json
         "nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
      " }
 

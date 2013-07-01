@@ -189,8 +189,8 @@
             "Bundle 'leshill/vim-json'
             "Bundle 'pangloss/vim-javascript'
             Bundle 'jelera/vim-javascript-syntax'
-            "Bundle 'FuDesign2008/jslint.vim'
-            Bundle 'walm/jshint.vim'
+            Bundle 'FuDesign2008/jslint.vim'
+            "Bundle 'walm/jshint.vim'
             if !g:spf13_performance_first
                 "Bundle 'FuDesign2008/WriteJSDocComment.vim'
                 "Bundle 'briancollins/vim-jst'
