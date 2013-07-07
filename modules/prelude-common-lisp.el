@@ -72,11 +72,11 @@
 
 ;; Stop SLIME's REPL from grabbing DEL,
 ;; which is annoying when backspacing over a '('
-(defun prelude-override-slime-repl-bindings-with-paredit ()
-  (define-key slime-repl-mode-map
-    (read-kbd-macro paredit-backward-delete-key) nil))
+;; (defun prelude-override-slime-repl-bindings-with-paredit ()
+;;   (define-key slime-repl-mode-map
+;;     (read-kbd-macro paredit-backward-delete-key) nil))
 
-(add-hook 'slime-repl-mode-hook 'prelude-override-slime-repl-bindings-with-paredit)
+;; (add-hook 'slime-repl-mode-hook 'prelude-override-slime-repl-bindings-with-paredit)
 
 (eval-after-load "slime"
   '(progn
