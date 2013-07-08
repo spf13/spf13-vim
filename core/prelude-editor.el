@@ -195,7 +195,7 @@ Will only occur if prelude-whitespace is also enabled."
    (if mark-active (list (region-beginning) (region-end))
      (message "Copied line")
      (list (line-beginning-position)
-           (line-beginning-position 2)))))
+           (line-end-position)))))
 
 (defadvice kill-region (before smart-cut activate compile)
   "When called interactively with no active region, kill a single line instead."
