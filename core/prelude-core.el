@@ -321,13 +321,6 @@ the current buffer."
   (interactive)
   (insert (format-time-string "%c" (current-time))))
 
-;; (defun prelude-conditionally-enable-paredit-mode ()
-;;   "Enable `paredit-mode' in the minibuffer, during `eval-expression'."
-;;   (if (eq this-command 'eval-expression)
-;;       (paredit-mode 1)))
-
-;; (add-hook 'minibuffer-setup-hook 'prelude-conditionally-enable-paredit-mode)
-
 (defun prelude-recentf-ido-find-file ()
   "Find a recent file using ido."
   (interactive)

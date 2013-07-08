@@ -63,20 +63,13 @@
 (add-hook 'lisp-mode-hook (lambda () (run-hooks 'prelude-lisp-coding-hook)))
 (add-hook 'slime-repl-mode-hook (lambda () (run-hooks 'prelude-interactive-lisp-coding-hook)))
 
-;; start slime automatically when we open a lisp file
 (defun prelude-start-slime ()
+  "Start SLIME unless it's already running."
   (unless (slime-connected-p)
     (save-excursion (slime))))
 
+;; start slime automatically when we open a lisp file
 (add-hook 'slime-mode-hook 'prelude-start-slime)
-
-;; Stop SLIME's REPL from grabbing DEL,
-;; which is annoying when backspacing over a '('
-;; (defun prelude-override-slime-repl-bindings-with-paredit ()
-;;   (define-key slime-repl-mode-map
-;;     (read-kbd-macro paredit-backward-delete-key) nil))
-
-;; (add-hook 'slime-repl-mode-hook 'prelude-override-slime-repl-bindings-with-paredit)
 
 (eval-after-load "slime"
   '(progn
