@@ -45,7 +45,7 @@
     expand-region flycheck gist
     git-commit-mode gitconfig-mode gitignore-mode
     guru-mode helm helm-projectile ido-ubiquitous
-    key-chord magit melpa rainbow-mode
+    key-chord magit rainbow-mode
     smartparens smex solarized-theme undo-tree
     volatile-highlights zenburn-theme)
   "A list of packages to ensure are installed at launch.")
