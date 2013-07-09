@@ -181,6 +181,7 @@
 
     " Haskell
         if count(g:spf13_bundle_groups, 'haskell')
+            Bundle 'travitch/hasksyn'
             Bundle 'dag/vim2hs'
             Bundle 'Twinside/vim-haskellConceal'
             Bundle 'lukerandall/haskellmode-vim'
