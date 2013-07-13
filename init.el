@@ -72,6 +72,10 @@ by Prelude.")
 (add-to-list 'load-path prelude-vendor-dir)
 (prelude-add-subfolders-to-load-path prelude-vendor-dir)
 
+;; reduce the frequency of garbage collection by making it happen on
+;; each 50MB of allocated data (the default is on every 0.76MB)
+(setq gc-cons-threshold 50000000)
+
 ;; the core stuff
 (require 'prelude-packages)
 (require 'prelude-ui)

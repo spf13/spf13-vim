@@ -430,6 +430,18 @@ you don't like that simply add this to your personal config:
                 'move-beginning-of-line)
 ```
 
+### Poor ido matching performance on large datasets
+
+Prelude swaps the default `ido` flex matching with the more powerful
+[ido-flx](https://github.com/lewang/flx). This might introduce some
+performance problems with huge datasets. If you experience lag in
+`ido`, please, report an issue upstream. You can always disable the
+improved matching algorithm like this:
+
+```lisp
+(flx-ido-mode -1)
+```
+
 ### Windows compatibility
 
 While everything in Prelude should work fine in Windows, I test it only

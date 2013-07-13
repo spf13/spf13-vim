@@ -213,6 +213,7 @@ Will only occur if prelude-whitespace is also enabled."
 ;; ido-mode
 (require 'ido)
 (require 'ido-ubiquitous)
+(require 'flx-ido)
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t
       ido-create-new-buffer 'always
@@ -222,6 +223,10 @@ Will only occur if prelude-whitespace is also enabled."
       ido-default-file-method 'selected-window)
 (ido-mode +1)
 (ido-ubiquitous +1)
+;; smarter fuzzy matching for ido
+(flx-ido-mode +1)
+;; disable ido faces to see flx highlights
+(setq ido-use-faces nil)
 
 ;; smex, remember recently and most frequently used commands
 (require 'smex)
