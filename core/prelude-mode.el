@@ -54,6 +54,7 @@
     (define-key map (kbd "C-c s") 'prelude-swap-windows)
     (define-key map (kbd "C-c D") 'prelude-delete-file-and-buffer)
     (define-key map (kbd "C-c d") 'prelude-duplicate-current-line-or-region)
+    (define-key map (kbd "C-c M-d") 'prelude-duplicate-and-comment-current-line-or-region)
     (define-key map (kbd "C-c r") 'prelude-rename-file-and-buffer)
     (define-key map (kbd "C-c t") 'prelude-visit-term-buffer)
     (define-key map (kbd "C-c k") 'prelude-kill-other-buffers)
