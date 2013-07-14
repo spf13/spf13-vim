@@ -222,7 +222,7 @@ Will only occur if prelude-whitespace is also enabled."
       ido-save-directory-list-file (expand-file-name "ido.hist" prelude-savefile-dir)
       ido-default-file-method 'selected-window)
 (ido-mode +1)
-(ido-ubiquitous +1)
+(ido-ubiquitous-mode +1)
 ;; smarter fuzzy matching for ido
 (flx-ido-mode +1)
 ;; disable ido faces to see flx highlights
