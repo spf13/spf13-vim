@@ -137,7 +137,7 @@ Will only occur if prelude-whitespace is also enabled."
 ;; save recent files
 (require 'recentf)
 (setq recentf-save-file (expand-file-name "recentf" prelude-savefile-dir)
-      recentf-max-saved-items 200
+      recentf-max-saved-items 500
       recentf-max-menu-items 15)
 (recentf-mode +1)
 
