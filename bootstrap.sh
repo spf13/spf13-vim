@@ -41,7 +41,7 @@ function program_exists {
 ############################ SETUP FUNCTIONS
 function lnif() {
     if [[ ! -e '$2' ]] ; then
-        ln -s "$1" "$2"
+        ln -sf "$1" "$2"
         ret="$?"
     fi
     if [[ -L '$2' ]] ; then
@@ -51,7 +51,7 @@ function lnif() {
 }
 
 function do_backup() {
-    today=`date +%Y%m%d`
+    today=`date +%Y%m%d_%s`
 
     for i in "$HOME/.vim" "$HOME/.vimrc" "$HOME/.gvimrc";
 	do [ -e "$i" ] && [ ! -L "$i" ] && mv "$i" "$i.$today";
@@ -124,7 +124,7 @@ function create_symlinks() {
 function setup_vundle() {
     system_shell="$SHELL"
     export SHELL="/bin/sh"
-    vim -u "$endpath/.vimrc.bundles +BundleInstall! +BundleClean +qall"
+    vim -u "$HOME/.vimrc.bundles" +BundleInstall! +BundleClean +qall
     export SHELL="$system_shell"
 
     success "$1"
@@ -132,12 +132,13 @@ function setup_vundle() {
 }
 
 ############################ MAIN()
-program_exists "${required[0]}" "To install $app_name you first need to install VIM."
+program_exists "${required[0]}" "To install $app_name you first need to install Vim."
 
 clone_repo 	"Successfully cloned $app_name"
 clone_vundle 	"Successfully cloned ${required[2]}"
+#do_backup	"Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d_%s`\n Don't forget to do your own backups."
 create_symlinks "Setting up vim symlinks"
-#setup_vundle 	"Now updating/installing plugins using Vundle"
+setup_vundle 	"Now updating/installing plugins using Vundle"
 
 msg 		"\nThanks for installing $app_name."
 msg		"© `date +%Y` http://vim.spf13.com/"
