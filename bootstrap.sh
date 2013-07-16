@@ -136,7 +136,7 @@ program_exists "${required[0]}" "To install $app_name you first need to install 
 
 clone_repo 	"Successfully cloned $app_name"
 clone_vundle 	"Successfully cloned ${required[2]}"
-#do_backup	"Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d_%s`\n Don't forget to do your own backups."
+do_backup	"Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d_%s`\n Don't forget to do your own backups."
 create_symlinks "Setting up vim symlinks"
 setup_vundle 	"Now updating/installing plugins using Vundle"
 
