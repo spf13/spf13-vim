@@ -434,10 +434,18 @@ you don't like that simply add this to your personal config:
 ### Poor ido matching performance on large datasets
 
 Prelude swaps the default `ido` flex matching with the more powerful
-[ido-flx](https://github.com/lewang/flx). This might introduce some
-performance problems with huge datasets. If you experience lag in
-`ido`, please, report an issue upstream. You can always disable the
-improved matching algorithm like this:
+[ido-flx](https://github.com/lewang/flx).
+
+The sorting algorithm `flx` uses is more complex, but yields better results.
+
+On slower machines, it may be necessary to lower `flx-ido-threshhold` to
+ensure a smooth experience.
+
+```lisp
+(setq flx-ido-threshhold 1000)
+```
+
+You can always disable the improved sorting algorithm all together like this:
 
 ```lisp
 (flx-ido-mode -1)
