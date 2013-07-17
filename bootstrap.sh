@@ -5,6 +5,7 @@ declare -a required=('vim' 'git' 'vundle');
 app_name='spf13-vim'
 git_branch='3.0'
 debug_mode='0'
+fork_maintainer='0'
 
 ############################  BASIC SETUP TOOLS
 function msg() {
@@ -12,7 +13,7 @@ function msg() {
 }
 
 function success {
-    if [[ $ret -eq '0' ]]; then
+    if [[ "$ret" -eq '0' ]]; then
 	msg "\e[32m[✔]\033[0m ${1}${2}"
     fi
 }
@@ -23,7 +24,7 @@ function error() {
 }
 
 function debug() {
-    if [[ $debug_mode -eq '1' && $ret -gt '1' ]]; then
+    if [[ "$debug_mode" -eq '1' && "$ret" -gt '1' ]]; then
       msg "An error occured in function \"${FUNCNAME[$i+1]}\" on line ${BASH_LINENO[$i+1]}, we're sorry for that."
     fi
 }
@@ -33,30 +34,30 @@ function program_exists {
     type $1 >/dev/null 2>&1 || { local ret='1'; }
 
     # throw error on non-zero return value
-    if [[ ! $ret -eq '0' ]]; then
+    if [[ ! "$ret" -eq '0' ]]; then
 	error "$2"
     fi
 }
 
 ############################ SETUP FUNCTIONS
 function lnif() {
-    if [[ ! -e '$2' ]] ; then
+    if [[ -e "$1" ]]; then
         ln -sf "$1" "$2"
-        ret="$?"
     fi
-    if [[ -L '$2' ]] ; then
-        ln -sf '$1' '$2'
-        ret="$?"
-    fi
+    ret="$?"
+    debug
 }
 
 function do_backup() {
-    today=`date +%Y%m%d_%s`
-
-    for i in "$HOME/.vim" "$HOME/.vimrc" "$HOME/.gvimrc";
-	do [ -e "$i" ] && [ ! -L "$i" ] && mv "$i" "$i.$today";
-    done
-    success "$1"
+    if [[ -e "$2" || -e "$3" || -e "$4" ]]; then
+        today=`date +%Y%m%d_%s`
+        for i in "$2" "$3" "$4"; do
+            [ -e "$i" ] && [ ! -L "$i" ] && mv "$i" "$i.$today";
+        done
+        ret="$?"
+        success "$1"
+        debug
+   fi
 }
 
 function upgrade_repo() {
@@ -82,7 +83,6 @@ function clone_repo() {
     endpath="$HOME/.$app_name-3"
 
     if [ ! -e "$endpath/.git" ]; then
-	msg "cloning $app_name"
 	git clone --recursive -b "$git_branch" https://github.com/spf13/spf13-vim.git "$endpath"
 	ret="$?"
 	success "$1"
@@ -98,32 +98,44 @@ function clone_vundle() {
     else
 	upgrade_repo "${required[2]}"	"Successfully updated ${required[2]}"
     fi
-
+    ret="$?"
     success "$1"
     debug
 }
 
 function create_symlinks() {
-    lnif "$endpath/.vimrc" 		"$HOME/.vimrc"
-    lnif "$endpath/.vimrc.bundles" 	"$HOME/.vimrc.bundles"
-    lnif "$endpath/.vim" 		"$HOME/.vim"
+    endpath="$HOME/.$app_name-3"
 
-    # commented out, because there is no such file.
-    #lnif "$endpath/.vimrc.fork" 	"$HOME/.vimrc.fork"
-    #lnif "$endpath/.vimrc.bundles.fork" "$HOME/.vimrc.bundles.fork"
+    ln -sf "$endpath/.vimrc"              "$HOME/.vimrc"
+    ln -sf "$endpath/.vimrc.bundles"      "$HOME/.vimrc.bundles"
+    ln -sf "$endpath/.vim"                "$HOME/.vim"
+
+    # Useful for fork maintainers
+    touch  "$HOME/.vimrc.local"
+
+    if [[ -e "$endpath/.vimrc.fork" ]]; then
+        ln -sf "$HOME/.vimrc.fork"
+    elif [[ "$fork_maintainer" -eq '1' ]]; then
+       touch "$HOME/.vimrc.fork"
+       touch "$HOME/.vimrc.bundles.fork"
+    fi
+
+    if [[ -e "$endpath/.vimrc.bundles.fork" ]]; then
+        ln -sf "$HOME/.vimrc.bundles.fork"
+    fi
 
     if [[ ! -d "$endpath/.vim/bundle" ]]; then
 	mkdir -p "$endpath/.vim/bundle"
-	ret="$?"
     fi
 
+    ret="$?"
     success "$1"
     debug
 }
 
 function setup_vundle() {
     system_shell="$SHELL"
-    export SHELL="/bin/sh"
+    export SHELL='/bin/sh'
     vim -u "$HOME/.vimrc.bundles" +BundleInstall! +BundleClean +qall
     export SHELL="$system_shell"
 
@@ -134,10 +146,17 @@ function setup_vundle() {
 ############################ MAIN()
 program_exists "${required[0]}" "To install $app_name you first need to install Vim."
 
+do_backup	"Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d_%s`" \
+		"$HOME/.vim" \
+		"$HOME/.vimrc" \
+		"$HOME/.gvimrc"
+
 clone_repo 	"Successfully cloned $app_name"
+
 clone_vundle 	"Successfully cloned ${required[2]}"
-do_backup	"Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d_%s`\n Don't forget to do your own backups."
+
 create_symlinks "Setting up vim symlinks"
+
 setup_vundle 	"Now updating/installing plugins using Vundle"
 
 msg 		"\nThanks for installing $app_name."
