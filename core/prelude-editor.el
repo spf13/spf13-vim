@@ -155,7 +155,7 @@ Will only occur if prelude-whitespace is also enabled."
              (file-writable-p buffer-file-name))
     (save-buffer)))
 
-(defadvice switch-to-buffer (before save-buffer-now activate)
+(defadvice switch-to-buffer (before switch-buffer-now activate)
   "Invoke `prelude-auto-save-command' before `switch-to-window'."
   (prelude-auto-save-command))
 (defadvice other-window (before other-window-now activate)
