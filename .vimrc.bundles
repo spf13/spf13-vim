@@ -221,7 +221,7 @@
             Bundle 'spf13/vim-preview'
             Bundle 'tpope/vim-cucumber'
             Bundle 'quentindecock/vim-cucumber-align-pipes'
-            Bundle 'Puppet-Syntax-Highlighting'
+            Bundle 'vim-scripts/Puppet-Syntax-Highlighting'
         endif
 
 
