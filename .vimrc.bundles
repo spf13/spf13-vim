@@ -88,10 +88,11 @@
             "endif
             "Bundle 'tpope/vim-abolish.git'
             "
-            "added by fudesign2008
-            Bundle 'ervandew/supertab'
-            "neocomplcache is slow and not suitable for me
-            "Bundle 'Shougo/neocomplcache.vim'
+            if has('win32') || has('win64')
+                Bundle 'ervandew/supertab'
+            else
+                Bundle 'Valloric/YouCompleteMe'
+            endif
             "Provides tab completion while inside the “/” search
             Bundle 'vim-scripts/SearchComplete'
             " to zoomin/out guifont size
