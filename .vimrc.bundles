@@ -89,7 +89,7 @@
             "Bundle 'tpope/vim-abolish.git'
             "
             "added by fudesign2008
-            "Bundle 'ervandew/supertab'
+            Bundle 'ervandew/supertab'
             "neocomplcache is slow and not suitable for me
             "Bundle 'Shougo/neocomplcache.vim'
             "Provides tab completion while inside the “/” search
