@@ -90,8 +90,8 @@
             "
             "added by fudesign2008
             "Bundle 'ervandew/supertab'
-            " try neocomplcache
-            Bundle 'Shougo/neocomplcache.vim'
+            "neocomplcache is slow and not suitable for me
+            "Bundle 'Shougo/neocomplcache.vim'
             "Provides tab completion while inside the “/” search
             Bundle 'vim-scripts/SearchComplete'
             " to zoomin/out guifont size
