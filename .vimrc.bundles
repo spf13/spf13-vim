@@ -89,7 +89,9 @@
             "Bundle 'tpope/vim-abolish.git'
             "
             "added by fudesign2008
-            Bundle 'ervandew/supertab'
+            "Bundle 'ervandew/supertab'
+            " try neocomplcache
+            Bundle 'Shougo/neocomplcache.vim'
             "Provides tab completion while inside the “/” search
             Bundle 'vim-scripts/SearchComplete'
             " to zoomin/out guifont size
