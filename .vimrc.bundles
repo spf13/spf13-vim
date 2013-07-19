@@ -91,7 +91,7 @@
             "added by fudesign2008
             Bundle 'ervandew/supertab'
             "Provides tab completion while inside the “/” search
-            "Bundle 'vim-scripts/SearchComplete'
+            Bundle 'vim-scripts/SearchComplete'
             " to zoomin/out guifont size
             Bundle 'vim-scripts/zoom.vim'
             Bundle 'vim-scripts/IndentAnything'
