@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-
+#!/bin/bash
 ############################  SETUP PARAMETERS
 declare -a required=('vim' 'git' 'vundle');
 app_name='spf13-vim'
