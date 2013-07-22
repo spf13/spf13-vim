@@ -209,17 +209,29 @@
         "let mapleader=g:spf13_leader
     "endif
 
+    "
+    "vim tips
+    "@see http://www.vimbits.com/bits?sort=top
+    "
     " Easier moving in tabs and windows
-    "map <C-J> <C-W>j<C-W>_
-    "map <C-K> <C-W>k<C-W>_
-    "map <C-L> <C-W>l<C-W>_
-    "map <C-H> <C-W>h<C-W>_
+    map <C-J> <C-W>j<C-W>_
+    map <C-K> <C-W>k<C-W>_
+    map <C-L> <C-W>l<C-W>_
+    map <C-H> <C-W>h<C-W>_
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
     nnoremap j gj
     nnoremap k gk
 
+    "format line easily
     nnoremap gq gqgq
+
+    "clear search hilight
+    noremap <silent><Leader>/ :nohls<CR>
+
+    "use sane regular expresion
+    nnoremap / /\v
+    vnoremap / /\v
 
     " The following two lines conflict with moving to top and bottom of the
     " screen
