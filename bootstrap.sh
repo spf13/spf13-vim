@@ -1,6 +1,6 @@
 #!/bin/bash
 ############################  SETUP PARAMETERS
-declare -a required=('vim' 'git' 'vundle');
+required=('vim' 'git' 'vundle');
 app_name='spf13-vim'
 git_branch='3.0'
 debug_mode='0'
