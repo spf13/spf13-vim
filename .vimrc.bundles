@@ -197,7 +197,7 @@
             Bundle 'FuDesign2008/jslhint.vim'
             if !g:spf13_performance_first
                 "Bundle 'FuDesign2008/WriteJSDocComment.vim'
-                "Bundle 'briancollins/vim-jst'
+                Bundle 'briancollins/vim-jst'
             endif
         endif
 
