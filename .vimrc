@@ -284,9 +284,9 @@
     " }
 
     " superTab.vim {
-        let g:SuperTabDefaultCompletionType = "context"
-        let g:SuperTabLongestEnhanced = 1
-    " }
+        "let g:SuperTabDefaultCompletionType = "context"
+        "let g:SuperTabLongestEnhanced = 1
+     }
 
     " AutoClose.vim {
         "let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '`': '`'}
