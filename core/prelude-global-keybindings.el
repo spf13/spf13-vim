@@ -122,20 +122,6 @@
 
 (key-chord-mode +1)
 
-;; make some use of the Super key
-(define-key global-map [?\s-d] 'projectile-find-dir)
-(define-key global-map [?\s-e] 'er/expand-region)
-(define-key global-map [?\s-f] 'projectile-find-file)
-(define-key global-map [?\s-g] 'projectile-grep)
-(define-key global-map [?\s-j] 'prelude-top-join-line)
-(define-key global-map [?\s-k] 'prelude-kill-whole-line)
-(define-key global-map [?\s-l] 'goto-line)
-(define-key global-map [?\s-m] 'magit-status)
-(define-key global-map [?\s-o] 'prelude-open-line-above)
-(define-key global-map [?\s-w] 'delete-frame)
-(define-key global-map [?\s-x] 'exchange-point-and-mark)
-(define-key global-map [?\s-p] 'projectile-switch-project)
-
 (provide 'prelude-global-keybindings)
 
 ;;; prelude-global-keybindings.el ends here

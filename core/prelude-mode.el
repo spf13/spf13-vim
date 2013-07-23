@@ -60,6 +60,19 @@
     (define-key map (kbd "C-c k") 'prelude-kill-other-buffers)
     (define-key map (kbd "C-c TAB") 'prelude-indent-rigidly-and-copy-to-clipboard)
     (define-key map (kbd "C-c h") 'helm-prelude)
+    ;; make some use of the Super key
+    (define-key map [?\s-d] 'projectile-find-dir)
+    (define-key map [?\s-p] 'projectile-switch-project)
+    (define-key map [?\s-f] 'projectile-find-file)
+    (define-key map [?\s-g] 'projectile-grep)
+
+    (define-key map (kbd "s-r") 'prelude-recentf-ido-find-file)
+    (define-key map [?\s-x] 'er/expand-region)
+    (define-key map [?\s-j] 'prelude-top-join-line)
+    (define-key map [?\s-k] 'prelude-kill-whole-line)
+    (define-key map [?\s-m] 'magit-status)
+    (define-key map [?\s-o] 'prelude-open-line-above)
+
     map)
   "Keymap for Prelude mode.")
 

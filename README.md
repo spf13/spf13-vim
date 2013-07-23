@@ -232,6 +232,12 @@ Keybinding         | Description
 <kbd>C-c t</kbd> | Open a terminal emulator (`ansi-term`).
 <kbd>C-c k</kbd> | Kill all open buffers except the one you're currently in.
 <kbd>C-c h</kbd> | Open Helm (a useful means of navigating your buffers and project files).
+<kbd>Super-r</kbd> | Recent files
+<kbd>Super-x</kbd> | Expand region
+<kbd>Super-j</kbd> | Join lines
+<kbd>Super-k</kbd> | Kill whole line
+<kbd>Super-m</kbd> | Magit status
+<kbd>Super-o</kbd> | Open line above current line
 
 #### Projectile
 
@@ -256,6 +262,15 @@ Keybinding         | Description
 <kbd>C-c p p</kbd> | Runs a standard test command for your type of project.
 <kbd>C-c p z</kbd> | Adds the currently visited to the cache.
 <kbd>C-c p s</kbd> | Display a list of known projects you can switch to.
+
+Prelude adds some extra keybindings:
+
+Keybinding         | Command
+-------------------|------------------------------------------------------------
+<kbd>Super-f</kbd> | Find file in project
+<kbd>Super-d</kbd> | Find directory in project
+<kbd>Super-g</kbd> | Run grep on project
+<kbd>Super-p</kbd> | Switch projects
 
 If you ever forget any of Projectile's keybindings just do a:
 
