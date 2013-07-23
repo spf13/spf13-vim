@@ -230,8 +230,8 @@
     noremap <silent><Leader>/ :nohls<CR>
 
     "use sane regular expresion
-    nnoremap / /\v
-    vnoremap / /\v
+    "nnoremap / /\v
+    "vnoremap / /\v
 
     " The following two lines conflict with moving to top and bottom of the
     " screen
