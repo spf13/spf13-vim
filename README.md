@@ -351,7 +351,13 @@ If you'd like to add some auto installation of packages in your
 personal config use the following code:
 
 ```lisp
-(prelude-ensure-module-deps '(some-package some-other-package))
+(prelude-require-packages '(some-package some-other-package))
+```
+
+If you require just a single package you can also use:
+
+```lisp
+(prelude-require-package 'some-package)
 ```
 
 #### Disabling whitespace-mode
