@@ -71,7 +71,7 @@
     (define-key map [?\s-j] 'prelude-top-join-line)
     (define-key map [?\s-k] 'prelude-kill-whole-line)
     (define-key map [?\s-m] 'magit-status)
-    (define-key map [?\s-o] 'prelude-open-line-above)
+    (define-key map [?\s-o] 'prelude-smart-open-line-above)
 
     map)
   "Keymap for Prelude mode.")
