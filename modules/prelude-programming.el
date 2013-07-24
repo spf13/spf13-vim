@@ -90,9 +90,12 @@
 (defun prelude-local-comment-auto-fill ()
   (set (make-local-variable 'comment-auto-fill-only-comments) t))
 
-(defun prelude-add-watchwords ()
+(defun prelude-add-comment-annotations ()
+  "Highlight a bunch of well known comment annotations.
+
+This functions should be added to the hooks of major modes for programming."
   (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\):"
+   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):"
           1 font-lock-warning-face t))))
 
 ;; show the name of the current function definition in the modeline
@@ -119,7 +122,7 @@
     (guru-mode +1))
   (prelude-enable-whitespace)
   (prelude-local-comment-auto-fill)
-  (prelude-add-watchwords))
+  (prelude-add-comment-annotations))
 
 (setq prelude-prog-mode-hook 'prelude-prog-mode-defaults)
 
