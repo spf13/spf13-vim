@@ -90,7 +90,7 @@
 (defun prelude-local-comment-auto-fill ()
   (set (make-local-variable 'comment-auto-fill-only-comments) t))
 
-(defun prelude-add-comment-annotations ()
+(defun prelude-font-lock-comment-annotations ()
   "Highlight a bunch of well known comment annotations.
 
 This functions should be added to the hooks of major modes for programming."
@@ -122,7 +122,7 @@ This functions should be added to the hooks of major modes for programming."
     (guru-mode +1))
   (prelude-enable-whitespace)
   (prelude-local-comment-auto-fill)
-  (prelude-add-comment-annotations))
+  (prelude-font-lock-comment-annotations))
 
 (setq prelude-prog-mode-hook 'prelude-prog-mode-defaults)
 
