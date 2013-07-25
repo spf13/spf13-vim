@@ -232,6 +232,8 @@ Keybinding         | Description
 <kbd>C-c t</kbd> | Open a terminal emulator (`ansi-term`).
 <kbd>C-c k</kbd> | Kill all open buffers except the one you're currently in.
 <kbd>C-c h</kbd> | Open Helm (a useful means of navigating your buffers and project files).
+<kbd>C-c +</kbd> | Increment integer at point.
+<kbd>C-c -</kbd> | Decrement integer at point.
 <kbd>Super-r</kbd> | Recent files
 <kbd>Super-x</kbd> | Expand region
 <kbd>Super-j</kbd> | Join lines
