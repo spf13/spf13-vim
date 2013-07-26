@@ -514,5 +514,17 @@ With numeric prefix arg DEC, decrement the integer by DEC amount."
   (interactive "p")
   (prelude-increment-integer-at-point (- (or dec 1))))
 
+;;; Emacs in OSX already has fullscreen support
+(when (eq window-system 'x)
+  (defun prelude-fullscreen ()
+    "Makes Emacs window fullscreen.
+
+This follows freedesktop standards, should work in X servers."
+    (interactive)
+    (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                           '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
+  (global-set-key (kbd "<f11>") 'prelude-fullscreen)
+)
+
 (provide 'prelude-core)
 ;;; prelude-core.el ends here
