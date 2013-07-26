@@ -15,7 +15,7 @@ The distribution is completely customisable using a `~/.vimrc.local` and `~/.vim
 
 ![spf13-vim image][spf13-vim-img]
 
-Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses the [Vundle] plugin management system to have a well organized vim directory (Similar to mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
+Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses the [NeoBundle] plugin management system to have a well organized vim directory (Similar to mac's app folders). NeoBundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
 
 Great care has been taken to ensure that each plugin plays nicely with others, and optional configuration has been provided for what we believe is the most efficient use.
 
@@ -24,9 +24,9 @@ Lastly (and perhaps, most importantly) It is completely cross platform. It works
 # spf13-vim 3.0
 January 2012 spf13-vim released it's third major iteration. **This is important as it requires a reinstall**, but trust me it's worth it.
 
-The biggest change is the switch from using git submodules to using the excellent [Vundle] system. While git submodules seemed like a good idea at the time, it wasn't. It was always problematic. Additionally because a submodule points to a refspec and not a branch, it was a constant maintenance nightmare to keep everything up to date.
+The biggest change is the switch from using git submodules to using the excellent [NeoBundle] system. While git submodules seemed like a good idea at the time, it wasn't. It was always problematic. Additionally because a submodule points to a refspec and not a branch, it was a constant maintenance nightmare to keep everything up to date.
 
-[Vundle] has an excellent system built on the same principles as Pathogen, but with an integrated plugin management system that is Git and Github aware.
+[NeoBundle] has an excellent system built on the same principles as Pathogen, but with an integrated plugin management system that is Git and Github aware.
 
 We have also changed out most of the plugins in favor of newer more stable alternatives. Additionally we have significantly reduced the number of plugins requiring python or ruby.
 
@@ -67,7 +67,7 @@ After installation try running `git --version` within _command prompt_ (press Wi
 #### Setup [Curl]
 _Instructions blatently copied from vundle readme_
 Installing Curl on Windows is easy as [Curl] is bundled with [msysgit]!
-But before it can be used with [Vundle] it's required make `curl` run in _command prompt_.
+But before it can be used with [NeoBundle] it's required make `curl` run in _command prompt_.
 The easiest way is to create `curl.cmd` with [this content](https://gist.github.com/912993)
 
     @rem Do not use "echo off" to not affect any child calls.
@@ -112,7 +112,7 @@ Alternatively you can manually perform the following steps. If anything has chan
 ```bash
     cd $HOME/to/spf13-vim/
     git pull
-    vim +BundleInstall! +BundleClean +q
+    vim +NeoBundleInstall! +NeoBundleClean +q
 ```
 
 ### Fork me on GitHub
@@ -184,23 +184,23 @@ Create `~/.vimrc.bundles.local` for any additional bundles.
 To add a new bundle
 
 ```bash
-    echo Bundle \'spf13/vim-colors\' >> ~/.vimrc.bundles.local
+    echo NeoBundle \'spf13/vim-colors\' >> ~/.vimrc.bundles.local
 ```
 
 ## Removing (disabling) an included plugin
 
 Create `~/.vimrc.local` if it doesn't already exist.
 
-Add the UnBundle command to this line. It takes the same input as the Bundle line, so simply copy the line you want to disable and add 'Un' to the beginning.
+Add the NeoBundleDisable command to this line. It takes the same input as the Bundle line, so simply copy the line you want to disable and add 'Un' to the beginning.
 
 For example, disabling the 'AutoClose' and 'scrooloose/syntastic' plugins
 
 ```bash
-    echo UnBundle \'AutoClose\' >> ~/.vimrc.local
-    echo UnBundle \'scrooloose/syntastic\' >> ~/.vimrc.local
+    echo NeoBundleDisable \'AutoClose\' >> ~/.vimrc.local
+    echo NeoBundleDisable \'scrooloose/syntastic\' >> ~/.vimrc.local
 ```
 
-**Remember to run ':BundleClean!' after this to remove the existing directories**
+**Remember to run ':NeoBundleClean!' after this to remove the existing directories**
 
 
 Here are a few of the plugins:
@@ -450,7 +450,7 @@ Here's some tips if you've never used VIM before:
 [spf13-vim]:https://github.com/spf13/spf13-vim
 [contributors]:https://github.com/spf13/spf13-vim/contributors
 
-[Vundle]:https://github.com/gmarik/vundle
+[NeoBundle]:https://github.com/Shougo/neobundle.vim
 [PIV]:https://github.com/spf13/PIV
 [NERDCommenter]:https://github.com/scrooloose/nerdcommenter
 [Undotree]:https://github.com/mbbill/undotree

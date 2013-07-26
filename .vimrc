@@ -32,12 +32,14 @@
         endif
     " }
 
-    " Setup Bundle Support {
+    " Setup NeoBundle Support {
         " The next three lines ensure that the ~/.vim/bundle/ system works
-        filetype on
         filetype off
-        set rtp+=~/.vim/bundle/vundle
-        call vundle#rc()
+        if has('vim_starting')
+            set runtimepath+=~/.vim/bundle/neobundle.vim/
+        endif
+
+        call neobundle#rc(expand('~/.vim/bundle/'))
     " }
 
 " }
@@ -634,11 +636,11 @@
 " }
 
 " Functions {
-
     " UnBundle {
     function! UnBundle(arg, ...)
-      let bundle = vundle#config#init_bundle(a:arg, a:000)
-      call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
+        for bundle in filter(neobundle#config#get_neobundles(), 'v:val.orig_name ==# a:arg')
+            call neobundle#config#rm(bundle.path)
+        endfor
     endfunction
 
     com! -nargs=+         UnBundle

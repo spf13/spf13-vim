@@ -48,13 +48,13 @@ if [ ! -d $endpath/.vim/bundle ]; then
     mkdir -p $endpath/.vim/bundle
 fi
 
-if [ ! -e $HOME/.vim/bundle/vundle ]; then
-    echo "Installing Vundle"
-    git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+if [ ! -e $HOME/.vim/bundle/neobundle ]; then
+    echo "Installing NeoBundle"
+    git clone git://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
 fi
 
 echo "update/install plugins using Vundle"
 system_shell=$SHELL
 export SHELL="/bin/sh"
-vim -u $endpath/.vimrc.bundles +BundleInstall! +BundleClean +qall
+vim -u $endpath/.vimrc.bundles +NeoBundleInstall! +NeoBundleClean +qall
 export SHELL=$system_shell
