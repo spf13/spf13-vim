@@ -415,7 +415,11 @@ Doesn't mess with special buffers."
     "Press <S-RET> or <M-o> to open a new beneath the current one."
     "Press <s-o> to open a line above the current one."
     "Press <C-c C-z> in a Elisp buffer to launch an interactive Elisp shell."
-    "Explore the Prelude menu to find out about some of Prelude extensions to Emacs."
+    "Press <C-Backspace> to kill a line backwards."
+    "Press <C-S-Backspace> or <s-k> to kill the whole line."
+    "Press <f11> to toggle fullscreen mode."
+    "Press <f12> to toggle the menu bar."
+    "Explore the Tools->Prelude menu to find out about some of Prelude extensions to Emacs."
     "Access the official Emacs manual by pressing <C-h r>."
     "Visit WikEmacs at http://wikemacs.org to find out even more about Emacs."))
 
