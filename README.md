@@ -343,7 +343,9 @@ Or you can use another theme altogether by adding something like:
 (load-theme 'solarized-dark t)
 ```
 
-P.S. Solarized is not available by default - you'll have to install it from MELPA first.
+**P.S.** Solarized is not available by default - you'll have to
+  install it from MELPA first (`M-x package-install RET
+  solarized-theme`).
 
 ### Personalizing
 

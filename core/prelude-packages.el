@@ -46,7 +46,7 @@
     git-commit-mode gitconfig-mode gitignore-mode grizzl
     guru-mode helm helm-projectile ido-ubiquitous
     key-chord magit rainbow-mode
-    smartparens smex solarized-theme undo-tree
+    smartparens smex undo-tree
     volatile-highlights zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
