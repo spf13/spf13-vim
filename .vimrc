@@ -487,13 +487,11 @@
     " neocomplete {
         if count(g:spf13_bundle_groups, 'neocomplete')
             let g:acp_enableAtStartup = 0
-            let g:neocomplete_enable_at_startup = 1
-            let g:neocomplete_enable_camel_case_completion = 1
-            let g:neocomplete_enable_smart_case = 1
-            let g:neocomplete_enable_underbar_completion = 1
-            let g:neocomplete_enable_auto_delimiter = 1
-            let g:neocomplete_max_list = 15
-            let g:neocomplete_force_overwrite_completefunc = 1
+            let g:neocomplete#enable_at_startup = 1
+            let g:neocomplete#enable_smart_case = 1
+            let g:neocomplete#enable_auto_delimiter = 1
+            let g:neocomplete#max_list = 15
+            let g:neocomplete#force_overwrite_completefunc = 1
 
             " SuperTab like snippets behavior.
             imap <silent><expr><TAB> neosnippet#expandable() ?
@@ -502,17 +500,17 @@
             smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
             " Define dictionary.
-            let g:neocomplete_dictionary_filetype_lists = {
+            let g:neocomplete#sources#dictionary#dictionaries = {
                         \ 'default' : '',
                         \ 'vimshell' : $HOME.'/.vimshell_hist',
                         \ 'scheme' : $HOME.'/.gosh_completions'
                         \ }
 
             " Define keyword.
-            if !exists('g:neocomplete_keyword_patterns')
-                let g:neocomplete_keyword_patterns = {}
+            if !exists('g:neocomplete#keyword_patterns')
+                let g:neocomplete#keyword_patterns = {}
             endif
-            let g:neocomplete_keyword_patterns._ = '\h\w*'
+            let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
             " Plugin key-mappings.
 
@@ -560,14 +558,14 @@
             endif
 
             " Enable heavy omni completion.
-            if !exists('g:neocomplete_omni_patterns')
-                let g:neocomplete_omni_patterns = {}
+            if !exists('g:neocomplete#sources#omni#input_patterns')
+                let g:neocomplete#sources#omni#input_patterns = {}
             endif
-            let g:neocomplete_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-            let g:neocomplete_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-            let g:neocomplete_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-            let g:neocomplete_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-            let g:neocomplete_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+            let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+            let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+            let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+            let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+            let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
             " Use honza's snippets.
             let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
