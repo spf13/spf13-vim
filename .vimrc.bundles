@@ -107,6 +107,8 @@
                 Bundle 'Lokaltog/vim-powerline'
             else
                 Bundle 'bling/vim-airline'
+                let g:airline_theme='powerlineish'
+                let g:airline_powerline_fonts=1
             endif
 
             Bundle 'Lokaltog/vim-easymotion'
