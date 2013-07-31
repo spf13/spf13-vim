@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 ############################  SETUP PARAMETERS
 app_name='spf13-vim'
+git_uri='https://github.com/spf13/spf13-vim.git'
 git_branch='3.0'
 debug_mode='0'
 fork_maintainer='0'
@@ -81,7 +82,7 @@ clone_repo() {
     endpath="$HOME/.$app_name-3"
 
     if [ ! -e "$endpath/.git" ]; then
-        git clone --recursive -b "$git_branch" https://github.com/spf13/spf13-vim.git "$endpath"
+        git clone --recursive -b "$git_branch" "$git_uri" "$endpath"
         ret="$?"
         success "$1"
         debug
