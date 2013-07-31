@@ -33,7 +33,9 @@
 
 ;;; Code:
 
-(message "Prelude is powering up... Be patient, Master %s!" (getenv "USER"))
+(message "Prelude is powering up... Be patient, Master %s!"
+         (getenv
+          (if (equal system-type 'windows-nt) "USERNAME" "USER")))
 
 (defvar prelude-dir (file-name-directory load-file-name)
   "The root dir of the Emacs Prelude distribution.")
