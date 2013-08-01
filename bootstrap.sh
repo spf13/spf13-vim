@@ -13,12 +13,12 @@ msg() {
 
 success() {
     if [ "$ret" -eq '0' ]; then
-    msg "\e[32m[✔]\033[0m ${1}${2}"
+    msg "\e[32m[✔]\e[0m ${1}${2}"
     fi
 }
 
 error() {
-    msg "\e[31m[✘]\033[0m ${1}${2}"
+    msg "\e[31m[✘]\e[0m ${1}${2}"
     exit 1
 }
 
@@ -145,12 +145,12 @@ setup_vundle() {
 ############################ MAIN()
 program_exists "vim" "To install $app_name you first need to install Vim."
 
-do_backup   "Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d_%s`" \
+do_backup   "Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d%S`" \
         "$HOME/.vim" \
         "$HOME/.vimrc" \
         "$HOME/.gvimrc"
 
-clone_repo  "Successfully cloned $app_name"
+clone_repo      "Successfully cloned $app_name"
 
 create_symlinks "Setting up vim symlinks"
 
@@ -158,5 +158,5 @@ clone_vundle    "Successfully cloned vundle"
 
 setup_vundle    "Now updating/installing plugins using Vundle"
 
-msg         "\nThanks for installing $app_name."
-msg     "© `date +%Y` http://vim.spf13.com/"
+msg             "\nThanks for installing $app_name."
+msg             "© `date +%Y` http://vim.spf13.com/"
