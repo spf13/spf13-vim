@@ -49,15 +49,14 @@
 (eval-after-load 'web-mode
   '(progn
      (defun prelude-web-mode-defaults ()
+       ;; Disable whitespace-mode when using web-mode
+       (whitespace-mode -1)
        ;; Customizations
        (setq web-mode-markup-indent-offset 4)
        (setq web-mode-css-indent-offset 2)
        (setq web-mode-code-indent-offset 4)
        (setq web-mode-disable-autocompletion t)
-       (local-set-key (kbd "RET") 'newline-and-indent)
-
-       ;; Disable whitespace-mode when using web-mode
-       (lambda () (whitespace-mode -1)))
+       (local-set-key (kbd "RET") 'newline-and-indent))
      (setq prelude-web-mode-hook 'prelude-web-mode-defaults)
 
      (add-hook 'web-mode-hook (lambda ()
