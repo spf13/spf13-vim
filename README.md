@@ -134,6 +134,7 @@ By default most of the modules that ship with Prelude are not loaded.
 ;; (require 'prelude-scala)
 (require 'prelude-scheme)
 ;; (require 'prelude-scss)
+;; (require 'prelude-web)
 (require 'prelude-xml)
 ```
 
