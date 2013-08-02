@@ -152,6 +152,10 @@
             NeoBundle 'Shougo/neocomplcache'
             NeoBundle 'Shougo/neosnippet'
             NeoBundle 'honza/vim-snippets'
+        elseif count(g:spf13_bundle_groups, 'neocomplete')
+            NeoBundle 'Shougo/neocomplete.vim.git'
+            NeoBundle 'Shougo/neosnippet'
+            NeoBundle 'honza/vim-snippets'
         endif
 
     " PHP
