@@ -32,10 +32,11 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
+(defvar current-user
+      (getenv
+       (if (equal system-type 'windows-nt) "USERNAME" "USER")))
 
-(message "Prelude is powering up... Be patient, Master %s!"
-         (getenv
-          (if (equal system-type 'windows-nt) "USERNAME" "USER")))
+(message "Prelude is powering up... Be patient, Master %s!" current-user)
 
 (defvar prelude-dir (file-name-directory load-file-name)
   "The root dir of the Emacs Prelude distribution.")
@@ -102,7 +103,7 @@ by Prelude.")
   (message "Loading personal configuration files in %s..." prelude-personal-dir)
   (mapc 'load (directory-files prelude-personal-dir 't "^[^#].*el$")))
 
-(message "Prelude is ready to do thy bidding, Master %s!" (getenv "USER"))
+(message "Prelude is ready to do thy bidding, Master %s!" current-user)
 
 (prelude-eval-after-init
  ;; greet the use with some useful tip
