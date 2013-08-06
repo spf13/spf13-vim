@@ -104,7 +104,7 @@ Will only occur if prelude-whitespace is also enabled."
 ;; smart pairing for all
 (require 'smartparens-config)
 (setq sp-base-key-bindings 'paredit)
-(setq sp-cancel-autoskip-on-backward-movement nil)
+(setq sp-autoskip-closing-pair 'always)
 (smartparens-global-mode +1)
 
 ;; diminish keeps the modeline tidy
