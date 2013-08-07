@@ -41,13 +41,14 @@
 With a prefix ARG always prompt for command to use."
   (interactive "P")
   (when buffer-file-name
-    (shell-command (concat
+    (start-process "prelude-open-with-processes"
+                   "external-file-buffer"
+                   "setsid"
                     (cond
                      ((and (not arg) (eq system-type 'darwin)) "open")
                      ((and (not arg) (member system-type '(gnu gnu/linux gnu/kfreebsd))) "xdg-open")
                      (t (read-shell-command "Open current file with: ")))
-                    " "
-                    (shell-quote-argument buffer-file-name)))))
+                    (shell-quote-argument buffer-file-name))))
 
 (defun prelude-buffer-mode (buffer-or-name)
   "Retrieve the `major-mode' of BUFFER-OR-NAME."
