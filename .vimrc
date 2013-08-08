@@ -393,10 +393,10 @@
 
     " tagbar & ctags {
         "set tags=./tags;/,~/.vimtags
-        let g:tagbar_ctags_bin = "/usr/local/Cellar/ctags/5.8/bin/ctags"
-        let g:tagbar_type_javascript = {
-            \ 'ctagsbin' : '~/workspace/github/tools/doctorjs/bin'
-        \ }
+        "let g:tagbar_ctags_bin = "/usr/local/Cellar/ctags/5.8/bin/ctags"
+        "let g:tagbar_type_javascript = {
+            "\ 'ctagsbin' : '~/workspace/github/tools/doctorjs/bin'
+        "\ }
         let g:tagbar_sort = 0
         let g:tagbar_compact = 1
         let g:tagbar_show_visibility = 0
