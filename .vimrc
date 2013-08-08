@@ -394,10 +394,22 @@
     " tagbar & ctags {
         "set tags=./tags;/,~/.vimtags
         let g:tagbar_ctags_bin = "/usr/local/Cellar/ctags/5.8/bin/ctags"
+        let g:tagbar_type_javascript = {
+            \ 'ctagsbin' : '~/workspace/github/tools/doctorjs/bin'
+        \ }
         let g:tagbar_sort = 0
         let g:tagbar_compact = 1
         let g:tagbar_show_visibility = 0
         let g:tagbar_expand = 1
+        "for markdown
+        let g:tagbar_type_markdown = {
+            \ 'ctagstype' : 'markdown',
+            \ 'kinds' : [
+                \ 'h:Heading_L1',
+                \ 'i:Heading_L2',
+                \ 'k:Heading_L3'
+            \ ]
+        \ }
 
         nnoremap <silent> <leader>tb :TagbarToggle<CR>
     " }
