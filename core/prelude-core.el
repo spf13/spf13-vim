@@ -41,9 +41,8 @@
 With a prefix ARG always prompt for command to use."
   (interactive "P")
   (when buffer-file-name
-    (start-process "prelude-open-with-processes"
-                   "external-file-buffer"
-                   "setsid"
+    (start-process "prelude-open-with-process"
+                   "*prelude-open-with-output*"
                     (cond
                      ((and (not arg) (eq system-type 'darwin)) "open")
                      ((and (not arg) (member system-type '(gnu gnu/linux gnu/kfreebsd))) "xdg-open")
