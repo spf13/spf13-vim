@@ -76,6 +76,13 @@
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
 
+    " Set the default encode style and support Chinese menu
+    set encoding=utf8
+    language messages zh_CN.utf-8
+    set fileencodings=utf-8,gbk,gb18030,gb2312
+    source $VIMRUNTIME/delmenu.vim
+    source $VIMRUNTIME/delmenu.vim
+    
     if has ('x') && has ('gui') " On Linux use + register for copy-paste
         set clipboard=unnamedplus
     elseif has ('gui')          " On mac and Windows, use * register for copy-paste
