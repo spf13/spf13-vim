@@ -331,19 +331,22 @@
     " }
 
     " FuDesign2008/GoodColors.vim {
+        "let g:random_color_schemes = ['pyte',
+                        "\ 'summerfruit',
+                        "\ 'codeschool',
+                        "\ 'jellybeans',
+                        "\ 'railscasts',
+                        "\ 'twilight',
+                        "\ 'ir_black',
+                        "\ 'molokai',
+                        "\ 'zenburn',
+                        "\ 'desert',
+                        "\ 'wombat',
+                        "\ 'lucius',
+                        "\ 'peaksea']
         let g:random_color_schemes = ['pyte',
                         \ 'summerfruit',
-                        \ 'codeschool',
-                        \ 'jellybeans',
-                        \ 'railscasts',
-                        \ 'twilight',
-                        \ 'ir_black',
-                        \ 'molokai',
-                        \ 'zenburn',
-                        \ 'desert',
-                        \ 'wombat',
-                        \ 'lucius',
-                        \ 'peaksea']
+                        \ 'lucius']
     " }
 
 
