@@ -106,6 +106,7 @@ PACKAGE is installed only if not already present.  The file is opened in MODE."
     ("\\.markdown\\'" markdown-mode markdown-mode)
     ("\\.md\\'" markdown-mode markdown-mode)
     ("\\.ml\\'" tuareg tuareg-mode)
+    ("\\.pp\\'" puppet-mode puppet-mode)
     ("\\.php\\'" php-mode php-mode)
     ("PKGBUILD\\'" pkgbuild-mode pkgbuild-mode)
     ("\\.sass\\'" sass-mode sass-mode)
