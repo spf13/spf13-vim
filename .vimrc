@@ -156,6 +156,10 @@
 
     highlight clear SignColumn      " SignColumn should match background for
                                     " things like vim-gitgutter
+                                    
+    highlight clear LineNr          " Current line number row will have same background color in relative mode.
+                                    " Things like vim-gitgutter will match LineNr highlight
+    "highlight clear CursorLineNr   " Remove highlight color from current line number
 
     if has('cmdline_info')
         set ruler                   " Show the ruler
