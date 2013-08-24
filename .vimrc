@@ -164,7 +164,6 @@
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 
         let g:airline_theme='powerlineish'       " airline users use the powerline theme
-        let g:airline_powerline_fonts=1          " and the powerline fonts
     endif
 
     set backspace=indent,eol,start  " Backspace for dummies
