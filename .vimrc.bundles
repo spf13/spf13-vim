@@ -1,5 +1,5 @@
 " Modeline and Notes {
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
 "                    __ _ _____              _
 "         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
@@ -16,8 +16,9 @@
 " }
 
 " Environment {
+
     " Basics {
-        set nocompatible        " must be first line
+        set nocompatible        " Must be first line
         set background=dark     " Assume a dark background
     " }
 
@@ -44,9 +45,9 @@
           endif
         endif
     " }
-    "
+
     " Setup Bundle Support {
-    " The next three lines ensure that the ~/.vim/bundle/ system works
+        " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
         set rtp+=~/.vim/bundle/vundle
         call vundle#rc()
@@ -55,6 +56,7 @@
 " }
 
 " Bundles {
+
     " Deps
         Bundle 'gmarik/vundle'
         Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -74,6 +76,7 @@
             source ~/.vimrc.bundles.local
         endif
     " }
+
     " Use fork bundles if available {
         if filereadable(expand("~/.vimrc.bundles.fork"))
             source ~/.vimrc.bundles.fork
@@ -151,7 +154,7 @@
             Bundle 'Shougo/neosnippet'
             Bundle 'honza/vim-snippets'
         elseif count(g:spf13_bundle_groups, 'neocomplete')
-			Bundle 'Shougo/neocomplete.vim.git'
+            Bundle 'Shougo/neocomplete.vim.git'
             Bundle 'Shougo/neosnippet'
             Bundle 'honza/vim-snippets'
         endif
@@ -229,16 +232,16 @@
             Bundle 'Puppet-Syntax-Highlighting'
         endif
 
-
     " Twig
         if count(g:spf13_bundle_groups, 'twig')
             Bundle 'beyondwords/vim-twig'
         endif
     endif
+
 " }
 
 " General {
     " set autowrite                  " automatically write a file when leaving a modified buffer
-    set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
+    set shortmess+=filmnrxoOtT      " Abbrev. of messages (avoids 'hit enter')
 " }
 
