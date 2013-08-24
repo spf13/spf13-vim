@@ -382,6 +382,14 @@ For example this screen shot demonstrates pressing `,,w`
 
 ![easymotion image][easymotion-img]
 
+## [Airline]
+
+Airline provides a lightweight themable statusline with no external dependencies. By default it uses the symbols `<` and `>` as separators for different statusline sections but can be configured to use the same symbols as [Powerline]. An example with and without powerline symbols is shown here:
+
+![airline image][airline-img]
+
+To enable powerline symbols first install one of the [Powerline Fonts] or patch your favorite font using the provided instructions. Configure your terminal, MacVim, or Gvim to use the desired font. Finally add `let g:airline_powerline_fonts=1` to your `.vimrc.local`.
+
 ## Additional Syntaxes
 
 spf13-vim ships with a few additional syntaxes:
@@ -466,6 +474,9 @@ Here's some tips if you've never used VIM before:
 [Matchit]:http://www.vim.org/scripts/script.php?script_id=39
 [Tabularize]:https://github.com/godlygeek/tabular
 [EasyMotion]:https://github.com/Lokaltog/vim-easymotion
+[Airline]:https://github.com/bling/vim-airline
+[Powerline]:https://github.com/lokaltog/powerline
+[Powerline Fonts]:https://github.com/Lokaltog/powerline-fonts
 
 [spf13-vim-img]:https://i.imgur.com/UKToY.png
 [spf13-vimrc-img]:https://i.imgur.com/kZWj1.png
@@ -475,3 +486,4 @@ Here's some tips if you've never used VIM before:
 [nerdtree-img]:https://i.imgur.com/9xIfu.png
 [phpmanual-img]:https://i.imgur.com/c0GGP.png
 [easymotion-img]:https://i.imgur.com/ZsrVL.png
+[airline-img]:https://i.imgur.com/sU0PG5P.png
