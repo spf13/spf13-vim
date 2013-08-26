@@ -71,6 +71,16 @@ With a prefix ARG always prompt for command to use."
          (buffer-substring (region-beginning) (region-end))
        (read-string "Google: "))))))
 
+(defun prelude-youtube ()
+  "Search YouTube with a query or region if any."
+  (interactive)
+  (browse-url
+   (concat
+    "http://www.youtube.com/results?search_query="
+    (url-hexify-string (if mark-active
+                           (buffer-substring (region-beginning) (region-end))
+                         (read-string "Search YouTube: "))))))
+
 (defun prelude-indent-rigidly-and-copy-to-clipboard (begin end arg)
   "Indent region between BEGIN and END by ARG columns and copy to clipboard."
   (interactive "r\nP")
