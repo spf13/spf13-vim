@@ -15,6 +15,12 @@
 "   You can find me at http://spf13.com
 " }
 
+" Use vimrc before if available {
+    if filereadable(expand("~/.vimrc.before"))
+        source ~/.vimrc.before
+    endif
+" }
+
 " Environment {
 
     " Basics {
