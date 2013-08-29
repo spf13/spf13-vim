@@ -177,7 +177,7 @@
 
     highlight clear LineNr          " Current line number row will have same background color in relative mode.
                                     " Things like vim-gitgutter will match LineNr highlight
-    "highlight clear CursorLineNr   " Remove highlight color from current line number
+    "highlight clear CursorLineNr    " Remove highlight color from current line number
 
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -262,9 +262,9 @@
 
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
-    " If you prefer that functionality, add let g:spf13_no_easyWindows = 1
-    " in your .vimrc.before.local file
-
+    " If you prefer that functionality, add the following to your
+    " .vimrc.before.local file:
+    "   let g:spf13_no_easyWindows = 1
     if !exists('g:spf13_no_easyWindows')
         map <C-J> <C-W>j<C-W>_
         map <C-K> <C-W>k<C-W>_
@@ -529,7 +529,7 @@
     "}
 
     " PythonMode {
-    " Disable if python support not present
+        " Disable if python support not present
         if !has('python')
             let g:pymode = 1
         endif
@@ -576,34 +576,33 @@
             endif
             let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-            " Plugin key-mappings.
+            " Plugin key-mappings {
+                " These two lines conflict with the default digraph mapping of <C-K>
+                " If you prefer that functionality, add the following to your
+                " .vimrc.before.local file:
+                "   let g:spf13_no_neosnippet_expand = 1
+                if !exists('g:spf13_no_neosnippet_expand')
+                    imap <C-k> <Plug>(neosnippet_expand_or_jump)
+                    smap <C-k> <Plug>(neosnippet_expand_or_jump)
+                endif
 
-            " These two lines conflict with the default digraph mapping of <C-K>
-            " If you prefer that functionality, add
-            " let g:spf13_no_neosnippet_expand = 1
-            " in your .vimrc.before.local file
+                inoremap <expr><C-g> neocomplete#undo_completion()
+                inoremap <expr><C-l> neocomplete#complete_common_string()
+                inoremap <expr><CR> neocomplete#complete_common_string()
 
-            if !exists('g:spf13_no_neosnippet_expand')
-                imap <C-k> <Plug>(neosnippet_expand_or_jump)
-                smap <C-k> <Plug>(neosnippet_expand_or_jump)
-            endif
+                " <TAB>: completion.
+                inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+                inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-            inoremap <expr><C-g> neocomplete#undo_completion()
-            inoremap <expr><C-l> neocomplete#complete_common_string()
-            inoremap <expr><CR> neocomplete#complete_common_string()
+                " <CR>: close popup
+                " <s-CR>: close popup and save indent.
+                inoremap <expr><s-CR> pumvisible() ? neocomplete#close_popup()"\<CR>" : "\<CR>"
+                inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
 
-            " <TAB>: completion.
-            inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-            inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-
-            " <CR>: close popup
-            " <s-CR>: close popup and save indent.
-            inoremap <expr><s-CR> pumvisible() ? neocomplete#close_popup()"\<CR>" : "\<CR>"
-            inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
-
-            " <C-h>, <BS>: close popup and delete backword char.
-            inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-            inoremap <expr><C-y> neocomplete#close_popup()
+                " <C-h>, <BS>: close popup and delete backword char.
+                inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+                inoremap <expr><C-y> neocomplete#close_popup()
+            " }
 
             " Enable omni completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -679,34 +678,33 @@
             endif
             let g:neocomplcache_keyword_patterns._ = '\h\w*'
 
-            " Plugin key-mappings.
+            " Plugin key-mappings {
+                " These two lines conflict with the default digraph mapping of <C-K>
+                " If you prefer that functionality, add the following to your
+                " .vimrc.before.local file:
+                "   let g:spf13_no_neosnippet_expand = 1
+                if !exists('g:spf13_no_neosnippet_expand')
+                    imap <C-k> <Plug>(neosnippet_expand_or_jump)
+                    smap <C-k> <Plug>(neosnippet_expand_or_jump)
+                endif
 
-            " These two lines conflict with the default digraph mapping of <C-K>
-            " If you prefer that functionality, add
-            " let g:spf13_no_neosnippet_expand = 1
-            " in your .vimrc.before.local file
+                inoremap <expr><C-g> neocomplcache#undo_completion()
+                inoremap <expr><C-l> neocomplcache#complete_common_string()
+                inoremap <expr><CR> neocomplcache#complete_common_string()
 
-            if !exists('g:spf13_no_neosnippet_expand')
-                imap <C-k> <Plug>(neosnippet_expand_or_jump)
-                smap <C-k> <Plug>(neosnippet_expand_or_jump)
-            endif
+                " <TAB>: completion.
+                inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+                inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-            inoremap <expr><C-g> neocomplcache#undo_completion()
-            inoremap <expr><C-l> neocomplcache#complete_common_string()
-            inoremap <expr><CR> neocomplcache#complete_common_string()
+                " <CR>: close popup
+                " <s-CR>: close popup and save indent.
+                inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
+                inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 
-            " <TAB>: completion.
-            inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-            inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-
-            " <CR>: close popup
-            " <s-CR>: close popup and save indent.
-            inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
-            inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-
-            " <C-h>, <BS>: close popup and delete backword char.
-            inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-            inoremap <expr><C-y> neocomplcache#close_popup()
+                " <C-h>, <BS>: close popup and delete backword char.
+                inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+                inoremap <expr><C-y> neocomplcache#close_popup()
+            " }
 
             " Enable omni completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -774,8 +772,8 @@
     " airline {
         let g:airline_theme='powerlineish'      " airline users use the powerline theme
         if !exists('g:airline_powerline_fonts')
-          let g:airline_left_sep='›'              " Slightly fancier separator, instead of '>'
-          let g:airline_right_sep='‹'             " Slightly fancier separator, instead of '<'
+            let g:airline_left_sep='›'          " Slightly fancier separator, instead of '>'
+            let g:airline_right_sep='‹'         " Slightly fancier separator, instead of '<'
         endif
     " }
 
