@@ -161,11 +161,12 @@
 
     if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
-        color solarized                 " Load a colorscheme
-    endif
         let g:solarized_termtrans=1
         let g:solarized_contrast="normal"
         let g:solarized_visibility="normal"
+        color solarized             " Load a colorscheme
+    endif
+
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
 
