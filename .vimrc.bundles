@@ -10,7 +10,7 @@
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
         if has('win32') || has('win64')
-          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+            set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
     " }
     "
@@ -76,7 +76,7 @@
             Bundle 'scrooloose/nerdtree'
             Bundle 'matchit.zip'
             Bundle 'Lokaltog/vim-powerline'
-            Bundle 'Lokaltog/vim-easymotion'
+            "Bundle 'Lokaltog/vim-easymotion'
             "NOTE: csapprox cause errors
             "Bundle 'godlygeek/csapprox'
             "Bundle 'jistr/vim-nerdtree-tabs'

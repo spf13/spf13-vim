@@ -325,7 +325,10 @@
             \ '58': 'http://bj.58.com/sou/jh_<QUERY>/'
             \}
     " }
-
+    "
+    "easymotion.vim{
+        "let g:EasyMotion_leader_key = '<Leader>'
+    "}
 
     " FuDesign2008/translator.vim {
     " }
