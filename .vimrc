@@ -15,10 +15,19 @@
 "   You can find me at http://spf13.com
 " }
 
-" Use vimrc before if available {
-    if filereadable(expand("~/.vimrc.before"))
-        source ~/.vimrc.before
-    endif
+" Before {
+
+    " Use local before if available {
+        if filereadable(expand("~/.vimrc.before.local"))
+            source ~/.vimrc.before.local
+        endif
+    " }
+
+    " Use fork before if available {
+        if filereadable(expand("~/.vimrc.before.fork"))
+            source ~/.vimrc.before.fork
+        endif
+    " }
 " }
 
 " Environment {
@@ -90,7 +99,7 @@
 
     " Most prefer to automatically switch to the current file directory when
     " a new buffer is opened; to prevent this behavior, add the following to
-    " your .vimrc.before file:
+    " your .vimrc.before.local file:
     "   let g:spf13_no_autochdir = 1
     if !exists('g:spf13_no_autochdir')
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
@@ -117,7 +126,7 @@
             set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
         endif
 
-        " To disable views add the following to your .vimrc.before file:
+        " To disable views add the following to your .vimrc.before.local file:
         "   let g:spf13_no_views = 1
         if !exists('g:spf13_no_views')
             " Add exclusions to mkview and loadview
@@ -224,7 +233,7 @@
 
     " The default leader is '\', but many people prefer ',' as it's in a standard
     " location. To override this behavior and set it back to '\' (or any other
-    " character) add the following to your .vimrc.before file:
+    " character) add the following to your .vimrc.before.local file:
     "   let g:spf13_leader='\'
     if !exists('g:spf13_leader')
         let mapleader = ','
@@ -235,7 +244,7 @@
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
     " If you prefer that functionality, add let g:spf13_no_easyWindows = 1
-    " in your .vimrc.before file
+    " in your .vimrc.before.local file
 
     if !exists('g:spf13_no_easyWindows')
         map <C-J> <C-W>j<C-W>_
@@ -251,7 +260,7 @@
     " The following two lines conflict with moving to top and
     " bottom of the screen
     " If you prefer that functionality, add the following to your
-    " .vimrc.before file:
+    " .vimrc.before.local file:
     "   let g:spf13_no_fastTabs = 1
     if !exists('g:spf13_no_fastTabs')
         map <S-H> gT
@@ -545,7 +554,7 @@
             " These two lines conflict with the default digraph mapping of <C-K>
             " If you prefer that functionality, add
             " let g:spf13_no_neosnippet_expand = 1
-            " in your .vimrc.before file
+            " in your .vimrc.before.local file
 
             if !exists('g:spf13_no_neosnippet_expand')
                 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -648,7 +657,7 @@
             " These two lines conflict with the default digraph mapping of <C-K>
             " If you prefer that functionality, add
             " let g:spf13_no_neosnippet_expand = 1
-            " in your .vimrc.before file
+            " in your .vimrc.before.local file
 
             if !exists('g:spf13_no_neosnippet_expand')
                 imap <C-k> <Plug>(neosnippet_expand_or_jump)
