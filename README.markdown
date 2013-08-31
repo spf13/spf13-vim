@@ -153,12 +153,12 @@ For example, to override the default color schemes:
 
 ### Before File
 
-Create a `~/.vimrc.before` file to define any customizations
+Create a `~/.vimrc.before.local` file to define any customizations
 that get loaded *before* the spf-13 `.vimrc`.
 
 For example, to prevent autocd into a file directory:
 ```bash
-    echo let g:spf13_no_autochdir = 1 >> ~/.vimrc.before
+    echo let g:spf13_no_autochdir = 1 >> ~/.vimrc.before.local
 ```
 
 ### Fork Customization
@@ -167,13 +167,14 @@ There is an additional tier of customization available to those who want to main
 fork of spf13-vim specialized for a particular group. These users can create `.vimrc.fork`
 and `.vimrc.bundles.fork` files in the root of their fork.  The load order for the configuration is:
 
-1. `.vimrc.before` - before user configuration
-2. `.vimrc.bundles.local` - local user bundle configuration
-3. `.vimrc.bundles.fork` - fork bundle configuration
-4. `.vimrc.bundles` - spf13-vim bundle configuration
-5. `.vimrc` - spf13-vim vim configuration
-6. `.vimrc.fork` - fork vim configuration
-7. `.vimrc.local` - local user configuration
+1. `.vimrc.before.local` - before user configuration
+2. `.vimrc.before.fork` - fork before configuration
+3. `.vimrc.bundles.local` - local user bundle configuration
+4. `.vimrc.bundles.fork` - fork bundle configuration
+5. `.vimrc.bundles` - spf13-vim bundle configuration
+6. `.vimrc` - spf13-vim vim configuration
+7. `.vimrc.fork` - fork vim configuration
+8. `.vimrc.local` - local user configuration
 
 See `.vimrc.bundles` for specifics on what options can be set to override bundle configuration. See `.vimrc` for specifics
 on what options can be overridden. Most vim configuration options should be set in your `.vimrc.fork` file, bundle configuration
