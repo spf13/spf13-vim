@@ -81,7 +81,7 @@
             "Bundle 'godlygeek/csapprox'
             "Bundle 'jistr/vim-nerdtree-tabs'
             "Bundle 'flazz/vim-colorschemes'
-            "Bundle 'mbbill/undotree'
+            Bundle 'mbbill/undotree'
             "Bundle 'nathanaelkane/vim-indent-guides'
             "if !exists('g:spf13_no_views')
                 "Bundle 'vim-scripts/restore_view.vim'
@@ -277,7 +277,7 @@
 " }
 
 " General {
-    " set autowrite                  " automatically write a file when leaving a modified buffer
-    "set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
+    set autowrite                  " automatically write a file when leaving a modified buffer
+    set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
 " }
 
