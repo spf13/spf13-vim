@@ -549,7 +549,7 @@
         "
         if has('gui_macvim')
             "macVim
-            set guifont=Monaco:h15
+            set guifont=Monaco:h14
             "set transparency=5          " Make the window slightly transparent
         endif
     else
