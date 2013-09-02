@@ -75,7 +75,7 @@
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'scrooloose/nerdtree'
             Bundle 'matchit.zip'
-            Bundle 'Lokaltog/vim-powerline'
+            "Bundle 'Lokaltog/vim-powerline'
             "Bundle 'Lokaltog/vim-easymotion'
             "NOTE: csapprox cause errors
             "Bundle 'godlygeek/csapprox'
@@ -104,7 +104,7 @@
             Bundle 'FuDesign2008/SpaceControl.vim'
             Bundle 'FuDesign2008/vimKit'
             if !g:spf13_performance_first
-                Bundle 'Yggdroot/indentLine'
+                "Bundle 'Yggdroot/indentLine'
                 "Bundle 'nathanaelkane/vim-indent-guides'
                 "Bundle 'tpope/vim-surround'
                 "Bundle 'kien/ctrlp.vim'
