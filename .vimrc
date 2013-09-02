@@ -475,6 +475,12 @@
      " Buffer explorer {
         "nmap <leader>b :BufExplorer<CR>
      " }
+     " jslhint {
+        "disable auto checking
+        let g:JSLHint_auto_check = 0
+        "to check JavaScript code when entering/writing buffer
+        au BufEnter,BufWritePre *.js JSUpdate
+     " }
 
      " JSON {
         au BufNewFile,BufRead .jshintrc set filetype=json
