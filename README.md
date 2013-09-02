@@ -244,6 +244,19 @@ Keybinding         | Description
 <kbd>Super-m</kbd> | Magit status
 <kbd>Super-o</kbd> | Open line above current line
 
+#### OSX modifier keys
+
+Prelude does not mess by default with the standard mapping of `Command` (to `Super`) and `Option` (to `Meta`).
+
+If you want to swap them add this to your personal config:
+
+```lisp
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'super)
+```
+
+You can also temporarily swap them with `C-c w` (`M-x prelude-swap-meta-and-super`).
+
 #### Projectile
 
 Here's a list of functionality provided by [Projectile](https://github.com/bbatsov/projectile):
