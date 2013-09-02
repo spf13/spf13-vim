@@ -49,8 +49,11 @@
     " Setup Bundle Support {
         " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
-        set rtp+=~/.vim/bundle/vundle
-        call vundle#rc()
+        if has('vim_starting')
+            set runtimepath+=~/.vim/bundle/neobundle.vim/
+        endif
+
+        call neobundle#rc(expand('~/.vim/bundle/'))
     " }
 
 " }
@@ -58,7 +61,7 @@
 " Bundles {
 
     " Deps
-        Bundle 'gmarik/vundle'
+        NeoBundleFetch 'Shougo/neobundle.vim'
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
         if executable('ack-grep')
