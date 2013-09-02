@@ -746,8 +746,10 @@
 
     " airline {
         let g:airline_theme='powerlineish'      " airline users use the powerline theme
-        let g:airline_left_sep='›'              " Slightly fancier separator, instead of '>'
-        let g:airline_right_sep='‹'             " Slightly fancier separator, instead of '<'
+        if !exists('g:airline_powerline_fonts')
+          let g:airline_left_sep='›'              " Slightly fancier separator, instead of '>'
+          let g:airline_right_sep='‹'             " Slightly fancier separator, instead of '<'
+        endif
     " }
 
     " vim-gitgutter {
