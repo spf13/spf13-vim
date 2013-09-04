@@ -94,6 +94,13 @@ Start `ielm' if it's not already running."
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
   (add-hook hook 'elisp-slime-nav-mode))
 
+(defun conditionally-enable-smartparens-mode ()
+  "Enable `smartparens-mode' in the minibuffer, during `eval-expression'."
+  (if (eq this-command 'eval-expression)
+      (smartparens-mode 1)))
+
+(add-hook 'minibuffer-setup-hook 'conditionally-enable-smartparens-mode)
+
 (provide 'prelude-emacs-lisp)
 
 ;;; prelude-emacs-lisp.el ends here
