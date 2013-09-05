@@ -574,17 +574,15 @@
     " YouCompleteMe {
         if count(g:spf13_bundle_groups, 'youcompleteme')
             let g:acp_enableAtStartup = 0
+
+            " enable completion from tags
             let g:ycm_collect_identifiers_from_tags_files = 1
-            let g:UltiSnipsExpandTrigger = '<C-k> <Plug>'
-            let g:UltiSnipsJumpForwardTrigger = '<C-k> <Plug>'
-            "let g:UltiSnipsJumpBackwardTrigger = '<C-l> <Plug>' " not sure
-            "what to set this to to be consistent.
 
-            " <CR>: close popup
-            " <s-CR>: close popup and save indent.
-            inoremap <expr><s-CR> pumvisible() "\<CR>" : "\<CR>"
-            inoremap <expr><CR> pumvisible()  : "\<CR>"
-
+            " remap Ultisnips for compatibility for YCM
+            let g:UltiSnipsExpandTrigger = '<C-j>'
+            let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+            let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+            
             " Enable omni completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
