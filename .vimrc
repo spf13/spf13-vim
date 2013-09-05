@@ -811,7 +811,7 @@
 
         " To specify a different directory in which to place the vimbackup,
         " vimviews, vimundo, and vimswap files/directories, add the following to
-        " your .vimrc.local file:
+        " your .vimrc.before.local file:
         "   let g:spf13_consolidated_directory = <full path to desired directory>
         "   eg: let g:spf13_consolidated_directory = $HOME . '/.vim/'
         if exists('g:spf13_consolidated_directory')
@@ -836,6 +836,7 @@
             endif
         endfor
     endfunction
+    call InitializeDirectories()
     " }
 
     " Initialize NERDTree as needed {
@@ -855,7 +856,7 @@
     " Strip whitespace {
     function! StripTrailingWhitespace()
         " To disable the stripping of whitespace, add the following to your
-        " .vimrc.local file:
+        " .vimrc.before.local file:
         "   let g:spf13_keep_trailing_whitespace = 1
         if !exists('g:spf13_keep_trailing_whitespace')
             " Preparation: save last search, and cursor position.
@@ -914,8 +915,4 @@
             source ~/.gvimrc.local
         endif
     endif
-" }
-
-" Finish local initializations {
-    call InitializeDirectories()
 " }

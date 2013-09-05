@@ -18,6 +18,8 @@ call mklink "%HOME%\_vimrc" "%BASE_DIR%\.vimrc"
 call mklink "%HOME%\.vimrc.fork" "%BASE_DIR%\.vimrc.fork"
 call mklink "%HOME%\.vimrc.bundles" "%BASE_DIR%\.vimrc.bundles"
 call mklink "%HOME%\.vimrc.bundles.fork" "%BASE_DIR%\.vimrc.bundles.fork"
+call mklink "%HOME%\.vimrc.before" "%BASE_DIR%\.vimrc.before"
+call mklink "%HOME%\.vimrc.before.fork" "%BASE_DIR%\.vimrc.before.fork"
 call mklink /J "%HOME%\.vim" "%BASE_DIR%\.vim"
 
 IF NOT EXIST "%BASE_DIR%\.vim\bundle" (
