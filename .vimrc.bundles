@@ -57,7 +57,7 @@
 
 " Bundles {
 
-    " Deps
+    " Deps {
         Bundle 'gmarik/vundle'
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
@@ -70,14 +70,15 @@
             Bundle 'mileszs/ack.vim'
             let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
         endif
+    " }
 
-    " Use local bundles if available {
+    " Use local bundles config if available {
         if filereadable(expand("~/.vimrc.bundles.local"))
             source ~/.vimrc.bundles.local
         endif
     " }
 
-    " Use fork bundles if available {
+    " Use fork bundles config if available {
         if filereadable(expand("~/.vimrc.bundles.fork"))
             source ~/.vimrc.bundles.fork
         endif
