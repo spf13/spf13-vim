@@ -15,19 +15,10 @@
 "   You can find me at http://spf13.com
 " }
 
-" Before {
-
-    " Use local before if available {
-        if filereadable(expand("~/.vimrc.before.local"))
-            source ~/.vimrc.before.local
-        endif
-    " }
-
-    " Use fork before if available {
-        if filereadable(expand("~/.vimrc.before.fork"))
-            source ~/.vimrc.before.fork
-        endif
-    " }
+" Use before config {
+    if filereadable(expand("~/.vimrc.before"))
+        source ~/.vimrc.before
+    endif
 " }
 
 " Environment {
