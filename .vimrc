@@ -146,8 +146,8 @@
         color solarized                 " Load a colorscheme
     endif
         let g:solarized_termtrans=1
-        let g:solarized_contrast="high"
-        let g:solarized_visibility="high"
+        let g:solarized_contrast="normal"
+        let g:solarized_visibility="normal"
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
 
