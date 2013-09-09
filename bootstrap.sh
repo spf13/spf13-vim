@@ -67,8 +67,8 @@ upgrade_repo() {
           git pull origin "$git_branch"
       fi
 
-      if [ "$1" = "vundle" ]; then
-          cd "$HOME/.vim/bundle/vundle" &&
+      if [ "$1" = "neobundle.vim" ]; then
+          cd "$HOME/.vim/bundle/neobundle.vim" &&
           git pull origin master
       fi
 
@@ -91,11 +91,11 @@ clone_repo() {
     fi
 }
 
-clone_vundle() {
-    if [ ! -e "$HOME/.vim/bundle/vundle" ]; then
-        git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
+clone_neobundle() {
+    if [ ! -e "$HOME/.vim/bundle/neobundle.vim" ]; then
+        git clone https://github.com/Shougo/neobundle.vim.git "$HOME/.vim/bundle/neobundle.vim"
     else
-        upgrade_repo "vundle"   "Successfully updated vundle"
+        upgrade_repo "neobundle.vim"   "Successfully updated neobundle.vim"
     fi
     ret="$?"
     success "$1"
@@ -132,7 +132,7 @@ create_symlinks() {
     debug
 }
 
-setup_vundle() {
+setup_neobundle() {
     system_shell="$SHELL"
     export SHELL='/bin/sh'
     vim -u "$HOME/.vimrc.bundles" +NeoBundleInstall! +NeoBundleClean +qall
@@ -154,9 +154,9 @@ clone_repo      "Successfully cloned $app_name"
 
 create_symlinks "Setting up vim symlinks"
 
-clone_vundle    "Successfully cloned vundle"
+clone_neobundle    "Successfully cloned NeoBundle"
 
-setup_vundle    "Now updating/installing plugins using Vundle"
+setup_neobundle    "Now updating/installing plugins using NeoBundle"
 
 msg             "\nThanks for installing $app_name."
 msg             "© `date +%Y` http://vim.spf13.com/"

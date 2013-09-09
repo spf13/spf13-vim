@@ -54,6 +54,20 @@
         endif
 
         call neobundle#rc(expand('~/.vim/bundle/'))
+
+        command! -nargs=? -bang -bar
+              \ -complete=customlist,neobundle#complete_bundles
+              \ BundleInstall
+              \ call neobundle#installer#install('!' == '<bang>', <q-args>)
+
+        command! -nargs=+ Bundle
+              \ call neobundle#parser#bundle(
+              \   substitute(<q-args>, '\s"[^"]\+$', '', ''))
+
+        command! -nargs=? -bang -bar
+              \ -complete=customlist,neobundle#complete_deleted_bundles
+              \ BundleClean
+              \ call neobundle#installer#clean('!' == '<bang>', <q-args>)
     " }
 
 " }
