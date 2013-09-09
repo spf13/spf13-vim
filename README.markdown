@@ -398,7 +398,7 @@ For example this screen shot demonstrates pressing `,,w`
 
 ## [Airline]
 
-Airline provides a lightweight themable statusline with no external dependencies. By default it uses the symbols `‹` and `›` as separators for different statusline sections but can be configured to use the same symbols as [Powerline]. An example with and without powerline symbols is shown here:
+Airline provides a lightweight themable statusline with no external dependencies. By default this configuration uses the symbols `‹` and `›` as separators for different statusline sections but can be configured to use the same symbols as [Powerline]. An example first without and then with powerline symbols is shown here:
 
 ![airline image][airline-img]
 
@@ -500,4 +500,4 @@ Here's some tips if you've never used VIM before:
 [nerdtree-img]:https://i.imgur.com/9xIfu.png
 [phpmanual-img]:https://i.imgur.com/c0GGP.png
 [easymotion-img]:https://i.imgur.com/ZsrVL.png
-[airline-img]:https://i.imgur.com/sU0PG5P.png
+[airline-img]:https://i.imgur.com/D4ZYADr.png
