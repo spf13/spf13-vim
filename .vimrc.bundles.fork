@@ -1,0 +1,4 @@
+"" Bundle 'tpope/vim-markdown'
+
+let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'ruby', 'javascript', 'html', 'misc' ]
+
