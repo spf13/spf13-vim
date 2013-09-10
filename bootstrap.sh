@@ -166,3 +166,4 @@ setup_vundle    "Now updating/installing plugins using Vundle"
 
 msg             "\nThanks for installing $app_name."
 msg             "© `date +%Y` http://vim.spf13.com/"
+ 
