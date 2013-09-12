@@ -57,6 +57,7 @@ Windows external keyboard from time to time."
       (message "Command is now bound to SUPER and Option is bound to META."))))
 
 (define-key prelude-mode-map (kbd "C-c w") 'prelude-swap-meta-and-super)
+(define-key prelude-mode-map (kbd "s-/") 'hippie-expand)
 
 (menu-bar-mode +1)
 
