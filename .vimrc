@@ -70,7 +70,7 @@
     "set spell                       " spell checking on
     set nospell
     " Git commits, Subversion commits.
-    autocmd FileType gitcommit,svn,markdown setlocal spell
+    autocmd FileType gitcommit,svn setlocal spell
     "autocmd FileType text,wiki,markdown,mkd setlocal spell
     "set hidden                      " allow buffer switching without saving
 
@@ -140,18 +140,20 @@
 
     set backspace=indent,eol,start  " backspace for dummies
     set linespace=0                 " No extra spaces between rows
-    set number                      " Line numbers on
-    set relativenumber               " Relative number on
+    "set number                      " Line numbers on
+    "set relativenumber               " Relative number on
+    set nonumber
+    set norelativenumber
     "set showmatch                   " show matching brackets/parenthesis
     set noshowmatch
     set incsearch                   " find as you type search
     set hlsearch                    " highlight search terms
     set magic                       "显示括号配对情况
     "set winminheight=5              " windows can be 5 line high
-    "set ignorecase                  " case insensitive search
-    set noignorecase
-    "set smartcase                   " case sensitive when uc present
-    set nosmartcase
+    set ignorecase                  " case insensitive search
+    "set noignorecase
+    set smartcase                   " case sensitive when uc present
+    "set nosmartcase
     set wildmenu                    " show list instead of just completing
     set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
     set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
