@@ -105,6 +105,10 @@ clone_vundle() {
 create_symlinks() {
     endpath="$HOME/.$app_name-3"
 
+    if [ ! -d "$endpath/.vim/bundle" ]; then
+        mkdir -p "$endpath/.vim/bundle"
+    fi
+
     lnif "$endpath/.vimrc"              "$HOME/.vimrc"
     lnif "$endpath/.vimrc.bundles"      "$HOME/.vimrc.bundles"
     lnif "$endpath/.vimrc.before"       "$HOME/.vimrc.before"
@@ -127,10 +131,6 @@ create_symlinks() {
 
     if [ -e "$endpath/.vimrc.before.fork" ]; then
         ln -sf "$endpath/.vimrc.before.fork" "$HOME/.vimrc.before.fork"
-    fi
-
-    if [ ! -d "$endpath/.vim/bundle" ]; then
-        mkdir -p "$endpath/.vim/bundle"
     fi
 
     ret="$?"
