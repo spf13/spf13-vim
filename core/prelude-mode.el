@@ -37,6 +37,7 @@
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "C-c o") 'prelude-open-with)
     (define-key map (kbd "C-c g") 'prelude-google)
+    (define-key map (kbd "C-c G") 'prelude-github)
     (define-key map (kbd "C-c y") 'prelude-youtube)
     ;; mimic popular IDEs binding, note that it doesn't work in a terminal session
     (define-key map [(shift return)] 'prelude-smart-open-line)
@@ -118,7 +119,7 @@
                          ["View URL" prelude-view-url]))
                       "Search Files (Grep)...")
 
- (easy-menu-add-item nil '("Tools") '("--") "Search Files (Grep)..."))
+  (easy-menu-add-item nil '("Tools") '("--") "Search Files (Grep)..."))
 
 (defun prelude-mode-remove-menu ()
   "Remove `prelude-mode' menu entry."
