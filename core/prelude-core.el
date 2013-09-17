@@ -123,21 +123,6 @@ With a prefix ARG open line above the current line."
   (interactive)
   (delete-indentation 1))
 
-(defun prelude-move-line-up ()
-  "Move the current line up."
-  (interactive)
-  (transpose-lines 1)
-  (forward-line -2)
-  (indent-according-to-mode))
-
-(defun prelude-move-line-down ()
-  "Move the current line down."
-  (interactive)
-  (forward-line 1)
-  (transpose-lines 1)
-  (forward-line -1)
-  (indent-according-to-mode))
-
 (defun prelude-kill-whole-line (&optional arg)
   "A simple wrapper around command `kill-whole-line' that respects indentation.
 Passes ARG to command `kill-whole-line' when provided."

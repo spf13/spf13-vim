@@ -222,8 +222,8 @@ Keybinding         | Description
 <kbd>C-c y</kbd>   | Search in YouTube for the thing under point (or an interactive query).
 <kbd>C-S-RET</kbd> or <kbd>M-o</kbd> | Insert an empty line above the current line and indent it properly
 <kbd>S-RET</kbd> or <kbd>M-O</kbd> | Insert an empty line and indent it properly (as in most IDEs).
-<kbd>C-S-up</kbd>  | Move the current line up.
-<kbd>C-S-down</kbd> | Move the current line down.
+<kbd>C-S-up</kbd> or <kbd>M-S-up</kbd> | Move the current line or region up.
+<kbd>C-S-down</kbd> or <kbd>M-S-down</kbd>| Move the current line or region down.
 <kbd>C-c n</kbd> | Fix indentation in buffer and strip whitespace.
 <kbd>C-c f</kbd> | Open recently visited file.
 <kbd>C-M-\\</kbd> | Indent region (if selected) or the entire buffer.
