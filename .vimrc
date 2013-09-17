@@ -554,13 +554,13 @@
         set lines=40                " 40 lines of text instead of 24,
         "字体是否好看与字号有很大关系
         "13-14好看
-        set guifont=Consolas:h14  "font
+        set guifont=Consolas:h12  "font
         "gVim on windows
         "set guifont=Droid\ Sans\ Mono:h16  "font
         "
         if has('gui_macvim')
             "macVim
-            set guifont=Monaco:h16
+            set guifont=Monaco:h14
             "set transparency=5          " Make the window slightly transparent
         endif
     else
