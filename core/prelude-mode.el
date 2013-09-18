@@ -71,11 +71,13 @@
     (define-key map [?\s-g] 'projectile-grep)
 
     (define-key map (kbd "s-r") 'prelude-recentf-ido-find-file)
-    (define-key map [?\s-x] 'er/expand-region)
-    (define-key map [?\s-j] 'prelude-top-join-line)
-    (define-key map [?\s-k] 'prelude-kill-whole-line)
-    (define-key map [?\s-m] 'magit-status)
-    (define-key map [?\s-o] 'prelude-smart-open-line-above)
+    (define-key map (kbd "s-j") 'prelude-top-join-line)
+    (define-key map (kbd "s-k") 'prelude-kill-whole-line)
+    (define-key map (kbd "s-m m") 'magit-status)
+    (define-key map (kbd "s-m l") 'magit-log)
+    (define-key map (kbd "s-m f") 'magit-file-log)
+    (define-key map (kbd "s-m b") 'magit-blame-mode)
+    (define-key map (kbd "s-o") 'prelude-smart-open-line-above)
 
     map)
   "Keymap for Prelude mode.")
