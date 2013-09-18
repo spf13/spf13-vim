@@ -267,7 +267,7 @@ there's a region, all lines that region covers will be duplicated."
     (when filename
       (if (vc-backend filename)
           (vc-delete-file filename)
-        (progn
+        (when (y-or-n-p (format "Are you sure you want to delete %s? " filename))
           (delete-file filename)
           (message "Deleted file %s" filename)
           (kill-buffer))))))
