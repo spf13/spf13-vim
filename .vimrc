@@ -197,8 +197,7 @@
     set matchpairs+=<:>                " match, to be used with %
     "set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-    "autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd BufNewFile,BufRead *.wiki set filetype=wiki
+    autocmd BufNewFile,BufRead,BufWritePre *.wiki setf wiki
 " }
 
 " Key (re)Mappings {
@@ -363,10 +362,10 @@
     "}
     " coffee plugin {
         " http://www.vim.org/scripts/script.php?script_id=3590
-        autocmd BufRead,BufNewFile *.coffee set filetype=coffee
+        autocmd BufRead,BufNewFile,BufWritePre *.coffee setf coffee
     "}
     "less.vim {
-        autocmd BufRead,BufNewFile *.less set filetype=less
+        autocmd BufRead,BufNewFile,BufWritePre *.less setf less
     "}
 
     "calendar {
@@ -485,7 +484,7 @@
      " }
 
      " JSON {
-        au BufNewFile,BufRead .jshintrc set filetype=json
+        au BufNewFile,BufRead,BufWritePre .jshintrc setf json
         "nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
      " }
 
