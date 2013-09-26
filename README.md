@@ -414,6 +414,19 @@ If you're not fond of spellchecking on the fly:
 
 ## Caveats & Pitfalls
 
+### Updating bundled packages
+
+Currently there is no Emacs Lisp API for updating packages, so you'll
+have to update manually the packages that came with Prelude from time
+to time.
+
+`M-x package-list-packages RET U x`
+
+Generally it's a good idea to do a package update before running
+`prelude-update`, since the latest Prelude code might depend on newer
+versions of the bundled packages than you would currently have
+installed.
+
 ### Problems with flyspell-mode
 
 Prelude makes heavy use of the flyspell-mode package for spell
