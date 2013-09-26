@@ -130,6 +130,7 @@ This functions should be added to the hooks of major modes for programming."
 (add-hook 'prog-mode-hook (lambda ()
                             (run-hooks 'prelude-prog-mode-hook)))
 
+;; enable on-the-fly syntax checking
 (if (fboundp 'global-flycheck-mode)
     (global-flycheck-mode +1)
   (add-hook 'prog-mode-hook 'flycheck-mode))
