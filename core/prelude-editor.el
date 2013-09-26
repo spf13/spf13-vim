@@ -107,7 +107,6 @@ Will only occur if prelude-whitespace is also enabled."
 (setq sp-autoskip-closing-pair 'always)
 (setq sp-hybrid-kill-entire-symbol nil)
 (sp-use-paredit-bindings)
-(smartparens-global-mode +1)
 
 ;; diminish keeps the modeline tidy
 (require 'diminish)
