@@ -286,9 +286,9 @@ The body of the advice is in BODY."
 (diminish 'projectile-mode "Prjl")
 
 ;; anzu-mode enhances isearch by showing total matches and current match position
-(require 'anzu)
-(diminish 'anzu-mode)
-(global-anzu-mode)
+;; (require 'anzu)
+;; (diminish 'anzu-mode)
+;; (global-anzu-mode)
 
 (require 'helm-misc)
 (require 'helm-projectile)
