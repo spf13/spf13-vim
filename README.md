@@ -90,7 +90,13 @@ You'd do well to replace `~/.emacs.d` with the value of
 
 ## Updating Prelude
 
-The update procedure is fairly straightforward:
+The update procedure is fairly straightforward and consists of 3 steps:
+
+### Update all bundled packages
+
+Just run <kbd>M-x package-list-packages RET U x</kbd>. Unfortunately this step cannot be automated.
+
+### Update Prelude's code
 
 ```bash
 cd path/to/prelude/installation
@@ -102,7 +108,9 @@ on Unix systems).
 
 Alternatively you can run <kbd>M-x prelude-update</kbd> from Emacs itself.
 
-It's generally a good idea to stop Emacs before you do the update. The
+### Restart Prelude
+
+It's generally a good idea to stop Emacs after you do the update. The
 next time Prelude starts it will install any new dependencies (if
 there are such).
 
