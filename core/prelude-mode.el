@@ -64,6 +64,7 @@
     (define-key map (kbd "C-c h") 'helm-prelude)
     (define-key map (kbd "C-c +") 'prelude-increment-integer-at-point)
     (define-key map (kbd "C-c -") 'prelude-decrement-integer-at-point)
+    (define-key map (kbd "C-c I") 'prelude-find-user-init-file)
     ;; make some use of the Super key
     (define-key map [?\s-d] 'projectile-find-dir)
     (define-key map [?\s-p] 'projectile-switch-project)
