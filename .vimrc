@@ -140,10 +140,10 @@
 
     set backspace=indent,eol,start  " backspace for dummies
     set linespace=0                 " No extra spaces between rows
-    "set number                      " Line numbers on
-    "set relativenumber               " Relative number on
-    set nonumber
-    set norelativenumber
+    set number                      " Line numbers on
+    set relativenumber               " Relative number on
+    "set nonumber
+    "set norelativenumber
     "set showmatch                   " show matching brackets/parenthesis
     set noshowmatch
     set incsearch                   " find as you type search
