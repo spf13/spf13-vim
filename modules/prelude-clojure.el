@@ -57,8 +57,8 @@
 
      (setq prelude-nrepl-mode-hook 'prelude-nrepl-mode-defaults)
 
-     (add-hook 'nrepl-mode-hook (lambda ()
-                                  (run-hooks 'prelude-nrepl-mode-hook)))))
+     (add-hook 'nrepl-repl-mode-hook (lambda ()
+                                       (run-hooks 'prelude-nrepl-mode-hook)))))
 
 (provide 'prelude-clojure)
 
