@@ -250,7 +250,10 @@ Keybinding         | Description
 <kbd>Super-x</kbd> | Expand region
 <kbd>Super-j</kbd> | Join lines
 <kbd>Super-k</kbd> | Kill whole line
-<kbd>Super-m</kbd> | Magit status
+<kbd>Super-m m</kbd> | Magit status
+<kbd>Super-m l</kbd> | Magit log
+<kbd>Super-m f</kbd> | Magit file log
+<kbd>Super-m b</kbd> | Magit blame mode
 <kbd>Super-o</kbd> | Open line above current line
 
 #### OSX modifier keys
