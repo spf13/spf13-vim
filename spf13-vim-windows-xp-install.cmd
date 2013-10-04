@@ -27,6 +27,7 @@ call xcopy /s/e/h/y/r/q/i "%BASE_DIR%\.vim" "%HOME%\.vim"
 call copy "%BASE_DIR%\.vimrc" "%HOME%\.vimrc"
 call copy "%BASE_DIR%\.vimrc" "%HOME%\_vimrc"
 call copy "%BASE_DIR%\.vimrc.bundles" "%HOME%\.vimrc.bundles"
+call copy "%BASE_DIR%\.vimrc.before" "%HOME%\.vimrc.before"
 
-@if not exist "%HOME%/.vim/bundle/vundle" call git clone http://github.com/gmarik/vundle.git "%HOME%/.vim/bundle/vundle"
+@if not exist "%HOME%/.vim/bundle/vundle" call git clone https://github.com/gmarik/vundle.git "%HOME%/.vim/bundle/vundle"
 call vim -u "%BASE_DIR%/.vimrc.bundles" - +BundleInstall! +BundleClean +qall

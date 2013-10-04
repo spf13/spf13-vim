@@ -1,5 +1,5 @@
 " Modeline and Notes {
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
 "                    __ _ _____              _
 "         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
@@ -16,8 +16,9 @@
 " }
 
 " Environment {
+
     " Basics {
-        set nocompatible        " must be first line
+        set nocompatible        " Must be first line
         set background=dark     " Assume a dark background
     " }
 
@@ -26,11 +27,27 @@
         " across (heterogeneous) systems easier.
         if has('win32') || has('win64')
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+
+          " Be nice and check for multi_byte even if the config requires
+          " multi_byte support most of the time
+          if has("multi_byte")
+            " Windows cmd.exe still uses cp850. If Windows ever moved to
+            " Powershell as the primary terminal, this would be utf-8
+            set termencoding=cp850
+            " Let Vim use utf-8 internally, because many scripts require this
+            set encoding=utf-8
+            setglobal fileencoding=utf-8
+            " Windows has traditionally used cp1252, so it's probably wise to
+            " fallback into cp1252 instead of eg. iso-8859-15.
+            " Newer Windows files might contain utf-8 or utf-16 LE so we might
+            " want to try them first.
+            set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
+          endif
         endif
     " }
-    "
+
     " Setup Bundle Support {
-    " The next three lines ensure that the ~/.vim/bundle/ system works
+        " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
         set rtp+=~/.vim/bundle/vundle
         call vundle#rc()
@@ -39,7 +56,8 @@
 " }
 
 " Bundles {
-    " Deps
+
+    " Deps {
         Bundle 'gmarik/vundle'
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
@@ -50,15 +68,17 @@
             Bundle 'mileszs/ack.vim'
         elseif executable('ag')
             Bundle 'mileszs/ack.vim'
-            let g:ackprg = 'ag --nogroup --nocolor --column'
+            let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
         endif
+    " }
 
-    " Use local bundles if available {
+    " Use local bundles config if available {
         if filereadable(expand("~/.vimrc.bundles.local"))
             source ~/.vimrc.bundles.local
         endif
     " }
-    " Use fork bundles if available {
+
+    " Use fork bundles config if available {
         if filereadable(expand("~/.vimrc.bundles.fork"))
             source ~/.vimrc.bundles.fork
         endif
@@ -67,7 +87,7 @@
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'html', 'misc', 'scala']
+        let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'haskell', 'html', 'misc', 'scala']
     endif
 
     " To override all the included bundles, put
@@ -83,12 +103,15 @@
             Bundle 'tpope/vim-surround'
             Bundle 'spf13/vim-autoclose'
             Bundle 'kien/ctrlp.vim'
+            Bundle 'terryma/vim-multiple-cursors'
             Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
-            if (has("python") || has("python3")) && !exists('g:spf13_use_old_powerline')
+            if (has("python") || has("python3")) && exists('g:spf13_use_powerline') && !exists('g:spf13_use_old_powerline')
                 Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
-            else
+            elseif exists('g:spf13_use_powerline') && exists('g:spf13_use_old_powerline')
                 Bundle 'Lokaltog/vim-powerline'
+            else
+                Bundle 'bling/vim-airline'
             endif
 
             Bundle 'Lokaltog/vim-easymotion'
@@ -131,6 +154,10 @@
             Bundle 'Shougo/neocomplcache'
             Bundle 'Shougo/neosnippet'
             Bundle 'honza/vim-snippets'
+        elseif count(g:spf13_bundle_groups, 'neocomplete')
+            Bundle 'Shougo/neocomplete.vim.git'
+            Bundle 'Shougo/neosnippet'
+            Bundle 'honza/vim-snippets'
         endif
 
     " PHP
@@ -150,7 +177,7 @@
 
     " Javascript
         if count(g:spf13_bundle_groups, 'javascript')
-            Bundle 'leshill/vim-json'
+            Bundle 'elzr/vim-json'
             Bundle 'groenewege/vim-less'
             Bundle 'pangloss/vim-javascript'
             Bundle 'briancollins/vim-jst'
@@ -161,6 +188,19 @@
         if count(g:spf13_bundle_groups, 'scala')
             Bundle 'derekwyatt/vim-scala'
             Bundle 'derekwyatt/vim-sbt'
+        endif
+
+    " Haskell
+        if count(g:spf13_bundle_groups, 'haskell')
+            Bundle 'travitch/hasksyn'
+            Bundle 'dag/vim2hs'
+            Bundle 'Twinside/vim-haskellConceal'
+            Bundle 'lukerandall/haskellmode-vim'
+            Bundle 'ujihisa/neco-ghc'
+            Bundle 'eagletmt/ghcmod-vim'
+            Bundle 'Shougo/vimproc'
+            Bundle 'adinapoli/cumino'
+            Bundle 'bitc/vim-hdevtools'
         endif
 
     " HTML
@@ -193,16 +233,16 @@
             Bundle 'Puppet-Syntax-Highlighting'
         endif
 
-
     " Twig
         if count(g:spf13_bundle_groups, 'twig')
             Bundle 'beyondwords/vim-twig'
         endif
     endif
+
 " }
 
 " General {
     " set autowrite                  " automatically write a file when leaving a modified buffer
-    set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
+    set shortmess+=filmnrxoOtT      " Abbrev. of messages (avoids 'hit enter')
 " }
 

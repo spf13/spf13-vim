@@ -11,7 +11,7 @@ spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and [MacV
 
 It is a good starting point for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
 
-The distribution is completely customisable using a `~/.vimrc.local` and `~/.vimrc.bundles.local` Vim RC files.
+The distribution is completely customisable using a `~/.vimrc.local`, `~/.vimrc.bundles.local`, and `~/.vimrc.before.local` Vim RC files.
 
 ![spf13-vim image][spf13-vim-img]
 
@@ -36,17 +36,19 @@ The goal has always been to add functionality without changing all the features,
 
 ## Linux, \*nix, Mac OSX Installation
 
-The easiest way to install spf13-vim is to use our [automatic installer](http://j.mp/spf13-vim3) by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration. If you are upgrading from a prior version (before 3.0) this is also the recommended installation.
+The easiest way to install spf13-vim is to use our [automatic installer](https://j.mp/spf13-vim3) by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration. If you are upgrading from a prior version (before 3.0) this is also the recommended installation.
+
+*Requires Git 1.7+ and Vim 7.3+*
 
 ```bash
-    
-    curl http://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+
+    curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 ```
 
 If you have a bash-compatible shell you can run the script directly:
 ```bash
 
-    sh <(curl http://j.mp/spf13-vim3 -L)
+    sh <(curl https://j.mp/spf13-vim3 -L)
 ```
 
 ## Installing on Windows
@@ -101,7 +103,7 @@ The simpliest (and safest) way to update is to simply rerun the installer. It wi
 
 ```bash
 
-    curl http://j.mp/spf13-vim3 -L -o - | sh
+    curl https://j.mp/spf13-vim3 -L -o - | sh
 
 ```
 
@@ -149,20 +151,34 @@ For example, to override the default color schemes:
     echo colorscheme ir_black  >> ~/.vimrc.local
 ```
 
+### Before File
+
+Create a `~/.vimrc.before.local` file to define any customizations
+that get loaded *before* the spf13-vim `.vimrc`.
+
+For example, to prevent autocd into a file directory:
+```bash
+    echo let g:spf13_no_autochdir = 1 >> ~/.vimrc.before.local
+```
+For a list of available spf13-vim specific customization options, look at the `~/.vimrc.before` file.
+
+
 ### Fork Customization
 
 There is an additional tier of customization available to those who want to maintain a
 fork of spf13-vim specialized for a particular group. These users can create `.vimrc.fork`
 and `.vimrc.bundles.fork` files in the root of their fork.  The load order for the configuration is:
 
-1. `.vimrc.bundles.local` - local user bundle configuration
-2. `.vimrc.bundles.fork` - fork bundle configuration
-3. `.vimrc.bundles` - spf13-vim bundle configuration
-4. `.vimrc` - spf13-vim vim configuration
-5. `.vimrc.fork` - fork vim configuration
-6. `.vimrc.local` - local user configuration
+1. `.vimrc.before.local` - before user configuration
+2. `.vimrc.before.fork` - fork before configuration
+3. `.vimrc.bundles.local` - local user bundle configuration
+4. `.vimrc.bundles.fork` - fork bundle configuration
+5. `.vimrc.bundles` - spf13-vim bundle configuration
+6. `.vimrc` - spf13-vim vim configuration
+7. `.vimrc.fork` - fork vim configuration
+8. `.vimrc.local` - local user configuration
 
-See `.vimrc.bundles` for specifics on what options can be set to override bundle configuration. See `.vimrc` for specifics
+See `.vimrc.bundles` for specifics on what options can be set to override bundle configuration. See `.vimrc.before` for specifics
 on what options can be overridden. Most vim configuration options should be set in your `.vimrc.fork` file, bundle configuration
 needs to be set in your `.vimrc.bundles.fork` file.
 
@@ -380,6 +396,14 @@ For example this screen shot demonstrates pressing `,,w`
 
 ![easymotion image][easymotion-img]
 
+## [Airline]
+
+Airline provides a lightweight themable statusline with no external dependencies. By default this configuration uses the symbols `‹` and `›` as separators for different statusline sections but can be configured to use the same symbols as [Powerline]. An example first without and then with powerline symbols is shown here:
+
+![airline image][airline-img]
+
+To enable powerline symbols first install one of the [Powerline Fonts] or patch your favorite font using the provided instructions. Configure your terminal, MacVim, or Gvim to use the desired font. Finally add `let g:airline_powerline_fonts=1` to your `.vimrc.before.local`.
+
 ## Additional Syntaxes
 
 spf13-vim ships with a few additional syntaxes:
@@ -411,7 +435,7 @@ Terminal emulator colorschemes:
 
 ## Snippets
 
-It also contains a very complete set of [snippets](http://github.com/spf13/vim-snippets) for use with snipmate or [NeoComplCache].
+It also contains a very complete set of [snippets](https://github.com/spf13/vim-snippets) for use with snipmate or [NeoComplCache].
 
 
 # Intro to VIM
@@ -422,7 +446,7 @@ Here's some tips if you've never used VIM before:
 
 * Type `vimtutor` into a shell to go through a brief interactive
   tutorial inside VIM.
-* Read the slides at [VIM: Walking Without Crutches](http://walking-without-crutches.heroku.com/#1).
+* Read the slides at [VIM: Walking Without Crutches](https://walking-without-crutches.heroku.com/#1).
 
 ## Modes
 
@@ -438,7 +462,7 @@ Here's some tips if you've never used VIM before:
 * Certain commands are prefixed with a `<Leader>` key, which by default maps to `\`.
   Spf13-vim uses `let mapleader = ","` to change this to `,` which is in a consistent and
   convenient location.
-* Keyboard [cheat sheet](http://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
+* Keyboard [cheat sheet](https://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
 
 [Git]:http://git-scm.com
 [Curl]:http://curl.haxx.se
@@ -448,28 +472,32 @@ Here's some tips if you've never used VIM before:
 [spf13-vim]:https://github.com/spf13/spf13-vim
 [contributors]:https://github.com/spf13/spf13-vim/contributors
 
-[Vundle]:http://github.com/gmarik/vundle
-[PIV]:http://github.com/spf13/PIV
-[NERDCommenter]:http://github.com/scrooloose/nerdcommenter
+[Vundle]:https://github.com/gmarik/vundle
+[PIV]:https://github.com/spf13/PIV
+[NERDCommenter]:https://github.com/scrooloose/nerdcommenter
 [Undotree]:https://github.com/mbbill/undotree
-[NERDTree]:http://github.com/scrooloose/nerdtree
-[ctrlp]:http://github.com/kien/ctrlp.vim
-[solarized]:http://github.com/altercation/vim-colors-solarized
-[neocomplcache]:http://github.com/shougo/neocomplcache
-[Fugitive]:http://github.com/tpope/vim-fugitive
+[NERDTree]:https://github.com/scrooloose/nerdtree
+[ctrlp]:https://github.com/kien/ctrlp.vim
+[solarized]:https://github.com/altercation/vim-colors-solarized
+[neocomplcache]:https://github.com/shougo/neocomplcache
+[Fugitive]:https://github.com/tpope/vim-fugitive
 [Surround]:https://github.com/tpope/vim-surround
-[Tagbar]:http://github.com/majutsushi/tagbar
-[Syntastic]:http://github.com/scrooloose/syntastic
-[vim-easymotion]:http://github.com/Lokaltog/vim-easymotion
+[Tagbar]:https://github.com/majutsushi/tagbar
+[Syntastic]:https://github.com/scrooloose/syntastic
+[vim-easymotion]:https://github.com/Lokaltog/vim-easymotion
 [Matchit]:http://www.vim.org/scripts/script.php?script_id=39
-[Tabularize]:http://github.com/godlygeek/tabular
+[Tabularize]:https://github.com/godlygeek/tabular
 [EasyMotion]:https://github.com/Lokaltog/vim-easymotion
+[Airline]:https://github.com/bling/vim-airline
+[Powerline]:https://github.com/lokaltog/powerline
+[Powerline Fonts]:https://github.com/Lokaltog/powerline-fonts
 
-[spf13-vim-img]:http://i.imgur.com/UKToY.png
-[spf13-vimrc-img]:http://i.imgur.com/kZWj1.png
-[autocomplete-img]:http://i.imgur.com/90Gg7.png
-[tagbar-img]:http://i.imgur.com/cjbrC.png
-[fugitive-img]:http://i.imgur.com/4NrxV.png
-[nerdtree-img]:http://i.imgur.com/9xIfu.png
-[phpmanual-img]:http://i.imgur.com/c0GGP.png
-[easymotion-img]:http://i.imgur.com/ZsrVL.png
+[spf13-vim-img]:https://i.imgur.com/UKToY.png
+[spf13-vimrc-img]:https://i.imgur.com/kZWj1.png
+[autocomplete-img]:https://i.imgur.com/90Gg7.png
+[tagbar-img]:https://i.imgur.com/cjbrC.png
+[fugitive-img]:https://i.imgur.com/4NrxV.png
+[nerdtree-img]:https://i.imgur.com/9xIfu.png
+[phpmanual-img]:https://i.imgur.com/c0GGP.png
+[easymotion-img]:https://i.imgur.com/ZsrVL.png
+[airline-img]:https://i.imgur.com/D4ZYADr.png
