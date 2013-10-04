@@ -108,6 +108,8 @@ Will only occur if prelude-whitespace is also enabled."
 (setq sp-hybrid-kill-entire-symbol nil)
 (sp-use-paredit-bindings)
 
+(show-smartparens-global-mode +1)
+
 ;; diminish keeps the modeline tidy
 (require 'diminish)
 
@@ -172,11 +174,6 @@ The body of the advice is in BODY."
                  (prelude-auto-save-command))
 
 (add-hook 'mouse-leave-buffer-hook 'prelude-auto-save-command)
-
-;; show-paren-mode: subtle highlighting of matching parens (global-mode)
-(require 'paren)
-(setq show-paren-style 'parenthesis)
-(show-paren-mode +1)
 
 ;; highlight the current line
 (global-hl-line-mode +1)
