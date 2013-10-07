@@ -110,6 +110,9 @@ Will only occur if prelude-whitespace is also enabled."
 
 (show-smartparens-global-mode +1)
 
+;; disable annoying blink-matching-paren
+(setq blink-matching-paren nil)
+
 ;; diminish keeps the modeline tidy
 (require 'diminish)
 
