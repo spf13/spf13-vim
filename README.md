@@ -225,6 +225,7 @@ Keybinding         | Description
 Keybinding         | Description
 -------------------|------------------------------------------------------------
 <kbd>C-c o</kbd>   | Open the currently visited file with an external program.
+<kbd>C-c i</kbd>   | Search for a symbol, only for buffers that contain code
 <kbd>C-c g</kbd>   | Search in Google for the thing under point (or an interactive query).
 <kbd>C-c G</kbd>   | Search in GitHub for the thing under point (or an interactive query).
 <kbd>C-c y</kbd>   | Search in YouTube for the thing under point (or an interactive query).
