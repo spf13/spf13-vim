@@ -791,6 +791,11 @@
         " https://github.com/airblade/vim-gitgutter/issues/106
         let g:gitgutter_realtime = 0
     " }
+    
+    " vim-fontzoom {
+        " vim-fontzoom already includes a few default mappings, add reset
+        silent! nmap <unique> <silent> = :<C-u>Fontzoom!<CR>
+    " }
 
 " }
 
