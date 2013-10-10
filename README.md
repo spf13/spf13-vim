@@ -116,7 +116,7 @@ there are such).
 
 ## Enabling additional modules
 
-By default most of the modules that ship with Prelude are not loaded.
+By default most of the modules that ship with Prelude are not loaded. For more information on the functionality provided by these modules visit the [docs](modules/doc/README.md).
 
 ```lisp
 ;;; Uncomment the modules you'd like to use and restart Prelude afterwards
