@@ -10,7 +10,7 @@ menu bar entries under Python. To toggle the menu bar press `F12`.
 ## Syntax checking
 
 Prelude ships with [Flycheck](https://github.com/flycheck/flycheck),
-an on the fly syntax checker. Flycheck has support for Python two
+an on the fly syntax checker. Flycheck has support for two Python
 syntax checkers, [Pylint](http://www.pylint.org/) and
 [Flake8](http://flake8.readthedocs.org/en/latest/). In
 order to have Flycheck support on the fly syntax checking for
