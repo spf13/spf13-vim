@@ -162,7 +162,7 @@ if hash aspell 2>&-
 then
     printf "$GREEN found.$RESET\n"
 else
-    print "$RED not found. Install aspell to benefit from flyspell-mode!$RESET\n"
+    printf "$RED not found. Install aspell to benefit from flyspell-mode!$RESET\n"
 fi
 
 printf  "$CYAN Checking to see if ack is installed... "
