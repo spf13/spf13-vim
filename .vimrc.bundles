@@ -126,6 +126,7 @@
             endif
             Bundle 'airblade/vim-gitgutter'
             Bundle 'tpope/vim-abolish.git'
+            Bundle 'thinca/vim-fontzoom'
         endif
 
     " General Programming
