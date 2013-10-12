@@ -15,19 +15,10 @@
 "   You can find me at http://spf13.com
 " }
 
-" Before {
-
-    " Use local before if available {
-        if filereadable(expand("~/.vimrc.before.local"))
-            source ~/.vimrc.before.local
-        endif
-    " }
-
-    " Use fork before if available {
-        if filereadable(expand("~/.vimrc.before.fork"))
-            source ~/.vimrc.before.fork
-        endif
-    " }
+" Use before config {
+    if filereadable(expand("~/.vimrc.before"))
+        source ~/.vimrc.before
+    endif
 " }
 
 " Environment {
@@ -57,26 +48,10 @@
 
 " }
 
-" Bundles {
-
-    " Use local bundles if available {
-        if filereadable(expand("~/.vimrc.bundles.local"))
-            source ~/.vimrc.bundles.local
-        endif
-    " }
-
-    " Use fork bundles if available {
-        if filereadable(expand("~/.vimrc.bundles.fork"))
-            source ~/.vimrc.bundles.fork
-        endif
-    " }
-
-    " Use bundles config {
-        if filereadable(expand("~/.vimrc.bundles"))
-            source ~/.vimrc.bundles
-        endif
-    " }
-
+" Use bundles config {
+    if filereadable(expand("~/.vimrc.bundles"))
+        source ~/.vimrc.bundles
+    endif
 " }
 
 " General {
