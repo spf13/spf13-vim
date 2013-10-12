@@ -84,18 +84,18 @@
         endif
     " }
 
-    " In your .vimrc.bundles.local file"
+    " In your .vimrc.bundles.local file
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
         let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'haskell', 'html', 'misc', 'scala']
     endif
 
-    " To override all the included bundles, put
-    " g:override_spf13_bundles = 1
-    " in your .vimrc.bundles.local file"
+    " To override all the included bundles, add the following to your
+    " .vimrc.bundles.local file:
+    "   let g:override_spf13_bundles = 1
     if !exists("g:override_spf13_bundles")
 
-    " General
+    " General {
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'scrooloose/nerdtree'
             Bundle 'altercation/vim-colors-solarized'
@@ -127,8 +127,9 @@
             Bundle 'airblade/vim-gitgutter'
             Bundle 'tpope/vim-abolish.git'
         endif
+    " }
 
-    " General Programming
+    " General Programming {
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
             Bundle 'scrooloose/syntastic'
@@ -141,8 +142,9 @@
                 Bundle 'majutsushi/tagbar'
             endif
         endif
+    " }
 
-    " Snippets & AutoComplete
+    " Snippets & AutoComplete {
         if count(g:spf13_bundle_groups, 'snipmate')
             Bundle 'garbas/vim-snipmate'
             Bundle 'honza/vim-snippets'
@@ -159,14 +161,16 @@
             Bundle 'Shougo/neosnippet'
             Bundle 'honza/vim-snippets'
         endif
+    " }
 
-    " PHP
+    " PHP {
         if count(g:spf13_bundle_groups, 'php')
             Bundle 'spf13/PIV'
             Bundle 'arnaud-lb/vim-php-namespace'
         endif
+    " }
 
-    " Python
+    " Python {
         if count(g:spf13_bundle_groups, 'python')
             " Pick either python-mode or pyflakes & pydoc
             Bundle 'klen/python-mode'
@@ -174,8 +178,9 @@
             Bundle 'python_match.vim'
             Bundle 'pythoncomplete'
         endif
+    " }
 
-    " Javascript
+    " Javascript {
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'elzr/vim-json'
             Bundle 'groenewege/vim-less'
@@ -183,14 +188,16 @@
             Bundle 'briancollins/vim-jst'
             Bundle 'kchmck/vim-coffee-script'
         endif
+    " }
 
-    " Java
+    " Java {
         if count(g:spf13_bundle_groups, 'scala')
             Bundle 'derekwyatt/vim-scala'
             Bundle 'derekwyatt/vim-sbt'
         endif
+    " }
 
-    " Haskell
+    " Haskell {
         if count(g:spf13_bundle_groups, 'haskell')
             Bundle 'travitch/hasksyn'
             Bundle 'dag/vim2hs'
@@ -202,29 +209,33 @@
             Bundle 'adinapoli/cumino'
             Bundle 'bitc/vim-hdevtools'
         endif
+    " }
 
-    " HTML
+    " HTML {
         if count(g:spf13_bundle_groups, 'html')
             Bundle 'amirh/HTML-AutoCloseTag'
             Bundle 'hail2u/vim-css3-syntax'
             Bundle 'tpope/vim-haml'
         endif
+    " }
 
-    " Ruby
+    " Ruby {
         if count(g:spf13_bundle_groups, 'ruby')
             Bundle 'tpope/vim-rails'
             let g:rubycomplete_buffer_loading = 1
             "let g:rubycomplete_classes_in_global = 1
             "let g:rubycomplete_rails = 1
         endif
+    " }
 
-    " Go Lang
+    " Go Lang {
         if count(g:spf13_bundle_groups, 'go')
             Bundle 'jnwhiteh/vim-golang'
             Bundle 'spf13/vim-gocode'
         endif
+    " }
 
-    " Misc
+    " Misc {
         if count(g:spf13_bundle_groups, 'misc')
             Bundle 'tpope/vim-markdown'
             Bundle 'spf13/vim-preview'
@@ -232,11 +243,14 @@
             Bundle 'quentindecock/vim-cucumber-align-pipes'
             Bundle 'Puppet-Syntax-Highlighting'
         endif
+    " }
 
-    " Twig
+    " Twig {
         if count(g:spf13_bundle_groups, 'twig')
             Bundle 'beyondwords/vim-twig'
         endif
+    " }
+
     endif
 
 " }
