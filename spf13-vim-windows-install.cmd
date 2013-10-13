@@ -26,8 +26,8 @@ IF NOT EXIST "%BASE_DIR%\.vim\bundle" (
 	call mkdir "%BASE_DIR%\.vim\bundle"
 )
 
-IF NOT EXIST "%HOME%/.vim/bundle/vundle" (
-	call git clone https://github.com/gmarik/vundle.git "%HOME%/.vim/bundle/vundle"
+IF NOT EXIST "%HOME%/.vim/bundle/neobundle" (
+	call git clone https://github.com/Shougo/neobundle.vim "%HOME%/.vim/bundle/neobundle.vim"
 )
 
-call vim -u "%BASE_DIR%/.vimrc.bundles" +BundleInstall! +BundleClean +qall
+call vim -u "%BASE_DIR%/.vimrc.bundles" +NeoBundleInstall! +NeoBundleClean +qall
