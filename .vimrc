@@ -254,6 +254,13 @@
     noremap j gj
     noremap k gk
 
+    " Same for 0, home, end, etc
+    noremap $ g$
+    noremap <End> g<End>
+    noremap 0 g0
+    noremap <Home> g<Home>
+    noremap ^ g^
+
     " The following two lines conflict with moving to top and
     " bottom of the screen
     " If you prefer that functionality, add the following to your
