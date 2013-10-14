@@ -33,7 +33,6 @@
 ;;; Code:
 
 (require 'prelude-programming)
-(require 'smartparens-ruby)
 
 (prelude-ensure-module-deps '(ruby-tools inf-ruby yari))
 
