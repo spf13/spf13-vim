@@ -38,6 +38,11 @@
 ;; Lisp configuration
 (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 
+;; wrap keybindings
+(define-key lisp-mode-shared-map (kbd "M-(") (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "(")))
+(define-key lisp-mode-shared-map (kbd "M-[") (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "[")))
+(define-key lisp-mode-shared-map (kbd "M-\"") (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "\"")))
+
 ;; a great lisp coding hook
 (defun prelude-lisp-coding-defaults ()
   (smartparens-strict-mode +1)
