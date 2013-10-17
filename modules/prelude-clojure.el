@@ -33,7 +33,7 @@
 ;;; Code:
 
 (require 'prelude-lisp)
-(prelude-ensure-module-deps '(clojure-mode clojure-test-mode nrepl))
+(prelude-ensure-module-deps '(clojure-mode clojure-test-mode cider))
 
 (eval-after-load 'clojure-mode
   '(progn
