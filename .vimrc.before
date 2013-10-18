@@ -40,7 +40,13 @@
     "   let g:spf13_clear_search_highlight = 1
 
     " Disable neosnippet expansion
+    " This maps over <C-k> and does some Supertab
+    " emulation with snippets
     "   let g:spf13_no_neosnippet_expand = 1
+
+    " Disable neocomplete / neocomplcache popup mappings
+    " (e.g. Supertab emulation, snippet jumping)
+    "   let g:spf13_no_neocompl_mappings = 1
 
     " Disable whitespace stripping
     "   let g:spf13_keep_trailing_whitespace = 1
