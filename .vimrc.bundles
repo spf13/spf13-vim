@@ -12,6 +12,12 @@
 "   While much of it is beneficial for general use, I would
 "   recommend picking out the parts you want and understand.
 "
+"   This file imports the various plugins of spf13. If you
+"   wish to alter which groups are imported, see vimrc.before.
+"   If you wish to add or remove individual bundles, create
+"   ~/.vimrc.bundles.local and `Bundle` or `UnBundle` as needed
+"   from there.
+"
 "   You can find me at http://spf13.com
 " }
 
@@ -51,6 +57,16 @@
         filetype off
         set rtp+=~/.vim/bundle/vundle
         call vundle#rc()
+    " }
+
+    " Add an UnBundle command {
+    function! UnBundle(arg, ...)
+      let bundle = vundle#config#init_bundle(a:arg, a:000)
+      call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
+    endfunction
+
+    com! -nargs=+         UnBundle
+    \ call UnBundle(<args>)
     " }
 
 " }
