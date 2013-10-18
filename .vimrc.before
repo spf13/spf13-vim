@@ -53,6 +53,9 @@
     " Disable whitespace stripping
     "   let g:spf13_keep_trailing_whitespace = 1
 
+    " Disable cursor location auto restore
+    "   let g:spf13_no_restore_cursor = 1
+
     " Enable powerline symbols
     "   let g:airline_powerline_fonts = 1
 
