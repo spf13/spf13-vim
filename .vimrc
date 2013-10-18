@@ -642,8 +642,8 @@
             let g:neocomplcache_max_list = 15
             let g:neocomplcache_force_overwrite_completefunc = 1
 
+            " SuperTab like snippets behavior.
             if !exists('g:spf13_no_neosnippet_expand')
-                " SuperTab like snippets behavior.
                 imap <silent><expr><TAB> neosnippet#expandable() ?
                             \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
                             \ "\<C-e>" : "\<TAB>")
