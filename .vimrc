@@ -15,12 +15,6 @@
 "   You can find me at http://spf13.com
 " }
 
-" Use before config {
-    if filereadable(expand("~/.vimrc.before"))
-        source ~/.vimrc.before
-    endif
-" }
-
 " Environment {
 
     " Basics {
@@ -38,14 +32,12 @@
         endif
     " }
 
-    " Setup Bundle Support {
-        " The next three lines ensure that the ~/.vim/bundle/ system works
-        filetype on
-        filetype off
-        set rtp+=~/.vim/bundle/vundle
-        call vundle#rc()
-    " }
+" }
 
+" Use before config if available {
+    if filereadable(expand("~/.vimrc.before"))
+        source ~/.vimrc.before
+    endif
 " }
 
 " Use bundles config {
