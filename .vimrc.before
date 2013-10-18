@@ -63,6 +63,9 @@
     "   let g:spf13_consolidated_directory = <full path to desired directory>
     "   eg: let g:spf13_consolidated_directory = $HOME . '/.vim/'
 
+    " Don't change the color of the indent guides
+    "   let g:indent_guides_auto_colors = 0
+
 " }
 
 " Use fork before if available {
