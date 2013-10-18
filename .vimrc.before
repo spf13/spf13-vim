@@ -12,22 +12,19 @@
 "   While much of it is beneficial for general use, I would
 "   recommend picking out the parts you want and understand.
 "
+"   This file is for options which must be set *before* plugins
+"   are loaded and the main .vimrc config is run. Most of these
+"   are for preventing mappings or commands from being created.
+"
 "   You can find me at http://spf13.com
 " }
 
-" Use local before if available {
-    if filereadable(expand("~/.vimrc.before.local"))
-        source ~/.vimrc.before.local
-    endif
-" }
-
-" Use fork before if available {
-    if filereadable(expand("~/.vimrc.before.fork"))
-        source ~/.vimrc.before.fork
-    endif
-" }
-
 " spf13 options {
+
+    " Limit spf13 to only the plugin groups listed here
+    "   let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming',
+    "       \ 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'haskell',
+    "       \ 'html', 'misc', 'scala']
 
     " Prevent automatically changing to open file directory
     "   let g:spf13_no_autochdir = 1
@@ -48,10 +45,19 @@
     "   let g:spf13_clear_search_highlight = 1
 
     " Disable neosnippet expansion
+    " This maps over <C-k> and does some Supertab
+    " emulation with snippets
     "   let g:spf13_no_neosnippet_expand = 1
+
+    " Disable neocomplete / neocomplcache popup mappings
+    " (e.g. Supertab emulation, snippet jumping)
+    "   let g:spf13_no_neocompl_mappings = 1
 
     " Disable whitespace stripping
     "   let g:spf13_keep_trailing_whitespace = 1
+
+    " Disable cursor location auto restore
+    "   let g:spf13_no_restore_cursor = 1
 
     " Enable powerline symbols
     "   let g:airline_powerline_fonts = 1
@@ -60,4 +66,16 @@
     "   let g:spf13_consolidated_directory = <full path to desired directory>
     "   eg: let g:spf13_consolidated_directory = $HOME . '/.vim/'
 
+" }
+
+" Use fork before if available {
+    if filereadable(expand("~/.vimrc.before.fork"))
+        source ~/.vimrc.before.fork
+    endif
+" }
+
+" Use local before if available {
+    if filereadable(expand("~/.vimrc.before.local"))
+        source ~/.vimrc.before.local
+    endif
 " }
