@@ -21,6 +21,11 @@
 
 " spf13 options {
 
+    " Limit spf13 to only the plugin groups listed here
+    "   let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming',
+    "       \ 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'haskell',
+    "       \ 'html', 'misc', 'scala']
+
     " Prevent automatically changing to open file directory
     "   let g:spf13_no_autochdir = 1
 
