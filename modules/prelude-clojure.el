@@ -49,7 +49,7 @@
 
 (eval-after-load 'cider
   '(progn
-     (add-hook 'cider-interaction-mode-hook 'cider-turn-on-eldoc-mode)
+     (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
      (defun prelude-cider-mode-defaults ()
        (subword-mode +1)
