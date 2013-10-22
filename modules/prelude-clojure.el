@@ -51,7 +51,7 @@
   '(progn
      (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
-     (defun prelude-cider-mode-defaults ()
+     (defun prelude-cider-repl-mode-defaults ()
        (subword-mode +1)
        (run-hooks 'prelude-interactive-lisp-coding-hook))
 
