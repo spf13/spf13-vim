@@ -90,13 +90,15 @@ You'd do well to replace `~/.emacs.d` with the value of
 
 ## Updating Prelude
 
+### Manual update
+
 The update procedure is fairly straightforward and consists of 3 steps:
 
-### Update all bundled packages
+#### Update all bundled packages
 
-Just run <kbd>M-x package-list-packages RET U x</kbd>. Unfortunately this step cannot be automated.
+Just run <kbd>M-x package-list-packages RET U x</kbd>.
 
-### Update Prelude's code
+#### Update Prelude's code
 
 ```bash
 cd path/to/prelude/installation
@@ -106,13 +108,15 @@ git pull
 The `path/to/prelude/installation` is usually `~/.emacs.d` (at least
 on Unix systems).
 
-Alternatively you can run <kbd>M-x prelude-update</kbd> from Emacs itself.
-
-### Restart Prelude
+#### Restart Prelude
 
 It's generally a good idea to stop Emacs after you do the update. The
 next time Prelude starts it will install any new dependencies (if
 there are such).
+
+### Automatic update
+
+Simply run <kbd>M-x prelude-update</kbd> from Emacs itself and restart Emacs afterwards.
 
 ## Enabling additional modules
 
@@ -428,16 +432,17 @@ If you're not fond of spellchecking on the fly:
 
 ### Updating bundled packages
 
-Currently there is no Emacs Lisp API for updating packages, so you'll
-have to update manually the packages that came with Prelude from time
-to time.
+Generally it's a good idea to do a package update before running
+updating Prelude, since the latest Prelude code might depend on newer
+versions of the bundled packages than you would currently have
+installed.
+
+If you're doing manual Prelude updates you should always do a package update first.
 
 `M-x package-list-packages RET U x`
 
-Generally it's a good idea to do a package update before running
-`prelude-update`, since the latest Prelude code might depend on newer
-versions of the bundled packages than you would currently have
-installed.
+That's not necessary if you're using `M-x prelude-update`, since it
+will automatically update the installed packages.
 
 ### Problems with flyspell-mode
 

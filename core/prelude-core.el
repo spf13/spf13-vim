@@ -450,10 +450,14 @@ Doesn't mess with special buffers."
   (exchange-point-and-mark)
   (deactivate-mark nil))
 
+(require 'epl)
+
 (defun prelude-update ()
   "Update Prelude to its latest version."
   (interactive)
   (when (y-or-n-p "Do you want to update Prelude? ")
+    (message "Updating installed packages...")
+    (epl-upgrade)
     (message "Updating Prelude...")
     (cd prelude-dir)
     (shell-command "git pull")
