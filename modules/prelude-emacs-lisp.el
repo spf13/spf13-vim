@@ -35,12 +35,12 @@
 
 (require 'prelude-lisp)
 
-(defun prelude-remove-elc-on-save ()
-  "If you're saving an elisp file, likely the .elc is no longer valid."
+(defun prelude-recompile-elc-on-save ()
+  "Recompile your elc when saving an elisp file."
   (add-hook 'after-save-hook
             (lambda ()
-              (if (file-exists-p (concat buffer-file-name "c"))
-                  (delete-file (concat buffer-file-name "c"))))
+              (when (file-exists-p (byte-compile-dest-file buffer-file-name))
+                (emacs-lisp-byte-compile)))
             nil
             t))
 
@@ -62,7 +62,7 @@ Start `ielm' if it's not already running."
   "Sensible defaults for `emacs-lisp-mode'."
   (run-hooks 'prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
-  (prelude-remove-elc-on-save)
+  (prelude-recompile-elc-on-save)
   (rainbow-mode +1)
   (setq mode-name "EL")
   (prelude-conditional-emacs-lisp-checker))
