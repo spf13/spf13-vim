@@ -233,7 +233,7 @@ Keybinding         | Description
 <kbd>C-c g</kbd>   | Search in Google for the thing under point (or an interactive query).
 <kbd>C-c G</kbd>   | Search in GitHub for the thing under point (or an interactive query).
 <kbd>C-c y</kbd>   | Search in YouTube for the thing under point (or an interactive query).
-<kbd>C-S-RET</kbd> or <kbd>M-O</kbd> or <kbd>Super-o</kbd> | Insert an empty line above the current line and indent it properly
+<kbd>C-S-RET</kbd> or <kbd>M-O</kbd> or <kbd>Super-o</kbd> | Insert an empty line above the current line and indent it properly.
 <kbd>S-RET</kbd> or <kbd>M-o</kbd> | Insert an empty line and indent it properly (as in most IDEs).
 <kbd>C-S-up</kbd> or <kbd>M-S-up</kbd> | Move the current line or region up.
 <kbd>C-S-down</kbd> or <kbd>M-S-down</kbd>| Move the current line or region down.
