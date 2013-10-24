@@ -42,6 +42,7 @@
     ;; mimic popular IDEs binding, note that it doesn't work in a terminal session
     (define-key map [(shift return)] 'prelude-smart-open-line)
     (define-key map (kbd "M-o") 'prelude-smart-open-line)
+    (define-key map (kbd "M-O") 'prelude-smart-open-line-above)
     (define-key map [(control shift return)] 'prelude-smart-open-line-above)
     (define-key map [(control shift up)]  'move-text-up)
     (define-key map [(control shift down)]  'move-text-down)
