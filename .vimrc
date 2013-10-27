@@ -195,6 +195,7 @@
     set tabstop=4                   " an indentation every four columns
     set softtabstop=4               " let backspace delete indent
     set matchpairs+=<:>                " match, to be used with %
+    set formatoptions+=mB              "break at a multi-byte character above 255, see https://groups.google.com/forum/#!topic/vim_use/HYy7sqje3bQ
     "set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     autocmd BufNewFile,BufRead,BufWritePre *.wiki setf wiki
