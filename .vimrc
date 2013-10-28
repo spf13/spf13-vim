@@ -393,12 +393,6 @@
     " Misc  {
         "let g:NERDShutUp=1
         "let b:match_ignorecase = 1
-        if has('mac')
-            let g:markdown_preview_app = '/Applications/Mou.app'
-        elseif has('win32') || has('win64')
-            let g:markdown_preview_app = 'D:/Program Files/MarkdownPad 2/MarkdownPad2.exe'
-        endif
-        autocmd FileType markdown,mkd nnoremap <buffer> <silent> <leader>p :PreviewMarkdown<CR>
     " }
 
 
