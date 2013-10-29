@@ -373,12 +373,6 @@
         let g:calendar_mark = 'right'
     "}
 
-    " jsLint {
-        let $JS_CMD='node'
-        "toggle and update
-        autocmd FileType javascript nnoremap <leader>j :JSLintToggle<CR>:JSLintUpdate<CR>
-    "}
-    "
     "zoom.vim {
         nnoremap = :ZoomIn<CR>
         nnoremap - :ZoomOut<CR>
