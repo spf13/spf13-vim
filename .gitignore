@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *~
 *.elc
 auto-save-list
@@ -19,3 +20,9 @@ savefile/
 projectile-bookmarks.eld
 session*
 .cask
+=======
+.DS_Store
+*.pyc
+*._*
+*.vim/sessions/
+>>>>>>> d4a5a2c8e4b144a00b0dbc4f440269f0f5f40ed0
