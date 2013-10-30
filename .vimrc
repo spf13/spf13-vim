@@ -302,6 +302,24 @@
         let cur_month = cur_year . '-' . cur_month
         "let g:plan_file = '/Users/fuyg/Dropbox/月度规划/2013/2013-04/2013-04.md'
         let g:plan_file = '/Users/fuyg/Dropbox/月度规划/' . cur_year .'/' . cur_month . '/' . cur_month. '.md'
+        " regular task
+        let g:plan_week_work = {
+            \ 1 : '1. 10:00 - 11:00 @2层灵芝 YNote Editor Weekly meeting;',
+            \ 2 : '1. 16:00 - 16:30 weekly report;',
+            \ 5 : '1. 14:00 - 16:00 @二层甘草 webfront weekly meeting;'
+            \}
+        let g:plan_week_personal = {
+            \}
+        let g:plan_month_work = {
+            \ 18: '1. Sprint 总结, 会议;'
+            \}
+        let g:plan_month_personal = {
+            \ 3 : '1. 18:00 ~ @报刊亭 buy <<Programmer>> magazine;',
+            \ 8 : '1. 还房贷6k;',
+            \ 28 : '1. 月度总结;1. 下月计划;'
+            \}
+
+
     "}
 
     " FuDesign2008/vimKit {
@@ -540,15 +558,21 @@
     if has('gui_running')
         set guioptions-=T           " remove the toolbar
         set lines=40                " 40 lines of text instead of 24,
-        "字体是否好看与字号有很大关系
-        "13-14好看
-        set guifont=Consolas:h12  "font
-        "gVim on windows
-        "set guifont=Droid\ Sans\ Mono:h16  "font
-        "
+        try
+            "字体是否好看与字号有很大关系
+            set guifont=Consolas:h12  "font
+            "set guifont=Droid\ Sans\ Mono:h16  "font
+        catch
+            "do nothing
+        endtry
+        "macVim
         if has('gui_macvim')
-            "macVim
-            set guifont=Monaco:h14
+            try
+                set guifont=Monaco:h14
+            catch
+                "do nothing
+            endtry
+
             "set transparency=5          " Make the window slightly transparent
         endif
     else
