@@ -314,8 +314,8 @@
             \ 18: '1. Sprint 总结, 会议;'
             \}
         let g:plan_month_personal = {
-            \ 3 : '1. 18:00 ~ @报刊亭 buy <<Programmer>> magazine;',
-            \ 8 : '1. 还房贷6k;',
+            \ 3 : '1. 18:00 ~ @ buy <<Programmer>> magazine;',
+            \ 8 : '1. 还房贷;',
             \ 28 : '1. 月度总结;1. 下月计划;'
             \}
 
