@@ -321,7 +321,7 @@
             \ 27: '1. 反思工作方式, 编辑器, 云笔记'
             \}
         let g:plan_month_personal = {
-            \ 3 : '1. 18:00 ~ @ buy <<Programmer>> magazine;',
+            \ 3 : '1. 18:00 ~ @ buy Programmer magazine;',
             \ 8 : '1. 还房贷;',
             \ 28 : '1. 月度总结;1. 下月计划;'
             \}
