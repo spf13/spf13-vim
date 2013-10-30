@@ -306,12 +306,17 @@
         let g:plan_week_work = {
             \ 1 : '1. 10:00 - 11:00 @2层灵芝 YNote Editor Weekly meeting;',
             \ 2 : '1. 16:00 - 16:30 weekly report;',
-            \ 5 : '1. 14:00 - 16:00 @二层甘草 webfront weekly meeting;'
+            \ 3 : '1. 17:00 - 18:00 @7层珍珠 云笔记编辑器技术学习讨论会;',
+            \ 5 : '1. 16:00 - 18:00 编辑器需求收集,整理;1. 14:00 - 16:00 @2层甘草 webfront weekly meeting;'
             \}
         let g:plan_week_personal = {
+            \ 3 : '1. call 父母;',
+            \ 4 : '1. 20:30 ~ 火影;'
+            \ 6 : '1. 9:00 - 12:00 新技术学习实践; 15:00 - 17:00 锻炼身体;',
+            \ 7 : '1. 看望/call 父母;'
             \}
         let g:plan_month_work = {
-            \ 18: '1. Sprint 总结, 会议;'
+            \ 25: '1. Sprint 总结, 计划;'
             \}
         let g:plan_month_personal = {
             \ 3 : '1. 18:00 ~ @ buy <<Programmer>> magazine;',
