@@ -304,10 +304,11 @@
         let g:plan_file = '/Users/fuyg/Dropbox/月度规划/' . cur_year .'/' . cur_month . '/' . cur_month. '.md'
         " regular task
         let g:plan_week_work = {
-            \ 1 : '1. 10:00 - 11:00 @2层灵芝 YNote Editor Weekly meeting;',
-            \ 2 : '1. 16:00 - 16:30 weekly report;',
-            \ 3 : '1. 17:00 - 18:00 @7层珍珠 云笔记编辑器技术学习讨论会;',
-            \ 5 : '1. 9:00 - 10:00 论坛回帖, 查看微博, 编辑器需求收集,整理;1. 14:00 - 16:00 @2层甘草 webfront weekly meeting;'
+            \ 1 : '1. 10:00 - 11:00 @2层灵芝 YNote Editor Weekly meeting;1. 17:00检查工作进度, 是否遇到问题;',
+            \ 2 : '1. 16:00 - 16:30 weekly report;1. 17:00检查工作进度, 是否遇到问题;',
+            \ 3 : '1. 17:00 - 18:00 @7层珍珠 云笔记编辑器技术学习讨论会;1. 17:00检查工作进度, 是否遇到问题;',
+            \ 4 : '1. 17:00检查工作进度, 是否遇到问题;',
+            \ 5 : '1. 9:00 - 10:00 论坛回帖, 查看微博, 编辑器需求收集,整理;1. 14:00 - 16:00 @2层甘草 webfront weekly meeting;1. 17:00检查工作进度, 是否遇到问题;'
             \}
         let g:plan_week_personal = {
             \ 3 : '1. call 父母;',
