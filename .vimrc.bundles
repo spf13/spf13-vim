@@ -124,7 +124,7 @@
             if !exists('g:spf13_no_views')
                 Bundle 'vim-scripts/restore_view.vim'
             endif
-            Bundle 'airblade/vim-gitgutter'
+            Bundle 'mhinz/vim-signify'
             Bundle 'tpope/vim-abolish.git'
         endif
     " }
