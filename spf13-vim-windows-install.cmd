@@ -1,3 +1,4 @@
+@echo off
 rem Try to write redundant file to windows directory to check admin rights
 rem http://stackoverflow.com/a/4052002
 copy /b/y NUL %WINDIR%\06CF2EB6-94E6-4a60-91D8-AB945AE8CF38 >NUL 2>&1
