@@ -429,6 +429,7 @@
         let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
         let NERDTreeChDirMode=0
         let NERDTreeQuitOnOpen=1
+        let NERDTreeMinimalUI=1
         let NERDTreeMouseMode=2
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
@@ -513,6 +514,9 @@
             \ 'ctagsbin'  : 'gotags',
             \ 'ctagsargs' : '-sort -silent'
             \ }
+            
+        " Turn off "press F1 for help" message
+        let g:tagbar_compact=1
     "}
 
     " PythonMode {
