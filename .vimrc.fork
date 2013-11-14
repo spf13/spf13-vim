@@ -1,0 +1,59 @@
+"""""""""""""""""""""""""""""
+" => Set font and font-size
+"""""""""""""""""""""""""""""
+set gfn=Monaco:h16
+colorscheme desert
+
+"""""""""""""""""""""""""""""
+" => Quick edit
+"""""""""""""""""""""""""""""
+" Map space to / (search) and c-space to ? (backgwards search)
+map <space> /
+
+" Begining & End of line in Normal mode
+noremap H ^
+noremap L g_
+
+" Run PHP scripts
+nmap <leader>p :!php %<cr>
+
+" Run PHP syntax scripts
+nmap <leader>l :!php -l %<cr>
+
+" Run Ruby scripts
+nmap <leader>r :!ruby %<cr>
+
+" Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+"""""""""""""""""""""""""""""
+" => Auto tab
+"""""""""""""""""""""""""""""
+autocmd FileType php setl shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+autocmd FileType ruby,erb,eruby,yaml setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd FileType md,mkd,markdown setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd FileType jade,html,coffee,less,slim,js setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+au BufNewFile,BufReadPost *.php setl shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+au BufNewFile,BufReadPost *.ruby setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.erb setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.less setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.js setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.md setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+autocmd FileType ruby,eruby,yaml setl foldmethod=manual
+
+"""""""""""""""""""""""""""""
+" => Vimwiki
+"""""""""""""""""""""""""""""
+set nocompatible
+filetype plugin on
+syntax on
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.mkd': 'markdown', '.wiki': 'media'}
+let g:vimwiki_list = [{'path': '~/vimwiki/md/', 'syntax': 'markdown', 'ext': '.md'},
+                    \ {'path': '~/vimwiki/media/', 'syntax': 'media', 'ext': '.wiki'}]
