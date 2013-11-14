@@ -1,7 +1,7 @@
 @if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
 @if not exist "%HOME%" @set HOME=%USERPROFILE%
 
-@set BASE_DIR=%HOME%\.spf13-vim-3
+@set BASE_DIR=%HOME%\.spf13-vim-3-new
 
 @if not exist "%BASE_DIR%" (
         echo backing up existing vim config
@@ -19,7 +19,7 @@
         chdir /d "%ORIGINAL_DIR%"
         ) else (
             echo cloning spf13-vim
-            call git clone --recursive -b 3.0 git://github.com/spf13/spf13-vim.git "%BASE_DIR%"
+            call git clone --recursive -b 3.0-new git://github.com/zhangjx/spf13-vim.git "%BASE_DIR%"
         )
 
 @if not exist  "%BASE_DIR%\.vim\bundle" call mkdir "%BASE_DIR%\.vim\bundle"

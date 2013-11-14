@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 ############################  SETUP PARAMETERS
 app_name='spf13-vim'
-git_uri='https://github.com/spf13/spf13-vim.git'
-git_branch='3.0'
+git_uri='https://github.com/zhangjx/spf13-vim.git'
+git_branch='3.0-new'
 debug_mode='0'
 fork_maintainer='0'
 
@@ -103,7 +103,7 @@ clone_vundle() {
 }
 
 create_symlinks() {
-    endpath="$HOME/.$app_name-3"
+    endpath="$HOME/.$app_name-3-new"
 
     if [ ! -d "$endpath/.vim/bundle" ]; then
         mkdir -p "$endpath/.vim/bundle"
