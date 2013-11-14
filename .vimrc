@@ -211,7 +211,7 @@
     " To disable the stripping of whitespace, add the following to your
     " .vimrc.before.local file:
     "   let g:spf13_keep_trailing_whitespace = 1
-    autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
+    autocmd FileType c,cpp,java,go,php,ruby,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
     autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell setlocal expandtab shiftwidth=2 softtabstop=2
@@ -267,8 +267,8 @@
     " .vimrc.before.local file:
     "   let g:spf13_no_fastTabs = 1
     if !exists('g:spf13_no_fastTabs')
-        map <S-H> gT
-        map <S-L> gt
+        map <D-j> gT
+        map <D-k> gt
     endif
 
     " Stupid shift key fixes

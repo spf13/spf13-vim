@@ -19,7 +19,7 @@
         chdir /d "%ORIGINAL_DIR%"
         ) else (
             echo cloning spf13-vim
-            call git clone --recursive -b 3.0 git://github.com/spf13/spf13-vim.git "%BASE_DIR%"
+            call git clone --recursive -b 3.0-new git://github.com/zhangjx/spf13-vim.git "%BASE_DIR%"
         )
 
 @if not exist  "%BASE_DIR%\.vim\bundle" call mkdir "%BASE_DIR%\.vim\bundle"
