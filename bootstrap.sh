@@ -103,7 +103,7 @@ clone_vundle() {
 }
 
 create_symlinks() {
-    endpath="$HOME/.$app_name-3-new"
+    endpath="$HOME/.$app_name-3"
 
     if [ ! -d "$endpath/.vim/bundle" ]; then
         mkdir -p "$endpath/.vim/bundle"

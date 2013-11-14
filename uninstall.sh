@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-endpath="$HOME/.spf13-vim-3-new"
+endpath="$HOME/.spf13-vim-3"
 
 warn() {
     echo "$1" >&2

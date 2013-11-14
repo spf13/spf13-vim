@@ -1,7 +1,7 @@
 @if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
 @if not exist "%HOME%" @set HOME=%USERPROFILE%
 
-@set BASE_DIR=%HOME%\.spf13-vim-3-new
+@set BASE_DIR=%HOME%\.spf13-vim-3
 IF NOT EXIST "%BASE_DIR%" (
   call git clone --recursive -b 3.0-new https://github.com/zhangjx/spf13-vim.git "%BASE_DIR%"
 ) ELSE (

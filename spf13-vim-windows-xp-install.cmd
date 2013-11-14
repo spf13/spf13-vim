@@ -1,7 +1,7 @@
 @if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
 @if not exist "%HOME%" @set HOME=%USERPROFILE%
 
-@set BASE_DIR=%HOME%\.spf13-vim-3-new
+@set BASE_DIR=%HOME%\.spf13-vim-3
 
 @if not exist "%BASE_DIR%" (
         echo backing up existing vim config
