@@ -178,7 +178,7 @@ The easiest way is to create <code>curl.cmd</code> with <a href="https://gist.gi
 <pre><code>@rem Do not use "echo off" to not affect any child calls.
 @setlocal
 
-@rem Get the abolute path to the parent directory, which is assumed to be the
+@rem Get the absolute path to the parent directory, which is assumed to be the
 @rem Git installation root.
 @for /F "delims=" %%I in ("%~dp0..") do @set git_install_root=%%~fI
 @set PATH=%git_install_root%\bin;%git_install_root%\mingw\bin;%PATH%
@@ -313,7 +313,7 @@ spf13-vim uses the Vundle plugin management system to have a well organized vim 
   [123+4*56]/2              cs])        (123+456)/2
   "Look ma, I'm *HTML!"     cs"&lt;q&gt;      &lt;q&gt;Look ma, I'm HTML!&lt;/q&gt;
   if *x&gt;3 {                 ysW(        if ( x&gt;3 ) {
-  my $str = *whee!;         vlllls'     my $str = 'whee!';
+  my $str = *whee!;         vllllS'     my $str = 'whee!';
 </code></pre>
 
         <p>For instance, if the cursor was inside <code>"foo bar"</code>, you could type
