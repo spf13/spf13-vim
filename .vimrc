@@ -359,6 +359,9 @@
     map zl zL
     map zh zH
 
+    " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
+    map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
+
 " }
 
 " Plugins {
