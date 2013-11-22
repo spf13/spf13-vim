@@ -767,7 +767,7 @@
         "   let g:airline_powerline_fonts=1
         " If the previous symbols do not render for you then install a
         " powerline enabled font.
-        let g:airline_theme = 'powerlineish'
+        let g:airline_theme = 'solarized' " 'powerlineish' is another choice
         if !exists('g:airline_powerline_fonts')
             " Use the default set of separators with a few customizations
             let g:airline_left_sep='›'  " Slightly fancier than '>'
