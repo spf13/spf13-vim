@@ -87,11 +87,11 @@
             "endif
             "Bundle 'tpope/vim-abolish.git'
             " supper tab is fast and functional enough
-            " YCM is sometimes not fast
-            " NeoComplCache is not bettor than supertab for me
-            if has('win32') || has('win64')
-                Bundle 'ervandew/supertab'
-            else
+            " 1. NeoComplCache is not bettor than supertab for me
+            " 2. YCM is sometimes not fast
+            " 3. YCM is only available for coding, but not for document
+            Bundle 'ervandew/supertab'
+            if !(has('win32') || has('win64'))
                 Bundle 'Valloric/YouCompleteMe'
             endif
             "Provides tab completion while inside the “/” search
