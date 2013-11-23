@@ -300,8 +300,8 @@
         "01-12
         let cur_month = strftime('%m')
         let cur_month = cur_year . '-' . cur_month
-        "let g:plan_file = '/Users/fuyg/Dropbox/月度规划/2013/2013-04/2013-04.md'
-        let g:plan_file = '/Users/fuyg/Dropbox/月度规划/' . cur_year .'/' . cur_month . '/' . cur_month. '.md'
+        "let g:plan_file = '/Users/fuyg/Dropbox/plan/2013/2013-04/2013-04.markdown'
+        let g:plan_file = '/Users/fuyg/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month. '.markdown'
         " regular task
         let g:plan_week_work = {
             \ 1 : '1. 10:00 - 11:00 @2层灵芝 YNote Editor Weekly meeting;1. 17:00检查工作进度, 是否遇到问题;',
