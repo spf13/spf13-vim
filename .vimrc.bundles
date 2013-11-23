@@ -89,8 +89,11 @@
             " supper tab is fast and functional enough
             " YCM is sometimes not fast
             " NeoComplCache is not bettor than supertab for me
-            Bundle 'ervandew/supertab'
-            "Bundle 'Valloric/YouCompleteMe'
+            if has('win32') || has('win64')
+                Bundle 'ervandew/supertab'
+            else
+                Bundle 'Valloric/YouCompleteMe'
+            endif
             "Provides tab completion while inside the “/” search
             " useless!!! not able for search and repalce
             "Bundle 'vim-scripts/SearchComplete'
@@ -249,10 +252,9 @@
 
     "iOS
         " has('mac') makes no effects, why ???
-        if !has('win32') && has('unix') && count(g:spf13_bundle_groups, 'ios')
-            "Bundle 'eraserhd/vim-ios'
-            "Bundle  'msanders/cocoa.vim'
-            "Bundle 'Rip-Rip/clang_complete'
+        if count(g:spf13_bundle_groups, 'ios') && !(has('win32') || has('win64'))
+            Bundle 'eraserhd/vim-ios'
+            Bundle  'msanders/cocoa.vim'
         endif
 
     "potion
