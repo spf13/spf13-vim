@@ -291,6 +291,16 @@
         "let g:SuperTabLongestEnhanced = 1
      "}
 
+     "{
+        let g:ycm_filetype_blacklist = {}
+        let g:ycm_complete_in_comments = 1
+        let g:ycm_collect_identifiers_from_comments_and_strings = 1
+     "}
+
+     " js-complete.vim {
+         autocmd FileType javascript  :setl omnifunc=jscomplete#CompleteJS
+     "}
+
     " AutoClose.vim {
         "let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '`': '`'}
     " }

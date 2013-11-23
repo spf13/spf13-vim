@@ -86,14 +86,8 @@
                 "Bundle 'vim-scripts/restore_view.vim'
             "endif
             "Bundle 'tpope/vim-abolish.git'
-            " supper tab is fast and functional enough
-            " 1. NeoComplCache is not bettor than supertab for me
-            " 2. YCM is sometimes not fast
-            " 3. YCM is sometimes not good for javascript coding
-            Bundle 'ervandew/supertab'
-            "if !(has('win32') || has('win64'))
-                "Bundle 'Valloric/YouCompleteMe'
-            "endif
+            " YCM is better than NeoComplCache and supertab
+            Bundle 'Valloric/YouCompleteMe'
             "Provides tab completion while inside the “/” search
             " useless!!! not able for search and repalce
             "Bundle 'vim-scripts/SearchComplete'
@@ -195,6 +189,7 @@
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'leshill/vim-json'
             "Bundle 'pangloss/vim-javascript'
+            Bundle 'mattn/jscomplete-vim'
             Bundle 'jelera/vim-javascript-syntax'
             Bundle 'FuDesign2008/jslhint.vim'
             if !g:spf13_performance_first
