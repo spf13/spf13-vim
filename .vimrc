@@ -287,7 +287,7 @@
     " }
 
     " superTab.vim {
-        "let g:SuperTabDefaultCompletionType = "context"
+        let g:SuperTabDefaultCompletionType = "context"
         "let g:SuperTabLongestEnhanced = 1
      "}
 

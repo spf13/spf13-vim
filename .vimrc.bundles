@@ -89,11 +89,11 @@
             " supper tab is fast and functional enough
             " 1. NeoComplCache is not bettor than supertab for me
             " 2. YCM is sometimes not fast
-            " 3. YCM is only available for coding, but not for document
+            " 3. YCM is sometimes not good for javascript coding
             Bundle 'ervandew/supertab'
-            if !(has('win32') || has('win64'))
-                Bundle 'Valloric/YouCompleteMe'
-            endif
+            "if !(has('win32') || has('win64'))
+                "Bundle 'Valloric/YouCompleteMe'
+            "endif
             "Provides tab completion while inside the “/” search
             " useless!!! not able for search and repalce
             "Bundle 'vim-scripts/SearchComplete'
