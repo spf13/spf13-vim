@@ -2,7 +2,7 @@
 ############################  SETUP PARAMETERS
 app_name='spf13-vim'
 git_uri='https://github.com/spf13/spf13-vim.git'
-git_branch='3.0'
+git_branch='nb'
 debug_mode='0'
 fork_maintainer='0'
 
