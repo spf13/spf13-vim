@@ -126,6 +126,7 @@
             endif
             Bundle 'mhinz/vim-signify'
             Bundle 'tpope/vim-abolish.git'
+            Bundle 'osyo-manga/vim-over'
         endif
     " }
 
