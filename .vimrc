@@ -15,12 +15,6 @@
 "   You can find me at http://spf13.com
 " }
 
-" Use before config {
-    if filereadable(expand("~/.vimrc.before"))
-        source ~/.vimrc.before
-    endif
-" }
-
 " Environment {
 
     " Basics {
@@ -38,14 +32,12 @@
         endif
     " }
 
-    " Setup Bundle Support {
-        " The next three lines ensure that the ~/.vim/bundle/ system works
-        filetype on
-        filetype off
-        set rtp+=~/.vim/bundle/vundle
-        call vundle#rc()
-    " }
+" }
 
+" Use before config if available {
+    if filereadable(expand("~/.vimrc.before"))
+        source ~/.vimrc.before
+    endif
 " }
 
 " Use bundles config {
@@ -545,10 +537,12 @@
             let g:neocomplete#force_overwrite_completefunc = 1
 
             " SuperTab like snippets behavior.
-            imap <silent><expr><TAB> neosnippet#expandable() ?
-                        \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
-                        \ "\<C-e>" : "\<TAB>")
-            smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
+            if !exists('g:spf13_no_neosnippet_expand')
+                imap <silent><expr><TAB> neosnippet#expandable() ?
+                            \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
+                            \ "\<C-e>" : "\<TAB>")
+                smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
+            endif
 
             " Define dictionary.
             let g:neocomplete#sources#dictionary#dictionaries = {
@@ -573,22 +567,24 @@
                     smap <C-k> <Plug>(neosnippet_expand_or_jump)
                 endif
 
-                inoremap <expr><C-g> neocomplete#undo_completion()
-                inoremap <expr><C-l> neocomplete#complete_common_string()
-                inoremap <expr><CR> neocomplete#complete_common_string()
+                if !exists('g:spf13_no_neocompl_mappings')
+                    inoremap <expr><C-g> neocomplete#undo_completion()
+                    inoremap <expr><C-l> neocomplete#complete_common_string()
+                    inoremap <expr><CR> neocomplete#complete_common_string()
 
-                " <TAB>: completion.
-                inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-                inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+                    " <TAB>: completion.
+                    inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+                    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-                " <CR>: close popup
-                " <s-CR>: close popup and save indent.
-                inoremap <expr><s-CR> pumvisible() ? neocomplete#close_popup()"\<CR>" : "\<CR>"
-                inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
+                    " <CR>: close popup
+                    " <s-CR>: close popup and save indent.
+                    inoremap <expr><s-CR> pumvisible() ? neocomplete#close_popup()"\<CR>" : "\<CR>"
+                    inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
 
-                " <C-h>, <BS>: close popup and delete backword char.
-                inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-                inoremap <expr><C-y> neocomplete#close_popup()
+                    " <C-h>, <BS>: close popup and delete backword char.
+                    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+                    inoremap <expr><C-y> neocomplete#close_popup()
+                endif
             " }
 
             " Enable omni completion.
@@ -647,10 +643,12 @@
             let g:neocomplcache_force_overwrite_completefunc = 1
 
             " SuperTab like snippets behavior.
-            imap <silent><expr><TAB> neosnippet#expandable() ?
-                        \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
-                        \ "\<C-e>" : "\<TAB>")
-            smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
+            if !exists('g:spf13_no_neosnippet_expand')
+                imap <silent><expr><TAB> neosnippet#expandable() ?
+                            \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
+                            \ "\<C-e>" : "\<TAB>")
+                smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
+            endif
 
             " Define dictionary.
             let g:neocomplcache_dictionary_filetype_lists = {
@@ -675,22 +673,24 @@
                     smap <C-k> <Plug>(neosnippet_expand_or_jump)
                 endif
 
-                inoremap <expr><C-g> neocomplcache#undo_completion()
-                inoremap <expr><C-l> neocomplcache#complete_common_string()
-                inoremap <expr><CR> neocomplcache#complete_common_string()
+                if !exists('g:spf13_no_neocompl_mappings')
+                    inoremap <expr><C-g> neocomplcache#undo_completion()
+                    inoremap <expr><C-l> neocomplcache#complete_common_string()
+                    inoremap <expr><CR> neocomplcache#complete_common_string()
 
-                " <TAB>: completion.
-                inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-                inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+                    " <TAB>: completion.
+                    inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+                    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-                " <CR>: close popup
-                " <s-CR>: close popup and save indent.
-                inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
-                inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+                    " <CR>: close popup
+                    " <s-CR>: close popup and save indent.
+                    inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
+                    inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 
-                " <C-h>, <BS>: close popup and delete backword char.
-                inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-                inoremap <expr><C-y> neocomplcache#close_popup()
+                    " <C-h>, <BS>: close popup and delete backword char.
+                    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+                    inoremap <expr><C-y> neocomplcache#close_popup()
+                endif
             " }
 
             " Enable omni completion.
@@ -800,16 +800,6 @@
 " }
 
 " Functions {
-
-    " UnBundle {
-    function! UnBundle(arg, ...)
-      let bundle = vundle#config#init_bundle(a:arg, a:000)
-      call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
-    endfunction
-
-    com! -nargs=+         UnBundle
-    \ call UnBundle(<args>)
-    " }
 
     " Initialize directories {
     function! InitializeDirectories()
