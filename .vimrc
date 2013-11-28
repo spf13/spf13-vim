@@ -58,7 +58,9 @@
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
 
-    if has ('x') && has ('gui') " On Linux use + register for copy-paste
+    " FIXME: Using normal Vim is common on Linux.
+    " Testing for 'x' != testing for Linux.
+    if has('x') && has ('gui') " On Linux use + register for copy-paste
         set clipboard=unnamedplus
     elseif has ('gui')          " On mac and Windows, use * register for copy-paste
         set clipboard=unnamed
