@@ -87,7 +87,7 @@
             "endif
             "Bundle 'tpope/vim-abolish.git'
             " YCM is better than NeoComplCache and supertab
-            Bundle 'Valloric/YouCompleteMe'
+            Bundle 'FuDesign2008/YouCompleteMe'
             "Provides tab completion while inside the “/” search
             " useless!!! not able for search and repalce
             "Bundle 'vim-scripts/SearchComplete'
