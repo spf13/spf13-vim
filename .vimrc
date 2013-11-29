@@ -539,13 +539,6 @@
             let g:neocomplete#max_list = 15
             let g:neocomplete#force_overwrite_completefunc = 1
 
-            " SuperTab like snippets behavior.
-            if !exists('g:spf13_no_neosnippet_expand')
-                imap <silent><expr><TAB> neosnippet#expandable() ?
-                            \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
-                            \ "\<C-e>" : "\<TAB>")
-                smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
-            endif
 
             " Define dictionary.
             let g:neocomplete#sources#dictionary#dictionaries = {
