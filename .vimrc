@@ -424,7 +424,7 @@
         "let g:NERDShutUp=1
         "let b:match_ignorecase = 1
         "MarkdownViewer.vim
-        let g:mdv_auto_save = 0
+        let g:mdv_html = 0
     " }
 
 
