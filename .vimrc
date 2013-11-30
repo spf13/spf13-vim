@@ -602,6 +602,7 @@
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
+            " FIXME: Isn't this for Syntastic to handle?
             " Haskell post write lint and check with ghcmod
             " $ `cabal install ghcmod` if missing and ensure
             " ~/.cabal/bin is in your $PATH.
