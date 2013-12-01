@@ -17,9 +17,21 @@
 
 " Environment {
 
+    " Identify platform {
+        silent function! OSX()
+            return has('macunix')
+        endfunction
+        silent function! LINUX()
+            return has('unix') && !has('macunix') && !has('win32unix')
+        endfunction
+        silent function! WINDOWS()
+            return  (has('win16') || has('win32'))
+        endfunction
+    " }
+
     " Basics {
         set nocompatible        " Must be first line
-        if !(has('win16') || has('win32') || has('win64'))
+        if !WINDOWS()
             set shell=/bin/sh
         endif
     " }
@@ -27,7 +39,7 @@
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
-        if has('win32') || has('win64')
+        if WINDOWS()
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
     " }
@@ -58,11 +70,9 @@
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
 
-    " FIXME: Using normal Vim is common on Linux.
-    " Testing for 'x' != testing for Linux.
-    if has('x') && has ('gui') " On Linux use + register for copy-paste
+    if LINUX()   " On Linux use + register for copy-paste
         set clipboard=unnamedplus
-    elseif has ('gui')          " On mac and Windows, use * register for copy-paste
+    else         " On mac and Windows, use * register for copy-paste
         set clipboard=unnamed
     endif
 
@@ -770,11 +780,11 @@
     if has('gui_running')
         set guioptions-=T           " Remove the toolbar
         set lines=40                " 40 lines of text instead of 24
-        if has("gui_gtk2")
+        if LINUX() && has("gui_running")
             set guifont=Andale\ Mono\ Regular\ 16,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
-        elseif has("gui_mac")
+        elseif OSX() && has("gui_running")
             set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
-        elseif has("gui_win32")
+        elseif WINDOWS() && has("gui_running")
             set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
         endif
         if !exists("g:spf13_no_transparency)
