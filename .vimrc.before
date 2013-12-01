@@ -61,6 +61,9 @@
     " expands it and jumps between fields.
     "   let g:spf13_noninvasive_completion = 1
 
+    " Don't turn conceallevel or concealcursor
+    "   let g:spf13_no_conceal = 1
+
 " }
 
 " Use fork before if available {
