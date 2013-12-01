@@ -436,7 +436,7 @@ Terminal emulator colorschemes:
 
 ## Snippets
 
-It also contains a very complete set of [snippets](https://github.com/spf13/vim-snippets) for use with snipmate or [NeoComplCache].
+It also contains a very complete set of [snippets](https://github.com/spf13/snipmate-snippets) for use with snipmate or [NeoComplCache].
 
 
 # Intro to VIM
