@@ -489,23 +489,22 @@
             \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
         " On Windows use "dir" as fallback command.
-        if has('win32') || has('win64')
-            let g:ctrlp_user_command = {
-                \ 'types': {
-                    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-                \ },
-                \ 'fallback': 'dir %s /-n /b /s /a-d'
-            \ }
+        if WINDOWS()
+            let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
+        elseif executable('ag')
+            let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+        elseif executable('ack')
+            let s:ctrlp_fallback = 'ack %s --nocolor -f'
         else
-            let g:ctrlp_user_command = {
-                \ 'types': {
-                    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-                \ },
-                \ 'fallback': 'find %s -type f'
-            \ }
+            let s:ctrlp_fallback = 'find %s -type f'
         endif
+        let g:ctrlp_user_command = {
+            \ 'types': {
+                \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+                \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+            \ },
+            \ 'fallback': s:ctrlp_fallback
+        \ }
     "}
 
     " TagBar {
