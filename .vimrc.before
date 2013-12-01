@@ -75,11 +75,6 @@
     " Disable transparency
     "   let g:spf13_no_transparency = 1
 
-    " Use the standard airline color theme.
-    " See `:echo g:airline_theme_map` for some more choices
-    " Spf13 default is 'solarized'
-    "   let g:airline_theme = 'dark'
-
 " }
 
 " Use fork before if available {

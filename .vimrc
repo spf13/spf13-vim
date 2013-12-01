@@ -772,8 +772,11 @@
         "   let g:airline_powerline_fonts=1
         " If the previous symbols do not render for you then install a
         " powerline enabled font.
-        if !exists(g:airline_theme)
-            let g:airline_theme = 'solarized' " 'powerlineish' is another choice
+
+        " See `:echo g:airline_theme_map` for some more choices
+        " Default in terminal vim is 'dark'
+        if !exists('g:airline_theme')
+            let g:airline_theme = 'solarized'
         endif
         if !exists('g:airline_powerline_fonts')
             " Use the default set of separators with a few customizations
