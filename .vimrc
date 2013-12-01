@@ -61,9 +61,9 @@
 " General {
 
     set background=dark         " Assume a dark background
-    if !has('gui')
+    " if !has('gui')
         "set term=$TERM          " Make arrow and other keys work
-    endif
+    " endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
     set mouse=a                 " Automatically enable mouse usage
