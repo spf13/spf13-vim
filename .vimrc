@@ -560,7 +560,7 @@
      "}
      "
      "vim-android {
-        let g:android_sdk_path=~/workspace/adt/sdk
+        let g:android_sdk_path='/Users/fuyg/workspace/adt/sdk'
      "}
 
 
