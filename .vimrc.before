@@ -79,6 +79,15 @@
     " To set your own font, do it from ~/.vimrc.local
     "   let g:spf13_no_big_font = 1
 
+    " Don't create default mappings for multicursors
+    " See :help multiple-cursors-mappings
+    "   let g:multi_cursor_use_default_mapping=0
+    "   let g:multi_cursor_next_key='<C-n>'
+    "   let g:multi_cursor_prev_key='<C-p>'
+    "   let g:multi_cursor_skip_key='<C-x>'
+    "   let g:multi_cursor_quit_key='<Esc>'
+    " Require a special keypress to enter multiple cursors mode
+    "   let g:multi_cursor_start_key='+'
 " }
 
 " Use fork before if available {
