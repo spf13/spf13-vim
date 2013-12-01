@@ -240,6 +240,11 @@
     else
         let mapleader=g:spf13_leader
     endif
+    if !exists('g:spf13_localleader')
+        let maplocalleader = '_'
+    else
+        let maplocalleader=g:spf13_localleader
+    endif
 
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
