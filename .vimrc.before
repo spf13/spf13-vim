@@ -71,6 +71,9 @@
     "   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=233
     "   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=234
 
+    " Disable transparency
+    "   let g:spf13_no_transparency = 1
+
     " Use the standard airline color theme.
     " See `:echo g:airline_theme_map` for some more choices
     " Spf13 default is 'solarized'
