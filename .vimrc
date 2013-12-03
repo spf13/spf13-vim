@@ -555,12 +555,25 @@
      "}
 
      "javacomplete.vim {
-        autocmd FileType java setlocal  omnifunc=javacomplete#Complete
-        autocmd FileType java setlocal  completefunc=javacomplete#CompleteParamsInfo
+        autocmd FileType java setlocal
+                    \ omnifunc=javacomplete#Complete
+                    \ completefunc=javacomplete#CompleteParamsInfo
+        let g:java_classpath = "/Users/fuyg/workspace/adt/sdk/platforms/android-19/android.jar"
+     "}
+     "javaImp.vim {
+        let g:JavaImpPaths= $HOME . "/workspace/adt/sdk/sources/android-19"
+        let g:JavaImpDataDir = $HOME . "/.JavaImp"
+        let g:JavaImpDocPaths = $HOME . "/workspace/adt/sdk/docs/reference"
+        "let g:JavaImpDocViewer = "Google Chrome"
+        let g:JavaImpDocViewer = "lynx"
+        let g:JavaImpSortBin = "sort"
+        let g:JavaImpSortPkgSep = 1
      "}
      "
      "vim-android {
-        let g:android_sdk_path='/Users/fuyg/workspace/adt/sdk'
+        let g:android_sdk_path= $HOME . "/workspace/adt/sdk"
+        let g:gradle_path="/usr/local/bin/"
+        let g:android_adb_tool = g:android_sdk_path . "/tools/adb"
      "}
 
 
@@ -597,7 +610,7 @@
         "macVim
         if has('gui_macvim')
             try
-                set guifont=Monaco:h14
+                set guifont=Monaco:h16
             catch
                 "do nothing
             endtry
