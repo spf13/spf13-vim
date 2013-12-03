@@ -63,7 +63,7 @@
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
         "let g:spf13_bundle_groups=['general', 'colors',  'programming', 'snip', 'php', 'ruby', 'python', 'javascript', 'html', 'coffeescript', 'ios', 'document', 'twig', 'scala', 'bash', 'potion', 'ynote', 'java', 'android']
-        let g:spf13_bundle_groups=['general', 'colors', 'programming', 'javascript', 'css', 'html', 'python', 'coffeescript',  'document', 'bash', 'ynote', 'java', 'android']
+        let g:spf13_bundle_groups=['general', 'colors', 'programming', 'javascript', 'css', 'html', 'coffeescript',  'document', 'bash', 'ynote', 'java', 'android']
     endif
 
     " To override all the included bundles, put
