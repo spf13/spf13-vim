@@ -570,7 +570,6 @@
         autocmd FileType java nnoremap <leader>jim :JavaImp<CR>
         autocmd FileType java nnoremap <leader>jif :JavaImpFile<CR>
         autocmd FileType java nnoremap <leader>jid :JavaImpDoc<CR>
-        autocmd BufWritePre *.java :JavaImpSort<CR>
      "}
      "
      "vim-android {
@@ -613,7 +612,7 @@
         "macVim
         if has('gui_macvim')
             try
-                set guifont=Monaco:h16
+                set guifont=Monaco:h14
             catch
                 "do nothing
             endtry
