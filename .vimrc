@@ -565,7 +565,6 @@
         let g:JavaImpDataDir = $HOME . "/.JavaImp"
         let g:JavaImpDocPaths = $HOME . "/workspace/adt/sdk/docs/reference"
         "let g:JavaImpDocViewer = "Google Chrome"
-        let g:JavaImpDocViewer = "lynx"
         let g:JavaImpSortBin = "sort"
         let g:JavaImpSortPkgSep = 1
      "}
