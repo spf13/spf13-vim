@@ -342,7 +342,7 @@
 
     " FuDesign2008/vimKit {
         "  include syntax  jquery underscore
-        au BufRead,BufNewFile *.js set ft=javascript syntax=jslib
+        autocmd BufRead,BufNewFile *.js set ft=javascript syntax=jslib
     "}
     " FuDesign2008/webSearch.vim {
         let g:webSearchEngines = {
@@ -395,7 +395,7 @@
 
 
     " FuDesign2008/WriteJSDocComment {
-        "au FileType javascript nnoremap <leader>cc :call WriteJSDocComment()<CR>
+        "autocmd FileType javascript nnoremap <leader>cc :call WriteJSDocComment()<CR>
     "}
     " coffee plugin {
         " http://www.vim.org/scripts/script.php?script_id=3590
@@ -454,7 +454,7 @@
 
     " AutoCloseTag {
         " Make it so AutoCloseTag works for xml and xhtml files as well
-        au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+        autocmd FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
         nnoremap <Leader>ac <Plug>ToggleAutoCloseMappings
     " }
 
@@ -507,11 +507,11 @@
         "disable auto checking
         "let g:JSLHint_auto_check = 0
         "to check JavaScript code when entering/writing buffer
-        "au BufEnter,BufWritePre *.js JSUpdate
+        "autocmd BufEnter,BufWritePre *.js JSUpdate
      " }
 
      " JSON {
-        au BufNewFile,BufRead,BufWritePre .jshintrc setf json
+        autocmd BufNewFile,BufRead,BufWritePre .jshintrc setf json
         "nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
      " }
 
@@ -555,10 +555,7 @@
      "}
 
      "javacomplete.vim {
-        autocmd FileType java setlocal
-                    \ omnifunc=javacomplete#Complete
-                    \ completefunc=javacomplete#CompleteParamsInfo
-        let g:java_classpath = "/Users/fuyg/workspace/adt/sdk/platforms/android-19/android.jar"
+        "let g:java_classpath = "/Users/fuyg/workspace/adt/sdk/platforms/android-19/android.jar"
      "}
      "javaImp.vim {
         let g:JavaImpPaths= $HOME . "/workspace/adt/sdk/sources/android-19"
@@ -567,6 +564,10 @@
         "let g:JavaImpDocViewer = "Google Chrome"
         let g:JavaImpSortBin = "sort"
         let g:JavaImpSortPkgSep = 1
+        autocmd FileType java nnoremap <leader>jim :JavaImp<CR>
+        autocmd FileType java nnoremap <leader>jif :JavaImpFile<CR>
+        autocmd FileType java nnoremap <leader>jid :JavaImpDoc<CR>
+        autocmd BufWritePre *.java :JavaImpSort<CR>
      "}
      "
      "vim-android {

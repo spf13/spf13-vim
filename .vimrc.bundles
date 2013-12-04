@@ -272,7 +272,6 @@
     "android
         if count(g:spf13_bundle_groups, 'android')
             Bundle 'FuDesign2008/JavaImp.vim'
-            Bundle 'FuDesign2008/javaComplete.vim'
             Bundle 'hsanson/vim-android'
         endif
 
