@@ -558,22 +558,22 @@
         "let g:java_classpath = "/Users/fuyg/workspace/adt/sdk/platforms/android-19/android.jar"
      "}
      "javaImp.vim {
-        let g:JavaImpPaths= $HOME . "/workspace/adt/sdk/sources/android-19"
-        let g:JavaImpDataDir = $HOME . "/.JavaImp"
-        let g:JavaImpDocPaths = $HOME . "/workspace/adt/sdk/docs/reference"
+        "let g:JavaImpPaths= $HOME . "/workspace/adt/sdk/sources/android-19"
+        "let g:JavaImpDataDir = $HOME . "/.JavaImp"
+        "let g:JavaImpDocPaths = $HOME . "/workspace/adt/sdk/docs/reference"
         "let g:JavaImpDocViewer = "Google Chrome"
-        let g:JavaImpSortBin = "sort"
-        let g:JavaImpSortPkgSep = 1
-        autocmd FileType java nnoremap <leader>jim :JavaImp<CR>
-        autocmd FileType java nnoremap <leader>jif :JavaImpFile<CR>
-        autocmd FileType java nnoremap <leader>jid :JavaImpDoc<CR>
-        autocmd BufWritePre *.java :JavaImpSort<CR>
+        "let g:JavaImpSortBin = "sort"
+        "let g:JavaImpSortPkgSep = 1
+        "autocmd FileType java nnoremap <leader>jim :JavaImp<CR>
+        "autocmd FileType java nnoremap <leader>jif :JavaImpFile<CR>
+        "autocmd FileType java nnoremap <leader>jid :JavaImpDoc<CR>
+        "autocmd BufWritePre *.java :JavaImpSort<CR>
      "}
      "
      "vim-android {
-        let g:android_sdk_path= $HOME . "/workspace/adt/sdk"
-        let g:gradle_path="/usr/local/bin/"
-        let g:android_adb_tool = g:android_sdk_path . "/tools/adb"
+        "let g:android_sdk_path= $HOME . "/workspace/adt/sdk"
+        "let g:gradle_path="/usr/local/bin/"
+        "let g:android_adb_tool = g:android_sdk_path . "/tools/adb"
      "}
 
 
