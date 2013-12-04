@@ -573,9 +573,9 @@
      "}
      "
      "vim-android {
-        let g:android_sdk_path= $HOME . "/workspace/adt/sdk"
-        let g:gradle_path="/usr/local/bin/"
-        let g:android_adb_tool = g:android_sdk_path . "/tools/adb"
+        "let g:android_sdk_path= $HOME . "/workspace/adt/sdk"
+        "let g:gradle_path="/usr/local/bin/"
+        "let g:android_adb_tool = g:android_sdk_path . "/tools/adb"
      "}
 
 
