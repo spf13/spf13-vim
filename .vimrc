@@ -340,9 +340,9 @@
 
     "}
 
-    " FuDesign2008/vimKit {
-        "  include syntax  jquery underscore
-        autocmd BufRead,BufNewFile *.js set ft=javascript syntax=jslib
+    " FuDesign2008/backbone.vim {
+        "  include syntax  jquery underscore and backbone
+        autocmd BufRead,BufNewFile *.js set ft=javascript syntax=backbone
     "}
     " FuDesign2008/webSearch.vim {
         let g:webSearchEngines = {
