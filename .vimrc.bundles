@@ -92,7 +92,7 @@
             Bundle 'FuDesign2008/SpaceControl.vim'
             "Bundle 'Yggdroot/indentLine'
             "Bundle 'nathanaelkane/vim-indent-guides'
-            "Bundle 'tpope/vim-surround'
+            Bundle 'tpope/vim-surround'
             if g:is_win
                 "windows need install `grep` and `find` tools, see
                 " http://gnuwin32.sourceforge.net/packages/grep.htm
