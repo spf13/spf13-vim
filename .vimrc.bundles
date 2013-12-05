@@ -28,13 +28,6 @@
         Bundle 'gmarik/vundle'
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
-        " no ack
-        "if executable('ack-grep')
-            "let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-            "Bundle 'mileszs/ack.vim'
-        "elseif executable('ack')
-            "Bundle 'mileszs/ack.vim'
-        "endif
 
     " Use local bundles if available {
         if filereadable(expand("~/.vimrc.bundles.local"))
@@ -50,11 +43,11 @@
 
     " In your .vimrc.bundles.local file"
     " config vim performance first or not
-    if !exists('g:spf13_performance_first')
+    if !exists('g:is_win')
         if has('win32') || has('win64')
-            let g:spf13_performance_first = 1
+            let g:is_win = 1
         else
-            let g:spf13_performance_first = 0
+            let g:is_win = 0
         endif
     endif
 
@@ -99,16 +92,25 @@
             Bundle 'FuDesign2008/OpenUrl.vim'
             Bundle 'FuDesign2008/ToggleNumber.vim'
             Bundle 'FuDesign2008/SpaceControl.vim'
-            Bundle 'FuDesign2008/vimKit'
-            if !g:spf13_performance_first
-                "Bundle 'Yggdroot/indentLine'
-                "Bundle 'nathanaelkane/vim-indent-guides'
-                "Bundle 'tpope/vim-surround'
-                "Bundle 'kien/ctrlp.vim'
+            "Bundle 'Yggdroot/indentLine'
+            "Bundle 'nathanaelkane/vim-indent-guides'
+            "Bundle 'tpope/vim-surround'
+            if g:is_win
+                "windows need install `grep` and `find` tools, see
+                " http://gnuwin32.sourceforge.net/packages/grep.htm
+                " http://gnuwin32.sourceforge.net/packages/findutils.htm
+                Bundle 'FuDesign2008/grep.vim'
+            else
+                Bundle 'FuDesign2008/plan.vim'
                 Bundle 'FuDesign2008/translator.vim'
                 Bundle 'mattn/calendar-vim'
-                Bundle 'FuDesign2008/plan.vim'
-                Bundle 'FuDesign2008/grep.vim'
+                Bundle 'kien/ctrlp.vim'
+                if executable('ack-grep')
+                    let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+                    Bundle 'mileszs/ack.vim'
+                elseif executable('ack')
+                    Bundle 'mileszs/ack.vim'
+                endif
             endif
         endif
 
@@ -154,7 +156,7 @@
             Bundle 'godlygeek/tabular'
             Bundle 'FuDesign2008/GotoFile.vim'
             "Bundle 'Yggdroot/indentLine'
-            if !g:spf13_performance_first
+            if !g:is_win
                 "Bundle 'tpope/vim-fugitive'
                 if executable('ctags')
                     Bundle 'majutsushi/tagbar'
@@ -192,10 +194,8 @@
             Bundle 'mattn/jscomplete-vim'
             Bundle 'jelera/vim-javascript-syntax'
             Bundle 'FuDesign2008/jslhint.vim'
-            if !g:spf13_performance_first
-                "Bundle 'FuDesign2008/WriteJSDocComment.vim'
-                Bundle 'briancollins/vim-jst'
-            endif
+            "Bundle 'FuDesign2008/WriteJSDocComment.vim'
+            Bundle 'briancollins/vim-jst'
         endif
 
     " css
