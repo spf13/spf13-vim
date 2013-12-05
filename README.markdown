@@ -295,32 +295,19 @@ NeoComplCache is an amazing autocomplete plugin with additional support for snip
 
 ## [YouCompleteMe]
 
-[YouCompleteMe](https://github.com/Valloric/YouCompleteMe) is another amazing
-completion engine. It is slightly more involved to set up as it contains a
-binary component that the user needs to compile before it will work. As a
-result of this however it is very fast.
+YouCompleteMe is another amazing completion engine. It is slightly more involved to set up as it contains a binary component that the user needs to compile before it will work. As a result of this however it is very fast.
 
-To enable YouCompleteMe add `YouCompleteMe` to your list of groups by
-overriding it in your `.vimrc.bundles.local` like so:
-`let g:spf13_bundle_groups=['general', 'programming', 'misc', 'scala', 'YouCompleteMe']`
-This is just an example. Remember to choose the other groups you want here.
+To enable YouCompleteMe add `YouCompleteMe` to your list of groups by overriding it in your `.vimrc.bundles.local` like so: `let g:spf13_bundle_groups=['general', 'programming', 'misc', 'scala', 'YouCompleteMe']` This is just an example. Remember to choose the other groups you want here.
 
-Once you have done this you will need to get Vundle to grab the latest code
-from git. You can do this by calling `:BundleInstall!`. You should see
-YouCompleteMe in the list.
+Once you have done this you will need to get Vundle to grab the latest code from git. You can do this by calling `:BundleInstall!`. You should see YouCompleteMe in the list.
 
-You will now have the code in your bundles directory and can proceed to compile
-the core. Change to the directory it has been downloaded to. If you have a
-vanilla install then `cd ~/.spf13-vim-3/.vim/bundle/YouCompleteMe/` should do the
-trick. You should see a file in this directory called install.sh. There are a
-few options to consider before running the installer:
+You will now have the code in your bundles directory and can proceed to compile the core. Change to the directory it has been downloaded to. If you have a vanilla install then `cd ~/.spf13-vim-3/.vim/bundle/YouCompleteMe/` should do the trick. You should see a file in this directory called install.sh. There are a few options to consider before running the installer:
 
   * Do you want clang support (if you don't know what this is then you likely don't need it)?
     * Do you want to link against a local libclang or have the installer download the latest for you?
   * Do you want support for c# via the omnisharp server?
 
-The plugin is well documented on the site linked above. Be sure to give that a
-read and make sure you understand the options you require.
+The plugin is well documented on the site linked above. Be sure to give that a read and make sure you understand the options you require.
 
 For java users wanting to use eclim be sure to add `let g:EclimCompletionMethod = 'omnifunc'` to your .vimrc.local.
 
@@ -521,6 +508,7 @@ Here's some tips if you've never used VIM before:
 [Tagbar]:https://github.com/majutsushi/tagbar
 [Syntastic]:https://github.com/scrooloose/syntastic
 [vim-easymotion]:https://github.com/Lokaltog/vim-easymotion
+[YouCompleteMe]:https://github.com/Valloric/YouCompleteMe
 [Matchit]:http://www.vim.org/scripts/script.php?script_id=39
 [Tabularize]:https://github.com/godlygeek/tabular
 [EasyMotion]:https://github.com/Lokaltog/vim-easymotion
