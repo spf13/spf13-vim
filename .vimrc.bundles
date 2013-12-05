@@ -79,8 +79,6 @@
                 "Bundle 'vim-scripts/restore_view.vim'
             "endif
             "Bundle 'tpope/vim-abolish.git'
-            " YCM is better than NeoComplCache and supertab
-            Bundle 'FuDesign2008/YouCompleteMe'
             "Provides tab completion while inside the “/” search
             " useless!!! not able for search and repalce
             "Bundle 'vim-scripts/SearchComplete'
@@ -100,11 +98,14 @@
                 " http://gnuwin32.sourceforge.net/packages/grep.htm
                 " http://gnuwin32.sourceforge.net/packages/findutils.htm
                 Bundle 'FuDesign2008/grep.vim'
+                Bundle 'ervandew/supertab'
             else
                 Bundle 'FuDesign2008/plan.vim'
                 Bundle 'FuDesign2008/translator.vim'
                 Bundle 'mattn/calendar-vim'
                 Bundle 'kien/ctrlp.vim'
+                " YCM is better than NeoComplCache and supertab
+                Bundle 'FuDesign2008/YouCompleteMe'
                 if executable('ack-grep')
                     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
                     Bundle 'mileszs/ack.vim'
