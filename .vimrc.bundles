@@ -167,11 +167,7 @@
     " Snippets
         if count(g:spf13_bundle_groups, 'snip')
             Bundle 'garbas/vim-snipmate'
-            Bundle 'honza/snipmate-snippets'
-            "Source support_function.vim to support snipmate-snippets.
-            if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
-                source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
-            endif
+            Bundle 'honza/vim-snippets'
         endif
 
     " PHP
