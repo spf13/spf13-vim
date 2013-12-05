@@ -11,7 +11,7 @@ spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and [MacV
 
 It is a good starting point for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
 
-The distribution is completely customisable using a `~/.vimrc.local`, `~/.vimrc.bundles.local`, and `~/.vimrc.before` Vim RC files.
+The distribution is completely customisable using a `~/.vimrc.local`, `~/.vimrc.bundles.local`, and `~/.vimrc.before.local` Vim RC files.
 
 ![spf13-vim image][spf13-vim-img]
 
@@ -41,7 +41,7 @@ The easiest way to install spf13-vim is to use our [automatic installer](https:/
 *Requires Git 1.7+ and Vim 7.3+*
 
 ```bash
-    
+
     curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 ```
 
@@ -154,12 +154,14 @@ For example, to override the default color schemes:
 ### Before File
 
 Create a `~/.vimrc.before.local` file to define any customizations
-that get loaded *before* the spf-13 `.vimrc`.
+that get loaded *before* the spf13-vim `.vimrc`.
 
 For example, to prevent autocd into a file directory:
 ```bash
     echo let g:spf13_no_autochdir = 1 >> ~/.vimrc.before.local
 ```
+For a list of available spf13-vim specific customization options, look at the `~/.vimrc.before` file.
+
 
 ### Fork Customization
 
@@ -176,7 +178,7 @@ and `.vimrc.bundles.fork` files in the root of their fork.  The load order for t
 7. `.vimrc.fork` - fork vim configuration
 8. `.vimrc.local` - local user configuration
 
-See `.vimrc.bundles` for specifics on what options can be set to override bundle configuration. See `.vimrc` for specifics
+See `.vimrc.bundles` for specifics on what options can be set to override bundle configuration. See `.vimrc.before` for specifics
 on what options can be overridden. Most vim configuration options should be set in your `.vimrc.fork` file, bundle configuration
 needs to be set in your `.vimrc.bundles.fork` file.
 
@@ -263,7 +265,7 @@ examples.  An asterisk (*) is used to denote the cursor position.
       [123+4*56]/2              cs])        (123+456)/2
       "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
       if *x>3 {                 ysW(        if ( x>3 ) {
-      my $str = *whee!;         vlllls'     my $str = 'whee!';
+      my $str = *whee!;         vllllS'     my $str = 'whee!';
 
 For instance, if the cursor was inside `"foo bar"`, you could type
 `cs"'` to convert the text to `'foo bar'`.
@@ -326,6 +328,7 @@ file
  * `<leader>gb` :Gblame<CR>
  * `<leader>gl` :Glog<CR>
  * `<leader>gp` :Git push<CR>
+ * `<leader>gw` :Gwrite<CR>
  * :Git ___ will pass anything along to git.
 
 ![fugitive image][fugitive-img]
@@ -396,11 +399,11 @@ For example this screen shot demonstrates pressing `,,w`
 
 ## [Airline]
 
-Airline provides a lightweight themable statusline with no external dependencies. By default it uses the symbols `<` and `>` as separators for different statusline sections but can be configured to use the same symbols as [Powerline]. An example with and without powerline symbols is shown here:
+Airline provides a lightweight themable statusline with no external dependencies. By default this configuration uses the symbols `‹` and `›` as separators for different statusline sections but can be configured to use the same symbols as [Powerline]. An example first without and then with powerline symbols is shown here:
 
 ![airline image][airline-img]
 
-To enable powerline symbols first install one of the [Powerline Fonts] or patch your favorite font using the provided instructions. Configure your terminal, MacVim, or Gvim to use the desired font. Finally add `let g:airline_powerline_fonts=1` to your `.vimrc.local`.
+To enable powerline symbols first install one of the [Powerline Fonts] or patch your favorite font using the provided instructions. Configure your terminal, MacVim, or Gvim to use the desired font. Finally add `let g:airline_powerline_fonts=1` to your `.vimrc.before.local`.
 
 ## Additional Syntaxes
 
@@ -433,7 +436,7 @@ Terminal emulator colorschemes:
 
 ## Snippets
 
-It also contains a very complete set of [snippets](https://github.com/spf13/vim-snippets) for use with snipmate or [NeoComplCache].
+It also contains a very complete set of [snippets](https://github.com/spf13/snipmate-snippets) for use with snipmate or [NeoComplCache].
 
 
 # Intro to VIM
@@ -498,4 +501,4 @@ Here's some tips if you've never used VIM before:
 [nerdtree-img]:https://i.imgur.com/9xIfu.png
 [phpmanual-img]:https://i.imgur.com/c0GGP.png
 [easymotion-img]:https://i.imgur.com/ZsrVL.png
-[airline-img]:https://i.imgur.com/sU0PG5P.png
+[airline-img]:https://i.imgur.com/D4ZYADr.png

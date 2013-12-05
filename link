@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-MYDIR="`dirname $(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")`"
-
-for i in .ctags .gvimrc .vim .vimrc .vimrc.local; do
-    ln -s "$MYDIR/$i" ~/$i
-done

@@ -1,0 +1,63 @@
+" Modeline and Notes {
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+"
+"                    __ _ _____              _
+"         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
+"        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
+"        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
+"        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
+"            |_|
+"
+"   This is the personal .vimrc.before file of Steve Francia.
+"   While much of it is beneficial for general use, I would
+"   recommend picking out the parts you want and understand.
+"
+"   You can find me at http://spf13.com
+" }
+
+" Use local before if available {
+    if filereadable(expand("~/.vimrc.before.local"))
+        source ~/.vimrc.before.local
+    endif
+" }
+
+" Use fork before if available {
+    if filereadable(expand("~/.vimrc.before.fork"))
+        source ~/.vimrc.before.fork
+    endif
+" }
+
+" spf13 options {
+
+    " Prevent automatically changing to open file directory
+    "   let g:spf13_no_autochdir = 1
+
+    " Disable views
+    "   let g:spf13_no_views = 1
+
+    " Leader key
+    "   let g:spf13_leader='\'
+
+    " Disable easier moving in tabs and windows
+    "   let g:spf13_no_easyWindows = 1
+
+    " Disable fast tab navigation
+    "   let g:spf13_no_fastTabs
+
+    " Clear search highlighting
+    "   let g:spf13_clear_search_highlight = 1
+
+    " Disable neosnippet expansion
+    "   let g:spf13_no_neosnippet_expand = 1
+
+    " Disable whitespace stripping
+    "   let g:spf13_keep_trailing_whitespace = 1
+
+    " Enable powerline symbols
+    "   let g:airline_powerline_fonts = 1
+
+    " vim files directory
+    "   let g:spf13_consolidated_directory = <full path to desired directory>
+    "   eg: let g:spf13_consolidated_directory = $HOME . '/.vim/'
+
+" }
