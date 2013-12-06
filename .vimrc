@@ -283,7 +283,7 @@
 
 " Plugins {
     " ack.vim {
-        "set grepprg=ack
+        set grepprg=ack
     " }
 
     " superTab.vim {
@@ -291,10 +291,11 @@
         "let g:SuperTabLongestEnhanced = 1
      "}
 
-     "{
+     " YCM.vim {
         let g:ycm_filetype_blacklist = {}
         let g:ycm_complete_in_comments = 1
         let g:ycm_collect_identifiers_from_comments_and_strings = 1
+        let g:ycm_min_num_of_chars_for_completion = 1
      "}
 
      " js-complete.vim {
