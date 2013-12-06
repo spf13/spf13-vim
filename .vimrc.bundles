@@ -149,7 +149,7 @@
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
             " so disable it
-            Bundle 'scrooloose/syntastic'
+            "Bundle 'scrooloose/syntastic'
             "Bundle 'mattn/webapi-vim'
             "Bundle 'mattn/gist-vim'
             Bundle 'scrooloose/nerdcommenter'
@@ -191,8 +191,8 @@
             Bundle 'mattn/jscomplete-vim'
             Bundle 'jelera/vim-javascript-syntax'
             Bundle 'FuDesign2008/backbone.vim'
-            "Bundle 'FuDesign2008/jslhint.vim'
-            Bundle 'FuDesign2008/syntastic-jslhint.vim'
+            Bundle 'FuDesign2008/jslhint.vim'
+            "Bundle 'FuDesign2008/syntastic-jslhint.vim'
             "Bundle 'FuDesign2008/WriteJSDocComment.vim'
             Bundle 'briancollins/vim-jst'
         endif
