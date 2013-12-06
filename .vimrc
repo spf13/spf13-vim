@@ -543,6 +543,13 @@
      " TagBar {
         nnoremap <silent> <leader>b :TagbarToggle<CR>
      "}
+     "
+     "Syntastic {
+         let g:syntastic_mode_map = { 'mode': 'active',
+                            \ 'active_filetypes': [],
+                            \ 'passive_filetypes': ['javascript']
+                            \ }
+     "}
 
      " PythonMode {
      " Disable if python support not present
