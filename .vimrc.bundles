@@ -97,7 +97,7 @@
                 "windows need install `grep` and `find` tools, see
                 " http://gnuwin32.sourceforge.net/packages/grep.htm
                 " http://gnuwin32.sourceforge.net/packages/findutils.htm
-                Bundle 'FuDesign2008/grep.vim'
+                Bundle 'vim-scripts/grep.vim'
                 Bundle 'ervandew/supertab'
             else
                 Bundle 'FuDesign2008/plan.vim'
@@ -229,8 +229,9 @@
 
     " Document
         if count(g:spf13_bundle_groups, 'document')
-            Bundle 'FuDesign2008/MarkdownViewer.vim'
             Bundle 'tpope/vim-markdown'
+            Bundle 'FuDesign2008/MarkdownViewer.vim'
+            Bundle 'FuDesign2008/mkdInput.vim'
             Bundle 'vim-scripts/Figlet.vim'
             Bundle 'vim-scripts/wiki.vim'
             "Bundle 'spf13/vim-preview'
