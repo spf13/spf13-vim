@@ -252,11 +252,19 @@
     noremap k gk
 
     " Same for 0, home, end, etc
-    noremap $ g$
-    noremap <End> g<End>
-    noremap 0 g0
-    noremap <Home> g<Home>
-    noremap ^ g^
+    function! WrapRelativeMotion(key)
+        if &wrap
+            execute "normal! g" . a:key
+        else
+            execute "normal!" a:key
+        endif
+    endfunction
+
+    noremap $ :call WrapRelativeMotion("$")<CR>
+    noremap <End> :call WrapRelativeMotion("$")<CR>
+    noremap 0 :call WrapRelativeMotion("0")<CR>
+    noremap <Home> :call WrapRelativeMotion("0")<CR>
+    noremap ^ :call WrapRelativeMotion("^")<CR>
 
     " The following two lines conflict with moving to top and
     " bottom of the screen
