@@ -61,14 +61,14 @@
         Bundle 'gmarik/vundle'
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
-        if executable('ack-grep')
+        if executable('ag')
+            Bundle 'mileszs/ack.vim'
+            let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+        elseif executable('ack-grep')
             let g:ackprg="ack-grep -H --nocolor --nogroup --column"
             Bundle 'mileszs/ack.vim'
         elseif executable('ack')
             Bundle 'mileszs/ack.vim'
-        elseif executable('ag')
-            Bundle 'mileszs/ack.vim'
-            let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
         endif
     " }
 
@@ -154,6 +154,9 @@
             if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
                 source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
             endif
+        elseif count(g:spf13_bundle_groups, 'youcompleteme')
+            Bundle 'Valloric/YouCompleteMe'
+            Bundle 'SirVer/ultisnips'
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
             Bundle 'Shougo/neocomplcache'
             Bundle 'Shougo/neosnippet'
