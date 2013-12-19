@@ -205,7 +205,7 @@
             Bundle 'dag/vim2hs'
             Bundle 'Twinside/vim-haskellConceal'
             Bundle 'lukerandall/haskellmode-vim'
-            Bundle 'ujihisa/neco-ghc'
+            Bundle 'eagletmt/neco-ghc'
             Bundle 'eagletmt/ghcmod-vim'
             Bundle 'Shougo/vimproc'
             Bundle 'adinapoli/cumino'
