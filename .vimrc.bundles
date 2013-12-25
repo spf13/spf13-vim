@@ -105,7 +105,7 @@
                 Bundle 'mattn/calendar-vim'
                 Bundle 'kien/ctrlp.vim'
                 " YCM is better than NeoComplCache and supertab
-                Bundle 'Valloric/YouCompleteMe'
+                Bundle 'FuDesign2008/YouCompleteMe'
                 if executable('ack-grep')
                     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
                     Bundle 'mileszs/ack.vim'
