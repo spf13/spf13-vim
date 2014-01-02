@@ -465,6 +465,10 @@ Here's some tips if you've never used VIM before:
   convenient location.
 * Keyboard [cheat sheet](https://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
 
+[![Analytics](https://ga-beacon.appspot.com/UA-7131036-5/spf13-vim/readme)](https://github.com/igrigorik/ga-beacon)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/spf13/spf13-vim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
+
 [Git]:http://git-scm.com
 [Curl]:http://curl.haxx.se
 [Vim]:http://www.vim.org/download.php#pc
