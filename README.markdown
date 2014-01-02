@@ -324,3 +324,7 @@ Here's some tips if you've never used VIM before:
   convenient location.
 * Keyboard [cheat sheet](http://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/spf13/spf13-vim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
