@@ -12,6 +12,12 @@
 "   While much of it is beneficial for general use, I would
 "   recommend picking out the parts you want and understand.
 "
+"   This file imports the various plugins of spf13. If you
+"   wish to alter which groups are imported, see vimrc.before.
+"   If you wish to add or remove individual bundles, create
+"   ~/.vimrc.bundles.local and `Bundle` or `UnBundle` as needed
+"   from there.
+"
 "   You can find me at http://spf13.com
 " }
 
@@ -53,6 +59,16 @@
         call vundle#rc()
     " }
 
+    " Add an UnBundle command {
+    function! UnBundle(arg, ...)
+      let bundle = vundle#config#init_bundle(a:arg, a:000)
+      call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
+    endfunction
+
+    com! -nargs=+         UnBundle
+    \ call UnBundle(<args>)
+    " }
+
 " }
 
 " Bundles {
@@ -72,19 +88,7 @@
         endif
     " }
 
-    " Use local bundles config if available {
-        if filereadable(expand("~/.vimrc.bundles.local"))
-            source ~/.vimrc.bundles.local
-        endif
-    " }
-
-    " Use fork bundles config if available {
-        if filereadable(expand("~/.vimrc.bundles.fork"))
-            source ~/.vimrc.bundles.fork
-        endif
-    " }
-
-    " In your .vimrc.bundles.local file
+    " In your .vimrc.before.local file
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
         let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'haskell', 'html', 'misc', 'scala']
@@ -260,5 +264,14 @@
 " General {
     " set autowrite                  " automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT      " Abbrev. of messages (avoids 'hit enter')
+" Use fork bundles config if available {
+    if filereadable(expand("~/.vimrc.bundles.fork"))
+        source ~/.vimrc.bundles.fork
+    endif
 " }
 
+" Use local bundles config if available {
+    if filereadable(expand("~/.vimrc.bundles.local"))
+        source ~/.vimrc.bundles.local
+    endif
+" }

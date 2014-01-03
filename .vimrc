@@ -15,17 +15,23 @@
 "   You can find me at http://spf13.com
 " }
 
-" Use before config {
-    if filereadable(expand("~/.vimrc.before"))
-        source ~/.vimrc.before
-    endif
-" }
-
 " Environment {
+
+    " Identify platform {
+        silent function! OSX()
+            return has('macunix')
+        endfunction
+        silent function! LINUX()
+            return has('unix') && !has('macunix') && !has('win32unix')
+        endfunction
+        silent function! WINDOWS()
+            return  (has('win16') || has('win32'))
+        endfunction
+    " }
 
     " Basics {
         set nocompatible        " Must be first line
-        if !(has('win16') || has('win32') || has('win64'))
+        if !WINDOWS()
             set shell=/bin/sh
         endif
     " }
@@ -33,19 +39,17 @@
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
-        if has('win32') || has('win64')
+        if WINDOWS()
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
     " }
 
-    " Setup Bundle Support {
-        " The next three lines ensure that the ~/.vim/bundle/ system works
-        filetype on
-        filetype off
-        set rtp+=~/.vim/bundle/vundle
-        call vundle#rc()
-    " }
+" }
 
+" Use before config if available {
+    if filereadable(expand("~/.vimrc.before"))
+        source ~/.vimrc.before
+    endif
 " }
 
 " Use bundles config {
@@ -66,9 +70,9 @@
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
 
-    if has ('x') && has ('gui') " On Linux use + register for copy-paste
+    if LINUX()   " On Linux use + register for copy-paste
         set clipboard=unnamedplus
-    elseif has ('gui')          " On mac and Windows, use * register for copy-paste
+    else         " On mac and Windows, use * register for copy-paste
         set clipboard=unnamed
     endif
 
@@ -803,11 +807,11 @@
     if has('gui_running')
         set guioptions-=T           " Remove the toolbar
         set lines=40                " 40 lines of text instead of 24
-        if has("gui_gtk2")
+        if LINUX() && has("gui_running")
             set guifont=Andale\ Mono\ Regular\ 16,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
-        elseif has("gui_mac")
+        elseif OSX() && has("gui_running")
             set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
-        elseif has("gui_win32")
+        elseif WINDOWS() && has("gui_running")
             set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
         endif
         if has('gui_macvim')
@@ -823,16 +827,6 @@
 " }
 
 " Functions {
-
-    " UnBundle {
-    function! UnBundle(arg, ...)
-      let bundle = vundle#config#init_bundle(a:arg, a:000)
-      call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
-    endfunction
-
-    com! -nargs=+         UnBundle
-    \ call UnBundle(<args>)
-    " }
 
     " Initialize directories {
     function! InitializeDirectories()
