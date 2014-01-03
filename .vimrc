@@ -25,7 +25,7 @@
             return has('unix') && !has('macunix') && !has('win32unix')
         endfunction
         silent function! WINDOWS()
-            return  (has('win16') || has('win32'))
+            return  (has('win16') || has('win32') || has('win64'))
         endfunction
     " }
 
@@ -503,7 +503,7 @@
             \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
         " On Windows use "dir" as fallback command.
-        if has('win32') || has('win64')
+        if WINDOWS()
             let g:ctrlp_user_command = {
                 \ 'types': {
                     \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
