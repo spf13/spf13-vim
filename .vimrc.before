@@ -72,9 +72,6 @@
     "   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=233
     "   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=234
 
-    " Disable transparency
-    "   let g:spf13_no_transparency = 1
-
     " Leave the default font and size in GVim
     " To set your own font, do it from ~/.vimrc.local
     "   let g:spf13_no_big_font = 1
