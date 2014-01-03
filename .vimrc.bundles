@@ -261,9 +261,6 @@
 
 " }
 
-" General {
-    " set autowrite                  " automatically write a file when leaving a modified buffer
-    set shortmess+=filmnrxoOtT      " Abbrev. of messages (avoids 'hit enter')
 " Use fork bundles config if available {
     if filereadable(expand("~/.vimrc.bundles.fork"))
         source ~/.vimrc.bundles.fork

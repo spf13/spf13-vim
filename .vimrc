@@ -61,19 +61,21 @@
 " General {
 
     set background=dark         " Assume a dark background
-    if !has('gui')
+    " if !has('gui')
         "set term=$TERM          " Make arrow and other keys work
-    endif
+    " endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
     set mouse=a                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
 
-    if LINUX()   " On Linux use + register for copy-paste
-        set clipboard=unnamedplus
-    else         " On mac and Windows, use * register for copy-paste
-        set clipboard=unnamed
+    if has('clipboard')
+        if LINUX()   " On Linux use + register for copy-paste
+            set clipboard=unnamedplus
+        else         " On mac and Windows, use * register for copy-paste
+            set clipboard=unnamed
+        endif
     endif
 
     " Most prefer to automatically switch to the current file directory when
@@ -153,6 +155,7 @@
 
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
+    let g:CSApprox_hook_post = ['hi clear SignColumn']
     "highlight clear CursorLineNr    " Remove highlight color from current line number
 
     if has('cmdline_info')
@@ -237,6 +240,11 @@
         let mapleader = ','
     else
         let mapleader=g:spf13_leader
+    endif
+    if !exists('g:spf13_localleader')
+        let maplocalleader = '_'
+    else
+        let maplocalleader=g:spf13_localleader
     endif
 
     " Easier moving in tabs and windows
@@ -381,6 +389,7 @@
     map zl zL
     map zh zH
 
+    " FIXME: Revert this f70be548
     " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
     map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
@@ -504,22 +513,21 @@
 
         " On Windows use "dir" as fallback command.
         if WINDOWS()
-            let g:ctrlp_user_command = {
-                \ 'types': {
-                    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-                \ },
-                \ 'fallback': 'dir %s /-n /b /s /a-d'
-            \ }
+            let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
+        elseif executable('ag')
+            let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+        elseif executable('ack')
+            let s:ctrlp_fallback = 'ack %s --nocolor -f'
         else
-            let g:ctrlp_user_command = {
-                \ 'types': {
-                    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-                \ },
-                \ 'fallback': 'find %s -type f'
-            \ }
+            let s:ctrlp_fallback = 'find %s -type f'
         endif
+        let g:ctrlp_user_command = {
+            \ 'types': {
+                \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+                \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+            \ },
+            \ 'fallback': s:ctrlp_fallback
+        \ }
     "}
 
     " TagBar {
@@ -544,7 +552,7 @@
     " PythonMode {
         " Disable if python support not present
         if !has('python')
-            let g:pymode = 1
+            let g:pymode = 0
         endif
     " }
 
@@ -558,6 +566,8 @@
         nnoremap <silent> <leader>gr :Gread<CR>
         nnoremap <silent> <leader>gw :Gwrite<CR>
         nnoremap <silent> <leader>ge :Gedit<CR>
+        " Mnemonic _i_nteractive
+        nnoremap <silent> <leader>gi :Git add -p %<CR>
         nnoremap <silent> <leader>gg :SignifyToggle<CR>
     "}
 
@@ -570,11 +580,6 @@
             let g:neocomplete#max_list = 15
             let g:neocomplete#force_overwrite_completefunc = 1
 
-            " SuperTab like snippets behavior.
-            imap <silent><expr><TAB> neosnippet#expandable() ?
-                        \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
-                        \ "\<C-e>" : "\<TAB>")
-            smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
             " Define dictionary.
             let g:neocomplete#sources#dictionary#dictionaries = {
@@ -591,47 +596,45 @@
 
             " Plugin key-mappings {
                 " These two lines conflict with the default digraph mapping of <C-K>
-                " If you prefer that functionality, add the following to your
-                " .vimrc.before.local file:
-                "   let g:spf13_no_neosnippet_expand = 1
                 if !exists('g:spf13_no_neosnippet_expand')
                     imap <C-k> <Plug>(neosnippet_expand_or_jump)
                     smap <C-k> <Plug>(neosnippet_expand_or_jump)
                 endif
+                if exists('g:spf13_noninvasive_completion')
+                    iunmap <CR>
+                    " <ESC> takes you out of insert mode
+                    inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
+                    " <CR> accepts first, then sends the <CR>
+                    inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+                    " <Down> and <Up> cycle like <Tab> and <S-Tab>
+                    inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
+                    inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
+                    " Jump up and down the list
+                    inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+                    inoremap <expr> <C-u>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+                else
+                    imap <silent><expr><C-k> neosnippet#expandable() ?
+                                \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
+                                \ "\<C-e>" : "\<C-k>")
+                    smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
-                inoremap <expr><C-g> neocomplete#undo_completion()
-                inoremap <expr><C-l> neocomplete#complete_common_string()
-                inoremap <expr><CR> neocomplete#complete_common_string()
+                    inoremap <expr><C-g> neocomplete#undo_completion()
+                    inoremap <expr><C-l> neocomplete#complete_common_string()
+                    inoremap <expr><CR> neocomplete#complete_common_string()
 
+                    " <CR>: close popup
+                    " <s-CR>: close popup and save indent.
+                    inoremap <expr><s-CR> pumvisible() ? neocomplete#close_popup()"\<CR>" : "\<CR>"
+                    inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
+
+                    " <C-h>, <BS>: close popup and delete backword char.
+                    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+                    inoremap <expr><C-y> neocomplete#close_popup()
+                endif
                 " <TAB>: completion.
                 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
                 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-
-                " <CR>: close popup
-                " <s-CR>: close popup and save indent.
-                inoremap <expr><s-CR> pumvisible() ? neocomplete#close_popup()"\<CR>" : "\<CR>"
-                inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
-
-                " <C-h>, <BS>: close popup and delete backword char.
-                inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-                inoremap <expr><C-y> neocomplete#close_popup()
             " }
-
-            " Enable omni completion.
-            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-            autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
-            " Haskell post write lint and check with ghcmod
-            " $ `cabal install ghcmod` if missing and ensure
-            " ~/.cabal/bin is in your $PATH.
-            if !executable("ghcmod")
-                autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-            endif
 
             " Enable heavy omni completion.
             if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -642,27 +645,9 @@
             let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
             let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
             let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-
-            " Use honza's snippets.
-            let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
-            " Enable neosnippet snipmate compatibility mode
-            let g:neosnippet#enable_snipmate_compatibility = 1
-
-            " For snippet_complete marker.
-            if has('conceal')
-                set conceallevel=2 concealcursor=i
-            endif
-
-            " Disable the neosnippet preview candidate window
-            " When enabled, there can be too much visual noise
-            " especially when splits are used.
-            set completeopt-=preview
-        endif
     " }
-
     " neocomplcache {
-        if count(g:spf13_bundle_groups, 'neocomplcache')
+        elseif count(g:spf13_bundle_groups, 'neocomplcache')
             let g:acp_enableAtStartup = 0
             let g:neocomplcache_enable_at_startup = 1
             let g:neocomplcache_enable_camel_case_completion = 1
@@ -671,12 +656,6 @@
             let g:neocomplcache_enable_auto_delimiter = 1
             let g:neocomplcache_max_list = 15
             let g:neocomplcache_force_overwrite_completefunc = 1
-
-            " SuperTab like snippets behavior.
-            imap <silent><expr><TAB> neosnippet#expandable() ?
-                        \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
-                        \ "\<C-e>" : "\<TAB>")
-            smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
             " Define dictionary.
             let g:neocomplcache_dictionary_filetype_lists = {
@@ -693,30 +672,42 @@
 
             " Plugin key-mappings {
                 " These two lines conflict with the default digraph mapping of <C-K>
-                " If you prefer that functionality, add the following to your
-                " .vimrc.before.local file:
-                "   let g:spf13_no_neosnippet_expand = 1
-                if !exists('g:spf13_no_neosnippet_expand')
-                    imap <C-k> <Plug>(neosnippet_expand_or_jump)
-                    smap <C-k> <Plug>(neosnippet_expand_or_jump)
+                imap <C-k> <Plug>(neosnippet_expand_or_jump)
+                smap <C-k> <Plug>(neosnippet_expand_or_jump)
+                if exists('g:spf13_noninvasive_completion')
+                    iunmap <CR>
+                    " <ESC> takes you out of insert mode
+                    inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
+                    " <CR> accepts first, then sends the <CR>
+                    inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+                    " <Down> and <Up> cycle like <Tab> and <S-Tab>
+                    inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
+                    inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
+                    " Jump up and down the list
+                    inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+                    inoremap <expr> <C-u>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+                else
+                    imap <silent><expr><C-k> neosnippet#expandable() ?
+                                \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
+                                \ "\<C-e>" : "\<C-k>")
+                    smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
+
+                    inoremap <expr><C-g> neocomplcache#undo_completion()
+                    inoremap <expr><C-l> neocomplcache#complete_common_string()
+                    inoremap <expr><CR> neocomplcache#complete_common_string()
+
+                    " <CR>: close popup
+                    " <s-CR>: close popup and save indent.
+                    inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
+                    inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+
+                    " <C-h>, <BS>: close popup and delete backword char.
+                    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+                    inoremap <expr><C-y> neocomplcache#close_popup()
                 endif
-
-                inoremap <expr><C-g> neocomplcache#undo_completion()
-                inoremap <expr><C-l> neocomplcache#complete_common_string()
-                inoremap <expr><CR> neocomplcache#complete_common_string()
-
                 " <TAB>: completion.
                 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
                 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-
-                " <CR>: close popup
-                " <s-CR>: close popup and save indent.
-                inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
-                inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-
-                " <C-h>, <BS>: close popup and delete backword char.
-                inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-                inoremap <expr><C-y> neocomplcache#close_popup()
             " }
 
             " Enable omni completion.
@@ -728,13 +719,6 @@
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
-            " Haskell post write lint and check with ghcmod
-            " $ `cabal install ghcmod` if missing and ensure
-            " ~/.cabal/bin is in your $PATH.
-            if !executable("ghcmod")
-                autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-            endif
-
             " Enable heavy omni completion.
             if !exists('g:neocomplcache_omni_patterns')
                 let g:neocomplcache_omni_patterns = {}
@@ -744,6 +728,24 @@
             let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
             let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
             let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+    " }
+    " Normal Vim omni-completion {
+        else
+            " Enable omni-completion.
+            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+            autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+        endif
+    " }
+
+    " Snippets {
+        if count(g:spf13_bundle_groups, 'neocomplcache') ||
+                    \ count(g:spf13_bundle_groups, 'neocomplete')
 
             " Use honza's snippets.
             let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
@@ -752,8 +754,10 @@
             let g:neosnippet#enable_snipmate_compatibility = 1
 
             " For snippet_complete marker.
-            if has('conceal')
-                set conceallevel=2 concealcursor=i
+            if !exists("g:spf13_no_conceal")
+                if has('conceal')
+                    set conceallevel=2 concealcursor=i
+                endif
             endif
 
             " Disable the neosnippet preview candidate window
@@ -763,6 +767,14 @@
         endif
     " }
 
+    " FIXME: Isn't this for Syntastic to handle?
+    " Haskell post write lint and check with ghcmod
+    " $ `cabal install ghcmod` if missing and ensure
+    " ~/.cabal/bin is in your $PATH.
+    if !executable("ghcmod")
+        autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+    endif
+
     " UndoTree {
         nnoremap <Leader>u :UndotreeToggle<CR>
         " If undotree is opened, it is likely one wants to interact with it.
@@ -770,14 +782,6 @@
     " }
 
     " indent_guides {
-        if !exists('g:spf13_no_indent_guides_autocolor')
-            let g:indent_guides_auto_colors = 1
-        else
-            " For some colorschemes, autocolor will not work (eg: 'desert', 'ir_black')
-            let g:indent_guides_auto_colors = 0
-            autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=3
-            autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
-        endif
         let g:indent_guides_start_level = 2
         let g:indent_guides_guide_size = 1
         let g:indent_guides_enable_on_vim_startup = 1
@@ -791,7 +795,12 @@
         "   let g:airline_powerline_fonts=1
         " If the previous symbols do not render for you then install a
         " powerline enabled font.
-        let g:airline_theme = 'solarized' " 'powerlineish' is another choice
+
+        " See `:echo g:airline_theme_map` for some more choices
+        " Default in terminal vim is 'dark'
+        if !exists('g:airline_theme')
+            let g:airline_theme = 'solarized'
+        endif
         if !exists('g:airline_powerline_fonts')
             " Use the default set of separators with a few customizations
             let g:airline_left_sep='›'  " Slightly fancier than '>'
@@ -807,12 +816,14 @@
     if has('gui_running')
         set guioptions-=T           " Remove the toolbar
         set lines=40                " 40 lines of text instead of 24
-        if LINUX() && has("gui_running")
-            set guifont=Andale\ Mono\ Regular\ 16,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
-        elseif OSX() && has("gui_running")
-            set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
-        elseif WINDOWS() && has("gui_running")
-            set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
+        if !exists("g:spf13_no_big_font")
+            if LINUX() && has("gui_running")
+                set guifont=Andale\ Mono\ Regular\ 16,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
+            elseif OSX() && has("gui_running")
+                set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
+            elseif WINDOWS() && has("gui_running")
+                set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
+            endif
         endif
     else
         if &term == 'xterm' || &term == 'screen'
