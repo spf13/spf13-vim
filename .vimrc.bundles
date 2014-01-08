@@ -239,8 +239,7 @@
 
     " Go Lang {
         if count(g:spf13_bundle_groups, 'go')
-            Bundle 'jnwhiteh/vim-golang'
-            Bundle 'spf13/vim-gocode'
+            Bundle 'Blackrush/vim-gocode'
         endif
     " }
 
