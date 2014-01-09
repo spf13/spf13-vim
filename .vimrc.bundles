@@ -55,8 +55,8 @@
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        "let g:spf13_bundle_groups=['general', 'colors',  'programming', 'snip', 'php', 'ruby', 'python', 'javascript', 'html', 'coffeescript', 'ios', 'document', 'twig', 'scala', 'bash', 'potion', 'ynote', 'android']
-        let g:spf13_bundle_groups=['general', 'colors', 'programming', 'snip', 'javascript', 'css', 'html', 'coffeescript',  'document', 'bash', 'ynote', 'android']
+        "let g:spf13_bundle_groups=['general', 'colors',  'programming', 'snip', 'php', 'ruby', 'python', 'javascript', 'html', 'coffeescript', 'ios', 'document', 'twig', 'scala', 'bash', 'potion', 'ynote']
+        let g:spf13_bundle_groups=['general', 'colors', 'programming', 'snip', 'javascript', 'css', 'html', 'coffeescript',  'document', 'bash', 'ynote']
     endif
 
     " To override all the included bundles, put
@@ -267,13 +267,6 @@
     " ynote
         if count(g:spf13_bundle_groups, 'ynote')
             Bundle 'FuDesign2008/ynoteKit.vim'
-        endif
-
-    "android
-        if count(g:spf13_bundle_groups, 'android')
-            Bundle 'FuDesign2008/JavaImp.vim'
-            Bundle 'vim-scripts/javacomplete'
-            "Bundle 'hsanson/vim-android'
         endif
 
     endif
