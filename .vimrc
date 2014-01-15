@@ -292,12 +292,15 @@
      "}
 
      " YCM.vim {
+        " the default .ycm_extra_conf.py
         let g:ycm_global_ycm_extra_conf = expand('~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py')
+        let g:ycm_confirm_extra_conf = 0
         let g:ycm_filetype_blacklist = {}
         let g:ycm_complete_in_comments = 1
         let g:ycm_collect_identifiers_from_comments_and_strings = 1
         let g:ycm_min_num_of_chars_for_completion = 1
         let g:ycm_min_num_identifier_candidate_chars = 3
+        let g:ycm_always_populate_location_list = 0
      "}
 
      " js-complete.vim {
