@@ -513,12 +513,6 @@
      " Buffer explorer {
         "nmap <leader>b :BufExplorer<CR>
      " }
-     " jslhint {
-        "disable auto checking
-        "let g:JSLHint_auto_check = 0
-        "to check JavaScript code when entering/writing buffer
-        "autocmd BufEnter,BufWritePre *.js JSUpdate
-     " }
 
      " JSON {
         autocmd BufNewFile,BufRead,BufWritePre .jshintrc setf json

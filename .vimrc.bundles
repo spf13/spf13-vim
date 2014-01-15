@@ -219,7 +219,6 @@
             Bundle 'mattn/jscomplete-vim'
             Bundle 'jelera/vim-javascript-syntax'
             Bundle 'FuDesign2008/backbone.vim'
-            Bundle 'FuDesign2008/jslhint.vim'
             "Bundle 'FuDesign2008/WriteJSDocComment.vim'
             Bundle 'briancollins/vim-jst'
         endif
