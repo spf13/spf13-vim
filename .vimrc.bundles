@@ -248,6 +248,7 @@
     "iOS
         " has('mac') makes no effects, why ???
         if count(g:spf13_bundle_groups, 'ios') && !(has('win32') || has('win64'))
+            Bundle 'Rip-Rip/clang_complete'
             Bundle 'msanders/cocoa.vim'
             Bundle 'Rip-Rip/clang_complete'
             Bundle 'b4winckler/vim-objc'
