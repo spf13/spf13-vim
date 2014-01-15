@@ -120,8 +120,8 @@
                 " YCM is better than NeoComplCache and supertab
                 " @see http://valloric.github.io/YouCompleteMe/
                 "
-                " YCM is not support obj-c, so you should complie YCM without
-                " semantic support if you want to write obj-c
+                " But YCM does not have good-enough support for obj-c
+                " @see https://github.com/Valloric/YouCompleteMe/issues/84
                 "
                 Bundle 'FuDesign2008/YouCompleteMe'
 
