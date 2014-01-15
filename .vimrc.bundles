@@ -79,31 +79,57 @@
                 "Bundle 'vim-scripts/restore_view.vim'
             "endif
             "Bundle 'tpope/vim-abolish.git'
+
             "Provides tab completion while inside the “/” search
             " useless!!! not able for search and repalce
             "Bundle 'vim-scripts/SearchComplete'
+
             " to zoomin/out/reset guifont size
             Bundle 'vim-scripts/zoom.vim'
+
             Bundle 'vim-scripts/IndentAnything'
             Bundle 'FuDesign2008/WebSearch.vim'
-            Bundle 'FuDesign2008/AutoClose.vim'
+
+            "Bundle 'FuDesign2008/AutoClose.vim'
+            "use vim-smartinput instead of AutoClose.vim
+            Bundle 'kana/vim-smartinput'
+
             Bundle 'FuDesign2008/OpenUrl.vim'
             Bundle 'FuDesign2008/ToggleNumber.vim'
             Bundle 'FuDesign2008/SpaceControl.vim'
+
             "Bundle 'Yggdroot/indentLine'
             "Bundle 'nathanaelkane/vim-indent-guides'
+
             Bundle 'tpope/vim-surround'
             if g:is_win
-                "windows need install `grep` and `find` tools, see
+
+                " windows need install `grep` and `find` tools, see
                 " http://gnuwin32.sourceforge.net/packages/grep.htm
                 " http://gnuwin32.sourceforge.net/packages/findutils.htm
-                Bundle 'vim-scripts/grep.vim'
+                "
+                " on windows, grep.vim can NOT find all matches
+                " use vim inner command `:vimgrep` instead
+                "
+                "Bundle 'vim-scripts/grep.vim'
+
+                " supertab is more lightweight than YCM
                 Bundle 'ervandew/supertab'
             else
+
+                " YCM is better than NeoComplCache and supertab
+                " @see http://valloric.github.io/YouCompleteMe/
+                "
+                " YCM is not support obj-c, so you should complie YCM without
+                " semantic support if you want to write obj-c
+                "
+                Bundle 'FuDesign2008/YouCompleteMe'
+
                 Bundle 'FuDesign2008/plan.vim'
                 Bundle 'FuDesign2008/translator.vim'
                 Bundle 'mattn/calendar-vim'
                 Bundle 'kien/ctrlp.vim'
+
                 if executable('ack-grep')
                     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
                     Bundle 'mileszs/ack.vim'
@@ -122,6 +148,7 @@
             "Bundle 'FuDesign2008/ironman.vim'
             "Bundle 'FuDesign2008/proton.vim'
             "Bundle 'vim-scripts/mayansmoke'
+
             "dark color schemes
             Bundle 'FuDesign2008/codeschool.vim'
             "Bundle 'Lokaltog/vim-distinguished'
@@ -139,7 +166,7 @@
             "Bundle 'vim-scripts/peaksea'
             "Bundle 'altercation/vim-colors-solarized'
             Bundle 'FuDesign2008/GoodColors.vim'
-            "color schemes end
+
         endif
 
 
@@ -151,10 +178,11 @@
             "Bundle 'mattn/webapi-vim'
             "Bundle 'mattn/gist-vim'
             Bundle 'scrooloose/nerdcommenter'
+
             "@see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
             Bundle 'godlygeek/tabular'
+
             Bundle 'FuDesign2008/GotoFile.vim'
-            "Bundle 'Yggdroot/indentLine'
             if !g:is_win
                 "Bundle 'tpope/vim-fugitive'
                 if executable('ctags')
@@ -166,8 +194,10 @@
         if count(g:spf13_bundle_groups, 'snip')
             Bundle 'garbas/vim-snipmate'
             "Bundle 'honza/vim-snippets'
-            " for obj-c, use clang_complete + SirVer/ultisnips instead of YCM
+
+            "YCM can integeting with ultisnips
             Bundle 'SirVer/ultisnips'
+
         endif
 
     " PHP
@@ -192,7 +222,6 @@
             Bundle 'jelera/vim-javascript-syntax'
             Bundle 'FuDesign2008/backbone.vim'
             Bundle 'FuDesign2008/jslhint.vim'
-            "Bundle 'FuDesign2008/syntastic-jslhint.vim'
             "Bundle 'FuDesign2008/WriteJSDocComment.vim'
             Bundle 'briancollins/vim-jst'
         endif
@@ -251,15 +280,6 @@
             Bundle 'msanders/cocoa.vim'
             Bundle 'b4winckler/vim-objc'
             Bundle 'eraserhd/vim-ios'
-            " for obj-c, use clang_complete + SirVer/ultisnips instead of YCM
-            Bundle 'Rip-Rip/clang_complete'
-        else
-            " YCM is better than NeoComplCache and supertab
-            "
-            " but YCM is not support obj-c.
-            " for obj-c, use clang_complete + SirVer/ultisnips instead
-            "
-            Bundle 'FuDesign2008/YouCompleteMe'
         endif
 
     "potion
