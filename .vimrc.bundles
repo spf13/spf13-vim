@@ -104,8 +104,6 @@
                 Bundle 'FuDesign2008/translator.vim'
                 Bundle 'mattn/calendar-vim'
                 Bundle 'kien/ctrlp.vim'
-                " YCM is better than NeoComplCache and supertab
-                Bundle 'FuDesign2008/YouCompleteMe'
                 if executable('ack-grep')
                     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
                     Bundle 'mileszs/ack.vim'
@@ -167,7 +165,9 @@
     " Snippets
         if count(g:spf13_bundle_groups, 'snip')
             Bundle 'garbas/vim-snipmate'
-            Bundle 'honza/vim-snippets'
+            "Bundle 'honza/vim-snippets'
+            " for obj-c, use clang_complete + SirVer/ultisnips instead of YCM
+            Bundle 'SirVer/ultisnips'
         endif
 
     " PHP
@@ -248,11 +248,18 @@
     "iOS
         " has('mac') makes no effects, why ???
         if count(g:spf13_bundle_groups, 'ios') && !(has('win32') || has('win64'))
-            "Bundle 'Rip-Rip/clang_complete'
             Bundle 'msanders/cocoa.vim'
-            Bundle 'Rip-Rip/clang_complete'
             Bundle 'b4winckler/vim-objc'
             Bundle 'eraserhd/vim-ios'
+            " for obj-c, use clang_complete + SirVer/ultisnips instead of YCM
+            Bundle 'Rip-Rip/clang_complete'
+        else
+            " YCM is better than NeoComplCache and supertab
+            "
+            " but YCM is not support obj-c.
+            " for obj-c, use clang_complete + SirVer/ultisnips instead
+            "
+            Bundle 'FuDesign2008/YouCompleteMe'
         endif
 
     "potion
