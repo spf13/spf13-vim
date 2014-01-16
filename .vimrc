@@ -232,6 +232,9 @@
     "clear search hilight
     noremap <silent><Leader>/ :nohls<CR>
 
+    "remember-able back
+    nnoremap <C-[> <C-T>
+
     "use sane regular expresion
     "nnoremap / /\v
     "vnoremap / /\v
@@ -578,9 +581,6 @@
         \ }
      "}
 
-     " TagBar {
-        nnoremap <silent> <leader>b :TagbarToggle<CR>
-     "}
 
      " PythonMode {
      " Disable if python support not present
@@ -591,30 +591,6 @@
      "ios devement {
         let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang'
 
-     "}
-
-     "javacomplete.vim {
-        autocmd FileType java setlocal
-                    \ omnifunc=javacomplete#Complete
-                    \ completefunc=javacomplete#CompleteParamsInfo
-        let g:java_classpath = "/Users/fuyg/workspace/adt/sdk/platforms/android-19/android.jar"
-     "}
-     "javaImp.vim {
-        let g:JavaImpPaths= $HOME . "/workspace/adt/sdk/sources/android-19"
-        let g:JavaImpDataDir = $HOME . "/.JavaImp"
-        let g:JavaImpDocPaths = $HOME . "/workspace/adt/sdk/docs/reference"
-        "let g:JavaImpDocViewer = "Google Chrome"
-        let g:JavaImpSortBin = "sort"
-        let g:JavaImpSortPkgSep = 1
-        autocmd FileType java nnoremap <leader>jim :JavaImp<CR>
-        autocmd FileType java nnoremap <leader>jif :JavaImpFile<CR>
-        autocmd FileType java nnoremap <leader>jid :JavaImpDoc<CR>
-     "}
-     "
-     "vim-android {
-        "let g:android_sdk_path= $HOME . "/workspace/adt/sdk"
-        "let g:gradle_path="/usr/local/bin/"
-        "let g:android_adb_tool = g:android_sdk_path . "/tools/adb"
      "}
 
 
