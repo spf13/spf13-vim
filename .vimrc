@@ -306,6 +306,14 @@
         let g:ycm_always_populate_location_list = 0
      "}
 
+     "ultisnips {
+        " ultisnips conflicts with ycm
+        " so change the key
+        let g:UltiSnipsExpandTrigger="<cr>"
+        let g:UltiSnipsListSnippets="<c-cr>"
+     "}
+
+
      " js-complete.vim {
          autocmd FileType javascript  :setl omnifunc=jscomplete#CompleteJS
      "}
