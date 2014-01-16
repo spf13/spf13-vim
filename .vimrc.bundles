@@ -193,7 +193,7 @@
 
             " ultisnips is better
             "YCM can integeting with ultisnips
-            Bundle 'SirVer/ultisnips'
+            Bundle 'FuDesign2008/ultisnips'
 
         endif
 
