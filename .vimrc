@@ -655,7 +655,7 @@
                 else
                     imap <silent><expr><C-k> neosnippet#expandable() ?
                                 \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
-                                \ "\<C-e>" : "\<C-k>")
+                                \ "\<C-e>" : "\<Plug>(neosnippet_expand_or_jump)")
                     smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
                     inoremap <expr><C-g> neocomplete#undo_completion()
@@ -729,7 +729,7 @@
                 else
                     imap <silent><expr><C-k> neosnippet#expandable() ?
                                 \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
-                                \ "\<C-e>" : "\<C-k>")
+                                \ "\<C-e>" : "\<Plug>(neosnippet_expand_or_jump)")
                     smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
                     inoremap <expr><C-g> neocomplcache#undo_completion()
