@@ -44,11 +44,7 @@
     " In your .vimrc.bundles.local file"
     " config vim performance first or not
     if !exists('g:is_win')
-        if has('win32') || has('win64')
-            let g:is_win = 1
-        else
-            let g:is_win = 0
-        endif
+        let g:is_win = (has('win32') || has('win64')) ? 1 : 0
     endif
 
 
@@ -129,14 +125,16 @@
                 Bundle 'FuDesign2008/translator.vim'
                 Bundle 'mattn/calendar-vim'
                 Bundle 'kien/ctrlp.vim'
-
-                if executable('ack-grep')
-                    let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-                    Bundle 'mileszs/ack.vim'
-                elseif executable('ack')
-                    Bundle 'mileszs/ack.vim'
-                endif
             endif
+
+            " ack
+            if executable('ack-grep')
+                let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+                Bundle 'mileszs/ack.vim'
+            elseif executable('ack')
+                Bundle 'mileszs/ack.vim'
+            endif
+
         endif
 
     "Colors
@@ -272,8 +270,8 @@
         "endif
 
     "iOS
-        " has('mac') makes no effects, why ???
-        if count(g:spf13_bundle_groups, 'ios') && !(has('win32') || has('win64'))
+        "
+        if count(g:spf13_bundle_groups, 'ios') && !g:is_win
             Bundle 'msanders/cocoa.vim'
             Bundle 'b4winckler/vim-objc'
             Bundle 'eraserhd/vim-ios'
