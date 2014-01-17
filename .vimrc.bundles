@@ -276,7 +276,7 @@
             Bundle 'msanders/cocoa.vim'
             Bundle 'b4winckler/vim-objc'
             "Bundle 'eraserhd/vim-ios'
-            Bundle 'FuDesign2008/a.vim'
+            Bundle 'nacitar/a.vim'
         endif
 
     "potion
