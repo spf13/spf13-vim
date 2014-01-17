@@ -217,8 +217,10 @@
     "@see http://www.vimbits.com/bits?sort=top
     "
     " Easier moving in tabs and windows
-    map <C-J> <C-W>j
-    map <C-K> <C-W>k
+    "
+    " <C-J> <C-K> are keep for UltiSnips
+    "map <C-J> <C-W>j
+    "map <C-K> <C-W>k
     map <C-L> <C-W>l
     map <C-H> <C-W>h
 
@@ -307,10 +309,12 @@
      "}
 
      "ultisnips {
-        " ultisnips conflicts with ycm
-        " so change the key
-        let g:UltiSnipsExpandTrigger="<c-cr>"
-        let g:UltiSnipsListSnippets="<c-s-cr>"
+        " ultisnips conflicts with ycm, so change the key
+        " use <C-M> instead <CR>
+        let g:UltiSnipsExpandTrigger="<CR>"
+        let g:UltiSnipsListSnippets="<C-CR>"
+        let g:UltiSnipsJumpForwardTrigger="<C-J>"
+        let g:UltiSnipsJumpBackwardTrigger="<C-K>"
      "}
 
 
@@ -514,11 +518,6 @@
         nnoremap <Leader>ac <Plug>ToggleAutoCloseMappings
     " }
 
-    " SnipMate {
-        " Setting the author var
-        " If forking, please overwrite in your .vimrc.local file
-        "let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
-    " }
 
     " NerdTree {
         nnoremap <leader>tt :NERDTreeToggle <CR>
