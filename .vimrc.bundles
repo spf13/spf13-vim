@@ -171,8 +171,14 @@
         endif
     " }
 
+    " Unite {
+        if count(g:spf13_bundle_groups, 'unite')
+            Bundle 'Shougo/unite.vim'
+        endif
+    }
+
     " PHP {
-        if count(g:spf13_bundle_groups, 'php')
+        if count(g:spf15_bundle_groups, 'php')
             Bundle 'spf13/PIV'
             Bundle 'arnaud-lb/vim-php-namespace'
         endif

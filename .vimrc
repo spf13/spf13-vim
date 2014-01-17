@@ -393,7 +393,7 @@
     " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
     map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
-" }
+"}
 
 " Plugins {
 
@@ -405,6 +405,18 @@
     " Misc {
         let g:NERDShutUp=1
         let b:match_ignorecase = 1
+    " }
+
+    " Unite {
+        " There might be some keybinding conflicts with others plugins use with
+        " caution. to use async and grep search You need vimproc to be loaded.
+        nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+        nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async<cr>
+        nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+        nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+        nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+        nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+        nnoremap <leader>g :<C-u>Unite -no-split grep:.<cr>
     " }
 
     " OmniComplete {
