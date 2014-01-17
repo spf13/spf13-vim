@@ -234,8 +234,6 @@
     "clear search hilight
     noremap <silent><Leader>/ :nohls<CR>
 
-    "remember-able back
-    nnoremap <C-[> <C-T>
 
     "use sane regular expresion
     "nnoremap / /\v
