@@ -119,7 +119,11 @@
                 " But YCM does not have good-enough support for obj-c
                 " @see https://github.com/Valloric/YouCompleteMe/issues/84
                 "
-                Bundle 'FuDesign2008/YouCompleteMe'
+                "Bundle 'FuDesign2008/YouCompleteMe'
+
+                " yes, ycm is better than supertab.
+                " but sometimes ycm has too many bugs
+                Bundle 'ervandew/supertab'
 
                 Bundle 'FuDesign2008/plan.vim'
                 Bundle 'FuDesign2008/translator.vim'
