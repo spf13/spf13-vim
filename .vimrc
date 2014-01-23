@@ -310,9 +310,8 @@
 
      "ultisnips {
         " ultisnips conflicts with ycm, so change the key
-        " use <C-M> instead <CR>
-        let g:UltiSnipsExpandTrigger="<cr>"
-        let g:UltiSnipsListSnippets="<c-cr>"
+        let g:UltiSnipsExpandTrigger="<c-cr>"
+        let g:UltiSnipsListSnippets="<c-s-cr>"
         let g:UltiSnipsJumpForwardTrigger="<c-j>"
         let g:UltiSnipsJumpBackwardTrigger="<c-k>"
      "}
