@@ -609,7 +609,9 @@
         "\ }
 
         " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-        unlet g:ctrlp_user_command
+	if exists('g:ctrlp_user_command')
+	    unlet g:ctrlp_user_command
+	endif
         let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
         " ag is fast enough that CtrlP doesn't need to cache

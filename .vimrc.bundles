@@ -137,7 +137,7 @@
 
             " use the_silver_searcher which if faster
             " instead of ack
-            Bundles 'rking/ag.vim'
+            Bundle 'rking/ag.vim'
 
         endif
 
