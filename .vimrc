@@ -3,6 +3,10 @@
 " Environment {
     " Basics {
         set nocompatible        " must be first line
+
+        " use bash as the default shell for vim
+        " @see http://dailyvim.tumblr.com/post/66708941289/fish
+        set shell=/bin/bash
     " }
 
     " Windows Compatible {
@@ -159,15 +163,16 @@
     set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
     set scrolljump=5                " lines to scroll when cursor leaves screen
     set scrolloff=3                 " minimum lines to keep above and below cursor
-    set nofoldenable                "不启用折叠
+    set lazyredraw                  " for performance
 
     "making folding enabled for the file that has more than 100 lines
     function! SetFolding()
         let lines = line('$')
         "types that disable folding
         "help may be set as `text`
-        let types = ['text', 'help', 'javascript']
-        if lines < 100 || index(types, tolower(&filetype)) > -1
+        let folding_disabled_types = ['text', 'help', 'javascript', 'objc', 'markdown', 'vim']
+        let folding_start = 300
+        if lines < folding_start || index(folding_disabled_types, tolower(&filetype)) > -1
             setlocal nofoldenable
         else
             setlocal foldenable
@@ -176,6 +181,7 @@
             setlocal foldnestmax=5
         endif
     endfunction
+    "set nofoldenable                "不启用折叠
     autocmd BufNewFile,BufRead * call SetFolding()
 
     set list
@@ -288,7 +294,30 @@
 
 " Plugins {
     " ack.vim {
-        set grepprg=ack
+        "set grepprg=ack
+    " }
+    " ag.vim {
+        " @see http://robots.thoughtbot.com/faster-grepping-in-vim
+        "
+        " The Silver Searcher
+        if executable('ag')
+          " Use ag over grep
+          set grepprg=ag\ --nogroup\ --nocolor
+
+          " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+          let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+          " ag is fast enough that CtrlP doesn't need to cache
+          let g:ctrlp_use_caching = 0
+        endif
+
+        " bind K to grep word under cursor
+        nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+        " bind \ (backward slash) to grep shortcut
+        command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+        nnoremap \ :Ag<SPACE>
     " }
 
     " superTab.vim {

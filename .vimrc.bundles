@@ -128,12 +128,16 @@
             endif
 
             " ack
-            if executable('ack-grep')
-                let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-                Bundle 'mileszs/ack.vim'
-            elseif executable('ack')
-                Bundle 'mileszs/ack.vim'
-            endif
+            "if executable('ack-grep')
+                "let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+                "Bundle 'mileszs/ack.vim'
+            "elseif executable('ack')
+                "Bundle 'mileszs/ack.vim'
+            "endif
+
+            " use the_silver_searcher which if faster
+            " instead of ack
+            Bundles 'rking/ag.vim'
 
         endif
 
@@ -179,6 +183,7 @@
             Bundle 'godlygeek/tabular'
 
             Bundle 'FuDesign2008/GotoFile.vim'
+            Bundle 'vim-scripts/TaskList.vim'
             if !g:is_win
                 "Bundle 'tpope/vim-fugitive'
                 if executable('ctags')
