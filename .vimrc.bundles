@@ -11,6 +11,12 @@
         " across (heterogeneous) systems easier.
         if has('win32') || has('win64')
             set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+            let g:is_win = 1
+        else
+            " use bash as the default shell for vim
+            " @see http://dailyvim.tumblr.com/post/66708941289/fish
+            set shell=/bin/bash
+            let g:is_win = 0
         endif
     " }
     "
@@ -40,12 +46,6 @@
         endif
     " }
     "
-
-    " In your .vimrc.bundles.local file"
-    " config vim performance first or not
-    if !exists('g:is_win')
-        let g:is_win = (has('win32') || has('win64')) ? 1 : 0
-    endif
 
 
     " In your .vimrc.bundles.local file"
