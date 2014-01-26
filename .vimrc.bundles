@@ -293,6 +293,7 @@
         if count(g:spf13_bundle_groups, 'bash')
             if !has('win32') && has('unix')
                 Bundle 'FuDesign2008/bash_kit.vim'
+                Bundle 'dag/vim-fish'
             endif
         endif
 
