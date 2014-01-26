@@ -542,7 +542,7 @@
 
     " NerdTree {
         nnoremap <leader>tt :NERDTreeToggle <CR>
-        let NERDTreeWinPos='right' "NerdTree窗口显示在右边
+        "let NERDTreeWinPos='right' "NerdTree窗口显示在右边
         "map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
         "map <leader>e :NERDTreeFind<CR>
         "nmap <leader>nt :NERDTreeFind<CR>
@@ -609,9 +609,9 @@
         "\ }
 
         " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-	if exists('g:ctrlp_user_command')
-	    unlet g:ctrlp_user_command
-	endif
+        if exists('g:ctrlp_user_command')
+            unlet g:ctrlp_user_command
+        endif
         let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
         " ag is fast enough that CtrlP doesn't need to cache
