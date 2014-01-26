@@ -53,7 +53,7 @@ If you have a bash-compatible shell you can run the script directly:
 
 ## Installing on Windows
 
-On Windows and \*nix [Git] and [Curl] are required. Also, if you haven't already, you'll need to install [Vim].
+On Windows and \*nix [Git] and [Curl] are required. Also, if you haven't already, you'll need to install [Vim].  
 The quickest option to install all three dependencies ([Git], [Curl], [Vim] and [spf13-vim]) via [Chocolatey] NuGet and the [spf13.vim package]. After running the [Chocolatey] install, execute the following commands on the _command prompt_:
 
     cinst git
@@ -61,7 +61,7 @@ The quickest option to install all three dependencies ([Git], [Curl], [Vim] and 
     cinst ctags
     cinst spf13.vim
 
-_Note: The [spf13.vim package] will install Vim also! _
+_Note: The spf13.vim package will install Vim also! _
 
 If you want to install [msysgit], [Curl] and [spf13-vim] individually, follow the directions below.
 
