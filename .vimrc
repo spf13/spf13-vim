@@ -318,6 +318,10 @@
         "let g:SuperTabLongestEnhanced = 1
      "}
 
+    " autoHEADER {
+        g:autoHEADER_default_author = 'fuyg<fuyg@rd.netease.com>'
+    " }
+
      " YCM.vim {
         " the default .ycm_extra_conf.py
         let g:ycm_global_ycm_extra_conf = expand('~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py')
@@ -459,6 +463,10 @@
         nnoremap = :ZoomIn<CR>
         nnoremap - :ZoomOut<CR>
         nnoremap 0 :ZoomReset<CR>
+    "}
+
+    "ZoomWin {
+        nnoremap <C-W>z <Plug>ZoomWin
     "}
 
     " PIV {
@@ -616,6 +624,11 @@
 
         " ag is fast enough that CtrlP doesn't need to cache
         let g:ctrlp_use_caching = 0
+
+        " for ctrl+p conflicts with
+        " https://github.com/terryma/vim-multiple-cursors
+        " use :CtrlP command or ctrl+shift+p
+        let g:ctrlp_map = '<c-s-p>'
      "}
 
 

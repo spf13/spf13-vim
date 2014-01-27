@@ -82,6 +82,7 @@
 
             " to zoomin/out/reset guifont size
             Bundle 'vim-scripts/zoom.vim'
+            Bundle 'vim-scripts/ZoomWin'
 
             Bundle 'vim-scripts/IndentAnything'
             Bundle 'FuDesign2008/WebSearch.vim'
@@ -98,6 +99,9 @@
             "Bundle 'nathanaelkane/vim-indent-guides'
 
             Bundle 'tpope/vim-surround'
+
+            Bundle 'terryma/vim-multiple-cursors'
+
             if g:is_win
 
                 " windows need install `grep` and `find` tools, see
@@ -183,9 +187,10 @@
             Bundle 'godlygeek/tabular'
 
             Bundle 'FuDesign2008/GotoFile.vim'
-            Bundle 'vim-scripts/TaskList.vim'
+            Bundle 'shanzi/autoHEADER'
             if !g:is_win
                 "Bundle 'tpope/vim-fugitive'
+                Bundle 'rizzatti/dash.vim'
                 if executable('ctags')
                     Bundle 'majutsushi/tagbar'
                 endif
@@ -242,6 +247,7 @@
     " HTML
         if count(g:spf13_bundle_groups, 'html')
             Bundle 'amirh/HTML-AutoCloseTag'
+            Bundle 'othree/html5.vim'
         endif
 
     " coffeescript
