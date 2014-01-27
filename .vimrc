@@ -319,7 +319,7 @@
      "}
 
     " autoHEADER {
-        g:autoHEADER_default_author = 'fuyg<fuyg@rd.netease.com>'
+        let g:autoHEADER_default_author = 'fuyg<fuyg@rd.netease.com>'
     " }
 
      " YCM.vim {
