@@ -578,6 +578,10 @@
         vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
      " }
 
+     "Matchmaker{
+         let g:matchmaker_enable_startup = 1
+     "}
+
      " Session List {
         "set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
         "nmap <leader>sl :SessionList<CR>
