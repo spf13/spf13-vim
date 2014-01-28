@@ -143,6 +143,7 @@
             " instead of ack
             Bundle 'rking/ag.vim'
 
+            Bundle 'qstrahl/vim-matchmaker'
         endif
 
     "Colors
@@ -188,7 +189,6 @@
 
             Bundle 'FuDesign2008/GotoFile.vim'
             Bundle 'FuDesign2008/smartRename.vim'
-            Bundle 'shanzi/autoHEADER'
             if !g:is_win
                 "Bundle 'tpope/vim-fugitive'
 
