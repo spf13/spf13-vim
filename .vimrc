@@ -550,7 +550,7 @@
 
     " NerdTree {
         nnoremap <leader>tt :NERDTreeToggle <CR>
-        "let NERDTreeWinPos='right' "NerdTree窗口显示在右边
+        let NERDTreeWinPos='right' "NerdTree窗口显示在右边
         "map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
         "map <leader>e :NERDTreeFind<CR>
         "nmap <leader>nt :NERDTreeFind<CR>
