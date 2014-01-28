@@ -143,7 +143,7 @@
             " instead of ack
             Bundle 'rking/ag.vim'
 
-            Bundle 'qstrahl/vim-matchmaker'
+            Bundle 'mbriggs/mark.vim'
         endif
 
     "Colors
