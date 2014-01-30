@@ -169,11 +169,12 @@ There is an additional tier of customization available to those who want to main
 fork of spf13-vim specialized for a particular group. These users can create `.vimrc.fork`
 and `.vimrc.bundles.fork` files in the root of their fork.  The load order for the configuration is:
 
-1. `.vimrc.before.local` - before user configuration
+1. `.vimrc.before` - spf13-vim before configuration
 2. `.vimrc.before.fork` - fork before configuration
-3. `.vimrc.bundles.local` - local user bundle configuration
-4. `.vimrc.bundles.fork` - fork bundle configuration
-5. `.vimrc.bundles` - spf13-vim bundle configuration
+3. `.vimrc.before.local` - before user configuration
+4. `.vimrc.bundles` - spf13-vim bundle configuration
+5. `.vimrc.bundles.fork` - fork bundle configuration
+6. `.vimrc.bundles.local` - local user bundle configuration
 6. `.vimrc` - spf13-vim vim configuration
 7. `.vimrc.fork` - fork vim configuration
 8. `.vimrc.local` - local user configuration
@@ -515,6 +516,7 @@ Here's some tips if you've never used VIM before:
 [Airline]:https://github.com/bling/vim-airline
 [Powerline]:https://github.com/lokaltog/powerline
 [Powerline Fonts]:https://github.com/Lokaltog/powerline-fonts
+[AutoClose]:https://github.com/spf13/vim-autoclose
 
 [spf13-vim-img]:https://i.imgur.com/UKToY.png
 [spf13-vimrc-img]:https://i.imgur.com/kZWj1.png
