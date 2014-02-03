@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 ############################  SETUP PARAMETERS
 app_name='spf13-vim'
-git_uri='https://github.com/spf13/spf13-vim.git'
+[ -z "$git_uri" ] && git_uri='https://github.com/spf13/spf13-vim.git'
 git_branch='3.0'
 debug_mode='0'
 fork_maintainer='0'
+[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
 
 ############################  BASIC SETUP TOOLS
 msg() {
@@ -93,7 +94,7 @@ clone_repo() {
 
 clone_vundle() {
     if [ ! -e "$HOME/.vim/bundle/vundle" ]; then
-        git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
+        git clone $VUNDLE_URI "$HOME/.vim/bundle/vundle"
     else
         upgrade_repo "vundle"   "Successfully updated vundle"
     fi
