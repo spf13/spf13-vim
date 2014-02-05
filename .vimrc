@@ -284,16 +284,17 @@
         endfunction
 
         " Map g* keys in Normal, Operator-pending, and Visual+select
-        nnoremap $ :call WrapRelativeMotion("$")<CR>
-        nnoremap <End> :call WrapRelativeMotion("$")<CR>
-        nnoremap 0 :call WrapRelativeMotion("0")<CR>
-        nnoremap <Home> :call WrapRelativeMotion("0")<CR>
-        nnoremap ^ :call WrapRelativeMotion("^")<CR>
+        noremap $ :call WrapRelativeMotion("$")<CR>
+        noremap <End> :call WrapRelativeMotion("$")<CR>
+        noremap 0 :call WrapRelativeMotion("0")<CR>
+        noremap <Home> :call WrapRelativeMotion("0")<CR>
+        noremap ^ :call WrapRelativeMotion("^")<CR>
+        " Overwrite the operator pending $/<End> mappings from above
+        " to force inclusive motion with :execute normal!
         onoremap $ v:call WrapRelativeMotion("$")<CR>
         onoremap <End> v:call WrapRelativeMotion("$")<CR>
-        onoremap 0 v:call WrapRelativeMotion("0")<CR>
-        onoremap <Home> v:call WrapRelativeMotion("0")<CR>
-        onoremap ^ v:call WrapRelativeMotion("^")<CR>
+        " Overwrite the Visual+select mode mappings from above
+        " to ensure the correct vis_sel flag is passed to function
         vnoremap $ :<C-U>call WrapRelativeMotion("$", 1)<CR>
         vnoremap <End> :<C-U>call WrapRelativeMotion("$", 1)<CR>
         vnoremap 0 :<C-U>call WrapRelativeMotion("0", 1)<CR>
