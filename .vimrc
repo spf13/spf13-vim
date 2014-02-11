@@ -360,17 +360,6 @@
     " http://stackoverflow.com/a/8064607/127816
     vnoremap . :normal .<CR>
 
-    " Fix home and end key bindings for screen, particularly on mac
-    " - for some reason this fixes the arrow keys too. huh.
-    " - __Note__ that this has been shown to slow down switching from insert
-    "   to normal mode (for users that don't use screen?)
-    if exists('g:spf13_screen_mapping')
-        map [F $
-        imap [F $
-        map [H g0
-        imap [H g0
-    end
-
     " For when you forget to sudo.. Really Write the file.
     cmap w!! w !sudo tee % >/dev/null
 

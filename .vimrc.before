@@ -86,12 +86,6 @@
     " Require a special keypress to enter multiple cursors mode
     "   let g:multi_cursor_start_key='+'
 
-    " Add mappings for Unix `screen` program.
-    " __Note!__ This has been shown to slow down exiting insert mode back to
-    " normal mode for some users (who don't use screen?)
-    " To enable screen mapping uncomment the following line
-    " let g:spf13_screen_mapping = 1
-
 " }
 
 " Use fork before if available {
