@@ -91,6 +91,7 @@
     "   let g:multi_cursor_quit_key='<Esc>'
     " Require a special keypress to enter multiple cursors mode
     "   let g:multi_cursor_start_key='+'
+
 " }
 
 " Use fork before if available {
