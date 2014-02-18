@@ -71,7 +71,7 @@
     scriptencoding utf-8
 
     if has('clipboard')
-        if LINUX()   " On Linux use + register for copy-paste
+        if has('X11')  " On X11 use + register for copy-paste
             set clipboard=unnamedplus
         else         " On mac and Windows, use * register for copy-paste
             set clipboard=unnamed
