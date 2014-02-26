@@ -211,6 +211,7 @@
             Bundle 'travitch/hasksyn'
             Bundle 'dag/vim2hs'
             Bundle 'Twinside/vim-haskellConceal'
+            Bundle 'Twinside/vim-haskellFold'
             Bundle 'lukerandall/haskellmode-vim'
             Bundle 'eagletmt/neco-ghc'
             Bundle 'eagletmt/ghcmod-vim'
