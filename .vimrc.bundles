@@ -91,7 +91,7 @@
     " In your .vimrc.before.local file
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'haskell', 'html', 'misc', 'scala']
+        let g:spf13_bundle_groups=['general', 'neocomplcache', 'unite', 'programming', 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'haskell', 'html', 'misc', 'scala']
     endif
 
     " To override all the included bundles, add the following to your
@@ -101,12 +101,15 @@
 
     " General {
         if count(g:spf13_bundle_groups, 'general')
-            Bundle 'scrooloose/nerdtree'
+            if count(g:spf13_bundle_groups, 'unite')
+                Bundle 'scrooloose/nerdtree'
+                Bundle 'kien/ctrlp.vim'
+                Bundle 'jistr/vim-nerdtree-tabs'
+            endif
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
             Bundle 'spf13/vim-autoclose'
-            Bundle 'kien/ctrlp.vim'
             Bundle 'terryma/vim-multiple-cursors'
             Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
@@ -120,7 +123,6 @@
             Bundle 'bling/vim-bufferline'
             Bundle 'Lokaltog/vim-easymotion'
             Bundle 'godlygeek/csapprox'
-            Bundle 'jistr/vim-nerdtree-tabs'
             Bundle 'flazz/vim-colorschemes'
             Bundle 'mbbill/undotree'
             Bundle 'nathanaelkane/vim-indent-guides'
@@ -173,6 +175,12 @@
         endif
     " }
 
+    " Unite {
+        if count(g:spf13_bundle_groups, 'unite')
+            Bundle 'Shougo/unite.vim'
+            Bundle 'Shougo/vimproc'
+        endif
+   " }
     " PHP {
         if count(g:spf13_bundle_groups, 'php')
             Bundle 'spf13/PIV'
