@@ -506,9 +506,15 @@
     " }
 
     " PyMode {
-        let g:pymode_lint_checker = "pyflakes"
-        let g:pymode_utils_whitespaces = 0
+        " Disable if python support not present
+        if !has('python')
+            let g:pymode = 0
+        endif
+
+        let g:pymode_lint_checkers = ['pyflakes']
+        let g:pymode_trim_whitespaces = 0
         let g:pymode_options = 0
+        let g:pymode_rope = 0
     " }
 
     " ctrlp {
@@ -536,6 +542,12 @@
             \ },
             \ 'fallback': s:ctrlp_fallback
         \ }
+
+        " CtrlP extensions
+        let g:ctrlp_extensions = ['funky']
+
+        "funky
+        nnoremap <Leader>fu :CtrlPFunky<Cr>
     "}
 
     " TagBar {
@@ -557,12 +569,6 @@
             \ }
     "}
 
-    " PythonMode {
-        " Disable if python support not present
-        if !has('python')
-            let g:pymode = 0
-        endif
-    " }
 
     " Fugitive {
         nnoremap <silent> <leader>gs :Gstatus<CR>
