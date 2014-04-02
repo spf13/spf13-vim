@@ -893,6 +893,9 @@
                 endif
             endif
 
+            " Enable neosnippets when using go
+            let g:go_snippet_engine = "neosnippet"
+
             " Disable the neosnippet preview candidate window
             " When enabled, there can be too much visual noise
             " especially when splits are used.
