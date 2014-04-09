@@ -6,7 +6,7 @@ app_dir="$HOME/.spf13-vim-3"
 git_branch='3.0'
 debug_mode='0'
 fork_maintainer='0'
-[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
+[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/Vundle.vim.git"
 
 ############################  BASIC SETUP TOOLS
 msg() {
@@ -142,14 +142,14 @@ create_symlinks() {
 setup_vundle() {
     system_shell="$SHELL"
     export SHELL='/bin/sh'
-    
+
     vim \
         -u "$HOME/.vimrc.bundles" \
         "+set nomore" \
         +BundleInstall! \
         +BundleClean \
         +qall
-    
+
     export SHELL="$system_shell"
 
     success "$1"
