@@ -6,7 +6,7 @@ app_dir="$HOME/.spf13-vim-3"
 git_branch='3.0'
 debug_mode='0'
 fork_maintainer='0'
-[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/Vundle.vim.git"
+[ -z "$VUNDLE_URI" ] && VUNDLE_URI="git@github.com:gmarik/Vundle.vim.git"
 
 ############################  BASIC SETUP TOOLS
 msg() {
