@@ -34,3 +34,6 @@ set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
 " language messages utf-8
+"
+" set eclim
+set mouse=v
