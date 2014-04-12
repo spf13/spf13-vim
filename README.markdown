@@ -53,7 +53,17 @@ If you have a bash-compatible shell you can run the script directly:
 
 ## Installing on Windows
 
-On Windows and \*nix [Git] and [Curl] are required. Also, if you haven't already, you'll need to install [Vim].
+On Windows and \*nix [Git] and [Curl] are required. Also, if you haven't already, you'll need to install [Vim].  
+The quickest option to install all three dependencies ([Git], [Curl], [Vim] and [spf13-vim]) via [Chocolatey] NuGet and the [spf13.vim package]. After running the [Chocolatey] install, execute the following commands on the _command prompt_:
+
+    cinst git
+    cinst curl
+    cinst ctags
+    cinst spf13.vim
+
+_Note: The spf13.vim package will install Vim also! _
+
+If you want to install [msysgit], [Curl] and [spf13-vim] individually, follow the directions below.
 
 ### Installing dependencies
 
@@ -169,11 +179,12 @@ There is an additional tier of customization available to those who want to main
 fork of spf13-vim specialized for a particular group. These users can create `.vimrc.fork`
 and `.vimrc.bundles.fork` files in the root of their fork.  The load order for the configuration is:
 
-1. `.vimrc.before.local` - before user configuration
+1. `.vimrc.before` - spf13-vim before configuration
 2. `.vimrc.before.fork` - fork before configuration
-3. `.vimrc.bundles.local` - local user bundle configuration
-4. `.vimrc.bundles.fork` - fork bundle configuration
-5. `.vimrc.bundles` - spf13-vim bundle configuration
+3. `.vimrc.before.local` - before user configuration
+4. `.vimrc.bundles` - spf13-vim bundle configuration
+5. `.vimrc.bundles.fork` - fork bundle configuration
+6. `.vimrc.bundles.local` - local user bundle configuration
 6. `.vimrc` - spf13-vim vim configuration
 7. `.vimrc.fork` - fork vim configuration
 8. `.vimrc.local` - local user configuration
@@ -265,7 +276,7 @@ examples.  An asterisk (*) is used to denote the cursor position.
       [123+4*56]/2              cs])        (123+456)/2
       "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
       if *x>3 {                 ysW(        if ( x>3 ) {
-      my $str = *whee!;         vlllls'     my $str = 'whee!';
+      my $str = *whee!;         vllllS'     my $str = 'whee!';
 
 For instance, if the cursor was inside `"foo bar"`, you could type
 `cs"'` to convert the text to `'foo bar'`.
@@ -292,6 +303,24 @@ NeoComplCache is an amazing autocomplete plugin with additional support for snip
  * `<C-k>` for completing snippets.
 
 ![neocomplcache image][autocomplete-img]
+
+## [YouCompleteMe]
+
+YouCompleteMe is another amazing completion engine. It is slightly more involved to set up as it contains a binary component that the user needs to compile before it will work. As a result of this however it is very fast.
+
+To enable YouCompleteMe add `youcompleteme` to your list of groups by overriding it in your `.vimrc.before.local` like so: `let g:spf13_bundle_groups=['general', 'programming', 'misc', 'scala', 'youcompleteme']` This is just an example. Remember to choose the other groups you want here.
+
+Once you have done this you will need to get Vundle to grab the latest code from git. You can do this by calling `:BundleInstall!`. You should see YouCompleteMe in the list.
+
+You will now have the code in your bundles directory and can proceed to compile the core. Change to the directory it has been downloaded to. If you have a vanilla install then `cd ~/.spf13-vim-3/.vim/bundle/YouCompleteMe/` should do the trick. You should see a file in this directory called install.sh. There are a few options to consider before running the installer:
+
+  * Do you want clang support (if you don't know what this is then you likely don't need it)?
+    * Do you want to link against a local libclang or have the installer download the latest for you?
+  * Do you want support for c# via the omnisharp server?
+
+The plugin is well documented on the site linked above. Be sure to give that a read and make sure you understand the options you require.
+
+For java users wanting to use eclim be sure to add `let g:EclimCompletionMethod = 'omnifunc'` to your .vimrc.local.
 
 ## [Syntastic]
 
@@ -328,6 +357,7 @@ file
  * `<leader>gb` :Gblame<CR>
  * `<leader>gl` :Glog<CR>
  * `<leader>gp` :Git push<CR>
+ * `<leader>gw` :Gwrite<CR>
  * :Git ___ will pass anything along to git.
 
 ![fugitive image][fugitive-img]
@@ -435,7 +465,7 @@ Terminal emulator colorschemes:
 
 ## Snippets
 
-It also contains a very complete set of [snippets](https://github.com/spf13/vim-snippets) for use with snipmate or [NeoComplCache].
+It also contains a very complete set of [snippets](https://github.com/spf13/snipmate-snippets) for use with snipmate or [NeoComplCache].
 
 
 # Intro to VIM
@@ -464,10 +494,16 @@ Here's some tips if you've never used VIM before:
   convenient location.
 * Keyboard [cheat sheet](https://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
 
+[![Analytics](https://ga-beacon.appspot.com/UA-7131036-5/spf13-vim/readme)](https://github.com/igrigorik/ga-beacon)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/spf13/spf13-vim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
+
 [Git]:http://git-scm.com
 [Curl]:http://curl.haxx.se
 [Vim]:http://www.vim.org/download.php#pc
 [msysgit]:http://code.google.com/p/msysgit
+[Chocolatey]: http://chocolatey.org/
+[spf13.vim package]: http://chocolatey.org/packages/spf13.vim
 [MacVim]:http://code.google.com/p/macvim/
 [spf13-vim]:https://github.com/spf13/spf13-vim
 [contributors]:https://github.com/spf13/spf13-vim/contributors
@@ -485,12 +521,14 @@ Here's some tips if you've never used VIM before:
 [Tagbar]:https://github.com/majutsushi/tagbar
 [Syntastic]:https://github.com/scrooloose/syntastic
 [vim-easymotion]:https://github.com/Lokaltog/vim-easymotion
+[YouCompleteMe]:https://github.com/Valloric/YouCompleteMe
 [Matchit]:http://www.vim.org/scripts/script.php?script_id=39
 [Tabularize]:https://github.com/godlygeek/tabular
 [EasyMotion]:https://github.com/Lokaltog/vim-easymotion
 [Airline]:https://github.com/bling/vim-airline
 [Powerline]:https://github.com/lokaltog/powerline
 [Powerline Fonts]:https://github.com/Lokaltog/powerline-fonts
+[AutoClose]:https://github.com/spf13/vim-autoclose
 
 [spf13-vim-img]:https://i.imgur.com/UKToY.png
 [spf13-vimrc-img]:https://i.imgur.com/kZWj1.png
