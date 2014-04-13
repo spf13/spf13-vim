@@ -1,33 +1,3 @@
-" My Bundles
-UnBundle 'spf13/vim-autoclose'
-UnBundle 'vim-scripts/sessionman.vim'
-UnBundle 'matchit.zip'
-UnBundle 'Lokaltog/vim-easymotion'
-UnBundle 'godlygeek/csapprox'
-UnBundle 'jistr/vim-nerdtree-tabs'
-UnBundle 'mbbill/undotree'
-UnBundle 'myusuf3/numbers.vim'
-UnBundle 'nathanaelkane/vim-indent-guides'
-UnBundle 'vim-scripts/restore_view.vim'
-UnBundle 'airblade/vim-gitgutter'
-UnBundle 'tpope/vim-abolish.git'
-UnBundle 'scrooloose/syntastic'
-UnBundle 'tpope/vim-fugitive'
-UnBundle 'mattn/webapi-vim'
-UnBundle 'mattn/gist-vim'
-UnBundle 'godlygeek/tabular'
-UnBundle 'majutsushi/tagbar'
-" UnBundle 'Shougo/neocomplcache'
-UnBundle 'Shougo/neosnippet'
-UnBundle 'honza/snipmate-snippets'
-UnBundle 'briancollins/vim-jst'
-UnBundle 'tpope/vim-haml'
-UnBundle 'tpope/vim-rails'
-UnBundle 'spf13/vim-preview'
-UnBundle 'tpope/vim-cucumber'
-UnBundle 'quentindecock/vim-cucumber-align-pipes'
-UnBundle 'Puppet-Syntax-Highlighting'
-
 " set encoding
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gb2312,gbk
 set encoding=utf-8
