@@ -859,6 +859,7 @@
             let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
             let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
             let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+            let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
     " }
     " Normal Vim omni-completion {
     " To disable omni complete, add the following to your .vimrc.before.local file:
