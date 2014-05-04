@@ -146,9 +146,9 @@ setup_vundle() {
     vim \
         -u "$HOME/.vimrc.bundles" \
         "+set nomore" \
-        +BundleInstall! \
-        +BundleClean \
-        +qall
+        "+BundleInstall!" \
+        "+BundleClean" \
+        "+qall"
     
     export SHELL="$system_shell"
 
