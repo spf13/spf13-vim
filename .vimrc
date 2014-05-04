@@ -315,6 +315,10 @@
         nnoremap \ :Ag<SPACE>
     " }
 
+    " autoHighlight.vim {
+        let g:auto_highlight_enable = 0
+    " }
+
     " superTab.vim {
         "let g:SuperTabDefaultCompletionType = "context"
         "let g:SuperTabLongestEnhanced = 1
