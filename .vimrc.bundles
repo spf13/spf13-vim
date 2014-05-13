@@ -289,7 +289,7 @@
     "iOS
         "
         if count(g:spf13_bundle_groups, 'ios') && !g:is_win
-            Bundle 'msanders/cocoa.vim'
+            "Bundle 'msanders/cocoa.vim'
             "Bundle 'b4winckler/vim-objc'
             "Bundle 'eraserhd/vim-ios'
             Bundle 'nacitar/a.vim'
