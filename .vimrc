@@ -470,6 +470,10 @@
     "ZoomWin {
         nnoremap <C-W>z <Plug>ZoomWin
     "}
+    "
+    "Syntastic {
+        let g:syntastic_objc_compiler = 'clang'
+    "}
 
     " PIV {
         "let g:DisableAutoPHPFolding = 0
