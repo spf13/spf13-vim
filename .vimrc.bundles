@@ -51,8 +51,8 @@
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        "let g:spf13_bundle_groups=['general', 'colors',  'programming', 'snip', 'php', 'ruby', 'python', 'javascript', 'html', 'coffeescript', 'ios', 'document', 'twig', 'scala', 'bash', 'potion', 'ynote']
-        let g:spf13_bundle_groups=['general', 'colors', 'programming', 'snip', 'javascript', 'css', 'html', 'coffeescript', 'ios', 'document', 'bash', 'ynote']
+        "let g:spf13_bundle_groups=['general', 'colors',  'programming', 'snip', 'php', 'ruby', 'python', 'javascript', 'html', 'coffeescript', 'ios', 'document', 'twig', 'scala', 'bash', 'ynote']
+        let g:spf13_bundle_groups=['general', 'colors', 'programming', 'javascript', 'css', 'html', 'coffeescript', 'ios', 'document', 'bash', 'ynote']
     endif
 
     " To override all the included bundles, put
@@ -70,7 +70,7 @@
             "Bundle 'godlygeek/csapprox'
             "Bundle 'jistr/vim-nerdtree-tabs'
             "Bundle 'flazz/vim-colorschemes'
-            Bundle 'mbbill/undotree'
+            "Bundle 'mbbill/undotree'
             "if !exists('g:spf13_no_views')
                 "Bundle 'vim-scripts/restore_view.vim'
             "endif
@@ -82,10 +82,10 @@
 
             " to zoomin/out/reset guifont size
             Bundle 'vim-scripts/zoom.vim'
-            Bundle 'vim-scripts/ZoomWin'
+            "Bundle 'vim-scripts/ZoomWin'
 
             Bundle 'vim-scripts/IndentAnything'
-            Bundle 'FuDesign2008/WebSearch.vim'
+            "Bundle 'FuDesign2008/WebSearch.vim'
 
             "Bundle 'FuDesign2008/AutoClose.vim'
             "use vim-smartinput instead of AutoClose.vim
@@ -98,9 +98,9 @@
             "Bundle 'Yggdroot/indentLine'
             "Bundle 'nathanaelkane/vim-indent-guides'
 
-            Bundle 'tpope/vim-surround'
+            "Bundle 'tpope/vim-surround'
 
-            Bundle 'terryma/vim-multiple-cursors'
+            "Bundle 'terryma/vim-multiple-cursors'
 
             if g:is_win
 
@@ -126,9 +126,9 @@
                 Bundle 'FuDesign2008/YouCompleteMe'
 
                 Bundle 'FuDesign2008/plan.vim'
-                Bundle 'FuDesign2008/translator.vim'
+                "Bundle 'FuDesign2008/translator.vim'
                 Bundle 'mattn/calendar-vim'
-                Bundle 'kien/ctrlp.vim'
+                "Bundle 'kien/ctrlp.vim'
             endif
 
             " ack
@@ -193,12 +193,12 @@
                 "Bundle 'tpope/vim-fugitive'
 
                 "dash.vim needs funcoo.vim
-                Bundle 'rizzatti/funcoo.vim'
-                Bundle 'rizzatti/dash.vim'
+                "Bundle 'rizzatti/funcoo.vim'
+                "Bundle 'rizzatti/dash.vim'
 
-                if executable('ctags')
-                    Bundle 'majutsushi/tagbar'
-                endif
+                "if executable('ctags')
+                    "Bundle 'majutsushi/tagbar'
+                "endif
             endif
         endif
     " Snippets
@@ -230,7 +230,7 @@
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'leshill/vim-json'
             "Bundle 'pangloss/vim-javascript'
-            Bundle 'mattn/jscomplete-vim'
+            "Bundle 'mattn/jscomplete-vim'
             Bundle 'jelera/vim-javascript-syntax'
             Bundle 'FuDesign2008/backbone.vim'
             "Bundle 'FuDesign2008/WriteJSDocComment.vim'
@@ -273,7 +273,7 @@
             Bundle 'tpope/vim-markdown'
             Bundle 'FuDesign2008/MarkdownViewer.vim'
             Bundle 'FuDesign2008/mkdInput.vim'
-            Bundle 'vim-scripts/Figlet.vim'
+            "Bundle 'vim-scripts/Figlet.vim'
             Bundle 'vim-scripts/wiki.vim'
             "Bundle 'spf13/vim-preview'
             "Bundle 'tpope/vim-cucumber'
@@ -295,16 +295,11 @@
             Bundle 'nacitar/a.vim'
         endif
 
-    "potion
-        if count(g:spf13_bundle_groups, 'potion')
-            "Bundle 'FuDesign2008/potion.vim'
-        endif
 
     " bash
         if count(g:spf13_bundle_groups, 'bash')
             if !has('win32') && has('unix')
                 Bundle 'FuDesign2008/bash_kit.vim'
-                Bundle 'dag/vim-fish'
             endif
         endif
 
