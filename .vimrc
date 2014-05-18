@@ -350,7 +350,7 @@
 
 
      " js-complete.vim {
-         autocmd FileType javascript  :setl omnifunc=jscomplete#CompleteJS
+         "autocmd FileType javascript  :setl omnifunc=jscomplete#CompleteJS
      "}
 
     " AutoClose.vim {
