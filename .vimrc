@@ -549,6 +549,8 @@
             let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
         elseif executable('ag')
             let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+        elseif executable('ack-grep')
+            let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
         elseif executable('ack')
             let s:ctrlp_fallback = 'ack %s --nocolor -f'
         else
