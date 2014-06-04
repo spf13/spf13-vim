@@ -107,6 +107,7 @@
             Bundle 'tpope/vim-surround'
             Bundle 'spf13/vim-autoclose'
             Bundle 'kien/ctrlp.vim'
+            Bundle 'tacahiroy/ctrlp-funky'
             Bundle 'terryma/vim-multiple-cursors'
             Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
