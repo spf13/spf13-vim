@@ -240,6 +240,9 @@
             Bundle 'hail2u/vim-css3-syntax'
             Bundle 'gorodinskiy/vim-coloresque'
             Bundle 'tpope/vim-haml'
+            if (has("python") || has("python3")) && !exists('g:spf13_use_old_powerline')
+                Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+            endif
         endif
     " }
 
