@@ -22,7 +22,7 @@ Great care has been taken to ensure that each plugin plays nicely with others, a
 Lastly (and perhaps, most importantly) It is completely cross platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim] or Gvim additional features are enabled. So regardless of your environment just clone and run.
 
 # spf13-vim 3.0
-January 2012 spf13-vim released it's third major iteration. **This is important as it requires a reinstall**, but trust me it's worth it.
+January 2012 spf13-vim released its third major iteration. **This is important as it requires a reinstall**, but trust me it's worth it.
 
 The biggest change is the switch from using git submodules to using the excellent [Vundle] system. While git submodules seemed like a good idea at the time, it wasn't. It was always problematic. Additionally because a submodule points to a refspec and not a branch, it was a constant maintenance nightmare to keep everything up to date.
 
@@ -399,7 +399,7 @@ Tabularize lets you align statements on their equal signs and other characters
 
 spf13-vim includes the Tagbar plugin. This plugin requires exuberant-ctags and will automatically generate tags for your open files. It also provides a panel to navigate easily via tags
 
-**QuickStart** `CTRL-]` while the cursor is on a keyword (such as a function name) to jump to it's definition.
+**QuickStart** `CTRL-]` while the cursor is on a keyword (such as a function name) to jump to its definition.
 
 **Customizations**: spf13-vim binds `<Leader>tt` to toggle the tagbar panel
 
