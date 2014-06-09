@@ -191,7 +191,14 @@ and `.vimrc.bundles.fork` files in the root of their fork.  The load order for t
 
 See `.vimrc.bundles` for specifics on what options can be set to override bundle configuration. See `.vimrc.before` for specifics
 on what options can be overridden. Most vim configuration options should be set in your `.vimrc.fork` file, bundle configuration
-needs to be set in your `.vimrc.bundles.fork` file.
+needs to be set in your `.vimrc.bundles.fork` file. 
+
+You can specify the default bundles for your fork using `.vimrc.before.fork` file. Here is how to create an example `.vimrc.before.fork` file 
+in a fork repo for the default bundles.
+```bash
+    echo let g:spf13_bundle_groups=['general', 'programming', 'misc', 'youcompleteme'] >> .vimrc.before.fork
+```
+Once you have this file in your repo, only the bundles you specified will be installed during the first installation of your fork.
 
 You may also want to update your `README.markdown` file so that the `bootstrap.sh` link points to your repository and your `bootstrap.sh`
 file to pull down your fork.
