@@ -82,43 +82,24 @@ do_backup() {
    fi
 }
 
-upgrade_repo() {
-      msg "trying to update $1"
-
-      if [ "$1" = "$app_name" ]; then
-          cd "$app_dir" &&
-          git pull origin "$git_branch"
-      fi
-
-      if [ "$1" = "vundle" ]; then
-          cd "$HOME/.vim/bundle/vundle" &&
-          git pull origin master
-      fi
-
-      ret="$?"
-      success "$2"
-      debug
-}
-
 sync_repo() {
-    if [ ! -e "$app_dir" ]; then
-        git clone --recursive -b "$git_branch" "$git_uri" "$app_dir"
-        ret="$?"
-        success "$1"
-        debug
-    else
-        upgrade_repo "$app_name"    "Successfully updated $app_name"
-    fi
-}
+    local repo_path="$1"
+    local repo_uri="$2"
+    local repo_branch="$3"
+    local repo_name="$4"
 
-clone_vundle() {
-    if [ ! -e "$HOME/.vim/bundle/vundle" ]; then
-        git clone $VUNDLE_URI "$HOME/.vim/bundle/vundle"
+    msg "Trying to update $repo_name"
+
+    if [ ! -e "$repo_path" ]; then
+        git clone -b "$repo_branch" "$repo_uri" "$repo_path"
+        ret="$?"
+        success "Successfully cloned $repo_name."
     else
-        upgrade_repo "vundle"   "Successfully updated vundle"
+        cd "$repo_path" && git pull origin "$repo_branch"
+        ret="$?"
+        success "Successfully updated $repo_name"
     fi
-    ret="$?"
-    success "$1"
+
     debug
 }
 
@@ -185,11 +166,18 @@ do_backup   "Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m
         "$HOME/.vimrc" \
         "$HOME/.gvimrc"
 
-sync_repo       "Successfully cloned $app_name"
+sync_repo       "$app_dir" \
+                "$git_uri" \
+                "$git_branch" \
+                "$app_name"
 
 create_symlinks "Setting up vim symlinks"
 
-clone_vundle    "Successfully cloned vundle"
+sync_repo       "$HOME/.vim/bundle/vundle" \
+                "$VUNDLE_URI" \
+                "master" \
+                "vundle"
+
 
 setup_vundle    "Now updating/installing plugins using Vundle"
 
