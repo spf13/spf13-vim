@@ -101,8 +101,6 @@ upgrade_repo() {
 }
 
 clone_repo() {
-    program_exists "git" "Sorry, we cannot continue without GIT, please install it first."
-
     if [ ! -e "$app_dir" ]; then
         git clone --recursive -b "$git_branch" "$git_uri" "$app_dir"
         ret="$?"
@@ -180,6 +178,7 @@ setup_vundle() {
 ############################ MAIN()
 variable_set "$HOME"
 program_exists "vim" "To install $app_name you first need to install Vim."
+program_exists "git" "To install $app_name you first need to install Git."
 
 do_backup   "Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d%S`" \
         "$HOME/.vim" \
