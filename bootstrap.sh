@@ -100,7 +100,7 @@ upgrade_repo() {
       debug
 }
 
-clone_repo() {
+sync_repo() {
     if [ ! -e "$app_dir" ]; then
         git clone --recursive -b "$git_branch" "$git_uri" "$app_dir"
         ret="$?"
@@ -185,7 +185,7 @@ do_backup   "Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m
         "$HOME/.vimrc" \
         "$HOME/.gvimrc"
 
-clone_repo      "Successfully cloned $app_name"
+sync_repo       "Successfully cloned $app_name"
 
 create_symlinks "Setting up vim symlinks"
 
