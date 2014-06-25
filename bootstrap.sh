@@ -51,7 +51,7 @@ program_exists() {
 
     # throw error on non-zero return value
     if [ ! "$ret" -eq '0' ]; then
-    error "$2"
+    error "You must have '$1' installed to continue."
     fi
 }
 
@@ -158,8 +158,8 @@ setup_vundle() {
 
 ############################ MAIN()
 variable_set "$HOME"
-program_exists "vim" "To install $app_name you first need to install Vim."
-program_exists "git" "To install $app_name you first need to install Git."
+program_exists  "vim"
+program_exists  "git"
 
 do_backup   "Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d%S`" \
         "$HOME/.vim" \
