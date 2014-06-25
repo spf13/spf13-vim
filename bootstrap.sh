@@ -140,11 +140,11 @@ create_symlinks() {
 }
 
 setup_vundle() {
-    system_shell="$SHELL"
+    local system_shell="$SHELL"
     export SHELL='/bin/sh'
 
     vim \
-        -u "$app_dir/.vimrc.bundles.default" \
+        -u "$1" \
         "+set nomore" \
         "+BundleInstall!" \
         "+BundleClean" \
@@ -152,7 +152,7 @@ setup_vundle() {
 
     export SHELL="$system_shell"
 
-    success "$1"
+    success "Now updating/installing plugins using Vundle"
     debug
 }
 
@@ -178,8 +178,7 @@ sync_repo       "$HOME/.vim/bundle/vundle" \
                 "master" \
                 "vundle"
 
-
-setup_vundle    "Now updating/installing plugins using Vundle"
+setup_vundle    "$app_dir/.vimrc.bundles.default"
 
 msg             "\nThanks for installing $app_name."
 msg             "© `date +%Y` http://vim.spf13.com/"
