@@ -71,13 +71,14 @@ lnif() {
 }
 
 do_backup() {
-    if [ -e "$2" ] || [ -e "$3" ] || [ -e "$4" ]; then
+    if [ -e "$1" ] || [ -e "$2" ] || [ -e "$3" ]; then
+        msg "Attempting to back up your original vim configuration."
         today=`date +%Y%m%d_%s`
-        for i in "$2" "$3" "$4"; do
-            [ -e "$i" ] && [ ! -L "$i" ] && mv "$i" "$i.$today";
+        for i in "$1" "$2" "$3"; do
+            [ -e "$i" ] && [ ! -L "$i" ] && mv -v "$i" "$i.$today";
         done
         ret="$?"
-        success "$1"
+        success "Your original vim configuration has been backed up."
         debug
    fi
 }
@@ -161,10 +162,9 @@ variable_set "$HOME"
 program_exists  "vim"
 program_exists  "git"
 
-do_backup   "Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d%S`" \
-        "$HOME/.vim" \
-        "$HOME/.vimrc" \
-        "$HOME/.gvimrc"
+do_backup       "$HOME/.vim" \
+                "$HOME/.vimrc" \
+                "$HOME/.gvimrc"
 
 sync_repo       "$app_dir" \
                 "$git_uri" \
