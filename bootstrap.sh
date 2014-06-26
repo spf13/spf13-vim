@@ -30,7 +30,7 @@ msg() {
 
 success() {
     if [ "$ret" -eq '0' ]; then
-    msg "\33[32m[✔]\33[0m ${1}${2}"
+        msg "\33[32m[✔]\33[0m ${1}${2}"
     fi
 }
 
@@ -41,7 +41,7 @@ error() {
 
 debug() {
     if [ "$debug_mode" -eq '1' ] && [ "$ret" -gt '1' ]; then
-      msg "An error occurred in function \"${FUNCNAME[$i+1]}\" on line ${BASH_LINENO[$i+1]}, we're sorry for that."
+        msg "An error occurred in function \"${FUNCNAME[$i+1]}\" on line ${BASH_LINENO[$i+1]}, we're sorry for that."
     fi
 }
 
@@ -51,7 +51,7 @@ program_exists() {
 
     # throw error on non-zero return value
     if [ ! "$ret" -eq '0' ]; then
-    error "You must have '$1' installed to continue."
+        error "You must have '$1' installed to continue."
     fi
 }
 
