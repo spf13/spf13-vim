@@ -116,23 +116,30 @@ create_symlinks() {
     lnif "$endpath/.vimrc.before"       "$HOME/.vimrc.before"
     lnif "$endpath/.vim"                "$HOME/.vim"
 
-    # Useful for fork maintainers
     touch  "$HOME/.vimrc.local"
-
-    lnif "$endpath/.vimrc.fork" "$HOME/.vimrc.fork"
-
-    if [ "$fork_maintainer" -eq '1' ]; then
-        touch "$HOME/.vimrc.fork"
-        touch "$HOME/.vimrc.bundles.fork"
-        touch "$HOME/.vimrc.before.fork"
-    fi
-
-    lnif "$endpath/.vimrc.bundles.fork" "$HOME/.vimrc.bundles.fork"
-    lnif "$endpath/.vimrc.before.fork"  "$HOME/.vimrc.before.fork"
 
     ret="$?"
     success "Setting up vim symlinks."
     debug
+}
+
+setup_fork_mode() {
+    local source_path="$2"
+    local target_path="$3"
+
+    if [ "$1" -eq '1' ]; then
+        touch "$target_path/.vimrc.fork"
+        touch "$target_path/.vimrc.bundles.fork"
+        touch "$target_path/.vimrc.before.fork"
+
+        lnif "$source_path/.vimrc.fork"         "$target_path/.vimrc.fork"
+        lnif "$source_path/.vimrc.bundles.fork" "$target_path/.vimrc.bundles.fork"
+        lnif "$source_path/.vimrc.before.fork"  "$target_path/.vimrc.before.fork"
+
+        ret="$?"
+        success "Created fork maintainer files."
+        debug
+    fi
 }
 
 setup_vundle() {
@@ -167,6 +174,8 @@ sync_repo       "$app_dir" \
                 "$app_name"
 
 create_symlinks "$app_dir"
+
+setup_fork_mode "$fork_maintainer" "$app_dir" "$HOME"
 
 sync_repo       "$HOME/.vim/bundle/vundle" \
                 "$VUNDLE_URI" \
