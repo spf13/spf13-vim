@@ -105,7 +105,7 @@ sync_repo() {
 }
 
 create_symlinks() {
-    endpath="$app_dir"
+    endpath="$1"
 
     if [ ! -d "$endpath/.vim/bundle" ]; then
         mkdir -p "$endpath/.vim/bundle"
@@ -136,7 +136,7 @@ create_symlinks() {
     fi
 
     ret="$?"
-    success "$1"
+    success "Setting up vim symlinks."
     debug
 }
 
@@ -171,7 +171,7 @@ sync_repo       "$app_dir" \
                 "$git_branch" \
                 "$app_name"
 
-create_symlinks "Setting up vim symlinks"
+create_symlinks "$app_dir"
 
 sync_repo       "$HOME/.vim/bundle/vundle" \
                 "$VUNDLE_URI" \
