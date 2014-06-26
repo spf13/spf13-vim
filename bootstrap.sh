@@ -61,7 +61,6 @@ variable_set() {
     fi
 }
 
-############################ SETUP FUNCTIONS
 lnif() {
     if [ -e "$1" ]; then
         ln -sf "$1" "$2"
@@ -69,6 +68,8 @@ lnif() {
     ret="$?"
     debug
 }
+
+############################ SETUP FUNCTIONS
 
 do_backup() {
     if [ -e "$1" ] || [ -e "$2" ] || [ -e "$3" ]; then
