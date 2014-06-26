@@ -119,21 +119,16 @@ create_symlinks() {
     # Useful for fork maintainers
     touch  "$HOME/.vimrc.local"
 
-    if [ -e "$endpath/.vimrc.fork" ]; then
-        ln -sf "$endpath/.vimrc.fork" "$HOME/.vimrc.fork"
-    elif [ "$fork_maintainer" -eq '1' ]; then
+    lnif "$endpath/.vimrc.fork" "$HOME/.vimrc.fork"
+
+    if [ "$fork_maintainer" -eq '1' ]; then
         touch "$HOME/.vimrc.fork"
         touch "$HOME/.vimrc.bundles.fork"
         touch "$HOME/.vimrc.before.fork"
     fi
 
-    if [ -e "$endpath/.vimrc.bundles.fork" ]; then
-        ln -sf "$endpath/.vimrc.bundles.fork" "$HOME/.vimrc.bundles.fork"
-    fi
-
-    if [ -e "$endpath/.vimrc.before.fork" ]; then
-        ln -sf "$endpath/.vimrc.before.fork" "$HOME/.vimrc.before.fork"
-    fi
+    lnif "$endpath/.vimrc.bundles.fork" "$HOME/.vimrc.bundles.fork"
+    lnif "$endpath/.vimrc.before.fork"  "$HOME/.vimrc.before.fork"
 
     ret="$?"
     success "Setting up vim symlinks."
