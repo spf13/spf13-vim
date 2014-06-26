@@ -106,18 +106,19 @@ sync_repo() {
 }
 
 create_symlinks() {
-    endpath="$1"
+    local source_path="$1"
+    local target_path="$2"
 
-    if [ ! -d "$endpath/.vim/bundle" ]; then
-        mkdir -p "$endpath/.vim/bundle"
+    if [ ! -d "$source_path/.vim/bundle" ]; then
+        mkdir -p "$source_path/.vim/bundle"
     fi
 
-    lnif "$endpath/.vimrc"              "$HOME/.vimrc"
-    lnif "$endpath/.vimrc.bundles"      "$HOME/.vimrc.bundles"
-    lnif "$endpath/.vimrc.before"       "$HOME/.vimrc.before"
-    lnif "$endpath/.vim"                "$HOME/.vim"
+    lnif "$source_path/.vimrc"         "$target_path/.vimrc"
+    lnif "$source_path/.vimrc.bundles" "$target_path/.vimrc.bundles"
+    lnif "$source_path/.vimrc.before"  "$target_path/.vimrc.before"
+    lnif "$source_path/.vim"           "$target_path/.vim"
 
-    touch  "$HOME/.vimrc.local"
+    touch  "$target_path/.vimrc.local"
 
     ret="$?"
     success "Setting up vim symlinks."
@@ -174,7 +175,7 @@ sync_repo       "$app_dir" \
                 "$git_branch" \
                 "$app_name"
 
-create_symlinks "$app_dir"
+create_symlinks "$app_dir" "$HOME"
 
 setup_fork_mode "$fork_maintainer" "$app_dir" "$HOME"
 
