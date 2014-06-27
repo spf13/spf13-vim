@@ -16,7 +16,7 @@
 
 ############################  SETUP PARAMETERS
 app_name='spf13-vim'
-APP_PATH="$HOME/.spf13-vim-3"
+[ -z "$APP_PATH"] && APP_PATH="$HOME/.spf13-vim-3"
 [ -z "$git_uri" ] && git_uri='https://github.com/spf13/spf13-vim.git'
 git_branch='3.0'
 debug_mode='0'
