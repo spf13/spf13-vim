@@ -18,7 +18,7 @@ REM    limitations under the License.
 
 @set APP_DIR=%HOME%\.spf13-vim-3
 IF NOT EXIST "%APP_DIR%" (
-    call git clone --recursive -b 3.0 https://github.com/spf13/spf13-vim.git "%APP_DIR%"
+    call git clone -b 3.0 https://github.com/spf13/spf13-vim.git "%APP_DIR%"
 ) ELSE (
     @set ORIGINAL_DIR=%CD%
     echo updating spf13-vim

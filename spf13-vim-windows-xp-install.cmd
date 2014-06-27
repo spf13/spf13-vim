@@ -33,7 +33,7 @@ REM    limitations under the License.
     chdir /d "%ORIGINAL_DIR%"
 ) else (
     echo cloning spf13-vim
-    call git clone --recursive -b 3.0 git://github.com/spf13/spf13-vim.git "%APP_DIR%"
+    call git clone -b 3.0 git://github.com/spf13/spf13-vim.git "%APP_DIR%"
 )
 
 @if not exist  "%APP_DIR%\.vim\bundle" call mkdir "%APP_DIR%\.vim\bundle"
