@@ -93,6 +93,7 @@ sync_repo() {
     msg "Trying to update $repo_name"
 
     if [ ! -e "$repo_path" ]; then
+        mkdir -p "$repo_path"
         git clone -b "$repo_branch" "$repo_uri" "$repo_path"
         ret="$?"
         success "Successfully cloned $repo_name."
@@ -108,10 +109,6 @@ sync_repo() {
 create_symlinks() {
     local source_path="$1"
     local target_path="$2"
-
-    if [ ! -d "$source_path/.vim/bundle" ]; then
-        mkdir -p "$source_path/.vim/bundle"
-    fi
 
     lnif "$source_path/.vimrc"         "$target_path/.vimrc"
     lnif "$source_path/.vimrc.bundles" "$target_path/.vimrc.bundles"
