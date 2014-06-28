@@ -172,7 +172,8 @@ sync_repo       "$APP_PATH" \
                 "$REPO_BRANCH" \
                 "$app_name"
 
-create_symlinks "$APP_PATH" "$HOME"
+create_symlinks "$APP_PATH" \
+                "$HOME"
 
 setup_fork_mode "$fork_maintainer" "$APP_PATH" "$HOME"
 
