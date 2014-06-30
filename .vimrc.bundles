@@ -105,6 +105,7 @@
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
+            Bundle 'tpope/vim-repeat'
             Bundle 'spf13/vim-autoclose'
             Bundle 'kien/ctrlp.vim'
             Bundle 'tacahiroy/ctrlp-funky'
