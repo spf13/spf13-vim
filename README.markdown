@@ -21,17 +21,6 @@ Great care has been taken to ensure that each plugin plays nicely with others, a
 
 Lastly (and perhaps, most importantly) It is completely cross platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim] or Gvim additional features are enabled. So regardless of your environment just clone and run.
 
-# spf13-vim 3.0
-January 2012 spf13-vim released its third major iteration. **This is important as it requires a reinstall**, but trust me it's worth it.
-
-The biggest change is the switch from using git submodules to using the excellent [Vundle] system. While git submodules seemed like a good idea at the time, it wasn't. It was always problematic. Additionally because a submodule points to a refspec and not a branch, it was a constant maintenance nightmare to keep everything up to date.
-
-[Vundle] has an excellent system built on the same principles as Pathogen, but with an integrated plugin management system that is Git and Github aware.
-
-We have also changed out most of the plugins in favor of newer more stable alternatives. Additionally we have significantly reduced the number of plugins requiring python or ruby.
-
-The goal has always been to add functionality without changing all the features, functionality and keystrokes we all love. Using spf13-vim we've kept all the default behaviors (by and large), so if you ever find yourself on a vanilla environment you'll feel right at home.
-
 # Installation
 
 ## Linux, \*nix, Mac OSX Installation
