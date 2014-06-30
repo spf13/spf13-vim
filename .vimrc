@@ -933,6 +933,13 @@
         let g:indent_guides_enable_on_vim_startup = 1
     " }
 
+    " Wildfire {
+    let g:wildfire_objects = {
+                \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
+                \ "html,xml" : ["at"],
+                \ }
+    " }
+
     " vim-airline {
         " Set configuration options for the statusline plugin vim-airline.
         " Use the powerline theme and optionally enable powerline symbols.
