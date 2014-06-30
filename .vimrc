@@ -710,16 +710,15 @@
 
                     " <CR>: close popup
                     " <s-CR>: close popup and save indent.
-                    inoremap <expr><s-CR> pumvisible() ? neocomplete#close_popup()"\<CR>" : "\<CR>"
-                    "inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
+                    inoremap <expr><s-CR> pumvisible() ? neocomplete#smart_close_popup()"\<CR>" : "\<CR>"
 
                     function! CleverCr()
                         if pumvisible()
                             if neosnippet#expandable()
                                 let exp = "\<Plug>(neosnippet_expand)"
-                                return exp . neocomplete#close_popup()
+                                return exp . neocomplete#smart_close_popup()
                             else
-                                return neocomplete#close_popup()
+                                return neocomplete#smart_close_popup()
                             endif
                         else
                             return "\<CR>"
@@ -730,7 +729,7 @@
                     imap <expr> <CR> CleverCr() 
                     " <C-h>, <BS>: close popup and delete backword char.
                     inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-                    inoremap <expr><C-y> neocomplete#close_popup()
+                    inoremap <expr><C-y> neocomplete#smart_close_popup()
                 endif
                 " <TAB>: completion.
                 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
