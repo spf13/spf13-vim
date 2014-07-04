@@ -687,6 +687,8 @@
         "macVim
         if has('gui_macvim')
             try
+                "enter full mode when start
+                set fu
                 set guifont=Monaco:h14
             catch
                 "do nothing
