@@ -191,6 +191,7 @@
         if count(g:spf13_bundle_groups, 'php')
             Bundle 'spf13/PIV'
             Bundle 'arnaud-lb/vim-php-namespace'
+            Bundle 'beyondwords/vim-twig'
         endif
     " }
 
@@ -269,12 +270,6 @@
             Bundle 'tpope/vim-cucumber'
             Bundle 'quentindecock/vim-cucumber-align-pipes'
             Bundle 'Puppet-Syntax-Highlighting'
-        endif
-    " }
-
-    " Twig {
-        if count(g:spf13_bundle_groups, 'twig')
-            Bundle 'beyondwords/vim-twig'
         endif
     " }
 
