@@ -1,18 +1,6 @@
 " Modeline and Notes {
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
-"                    __ _ _____              _
-"         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
-"        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
-"        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
-"        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
-"            |_|
-"
-"   This is the personal .vimrc file of Steve Francia.
-"   While much of it is beneficial for general use, I would
-"   recommend picking out the parts you want and understand.
-"
-"   You can find me at http://spf13.com
 " }
 
 " Environment {
@@ -60,13 +48,12 @@
 
 " General {
 
-    set background=dark         " Assume a dark background
     " if !has('gui')
         "set term=$TERM          " Make arrow and other keys work
     " endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
-    set mouse=a                 " Automatically enable mouse usage
+    "set mouse=a                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
 
@@ -143,13 +130,18 @@
 
 " Vim UI {
 
-    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-        let g:solarized_termcolors=256
-        let g:solarized_termtrans=1
-        let g:solarized_contrast="normal"
-        let g:solarized_visibility="normal"
-        color solarized             " Load a colorscheme
+
+    " Color Scheme {
+    set background=dark         " Assume a dark background
+    if has("gui_running")
+        colorscheme inkpot
+        let g:airline_powerline_fonts = 1
+    else
+        colorscheme base16-tomorrow
+        let g:airline_theme='dark'
+        let g:airline_powerline_fonts = 0
     endif
+    " }
 
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
@@ -211,7 +203,6 @@
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
-    "set matchpairs+=<:>             " Match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
@@ -235,32 +226,15 @@
 
 " Key (re)Mappings {
 
-    " The default leader is '\', but many people prefer ',' as it's in a standard
-    " location. To override this behavior and set it back to '\' (or any other
-    " character) add the following to your .vimrc.before.local file:
-    "   let g:spf13_leader='\'
-    if !exists('g:spf13_leader')
-        let mapleader = ','
-    else
-        let mapleader=g:spf13_leader
-    endif
-    if !exists('g:spf13_localleader')
-        let maplocalleader = '_'
-    else
-        let maplocalleader=g:spf13_localleader
-    endif
+    " The default leader is '\'
+    let mapleader = ','
+    let maplocalleader = '_'
 
-    " Easier moving in tabs and windows
-    " The lines conflict with the default digraph mapping of <C-K>
-    " If you prefer that functionality, add the following to your
-    " .vimrc.before.local file:
-    "   let g:spf13_no_easyWindows = 1
-    if !exists('g:spf13_no_easyWindows')
-        map <C-J> <C-W>j<C-W>_
-        map <C-K> <C-W>k<C-W>_
-        map <C-L> <C-W>l<C-W>_
-        map <C-H> <C-W>h<C-W>_
-    endif
+    " Easy split navigation
+    map <C-J> <C-W>j
+    map <C-K> <C-W>k
+    map <C-L> <C-W>l
+    map <C-H> <C-W>h
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
     noremap j gj
@@ -269,10 +243,6 @@
     " End/Start of line motion keys act relative to row/wrap width in the
     " presence of `:set wrap`, and relative to line for `:set nowrap`.
     " Default vim behaviour is to act relative to text line in both cases
-    " If you prefer the default behaviour, add the following to your
-    " .vimrc.before.local file:
-    "   let g:spf13_no_wrapRelMotion = 1
-    if !exists('g:spf13_no_wrapRelMotion')
         " Same for 0, home, end, etc
         function! WrapRelativeMotion(key, ...)
             let vis_sel=""
@@ -305,16 +275,6 @@
         vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
     endif
 
-    " The following two lines conflict with moving to top and
-    " bottom of the screen
-    " If you prefer that functionality, add the following to your
-    " .vimrc.before.local file:
-    "   let g:spf13_no_fastTabs = 1
-    if !exists('g:spf13_no_fastTabs')
-        map <S-H> gT
-        map <S-L> gt
-    endif
-
     " Stupid shift key fixes
     if !exists('g:spf13_no_keyfixes')
         if has("user_commands")
@@ -335,31 +295,14 @@
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
 
-    " Code folding options
-    nmap <leader>f0 :set foldlevel=0<CR>
-    nmap <leader>f1 :set foldlevel=1<CR>
-    nmap <leader>f2 :set foldlevel=2<CR>
-    nmap <leader>f3 :set foldlevel=3<CR>
-    nmap <leader>f4 :set foldlevel=4<CR>
-    nmap <leader>f5 :set foldlevel=5<CR>
-    nmap <leader>f6 :set foldlevel=6<CR>
-    nmap <leader>f7 :set foldlevel=7<CR>
-    nmap <leader>f8 :set foldlevel=8<CR>
-    nmap <leader>f9 :set foldlevel=9<CR>
-
     " Most prefer to toggle search highlighting rather than clear the current
-    " search results. To clear search highlighting rather than toggle it on
-    " and off, add the following to your .vimrc.before.local file:
-    "   let g:spf13_clear_search_highlight = 1
+    " search results. To clear search highlighting rather than toggle it
+    " on/off
     if exists('g:spf13_clear_search_highlight')
         nmap <silent> <leader>/ :nohlsearch<CR>
     else
         nmap <silent> <leader>/ :set invhlsearch<CR>
     endif
-
-
-    " Find merge conflict markers
-    map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 
     " Shortcuts
     " Change Working Directory to that of the current file
@@ -397,37 +340,13 @@
     map zh zH
 
     " Easier formatting
-    nnoremap <silent> <leader>q gwip
 
     " FIXME: Revert this f70be548
     " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
     map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
-
 " }
 
 " Plugins {
-
-    " TextObj Sentence {
-        if count(g:spf13_bundle_groups, 'writing')
-            augroup textobj_sentence
-              autocmd!
-              autocmd FileType markdown call textobj#sentence#init()
-              autocmd FileType textile call textobj#sentence#init()
-              autocmd FileType text call textobj#sentence#init()
-            augroup END
-        endif
-    " }
-
-    " TextObj Quote {
-        if count(g:spf13_bundle_groups, 'writing')
-            augroup textobj_quote
-                autocmd!
-                autocmd FileType markdown call textobj#quote#init()
-                autocmd FileType textile call textobj#quote#init()
-                autocmd FileType text call textobj#quote#init({'educate': 0})
-            augroup END
-        endif
-    " }
 
     " PIV {
         if isdirectory(expand("~/.vim/bundle/PIV"))
@@ -446,9 +365,6 @@
     " }
 
     " OmniComplete {
-        " To disable omni complete, add the following to your .vimrc.before.local file:
-        "   let g:spf13_no_omni_complete = 1
-        if !exists('g:spf13_no_omni_complete')
             if has("autocmd") && exists("+omnifunc")
                 autocmd Filetype *
                     \if &omnifunc == "" |
@@ -461,12 +377,12 @@
             hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
             " Some convenient mappings
-            inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-            inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-            inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-            inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-            inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-            inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+"            inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+"            inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+"            inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+"            inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+"            inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+"            inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
             " Automatically open and close the popup menu / preview window
             au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -482,18 +398,6 @@
         if gitroot != ''
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
-    " }
-
-    " AutoCloseTag {
-        " Make it so AutoCloseTag works for xml and xhtml files as well
-        au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-        nmap <Leader>ac <Plug>ToggleAutoCloseMappings
-    " }
-
-    " SnipMate {
-        " Setting the author var
-        " If forking, please overwrite in your .vimrc.local file
-        let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
     " }
 
     " NerdTree {
@@ -539,11 +443,6 @@
             nmap <leader>ss :SessionSave<CR>
             nmap <leader>sc :SessionClose<CR>
         endif
-    " }
-
-    " JSON {
-        nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
-        let g:vim_json_syntax_conceal = 0 
     " }
 
     " PyMode {

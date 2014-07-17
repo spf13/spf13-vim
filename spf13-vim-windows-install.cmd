@@ -1,12 +1,12 @@
-@if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
+REM @if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
 @if not exist "%HOME%" @set HOME=%USERPROFILE%
 
-@set APP_DIR=%HOME%\.spf13-vim-3
+@set APP_DIR=%HOME%\Dropbox\vim
 IF NOT EXIST "%APP_DIR%" (
-  call git clone --recursive -b 3.0 https://github.com/spf13/spf13-vim.git "%APP_DIR%"
+  call git clone --recursive -b 3.0 https://github.com/cloud171/vim "%APP_DIR%"
 ) ELSE (
 	@set ORIGINAL_DIR=%CD%
-    echo updating spf13-vim
+    echo updating vim
     chdir /d "%APP_DIR%" 
 	call git pull
     chdir /d "%ORIGINAL_DIR%"
@@ -27,7 +27,7 @@ IF NOT EXIST "%APP_DIR%\.vim\bundle" (
 )
 
 IF NOT EXIST "%HOME%/.vim/bundle/vundle" (
-	call git clone https://github.com/gmarik/vundle.git "%HOME%/.vim/bundle/vundle"
+	call git clone https://github.com/gmarik/vundle "%HOME%/.vim/bundle/vundle"
 ) ELSE (
   call cd "%HOME%/.vim/bundle/vundle"
   call git pull

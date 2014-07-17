@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 ############################  SETUP PARAMETERS
-app_name='spf13-vim'
-app_dir="$HOME/.spf13-vim-3"
-[ -z "$git_uri" ] && git_uri='https://github.com/spf13/spf13-vim.git'
+app_name='vim'
+app_dir="$HOME/Dropbox/vim"
+[ -z "$git_uri" ] && git_uri='https://github.com/cloud171/vim'
 git_branch='3.0'
 debug_mode='0'
 fork_maintainer='0'
-[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
+[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle"
 
 ############################  BASIC SETUP TOOLS
 msg() {
@@ -171,6 +171,3 @@ create_symlinks "Setting up vim symlinks"
 clone_vundle    "Successfully cloned vundle"
 
 setup_vundle    "Now updating/installing plugins using Vundle"
-
-msg             "\nThanks for installing $app_name."
-msg             "© `date +%Y` http://vim.spf13.com/"
