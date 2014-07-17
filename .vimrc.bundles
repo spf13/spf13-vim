@@ -60,15 +60,12 @@
         Bundle 'rking/ag.vim'
     " }
 
-    " To override all the included bundles, add the following to your
-    " .vimrc.bundles.local file:
-    "   let g:override_spf13_bundles = 1
-    
     " General {
             Bundle 'scrooloose/nerdtree'
             " CtrlP {
             Bundle 'kien/ctrlp.vim'
             Bundle 'JazzCore/ctrlp-cmatcher'
+            Bundle 'd11wtq/ctrlp_bdelete.vim'
             " }
             Bundle 'tacahiroy/ctrlp-funky'
             Bundle 'terryma/vim-multiple-cursors'
@@ -80,6 +77,11 @@
             Bundle 'spiiph/vim-space'
             Bundle 'justinmk/vim-gtfo'
             Bundle 'amiorin/vim-project'
+            Bundle 'MarcWeber/vim-addon-local-vimrc'
+            Bundle 'myusuf3/numbers.vim'
+
+           " Need to fix or roll own 
+            Bundle 'johnsyweb/vim-makeshift'
 
             "Bundle 'altercation/vim-colors-solarized'
             "Bundle 'mbbill/undotree'
@@ -100,6 +102,7 @@
             Bundle 'godlygeek/tabular'
             Bundle 'vim-scripts/ccase.vim'
             Bundle 'octol/vim-cpp-enhanced-highlight'
+            Bundle 'vim-scripts/gtags.vim'
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
             endif
