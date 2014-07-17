@@ -677,30 +677,21 @@
     if has('gui_running')
         set guioptions-=T           " remove the toolbar
         set lines=40                " 40 lines of text instead of 24,
-        try
-            "字体是否好看与字号有很大关系
-            set guifont=Consolas:h12  "font
-            "set guifont=Droid\ Sans\ Mono:h16  "font
-        catch
-            "do nothing
-        endtry
-        "macVim
-        if has('gui_macvim')
-            try
-                "enter full mode when start
-                set fu
-                set guifont=Monaco:h14
-            catch
-                "do nothing
-            endtry
-
-            "set transparency=5          " Make the window slightly transparent
-        endif
+        "字体是否好看与字号有很大关系
+        set guifont=Consolas:h12  "font
+        "set guifont=Droid\ Sans\ Mono:h16  "font
     else
         if &term == 'xterm' || &term == 'screen'
             set t_Co=256                 " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
         endif
         "set term=builtin_ansi       " Make arrow and other keys work
+    endif
+    "macVim
+    if has('gui_macvim')
+        "enter full mode when start
+        set fu
+        set guifont=Monaco:h14
+        "set transparency=5          " Make the window slightly transparent
     endif
 " }
 
