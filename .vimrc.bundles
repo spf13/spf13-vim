@@ -79,6 +79,8 @@
             Bundle 'amiorin/vim-project'
             Bundle 'MarcWeber/vim-addon-local-vimrc'
             Bundle 'myusuf3/numbers.vim'
+            Bundle 'tpope/vim-dispatch'
+            Bundle 'mhinz/vim-startify'
 
            " Need to fix or roll own 
             Bundle 'johnsyweb/vim-makeshift'

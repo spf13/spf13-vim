@@ -68,11 +68,7 @@
     " Most prefer to automatically switch to the current file directory when
     " a new buffer is opened; to prevent this behavior, add the following to
     " your .vimrc.before.local file:
-    "   let g:spf13_no_autochdir = 1
-    if !exists('g:spf13_no_autochdir')
-        autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-        " Always switch to the current file directory
-    endif
+    "autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
     "set autowrite                       " Automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
@@ -136,10 +132,14 @@
     if has("gui_running")
         colorscheme inkpot
         let g:airline_powerline_fonts = 1
-    else
+    elseif has("win32unix")
         colorscheme base16-tomorrow
         let g:airline_theme='dark'
         let g:airline_powerline_fonts = 0
+    else
+        colorscheme base16-tomorrow
+        let g:airline_theme='dark'
+        let g:airline_powerline_fonts = 1
     endif
     " }
 
@@ -210,18 +210,6 @@
     " .vimrc.before.local file:
     "   let g:spf13_keep_trailing_whitespace = 1
     autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml,perl autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
-    "autocmd FileType go autocmd BufWritePre <buffer> Fmt
-    autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd FileType haskell setlocal expandtab shiftwidth=2 softtabstop=2
-    " preceding line best in a plugin but here for now.
-
-    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-
-    " Workaround vim-commentary for Haskell
-    autocmd FileType haskell setlocal commentstring=--\ %s
-    " Workaround broken colour highlighting in Haskell
-    autocmd FileType haskell setlocal nospell
-
 " }
 
 " Key (re)Mappings {
@@ -455,6 +443,17 @@
             let g:ctrlp_working_path_mode = 'ra'
             nnoremap <silent> <D-t> :CtrlP<CR>
             nnoremap <silent> <D-r> :CtrlPMRU<CR>
+            map <Leader>a :CtrlPMixed<cr>
+            map <Leader>f :CtrlPBuffer<cr>
+            map <Leader>t :CtrlPBufTag<cr>
+
+            let g:ctrlp_mruf_relative = 1
+            let g:ctrlp_root_markers = ['tags']
+            let g:ctrlp_cmd = 'CtrlPMixed'
+            let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:50'
+            let g:ctrlp_max_files=0
+            let g:ctrlp_max_depth=40
+
             let g:ctrlp_custom_ignore = {
                 \ 'dir':  '\.git$\|\.hg$\|\.svn$',
                 \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
