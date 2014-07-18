@@ -86,6 +86,9 @@
             Bundle 'johnsyweb/vim-makeshift'
             Bundle 'nathanaelkane/vim-indent-guides'
 
+            "prints out 256 colors
+            Bundle 'guns/xterm-color-table.vim'
+
             "Bundle 'altercation/vim-colors-solarized'
             "Bundle 'mbbill/undotree'
             "Bundle 'vim-scripts/restore_view.vim'
