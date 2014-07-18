@@ -84,10 +84,10 @@
 
            " Need to fix or roll own 
             Bundle 'johnsyweb/vim-makeshift'
+            Bundle 'nathanaelkane/vim-indent-guides'
 
             "Bundle 'altercation/vim-colors-solarized'
             "Bundle 'mbbill/undotree'
-            "Bundle 'nathanaelkane/vim-indent-guides'
             "Bundle 'vim-scripts/restore_view.vim'
             "Bundle 'tpope/vim-abolish.git'
             "Bundle 'osyo-manga/vim-over'

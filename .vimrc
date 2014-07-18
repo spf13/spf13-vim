@@ -56,6 +56,7 @@
     "set mouse=a                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
+    set ff=unix                 " Set file type to unix always
 
     if has('clipboard')
         if has('unnamedplus')  " When possible use + register for copy-paste
@@ -138,7 +139,7 @@
         let g:airline_powerline_fonts = 0
     else
         colorscheme base16-tomorrow
-        let g:airline_theme='dark'
+        let g:airline_theme='tomorrow'
         let g:airline_powerline_fonts = 1
     endif
     " }
@@ -196,10 +197,10 @@
 
     set nowrap                      " Do not wrap long lines
     set autoindent                  " Indent at the same level of the previous line
-    set shiftwidth=4                " Use indents of 4 spaces
+    set shiftwidth=2                " Use indents of 4 spaces
     set expandtab                   " Tabs are spaces, not tabs
-    set tabstop=4                   " An indentation every four columns
-    set softtabstop=4               " Let backspace delete indent
+    set tabstop=2                   " An indentation every four columns
+    set softtabstop=2               " Let backspace delete indent
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
@@ -370,6 +371,7 @@
     " }
 
     " Ctags {
+        map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
         set tags=./tags;/,~/.vimtags
 
         " Make tags placed in .git/tags file available in all levels of a repository
@@ -441,8 +443,6 @@
     " ctrlp {
         if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
             let g:ctrlp_working_path_mode = 'ra'
-            nnoremap <silent> <D-t> :CtrlP<CR>
-            nnoremap <silent> <D-r> :CtrlPMRU<CR>
             map <Leader>a :CtrlPMixed<cr>
             map <Leader>f :CtrlPBuffer<cr>
             map <Leader>t :CtrlPBufTag<cr>
@@ -485,6 +485,14 @@
                 "funky
                 nnoremap <Leader>fu :CtrlPFunky<Cr>
             endif
+
+            if isdirectory(expand("~/.vim/bundle/ctrlp_bdelete.vim/"))
+                call ctrlp_bdelete#init()
+            endif
+
+"            if isdirectory(expand("~/.vim/bundle/ctrlp-cmatcher/"))
+"                let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+"            endif
         endif
     "}
 
@@ -898,9 +906,7 @@
             endif
         endif
     else
-        if &term == 'xterm' || &term == 'screen'
             set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
-        endif
         "set term=builtin_ansi       " Make arrow and other keys work
     endif
 
