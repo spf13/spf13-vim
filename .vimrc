@@ -133,10 +133,6 @@
     if has("gui_running")
         colorscheme inkpot
         let g:airline_powerline_fonts = 1
-    elseif has("win32unix")
-        colorscheme base16-tomorrow
-        let g:airline_theme='dark'
-        let g:airline_powerline_fonts = 0
     else
         colorscheme base16-tomorrow
         let g:airline_theme='tomorrow'
@@ -246,22 +242,22 @@
         endfunction
 
         " Map g* keys in Normal, Operator-pending, and Visual+select
-        noremap $ :call WrapRelativeMotion("$")<CR>
-        noremap <End> :call WrapRelativeMotion("$")<CR>
-        noremap 0 :call WrapRelativeMotion("0")<CR>
-        noremap <Home> :call WrapRelativeMotion("0")<CR>
-        noremap ^ :call WrapRelativeMotion("^")<CR>
+        noremap $ :silent call WrapRelativeMotion("$")<CR>
+        noremap <End> :silent call WrapRelativeMotion("$")<CR>
+        noremap 0 :silent call WrapRelativeMotion("0")<CR>
+        noremap <Home> :silent call WrapRelativeMotion("0")<CR>
+        noremap ^ :silent call WrapRelativeMotion("^")<CR>
         " Overwrite the operator pending $/<End> mappings from above
         " to force inclusive motion with :execute normal!
-        onoremap $ v:call WrapRelativeMotion("$")<CR>
-        onoremap <End> v:call WrapRelativeMotion("$")<CR>
+        onoremap $ v:silent call WrapRelativeMotion("$")<CR>
+        onoremap <End> v:silent call WrapRelativeMotion("$")<CR>
         " Overwrite the Visual+select mode mappings from above
         " to ensure the correct vis_sel flag is passed to function
-        vnoremap $ :<C-U>call WrapRelativeMotion("$", 1)<CR>
-        vnoremap <End> :<C-U>call WrapRelativeMotion("$", 1)<CR>
-        vnoremap 0 :<C-U>call WrapRelativeMotion("0", 1)<CR>
-        vnoremap <Home> :<C-U>call WrapRelativeMotion("0", 1)<CR>
-        vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
+        vnoremap $ :<C-U>silent call WrapRelativeMotion("$", 1)<CR>
+        vnoremap <End> :<C-U>silent call WrapRelativeMotion("$", 1)<CR>
+        vnoremap 0 :<C-U>silent call WrapRelativeMotion("0", 1)<CR>
+        vnoremap <Home> :<C-U>silent call WrapRelativeMotion("0", 1)<CR>
+        vnoremap ^ :<C-U>silent call WrapRelativeMotion("^", 1)<CR>
 
     " Stupid shift key fixes
     if !exists('g:spf13_no_keyfixes')
@@ -853,8 +849,15 @@
     " indent_guides {
         if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
             let g:indent_guides_start_level = 2
-            let g:indent_guides_guide_size = 1
+            let g:indent_guides_guide_size = 2
             let g:indent_guides_enable_on_vim_startup = 1
+            " Configure indent colors for terminal vim only since GUI auto
+            " selects
+            if !has("gui_running")
+                let g:indent_guides_auto_colors = 0
+                autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=10
+                "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=11
+            endif
         endif
     " }
 
@@ -877,15 +880,16 @@
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/bundle/vim-airline/"))
-            if !exists('g:airline_theme')
-                let g:airline_theme = 'dark'
-            endif
-            if !exists('g:airline_powerline_fonts')
-                " Use the default set of separators with a few customizations
-                let g:airline_left_sep='›'  " Slightly fancier than '>'
-                let g:airline_right_sep='‹' " Slightly fancier than '<'
+            if has("gui_running")
+                let g:airline_powerline_fonts = 1
+            else
+                let g:airline_theme='tomorrow'
+                let g:airline_powerline_fonts = 1
             endif
         endif
+    " }
+    " startify {
+        let g:startify_session_persistence = 1
     " }
 
 " }
