@@ -221,6 +221,10 @@
     map <C-L> <C-W>l
     map <C-H> <C-W>h
 
+    "mappings to make new line w/o insert
+    nmap <S-Enter> O<ESC>
+    nmap <CR> o<ESC>
+    
     " Wrapped lines goes down/up to next row, rather than next line in file.
     noremap j gj
     noremap k gk
