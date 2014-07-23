@@ -58,7 +58,14 @@
         Bundle 'MarcWeber/vim-addon-mw-utils'
         Bundle 'tomtom/tlib_vim'
         Bundle 'rking/ag.vim'
+
     " }
+
+    " In your .vimrc.before.local file
+    " list only the plugin groups you will use
+    if !exists('g:spf13_bundle_groups')
+        let g:spf13_bundle_groups=['']
+    endif
 
     " General {
             Bundle 'scrooloose/nerdtree'
@@ -114,21 +121,28 @@
     " }
 
     " Snippets & AutoComplete {
-        "elseif count(g:spf13_bundle_groups, 'youcompleteme')
-        "    Bundle 'Valloric/YouCompleteMe'
-        "    Bundle 'SirVer/ultisnips'
-        "    Bundle 'honza/vim-snippets'
-        "elseif count(g:spf13_bundle_groups, 'neocomplcache')
-"            Bundle 'Shougo/neocomplcache'
-"            Bundle 'Shougo/neosnippet'
-"            Bundle 'Shougo/neosnippet-snippets'
-"            Bundle 'honza/vim-snippets'
-        "elseif count(g:spf13_bundle_groups, 'neocomplete')
-        "    Bundle 'Shougo/neocomplete.vim.git'
-        "    Bundle 'Shougo/neosnippet'
-        "    Bundle 'Shougo/neosnippet-snippets'
-        "    Bundle 'honza/vim-snippets'
-        "endif
+        if count(g:spf13_bundle_groups, 'snipmate')
+            Bundle 'garbas/vim-snipmate'
+            Bundle 'honza/vim-snippets'
+            " Source support_function.vim to support vim-snippets.
+            if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
+                source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
+            endif
+        elseif count(g:spf13_bundle_groups, 'youcompleteme')
+            Bundle 'Valloric/YouCompleteMe'
+            Bundle 'SirVer/ultisnips'
+            Bundle 'honza/vim-snippets'
+        elseif count(g:spf13_bundle_groups, 'neocomplcache')
+            Bundle 'Shougo/neocomplcache'
+            Bundle 'Shougo/neosnippet'
+            Bundle 'Shougo/neosnippet-snippets'
+            Bundle 'honza/vim-snippets'
+        elseif count(g:spf13_bundle_groups, 'neocomplete')
+            Bundle 'Shougo/neocomplete.vim.git'
+            Bundle 'Shougo/neosnippet'
+            Bundle 'Shougo/neosnippet-snippets'
+            Bundle 'honza/vim-snippets'
+        endif
     " }
 
     " Python {
