@@ -64,7 +64,7 @@
     " In your .vimrc.before.local file
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['']
+        let g:spf13_bundle_groups=['neocomplcache']
     endif
 
     " General {
