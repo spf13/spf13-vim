@@ -104,34 +104,32 @@ clone_vundle() {
 }
 
 create_symlinks() {
-    endpath="$app_dir"
-
-    if [ ! -d "$endpath/.vim/bundle" ]; then
-        mkdir -p "$endpath/.vim/bundle"
+    if [ ! -d "$app_dir/.vim/bundle" ]; then
+        mkdir -p "$app_dir/.vim/bundle"
     fi
 
-    lnif "$endpath/.vimrc"              "$HOME/.vimrc"
-    lnif "$endpath/.vimrc.bundles"      "$HOME/.vimrc.bundles"
-    lnif "$endpath/.vimrc.before"       "$HOME/.vimrc.before"
-    lnif "$endpath/.vim"                "$HOME/.vim"
+    lnif "$app_dir/.vimrc"              "$HOME/.vimrc"
+    lnif "$app_dir/.vimrc.bundles"      "$HOME/.vimrc.bundles"
+    lnif "$app_dir/.vimrc.before"       "$HOME/.vimrc.before"
+    lnif "$app_dir/.vim"                "$HOME/.vim"
 
     # Useful for fork maintainers
     touch  "$HOME/.vimrc.local"
 
-    if [ -e "$endpath/.vimrc.fork" ]; then
-        ln -sf "$endpath/.vimrc.fork" "$HOME/.vimrc.fork"
+    if [ -e "$app_dir/.vimrc.fork" ]; then
+        ln -sf "$app_dir/.vimrc.fork" "$HOME/.vimrc.fork"
     elif [ "$fork_maintainer" -eq '1' ]; then
         touch "$HOME/.vimrc.fork"
         touch "$HOME/.vimrc.bundles.fork"
         touch "$HOME/.vimrc.before.fork"
     fi
 
-    if [ -e "$endpath/.vimrc.bundles.fork" ]; then
-        ln -sf "$endpath/.vimrc.bundles.fork" "$HOME/.vimrc.bundles.fork"
+    if [ -e "$app_dir/.vimrc.bundles.fork" ]; then
+        ln -sf "$app_dir/.vimrc.bundles.fork" "$HOME/.vimrc.bundles.fork"
     fi
 
-    if [ -e "$endpath/.vimrc.before.fork" ]; then
-        ln -sf "$endpath/.vimrc.before.fork" "$HOME/.vimrc.before.fork"
+    if [ -e "$app_dir/.vimrc.before.fork" ]; then
+        ln -sf "$app_dir/.vimrc.before.fork" "$HOME/.vimrc.before.fork"
     fi
 
     ret="$?"
