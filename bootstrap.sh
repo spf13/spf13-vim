@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 ############################  SETUP PARAMETERS
 app_name='vim'
-app_dir="$HOME/Dropbox/vim"
+if [ -e "$HOME/Dropbox" ]; then
+  app_dir="$HOME/Dropbox/.vim_git"
+else
+  app_dir="$HOME/.vim_git"
+fi
 [ -z "$git_uri" ] && git_uri='https://github.com/cloud171/vim'
 git_branch='3.0'
 debug_mode='0'
