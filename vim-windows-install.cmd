@@ -1,7 +1,12 @@
-REM @if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
-@if not exist "%HOME%" @set HOME=%USERPROFILE%
+REM @if not exist "%HOME%" @set HOME=%USERPROFILE%
+@set HOME=%USERPROFILE%
 
-@set APP_DIR=%HOME%\Dropbox\vim
+IF EXIST "%HOME%\Dropbox\"
+  @set APP_DIR=%HOME%\Dropbox\.vim_git
+) ELSE (
+  @set APP_DIR=%HOME%\.vim_git
+)
+
 IF NOT EXIST "%APP_DIR%" (
   call git clone --recursive -b 3.0 https://github.com/cloud171/vim "%APP_DIR%"
 ) ELSE (

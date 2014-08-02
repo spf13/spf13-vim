@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 
-app_dir="$HOME/Dropbox/vim"
+if [ -e "$HOME/Dropbox" ]; then
+  app_dir="$HOME/Dropbox/.vim_git"
+else
+  app_dir="$HOME/.vim_git"
+fi
 
 warn() {
     echo "$1" >&2
