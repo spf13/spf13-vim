@@ -155,6 +155,7 @@
 
     " Misc {
             Bundle 'tpope/vim-markdown'
+            Bundle 'vimwiki/vimwiki'
             "Bundle 'spf13/vim-preview'
             "Bundle 'tpope/vim-cucumber'
             "Bundle 'quentindecock/vim-cucumber-align-pipes'

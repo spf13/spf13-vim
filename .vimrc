@@ -87,10 +87,7 @@
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
     " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-    " Restore cursor to file position in previous editing session
-    " To disable this, add the following to your .vimrc.before.local file:
-    "   let g:spf13_no_restore_cursor = 1
-    if !exists('g:spf13_no_restore_cursor')
+    " Restore cursor to file position in previous editing session {
         function! ResCur()
             if line("'\"") <= line("$")
                 normal! g`"
@@ -102,7 +99,7 @@
             autocmd!
             autocmd BufWinEnter * call ResCur()
         augroup END
-    endif
+    " }
 
     " Setting up the directories {
         set backup                  " Backups are nice ...
@@ -142,6 +139,7 @@
 
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
+    set guioptions=none
 
     set cursorline                  " Highlight current line
 
@@ -899,6 +897,9 @@
     " startify {
         "let g:startify_session_persistence = 1
     " }
+    " numbers {
+        let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree', 'ctrlp']
+    " }
 
 " }
 
@@ -908,15 +909,13 @@
     if has('gui_running')
         set guioptions-=T           " Remove the toolbar
         set lines=40                " 40 lines of text instead of 24
-        if !exists("g:spf13_no_big_font")
             if LINUX() && has("gui_running")
                 set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
             elseif OSX() && has("gui_running")
                 set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
             elseif WINDOWS() && has("gui_running")
-                set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
+              set guifont=Consolas:h10
             endif
-        endif
     else
             set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
         "set term=builtin_ansi       " Make arrow and other keys work
