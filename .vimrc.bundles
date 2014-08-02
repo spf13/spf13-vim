@@ -80,7 +80,7 @@
             Bundle 'bling/vim-airline'
             Bundle 'Lokaltog/vim-easymotion'
             Bundle 'flazz/vim-colorschemes'
-            Bundle 'chriskempson/base16-vim'
+            Bundle 'cloud171/base16-vim'
             Bundle 'spiiph/vim-space'
             Bundle 'justinmk/vim-gtfo'
             Bundle 'amiorin/vim-project'
