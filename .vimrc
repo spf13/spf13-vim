@@ -388,7 +388,6 @@
             \ 28 : '1. 收房租;'
             \}
 
-
     "}
 
     " FuDesign2008/backbone.vim {
