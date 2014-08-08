@@ -366,12 +366,9 @@
         let g:plan_file = '/Users/fuyg/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month. '.markdown'
         " regular task
         let g:plan_week_work = {
-            \ 1 : '1. 10:00 - 11:00 @2层灵芝 YNote Editor Weekly meeting;1. 17:00检查工作进度;',
-            \ 2 : '1. weekly report;1. 17:00检查工作进度;',
-            \ 3 : '1. 17:00检查工作进度;',
-            \ 4 : '1. 17:00检查工作进度;',
-            \ 5 : '1. 14:00 - 16:00 @2层甘草 webfront weekly meeting;1. 17:00检查工作进度;',
-            \ 6 : '1. 新技术学习实践;'
+            \ 1 : '1. 10:00 - 11:00 @2层灵芝 YNote Editor Weekly meeting;',
+            \ 2 : '1. weekly report;',
+            \ 5 : '1. 本周整理/整顿;1. 16:00 - 18:00 @2层朱砂 编辑器技术分享与交流;'
             \}
         let g:plan_week_personal = {
             \ 3 : '1. call 父母;',
@@ -379,14 +376,16 @@
             \ 7 : '1. 看望/call 父母;1. 锻炼身体;'
             \}
         let g:plan_month_work = {
-            \ 2 : '1. 确认考勤;',
-            \ 3 : '1. buy Programmer magazine;',
+            \ 2 : '1. 确认上月考勤;',
+            \ 3 : '1. 购买程序员;',
+            \ 6 : '1. 购买互联网周刊;',
             \ 15: '1. 查看有道云笔记的新闻, 浏览论坛;',
-            \ 27: '1. Sprint 总结, 计划;1. 反思工作方式, 编辑器, 云笔记;'
+            \ 21: '1. 购买互联网周刊;',
+            \ 27: '1. 本月整理/整顿;1. 下月计划;'
             \}
         let g:plan_month_personal = {
             \ 7 : '1. 交房租;1. 还房贷;',
-            \ 28 : '1. 收房租;1. 月度总结;1. 下月计划;'
+            \ 28 : '1. 收房租;'
             \}
 
 
@@ -678,8 +677,12 @@
         set guioptions-=T           " remove the toolbar
         set lines=40                " 40 lines of text instead of 24,
         "字体是否好看与字号有很大关系
-        set guifont=Consolas:h12  "font
-        "set guifont=Droid\ Sans\ Mono:h16  "font
+        try
+            set guifont=Consolas:h12  "font
+            "set guifont=Droid\ Sans\ Mono:h16  "font
+        catch
+            "do nothing
+        endtry
     else
         if &term == 'xterm' || &term == 'screen'
             set t_Co=256                 " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
