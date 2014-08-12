@@ -70,9 +70,9 @@
     " General {
             Bundle 'scrooloose/nerdtree'
             " CtrlP {
-            Bundle 'kien/ctrlp.vim'
-            Bundle 'JazzCore/ctrlp-cmatcher'
-            Bundle 'd11wtq/ctrlp_bdelete.vim'
+                Bundle 'kien/ctrlp.vim'
+                Bundle 'JazzCore/ctrlp-cmatcher'
+                Bundle 'd11wtq/ctrlp_bdelete.vim'
             " }
             Bundle 'tacahiroy/ctrlp-funky'
             Bundle 'terryma/vim-multiple-cursors'
@@ -88,6 +88,7 @@
             Bundle 'myusuf3/numbers.vim'
             Bundle 'tpope/vim-dispatch'
             Bundle 'mhinz/vim-startify'
+            Bundle 'terryma/vim-expand-region'
 
            " Need to fix or roll own 
             Bundle 'johnsyweb/vim-makeshift'
@@ -96,6 +97,7 @@
             "prints out 256 colors
             Bundle 'guns/xterm-color-table.vim'
 
+            Bundle 'christoomey/vim-tmux-navigator'
             "Bundle 'altercation/vim-colors-solarized'
             "Bundle 'mbbill/undotree'
             "Bundle 'vim-scripts/restore_view.vim'

@@ -322,7 +322,7 @@
 
     " Map <Leader>ff to display all lines with keyword under cursor
     " and ask which one to jump to
-    nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+    nmap <Leader>k [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
     " Easier horizontal scrolling
     map zl zL
@@ -896,6 +896,14 @@
     " }
     " startify {
         "let g:startify_session_persistence = 1
+        let g:startify_session_dir = '~/.vimlocal/session'
+        let g:startify_bookmarks = [ '~/.vimrc' ]
+        let g:startify_session_detection = 1
+        let g:startify_session_autoload = 1
+        let g:startify_change_to_dir = 1
+    " }
+    " vimwiki {
+        let g:vimwiki_list = [{'path':$HOME.'/.vim/vimwiki', 'path_html':$HOME.'/.vim/vimwiki_html/'}]
     " }
     " numbers {
         let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree', 'ctrlp']
@@ -943,10 +951,14 @@
         " your .vimrc.before.local file:
         "   let g:spf13_consolidated_directory = <full path to desired directory>
         "   eg: let g:spf13_consolidated_directory = $HOME . '/.vim/'
-        if exists('g:spf13_consolidated_directory')
-            let common_dir = g:spf13_consolidated_directory . prefix
-        else
-            let common_dir = parent . '/.' . prefix
+        "if exists('g:spf13_consolidated_directory')
+        "    let common_dir = g:spf13_consolidated_directory . prefix
+        "else
+        "    let common_dir = parent . '/.' . prefix
+        "endif
+        let common_dir = parent . '/.vimlocal/'
+        if !isdirectory(common_dir)
+            call mkdir(common_dir)
         endif
 
         for [dirname, settingname] in items(dir_list)
