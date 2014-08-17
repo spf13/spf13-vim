@@ -56,6 +56,17 @@ If you want to install [msysgit], [Curl] and [spf13-vim] individually, follow th
 
 ### Installing dependencies
 
+#### Install [Vim]
+
+After the installation of Vim you must add a new directory to your environment variables path to make it work with the script installation of spf13.
+
+Open Vim and write the following command, it will show the installed directory:
+
+    :echo $VIMRUNTIME
+    C:\Program Files (X86)\Vim\vim74
+
+Then you need to add it to your environment variable path. After that try execute `vim` within command prompt (press Win-R, type `cmd`, press Enter) and you’ll see the default vim page.
+
 #### Install [msysgit]
 
 After installation try running `git --version` within _command prompt_ (press Win-R,  type `cmd`, press Enter) to make sure all good:
