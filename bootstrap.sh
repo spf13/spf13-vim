@@ -40,6 +40,12 @@ program_exists() {
     fi
 }
 
+variable_set() {
+    if [ -z "$1" ]; then
+        error "You must have your HOME environmental variable set to continue."
+    fi
+}
+
 ############################ SETUP FUNCTIONS
 lnif() {
     if [ -e "$1" ]; then
@@ -157,6 +163,7 @@ setup_vundle() {
 }
 
 ############################ MAIN()
+variable_set "$HOME"
 program_exists "vim" "To install $app_name you first need to install Vim."
 
 do_backup   "Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d%S`" \
