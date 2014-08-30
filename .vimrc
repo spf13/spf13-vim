@@ -13,7 +13,9 @@
         else
             " use bash as the default shell for vim
             " @see http://dailyvim.tumblr.com/post/66708941289/fish
-            set shell=/bin/bash
+            "set shell=/bin/bash
+            "zsh is compatible with bash
+            set shell=/bin/zsh
         endif
     " }
 
