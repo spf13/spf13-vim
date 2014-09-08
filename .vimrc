@@ -727,7 +727,7 @@
                     smap <C-k> <Plug>(neosnippet_expand_or_jump)
                 endif
                 if exists('g:spf13_noninvasive_completion')
-                    iunmap <CR>
+                    inoremap <CR> <CR>
                     " <ESC> takes you out of insert mode
                     inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
                     " <CR> accepts first, then sends the <CR>
@@ -840,7 +840,7 @@
                 imap <C-k> <Plug>(neosnippet_expand_or_jump)
                 smap <C-k> <Plug>(neosnippet_expand_or_jump)
                 if exists('g:spf13_noninvasive_completion')
-                    iunmap <CR>
+                    inoremap <CR> <CR>
                     " <ESC> takes you out of insert mode
                     inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
                     " <CR> accepts first, then sends the <CR>
