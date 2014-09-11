@@ -129,7 +129,7 @@
                 Bundle 'FuDesign2008/plan.vim'
                 "Bundle 'FuDesign2008/translator.vim'
                 Bundle 'mattn/calendar-vim'
-                "Bundle 'kien/ctrlp.vim'
+                Bundle 'kien/ctrlp.vim'
             endif
 
             " ack
