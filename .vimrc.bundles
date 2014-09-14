@@ -277,7 +277,6 @@
             Bundle 'tpope/vim-cucumber'
             Bundle 'cespare/vim-toml'
             Bundle 'quentindecock/vim-cucumber-align-pipes'
-            Bundle 'Puppet-Syntax-Highlighting'
             Bundle 'saltstack/salt-vim'
         endif
     " }
