@@ -256,6 +256,12 @@
         endif
     " }
 
+    " Puppet {
+        if count(g:spf13_bundle_groups, 'puppet')
+            Bundle 'rodjek/vim-puppet'
+        endif
+    " }
+
     " Go Lang {
         if count(g:spf13_bundle_groups, 'go')
             "Bundle 'Blackrush/vim-gocode'
