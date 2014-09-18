@@ -196,7 +196,7 @@ needs to be set in your `.vimrc.bundles.fork` file.
 You can specify the default bundles for your fork using `.vimrc.before.fork` file. Here is how to create an example `.vimrc.before.fork` file 
 in a fork repo for the default bundles.
 ```bash
-    echo let g:spf13_bundle_groups=['general', 'programming', 'misc', 'youcompleteme'] >> .vimrc.before.fork
+    echo let g:spf13_bundle_groups=[\'general\', \'programming\', \'misc\', \'youcompleteme\'] >> .vimrc.before.fork
 ```
 Once you have this file in your repo, only the bundles you specified will be installed during the first installation of your fork.
 
