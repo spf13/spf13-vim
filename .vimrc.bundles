@@ -64,7 +64,7 @@
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'scrooloose/nerdtree'
             Bundle 'matchit.zip'
-            "Bundle 'Lokaltog/vim-powerline'
+            "Bundle 'Lokaltog/powerline'
             "Bundle 'Lokaltog/vim-easymotion'
             "NOTE: csapprox cause errors
             "Bundle 'godlygeek/csapprox'
@@ -87,8 +87,6 @@
             Bundle 'vim-scripts/IndentAnything'
             "Bundle 'FuDesign2008/WebSearch.vim'
 
-            "Bundle 'FuDesign2008/AutoClose.vim'
-            "use vim-smartinput instead of AutoClose.vim
             Bundle 'kana/vim-smartinput'
 
             Bundle 'FuDesign2008/OpenUrl.vim'
@@ -124,7 +122,6 @@
                 " @see https://github.com/Valloric/YouCompleteMe/issues/84
                 "
                 Bundle 'Valloric/YouCompleteMe'
-                "Bundle 'FuDesign2008/YouCompleteMe'
 
                 Bundle 'FuDesign2008/plan.vim'
                 "Bundle 'FuDesign2008/translator.vim'
@@ -152,8 +149,6 @@
             Bundle 'therubymug/vim-pyte'
             Bundle 'vim-scripts/summerfruit.vim'
             "Bundle 'vim-scripts/autumnleaf_modified.vim'
-            "Bundle 'FuDesign2008/ironman.vim'
-            "Bundle 'FuDesign2008/proton.vim'
             "Bundle 'vim-scripts/mayansmoke'
 
             "dark color schemes
@@ -183,6 +178,7 @@
             "Bundle 'mattn/webapi-vim'
             "Bundle 'mattn/gist-vim'
             Bundle 'scrooloose/nerdcommenter'
+            Bundle 'dimasg/vim-mark'
 
             "@see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
             Bundle 'godlygeek/tabular'
@@ -242,6 +238,7 @@
         if count(g:spf13_bundle_groups, 'css')
             Bundle 'groenewege/vim-less'
             Bundle 'hail2u/vim-css3-syntax'
+            Bundle 'skammer/vim-css-color'
         endif
 
     " scala
