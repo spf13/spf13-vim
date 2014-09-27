@@ -89,7 +89,8 @@
             Bundle 'vim-scripts/IndentAnything'
             "Bundle 'FuDesign2008/WebSearch.vim'
 
-            Bundle 'kana/vim-smartinput'
+            "Bundle 'kana/vim-smartinput'
+            Bundle 'Raimondi/delimitMate'
 
             Bundle 'FuDesign2008/OpenUrl.vim'
             Bundle 'FuDesign2008/ToggleNumber.vim'
