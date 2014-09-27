@@ -240,7 +240,7 @@
     nnoremap gq gqgq
 
     "clear search hilight
-    noremap <silent><Leader>/ :nohls<CR>
+    "noremap <silent><Leader>/ :nohls<CR>
 
     " ctrl + [ remember-able back for tags
     nnoremap <C-\[> <C-T>

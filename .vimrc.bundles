@@ -64,6 +64,8 @@
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'scrooloose/nerdtree'
             Bundle 'matchit.zip'
+            " airline is lightweight
+            Bundle 'bling/vim-airline'
             "Bundle 'Lokaltog/powerline'
             "Bundle 'Lokaltog/vim-easymotion'
             "NOTE: csapprox cause errors
