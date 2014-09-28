@@ -206,9 +206,11 @@
             "Bundle 'garbas/vim-snipmate'
             "Bundle 'honza/vim-snippets'
 
-            " ultisnips is better
-            "YCM can integeting with ultisnips
-            Bundle 'FuDesign2008/ultisnips'
+            if !g:is_win
+                " ultisnips is better
+                "YCM can integeting with ultisnips
+                Bundle 'FuDesign2008/ultisnips'
+            endif
 
         endif
 
