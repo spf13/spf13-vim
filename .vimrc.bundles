@@ -273,7 +273,6 @@
 
     " Document
         if count(g:spf13_bundle_groups, 'document')
-            Bundle 'tpope/vim-markdown'
             Bundle 'FuDesign2008/MarkdownViewer.vim'
             Bundle 'FuDesign2008/mkdInput.vim'
             "Bundle 'vim-scripts/Figlet.vim'

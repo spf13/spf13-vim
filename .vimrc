@@ -75,6 +75,7 @@
     set nospell
     " Git commits, Subversion commits.
     autocmd FileType gitcommit,svn setlocal spell
+    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     "autocmd FileType text,wiki,markdown,mkd setlocal spell
     "set hidden                      " allow buffer switching without saving
 
