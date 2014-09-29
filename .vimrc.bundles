@@ -170,6 +170,7 @@
             Bundle 'jonathanfilip/vim-lucius'
             "Bundle 'vim-scripts/peaksea'
             "Bundle 'altercation/vim-colors-solarized'
+            Bundle 'reedes/vim-colors-pencil'
             Bundle 'FuDesign2008/GoodColors.vim'
 
         endif
