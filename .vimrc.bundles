@@ -170,7 +170,7 @@
             Bundle 'jonathanfilip/vim-lucius'
             "Bundle 'vim-scripts/peaksea'
             "Bundle 'altercation/vim-colors-solarized'
-            Bundle 'reedes/vim-colors-pencil'
+            "Bundle 'reedes/vim-colors-pencil'
             Bundle 'FuDesign2008/GoodColors.vim'
 
         endif
@@ -274,8 +274,8 @@
 
     " Document
         if count(g:spf13_bundle_groups, 'document')
-            Bundle 'junegunn/goyo.vim'
-            Bundle 'amix/vim-zenroom2'
+            "Bundle 'junegunn/goyo.vim'
+            "Bundle 'amix/vim-zenroom2'
             Bundle 'FuDesign2008/MarkdownViewer.vim'
             Bundle 'FuDesign2008/mkdInput.vim'
             "Bundle 'vim-scripts/Figlet.vim'

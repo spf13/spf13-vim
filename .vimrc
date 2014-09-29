@@ -441,7 +441,6 @@
                         \ 'codeschool',
                         \ 'jellybeans',
                         \ 'molokai',
-                        \ 'pencil',
                         \ 'lucius']
     " }
 
