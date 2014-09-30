@@ -107,7 +107,6 @@
 
             "Bundle 'kana/vim-smartinput'
             Bundle 'Raimondi/delimitMate'
-            Bundle 'vim-scripts/ShowMarks'
 
             Bundle 'FuDesign2008/OpenUrl.vim'
             Bundle 'FuDesign2008/ToggleNumber.vim'
