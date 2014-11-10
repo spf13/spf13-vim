@@ -367,21 +367,20 @@
         let g:plan_file = '/Users/fuyg/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month. '.markdown'
         " regular task
         let g:plan_week_work = {
-            \ 1 : '1. 10:00 - 11:00 @2层灵芝 YNote Editor Weekly meeting;',
+            \ 1 : '1. 10:00 - 11:00 @8层珍珠 YNote Editor Weekly meeting;',
             \ 2 : '1. weekly report;',
-            \ 5 : '1. 本周整理/整顿;1. 16:00 - 18:00 @2层朱砂 编辑器技术分享与交流;'
+            \ 5 : '1. 16:00 - 18:00 @2层朱砂 编辑器技术分享与交流;',
+            \ 6 : '1. 本周整理/整顿;1. 下周计划;'
             \}
         let g:plan_week_personal = {
+            \ 0 : '1. 看望/call 父母;1. 锻炼身体;',
             \ 3 : '1. call 父母;',
-            \ 4 : '1. 20:30 ~ 火影;',
-            \ 7 : '1. 看望/call 父母;1. 锻炼身体;'
+            \ 4 : '1. 20:30 ~ 火影;'
             \}
         let g:plan_month_work = {
             \ 2 : '1. 确认上月考勤;',
             \ 3 : '1. 购买程序员;',
-            \ 6 : '1. 购买互联网周刊;',
             \ 15: '1. 查看有道云笔记的新闻, 浏览论坛;',
-            \ 21: '1. 购买互联网周刊;',
             \ 27: '1. 本月整理/整顿;1. 下月计划;'
             \}
         let g:plan_month_personal = {
