@@ -692,7 +692,8 @@
     if has('gui_macvim')
         "enter full mode when start
         set fu
-        set guifont=Monaco:h14
+        "set guifont=Monaco:h12
+        set guifont=Menlo:h14
         "set transparency=5          " Make the window slightly transparent
     endif
 " }
