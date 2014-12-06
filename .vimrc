@@ -767,8 +767,8 @@
                         endif
                     endfunction
 
-                    " <CR> close popup and save indent or expand snippet 
-                    imap <expr> <CR> CleverCr() 
+                    " <CR> close popup and save indent or expand snippet
+                    imap <expr> <CR> CleverCr()
                     " <C-h>, <BS>: close popup and delete backword char.
                     inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
                     inoremap <expr><C-y> neocomplete#smart_close_popup()
@@ -874,7 +874,7 @@
                         endif
                     endfunction
 
-                    " <CR> close popup and save indent or expand snippet 
+                    " <CR> close popup and save indent or expand snippet
                     imap <expr> <CR> CleverCr()
 
                     " <CR>: close popup
