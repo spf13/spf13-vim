@@ -50,7 +50,7 @@ The quickest option to install all three dependencies ([Git], [Curl], [Vim] and 
     cinst ctags
     cinst spf13.vim
 
-_Note: The spf13.vim package will install Vim also! _
+_Note: The spf13.vim package will install Vim also!_
 
 If you want to install [msysgit], [Curl] and [spf13-vim] individually, follow the directions below.
 
