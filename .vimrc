@@ -157,7 +157,7 @@
 
 " Vim UI {
 
-    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+    if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
         let g:solarized_contrast="normal"
@@ -187,7 +187,9 @@
         " Broken down into easily includeable segments
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
-        set statusline+=%{fugitive#statusline()} " Git Hotness
+        if !exists('g:override_spf13_bundles')
+            set statusline+=%{fugitive#statusline()} " Git Hotness
+        endif
         set statusline+=\ [%{&ff}/%Y]            " Filetype
         set statusline+=\ [%{getcwd()}]          " Current dir
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
