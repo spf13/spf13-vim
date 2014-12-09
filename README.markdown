@@ -56,9 +56,9 @@ If you have a bash-compatible shell you can run the script directly:
 On Windows and \*nix [Git] and [Curl] are required. Also, if you haven't done so already, you'll need to install [Vim].  
 The quickest option to install all three dependencies ([Git], [Curl], [Vim] and [spf13-vim]) is via [Chocolatey] NuGet. After installing [Chocolatey], execute the following commands on the _command prompt_:
 
-    choco install spf13-vim
+    C:\> choco install spf13-vim
 
-_Note: The spf13.vim package will install Vim also!_
+_Note: The [spf13-vim package] will install Vim also!_
 
 If you want to install [msysgit], [Curl] and [spf13-vim] individually, follow the directions below.
 
