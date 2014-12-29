@@ -359,12 +359,24 @@
     " }
 
     " FuDesign2008/MPlan.vim {
+    "
         let cur_year = strftime('%Y')
         "01-12
         let cur_month = strftime('%m')
         let cur_month = cur_year . '-' . cur_month
-        "let g:plan_file = '/Users/fuyg/Dropbox/plan/2013/2013-04/2013-04.markdown'
-        let g:plan_file = '/Users/fuyg/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month. '.markdown'
+
+        "
+        "  ~/Dropbox/plan/2013/2013-04/2013-04.*
+        "  the plan file may has different file extension
+        "
+        let plan_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month . '.*'
+        let fileList = glob(plan_file_pattern, 0, 1)
+        let plan_file_path = get(fileList, 0, '')
+
+        if strlen(plan_file_path) > 0
+            let g:plan_file = plan_file_path
+        endif
+
         " regular task
         let g:plan_week_work = {
             \ 1 : '1. 10:00 - 11:00 @8层珍珠 YNote Editor Weekly meeting;',
