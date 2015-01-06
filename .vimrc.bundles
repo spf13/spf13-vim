@@ -221,12 +221,17 @@
     " Snippets
         if count(g:spf13_bundle_groups, 'snip')
             "Bundle 'garbas/vim-snipmate'
-            "Bundle 'honza/vim-snippets'
 
             if !g:is_win
                 " ultisnips is better
                 "YCM can integeting with ultisnips
-                Bundle 'FuDesign2008/ultisnips'
+                "snippets engine
+                Bundle 'SirVer/ultisnips'
+
+                "snippets
+                Bundle 'honza/vim-snippets'
+                Bundle 'chrisgillis/vim-bootstrap3-snippets'
+                Bundle 'FuDesign2008/fu-snippets'
             endif
 
         endif
