@@ -156,6 +156,8 @@
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
             Bundle 'godlygeek/tabular'
+            " Handle project directory
+            Bundle 'amiorin/vim-project'
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
             endif
@@ -244,6 +246,8 @@
             Bundle 'hail2u/vim-css3-syntax'
             Bundle 'gorodinskiy/vim-coloresque'
             Bundle 'tpope/vim-haml'
+            " To have everytime the position of the close tag
+            Bundle 'Valloric/MatchTagAlways'
         endif
     " }
 
@@ -266,6 +270,12 @@
         if count(g:spf13_bundle_groups, 'go')
             "Bundle 'Blackrush/vim-gocode'
             Bundle 'fatih/vim-go'
+        endif
+    " }
+    
+    " QML {
+        if count(g:spf13_bundle_groups, 'qml')
+            Bundle 'peterhoeg/vim-qml'
         endif
     " }
 
