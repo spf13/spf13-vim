@@ -247,7 +247,10 @@
             Bundle 'gorodinskiy/vim-coloresque'
             Bundle 'tpope/vim-haml'
             " To have everytime the position of the close tag
-            Bundle 'Valloric/MatchTagAlways'
+            " With Python Deps
+            " Bundle 'Valloric/MatchTagAlways'
+            " Without Python Deps
+            Bundle 'gregsexton/MatchTag'
         endif
     " }
 
