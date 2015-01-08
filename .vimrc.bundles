@@ -246,11 +246,14 @@
             Bundle 'hail2u/vim-css3-syntax'
             Bundle 'gorodinskiy/vim-coloresque'
             Bundle 'tpope/vim-haml'
-            " To have everytime the position of the close tag
+            " Always highlight HTML/XML tags
+            if has('python')
             " With Python Deps
-            " Bundle 'Valloric/MatchTagAlways'
+            Bundle 'Valloric/MatchTagAlways'
+            else
             " Without Python Deps
             Bundle 'gregsexton/MatchTag'
+            endif
         endif
     " }
 
