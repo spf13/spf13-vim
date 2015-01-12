@@ -457,6 +457,8 @@
                         \ 'jellybeans',
                         \ 'molokai',
                         \ 'lucius']
+        let g:random_color_start = 0
+        colo pyte
     " }
 
 
