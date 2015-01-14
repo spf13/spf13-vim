@@ -158,6 +158,8 @@
             Bundle 'godlygeek/tabular'
             " Handle project directory
             Bundle 'amiorin/vim-project'
+            " Handle todo marks
+            Bundle 'vitalk/vim-simple-todo'
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
             endif
@@ -248,12 +250,14 @@
             Bundle 'tpope/vim-haml'
             " Always highlight HTML/XML tags
             if has('python')
-            " With Python Deps
-            Bundle 'Valloric/MatchTagAlways'
+                " With Python Deps
+                Bundle 'Valloric/MatchTagAlways'
             else
-            " Without Python Deps
-            Bundle 'gregsexton/MatchTag'
+                " Without Python Deps
+                Bundle 'gregsexton/MatchTag'
             endif
+            " Speed HTML page creation
+            Bundle 'mattn/emmet-vim'
         endif
     " }
 
@@ -302,6 +306,12 @@
             Bundle 'cespare/vim-toml'
             Bundle 'quentindecock/vim-cucumber-align-pipes'
             Bundle 'saltstack/salt-vim'
+        endif
+    " }
+    
+    " Datatypes {
+        if count(g:spf13_bundle_groups, 'datatypes')
+            Bundle 'chrisbra/csv.vim'
         endif
     " }
 
