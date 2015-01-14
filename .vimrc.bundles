@@ -106,7 +106,10 @@
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-repeat'
-            Bundle 'spf13/vim-autoclose'
+            " Substitute this
+            " Bundle 'spf13/vim-autoclose'
+            " With this, because more powerfull
+            Bundle 'jiangmiao/auto-pairs'
             Bundle 'ctrlpvim/ctrlp.vim'
             Bundle 'tacahiroy/ctrlp-funky'
             Bundle 'kristijanhusak/vim-multiple-cursors'
