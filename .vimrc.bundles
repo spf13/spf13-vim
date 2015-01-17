@@ -122,7 +122,10 @@
             else
                 Bundle 'bling/vim-airline'
             endif
-            Bundle 'bling/vim-bufferline'
+            " Replace this
+            "Bundle 'bling/vim-bufferline'
+            " with bufexplorer
+            Bundle 'jlanzarotta/bufexplorer'
             Bundle 'Lokaltog/vim-easymotion'
             Bundle 'jistr/vim-nerdtree-tabs'
             Bundle 'flazz/vim-colorschemes'
@@ -166,6 +169,8 @@
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
             endif
+            " Faster visual selection with + and _
+            Bundle 'terryma/vim-expand-region'
         endif
     " }
 
@@ -259,7 +264,7 @@
                 " Without Python Deps
                 Bundle 'gregsexton/MatchTag'
             endif
-            " Speed HTML page creation
+            " Faster HTML page creation
             Bundle 'mattn/emmet-vim'
         endif
     " }

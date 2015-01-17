@@ -1007,7 +1007,18 @@
                 let g:airline_left_sep='›'  " Slightly fancier than '>'
                 let g:airline_right_sep='‹' " Slightly fancier than '<'
             endif
+            " Enable tabline with buffers (current highlighted)
+            let g:airline#extensions#tabline#enabled = 1
         endif
+    " }
+    
+    " BufExplorer {
+        "let g:bufExplorerDetailedHelp=1      " Show detailed help.
+        let g:bufExplorerSortBy='name'       " Sort by the buffer's name.
+        let g:bufExplorerSplitBelow=1        " Split new window below current.
+        let g:bufExplorerSplitRight=1        " Split right.
+        let g:bufExplorerShowRelativePath=1  " Show relative paths.
+        "let g:bufExplorerFindActive=1        " Go to active window.
     " }
 
 " }
