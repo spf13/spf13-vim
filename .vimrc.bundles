@@ -320,6 +320,7 @@
         if count(g:spf13_bundle_groups, 'misc')
             Bundle 'wting/rust.vim'
             Bundle 'tpope/vim-markdown'
+            Bundle 'nelstrom/vim-markdown-folding'
             Bundle 'spf13/vim-preview'
             Bundle 'tpope/vim-cucumber'
             Bundle 'cespare/vim-toml'
