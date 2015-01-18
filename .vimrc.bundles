@@ -110,8 +110,8 @@
             " Bundle 'spf13/vim-autoclose'
             " With this, because more powerfull
             Bundle 'jiangmiao/auto-pairs'
-            Bundle 'ctrlpvim/ctrlp.vim'
-            Bundle 'tacahiroy/ctrlp-funky'
+            "Bundle 'ctrlpvim/ctrlp.vim'
+            "Bundle 'tacahiroy/ctrlp-funky'
             Bundle 'kristijanhusak/vim-multiple-cursors'
             Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
@@ -140,6 +140,8 @@
             Bundle 'kana/vim-textobj-user'
             Bundle 'kana/vim-textobj-indent'
             Bundle 'gcmt/wildfire.vim'
+            Bundle 'Shougo/vimproc'
+            Bundle 'Shougo/unite.vim'
         endif
     " }
 
@@ -203,6 +205,12 @@
             Bundle 'spf13/PIV'
             Bundle 'arnaud-lb/vim-php-namespace'
             Bundle 'beyondwords/vim-twig'
+            Bundle 'm2mdas/phpcomplete-extended'
+
+            if count(g:spf13_bundle_groups, 'laravel')
+                Bundle 'xsbeats/vim-blade'
+                Bundle 'm2mdas/phpcomplete-extended-laravel'
+            endif
         endif
     " }
 
@@ -245,7 +253,6 @@
             Bundle 'eagletmt/ghcmod-vim'
             Bundle 'adinapoli/cumino'
             Bundle 'bitc/vim-hdevtools'
-            Bundle 'Shougo/vimproc'
         endif
     " }
 

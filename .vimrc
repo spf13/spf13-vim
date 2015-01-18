@@ -577,43 +577,65 @@
     " }
 
     " ctrlp {
-        if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
-            let g:ctrlp_working_path_mode = 'ra'
-            nnoremap <silent> <D-t> :CtrlP<CR>
-            nnoremap <silent> <D-r> :CtrlPMRU<CR>
-            let g:ctrlp_custom_ignore = {
-                \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-                \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+        "if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
+            "let g:ctrlp_working_path_mode = 'ra'
+            "nnoremap <silent> <D-t> :CtrlP<CR>
+            "nnoremap <silent> <D-r> :CtrlPMRU<CR>
+            "let g:ctrlp_custom_ignore = {
+                "\ 'dir':  '\.git$\|\.hg$\|\.svn$',
+                "\ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
-            " On Windows use "dir" as fallback command.
-            if WINDOWS()
-                let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
-            elseif executable('ag')
-                let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
-            elseif executable('ack-grep')
-                let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
-            elseif executable('ack')
-                let s:ctrlp_fallback = 'ack %s --nocolor -f'
-            else
-                let s:ctrlp_fallback = 'find %s -type f'
-            endif
-            let g:ctrlp_user_command = {
-                \ 'types': {
-                    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-                \ },
-                \ 'fallback': s:ctrlp_fallback
-            \ }
+            "" On Windows use "dir" as fallback command.
+            "if WINDOWS()
+                "let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
+            "elseif executable('ag')
+                "let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+            "elseif executable('ack-grep')
+                "let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
+            "elseif executable('ack')
+                "let s:ctrlp_fallback = 'ack %s --nocolor -f'
+            "else
+                "let s:ctrlp_fallback = 'find %s -type f'
+            "endif
+            "let g:ctrlp_user_command = {
+                "\ 'types': {
+                    "\ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+                    "\ 2: ['.hg', 'hg --cwd %s locate -I .'],
+                "\ },
+                "\ 'fallback': s:ctrlp_fallback
+            "\ }
 
-            if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
-                " CtrlP extensions
-                let g:ctrlp_extensions = ['funky']
+            "if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
+                "" CtrlP extensions
+                "let g:ctrlp_extensions = ['funky']
 
-                "funky
-                nnoremap <Leader>fu :CtrlPFunky<Cr>
-            endif
-        endif
+                ""funky
+                "nnoremap <Leader>fu :CtrlPFunky<Cr>
+            "endif
+        "endif
     "}
+    "
+    " Unite {
+
+        " Open Unite in insert mode
+        nnoremap <leader>f :<C-u>Unite -start-insert file<CR>
+        nnoremap <leader>r :<C-u>Unite -start-insert file_rec/async:!<CR>
+
+        " For ack.
+        if executable('ack-grep')
+             let g:unite_source_grep_command = 'ack-grep'
+             let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
+             let g:unite_source_grep_recursive_opt = ''
+        endif
+
+        " Like ctrlp.vim settings.
+        call unite#custom#profile('default', 'context', {
+        \   'start_insert': 1,
+        \   'winheight': 10,
+        \   'direction': 'botright',
+        \ })
+
+    " }
 
     " TagBar {
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
