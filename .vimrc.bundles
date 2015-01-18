@@ -149,6 +149,7 @@
             Bundle 'reedes/vim-textobj-sentence'
             Bundle 'reedes/vim-textobj-quote'
             Bundle 'reedes/vim-wordy'
+            Bundle 'reedes/vim-pencil'
         endif
     " }
 
@@ -184,7 +185,8 @@
             endif
         elseif count(g:spf13_bundle_groups, 'youcompleteme')
             Bundle 'Valloric/YouCompleteMe'
-            Bundle 'SirVer/ultisnips'
+            " Useless?? ultisnips comes with vim-snippets
+            " Bundle 'SirVer/ultisnips'
             Bundle 'honza/vim-snippets'
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
             Bundle 'Shougo/neocomplcache'

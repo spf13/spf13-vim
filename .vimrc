@@ -47,17 +47,14 @@
         set nocompatible        " Must be first line
         if !WINDOWS()
             set shell=/bin/sh
+        else
+            " Windows Compatible {
+                " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+                " across (heterogeneous) systems easier.
+                set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+            " }
         endif
     " }
-
-    " Windows Compatible {
-        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
-        if WINDOWS()
-          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-        endif
-    " }
-
 " }
 
 " Use before config if available {
@@ -161,7 +158,7 @@
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
         let g:solarized_contrast="normal"
-        let g:solarized_visibility="normal"
+        let g:solarized_visibility="high"
         color solarized             " Load a colorscheme
     endif
 
@@ -503,8 +500,8 @@
 
     " AutoCloseTag {
         " Make it so AutoCloseTag works for xml and xhtml files as well
-        au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-        nmap <Leader>ac <Plug>ToggleAutoCloseMappings
+        "au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+        "nmap <Leader>ac <Plug>ToggleAutoCloseMappings
     " }
 
     " SnipMate {
@@ -676,6 +673,7 @@
             autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+            autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
             " Haskell post write lint and check with ghcmod
@@ -1015,8 +1013,8 @@
     " BufExplorer {
         "let g:bufExplorerDetailedHelp=1      " Show detailed help.
         let g:bufExplorerSortBy='name'       " Sort by the buffer's name.
-        let g:bufExplorerSplitBelow=1        " Split new window below current.
-        let g:bufExplorerSplitRight=1        " Split right.
+        "let g:bufExplorerSplitBelow=1        " Split new window below current.
+        "let g:bufExplorerSplitRight=1        " Split right.
         let g:bufExplorerShowRelativePath=1  " Show relative paths.
         "let g:bufExplorerFindActive=1        " Go to active window.
     " }
