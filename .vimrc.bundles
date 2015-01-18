@@ -185,8 +185,7 @@
             endif
         elseif count(g:spf13_bundle_groups, 'youcompleteme')
             Bundle 'Valloric/YouCompleteMe'
-            " Useless?? ultisnips comes with vim-snippets
-            " Bundle 'SirVer/ultisnips'
+            Bundle 'SirVer/ultisnips'
             Bundle 'honza/vim-snippets'
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
             Bundle 'Shougo/neocomplcache'
