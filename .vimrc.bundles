@@ -140,7 +140,6 @@
             Bundle 'kana/vim-textobj-user'
             Bundle 'kana/vim-textobj-indent'
             Bundle 'gcmt/wildfire.vim'
-            Bundle 'Shougo/vimproc'
         endif
     " }
 
@@ -204,7 +203,6 @@
             Bundle 'spf13/PIV'
             Bundle 'arnaud-lb/vim-php-namespace'
             Bundle 'beyondwords/vim-twig'
-            Bundle 'm2mdas/phpcomplete-extended'
         endif
     " }
 
@@ -247,6 +245,7 @@
             Bundle 'eagletmt/ghcmod-vim'
             Bundle 'adinapoli/cumino'
             Bundle 'bitc/vim-hdevtools'
+            Bundle 'Shougo/vimproc'
         endif
     " }
 
