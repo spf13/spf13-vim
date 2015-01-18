@@ -211,6 +211,10 @@
                 Bundle 'xsbeats/vim-blade'
                 Bundle 'm2mdas/phpcomplete-extended-laravel'
             endif
+
+            if count(g:spf13_bundle_groups, 'symfony')
+                Bundle 'm2mdas/phpcomplete-extended-symfony'
+            endif
         endif
     " }
 
