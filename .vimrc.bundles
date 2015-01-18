@@ -140,6 +140,7 @@
             Bundle 'kana/vim-textobj-user'
             Bundle 'kana/vim-textobj-indent'
             Bundle 'gcmt/wildfire.vim'
+            Bundle 'Shougo/vimproc'
         endif
     " }
 
@@ -170,8 +171,6 @@
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
             endif
-            " Faster visual selection with + and _
-            Bundle 'terryma/vim-expand-region'
         endif
     " }
 
@@ -205,6 +204,7 @@
             Bundle 'spf13/PIV'
             Bundle 'arnaud-lb/vim-php-namespace'
             Bundle 'beyondwords/vim-twig'
+            Bundle 'm2mdas/phpcomplete-extended'
         endif
     " }
 
@@ -245,7 +245,6 @@
             Bundle 'lukerandall/haskellmode-vim'
             Bundle 'eagletmt/neco-ghc'
             Bundle 'eagletmt/ghcmod-vim'
-            Bundle 'Shougo/vimproc'
             Bundle 'adinapoli/cumino'
             Bundle 'bitc/vim-hdevtools'
         endif
