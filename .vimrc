@@ -372,10 +372,18 @@
         let plan_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month . '.*'
         let fileList = glob(plan_file_pattern, 0, 1)
         let plan_file_path = get(fileList, 0, '')
-
         if strlen(plan_file_path) > 0
-            let g:plan_file = plan_file_path
+            let g:p_plan_file = plan_file_path
         endif
+
+        let diary_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/diary.*'
+        let fileList = glob(diary_file_pattern, 0, 1)
+        let diary_file_path = get(fileList, 0, '')
+        if strlen(diary_file_path) > 0
+            let g:p_diary_file = diary_file_path
+        endif
+
+        let g:p_change_dir = 1
 
         " regular task
         let g:plan_week_work = {
