@@ -419,25 +419,34 @@
 
 " Plugins {
 
-    " TextObj Sentence {
+    " Writing {
         if count(g:spf13_bundle_groups, 'writing')
-            augroup textobj_sentence
-              autocmd!
-              autocmd FileType markdown call textobj#sentence#init()
-              autocmd FileType textile call textobj#sentence#init()
-              autocmd FileType text call textobj#sentence#init()
-            augroup END
-        endif
-    " }
+            " TextObj Sentence {
+                augroup textobj_sentence
+                  autocmd!
+                  autocmd FileType markdown call textobj#sentence#init()
+                  autocmd FileType textile call textobj#sentence#init()
+                  autocmd FileType text call textobj#sentence#init()
+                augroup END
+            " }
+            
+            " TextObj Quote {
+                augroup textobj_quote
+                    autocmd!
+                    autocmd FileType markdown call textobj#quote#init()
+                    autocmd FileType textile call textobj#quote#init()
+                    autocmd FileType text call textobj#quote#init({'educate': 0})
+                augroup END
+            " }
 
-    " TextObj Quote {
-        if count(g:spf13_bundle_groups, 'writing')
-            augroup textobj_quote
-                autocmd!
-                autocmd FileType markdown call textobj#quote#init()
-                autocmd FileType textile call textobj#quote#init()
-                autocmd FileType text call textobj#quote#init({'educate': 0})
-            augroup END
+            " Goyo {
+                nnoremap <silent> <leader>z :Goyo<cr>
+            " }
+
+            " Limelight {
+                autocmd User GoyoEnter Limelight
+                autocmd User GoyoLeave Limelight!
+            " }
         endif
     " }
 
@@ -1035,12 +1044,9 @@
     " }
     
     " BufExplorer {
-        "let g:bufExplorerDetailedHelp=1      " Show detailed help.
+        let g:bufExplorerDetailedHelp=1      " Show detailed help.
         let g:bufExplorerSortBy='name'       " Sort by the buffer's name.
-        "let g:bufExplorerSplitBelow=1        " Split new window below current.
-        "let g:bufExplorerSplitRight=1        " Split right.
         let g:bufExplorerShowRelativePath=1  " Show relative paths.
-        "let g:bufExplorerFindActive=1        " Go to active window.
     " }
 
 " }
