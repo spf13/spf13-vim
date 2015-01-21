@@ -303,10 +303,15 @@
         endif
     " }
     
-    " QML {
-        if count(g:spf13_bundle_groups, 'qml')
-            Bundle 'peterhoeg/vim-qml'
-        endif
+    " Qt {
+        if count(g:spf13_bundle_groups, 'qt')
+            Bundle 'FiloSpaTeam/vim-qrc'
+
+            " QML {
+                if count(g:spf13_bundle_groups, 'qml')
+                    Bundle 'peterhoeg/vim-qml'
+                endif
+            " }
     " }
 
     " Elixir {
