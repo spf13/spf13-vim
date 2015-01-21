@@ -152,7 +152,9 @@
             Bundle 'reedes/vim-textobj-quote'
             Bundle 'reedes/vim-wordy'
             Bundle 'reedes/vim-pencil'
-            Bundle 'amix/vim-zenroom'
+            Bundle 'junegunn/goyo.vim'
+            Bundle 'junegunn/limelight.vim'
+            Bundle 'amix/vim-zenroom2'
             Bundle 'vimoutliner/vimoutliner'
         endif
     " }
