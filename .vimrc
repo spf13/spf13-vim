@@ -442,9 +442,9 @@
             " Pencil {
                 augroup pencil
                   autocmd!
-                  autocmd FileType markdown,mkd call pencil#init()
-                                            \ | call litecorrect#init()
-                                            \ | call textobj#sentence#init()
+                  autocmd FileType markdown,mkd,md  call pencil#init()
+                                                \ | call litecorrect#init()
+                                                \ | call textobj#sentence#init()
                 augroup END
             " }
 
