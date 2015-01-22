@@ -441,6 +441,25 @@
 
             " Goyo {
                 nnoremap <silent> <leader>z :Goyo<cr>
+
+                function! s:goyo_enter()
+                  if has('gui_running')
+                    set fullscreen
+                    set background=dark
+                    set linespace=9
+                  elseif exists('$TMUX')
+                    silent !tmux set status off
+                  endif
+                endfunction
+
+                function! s:goyo_leave()
+                  if exists('$TMUX')
+                    silent !tmux set status on
+                  endif
+                endfunction
+
+                autocmd User GoyoEnter nested call <SID>goyo_enter()
+                autocmd User GoyoLeave nested call <SID>goyo_leave()
             " }
 
             " Limelight {
