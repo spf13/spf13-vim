@@ -438,6 +438,15 @@
                     autocmd FileType text call textobj#quote#init({'educate': 0})
                 augroup END
             " }
+            
+            " Pencil {
+                augroup pencil
+                  autocmd!
+                  autocmd FileType markdown,mkd call pencil#init()
+                                            \ | call litecorrect#init()
+                                            \ | call textobj#sentence#init()
+                augroup END
+            " }
 
             " Goyo {
                 nnoremap <silent> <leader>z :Goyo<cr>
