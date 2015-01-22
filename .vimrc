@@ -441,10 +441,11 @@
             
             " Pencil {
                 augroup pencil
-                  autocmd!
-                  autocmd FileType markdown,mkd,md  call pencil#init()
+                    autocmd!
+                    autocmd FileType markdown,mkd,md call pencil#init()
                                                 \ | call litecorrect#init()
                                                 \ | call textobj#sentence#init()
+                    let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
                 augroup END
             " }
 
