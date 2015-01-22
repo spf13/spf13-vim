@@ -463,9 +463,13 @@
                 endfunction
 
                 function! s:goyo_leave()
-                  if exists('$TMUX')
-                    silent !tmux set status on
-                  endif
+                    if has('gui_running')
+                        set nofullscreen
+                        set background=dark
+                        set linespace=0
+                    elseif exists('$TMUX')
+                        silent !tmux set status on
+                    endif
                 endfunction
 
                 autocmd User GoyoEnter nested call <SID>goyo_enter()
