@@ -156,6 +156,7 @@
             Bundle 'junegunn/limelight.vim'
             Bundle 'amix/vim-zenroom2'
             Bundle 'vimoutliner/vimoutliner'
+            Bundle 'Rykka/riv.vim'
         endif
     " }
 
