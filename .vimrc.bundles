@@ -211,7 +211,7 @@
             Bundle 'arnaud-lb/vim-php-namespace'
             Bundle 'beyondwords/vim-twig'
             Bundle 'm2mdas/phpcomplete-extended'
-
+            Bundle 'vim-php/vim-php-refactoring'
             if count(g:spf13_bundle_groups, 'laravel')
                 Bundle 'xsbeats/vim-blade'
                 Bundle 'm2mdas/phpcomplete-extended-laravel'
