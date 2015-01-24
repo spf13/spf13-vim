@@ -440,45 +440,51 @@
             " }
             
             " Pencil {
-                augroup pencil
-                    autocmd!
-                    autocmd FileType markdown,mkd,md call pencil#init()
-                                                \ | call litecorrect#init()
-                                                \ | call textobj#sentence#init()
-                    let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
-                augroup END
+                if isdirectory(expand("~/.vim/bundle/vim-pencil/"))
+                    augroup pencil
+                        autocmd!
+                        autocmd FileType markdown,mkd,md call pencil#init()
+                                                    \ | call litecorrect#init()
+                                                    \ | call textobj#sentence#init()
+                        let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+                    augroup END
+                endif
             " }
 
             " Goyo {
-                nnoremap <silent> <leader>z :Goyo<cr>
+                if isdirectory(expand("~/.vim/bundle/goyo.vim/"))
+                    nnoremap <silent> <leader>z :Goyo<cr>
 
-                function! s:goyo_enter()
-                  if has('gui_running')
-                    set fullscreen
-                    set background=dark
-                    set linespace=9
-                  elseif exists('$TMUX')
-                    silent !tmux set status off
-                  endif
-                endfunction
-
-                function! s:goyo_leave()
-                    if has('gui_running')
-                        set nofullscreen
+                    function! s:goyo_enter()
+                      if has('gui_running')
+                        set fullscreen
                         set background=dark
-                        set linespace=0
-                    elseif exists('$TMUX')
-                        silent !tmux set status on
-                    endif
-                endfunction
+                        set linespace=9
+                      elseif exists('$TMUX')
+                        silent !tmux set status off
+                      endif
+                    endfunction
 
-                autocmd User GoyoEnter nested call <SID>goyo_enter()
-                autocmd User GoyoLeave nested call <SID>goyo_leave()
+                    function! s:goyo_leave()
+                        if has('gui_running')
+                            set nofullscreen
+                            set background=dark
+                            set linespace=0
+                        elseif exists('$TMUX')
+                            silent !tmux set status on
+                        endif
+                    endfunction
+
+                    autocmd User GoyoEnter nested call <SID>goyo_enter()
+                    autocmd User GoyoLeave nested call <SID>goyo_leave()
+                endif
             " }
 
             " Limelight {
-                autocmd User GoyoEnter Limelight
-                autocmd User GoyoLeave Limelight!
+                if isdirectory(expand("~/.vim/bundle/limelight.vim/"))
+                    autocmd User GoyoEnter Limelight
+                    autocmd User GoyoLeave Limelight!
+                endif
             " }
         endif
     " }
@@ -587,6 +593,8 @@
             vmap <Leader>a,, :Tabularize /,\zs<CR>
             nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+            nmap <Leader>a$ :Tabularize $
+            vmap <Leader>a$ :Tabularize $
         endif
     " }
 
@@ -615,6 +623,12 @@
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
             let g:pymode_rope = 0
+        endif
+    " }
+
+    " PHP Refactoring {
+        if isdirectory(expand("~/.vim/bundle/vim-php-refactoring/"))
+            let g:php_refactor_command = 'php ~/.vim/refactor.phar'
         endif
     " }
 
@@ -656,27 +670,27 @@
             "endif
         "endif
     "}
-    "
+
     " Unite {
+        if isdirectory(expand("~/.vim/bundle/unite.vim/"))
+            " Open Unite in insert mode
+            nnoremap <leader>f :<C-u>Unite -start-insert file<CR>
+            nnoremap <leader>r :<C-u>Unite -start-insert file_rec/async:!<CR>
 
-        " Open Unite in insert mode
-        nnoremap <leader>f :<C-u>Unite -start-insert file<CR>
-        nnoremap <leader>r :<C-u>Unite -start-insert file_rec/async:!<CR>
+            " For ack.
+            if executable('ack-grep')
+                 let g:unite_source_grep_command = 'ack-grep'
+                 let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
+                 let g:unite_source_grep_recursive_opt = ''
+            endif
 
-        " For ack.
-        if executable('ack-grep')
-             let g:unite_source_grep_command = 'ack-grep'
-             let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
-             let g:unite_source_grep_recursive_opt = ''
+            " Like ctrlp.vim settings.
+            call unite#custom#profile('default', 'context', {
+            \   'start_insert': 1,
+            \   'winheight': 10,
+            \   'direction': 'botright',
+            \ })
         endif
-
-        " Like ctrlp.vim settings.
-        call unite#custom#profile('default', 'context', {
-        \   'start_insert': 1,
-        \   'winheight': 10,
-        \   'direction': 'botright',
-        \ })
-
     " }
 
     " TagBar {
@@ -1077,9 +1091,11 @@
     " }
     
     " BufExplorer {
-        let g:bufExplorerDetailedHelp=1      " Show detailed help.
-        let g:bufExplorerSortBy='name'       " Sort by the buffer's name.
-        let g:bufExplorerShowRelativePath=1  " Show relative paths.
+        if isdirectory(expand("~/.vim/bundle/bufexplorer/"))
+            let g:bufExplorerDetailedHelp=1      " Show detailed help.
+            let g:bufExplorerSortBy='name'       " Sort by the buffer's name.
+            let g:bufExplorerShowRelativePath=1  " Show relative paths.
+        endif
     " }
 
 " }
