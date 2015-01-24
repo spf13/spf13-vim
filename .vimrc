@@ -713,7 +713,12 @@
                 \ }
         endif
     "}
-
+    
+    " Project {
+        if isdirectory(expand("~/.vim/bundle/nerdtree/"))
+            let g:project_use_nerdtree = 1
+        endif
+    " }
 
     " Fugitive {
         if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
@@ -1197,27 +1202,40 @@
     endfunction
     " }
 
+    " Misc {
+        " modify selected text using combining diacritics
+        command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
+        command! -range -nargs=0 Underline       call s:CombineSelection(<line1>, <line2>, '0332')
+        command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2>, '0333')
+        command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
+
+        function! s:CombineSelection(line1, line2, cp)
+          execute 'let char = "\u'.a:cp.'"'
+          execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
+        endfunction
+    " }
+    
     " Shell command {
-    function! s:RunShellCommand(cmdline)
-        botright new
+        function! s:RunShellCommand(cmdline)
+            botright new
 
-        setlocal buftype=nofile
-        setlocal bufhidden=delete
-        setlocal nobuflisted
-        setlocal noswapfile
-        setlocal nowrap
-        setlocal filetype=shell
-        setlocal syntax=shell
+            setlocal buftype=nofile
+            setlocal bufhidden=delete
+            setlocal nobuflisted
+            setlocal noswapfile
+            setlocal nowrap
+            setlocal filetype=shell
+            setlocal syntax=shell
 
-        call setline(1, a:cmdline)
-        call setline(2, substitute(a:cmdline, '.', '=', 'g'))
-        execute 'silent $read !' . escape(a:cmdline, '%#')
-        setlocal nomodifiable
-        1
-    endfunction
+            call setline(1, a:cmdline)
+            call setline(2, substitute(a:cmdline, '.', '=', 'g'))
+            execute 'silent $read !' . escape(a:cmdline, '%#')
+            setlocal nomodifiable
+            1
+        endfunction
 
-    command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
-    " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
+        command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
+        " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
     " }
 
 " }
