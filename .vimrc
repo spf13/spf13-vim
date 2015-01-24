@@ -675,7 +675,7 @@
         if isdirectory(expand("~/.vim/bundle/unite.vim/"))
             " Open Unite in insert mode
             nnoremap <leader>f : <C-u>Unite -start-insert file<CR>
-            nnoremap <C-p>     : <C-u>Unite -start-insert file_rec/async : !<CR>
+            nnoremap <C-p>     : <C-u>Unite -start-insert file_rec/async:!<CR>
 
             " For ack.
             if executable('ack-grep')
