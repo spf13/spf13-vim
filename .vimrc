@@ -358,7 +358,7 @@
     nmap <leader>f7 :set foldlevel=7<CR>
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
-    set foldcolumn=4
+    autocmd BufWinEnter * set foldcolumn=4
 
     " Most prefer to toggle search highlighting rather than clear the current
     " search results. To clear search highlighting rather than toggle it on
