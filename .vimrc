@@ -364,30 +364,38 @@
         "01-12
         let cur_month = strftime('%m')
         let cur_month = cur_year . '-' . cur_month
-
-        "
         "  ~/Dropbox/plan/2013/2013-04/2013-04.*
         "  the plan file may has different file extension
-        "
         let plan_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month . '.*'
+        let diary_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/diary.*'
+        unlet cur_year
+        unlet cur_month
+
+        "
         let fileList = glob(plan_file_pattern, 0, 1)
         let plan_file_path = get(fileList, 0, '')
         if strlen(plan_file_path) > 0
             let g:p_plan_file = plan_file_path
         endif
 
-        let diary_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/diary.*'
+        unlet plan_file_pattern
+        unlet plan_file_path
+
         let fileList = glob(diary_file_pattern, 0, 1)
         let diary_file_path = get(fileList, 0, '')
         if strlen(diary_file_path) > 0
             let g:p_diary_file = diary_file_path
         endif
 
+        unlet diary_file_pattern
+        unlet diary_file_path
+        unlet fileList
+
         let g:p_change_dir = 1
 
         " regular task
         let g:plan_week_work = {
-            \ 1 : '1. 10:00 - 11:00 @8层珍珠 YNote Editor Weekly meeting;',
+            \ 1 : '1. 10:00 - 11:00 @8层珍珠 weekly meeting;',
             \ 2 : '1. weekly report;',
             \ 5 : '1. 16:00 - 18:00 @2层朱砂 编辑器技术分享与交流;',
             \ 6 : '1. 本周整理/整顿;1. 下周计划;'
@@ -408,8 +416,17 @@
             \}
         let g:plan_month_personal = {
             \ 5 : '1. 查询薪水发放;',
-            \ 7 : '1. 交房租;1. 还房贷;',
-            \ 28 : '1. 收房租;'
+            \ 7 : '1. 还房贷;'
+            \}
+        let g:plan_year_personal = {
+            \ '01-08': '1. 交房租;',
+            \ '04-08': '1. 交房租;',
+            \ '07-08': '1. 交房租;',
+            \ '10-08': '1. 交房租;',
+            \ '01-18': '1. 收房租;',
+            \ '04-18': '1. 收房租;',
+            \ '07-18': '1. 收房租;',
+            \ '10-18': '1. 收房租;'
             \}
 
     "}
