@@ -596,8 +596,8 @@
             vmap <Leader>a,, :Tabularize /,\zs<CR>
             nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-            nmap <Leader>a$ :Tabularize /$\a*
-            vmap <Leader>a$ :Tabularize /$\a*
+            nmap <Leader>a$ :Tabularize /$\a*<CR>
+            vmap <Leader>a$ :Tabularize /$\a*<CR>
         endif
     " }
 
