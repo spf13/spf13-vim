@@ -759,7 +759,7 @@
             autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-            autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
+            autocmd FileType php,blade setlocal omnifunc=phpcomplete_extended#CompletePHP
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
             " Haskell post write lint and check with ghcmod
