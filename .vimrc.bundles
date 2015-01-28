@@ -258,7 +258,7 @@
             Bundle 'jelera/vim-javascript-syntax'
             Bundle 'FuDesign2008/backbone.vim'
             Bundle 'briancollins/vim-jst'
-            "Bundle 'marijnh/tern_for_vim'
+            Bundle 'marijnh/tern_for_vim'
         endif
 
     " css
