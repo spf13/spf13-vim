@@ -416,6 +416,14 @@
     " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
     map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
+    " Set easy mode to select, copy and cut all text
+    :map <C-a>  <ESC>ggVG
+    :map <C-a>y <ESC>:%y+<CR>
+    :map <C-a>d <ESC>:%d<CR>
+    "Same above but in insert mode with insert mode return
+    :map! <C-a>  <ESC>ggVG
+    :map! <C-a>y <ESC>:%y+<CR>i
+    :map! <C-a>d <ESC>:%d<CR>i
 " }
 
 " Plugins {
