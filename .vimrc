@@ -420,10 +420,12 @@
     :map <C-a>  <ESC>ggVG
     :map <C-a>y <ESC>:%y+<CR>
     :map <C-a>d <ESC>:%d<CR>
-    "Same above but in insert mode with insert mode return
+    " Same above but in insert mode with insert mode return
     :map! <C-a>  <ESC>ggVG
     :map! <C-a>y <ESC>:%y+<CR>i
     :map! <C-a>d <ESC>:%d<CR>i
+    " Select all text and open all folding
+    :map <C-a>zo <ESC>ggVGzogg
 " }
 
 " Plugins {
