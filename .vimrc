@@ -391,8 +391,6 @@
         unlet diary_file_path
         unlet fileList
 
-        let g:p_change_dir = 1
-
         " regular task
         let g:plan_week_work = {
             \ 1 : '1. 10:00 - 11:00 @8层珍珠 weekly meeting;',
