@@ -470,7 +470,7 @@
                         if has('gui_running')
                             set fullscreen
                             set background=dark
-                            set linespace=9
+                            set linespace=7
                             set foldcolumn=0
                         elseif exists('$TMUX')
                             silent !tmux set status off
