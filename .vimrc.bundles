@@ -337,6 +337,7 @@
             Plugin 'cespare/vim-toml'
             Plugin 'quentindecock/vim-cucumber-align-pipes'
             Plugin 'saltstack/salt-vim'
+            Plugin 'dahu/vim-asciidoc'
         endif
     " }
     
