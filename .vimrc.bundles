@@ -142,7 +142,7 @@
                 Bundle 'Valloric/YouCompleteMe'
 
                 Bundle 'FuDesign2008/plan.vim'
-                "Bundle 'FuDesign2008/translator.vim'
+                Bundle 'FuDesign2008/translator.vim'
                 Bundle 'mattn/calendar-vim'
                 " :find is enough for me
                 "Bundle 'kien/ctrlp.vim'
