@@ -1,0 +1,21 @@
+#todo
+
+##YCM
+1. 使用官方仓库还会报错么?
+    * 之前报错是因为确实`.ycm_extra_conf.py`么?
+
+##Syntastic
+1. 如何使用Syntastic, 并加载工程中的.jshintrc [done]
+    * 可以考虑弃用自己的jslhint.vim [弃用, done]
+
+
+##Snips
+1. 如何使用snips
+1. 如何高效使用snips
+
+##iOS
+1. 熟悉ios下各个插件的用法
+    * msanders/cocoa.vim
+    * b4winckler/vim-objc
+    * eraserhd/vim-ios
+

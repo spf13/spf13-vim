@@ -1,0 +1,347 @@
+" Modeline and Notes {
+
+" Environment {
+    " Basics {
+        set nocompatible        " must be first line
+        set background=dark     " Assume a dark background
+    " }
+
+    " Windows Compatible {
+        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+        " across (heterogeneous) systems easier.
+        if has('win32') || has('win64')
+            set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+            let g:is_win = 1
+        else
+            " use bash as the default shell for vim
+            " @see http://dailyvim.tumblr.com/post/66708941289/fish
+            set shell=/bin/bash
+            let g:is_win = 0
+        endif
+    " }
+    "
+    " Setup Bundle Support {
+    " The next three lines ensure that the ~/.vim/bundle/ system works
+        filetype off
+        set rtp+=~/.vim/bundle/vundle
+        call vundle#rc()
+    " }
+
+" }
+
+" Bundles {
+    " Deps
+        Bundle 'gmarik/vundle'
+        Bundle 'MarcWeber/vim-addon-mw-utils'
+        Bundle 'tomtom/tlib_vim'
+
+    " Use local bundles if available {
+        if filereadable(expand("~/.vimrc.bundles.local"))
+            source ~/.vimrc.bundles.local
+        endif
+    " }
+    " Use fork bundles if available {
+        if filereadable(expand("~/.vimrc.bundles.fork"))
+            source ~/.vimrc.bundles.fork
+        endif
+    " }
+    "
+
+
+    " In your .vimrc.bundles.local file"
+    " list only the plugin groups you will use
+    if !exists('g:spf13_bundle_groups')
+            "\ 'php',
+            "\ 'ruby',
+            "\ 'twig',
+            "\ 'scala',
+        let g:spf13_bundle_groups=[
+            \ 'general',
+            \ 'colors',
+            \ 'programming',
+            \ 'snip',
+            \ 'python',
+            \ 'javascript',
+            \ 'css',
+            \ 'html',
+            \ 'coffeescript',
+            \ 'ios',
+            \ 'document',
+            \ 'bash']
+    endif
+
+    " To override all the included bundles, put
+    " g:override_spf13_bundles = 1
+    " in your .vimrc.bundles.local file"
+    if !exists("g:override_spf13_bundles")
+
+    " General
+        if count(g:spf13_bundle_groups, 'general')
+            Bundle 'scrooloose/nerdtree'
+            Bundle 'matchit.zip'
+            " airline is lightweight
+            Bundle 'bling/vim-airline'
+            "Bundle 'Lokaltog/powerline'
+            "Bundle 'Lokaltog/vim-easymotion'
+            "NOTE: csapprox cause errors
+            "Bundle 'godlygeek/csapprox'
+            "Bundle 'jistr/vim-nerdtree-tabs'
+            "Bundle 'flazz/vim-colorschemes'
+            "Bundle 'mbbill/undotree'
+            "if !exists('g:spf13_no_views')
+                "Bundle 'vim-scripts/restore_view.vim'
+            "endif
+            "Bundle 'tpope/vim-abolish.git'
+
+            "Provides tab completion while inside the “/” search
+            " useless!!! not able for search and repalce
+            "Bundle 'vim-scripts/SearchComplete'
+
+            " to zoomin/out/reset guifont size
+            Bundle 'vim-scripts/zoom.vim'
+            "Bundle 'vim-scripts/ZoomWin'
+
+            Bundle 'vim-scripts/IndentAnything'
+            "Bundle 'FuDesign2008/WebSearch.vim'
+
+            Bundle 'kana/vim-smartinput'
+            "Bundle 'Raimondi/delimitMate'
+
+            Bundle 'FuDesign2008/OpenUrl.vim'
+            Bundle 'FuDesign2008/ToggleNumber.vim'
+            Bundle 'FuDesign2008/SpaceControl.vim'
+
+            "Bundle 'Yggdroot/indentLine'
+            "Bundle 'nathanaelkane/vim-indent-guides'
+
+            "Bundle 'tpope/vim-surround'
+
+            "Bundle 'terryma/vim-multiple-cursors'
+
+            if g:is_win
+
+                " windows need install `grep` and `find` tools, see
+                " http://gnuwin32.sourceforge.net/packages/grep.htm
+                " http://gnuwin32.sourceforge.net/packages/findutils.htm
+                "
+                " on windows, grep.vim can NOT find all matches
+                " use vim inner command `:vimgrep` instead
+                "
+                "Bundle 'vim-scripts/grep.vim'
+
+                " supertab is more lightweight than YCM
+                Bundle 'ervandew/supertab'
+            else
+
+                " YCM is better than NeoComplCache and supertab
+                " @see http://valloric.github.io/YouCompleteMe/
+                "
+                " But YCM does not have good-enough support for obj-c
+                " @see https://github.com/Valloric/YouCompleteMe/issues/84
+                "
+                Bundle 'Valloric/YouCompleteMe'
+
+                Bundle 'FuDesign2008/plan.vim'
+                "Bundle 'FuDesign2008/translator.vim'
+                Bundle 'mattn/calendar-vim'
+                " :find is enough for me
+                "Bundle 'kien/ctrlp.vim'
+            endif
+
+            " ack
+            "if executable('ack-grep')
+                "let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+                "Bundle 'mileszs/ack.vim'
+            "elseif executable('ack')
+                "Bundle 'mileszs/ack.vim'
+            "endif
+
+            " use the_silver_searcher which if faster
+            " instead of ack
+            Bundle 'rking/ag.vim'
+
+        endif
+
+    "Colors
+        if count(g:spf13_bundle_groups, 'colors')
+            "light color schemes
+            Bundle 'therubymug/vim-pyte'
+            Bundle 'vim-scripts/summerfruit.vim'
+            "Bundle 'vim-scripts/autumnleaf_modified.vim'
+            "Bundle 'vim-scripts/mayansmoke'
+
+            "dark color schemes
+            Bundle 'FuDesign2008/codeschool.vim'
+            "Bundle 'Lokaltog/vim-distinguished'
+            Bundle 'nanotech/jellybeans.vim'
+            "Bundle 'jpo/vim-railscasts-theme'
+            "Bundle 'matthewtodd/vim-twilight'
+            "Bundle 'tpope/vim-vividchalk'
+            "Bundle 'twerth/ir_black'
+            Bundle 'tomasr/molokai'
+            "Bundle 'jnurmine/Zenburn'
+            "Bundle 'vim-scripts/desert.vim'
+            "Bundle 'briancarper/gentooish.vim'
+            "Bundle 'cschlueter/vim-wombat'
+            Bundle 'jonathanfilip/vim-lucius'
+            "Bundle 'vim-scripts/peaksea'
+            "Bundle 'altercation/vim-colors-solarized'
+            "Bundle 'reedes/vim-colors-pencil'
+            Bundle 'FuDesign2008/GoodColors.vim'
+
+        endif
+
+
+    " General Programming
+        if count(g:spf13_bundle_groups, 'programming')
+            Bundle 'scrooloose/syntastic'
+            "Bundle 'mattn/webapi-vim'
+            "Bundle 'mattn/gist-vim'
+            Bundle 'scrooloose/nerdcommenter'
+            Bundle 'dimasg/vim-mark'
+
+            "@see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+            Bundle 'godlygeek/tabular'
+
+            Bundle 'FuDesign2008/GotoFile.vim'
+            Bundle 'FuDesign2008/autoHighlight.vim'
+            Bundle 'FuDesign2008/smartRename.vim'
+            if !g:is_win
+                "Bundle 'tpope/vim-fugitive'
+
+                "dash.vim needs funcoo.vim
+                "Bundle 'rizzatti/funcoo.vim'
+                "Bundle 'rizzatti/dash.vim'
+
+                "if executable('ctags')
+                    "Bundle 'majutsushi/tagbar'
+                "endif
+            endif
+        endif
+    " Snippets
+        if count(g:spf13_bundle_groups, 'snip')
+            "Bundle 'garbas/vim-snipmate'
+
+            if !g:is_win
+                " ultisnips is better
+                "YCM can integeting with ultisnips
+                "snippets engine
+                Bundle 'SirVer/ultisnips'
+
+                "snippets
+                Bundle 'honza/vim-snippets'
+                Bundle 'chrisgillis/vim-bootstrap3-snippets'
+                Bundle 'FuDesign2008/fu-snippets'
+            endif
+
+        endif
+
+    " PHP
+        if count(g:spf13_bundle_groups, 'php')
+            Bundle 'spf13/PIV'
+        endif
+
+    " Python
+        if count(g:spf13_bundle_groups, 'python')
+            " Pick either python-mode or pyflakes & pydoc
+            "Bundle 'klen/python-mode'
+            "Bundle 'python.vim'
+            "Bundle 'python_match.vim'
+            "Bundle 'pythoncomplete'
+            Bundle 'nvie/vim-flake8'
+        endif
+
+    " Javascript
+        if count(g:spf13_bundle_groups, 'javascript')
+            Bundle 'leshill/vim-json'
+            "Bundle 'pangloss/vim-javascript'
+            "Bundle 'mattn/jscomplete-vim'
+            Bundle 'jelera/vim-javascript-syntax'
+            Bundle 'FuDesign2008/backbone.vim'
+            Bundle 'briancollins/vim-jst'
+            Bundle 'marijnh/tern_for_vim'
+        endif
+
+    " css
+        if count(g:spf13_bundle_groups, 'css')
+            Bundle 'groenewege/vim-less'
+            Bundle 'hail2u/vim-css3-syntax'
+            " vim-css-color will cause opening  .html/.markdown slow
+            " @see https://github.com/skammer/vim-css-color/issues/3
+            "Bundle 'skammer/vim-css-color'
+        endif
+
+    " scala
+        if count(g:spf13_bundle_groups, 'scala')
+            Bundle 'derekwyatt/vim-scala'
+            Bundle 'derekwyatt/vim-sbt'
+        endif
+
+    " HTML
+        if count(g:spf13_bundle_groups, 'html')
+            Bundle 'amirh/HTML-AutoCloseTag'
+            Bundle 'othree/html5.vim'
+        endif
+
+    " coffeescript
+        if count(g:spf13_bundle_groups, 'coffeescript')
+            Bundle 'kchmck/vim-coffee-script'
+        endif
+
+    " Ruby
+        if count(g:spf13_bundle_groups, 'ruby')
+            Bundle 'tpope/vim-rails'
+            let g:rubycomplete_buffer_loading = 1
+            "let g:rubycomplete_classes_in_global = 1
+            "let g:rubycomplete_rails = 1
+        endif
+
+    " Document
+        if count(g:spf13_bundle_groups, 'document')
+            "Bundle 'junegunn/goyo.vim'
+            "Bundle 'amix/vim-zenroom2'
+            Bundle 'FuDesign2008/MarkdownViewer.vim'
+            Bundle 'FuDesign2008/mkdInput.vim'
+            "Bundle 'vim-scripts/Figlet.vim'
+            Bundle 'vim-scripts/wiki.vim'
+            "Bundle 'spf13/vim-preview'
+            "Bundle 'tpope/vim-cucumber'
+            "Bundle 'quentindecock/vim-cucumber-align-pipes'
+            "Bundle 'Puppet-Syntax-Highlighting'
+        endif
+
+    " Twig
+        "if count(g:spf13_bundle_groups, 'twig')
+            "Bundle 'beyondwords/vim-twig'
+        "endif
+
+    "iOS
+        "
+        if count(g:spf13_bundle_groups, 'ios') && !g:is_win
+            "Bundle 'msanders/cocoa.vim'
+            "Bundle 'b4winckler/vim-objc'
+            "Bundle 'eraserhd/vim-ios'
+            Bundle 'nacitar/a.vim'
+        endif
+
+
+    " bash
+        if count(g:spf13_bundle_groups, 'bash')
+
+            Bundle 'FuDesign2008/buildkit.vim'
+
+            if !has('win32') && has('unix')
+                Bundle 'FuDesign2008/bash_kit.vim'
+            endif
+
+        endif
+
+
+    endif
+" }
+
+" General {
+    set autowrite                  " automatically write a file when leaving a modified buffer
+    set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
+" }
+

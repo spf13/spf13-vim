@@ -2,3 +2,4 @@
 *.pyc
 *._*
 *.vim/sessions/
+.vim/
