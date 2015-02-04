@@ -248,6 +248,7 @@
             "Bundle 'python.vim'
             "Bundle 'python_match.vim'
             "Bundle 'pythoncomplete'
+            "Bundle 'nvie/vim-flake8'
         endif
 
     " Javascript

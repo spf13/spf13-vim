@@ -687,7 +687,9 @@
 
 
      " PythonMode {
-     " Disable if python support not present
+        let g:pymode_rope_complete_on_dot = 0
+        let g:pymode_lint_write = 0
+         " Disable if python support not present
         "if !has('python')
            "let g:pymode = 1
         "endif
