@@ -493,6 +493,14 @@
     " FuDesign2008/WriteJSDocComment {
         "autocmd FileType javascript nnoremap <leader>cc :call WriteJSDocComment()<CR>
     "}
+
+    " NERDCommenter {
+        let g:NERDCustomDelimiters = {
+            \ 'python' : { 'left': '# '}
+            \}
+
+    " }
+
     " coffee plugin {
         " http://www.vim.org/scripts/script.php?script_id=3590
         autocmd BufRead,BufNewFile,BufWritePre *.coffee setf coffee
@@ -686,6 +694,10 @@
      "}
 
 
+     " nvie/vim-flake8 {
+        autocmd BufWritePost *.py call Flake8()
+     " }
+
      " PythonMode {
         let g:pymode_rope_complete_on_dot = 0
         let g:pymode_rope_lookup_project = 0
@@ -696,6 +708,8 @@
            "let g:pymode = 1
         "endif
      " }
+
+
      "ios devement {
         let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang'
 
