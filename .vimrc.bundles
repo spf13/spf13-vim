@@ -245,8 +245,6 @@
         if count(g:spf13_bundle_groups, 'python')
             "Bundle 'klen/python-mode'
 
-            " better syntax highlight
-            Bundle 'hdima/python-syntax'
             " syntax checker
             Bundle 'nvie/vim-flake8'
 
