@@ -245,10 +245,13 @@
         if count(g:spf13_bundle_groups, 'python')
             "Bundle 'klen/python-mode'
 
+            " YouCompleteMe will use Jedi for python completion
+
             " syntax checker
             Bundle 'nvie/vim-flake8'
+            " document
+            Bundle 'fs111/pydoc.vim'
 
-            " YouCompleteMe will use Jedi for python completion
         endif
 
     " Javascript

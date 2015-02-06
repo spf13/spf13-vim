@@ -698,6 +698,10 @@
         autocmd BufWritePost *.py call Flake8()
      " }
 
+     " fs111/pydoc.vim {
+        let g:pydoc_perform_mappings = 0
+     " }
+
      " PythonMode {
         let g:pymode_rope_complete_on_dot = 0
         let g:pymode_rope_lookup_project = 0
