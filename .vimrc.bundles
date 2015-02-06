@@ -334,6 +334,8 @@
             Bundle 'FuDesign2008/buildkit.vim'
 
             if !has('win32') && has('unix')
+                " for man page
+                Bundle 'jez/vim-superman'
                 Bundle 'FuDesign2008/bash_kit.vim'
             endif
 
