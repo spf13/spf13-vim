@@ -485,8 +485,11 @@
                         "\ 'jellybeans',
                         "\ 'molokai',
                         "\ 'lucius']
-        "let g:random_color_start = 0
+        let g:random_color_start = 2
         "colo pyte
+        if !has('gui_running') 
+            colo molokai
+        endif
     " }
 
 
