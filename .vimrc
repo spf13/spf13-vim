@@ -479,15 +479,16 @@
                         "\ 'wombat',
                         "\ 'lucius',
                         "\ 'peaksea']
-        "let g:random_color_schemes = ['pyte',
-                        "\ 'summerfruit',
-                        "\ 'codeschool',
-                        "\ 'jellybeans',
-                        "\ 'molokai',
-                        "\ 'lucius']
+        let g:random_color_schemes = ['pyte',
+                        \ 'summerfruit',
+                        \ 'codeschool',
+                        \ 'jellybeans',
+                        \ 'molokai',
+                        \ 'solarized',
+                        \ 'lucius']
         let g:random_color_start = 2
         "colo pyte
-        if !has('gui_running') 
+        if !has('gui_running')
             colo molokai
         endif
     " }
