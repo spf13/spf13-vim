@@ -334,6 +334,9 @@
     " bash
         if count(g:spf13_bundle_groups, 'bash')
 
+            " vimshell dependency
+            Bundle 'Shougo/vimproc.vim'
+
             Bundle 'Shougo/vimshell.vim'
             Bundle 'FuDesign2008/buildkit.vim'
 
