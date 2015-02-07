@@ -479,14 +479,14 @@
                         "\ 'wombat',
                         "\ 'lucius',
                         "\ 'peaksea']
-        let g:random_color_schemes = ['pyte',
-                        \ 'summerfruit',
-                        \ 'codeschool',
-                        \ 'jellybeans',
-                        \ 'molokai',
-                        \ 'lucius']
-        let g:random_color_start = 0
-        colo pyte
+        "let g:random_color_schemes = ['pyte',
+                        "\ 'summerfruit',
+                        "\ 'codeschool',
+                        "\ 'jellybeans',
+                        "\ 'molokai',
+                        "\ 'lucius']
+        "let g:random_color_start = 0
+        "colo pyte
     " }
 
 
