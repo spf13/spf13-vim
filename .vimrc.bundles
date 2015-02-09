@@ -202,7 +202,7 @@
             Plugin 'arnaud-lb/vim-php-namespace'
             Plugin 'beyondwords/vim-twig'
             Plugin 'm2mdas/phpcomplete-extended'
-            Plugin 'vim-php/vim-php-refactoring'
+            Plugin 'adoy/vim-php-refactoring-toolbox'
             if count(g:spf13_bundle_groups, 'laravel')
                 Plugin 'xsbeats/vim-blade'
                 Plugin 'm2mdas/phpcomplete-extended-laravel'
