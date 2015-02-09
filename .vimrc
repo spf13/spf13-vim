@@ -642,52 +642,13 @@
     " }
 
     " PHP Refactoring {
-        if isdirectory(expand("~/.vim/bundle/vim-php-refactoring/"))
+        if isdirectory(expand("~/.vim/bundle/vim-php-refactoring"))
             let g:php_refactor_command = 'php ~/.vim/refactor.phar'
         endif
     " }
 
-    " ctrlp {
-        "if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
-            "let g:ctrlp_working_path_mode = 'ra'
-            "nnoremap <silent> <D-t> :CtrlP<CR>
-            "nnoremap <silent> <D-r> :CtrlPMRU<CR>
-            "let g:ctrlp_custom_ignore = {
-                "\ 'dir':  '\.git$\|\.hg$\|\.svn$',
-                "\ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
-
-            "" On Windows use "dir" as fallback command.
-            "if WINDOWS()
-                "let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
-            "elseif executable('ag')
-                "let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
-            "elseif executable('ack-grep')
-                "let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
-            "elseif executable('ack')
-                "let s:ctrlp_fallback = 'ack %s --nocolor -f'
-            "else
-                "let s:ctrlp_fallback = 'find %s -type f'
-            "endif
-            "let g:ctrlp_user_command = {
-                "\ 'types': {
-                    "\ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                    "\ 2: ['.hg', 'hg --cwd %s locate -I .'],
-                "\ },
-                "\ 'fallback': s:ctrlp_fallback
-            "\ }
-
-            "if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
-                "" CtrlP extensions
-                "let g:ctrlp_extensions = ['funky']
-
-                ""funky
-                "nnoremap <Leader>fu :CtrlPFunky<Cr>
-            "endif
-        "endif
-    "}
-
     " Unite {
-        if isdirectory(expand("~/.vim/bundle/unite.vim/"))
+        if isdirectory(expand("~/.vim/bundle/unite.vim"))
             " Open Unite in insert mode
             nnoremap <leader>f : <C-u>Unite -start-insert file<CR>
             nnoremap <C-p>     : <C-u>Unite -start-insert file_rec/async:!<CR>
@@ -709,7 +670,7 @@
     " }
 
     " TagBar {
-        if isdirectory(expand("~/.vim/bundle/tagbar/"))
+        if isdirectory(expand("~/.vim/bundle/tagbar"))
             nnoremap <silent> <leader>tt :TagbarToggle<CR>
 
             " If using go please install the gotags program using the following
@@ -730,13 +691,13 @@
     "}
     
     " Project {
-        if isdirectory(expand("~/.vim/bundle/nerdtree/"))
+        if isdirectory(expand("~/.vim/bundle/nerdtree"))
             let g:project_use_nerdtree = 1
         endif
     " }
 
     " Fugitive {
-        if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+        if isdirectory(expand("~/.vim/bundle/vim-fugitive"))
             nnoremap <silent> <leader>gs :Gstatus<CR>
             nnoremap <silent> <leader>gd :Gdiff<CR>
             nnoremap <silent> <leader>gc :Gcommit<CR>

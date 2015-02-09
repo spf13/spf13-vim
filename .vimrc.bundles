@@ -106,12 +106,7 @@
             Plugin 'spf13/vim-colors'
             Plugin 'tpope/vim-surround'
             Plugin 'tpope/vim-repeat'
-            " Substitute this
-            " Plugin 'spf13/vim-autoclose'
-            " With this, because more powerfull
             Plugin 'jiangmiao/auto-pairs'
-            "Plugin 'ctrlpvim/ctrlp.vim'
-            "Plugin 'tacahiroy/ctrlp-funky'
             Plugin 'kristijanhusak/vim-multiple-cursors'
             Plugin 'xolox/vim-misc'
             Plugin 'xolox/vim-session'
@@ -123,9 +118,6 @@
             else
                 Plugin 'bling/vim-airline'
             endif
-            " Replace this
-            "Plugin 'bling/vim-bufferline'
-            " with bufexplorer
             Plugin 'jlanzarotta/bufexplorer'
             Plugin 'Lokaltog/vim-easymotion'
             Plugin 'jistr/vim-nerdtree-tabs'
@@ -171,9 +163,7 @@
             Plugin 'scrooloose/nerdcommenter'
             Plugin 'tpope/vim-commentary'
             Plugin 'godlygeek/tabular'
-            " Handle project directory
             Plugin 'amiorin/vim-project'
-            " Handle todo marks
             Plugin 'vitalk/vim-simple-todo'
             if executable('ctags')
                 Plugin 'majutsushi/tagbar'
@@ -272,15 +262,11 @@
             Plugin 'hail2u/vim-css3-syntax'
             Plugin 'gorodinskiy/vim-coloresque'
             Plugin 'tpope/vim-haml'
-            " Always highlight HTML/XML tags
             if has('python')
-                " With Python Deps
                 Plugin 'Valloric/MatchTagAlways'
             else
-                " Without Python Deps
                 Plugin 'gregsexton/MatchTag'
             endif
-            " Faster HTML page creation
             Plugin 'mattn/emmet-vim'
         endif
     " }
@@ -348,7 +334,6 @@
     " }
 
     endif
-
 " }
 
 " Use fork bundles config if available {
