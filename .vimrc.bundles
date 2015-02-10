@@ -145,6 +145,7 @@
             Plugin 'reedes/vim-textobj-quote'
             Plugin 'reedes/vim-wordy'
             Plugin 'reedes/vim-pencil'
+            Plugin 'reedes/vim-lexical'
             Plugin 'junegunn/goyo.vim'
             Plugin 'junegunn/limelight.vim'
             Plugin 'amix/vim-zenroom2'
