@@ -199,7 +199,7 @@
 
     " PHP {
         if count(g:spf13_bundle_groups, 'php')
-            Plugin 'spf13/PIV'
+            Plugin 'StanAngeloff/php.vim'
             Plugin 'arnaud-lb/vim-php-namespace'
             Plugin 'beyondwords/vim-twig'
             Plugin 'm2mdas/phpcomplete-extended'

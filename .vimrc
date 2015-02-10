@@ -521,14 +521,6 @@
         endif
     " }
 
-    " PIV {
-        if isdirectory(expand("~/.vim/bundle/PIV"))
-            let g:DisableAutoPHPFolding = 0
-            let g:PIVAutoClose = 0
-            autocmd FileType php,blade set textwidth=0
-        endif
-    " }
-
     " Misc {
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
             let g:NERDShutUp=1
@@ -1099,6 +1091,13 @@
         endif
     " }
 
+    " PHP {
+        augroup phpSyntaxOverride
+          autocmd!
+          autocmd FileType php,blade call PhpSyntaxOverride()
+        augroup END
+    " }
+    
 " }
 
 " GUI Settings {
@@ -1126,6 +1125,13 @@
 " }
 
 " Functions {
+
+    " PHP {
+        function! PhpSyntaxOverride()
+          hi! def link phpDocTags  phpDefine
+          hi! def link phpDocParam phpType
+        endfunction
+    " }
 
     " Initialize directories {
     function! InitializeDirectories()
