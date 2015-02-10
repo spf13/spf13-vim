@@ -358,7 +358,6 @@
     nmap <leader>f7 :set foldlevel=7<CR>
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
-    autocmd BufWinEnter * set foldcolumn=4
 
     " Most prefer to toggle search highlighting rather than clear the current
     " search results. To clear search highlighting rather than toggle it on
@@ -471,7 +470,6 @@
                             set fullscreen
                             set background=dark
                             set linespace=7
-                            set foldcolumn=0
                         elseif exists('$TMUX')
                             silent !tmux set status off
                         endif
@@ -482,7 +480,6 @@
                             set nofullscreen
                             set background=dark
                             set linespace=0
-                            set foldcolumn=4
                         elseif exists('$TMUX')
                             silent !tmux set status on
                         endif
