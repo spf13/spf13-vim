@@ -653,6 +653,16 @@
         endif
     " }
 
+    " PHP Namespace {
+        if isdirectory(expand("~/.vim/bundle/vim-php-namespace"))
+            inoremap <Leader>pu <C-O>:call PhpInsertUse()<CR>
+            noremap <Leader>pu :call PhpInsertUse()<CR>
+
+            inoremap <Leader>pe <C-O>:call PhpExpandClass()<CR>
+            noremap <Leader>pe :call PhpExpandClass()<CR>
+        endif
+    " }
+
     " PHP Refactoring {
         if isdirectory(expand("~/.vim/bundle/vim-php-refactoring"))
             let g:php_refactor_command = 'php ~/.vim/refactor.phar'
