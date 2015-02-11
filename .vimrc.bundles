@@ -168,7 +168,7 @@
             Plugin 'vitalk/vim-simple-todo'
             if executable('ctags')
                 Plugin 'majutsushi/tagbar'
-                Plugin 'vim-scripts/AutoTag'
+                Plugin 'craigemery/vim-autotag'
             endif
         endif
     " }
