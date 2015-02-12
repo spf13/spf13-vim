@@ -432,31 +432,38 @@
     " Writing {
         if count(g:spf13_bundle_groups, 'writing')
             " TextObj Sentence {
-                augroup textobj_sentence
-                  autocmd!
-                  autocmd FileType markdown,mkd,md call textobj#sentence#init()
-                  autocmd FileType textile call textobj#sentence#init()
-                  autocmd FileType text call textobj#sentence#init()
-                augroup END
+                if isdirectory(expand("~/.vim/bundle/vim-textobj-sentence/"))
+                    augroup textobj_sentence
+                      autocmd!
+                      autocmd FileType markdown,mkd,md call textobj#sentence#init()
+                      autocmd FileType textile call textobj#sentence#init()
+                      autocmd FileType text call textobj#sentence#init()
+                    augroup END
+                endif
             " }
             
             " TextObj Quote {
-                augroup textobj_quote
-                    autocmd!
-                    autocmd FileType markdown,mkd,md call textobj#quote#init()
-                    autocmd FileType textile call textobj#quote#init()
-                    autocmd FileType text call textobj#quote#init({'educate': 0})
-                augroup END
+                if isdirectory(expand("~/.vim/bundle/vim-textobj-quote/"))
+                    augroup textobj_quote
+                        autocmd!
+                        autocmd FileType markdown,mkd,md call textobj#quote#init()
+                        autocmd FileType textile call textobj#quote#init()
+                        autocmd FileType text call textobj#quote#init({'educate': 0})
+                    augroup END
+                endif
             " }
             
             " Pencil {
                 if isdirectory(expand("~/.vim/bundle/vim-pencil/"))
+                    let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
                     augroup pencil
                         autocmd!
                         autocmd FileType markdown,mkd,md call pencil#init()
-                                                    \ | call litecorrect#init()
-                        autocmd FileType text         call pencil#init()
-                        let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+                        autocmd FileType text call pencil#init()
+                        autocmd FileType php,blade call pencil#init()
+                        autocmd FileType cpp,c call pencil#init()
+                        autocmd FileType html,xml call pencil#init()
+                        autocmd FileType javascript call pencil#init()
                     augroup END
                 endif
             " }
