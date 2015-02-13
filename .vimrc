@@ -81,6 +81,12 @@
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
 
+    " Autoreload the configuration every time
+    augroup reload_vimrc
+        autocmd!
+        autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    augroup END
+
     if has('clipboard')
         if has('unnamedplus')  " When possible use + register for copy-paste
             set clipboard=unnamed,unnamedplus
