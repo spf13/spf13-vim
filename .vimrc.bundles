@@ -135,7 +135,6 @@
             Plugin 'gcmt/wildfire.vim'
             Plugin 'Shougo/vimproc'
             Plugin 'Shougo/unite.vim'
-            Plugin 'myusuf3/numbers.vim'
         endif
     " }
 
