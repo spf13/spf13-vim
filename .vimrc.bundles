@@ -288,6 +288,7 @@
         if count(g:spf13_bundle_groups, 'html')
             Bundle 'amirh/HTML-AutoCloseTag'
             Bundle 'othree/html5.vim'
+            Bundle 'lepture/vim-velocity'
         endif
 
     " coffeescript
