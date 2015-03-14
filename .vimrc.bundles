@@ -162,7 +162,7 @@
             Plugin 'tpope/vim-fugitive'
             Plugin 'mattn/webapi-vim'
             Plugin 'mattn/gist-vim'
-            Plugin 'scrooloose/nerdcommenter'
+            Plugin 'FiloSpaTeam/nerdcommenter'
             Plugin 'tpope/vim-commentary'
             Plugin 'godlygeek/tabular'
             Plugin 'amiorin/vim-project'
