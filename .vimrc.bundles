@@ -318,7 +318,7 @@
 
     " Misc {
         if count(g:spf13_bundle_groups, 'misc')
-            Plugin 'wting/rust.vim'
+            Bundle 'rust-lang/rust.vim'
             Plugin 'tpope/vim-markdown'
             Plugin 'nelstrom/vim-markdown-folding'
             Plugin 'spf13/vim-preview'
@@ -333,6 +333,12 @@
     " Datatypes {
         if count(g:spf13_bundle_groups, 'datatypes')
             Plugin 'chrisbra/csv.vim'
+            Bundle 'tpope/vim-markdown'
+            Bundle 'spf13/vim-preview'
+            Bundle 'tpope/vim-cucumber'
+            Bundle 'cespare/vim-toml'
+            Bundle 'quentindecock/vim-cucumber-align-pipes'
+            Bundle 'saltstack/salt-vim'
         endif
     " }
 
