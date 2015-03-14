@@ -47,17 +47,14 @@
         set nocompatible        " Must be first line
         if !WINDOWS()
             set shell=/bin/sh
+        else
+            " Windows Compatible {
+                " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+                " across (heterogeneous) systems easier.
+                set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+            " }
         endif
     " }
-
-    " Windows Compatible {
-        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
-        if WINDOWS()
-          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-        endif
-    " }
-
 " }
 
 " Use before config if available {
@@ -83,6 +80,12 @@
     set mouse=a                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
+
+    " Autoreload the configuration every time
+    augroup reload_vimrc
+        autocmd!
+        autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    augroup END
 
     if has('clipboard')
         if has('unnamedplus')  " When possible use + register for copy-paste
@@ -111,6 +114,7 @@
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
     set iskeyword-=-                    " '-' is an end of word designator
+    set number
 
     " Instead of reverting the cursor to the last position in the buffer, we
     " set it to the first line when editing a git commit message
@@ -160,8 +164,8 @@
     if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
-        let g:solarized_contrast="normal"
-        let g:solarized_visibility="normal"
+        let g:solarized_contrast="high"
+        let g:solarized_visibility="high"
         color solarized             " Load a colorscheme
     endif
 
@@ -418,36 +422,116 @@
     " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
     map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
+    " Set easy mode to select, copy and cut all text
+    :map <C-a>  <ESC>ggVG
+    :map <C-a>y <ESC>:%y+<CR>
+    :map <C-a>d <ESC>:%d<CR>
+    " Same above but in insert mode with insert mode return
+    :map! <C-a>  <ESC>ggVG
+    :map! <C-a>y <ESC>:%y+<CR>i
+    :map! <C-a>d <ESC>:%d<CR>i
+    " Select all text and open all folding
+    :map <C-a>zo <ESC>ggVGzogg
 " }
 
 " Plugins {
 
-    " TextObj Sentence {
+    " Writing {
         if count(g:spf13_bundle_groups, 'writing')
-            augroup textobj_sentence
-              autocmd!
-              autocmd FileType markdown call textobj#sentence#init()
-              autocmd FileType textile call textobj#sentence#init()
-              autocmd FileType text call textobj#sentence#init()
-            augroup END
-        endif
-    " }
+            " TextObj Sentence {
+                if isdirectory(expand("~/.vim/bundle/vim-textobj-sentence/"))
+                    augroup textobj_sentence
+                      autocmd!
+                      autocmd FileType markdown,mkd,md call textobj#sentence#init()
+                      autocmd FileType textile call textobj#sentence#init()
+                      autocmd FileType text call textobj#sentence#init()
+                    augroup END
+                endif
+            " }
+            
+            " TextObj Quote {
+                if isdirectory(expand("~/.vim/bundle/vim-textobj-quote/"))
+                    augroup textobj_quote
+                        autocmd!
+                        autocmd FileType markdown,mkd,md call textobj#quote#init()
+                        autocmd FileType textile call textobj#quote#init()
+                        autocmd FileType text call textobj#quote#init({'educate': 0})
+                    augroup END
+                endif
+            " }
+            
+            " Pencil {
+                if isdirectory(expand("~/.vim/bundle/vim-pencil/"))
+                    let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+                    augroup pencil
+                        autocmd!
+                        autocmd FileType markdown,mkd,md call pencil#init()
+                        autocmd FileType text call pencil#init()
+                        autocmd FileType php,blade call pencil#init()
+                        autocmd FileType cpp,c call pencil#init()
+                        autocmd FileType html,xml call pencil#init()
+                        autocmd FileType javascript call pencil#init()
+                    augroup END
+                endif
+            " }
+            
+            " Lite Correct {
+                if isdirectory(expand("~/.vim/bundle/vim-litecorrect/"))
+                    augroup litecorrect
+                        autocmd!
+                        autocmd FileType markdown,mkd,md call litecorrect#init()
+                        autocmd FileType textile call litecorrect#init()
+                    augroup END
+                endif
+            " }
 
-    " TextObj Quote {
-        if count(g:spf13_bundle_groups, 'writing')
-            augroup textobj_quote
-                autocmd!
-                autocmd FileType markdown call textobj#quote#init()
-                autocmd FileType textile call textobj#quote#init()
-                autocmd FileType text call textobj#quote#init({'educate': 0})
-            augroup END
-        endif
-    " }
 
-    " PIV {
-        if isdirectory(expand("~/.vim/bundle/PIV"))
-            let g:DisableAutoPHPFolding = 0
-            let g:PIVAutoClose = 0
+            " Lexical {
+                if isdirectory(expand("~/.vim/bundle/vim-lexical/"))
+                    augroup lexical
+                      autocmd!
+                      autocmd FileType markdown,mkd call lexical#init()
+                      autocmd FileType textile call lexical#init()
+                      autocmd FileType text call lexical#init({ 'spell': 0 })
+                    augroup END
+                endif
+            " }
+
+            " Goyo {
+                if isdirectory(expand("~/.vim/bundle/goyo.vim/"))
+                    nnoremap <silent> <leader>z :Goyo<cr>
+
+                    function! s:goyo_enter()
+                        if has('gui_running')
+                            set fullscreen
+                            set background=dark
+                            set linespace=7
+                        elseif exists('$TMUX')
+                            silent !tmux set status off
+                        endif
+                    endfunction
+
+                    function! s:goyo_leave()
+                        if has('gui_running')
+                            set nofullscreen
+                            set background=dark
+                            set linespace=0
+                        elseif exists('$TMUX')
+                            silent !tmux set status on
+                        endif
+                    endfunction
+
+                    autocmd User GoyoEnter nested call <SID>goyo_enter()
+                    autocmd User GoyoLeave nested call <SID>goyo_leave()
+                endif
+            " }
+
+            " Limelight {
+                if isdirectory(expand("~/.vim/bundle/limelight.vim/"))
+                    autocmd User GoyoEnter Limelight
+                    autocmd User GoyoLeave Limelight!
+                endif
+            " }
         endif
     " }
 
@@ -548,6 +632,10 @@
             vmap <Leader>a,, :Tabularize /,\zs<CR>
             nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+            nmap <Leader>a$ :Tabularize /$\a*<CR>
+            vmap <Leader>a$ :Tabularize /$\a*<CR>
+            nmap <Leader>a+ :Tabularize /+<CR>
+            vmap <Leader>a+ :Tabularize /+<CR>
         endif
     " }
 
@@ -579,47 +667,46 @@
         endif
     " }
 
-    " ctrlp {
-        if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
-            let g:ctrlp_working_path_mode = 'ra'
-            nnoremap <silent> <D-t> :CtrlP<CR>
-            nnoremap <silent> <D-r> :CtrlPMRU<CR>
-            let g:ctrlp_custom_ignore = {
-                \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-                \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+    " PHP Namespace {
+        if isdirectory(expand("~/.vim/bundle/vim-php-namespace"))
+            inoremap <Leader>pu <C-O>:call PhpInsertUse()<CR>
+            noremap <Leader>pu :call PhpInsertUse()<CR>
 
-            " On Windows use "dir" as fallback command.
-            if WINDOWS()
-                let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
-            elseif executable('ag')
-                let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
-            elseif executable('ack-grep')
-                let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
-            elseif executable('ack')
-                let s:ctrlp_fallback = 'ack %s --nocolor -f'
-            else
-                let s:ctrlp_fallback = 'find %s -type f'
-            endif
-            let g:ctrlp_user_command = {
-                \ 'types': {
-                    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-                \ },
-                \ 'fallback': s:ctrlp_fallback
-            \ }
-
-            if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
-                " CtrlP extensions
-                let g:ctrlp_extensions = ['funky']
-
-                "funky
-                nnoremap <Leader>fu :CtrlPFunky<Cr>
-            endif
+            inoremap <Leader>pe <C-O>:call PhpExpandClass()<CR>
+            noremap <Leader>pe :call PhpExpandClass()<CR>
         endif
-    "}
+    " }
+
+    " PHP Refactoring {
+        if isdirectory(expand("~/.vim/bundle/vim-php-refactoring"))
+            let g:php_refactor_command = 'php ~/.vim/refactor.phar'
+        endif
+    " }
+
+    " Unite {
+        if isdirectory(expand("~/.vim/bundle/unite.vim"))
+            " Open Unite in insert mode
+            nnoremap <leader>f : <C-u>Unite -start-insert file<CR>
+            nnoremap <C-p>     : <C-u>Unite -start-insert file_rec/async:!<CR>
+
+            " For ack.
+            if executable('ack-grep')
+                 let g:unite_source_grep_command = 'ack-grep'
+                 let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
+                 let g:unite_source_grep_recursive_opt = ''
+            endif
+
+            " Like ctrlp.vim settings.
+            call unite#custom#profile('default', 'context', {
+            \   'start_insert': 1,
+            \   'winheight': 10,
+            \   'direction': 'botright',
+            \ })
+        endif
+    " }
 
     " TagBar {
-        if isdirectory(expand("~/.vim/bundle/tagbar/"))
+        if isdirectory(expand("~/.vim/bundle/tagbar"))
             nnoremap <silent> <leader>tt :TagbarToggle<CR>
 
             " If using go please install the gotags program using the following
@@ -638,10 +725,15 @@
                 \ }
         endif
     "}
-
+    
+    " Project {
+        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+            let g:project_use_nerdtree = 1
+        endif
+    " }
 
     " Fugitive {
-        if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+        if isdirectory(expand("~/.vim/bundle/vim-fugitive"))
             nnoremap <silent> <leader>gs :Gstatus<CR>
             nnoremap <silent> <leader>gd :Gdiff<CR>
             nnoremap <silent> <leader>gc :Gcommit<CR>
@@ -676,6 +768,7 @@
             autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+            autocmd FileType php,blade setlocal omnifunc=phpcomplete_extended#CompletePHP
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
             " Haskell post write lint and check with ghcmod
@@ -1007,9 +1100,28 @@
                 let g:airline_left_sep='›'  " Slightly fancier than '>'
                 let g:airline_right_sep='‹' " Slightly fancier than '<'
             endif
+            " Enable tabline with buffers (current highlighted)
+            let g:airline#extensions#tabline#enabled = 1
+            nnoremap <Tab> :bnext<CR>
+            nnoremap <S-Tab> :bprevious<CR>
+        endif
+    " }
+    
+    " BufExplorer {
+        if isdirectory(expand("~/.vim/bundle/bufexplorer/"))
+            let g:bufExplorerDetailedHelp=1      " Show detailed help.
+            let g:bufExplorerSortBy='name'       " Sort by the buffer's name.
+            let g:bufExplorerShowRelativePath=1  " Show relative paths.
         endif
     " }
 
+    " PHP {
+        augroup phpSyntaxOverride
+          autocmd!
+          autocmd FileType php,blade call PhpSyntaxOverride()
+        augroup END
+    " }
+    
 " }
 
 " GUI Settings {
@@ -1037,6 +1149,13 @@
 " }
 
 " Functions {
+
+    " PHP {
+        function! PhpSyntaxOverride()
+          hi! def link phpDocTags  phpDefine
+          hi! def link phpDocParam phpType
+        endfunction
+    " }
 
     " Initialize directories {
     function! InitializeDirectories()
@@ -1109,27 +1228,40 @@
     endfunction
     " }
 
+    " Misc {
+        " modify selected text using combining diacritics
+        command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
+        command! -range -nargs=0 Underline       call s:CombineSelection(<line1>, <line2>, '0332')
+        command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2>, '0333')
+        command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
+
+        function! s:CombineSelection(line1, line2, cp)
+          execute 'let char = "\u'.a:cp.'"'
+          execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
+        endfunction
+    " }
+    
     " Shell command {
-    function! s:RunShellCommand(cmdline)
-        botright new
+        function! s:RunShellCommand(cmdline)
+            botright new
 
-        setlocal buftype=nofile
-        setlocal bufhidden=delete
-        setlocal nobuflisted
-        setlocal noswapfile
-        setlocal nowrap
-        setlocal filetype=shell
-        setlocal syntax=shell
+            setlocal buftype=nofile
+            setlocal bufhidden=delete
+            setlocal nobuflisted
+            setlocal noswapfile
+            setlocal nowrap
+            setlocal filetype=shell
+            setlocal syntax=shell
 
-        call setline(1, a:cmdline)
-        call setline(2, substitute(a:cmdline, '.', '=', 'g'))
-        execute 'silent $read !' . escape(a:cmdline, '%#')
-        setlocal nomodifiable
-        1
-    endfunction
+            call setline(1, a:cmdline)
+            call setline(2, substitute(a:cmdline, '.', '=', 'g'))
+            execute 'silent $read !' . escape(a:cmdline, '%#')
+            setlocal nomodifiable
+            1
+        endfunction
 
-    command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
-    " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
+        command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
+        " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
     " }
 
 " }
