@@ -481,6 +481,8 @@
                         "\ 'peaksea']
         let g:random_color_schemes = ['pyte',
                         \ 'summerfruit',
+                        \ 'autumnleaf',
+                        \ 'github',
                         \ 'codeschool',
                         \ 'jellybeans',
                         \ 'molokai',

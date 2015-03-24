@@ -168,9 +168,10 @@
 
             "--- light color schemes
             Bundle 'therubymug/vim-pyte'
-            "Bundle 'vim-scripts/summerfruit.vim'
-            "Bundle 'vim-scripts/autumnleaf_modified.vim'
+            Bundle 'vim-scripts/summerfruit.vim'
+            Bundle 'vim-scripts/autumnleaf_modified.vim'
             "Bundle 'vim-scripts/mayansmoke'
+            Bundle 'endel/vim-github-colorscheme'
 
             "--- dark color schemes
             "Bundle 'Lokaltog/vim-distinguished'
