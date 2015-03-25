@@ -767,7 +767,7 @@
         "enter full mode when start
         set fu
         "set guifont=Monaco:h12
-        set guifont=Menlo:h13
+        set guifont=Menlo:h11
         "set transparency=5          " Make the window slightly transparent
     endif
 " }
