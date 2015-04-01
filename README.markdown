@@ -300,9 +300,9 @@ filetype. View `help :NERDCommenter` or checkout my post on [NERDCommenter](http
 
 **QuickStart** Toggle comments using `<Leader>c<space>` in Visual or Normal mode.
 
-## [neocomplcache]
+## [neocomplete]
 
-NeoComplCache is an amazing autocomplete plugin with additional support for snippets. It can complete simulatiously from the dictionary, buffer, omnicomplete and snippets. This is the one true plugin that brings Vim autocomplete on par with the best editors.
+Neocomplete is an amazing autocomplete plugin with additional support for snippets. It can complete simulatiously from the dictionary, buffer, omnicomplete and snippets. This is the one true plugin that brings Vim autocomplete on par with the best editors.
 
 **QuickStart** Just start typing, it will autocomplete where possible
 
@@ -310,9 +310,9 @@ NeoComplCache is an amazing autocomplete plugin with additional support for snip
 
  * Automatically present the autocomplete menu
  * Support tab and enter for autocomplete
- * `<C-k>` for completing snippets.
+ * `<C-k>` for completing snippets using [Neosnippet](https://github.com/Shougo/neosnippet.vim).
 
-![neocomplcache image][autocomplete-img]
+![neocomplete image][autocomplete-img]
 
 ## [YouCompleteMe]
 
@@ -475,7 +475,7 @@ Terminal emulator colorschemes:
 
 ## Snippets
 
-It also contains a very complete set of [snippets](https://github.com/spf13/snipmate-snippets) for use with snipmate or [NeoComplCache].
+It also contains a very complete set of [snippets](https://github.com/spf13/snipmate-snippets) for use with snipmate or [neocomplete].
 
 
 # Intro to VIM
@@ -525,7 +525,7 @@ Here's some tips if you've never used VIM before:
 [NERDTree]:https://github.com/scrooloose/nerdtree
 [ctrlp]:https://github.com/kien/ctrlp.vim
 [solarized]:https://github.com/altercation/vim-colors-solarized
-[neocomplcache]:https://github.com/shougo/neocomplcache
+[neocomplete]:https://github.com/shougo/neocomplete
 [Fugitive]:https://github.com/tpope/vim-fugitive
 [Surround]:https://github.com/tpope/vim-surround
 [Tagbar]:https://github.com/majutsushi/tagbar
