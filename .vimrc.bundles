@@ -62,7 +62,13 @@
     " Add an UnBundle command {
     function! UnBundle(arg, ...)
       let bundle = vundle#config#init_bundle(a:arg, a:000)
-      call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
+      if !exists("g:bundles")
+        " Variable name changed in https://github.com/gmarik/Vundle.vim/commit/088295df77925ee339aacc0e2f2789b0e8f143e8
+        let l:bundles = g:vundle#bundles
+      else
+        let l:bundles = g:bundles
+      endif
+      call filter(l:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
     endfunction
 
     com! -nargs=+         UnBundle
