@@ -28,13 +28,13 @@ IF NOT EXIST "%APP_DIR%" (
 	call cd "%APP_DIR%" 
 )
 
-call mklink "%HOME%\.vimrc" "%APP_DIR%\.vimrc"
-call mklink "%HOME%\_vimrc" "%APP_DIR%\.vimrc"
-call mklink "%HOME%\.vimrc.fork" "%APP_DIR%\.vimrc.fork"
-call mklink "%HOME%\.vimrc.bundles" "%APP_DIR%\.vimrc.bundles"
-call mklink "%HOME%\.vimrc.bundles.fork" "%APP_DIR%\.vimrc.bundles.fork"
-call mklink "%HOME%\.vimrc.before" "%APP_DIR%\.vimrc.before"
-call mklink "%HOME%\.vimrc.before.fork" "%APP_DIR%\.vimrc.before.fork"
+call mklink /H "%HOME%\.vimrc" "%APP_DIR%\.vimrc"
+call mklink /H "%HOME%\_vimrc" "%APP_DIR%\.vimrc"
+call mklink /H "%HOME%\.vimrc.fork" "%APP_DIR%\.vimrc.fork"
+call mklink /H "%HOME%\.vimrc.bundles" "%APP_DIR%\.vimrc.bundles"
+call mklink /H "%HOME%\.vimrc.bundles.fork" "%APP_DIR%\.vimrc.bundles.fork"
+call mklink /H "%HOME%\.vimrc.before" "%APP_DIR%\.vimrc.before"
+call mklink /H "%HOME%\.vimrc.before.fork" "%APP_DIR%\.vimrc.before.fork"
 call mklink /J "%HOME%\.vim" "%APP_DIR%\.vim"
 
 IF NOT EXIST "%APP_DIR%\.vim\bundle" (
