@@ -507,10 +507,16 @@
 
     " }
 
-    " coffee plugin {
+    " coffeescript plugin {
         " http://www.vim.org/scripts/script.php?script_id=3590
         autocmd BufRead,BufNewFile,BufWritePre *.coffee setf coffee
     "}
+
+    " typescript plugin {
+        autocmd BufRead,BufNewFile,BufWritePre *.ts setf typescript
+    " }
+
+
     "less.vim {
         autocmd BufRead,BufNewFile,BufWritePre *.less setf less
     "}
