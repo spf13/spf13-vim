@@ -362,6 +362,20 @@
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
 
+    "UPPERCASE and lowsercase conversion
+    nnoremap g^ gUiW
+    nnoremap gv guiW
+
+    "go to first and last char of line
+    nnoremap H ^  "go to first char of line
+    nnoremap L g_ "go to last char of line
+    vnoremap H ^
+    vnoremap L g_
+
+    "use ; to go to command line
+    nnoremap ; :
+    vnoremap ; :
+
     " Most prefer to toggle search highlighting rather than clear the current
     " search results. To clear search highlighting rather than toggle it on
     " and off, add the following to your .vimrc.before.local file:
