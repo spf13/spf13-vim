@@ -365,9 +365,11 @@
         "01-12
         let cur_month = strftime('%m')
         let cur_month = cur_year . '-' . cur_month
+
+        let plan_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/plan.*'
         "  ~/Dropbox/plan/2013/2013-04/2013-04.*
         "  the plan file may has different file extension
-        let plan_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month . '.*'
+        let plan_file_pattern_old = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month . '.*'
         let diary_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/diary.*'
         unlet cur_year
         unlet cur_month
@@ -378,10 +380,17 @@
         if strlen(plan_file_path) > 0
             let g:p_plan_file = plan_file_path
         else
-            echoerr 'The plan file of this month is not found!'
+            let fileList = glob(plan_file_pattern_old, 0, 1)
+            let plan_file_path = get(fileList, 0, '')
+            if strlen(plan_file_path) > 0
+                let g:p_plan_file = plan_file_path
+            else
+                echoerr 'The plan file of this month is not found!'
+            endif
         endif
 
         unlet plan_file_pattern
+        unlet plan_file_pattern_old
         unlet plan_file_path
 
         let fileList = glob(diary_file_pattern, 0, 1)
