@@ -367,8 +367,8 @@
     nnoremap gv guiW
 
     "go to first and last char of line
-    nnoremap H ^  "go to first char of line
-    nnoremap L g_ "go to last char of line
+    nnoremap H ^
+    nnoremap L g_
     vnoremap H ^
     vnoremap L g_
 
