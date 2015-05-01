@@ -156,6 +156,7 @@
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
             Bundle 'godlygeek/tabular'
+            Bundle 'jiangmiao/auto-pairs'
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
             endif
