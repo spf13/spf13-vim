@@ -231,8 +231,8 @@ Add the UnBundle command to this line. It takes the same input as the Bundle lin
 For example, disabling the 'AutoClose' and 'scrooloose/syntastic' plugins
 
 ```bash
-    echo UnBundle \'AutoClose\' >> ~/.vimrc.local
-    echo UnBundle \'scrooloose/syntastic\' >> ~/.vimrc.local
+    echo UnBundle \'AutoClose\' >> ~/.vimrc.bundles.local
+    echo UnBundle \'scrooloose/syntastic\' >> ~/.vimrc.bundles.local
 ```
 
 **Remember to run ':BundleClean!' after this to remove the existing directories**
