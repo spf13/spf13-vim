@@ -106,7 +106,7 @@
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-repeat'
-            Bundle 'spf13/vim-autoclose'
+            Bundle 'jiangmiao/auto-pairs'
             Bundle 'ctrlpvim/ctrlp.vim'
             Bundle 'tacahiroy/ctrlp-funky'
             Bundle 'kristijanhusak/vim-multiple-cursors'
@@ -156,7 +156,6 @@
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
             Bundle 'godlygeek/tabular'
-            Bundle 'jiangmiao/auto-pairs'
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
             endif
