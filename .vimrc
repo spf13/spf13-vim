@@ -754,7 +754,7 @@
 
                     " <CR>: close popup
                     " <s-CR>: close popup and save indent.
-                    inoremap <expr><s-CR> pumvisible() ? neocomplete#smart_close_popup()"\<CR>" : "\<CR>"
+                    inoremap <expr><s-CR> pumvisible() ? neocomplete#smart_close_popup()."\<CR>" : "\<CR>"
 
                     function! CleverCr()
                         if pumvisible()
@@ -881,7 +881,7 @@
 
                     " <CR>: close popup
                     " <s-CR>: close popup and save indent.
-                    inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
+                    inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()."\<CR>" : "\<CR>"
                     "inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 
                     " <C-h>, <BS>: close popup and delete backword char.
