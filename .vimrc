@@ -366,12 +366,6 @@
     nnoremap g^ gUiW
     nnoremap gv guiW
 
-    "go to first and last char of line
-    nnoremap H ^
-    nnoremap L g_
-    vnoremap H ^
-    vnoremap L g_
-
     "use ; to go to command line
     nnoremap ; :
     vnoremap ; :
