@@ -372,10 +372,6 @@
     vnoremap H ^
     vnoremap L g_
 
-    "use ; to go to command line
-    nnoremap ; :
-    vnoremap ; :
-
     " Most prefer to toggle search highlighting rather than clear the current
     " search results. To clear search highlighting rather than toggle it on
     " and off, add the following to your .vimrc.before.local file:
