@@ -319,6 +319,7 @@
             Bundle 'FuDesign2008/mkdInput.vim'
             "Bundle 'vim-scripts/Figlet.vim'
             Bundle 'vim-scripts/wiki.vim'
+            Bundle 'hotoo/pangu.vim'
             "Bundle 'spf13/vim-preview'
             "Bundle 'tpope/vim-cucumber'
             "Bundle 'quentindecock/vim-cucumber-align-pipes'
