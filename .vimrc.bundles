@@ -99,7 +99,7 @@
             "Bundle 'vim-scripts/SearchComplete'
 
             " to zoomin/out/reset guifont size
-            Bundle 'vim-scripts/zoom.vim'
+            Bundle 'FuDesign2008/zoom.vim'
             "Bundle 'vim-scripts/ZoomWin'
 
             Bundle 'vim-scripts/IndentAnything'

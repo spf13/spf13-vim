@@ -536,9 +536,9 @@
     "}
 
     "zoom.vim {
-        nnoremap = :ZoomIn<CR>
-        nnoremap - :ZoomOut<CR>
-        nnoremap 0 :ZoomReset<CR>
+        let g:zoom_favorite_fonts = ['Monaco:h11', 'Menlo:h11', 'Consolas:h13']
+        let g:zoom_key_map = 1
+        let g:zoom_random_font = 1
     "}
 
     "ZoomWin {
