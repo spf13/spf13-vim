@@ -255,7 +255,7 @@ Undotree makes that feature more accessible by creating a visual representation 
 
 NERDTree is a file explorer plugin that provides "project drawer"
 functionality to your vim editing.  You can learn more about it with
-:help NERDTree.
+`:help NERDTree`.
 
 **QuickStart** Launch using `<Leader>e`.
 
@@ -386,10 +386,10 @@ PIV provides:
 
 ![php vim itegration image][phpmanual-img]
 
-## Ack.vim
+## [Ack.vim]
 
 Ack.vim uses ack to search inside the current directory for a pattern.
-You can learn more about it with :help Ack
+You can learn more about it with `:help Ack`
 
 **QuickStart** :Ack
 
@@ -539,6 +539,7 @@ Here's some tips if you've never used VIM before:
 [Powerline]:https://github.com/lokaltog/powerline
 [Powerline Fonts]:https://github.com/Lokaltog/powerline-fonts
 [AutoClose]:https://github.com/spf13/vim-autoclose
+[Ack.vim]:https://github.com/mileszs/ack.vim
 
 [spf13-vim-img]:https://i.imgur.com/UKToY.png
 [spf13-vimrc-img]:https://i.imgur.com/kZWj1.png
