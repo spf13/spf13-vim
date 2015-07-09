@@ -418,8 +418,7 @@
         "6 = sat
         let g:plan_week_personal = {
             \ 0 : '1. 看望/call 父母;1. 锻炼身体;',
-            \ 3 : '1. call 父母;',
-            \ 4 : '1. 游泳健身;'
+            \ 3 : '1. call 父母;'
             \}
         let g:plan_month_work = {
             \ 2 : '1. 确认上月考勤;',
