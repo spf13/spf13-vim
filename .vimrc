@@ -485,10 +485,10 @@
                         \ 'summerfruit',
                         \ 'autumnleaf_modified',
                         \ 'github',
-                        \ 'codeschool',
                         \ 'jellybeans',
                         \ 'molokai',
                         \ 'solarized',
+                        \ 'pencil',
                         \ 'lucius']
         let g:random_color_start = 2
         "colo pyte
