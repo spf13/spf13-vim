@@ -363,7 +363,7 @@
 
     " FuDesign2008/MPlan.vim {
     "
-        if is_win
+        if !is_win
             let cur_year = strftime('%Y')
             "01-12
             let cur_month = strftime('%m')
