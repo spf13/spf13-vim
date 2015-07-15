@@ -8,7 +8,8 @@
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
-        if has('win32') || has('win64')
+        let is_win = has('win32') || has('win64')
+        if is_win
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         else
             " use bash as the default shell for vim
@@ -362,77 +363,79 @@
 
     " FuDesign2008/MPlan.vim {
     "
-        let cur_year = strftime('%Y')
-        "01-12
-        let cur_month = strftime('%m')
-        let cur_month = cur_year . '-' . cur_month
+        if is_win
+            let cur_year = strftime('%Y')
+            "01-12
+            let cur_month = strftime('%m')
+            let cur_month = cur_year . '-' . cur_month
 
-        let plan_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/plan.*'
-        "  ~/Dropbox/plan/2013/2013-04/2013-04.*
-        "  the plan file may has different file extension
-        let plan_file_pattern_old = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month . '.*'
-        let diary_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/diary.*'
-        unlet cur_year
-        unlet cur_month
+            let plan_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/plan.*'
+            "  ~/Dropbox/plan/2013/2013-04/2013-04.*
+            "  the plan file may has different file extension
+            let plan_file_pattern_old = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month . '.*'
+            let diary_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/diary.*'
+            unlet cur_year
+            unlet cur_month
 
-        "
-        let fileList = glob(plan_file_pattern, 0, 1)
-        let plan_file_path = get(fileList, 0, '')
-        if strlen(plan_file_path) > 0
-            let g:p_plan_file = plan_file_path
-        else
-            let fileList = glob(plan_file_pattern_old, 0, 1)
+            "
+            let fileList = glob(plan_file_pattern, 0, 1)
             let plan_file_path = get(fileList, 0, '')
             if strlen(plan_file_path) > 0
                 let g:p_plan_file = plan_file_path
             else
-                echoerr 'The plan file of this month is not found!'
+                let fileList = glob(plan_file_pattern_old, 0, 1)
+                let plan_file_path = get(fileList, 0, '')
+                if strlen(plan_file_path) > 0
+                    let g:p_plan_file = plan_file_path
+                else
+                    echoerr 'The plan file of this month is not found!'
+                endif
             endif
+
+            unlet plan_file_pattern
+            unlet plan_file_pattern_old
+            unlet plan_file_path
+
+            let fileList = glob(diary_file_pattern, 0, 1)
+            let diary_file_path = get(fileList, 0, '')
+            if strlen(diary_file_path) > 0
+                let g:p_diary_file = diary_file_path
+            else
+                echoerr 'The diary file of this month is not found!'
+            endif
+
+            unlet diary_file_pattern
+            unlet diary_file_path
+            unlet fileList
+
+            " regular task
+            let g:plan_week_work = {
+                \ 1 : '1. 10:00 - 11:00 @8层翡翠 weekly meeting;',
+                \ 2 : '1. weekly report;',
+                \ 6 : '1. 本周整理/整顿;1. 下周计划;'
+                \}
+            "0 = sunday
+            "1 = monday
+            "...
+            "6 = sat
+            let g:plan_week_personal = {
+                \ 0 : '1. 看望/call 父母;1. 锻炼身体;',
+                \ 3 : '1. call 父母;'
+                \}
+            let g:plan_month_work = {
+                \ 2 : '1. 确认上月考勤;',
+                \ 15: '1. 查看有道云笔记的新闻, 浏览论坛;',
+                \ 27: '1. 本月整理/整顿;1. 下月计划;'
+                \}
+            let g:plan_month_personal = {
+                \ 5 : '1. 查询薪水发放;',
+                \ 7 : '1. 还房贷;'
+                \}
+            let g:plan_year_personal = {
+                \ '06-24': '1. 半年回顾与规划;',
+                \ '12-24': '1. 半年回顾与规划;'
+                \}
         endif
-
-        unlet plan_file_pattern
-        unlet plan_file_pattern_old
-        unlet plan_file_path
-
-        let fileList = glob(diary_file_pattern, 0, 1)
-        let diary_file_path = get(fileList, 0, '')
-        if strlen(diary_file_path) > 0
-            let g:p_diary_file = diary_file_path
-        else
-            echoerr 'The diary file of this month is not found!'
-        endif
-
-        unlet diary_file_pattern
-        unlet diary_file_path
-        unlet fileList
-
-        " regular task
-        let g:plan_week_work = {
-            \ 1 : '1. 10:00 - 11:00 @8层翡翠 weekly meeting;',
-            \ 2 : '1. weekly report;',
-            \ 6 : '1. 本周整理/整顿;1. 下周计划;'
-            \}
-        "0 = sunday
-        "1 = monday
-        "...
-        "6 = sat
-        let g:plan_week_personal = {
-            \ 0 : '1. 看望/call 父母;1. 锻炼身体;',
-            \ 3 : '1. call 父母;'
-            \}
-        let g:plan_month_work = {
-            \ 2 : '1. 确认上月考勤;',
-            \ 15: '1. 查看有道云笔记的新闻, 浏览论坛;',
-            \ 27: '1. 本月整理/整顿;1. 下月计划;'
-            \}
-        let g:plan_month_personal = {
-            \ 5 : '1. 查询薪水发放;',
-            \ 7 : '1. 还房贷;'
-            \}
-        let g:plan_year_personal = {
-            \ '06-24': '1. 半年回顾与规划;',
-            \ '12-24': '1. 半年回顾与规划;'
-            \}
 
     "}
 
@@ -530,7 +533,7 @@
     "zoom.vim {
         let g:zoom_favorite_fonts = ['Monaco:h11', 'Menlo:h11', 'Consolas:h13']
         let g:zoom_key_map = 1
-        let g:zoom_random_font = 1
+        let g:zoom_random_font = is_win ? 0 : 1
     "}
 
     "ZoomWin {
