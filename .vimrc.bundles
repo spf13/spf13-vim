@@ -119,6 +119,7 @@
             else
                 Bundle 'bling/vim-airline'
             endif
+            Bundle 'powerline/fonts'
             Bundle 'bling/vim-bufferline'
             Bundle 'Lokaltog/vim-easymotion'
             Bundle 'jistr/vim-nerdtree-tabs'
