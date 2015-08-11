@@ -387,8 +387,8 @@
                 let plan_file_path = get(fileList, 0, '')
                 if strlen(plan_file_path) > 0
                     let g:p_plan_file = plan_file_path
-                else
-                    echoerr 'The plan file of this month is not found!'
+                "else
+                    "echoerr 'The plan file of this month is not found!'
                 endif
             endif
 
@@ -400,8 +400,8 @@
             let diary_file_path = get(fileList, 0, '')
             if strlen(diary_file_path) > 0
                 let g:p_diary_file = diary_file_path
-            else
-                echoerr 'The diary file of this month is not found!'
+            "else
+                "echoerr 'The diary file of this month is not found!'
             endif
 
             unlet diary_file_pattern
