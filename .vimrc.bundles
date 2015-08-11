@@ -110,8 +110,7 @@
 
             Bundle 'FuDesign2008/OpenUrl.vim'
             Bundle 'FuDesign2008/ToggleNumber.vim'
-            Bundle 'FuDesign2008/stripWhitespace.vim'
-            Bundle 'FuDesign2008/tabWidth.vim'
+            Bundle 'FuDesign2008/style.vim'
 
             "Bundle 'Yggdroot/indentLine'
             "Bundle 'nathanaelkane/vim-indent-guides'
