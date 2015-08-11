@@ -50,14 +50,61 @@
         endif
     " }
 
+    " Config files {
+        " All config variables handle invisibility for you.
+        " This cuts down on a lot of `if` statements in all our startup files.
+        " So, use them like: g:spf13_vim_cache_home . 'foo/bar'
+        "               NOT: g:spf13_vim_cache_home . '.foo/bar'
+
+        let g:spf13_vimrc = $HOME . '.vimrc'
+        let g:spf13_gvimrc_local = $HOME . '.gvimrc.local'
+        " Used for: vimrc.* files
+        if $XDG_CONFIG_HOME != ""
+            let g:spf13_vim_config_home = $XDG_CONFIG_HOME . '/vim/'
+        else
+            let g:spf13_vim_config_home = $HOME . '.'
+        endif
+
+        " Startup files {
+            " listed in the order in which they are loaded
+            let g:spf13_vimrc_before = g:spf13_vim_config_home . 'vimrc.before'
+            let g:spf13_vimrc_before_fork = g:spf13_vim_config_home . 'vimrc.before.fork'
+            let g:spf13_vimrc_before_local = g:spf13_vim_config_home . 'vimrc.before.local'
+            let g:spf13_vimrc_bundles = g:spf13_vim_config_home . 'vimrc.bundles'
+            let g:spf13_vimrc_bundles_fork = g:spf13_vim_config_home . 'vimrc.bundles.fork'
+            let g:spf13_vimrc_bundles_local = g:spf13_vim_config_home . 'vimrc.bundles.local'
+            " g:spf13_vimrc
+            let g:spf13_vimrc_fork = g:spf13_vim_config_home . 'vimrc.fork'
+            let g:spf13_vimrc_local = g:spf13_vim_config_home . 'vimrc.local'
+            " g:spf13_gvimrc
+        " }
+
+        " Used for: bundles directory
+        if $XDG_DATA_HOME != ""
+            " TODO: Even with setting rtp it seems like something is overriding
+            " where vim looks...
+            let g:spf13_vim_data_home = $HOME . './vim'
+        else
+            let g:spf13_vim_data_home = $HOME . './vim'
+        endif
+
+        " Used for: vimbackup, vimviews, vimundo, and vimswap files/directories
+        if $XDG_CACHE_HOME != ""
+            let g:spf13_vim_cache_home = $XDG_CACHE_HOME . '/vim/'
+        else
+            " No subdir because we might need to respect g:spf13_consolidated_directory
+            let g:spf13_vim_cache_home = $HOME . '/.'
+        endif
+    " }
+
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
         if WINDOWS()
-          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+            set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
     " }
-    
+
     " Arrow Key Fix {
         " https://github.com/spf13/spf13-vim/issues/780
         if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
@@ -68,14 +115,14 @@
 " }
 
 " Use before config if available {
-    if filereadable(expand("~/.vimrc.before"))
-        source ~/.vimrc.before
+    if filereadable(g:spf13_vimrc_before)
+        exec 'source ' . g:spf13_vimrc_before
     endif
 " }
 
-" Use bundles config {
-    if filereadable(expand("~/.vimrc.bundles"))
-        source ~/.vimrc.bundles
+" Use bundles config if available {
+    if filereadable(g:spf13_vimrc_bundles)
+        exec 'source ' . g:spf13_vimrc_bundles
     endif
 " }
 
@@ -177,7 +224,7 @@
 
 " Vim UI {
 
-    if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+    if !exists('g:override_spf13_bundles') && filereadable(g:spf13_vim_data_home . "/bundle/vim-colors-solarized/colors/solarized.vim")
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
         let g:solarized_contrast="normal"
@@ -283,22 +330,6 @@
         let maplocalleader = '_'
     else
         let maplocalleader=g:spf13_localleader
-    endif
-
-    " The default mappings for editing and applying the spf13 configuration
-    " are <leader>ev and <leader>sv respectively. Change them to your preference
-    " by adding the following to your .vimrc.before.local file:
-    "   let g:spf13_edit_config_mapping='<leader>ec'
-    "   let g:spf13_apply_config_mapping='<leader>sc'
-    if !exists('g:spf13_edit_config_mapping')
-        let s:spf13_edit_config_mapping = '<leader>ev'
-    else
-        let s:spf13_edit_config_mapping = g:spf13_edit_config_mapping
-    endif
-    if !exists('g:spf13_apply_config_mapping')
-        let s:spf13_apply_config_mapping = '<leader>sv'
-    else
-        let s:spf13_apply_config_mapping = g:spf13_apply_config_mapping
     endif
 
     " Easier moving in tabs and windows
@@ -481,17 +512,17 @@
     " }
 
     " PIV {
-        if isdirectory(expand("~/.vim/bundle/PIV"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/PIV")
             let g:DisableAutoPHPFolding = 0
             let g:PIVAutoClose = 0
         endif
     " }
 
     " Misc {
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/nerdtree")
             let g:NERDShutUp=1
         endif
-        if isdirectory(expand("~/.vim/bundle/matchit.zip"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/matchit.zip")
             let b:match_ignorecase = 1
         endif
     " }
@@ -528,7 +559,7 @@
     " }
 
     " Ctags {
-        set tags=./tags;/,~/.vimtags
+        set tags=./tags;/,g:spf13_vim_config_home.'/.vimtags'
 
         " Make tags placed in .git/tags file available in all levels of a repository
         let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
@@ -550,7 +581,7 @@
     " }
 
     " NerdTree {
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/nerdtree")
             map <C-e> <plug>NERDTreeTabsToggle<CR>
             map <leader>e :NERDTreeFind<CR>
             nmap <leader>nt :NERDTreeFind<CR>
@@ -567,7 +598,7 @@
     " }
 
     " Tabularize {
-        if isdirectory(expand("~/.vim/bundle/tabular"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/tabular")
             nmap <Leader>a& :Tabularize /&<CR>
             vmap <Leader>a& :Tabularize /&<CR>
             nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
@@ -589,7 +620,7 @@
 
     " Session List {
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-        if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/sessionman.vim/")
             nmap <leader>sl :SessionList<CR>
             nmap <leader>ss :SessionSave<CR>
             nmap <leader>sc :SessionClose<CR>
@@ -607,7 +638,7 @@
             let g:pymode = 0
         endif
 
-        if isdirectory(expand("~/.vim/bundle/python-mode"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/python-mode")
             let g:pymode_lint_checkers = ['pyflakes']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
@@ -616,7 +647,7 @@
     " }
 
     " ctrlp {
-        if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/ctrlp.vim/")
             let g:ctrlp_working_path_mode = 'ra'
             nnoremap <silent> <D-t> :CtrlP<CR>
             nnoremap <silent> <D-r> :CtrlPMRU<CR>
@@ -624,15 +655,15 @@
                 \ 'dir':  '\.git$\|\.hg$\|\.svn$',
                 \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
-            if executable('ag')
+            " On Windows use "dir" as fallback command.
+            if WINDOWS()
+                let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
+            elseif executable('ag')
                 let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
             elseif executable('ack-grep')
                 let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
             elseif executable('ack')
                 let s:ctrlp_fallback = 'ack %s --nocolor -f'
-            " On Windows use "dir" as fallback command.
-            elseif WINDOWS()
-                let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
             else
                 let s:ctrlp_fallback = 'find %s -type f'
             endif
@@ -647,7 +678,7 @@
                 \ 'fallback': s:ctrlp_fallback
             \ }
 
-            if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
+            if isdirectory(g:spf13_vim_data_home . "/bundle/ctrlp-funky/")
                 " CtrlP extensions
                 let g:ctrlp_extensions = ['funky']
 
@@ -658,14 +689,14 @@
     "}
 
     " TagBar {
-        if isdirectory(expand("~/.vim/bundle/tagbar/"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/tagbar/")
             nnoremap <silent> <leader>tt :TagbarToggle<CR>
         endif
     "}
 
 
     " Fugitive {
-        if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/vim-fugitive/")
             nnoremap <silent> <leader>gs :Gstatus<CR>
             nnoremap <silent> <leader>gd :Gdiff<CR>
             nnoremap <silent> <leader>gc :Gcommit<CR>
@@ -905,7 +936,7 @@
 
                     " <CR>: close popup
                     " <s-CR>: close popup and save indent.
-                    inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()."\<CR>" : "\<CR>"
+                    inoremap <expr><s-CR> pumvisible() ? neocompl_`#close_popup()."\<CR>" : "\<CR>"
                     "inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 
                     " <C-h>, <BS>: close popup and delete backword char.
@@ -958,7 +989,7 @@
                     \ count(g:spf13_bundle_groups, 'neocomplete')
 
             " Use honza's snippets.
-            let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+            let g:neosnippet#snippets_directory=g:spf13_vim_data_home . "/bundle/vim-snippets/snippets"
 
             " Enable neosnippet snipmate compatibility mode
             let g:neosnippet#enable_snipmate_compatibility = 1
@@ -989,7 +1020,7 @@
     endif
 
     " UndoTree {
-        if isdirectory(expand("~/.vim/bundle/undotree/"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/undotree/")
             nnoremap <Leader>u :UndotreeToggle<CR>
             " If undotree is opened, it is likely one wants to interact with it.
             let g:undotree_SetFocusWhenToggle=1
@@ -997,7 +1028,7 @@
     " }
 
     " indent_guides {
-        if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/vim-indent-guides/")
             let g:indent_guides_start_level = 2
             let g:indent_guides_guide_size = 1
             let g:indent_guides_enable_on_vim_startup = 1
@@ -1022,7 +1053,7 @@
 
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
-        if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+        if isdirectory(g:spf13_vim_data_home . "/bundle/vim-airline/")
             if !exists('g:airline_theme')
                 let g:airline_theme = 'solarized'
             endif
@@ -1064,7 +1095,7 @@
 
     " Initialize directories {
     function! InitializeDirectories()
-        let parent = $HOME
+        let parent = g:spf13_vim_cache_home
         let prefix = 'vim'
         let dir_list = {
                     \ 'backup': 'backupdir',
@@ -1083,14 +1114,14 @@
         if exists('g:spf13_consolidated_directory')
             let common_dir = g:spf13_consolidated_directory . prefix
         else
-            let common_dir = parent . '/.' . prefix
+            let common_dir = parent . prefix
         endif
 
         for [dirname, settingname] in items(dir_list)
             let directory = common_dir . dirname . '/'
             if exists("*mkdir")
                 if !isdirectory(directory)
-                    call mkdir(directory)
+                    call mkdir(directory, 'p')
                 endif
             endif
             if !isdirectory(directory)
@@ -1156,66 +1187,24 @@
     " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
     " }
 
-    function! s:IsSpf13Fork()
-        let s:is_fork = 0
-        let s:fork_files = ["~/.vimrc.fork", "~/.vimrc.before.fork", "~/.vimrc.bundles.fork"]
-        for fork_file in s:fork_files
-            if filereadable(expand(fork_file, ":p"))
-                let s:is_fork = 1
-                break
-            endif
-        endfor
-        return s:is_fork
-    endfunction
-     
-    function! s:ExpandFilenameAndExecute(command, file)
-        execute a:command . " " . expand(a:file, ":p")
-    endfunction
-     
-    function! s:EditSpf13Config()
-        call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
-        call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.before")
-        call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
-     
-        execute bufwinnr(".vimrc") . "wincmd w"
-        call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.local")
-        wincmd l
-        call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.before.local")
-        wincmd l
-        call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.bundles.local")
-     
-        if <SID>IsSpf13Fork()
-            execute bufwinnr(".vimrc") . "wincmd w"
-            call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.fork")
-            wincmd l
-            call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.before.fork")
-            wincmd l
-            call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.bundles.fork")
-        endif
-     
-        execute bufwinnr(".vimrc.local") . "wincmd w"
-    endfunction
-     
-    execute "noremap " . s:spf13_edit_config_mapping " :call <SID>EditSpf13Config()<CR>"
-    execute "noremap " . s:spf13_apply_config_mapping . " :source ~/.vimrc<CR>"
 " }
 
 " Use fork vimrc if available {
-    if filereadable(expand("~/.vimrc.fork"))
-        source ~/.vimrc.fork
+    if filereadable(g:spf13_vimrc_fork)
+        exec 'source ' . g:spf13_vimrc_fork
     endif
 " }
 
 " Use local vimrc if available {
-    if filereadable(expand("~/.vimrc.local"))
-        source ~/.vimrc.local
+    if filereadable(g:spf13_vimrc_local)
+        exec 'source ' . g:spf13_vimrc_local
     endif
 " }
 
 " Use local gvimrc if available and gui is running {
     if has('gui_running')
-        if filereadable(expand("~/.gvimrc.local"))
-            source ~/.gvimrc.local
+        if filereadable(g:spf13_gvimrc_local)
+            exec 'source ' . g:spf13_gvimrc_local
         endif
     endif
 " }
