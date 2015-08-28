@@ -92,20 +92,16 @@
     " Require a special keypress to enter multiple cursors mode
     "   let g:multi_cursor_start_key='+'
 
-    " Mappings for editing/applying spf13 config
-    "   let g:spf13_edit_config_mapping='<leader>ev'
-    "   let g:spf13_apply_config_mapping='<leader>sv'
-    
 " }
 
 " Use fork before if available {
-    if filereadable(expand("~/.vimrc.before.fork"))
-        source ~/.vimrc.before.fork
+    if filereadable(g:spf13_vimrc_before_fork)
+        exec 'source ' . g:spf13_vimrc_before_fork
     endif
 " }
 
 " Use local before if available {
-    if filereadable(expand("~/.vimrc.before.local"))
-        source ~/.vimrc.before.local
+    if filereadable(g:spf13_vimrc_before_local)
+        exec 'source ' . g:spf13_vimrc_before_local
     endif
 " }

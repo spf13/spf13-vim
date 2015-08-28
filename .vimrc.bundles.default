@@ -1,14 +1,62 @@
+" Config files {
+    " All config variables handle invisibility for you.
+    " This cuts down on a lot of `if` statements in all our startup files.
+    " So, use them like: g:spf13_vim_cache_home . 'foo/bar'
+    "               NOT: g:spf13_vim_cache_home . '.foo/bar'
+
+    let g:spf13_vimrc = $HOME . '.vimrc'
+    let g:spf13_gvimrc_local = $HOME . '.gvimrc.local'
+    " Used for: vimrc.* files
+    if $XDG_CONFIG_HOME != ""
+        let g:spf13_vim_config_home = $XDG_CONFIG_HOME . '/vim/'
+    else
+        let g:spf13_vim_config_home = $HOME . '.'
+    endif
+
+    " Startup files {
+        " listed in the order in which they are loaded
+        let g:spf13_vimrc_before = g:spf13_vim_config_home . 'vimrc.before'
+        let g:spf13_vimrc_before_fork = g:spf13_vim_config_home . 'vimrc.before.fork'
+        let g:spf13_vimrc_before_local = g:spf13_vim_config_home . 'vimrc.before.local'
+        let g:spf13_vimrc_bundles = g:spf13_vim_config_home . 'vimrc.bundles'
+        let g:spf13_vimrc_bundles_fork = g:spf13_vim_config_home . 'vimrc.bundles.fork'
+        let g:spf13_vimrc_bundles_local = g:spf13_vim_config_home . 'vimrc.bundles.local'
+        " g:spf13_vimrc
+        let g:spf13_vimrc_fork = g:spf13_vim_config_home . 'vimrc.fork'
+        let g:spf13_vimrc_local = g:spf13_vim_config_home . 'vimrc.local'
+        " g:spf13_gvimrc
+    " }
+
+    " Used for: bundles directory
+    if $XDG_DATA_HOME != ""
+        " TODO: Even with setting rtp it seems like something is overriding
+        " where vim looks...
+        let g:spf13_vim_data_home = $HOME . './vim'
+    else
+        let g:spf13_vim_data_home = $HOME . './vim'
+    endif
+
+    " Used for: vimbackup, vimviews, vimundo, and vimswap files/directories
+    if $XDG_CACHE_HOME != ""
+        let g:spf13_vim_cache_home = $XDG_CACHE_HOME . '/vim/'
+    else
+        " No subdir because we might need to respect g:spf13_consolidated_directory
+        let g:spf13_vim_cache_home = $HOME . '/.'
+    endif
+
+" }
+
 " Default Bundles {
 
     " Use before config if available {
-        if filereadable(expand("~/.vimrc.before"))
-            source ~/.vimrc.before
+        if filereadable(g:spf13_vimrc_before)
+            exec 'source ' . g:spf13_vimrc_before
         endif
     " }
 
     " Use bundles config {
-        if filereadable(expand("~/.vimrc.bundles"))
-            source ~/.vimrc.bundles
+        if filereadable(g:spf13_vimrc_bundles)
+            exec 'source ' . g:spf13_vimrc_bundles
         endif
     " }
 " }
