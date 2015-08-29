@@ -439,10 +439,6 @@
 
     "}
 
-    " FuDesign2008/backbone.vim {
-        "  include syntax  jquery underscore and backbone
-        autocmd BufRead,BufNewFile *.js set ft=javascript syntax=backbone
-    "}
     " FuDesign2008/webSearch.vim {
         let g:webSearchEngines = {
             \ 'google': 'https://www.google.com.hk/search?hl=en&q=<QUERY>',

@@ -267,7 +267,7 @@
             "Bundle 'pangloss/vim-javascript'
             "Bundle 'mattn/jscomplete-vim'
             Bundle 'jelera/vim-javascript-syntax'
-            Bundle 'FuDesign2008/backbone.vim'
+            Bundle 'FuDesign2008/backbone-syntax.vim'
             Bundle 'briancollins/vim-jst'
             Bundle 'marijnh/tern_for_vim'
         endif
