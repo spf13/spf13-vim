@@ -66,6 +66,7 @@
             \ 'html',
             \ 'coffeescript',
             \ 'typescript',
+            \ 'java',
             \ 'ios',
             \ 'document',
             \ 'bash']
@@ -330,6 +331,12 @@
         "if count(g:spf13_bundle_groups, 'twig')
             "Bundle 'beyondwords/vim-twig'
         "endif
+
+    "Java
+        "
+        if count(g:spf13_bundle_groups, 'java') && !g:is_win
+            Bundle 'artur-shaik/vim-javacomplete2'
+        endif
 
     "iOS
         "
