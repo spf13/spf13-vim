@@ -369,11 +369,11 @@
             let cur_month = strftime('%m')
             let cur_month = cur_year . '-' . cur_month
 
-            let plan_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/plan.*'
-            "  ~/Dropbox/plan/2013/2013-04/2013-04.*
+            let plan_file_pattern = '~/workBox/plan/' . cur_year .'/' . cur_month . '/plan.*'
+            "  ~/workBox/plan/2013/2013-04/2013-04.*
             "  the plan file may has different file extension
-            let plan_file_pattern_old = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month . '.*'
-            let diary_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/diary.*'
+            let plan_file_pattern_old = '~/workBox/plan/' . cur_year .'/' . cur_month . '/' . cur_month . '.*'
+            let diary_file_pattern = '~/workBox/plan/' . cur_year .'/' . cur_month . '/diary.*'
             unlet cur_year
             unlet cur_month
 
