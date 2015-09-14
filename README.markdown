@@ -23,7 +23,7 @@ Lastly (and perhaps, most importantly) It is completely cross platform. It works
 
 # Installation
 ## Requirements
-To make all the plugins work, specifically [neocomplete](github.com/Shougo/neocomplete.vim), you need [vim with lua](https://github.com/Shougo/neocomplete.vim#requirements).
+To make all the plugins work, specifically [neocomplete](https://github.com/Shougo/neocomplete.vim), you need [vim with lua](https://github.com/Shougo/neocomplete.vim#requirements).
 
 ## Linux, \*nix, Mac OSX Installation
 
