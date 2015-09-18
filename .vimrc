@@ -488,7 +488,7 @@
                         \ 'molokai',
                         \ 'solarized',
                         \ 'pencil',
-                        \ 'apprentice'
+                        \ 'apprentice',
                         \ 'lucius']
         let g:random_color_start = 2
         "colo pyte
