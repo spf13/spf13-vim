@@ -189,6 +189,7 @@
             "Bundle 'cschlueter/vim-wombat'
             Bundle 'jonathanfilip/vim-lucius'
             "Bundle 'vim-scripts/peaksea'
+            Bundle 'romainl/Apprentice'
 
             "--- special colors
             Bundle 'altercation/vim-colors-solarized'
