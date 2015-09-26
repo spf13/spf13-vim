@@ -143,7 +143,7 @@
     if !exists('g:spf13_no_restore_cursor')
         function! ResCur()
             if line("'\"") <= line("$")
-                normal! g`"
+                silent! normal! g`"
                 return 1
             endif
         endfunction
