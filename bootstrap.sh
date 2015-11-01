@@ -127,8 +127,8 @@ create_symlinks() {
     lnif "$source_path/.vim"           "$target_path/.vim"
 
     if program_exists "nvim"; then
-        lnif "$source_path/.vim"       "$target_path/.nvim"
-        lnif "$source_path/.vimrc"     "$target_path/.nvim/nvimrc"
+        lnif "$source_path/.vim"       "$target_path/.config/nvim"
+        lnif "$source_path/.vimrc"     "$target_path/.config/nvim/init.vim"
     fi
 
     touch  "$target_path/.vimrc.local"
