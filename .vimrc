@@ -466,8 +466,8 @@
     " FuDesign2008/translator.vim {
     " }
 
-    " FuDesign2008/GoodColors.vim {
-        "let g:random_color_schemes = ['pyte',
+    " FuDesign2008/randomColor.vim {
+        "let g:favorite_color_schemes = ['pyte',
                         "\ 'summerfruit',
                         "\ 'codeschool',
                         "\ 'jellybeans',
@@ -480,7 +480,7 @@
                         "\ 'wombat',
                         "\ 'lucius',
                         "\ 'peaksea']
-        let g:random_color_schemes = ['pyte',
+        let g:favorite_color_schemes = ['pyte',
                         \ 'summerfruit',
                         \ 'autumnleaf_modified',
                         \ 'github',

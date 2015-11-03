@@ -167,35 +167,7 @@
 
     "Colors
         if count(g:spf13_bundle_groups, 'colors')
-
-            "--- light color schemes
-            Bundle 'therubymug/vim-pyte'
-            Bundle 'vim-scripts/summerfruit.vim'
-            Bundle 'vim-scripts/autumnleaf_modified.vim'
-            "Bundle 'vim-scripts/mayansmoke'
-            Bundle 'endel/vim-github-colorscheme'
-
-            "--- dark color schemes
-            "Bundle 'Lokaltog/vim-distinguished'
-            Bundle 'nanotech/jellybeans.vim'
-            "Bundle 'jpo/vim-railscasts-theme'
-            "Bundle 'matthewtodd/vim-twilight'
-            "Bundle 'tpope/vim-vividchalk'
-            "Bundle 'twerth/ir_black'
-            Bundle 'tomasr/molokai'
-            "Bundle 'jnurmine/Zenburn'
-            "Bundle 'vim-scripts/desert.vim'
-            "Bundle 'briancarper/gentooish.vim'
-            "Bundle 'cschlueter/vim-wombat'
-            Bundle 'jonathanfilip/vim-lucius'
-            "Bundle 'vim-scripts/peaksea'
-            Bundle 'romainl/Apprentice'
-
-            "--- special colors
-            Bundle 'altercation/vim-colors-solarized'
-            Bundle 'reedes/vim-colors-pencil'
-            "Bundle 'chriskempson/base16-vim'
-
+            Bundle 'flazz/vim-colorschemes'
             Bundle 'FuDesign2008/randomColor.vim'
         endif
 
