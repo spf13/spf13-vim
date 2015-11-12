@@ -663,6 +663,11 @@
         endif
     "}
 
+    " Rainbow {
+        if isdirectory(expand("~/.vim/bundle/rainbow/"))
+            let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+        endif
+    "}
 
     " Fugitive {
         if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
