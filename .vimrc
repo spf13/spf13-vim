@@ -512,7 +512,7 @@
             hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
             " Some convenient mappings
-            inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+            "inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
             if exists('g:spf13_map_cr_omni_complete')
                 inoremap <expr> <CR>     pumvisible() ? "\<C-y>" : "\<CR>"
             endif
