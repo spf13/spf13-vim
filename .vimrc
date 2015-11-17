@@ -39,7 +39,7 @@
             return has('unix') && !has('macunix') && !has('win32unix')
         endfunction
         silent function! WINDOWS()
-            return  (has('win16') || has('win32') || has('win64'))
+            return  (has('win32') || has('win64'))
         endfunction
     " }
 
