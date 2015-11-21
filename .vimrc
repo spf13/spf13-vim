@@ -328,10 +328,6 @@
         "let g:SuperTabLongestEnhanced = 1
      "}
 
-    " autoHEADER {
-        let g:autoHEADER_default_author = 'fuyg<fuyg@rd.netease.com>'
-    " }
-
      " YCM.vim {
         " the default .ycm_extra_conf.py
         "let g:ycm_global_ycm_extra_conf = expand('~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py')
