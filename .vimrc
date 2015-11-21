@@ -549,6 +549,7 @@
     "
     "Syntastic {
         let g:syntastic_objc_compiler = 'clang'
+        let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
     "}
 
     " PIV {
