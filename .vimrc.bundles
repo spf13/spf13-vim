@@ -51,7 +51,6 @@
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-            "\ 'php',
             "\ 'ruby',
             "\ 'twig',
             "\ 'scala',
@@ -61,6 +60,7 @@
             \ 'programming',
             \ 'snip',
             \ 'python',
+            \ 'php',
             \ 'javascript',
             \ 'css',
             \ 'html',
@@ -218,7 +218,9 @@
 
     " PHP
         if count(g:spf13_bundle_groups, 'php')
-            Bundle 'spf13/PIV'
+            " better syntax hilight
+            Bundle 'shawncplus/php.vim'
+            "Bundle 'spf13/PIV'
         endif
 
     " Python
