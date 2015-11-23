@@ -478,8 +478,11 @@
                         "\ 'peaksea']
         let g:favorite_color_schemes = ['pyte',
                         \ 'summerfruit',
-                        \ 'autumnleaf_modified',
+                        \ 'autumnleaf',
+                        \ 'atom',
                         \ 'github',
+                        \ 'bclear',
+                        \ 'beauty256',
                         \ 'jellybeans',
                         \ 'molokai',
                         \ 'solarized',
