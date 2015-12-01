@@ -517,7 +517,8 @@
 
     " NERDCommenter {
         let g:NERDCustomDelimiters = {
-            \ 'python' : { 'left': '# '}
+            \ 'python' : { 'left': '# '},
+            \ 'php' : { 'left': '# '}
             \}
 
     " }
