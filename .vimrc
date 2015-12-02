@@ -347,6 +347,10 @@
         let g:UltiSnipsJumpForwardTrigger="<c-j>"
         let g:UltiSnipsJumpBackwardTrigger="<c-k>"
      "}
+     "
+     " vim-javacomplete2 {
+        autocmd FileType java set omnifunc=javacomplete#Complete
+     " }
 
 
      " js-complete.vim {
