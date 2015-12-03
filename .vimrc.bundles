@@ -146,7 +146,7 @@
                 "Bundle 'FuDesign2008/translator.vim'
                 "Bundle 'mattn/calendar-vim'
                 " :find is enough for me
-                "Bundle 'kien/ctrlp.vim'
+                Bundle 'ctrlpvim/ctrlp.vim'
             endif
 
             " ack
@@ -192,9 +192,10 @@
                 "Bundle 'rizzatti/funcoo.vim'
                 "Bundle 'rizzatti/dash.vim'
 
-                "if executable('ctags')
-                    "Bundle 'majutsushi/tagbar'
-                "endif
+                if executable('ctags')
+                    Bundle 'majutsushi/tagbar'
+                    Bundle 'xolox/vim-easytags'
+                endif
             "endif
         endif
     " Snippets
