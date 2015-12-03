@@ -88,7 +88,6 @@
             "NOTE: csapprox cause errors
             "Bundle 'godlygeek/csapprox'
             "Bundle 'jistr/vim-nerdtree-tabs'
-            "Bundle 'flazz/vim-colorschemes'
             "Bundle 'mbbill/undotree'
             "if !exists('g:spf13_no_views')
                 "Bundle 'vim-scripts/restore_view.vim'
@@ -104,7 +103,7 @@
             "Bundle 'vim-scripts/ZoomWin'
 
             Bundle 'vim-scripts/IndentAnything'
-            Bundle 'FuDesign2008/WebSearch.vim'
+            "Bundle 'FuDesign2008/WebSearch.vim'
 
             Bundle 'kana/vim-smartinput'
             "Bundle 'Raimondi/delimitMate'
@@ -144,8 +143,8 @@
                 Bundle 'Valloric/YouCompleteMe'
 
                 Bundle 'FuDesign2008/plan.vim'
-                Bundle 'FuDesign2008/translator.vim'
-                Bundle 'mattn/calendar-vim'
+                "Bundle 'FuDesign2008/translator.vim'
+                "Bundle 'mattn/calendar-vim'
                 " :find is enough for me
                 "Bundle 'kien/ctrlp.vim'
             endif
@@ -186,7 +185,7 @@
             Bundle 'FuDesign2008/GotoFile.vim'
             Bundle 'FuDesign2008/autoHighlight.vim'
             Bundle 'FuDesign2008/smartRename.vim'
-            if !g:is_win
+            "if !g:is_win
                 "Bundle 'tpope/vim-fugitive'
 
                 "dash.vim needs funcoo.vim
@@ -196,7 +195,7 @@
                 "if executable('ctags')
                     "Bundle 'majutsushi/tagbar'
                 "endif
-            endif
+            "endif
         endif
     " Snippets
         if count(g:spf13_bundle_groups, 'snip')
@@ -297,7 +296,7 @@
             Bundle 'FuDesign2008/mkdInput.vim'
             "Bundle 'vim-scripts/Figlet.vim'
             Bundle 'vim-scripts/wiki.vim'
-            Bundle 'hotoo/pangu.vim'
+            "Bundle 'hotoo/pangu.vim'
             "Bundle 'spf13/vim-preview'
             "Bundle 'tpope/vim-cucumber'
             "Bundle 'quentindecock/vim-cucumber-align-pipes'
