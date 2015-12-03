@@ -534,8 +534,7 @@
 
     " NERDCommenter {
         let g:NERDCustomDelimiters = {
-            \ 'python' : { 'left': '# '},
-            \ 'php' : { 'left': '# '}
+            \ 'python' : { 'left': '# '}
             \}
 
     " }
@@ -579,7 +578,7 @@
         let g:syntastic_check_on_wq = 0
 
         let g:syntastic_objc_compiler = 'clang'
-        let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+        let g:syntastic_php_checkers = ['phpmd']
     "}
 
     " PIV {
