@@ -160,7 +160,7 @@
             " use the_silver_searcher which if faster
             " instead of ack
             Bundle 'rking/ag.vim'
-            Bundle 'nelstrom/vim-qargs'
+            Bundle 'FuDesign2008/vim-qargs'
 
         endif
 
@@ -194,6 +194,7 @@
 
                 if executable('ctags')
                     Bundle 'majutsushi/tagbar'
+                    Bundle 'xolox/vim-misc'
                     Bundle 'xolox/vim-easytags'
                 endif
             "endif
