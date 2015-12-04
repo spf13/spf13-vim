@@ -554,7 +554,7 @@
     "}
 
     "calendar {
-        let g:calendar_mark = 'right'
+        "let g:calendar_mark = 'right'
     "}
 
     "zoom.vim {
@@ -605,6 +605,7 @@
         let g:tagbar_compact = 1
         let g:tagbar_show_visibility = 0
         let g:tagbar_expand = 1
+        let g:tagbar_left = 1
         "for markdown
         let g:tagbar_type_markdown = {
             \ 'ctagstype' : 'markdown',
