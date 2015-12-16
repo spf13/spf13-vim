@@ -247,6 +247,7 @@
             Bundle 'hail2u/vim-css3-syntax'
             Bundle 'gorodinskiy/vim-coloresque'
             Bundle 'tpope/vim-haml'
+            Bundle 'mattn/emmet-vim'
         endif
     " }
 
