@@ -374,9 +374,17 @@
         "let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '`': '`'}
     " }
 
-    " FuDesign2008/MPlan.vim {
+    " FuDesign2008/plan.vim {
     "
         if !is_win
+
+            let g:p_edit_files = {
+                \ 'book': expand('~/Dropbox/books'),
+                \ 'todo': expand('~/Dropbox/plan/fuyg-todo'),
+                \ 'dev' : expand('~/Dropbox/plan/family-dev'),
+                \ 'pdp' : expand('~/Dropbox/plan/pdp')
+                \}
+
             let cur_year = strftime('%Y')
             "01-12
             let cur_month = strftime('%m')
@@ -394,14 +402,12 @@
             let fileList = glob(plan_file_pattern, 0, 1)
             let plan_file_path = get(fileList, 0, '')
             if strlen(plan_file_path) > 0
-                let g:p_plan_file = plan_file_path
+                let g:p_edit_files['plan'] = plan_file_path
             else
                 let fileList = glob(plan_file_pattern_old, 0, 1)
                 let plan_file_path = get(fileList, 0, '')
                 if strlen(plan_file_path) > 0
-                    let g:p_plan_file = plan_file_path
-                "else
-                    "echoerr 'The plan file of this month is not found!'
+                    let g:p_edit_files['plan'] = plan_file_path
                 endif
             endif
 
@@ -412,9 +418,7 @@
             let fileList = glob(diary_file_pattern, 0, 1)
             let diary_file_path = get(fileList, 0, '')
             if strlen(diary_file_path) > 0
-                let g:p_diary_file = diary_file_path
-            "else
-                "echoerr 'The diary file of this month is not found!'
+                let g:p_edit_files['diary'] = diary_file_path
             endif
 
             unlet diary_file_pattern
