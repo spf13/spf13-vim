@@ -103,7 +103,7 @@
             "Bundle 'vim-scripts/ZoomWin'
 
             Bundle 'vim-scripts/IndentAnything'
-            "Bundle 'FuDesign2008/WebSearch.vim'
+            Bundle 'FuDesign2008/WebSearch.vim'
 
             Bundle 'kana/vim-smartinput'
             "Bundle 'Raimondi/delimitMate'

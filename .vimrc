@@ -422,28 +422,31 @@
             unlet fileList
 
             " regular task
-            let g:plan_week_work = {
-                \ 1 : '1. 10:00 - 11:00 @8层翡翠 weekly meeting;',
-                \ 2 : '1. weekly report;',
-                \ 6 : '1. 本周整理/整顿;1. 下周计划;'
-                \}
+
             "0 = sunday
             "1 = monday
             "...
             "6 = sat
+            let g:plan_week_work = {
+                \ 1 : '1. 11:00 @8层翡翠 weekly meeting;',
+                \ 2 : '1. weekly report;',
+                \ 6 : '1. 周回顾与计划;'
+                \}
             let g:plan_week_personal = {
                 \ 0 : '1. 看望/call 父母;1. 锻炼身体;',
                 \ 3 : '1. call 父母;'
                 \}
+
             let g:plan_month_work = {
                 \ 2 : '1. 确认上月考勤;',
                 \ 15: '1. 查看有道云笔记的新闻, 浏览论坛;',
-                \ 27: '1. 本月整理/整顿;1. 下月计划;'
+                \ 27: '1. 月回顾与计划;'
                 \}
             let g:plan_month_personal = {
                 \ 5 : '1. 查询薪水发放;',
                 \ 7 : '1. 还房贷;'
                 \}
+
             let g:plan_year_personal = {
                 \ '06-24': '1. 半年回顾与规划;',
                 \ '12-24': '1. 半年回顾与规划;'
