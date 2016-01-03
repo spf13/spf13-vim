@@ -45,9 +45,15 @@ debug() {
     fi
 }
 
+program_exists() {
+    # Check if program exists and return appropriate value
+    command -v $1 >/dev/null 2>&1 || { return 1; }
+    return 0
+}
+
 program_must_exist() {
-    # Check if program exists else exit with an error
-    command -v $1 >/dev/null 2>&1 || { error "You must have '$1' installed to continue."; }
+    # Check if program exists and exit with a fatal error if not found
+    program_exists $1 || { error "You must have '$1' installed to continue."; }
 }
 
 variable_set() {
