@@ -382,7 +382,9 @@
                 \ 'book': expand('~/Dropbox/books'),
                 \ 'todo': expand('~/Dropbox/plan/fuyg-todo'),
                 \ 'dev' : expand('~/Dropbox/plan/family-dev'),
-                \ 'pdp' : expand('~/Dropbox/plan/pdp')
+                \ 'pdp' : expand('~/Dropbox/plan/pdp'),
+                \ 'pwd' : expand('~/Dropbox/common/pwd.markdown'),
+                \ 'youdao': expand('~/Dropbox/common/youdao.mkd')
                 \}
 
             let cur_year = strftime('%Y')
