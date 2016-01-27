@@ -164,8 +164,8 @@ setup_vundle() {
     vim \
         -u "$1" \
         "+set nomore" \
-        "+BundleInstall!" \
-        "+BundleClean" \
+        "+PluginInstall!" \
+        "+PluginClean" \
         "+qall"
 
     export SHELL="$system_shell"

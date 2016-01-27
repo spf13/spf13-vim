@@ -49,4 +49,4 @@ IF NOT EXIST "%HOME%/.vim/bundle/vundle" (
   call cd %HOME%
 )
 
-call vim -u "%APP_PATH%/.vimrc.bundles" +BundleInstall! +BundleClean +qall
+call vim -u "%APP_PATH%/.vimrc.bundles" +PluginInstall! +PluginClean +qall

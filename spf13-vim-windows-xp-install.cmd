@@ -47,4 +47,4 @@ call copy "%APP_PATH%\.vimrc.before" "%HOME%\.vimrc.before"
 call copy "%APP_PATH%\.vimrc.before.fork" "%HOME%\.vimrc.before.fork"
 
 @if not exist "%HOME%/.vim/bundle/vundle" call git clone https://github.com/gmarik/vundle.git "%HOME%/.vim/bundle/vundle"
-call vim -u "%APP_PATH%/.vimrc.bundles" - +BundleInstall! +BundleClean +qall
+call vim -u "%APP_PATH%/.vimrc.bundles" - +PluginInstall! +PluginClean +qall
