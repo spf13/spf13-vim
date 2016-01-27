@@ -234,7 +234,7 @@ To add a new plugin, just add one line for each plugin you want to install. The 
 Once new plugins are added, they have to be installed.
 
 ```bash
-    vim +PluginInstall! +PluginClean +q
+    vim +PluginInstall! +PluginClean +qa
 ```
 
 ## Removing (disabling) an included plugin
