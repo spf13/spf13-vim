@@ -1,14 +1,32 @@
+" Environment {
+
+    " Set the Vim configuration directory {
+        " The spf13-vim configuration files may not be in the user's home
+        " directory, denoted by $HOME. So, assume that all of the other
+        " files are in the same directory as this file (.vimrc).
+        let g:spf13_global_config_dir = expand("<sfile>:p:h")
+
+        " Check whether spf13-vim is installed outside of the user's home
+        " directory.
+        let g:spf13_is_global_install = 0
+        if g:spf13_global_config_dir != expand("~")
+            let g:spf13_is_global_install = 1
+        endif
+    " }
+
+" }
+
 " Default Bundles {
 
     " Use before config if available {
-        if filereadable(expand("~/.vimrc.before"))
-            source ~/.vimrc.before
+        if filereadable(g:spf13_global_config_dir . '/.vimrc.before')
+            exec printf('source %s/.vimrc.before', g:spf13_global_config_dir)
         endif
     " }
 
     " Use bundles config {
-        if filereadable(expand("~/.vimrc.bundles"))
-            source ~/.vimrc.bundles
+        if filereadable(g:spf13_global_config_dir . '/.vimrc.bundles')
+            exec printf('source %s/.vimrc.bundles', g:spf13_global_config_dir)
         endif
     " }
 " }

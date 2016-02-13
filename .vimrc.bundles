@@ -15,7 +15,7 @@
 "   This file imports the various plugins of spf13. If you
 "   wish to alter which groups are imported, see vimrc.before.
 "   If you wish to add or remove individual bundles, create
-"   ~/.vimrc.bundles.local and `Bundle` or `UnBundle` as needed
+"   .vimrc.bundles.local and `Bundle` or `UnBundle` as needed
 "   from there.
 "
 "   You can find me at http://spf13.com
@@ -26,6 +26,12 @@
     " Basics {
         set nocompatible        " Must be first line
         set background=dark     " Assume a dark background
+    " }
+
+    " Assign the bundle storage directory {
+        " g:spf13_global_config_dir is auto-defined in .vimrc or
+        " .vimrc.bundles.default
+        let g:spf13_vundle_dir = g:spf13_global_config_dir . '/.vim/bundle/vundle'
     " }
 
     " Windows Compatible {
@@ -53,10 +59,19 @@
     " }
 
     " Setup Bundle Support {
-        " The next three lines ensure that the ~/.vim/bundle/ system works
+        " This section ensure that the .vim/bundle/ system works
         filetype off
-        set rtp+=~/.vim/bundle/vundle
-        call vundle#rc()
+
+        " Set the runtimepath for the bootstrap
+        exec printf('set runtimepath+=%s', g:spf13_vundle_dir)
+
+        " Set the runtimepath, post-bootstrap, wherein the vundle
+        " plugin is relocated from .vim/bundle/vundle to
+        " .vim/bundle/vundle/vundle
+        exec printf('set runtimepath+=%s/vundle', g:spf13_vundle_dir)
+
+        " Initialize Vundle
+        call vundle#rc(g:spf13_vundle_dir)
     " }
 
     " Add an UnBundle command {
@@ -114,7 +129,7 @@
             Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
             if (has("python") || has("python3")) && exists('g:spf13_use_powerline') && !exists('g:spf13_use_old_powerline')
-                Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
+                Bundle 'Lokaltog/powerline', {'runtimepath':'/powerline/bindings/vim'}
             elseif exists('g:spf13_use_powerline') && exists('g:spf13_use_old_powerline')
                 Bundle 'Lokaltog/vim-powerline'
             else
@@ -170,8 +185,8 @@
             Bundle 'garbas/vim-snipmate'
             Bundle 'honza/vim-snippets'
             " Source support_function.vim to support vim-snippets.
-            if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
-                source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
+            if filereadable(g:spf13_vundle_dir . '/vim-snippets/snippets/support_functions.vim')
+                exec printf('source %s/vim-snippets/snippets/support_functions.vim', g:spf13_vundle_dir)
             endif
         elseif count(g:spf13_bundle_groups, 'youcompleteme')
             Bundle 'Valloric/YouCompleteMe'
@@ -298,13 +313,19 @@
 " }
 
 " Use fork bundles config if available {
-    if filereadable(expand("~/.vimrc.bundles.fork"))
-        source ~/.vimrc.bundles.fork
+    if filereadable(g:spf13_global_config_dir . '/.vimrc.bundles.fork')
+        exec printf('source %s/.vimrc.bundles.fork', g:spf13_global_config_dir)
     endif
 " }
 
 " Use local bundles config if available {
-    if filereadable(expand("~/.vimrc.bundles.local"))
-        source ~/.vimrc.bundles.local
+    if filereadable(g:spf13_global_config_dir . '/.vimrc.bundles.local')
+        exec printf('source %s/.vimrc.bundles.local', g:spf13_global_config_dir)
     endif
 " }
+
+" Do not attempt to load a user-specific bundles configuration file since the
+" Vundle storage directory is located within the global installation folder
+" and user-specific changes will have adverse affects on all user's in the
+" system. In other words, if spf13-vim is installed globally, users are not
+" able to add/remove bundles.

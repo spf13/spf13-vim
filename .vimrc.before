@@ -76,7 +76,7 @@
     "   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=234
 
     " Leave the default font and size in GVim
-    " To set your own font, do it from ~/.vimrc.local
+    " To set your own font, do it from .vimrc.local
     "   let g:spf13_no_big_font = 1
 
     " Disable  omni complete
@@ -99,13 +99,19 @@
 " }
 
 " Use fork before if available {
-    if filereadable(expand("~/.vimrc.before.fork"))
-        source ~/.vimrc.before.fork
+    if filereadable(g:spf13_global_config_dir . '/.vimrc.before.fork')
+        exec printf('source %s/.vimrc.before.fork', g:spf13_global_config_dir)
     endif
 " }
 
 " Use local before if available {
-    if filereadable(expand("~/.vimrc.before.local"))
-        source ~/.vimrc.before.local
+    if filereadable(g:spf13_global_config_dir . '/.vimrc.before.local')
+        exec printf('source %s/.vimrc.before.local', g:spf13_global_config_dir)
+    endif
+" }
+
+" Use the user-specific local before if available {
+    if g:spf13_is_global_install && filereadable(expand("~/.vimrc.before.local.user"))
+        source ~/.vimrc.before.local.user
     endif
 " }

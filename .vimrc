@@ -50,6 +50,20 @@
         endif
     " }
 
+    " Set the Vim configuration directory {
+        " The spf13-vim configuration files may not be in the user's home
+        " directory, denoted by $HOME. So, assume that all of the other
+        " files are in the same directory as this file (.vimrc).
+        let g:spf13_global_config_dir = expand("<sfile>:p:h")
+
+        " Check whether spf13-vim is installed outside of the user's home
+        " directory.
+        let g:spf13_is_global_install = 0
+        if g:spf13_global_config_dir != expand("~")
+            let g:spf13_is_global_install = 1
+        endif
+    " }
+
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
@@ -68,14 +82,14 @@
 " }
 
 " Use before config if available {
-    if filereadable(expand("~/.vimrc.before"))
-        source ~/.vimrc.before
+    if filereadable(g:spf13_global_config_dir . '/.vimrc.before')
+        exec printf('source %s/.vimrc.before', g:spf13_global_config_dir)
     endif
 " }
 
 " Use bundles config {
-    if filereadable(expand("~/.vimrc.bundles"))
-        source ~/.vimrc.bundles
+    if filereadable(g:spf13_global_config_dir . '/.vimrc.bundles')
+        exec printf('source %s/.vimrc.bundles', g:spf13_global_config_dir)
     endif
 " }
 
@@ -177,7 +191,7 @@
 
 " Vim UI {
 
-    if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+    if !exists('g:override_spf13_bundles') && filereadable(g:spf13_vundle_dir . '/vim-colors-solarized/colors/solarized.vim')
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
         let g:solarized_contrast="normal"
@@ -504,17 +518,17 @@
     " }
 
     " PIV {
-        if isdirectory(expand("~/.vim/bundle/PIV"))
+        if isdirectory(g:spf13_vundle_dir . '/PIV')
             let g:DisableAutoPHPFolding = 0
             let g:PIVAutoClose = 0
         endif
     " }
 
     " Misc {
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+        if isdirectory(g:spf13_vundle_dir . '/nerdtree')
             let g:NERDShutUp=1
         endif
-        if isdirectory(expand("~/.vim/bundle/matchit.zip"))
+        if isdirectory(g:spf13_vundle_dir . '/matchit.zip')
             let b:match_ignorecase = 1
         endif
     " }
@@ -573,7 +587,7 @@
     " }
 
     " NerdTree {
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+        if isdirectory(g:spf13_vundle_dir . '/nerdtree')
             map <C-e> <plug>NERDTreeTabsToggle<CR>
             map <leader>e :NERDTreeFind<CR>
             nmap <leader>nt :NERDTreeFind<CR>
@@ -590,7 +604,7 @@
     " }
 
     " Tabularize {
-        if isdirectory(expand("~/.vim/bundle/tabular"))
+        if isdirectory(g:spf13_vundle_dir . '/tabular')
             nmap <Leader>a& :Tabularize /&<CR>
             vmap <Leader>a& :Tabularize /&<CR>
             nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
@@ -612,7 +626,7 @@
 
     " Session List {
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-        if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
+        if isdirectory(g:spf13_vundle_dir . '/sessionman.vim')
             nmap <leader>sl :SessionList<CR>
             nmap <leader>ss :SessionSave<CR>
             nmap <leader>sc :SessionClose<CR>
@@ -630,7 +644,7 @@
             let g:pymode = 0
         endif
 
-        if isdirectory(expand("~/.vim/bundle/python-mode"))
+        if isdirectory(g:spf13_vundle_dir . '/python-mode')
             let g:pymode_lint_checkers = ['pyflakes']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
@@ -639,7 +653,7 @@
     " }
 
     " ctrlp {
-        if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
+        if isdirectory(g:spf13_vundle_dir . '/ctrlp.vim')
             let g:ctrlp_working_path_mode = 'ra'
             nnoremap <silent> <D-t> :CtrlP<CR>
             nnoremap <silent> <D-r> :CtrlPMRU<CR>
@@ -670,7 +684,7 @@
                 \ 'fallback': s:ctrlp_fallback
             \ }
 
-            if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
+            if isdirectory(g:spf13_vundle_dir . '/ctrlp-funky')
                 " CtrlP extensions
                 let g:ctrlp_extensions = ['funky']
 
@@ -681,19 +695,19 @@
     "}
 
     " TagBar {
-        if isdirectory(expand("~/.vim/bundle/tagbar/"))
+        if isdirectory(g:spf13_vundle_dir . '/tagbar')
             nnoremap <silent> <leader>tt :TagbarToggle<CR>
         endif
     "}
 
     " Rainbow {
-        if isdirectory(expand("~/.vim/bundle/rainbow/"))
+        if isdirectory(g:spf13_vundle_dir . '/rainbow')
             let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
         endif
     "}
 
     " Fugitive {
-        if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+        if isdirectory(g:spf13_vundle_dir . '/vim-fugitive')
             nnoremap <silent> <leader>gs :Gstatus<CR>
             nnoremap <silent> <leader>gd :Gdiff<CR>
             nnoremap <silent> <leader>gc :Gcommit<CR>
@@ -986,7 +1000,7 @@
                     \ count(g:spf13_bundle_groups, 'neocomplete')
 
             " Use honza's snippets.
-            let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+            let g:neosnippet#snippets_directory = g:spf13_vundle_dir . '/vim-snippets/snippets'
 
             " Enable neosnippet snipmate compatibility mode
             let g:neosnippet#enable_snipmate_compatibility = 1
@@ -1017,7 +1031,7 @@
     endif
 
     " UndoTree {
-        if isdirectory(expand("~/.vim/bundle/undotree/"))
+        if isdirectory(g:spf13_vundle_dir . '/undotree')
             nnoremap <Leader>u :UndotreeToggle<CR>
             " If undotree is opened, it is likely one wants to interact with it.
             let g:undotree_SetFocusWhenToggle=1
@@ -1025,7 +1039,7 @@
     " }
 
     " indent_guides {
-        if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
+        if isdirectory(g:spf13_vundle_dir . '/vim-indent-guides')
             let g:indent_guides_start_level = 2
             let g:indent_guides_guide_size = 1
             let g:indent_guides_enable_on_vim_startup = 1
@@ -1050,7 +1064,7 @@
 
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
-        if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+        if isdirectory(g:spf13_vundle_dir . '/vim-airline')
             if !exists('g:airline_theme')
                 let g:airline_theme = 'solarized'
             endif
@@ -1188,9 +1202,9 @@
 
     function! s:IsSpf13Fork()
         let s:is_fork = 0
-        let s:fork_files = ["~/.vimrc.fork", "~/.vimrc.before.fork", "~/.vimrc.bundles.fork"]
+        let s:fork_files = [".vimrc.fork", ".vimrc.before.fork", ".vimrc.bundles.fork"]
         for fork_file in s:fork_files
-            if filereadable(expand(fork_file, ":p"))
+            if filereadable(g:spf13_global_config_dir . '/' . fork_file, ":p")
                 let s:is_fork = 1
                 break
             endif
@@ -1203,49 +1217,60 @@
     endfunction
      
     function! s:EditSpf13Config()
-        call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
-        call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.before")
-        call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
+        call <SID>ExpandFilenameAndExecute("tabedit", g:spf13_global_config_dir . '/.vimrc')
+        call <SID>ExpandFilenameAndExecute("vsplit", g:spf13_global_config_dir . '/.vimrc.before')
+        call <SID>ExpandFilenameAndExecute("vsplit", g:spf13_global_config_dir . '/.vimrc.bundles')
      
         execute bufwinnr(".vimrc") . "wincmd w"
-        call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.local")
+        call <SID>ExpandFilenameAndExecute("split", g:spf13_global_config_dir . '/.vimrc.local')
         wincmd l
-        call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.before.local")
+        call <SID>ExpandFilenameAndExecute("split", g:spf13_global_config_dir . '/.vimrc.before.local')
         wincmd l
-        call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.bundles.local")
+        call <SID>ExpandFilenameAndExecute("split", g:spf13_global_config_dir . '/.vimrc.bundles.local')
      
         if <SID>IsSpf13Fork()
             execute bufwinnr(".vimrc") . "wincmd w"
-            call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.fork")
+            call <SID>ExpandFilenameAndExecute("split", g:spf13_global_config_dir . '/.vimrc.fork')
             wincmd l
-            call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.before.fork")
+            call <SID>ExpandFilenameAndExecute("split", g:spf13_global_config_dir . '/.vimrc.before.fork')
             wincmd l
-            call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.bundles.fork")
+            call <SID>ExpandFilenameAndExecute("split", g:spf13_global_config_dir . '/.vimrc.bundles.fork')
         endif
      
         execute bufwinnr(".vimrc.local") . "wincmd w"
     endfunction
      
     execute "noremap " . s:spf13_edit_config_mapping " :call <SID>EditSpf13Config()<CR>"
-    execute "noremap " . s:spf13_apply_config_mapping . " :source ~/.vimrc<CR>"
+    execute "noremap " . s:spf13_apply_config_mapping . " :exec source " . g:spf13_global_config_dir . "/.vimrc<CR>"
 " }
 
 " Use fork vimrc if available {
-    if filereadable(expand("~/.vimrc.fork"))
-        source ~/.vimrc.fork
+    if filereadable(g:spf13_global_config_dir . '/.vimrc.fork')
+        exec printf('source %s/.vimrc.fork', g:spf13_global_config_dir)
     endif
 " }
 
 " Use local vimrc if available {
-    if filereadable(expand("~/.vimrc.local"))
-        source ~/.vimrc.local
+    if filereadable(g:spf13_global_config_dir . '/.vimrc.local')
+        exec printf('source %s/.vimrc.local', g:spf13_global_config_dir)
+    endif
+" }
+
+" Use the user-specific local vimrc if available {
+    if g:spf13_is_global_install && filereadable(expand("~/.vimrc.local.user"))
+        source ~/.vimrc.local.user
     endif
 " }
 
 " Use local gvimrc if available and gui is running {
     if has('gui_running')
-        if filereadable(expand("~/.gvimrc.local"))
-            source ~/.gvimrc.local
+        if filereadable(g:spf13_global_config_dir . '/.gvimrc.local')
+            exec printf('source %s/.gvimrc.local', g:spf13_global_config_dir)
+        endif
+
+        " Use the user-specific local vimrc if available
+        if g:spf13_is_global_install && filereadable(expand("~/.gvimrc.local.user"))
+            source ~/.gvimrc.local.user
         endif
     endif
 " }
