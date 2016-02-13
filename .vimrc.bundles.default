@@ -5,6 +5,13 @@
         " directory, denoted by $HOME. So, assume that all of the other
         " files are in the same directory as this file (.vimrc).
         let g:spf13_global_config_dir = expand("<sfile>:p:h")
+
+        " Check whether spf13-vim is installed outside of the user's home
+        " directory.
+        let g:spf13_is_global_install = 0
+        if g:spf13_global_config_dir != expand("~")
+            let g:spf13_is_global_install = 1
+        endif
     " }
 
 " }
