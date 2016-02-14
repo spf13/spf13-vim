@@ -74,7 +74,7 @@ After installation try running `git --version` within _command prompt_ (press Wi
     git version 1.7.4.msysgit.0
 
 #### Setup [Curl]
-_Instructions blatently copied from vundle readme_
+_Instructions blatantly copied from vundle readme_
 Installing Curl on Windows is easy as [Curl] is bundled with [msysgit]!
 But before it can be used with [Vundle] it's required make `curl` run in _command prompt_.
 The easiest way is to create `curl.cmd` with [this content](https://gist.github.com/912993)
@@ -399,7 +399,7 @@ PIV provides:
  * Better indenting
  * Full PHP documentation manual (hit K on any function for full docs)
 
-![php vim itegration image][phpmanual-img]
+![php vim integration image][phpmanual-img]
 
 ## [Ack.vim]
 
