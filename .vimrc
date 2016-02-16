@@ -1,5 +1,5 @@
-" Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" Modeline and Notes {{
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={{,}} foldlevel=0 foldmethod=marker spell:
 "
 "                    __ _ _____              _
 "         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
@@ -27,11 +27,11 @@
 "   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 "   See the License for the specific language governing permissions and
 "   limitations under the License.
-" }
+" }}
 
-" Environment {
+" Environment {{
 
-    " Identify platform {
+    " Identify platform {{
         silent function! OSX()
             return has('macunix')
         endfunction
@@ -41,45 +41,45 @@
         silent function! WINDOWS()
             return  (has('win32') || has('win64'))
         endfunction
-    " }
+    " }}
 
-    " Basics {
+    " Basics {{
         set nocompatible        " Must be first line
         if !WINDOWS()
             set shell=/bin/sh
         endif
-    " }
+    " }}
 
-    " Windows Compatible {
+    " Windows Compatible {{
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
         if WINDOWS()
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
-    " }
-    
-    " Arrow Key Fix {
+    " }}
+
+    " Arrow Key Fix {{
         " https://github.com/spf13/spf13-vim/issues/780
         if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
             inoremap <silent> <C-[>OC <RIGHT>
         endif
-    " }
+    " }}
 
-" }
+" }}
 
-" Use before config if available {
+" Use before config if available {{
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
     endif
-" }
+" }}
 
-" Use bundles config {
+" Use bundles config {{
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
     endif
-" }
+" }}
 
-" General {
+" General {{
 
     set background=dark         " Assume a dark background
 
@@ -154,7 +154,7 @@
         augroup END
     endif
 
-    " Setting up the directories {
+    " Setting up the directories {{
         set backup                  " Backups are nice ...
         if has('persistent_undo')
             set undofile                " So is persistent undo ...
@@ -171,11 +171,11 @@
                 \ '\[example pattern\]'
                 \ ]
         endif
-    " }
+    " }}
 
-" }
+" }}
 
-" Vim UI {
+" Vim UI {{
 
     if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
@@ -233,9 +233,9 @@
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
-" }
+" }}
 
-" Formatting {
+" Formatting {{
 
     set nowrap                      " Do not wrap long lines
     set autoindent                  " Indent at the same level of the previous line
@@ -266,9 +266,9 @@
     " Workaround broken colour highlighting in Haskell
     autocmd FileType haskell,rust setlocal nospell
 
-" }
+" }}
 
-" Key (re)Mappings {
+" Key (re)Mappings {{
 
     " The default leader is '\', but many people prefer ',' as it's in a standard
     " location. To override this behavior and set it back to '\' (or any other
@@ -454,11 +454,11 @@
     " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
     map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
-" }
+" }}
 
-" Plugins {
+" Plugins {{
 
-    " GoLang {
+    " GoLang {{
         if count(g:spf13_bundle_groups, 'go')
             let g:go_highlight_functions = 1
             let g:go_highlight_methods = 1
@@ -478,10 +478,10 @@
             au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
             au FileType go nmap <leader>co <Plug>(go-coverage)
         endif
-        " }
+    " }}
 
 
-    " TextObj Sentence {
+    " TextObj Sentence {{
         if count(g:spf13_bundle_groups, 'writing')
             augroup textobj_sentence
               autocmd!
@@ -490,9 +490,9 @@
               autocmd FileType text call textobj#sentence#init()
             augroup END
         endif
-    " }
+    " }}
 
-    " TextObj Quote {
+    " TextObj Quote {{
         if count(g:spf13_bundle_groups, 'writing')
             augroup textobj_quote
                 autocmd!
@@ -501,25 +501,25 @@
                 autocmd FileType text call textobj#quote#init({'educate': 0})
             augroup END
         endif
-    " }
+    " }}
 
-    " PIV {
+    " PIV {{
         if isdirectory(expand("~/.vim/bundle/PIV"))
             let g:DisableAutoPHPFolding = 0
             let g:PIVAutoClose = 0
         endif
-    " }
+    " }}
 
-    " Misc {
+    " Misc {{
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
             let g:NERDShutUp=1
         endif
         if isdirectory(expand("~/.vim/bundle/matchit.zip"))
             let b:match_ignorecase = 1
         endif
-    " }
+    " }}
 
-    " OmniComplete {
+    " OmniComplete {{
         " To disable omni complete, add the following to your .vimrc.before.local file:
         "   let g:spf13_no_omni_complete = 1
         if !exists('g:spf13_no_omni_complete')
@@ -548,9 +548,9 @@
             au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
             set completeopt=menu,preview,longest
         endif
-    " }
+    " }}
 
-    " Ctags {
+    " Ctags {{
         set tags=./tags;/,~/.vimtags
 
         " Make tags placed in .git/tags file available in all levels of a repository
@@ -558,21 +558,21 @@
         if gitroot != ''
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
-    " }
+    " }}
 
-    " AutoCloseTag {
+    " AutoCloseTag {{
         " Make it so AutoCloseTag works for xml and xhtml files as well
         au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
         nmap <Leader>ac <Plug>ToggleAutoCloseMappings
-    " }
+    " }}
 
-    " SnipMate {
+    " SnipMate {{
         " Setting the author var
         " If forking, please overwrite in your .vimrc.local file
         let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
-    " }
+    " }}
 
-    " NerdTree {
+    " NerdTree {{
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
             map <C-e> <plug>NERDTreeTabsToggle<CR>
             map <leader>e :NERDTreeFind<CR>
@@ -587,9 +587,9 @@
             let NERDTreeKeepTreeInNewTab=1
             let g:nerdtree_tabs_open_on_gui_startup=0
         endif
-    " }
+    " }}
 
-    " Tabularize {
+    " Tabularize {{
         if isdirectory(expand("~/.vim/bundle/tabular"))
             nmap <Leader>a& :Tabularize /&<CR>
             vmap <Leader>a& :Tabularize /&<CR>
@@ -608,23 +608,23 @@
             nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
         endif
-    " }
+    " }}
 
-    " Session List {
+    " Session List {{
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
         if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
             nmap <leader>sl :SessionList<CR>
             nmap <leader>ss :SessionSave<CR>
             nmap <leader>sc :SessionClose<CR>
         endif
-    " }
+    " }}
 
-    " JSON {
+    " JSON {{
         nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
         let g:vim_json_syntax_conceal = 0
-    " }
+    " }}
 
-    " PyMode {
+    " PyMode {{
         " Disable if python support not present
         if !has('python') && !has('python3')
             let g:pymode = 0
@@ -636,9 +636,9 @@
             let g:pymode_options = 0
             let g:pymode_rope = 0
         endif
-    " }
+    " }}
 
-    " ctrlp {
+    " ctrlp {{
         if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
             let g:ctrlp_working_path_mode = 'ra'
             nnoremap <silent> <D-t> :CtrlP<CR>
@@ -678,21 +678,21 @@
                 nnoremap <Leader>fu :CtrlPFunky<Cr>
             endif
         endif
-    "}
+    " }}
 
-    " TagBar {
+    " TagBar {{
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
             nnoremap <silent> <leader>tt :TagbarToggle<CR>
         endif
-    "}
+    " }}
 
-    " Rainbow {
+    " Rainbow {{
         if isdirectory(expand("~/.vim/bundle/rainbow/"))
             let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
         endif
-    "}
+    " }}
 
-    " Fugitive {
+    " Fugitive {{
         if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
             nnoremap <silent> <leader>gs :Gstatus<CR>
             nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -707,9 +707,9 @@
             nnoremap <silent> <leader>gi :Git add -p %<CR>
             nnoremap <silent> <leader>gg :SignifyToggle<CR>
         endif
-    "}
+    " }}
 
-    " YouCompleteMe {
+    " YouCompleteMe {{
         if count(g:spf13_bundle_groups, 'youcompleteme')
             let g:acp_enableAtStartup = 0
 
@@ -749,9 +749,9 @@
             " especially when splits are used.
             set completeopt-=preview
         endif
-    " }
+    " }}
 
-    " neocomplete {
+    " neocomplete {{
         if count(g:spf13_bundle_groups, 'neocomplete')
             let g:acp_enableAtStartup = 0
             let g:neocomplete#enable_at_startup = 1
@@ -774,7 +774,7 @@
             endif
             let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-            " Plugin key-mappings {
+            " Plugin key-mappings {{
                 " These two lines conflict with the default digraph mapping of <C-K>
                 if !exists('g:spf13_no_neosnippet_expand')
                     imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -853,7 +853,7 @@
                 endfunction
 
                 imap <expr> <Tab> CleverTab()
-            " }
+            " }}
 
             " Enable heavy omni completion.
             if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -864,8 +864,8 @@
             let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
             let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
             let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-    " }
-    " neocomplcache {
+    " }}
+    " neocomplcache {{
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
             let g:acp_enableAtStartup = 0
             let g:neocomplcache_enable_at_startup = 1
@@ -889,7 +889,7 @@
             endif
             let g:neocomplcache_keyword_patterns._ = '\h\w*'
 
-            " Plugin key-mappings {
+            " Plugin key-mappings {{
                 " These two lines conflict with the default digraph mapping of <C-K>
                 imap <C-k> <Plug>(neosnippet_expand_or_jump)
                 smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -943,7 +943,7 @@
                 " <TAB>: completion.
                 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
                 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-            " }
+            " }}
 
             " Enable omni completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -964,8 +964,8 @@
             let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
             let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
             let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
-    " }
-    " Normal Vim omni-completion {
+    " }}
+    " Normal Vim omni-completion {{
     " To disable omni complete, add the following to your .vimrc.before.local file:
     "   let g:spf13_no_omni_complete = 1
         elseif !exists('g:spf13_no_omni_complete')
@@ -979,9 +979,9 @@
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
         endif
-    " }
+    " }}
 
-    " Snippets {
+    " Snippets {{
         if count(g:spf13_bundle_groups, 'neocomplcache') ||
                     \ count(g:spf13_bundle_groups, 'neocomplete')
 
@@ -1006,7 +1006,7 @@
             " especially when splits are used.
             set completeopt-=preview
         endif
-    " }
+    " }}
 
     " FIXME: Isn't this for Syntastic to handle?
     " Haskell post write lint and check with ghcmod
@@ -1016,30 +1016,30 @@
         autocmd BufWritePost *.hs GhcModCheckAndLintAsync
     endif
 
-    " UndoTree {
+    " UndoTree {{
         if isdirectory(expand("~/.vim/bundle/undotree/"))
             nnoremap <Leader>u :UndotreeToggle<CR>
             " If undotree is opened, it is likely one wants to interact with it.
             let g:undotree_SetFocusWhenToggle=1
         endif
-    " }
+    " }}
 
-    " indent_guides {
+    " indent_guides {{
         if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
             let g:indent_guides_start_level = 2
             let g:indent_guides_guide_size = 1
             let g:indent_guides_enable_on_vim_startup = 1
         endif
-    " }
+    " }}
 
-    " Wildfire {
+    " Wildfire {{
     let g:wildfire_objects = {
                 \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
                 \ "html,xml" : ["at"],
                 \ }
-    " }
+    " }}
 
-    " vim-airline {
+    " vim-airline {{
         " Set configuration options for the statusline plugin vim-airline.
         " Use the powerline theme and optionally enable powerline symbols.
         " To use the symbols , , , , , , and .in the statusline
@@ -1060,13 +1060,13 @@
                 let g:airline_right_sep='‹' " Slightly fancier than '<'
             endif
         endif
-    " }
+    " }}
 
 
 
-" }
+" }}
 
-" GUI Settings {
+" GUI Settings {{
 
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
@@ -1088,11 +1088,11 @@
         "set term=builtin_ansi       " Make arrow and other keys work
     endif
 
-" }
+" }}
 
-" Functions {
+" Functions {{
 
-    " Initialize directories {
+    " Initialize directories {{
     function! InitializeDirectories()
         let parent = $HOME
         let prefix = 'vim'
@@ -1133,9 +1133,9 @@
         endfor
     endfunction
     call InitializeDirectories()
-    " }
+    " }}
 
-    " Initialize NERDTree as needed {
+    " Initialize NERDTree as needed {{
     function! NERDTreeInitAsNeeded()
         redir => bufoutput
         buffers!
@@ -1147,9 +1147,9 @@
             wincmd l
         endif
     endfunction
-    " }
+    " }}
 
-    " Strip whitespace {
+    " Strip whitespace {{
     function! StripTrailingWhitespace()
         " Preparation: save last search, and cursor position.
         let _s=@/
@@ -1161,9 +1161,9 @@
         let @/=_s
         call cursor(l, c)
     endfunction
-    " }
+    " }}
 
-    " Shell command {
+    " Shell command {{
     function! s:RunShellCommand(cmdline)
         botright new
 
@@ -1184,7 +1184,7 @@
 
     command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
     " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
-    " }
+    " }}
 
     function! s:IsSpf13Fork()
         let s:is_fork = 0
@@ -1197,23 +1197,23 @@
         endfor
         return s:is_fork
     endfunction
-     
+
     function! s:ExpandFilenameAndExecute(command, file)
         execute a:command . " " . expand(a:file, ":p")
     endfunction
-     
+
     function! s:EditSpf13Config()
         call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
         call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.before")
         call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
-     
+
         execute bufwinnr(".vimrc") . "wincmd w"
         call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.local")
         wincmd l
         call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.before.local")
         wincmd l
         call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.bundles.local")
-     
+
         if <SID>IsSpf13Fork()
             execute bufwinnr(".vimrc") . "wincmd w"
             call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.fork")
@@ -1222,30 +1222,30 @@
             wincmd l
             call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.bundles.fork")
         endif
-     
+
         execute bufwinnr(".vimrc.local") . "wincmd w"
     endfunction
-     
+
     execute "noremap " . s:spf13_edit_config_mapping " :call <SID>EditSpf13Config()<CR>"
     execute "noremap " . s:spf13_apply_config_mapping . " :source ~/.vimrc<CR>"
-" }
+" }}
 
-" Use fork vimrc if available {
+" Use fork vimrc if available {{
     if filereadable(expand("~/.vimrc.fork"))
         source ~/.vimrc.fork
     endif
-" }
+" }}
 
-" Use local vimrc if available {
+" Use local vimrc if available {{
     if filereadable(expand("~/.vimrc.local"))
         source ~/.vimrc.local
     endif
-" }
+" }}
 
-" Use local gvimrc if available and gui is running {
+" Use local gvimrc if available and gui is running {{
     if has('gui_running')
         if filereadable(expand("~/.gvimrc.local"))
             source ~/.gvimrc.local
         endif
     endif
-" }
+" }}
