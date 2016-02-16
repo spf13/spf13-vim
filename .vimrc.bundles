@@ -185,6 +185,9 @@
             Bundle 'FuDesign2008/GotoFile.vim'
             Bundle 'FuDesign2008/autoHighlight.vim'
             Bundle 'FuDesign2008/smartRename.vim'
+
+            Bundle 'will133/vim-dirdiff'
+
             "if !g:is_win
                 "Bundle 'tpope/vim-fugitive'
 
