@@ -135,6 +135,9 @@
     " Instead of reverting the cursor to the last position in the buffer, we
     " set it to the first line when editing a git commit message
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+    
+    " add spell checking and automatic wrapping at the recommended 72 columns to commit messages
+    au Filetype gitcommit setlocal spell textwidth=72
 
     " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
     " Restore cursor to file position in previous editing session
