@@ -435,8 +435,10 @@
             "...
             "6 = sat
             let g:plan_week_work = {
-                \ 1 : '1. 11:00 @8层翡翠 weekly meeting;',
+                \ 1 : '1. 11:00 Sprint例会;',
                 \ 2 : '1. weekly report;',
+                \ 3 : '1. 11:00 Sprint例会;',
+                \ 5 : '1. Sprint计划;1. 会议室预定;',
                 \ 6 : '1. 周回顾与计划;'
                 \}
             let g:plan_week_personal = {
