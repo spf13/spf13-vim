@@ -199,6 +199,8 @@
 " Formatting {
     "set nowrap                      " wrap long lines
     set wrap                         "折行显示
+    " @see http://stackoverflow.com/questions/16840433/forcing-vimdiff-to-wrap-lines
+    autocmd FilterWritePre * if &diff | setlocal wrap< | endif
     "set autoindent                  " indent at the same level of the previous line
     set cindent
     set shiftwidth=4                " use indents of 4 spaces
