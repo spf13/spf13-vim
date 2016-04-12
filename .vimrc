@@ -120,7 +120,7 @@
 
     set cursorline                  " highlight current line
     set cursorcolumn
-    set colorcolumn=80,120  "显示right margin, 7.3+
+    set colorcolumn=80,100,120  "显示right margin, 7.3+
 
     if has('cmdline_info')
         set ruler                   " show the ruler
