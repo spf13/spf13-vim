@@ -188,19 +188,20 @@
 
             Bundle 'will133/vim-dirdiff'
 
-            "if !g:is_win
+            if !g:is_win
                 "Bundle 'tpope/vim-fugitive'
 
                 "dash.vim needs funcoo.vim
-                "Bundle 'rizzatti/funcoo.vim'
-                "Bundle 'rizzatti/dash.vim'
+                Bundle 'rizzatti/funcoo.vim'
+                Bundle 'rizzatti/dash.vim'
 
-                if executable('ctags')
-                    Bundle 'majutsushi/tagbar'
-                    Bundle 'xolox/vim-misc'
-                    Bundle 'xolox/vim-easytags'
-                endif
-            "endif
+            endif
+
+            if executable('ctags')
+                Bundle 'majutsushi/tagbar'
+                Bundle 'xolox/vim-misc'
+                Bundle 'xolox/vim-easytags'
+            endif
         endif
     " Snippets
         if count(g:spf13_bundle_groups, 'snip')
@@ -252,6 +253,7 @@
             Bundle 'briancollins/vim-jst'
             Bundle 'marijnh/tern_for_vim'
             Bundle 'scheakur/vim-jsdocy'
+            Bundle 'maksimr/vim-jsbeautify'
         endif
 
     " css
