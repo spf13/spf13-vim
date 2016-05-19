@@ -575,7 +575,9 @@
     "zoom.vim {
         let g:zoom_favorite_fonts = ['Monaco:h11', 'Menlo:h12', 'Consolas:h12', 'Mononoki:h12', 'Unbuntu Mono:h12', 'DejaVu Sans Mono:h12']
         let g:zoom_key_map = 1
-        let g:zoom_random_font = is_win ? 0 : 1
+        "let g:zoom_random_font = is_win ? 0 : 1
+        let g:zoom_random_font = 0
+
     "}
 
     "ZoomWin {
@@ -823,7 +825,8 @@
         set lines=40                " 40 lines of text instead of 24,
         "字体是否好看与字号有很大关系
         try
-            set guifont=Consolas:h12  "font
+            set guifont=Mononoki:h12  "font
+            "set guifont=Consolas:h12  "font
             "set guifont=Droid\ Sans\ Mono:h16  "font
         catch
             "do nothing
@@ -839,7 +842,6 @@
         "enter full mode when start
         set fu
         "set guifont=Monaco:h12
-        set guifont=Menlo:h11
         "set transparency=5          " Make the window slightly transparent
     endif
 " }
