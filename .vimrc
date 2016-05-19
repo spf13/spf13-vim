@@ -573,7 +573,7 @@
     "}
 
     "zoom.vim {
-        let g:zoom_favorite_fonts = ['Monaco:h11', 'Menlo:h11', 'Consolas:h13']
+        let g:zoom_favorite_fonts = ['Monaco:h11', 'Menlo:h12', 'Consolas:h12', 'Mononoki:h12', 'Unbuntu Mono:h12', 'DejaVu Sans Mono:h12']
         let g:zoom_key_map = 1
         let g:zoom_random_font = is_win ? 0 : 1
     "}
