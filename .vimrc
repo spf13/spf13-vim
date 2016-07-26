@@ -547,6 +547,11 @@
         let g:javascript_conceal_super      = "Ω"
     " }
 
+    " tern_for_vim {
+        let g:tern_show_argument_hints = 'on_hold'
+
+    " }
+
     " NERDCommenter {
         let g:NERDCustomDelimiters = {
             \ 'python' : { 'left': '# '}
