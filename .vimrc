@@ -606,7 +606,7 @@
             let g:syntastic_check_on_open = 1
         endif
 
-        let g:syntastic_check_on_wq = 0
+        let g:syntastic_check_on_wq = 1
 
         let g:syntastic_objc_compiler = 'clang'
         let g:syntastic_php_checkers = ['phpmd']
