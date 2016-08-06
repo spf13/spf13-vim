@@ -805,7 +805,7 @@
 
      " will133/vim-dirdiff' {
         let g:DirDiffExcludes = ".*"
-        let g:DirDiffDisableSyntastic = 1
+        let g:DirDiffPreventSyntasticOpenLocationList = 1
      "}
 
 
