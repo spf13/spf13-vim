@@ -105,8 +105,10 @@
             Bundle 'vim-scripts/IndentAnything'
             Bundle 'FuDesign2008/WebSearch.vim'
 
-            Bundle 'kana/vim-smartinput'
-            "Bundle 'Raimondi/delimitMate'
+            " 1. http://aftnn.org/post/75730734352/vim-auto-closers-compared
+            " 2. https://github.com/kana/vim-smartinput/issues/65
+            "Bundle 'kana/vim-smartinput'
+            Bundle 'Raimondi/delimitMate'
 
             Bundle 'FuDesign2008/OpenUrl.vim'
             Bundle 'FuDesign2008/ToggleNumber.vim'
