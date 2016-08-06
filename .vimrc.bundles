@@ -188,6 +188,7 @@
             Bundle 'FuDesign2008/smartRename.vim'
 
             Bundle 'FuDesign2008/vim-dirdiff'
+            Bundle 'FuDesign2008/diffsplit.vim'
             Bundle 'junkblocker/patchreview-vim'
             Bundle 'chrisbra/vim-diff-enhanced'
             Bundle 'Chiel92/vim-autoformat'
