@@ -560,6 +560,11 @@
 
     " }
 
+    " Raimondi/delimitMate {
+        let delimitMate_expand_cr = 1
+        let delimitMate_expand_space = 1
+    "}
+
     " coffeescript plugin {
         " http://www.vim.org/scripts/script.php?script_id=3590
         autocmd BufRead,BufNewFile,BufWritePre *.coffee setf coffee
