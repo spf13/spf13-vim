@@ -206,8 +206,8 @@
 
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
-                Bundle 'xolox/vim-misc'
-                Bundle 'xolox/vim-easytags'
+                "Bundle 'xolox/vim-misc'
+                "Bundle 'xolox/vim-easytags'
             endif
         endif
     " Snippets
