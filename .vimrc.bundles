@@ -271,8 +271,12 @@
 
     " css
         if count(g:spf13_bundle_groups, 'css')
-            Bundle 'groenewege/vim-less'
             Bundle 'hail2u/vim-css3-syntax'
+            Bundle 'groenewege/vim-less'
+
+            Bundle 'cakebaker/scss-syntax.vim'
+            "Bundle 'tpope/vim-haml'
+
             " vim-css-color will cause opening  .html/.markdown slow
             " @see https://github.com/skammer/vim-css-color/issues/3
             "Bundle 'skammer/vim-css-color'
