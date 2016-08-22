@@ -636,6 +636,9 @@
             let g:pymode_options = 0
             let g:pymode_rope = 0
         endif
+        
+        " disable pymode folding default
+        let g:pymode_folding = 0
     " }
 
     " ctrlp {
