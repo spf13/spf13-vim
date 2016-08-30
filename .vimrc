@@ -77,6 +77,7 @@
     " Git commits, Subversion commits.
     autocmd FileType gitcommit,svn setlocal spell
     autocmd BufNewFile,BufReadPost *.md,*.mkd set filetype=markdown
+    autocmd BufNewFile,BufReadPost *.mmd,*.mermaid set filetype=mermaid
     autocmd BufNewFile,BufReadPost *.conf     set filetype=conf
     "autocmd FileType text,wiki,markdown,mkd setlocal spell
     "set hidden                      " allow buffer switching without saving
