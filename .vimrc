@@ -383,10 +383,10 @@
         if !is_win
 
             let g:p_edit_files = {
-                \ 'book': expand('~/Dropbox/books'),
-                \ 'todo': expand('~/Dropbox/plan/fuyg-todo'),
-                \ 'dev' : expand('~/Dropbox/plan/family-dev'),
-                \ 'pdp' : expand('~/Dropbox/plan/pdp'),
+                \ 'book': expand('~/百度云同步盘/books'),
+                \ 'todo': expand('~/百度云同步盘/plan/fuyg-todo'),
+                \ 'dev' : expand('~/百度云同步盘/plan/family-dev'),
+                \ 'pdp' : expand('~/百度云同步盘/plan/pdp'),
                 \ 'pwd' : expand('~/Dropbox/common/pwd.markdown'),
                 \ 'youdao': expand('~/Dropbox/common/youdao.mkd')
                 \}
@@ -396,11 +396,11 @@
             let cur_month = strftime('%m')
             let cur_month = cur_year . '-' . cur_month
 
-            let plan_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/plan.*'
-            "  ~/Dropbox/plan/2013/2013-04/2013-04.*
+            let plan_file_pattern = '~/百度云同步盘/plan/' . cur_year .'/' . cur_month . '/plan.*'
+            "  ~/百度云同步盘/plan/2013/2013-04/2013-04.*
             "  the plan file may has different file extension
-            let plan_file_pattern_old = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month . '.*'
-            let diary_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/diary.*'
+            let plan_file_pattern_old = '~/百度云同步盘/plan/' . cur_year .'/' . cur_month . '/' . cur_month . '.*'
+            let diary_file_pattern = '~/百度云同步盘/plan/' . cur_year .'/' . cur_month . '/diary.*'
             unlet cur_year
             unlet cur_month
 
