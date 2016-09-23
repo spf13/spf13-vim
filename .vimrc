@@ -754,36 +754,27 @@
      " }
 
      " ctrlp {
+        let g:ctrlp_working_path_mode = 'a'
+        let g:ctrlp_by_filename = 1
+        let g:ctrlp_match_current_file = 1
+
+        let g:ctrlp_use_caching = 1
+        let g:ctrlp_clear_cache_on_exit = 1
+        let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
         set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
-        let g:ctrlp_root_markers = ['src']
-        let g:ctrlp_working_path_mode = 2
-        "nnoremap <silent> <D-t> :CtrlP<CR>
-        "nnoremap <silent> <D-r> :CtrlPMRU<CR>
-        let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-            \ 'file': '\.exe$\|\.so$\|\.dll$' }
 
-        "let g:ctrlp_user_command = {
-            "\ 'types': {
-                "\ 1: ['.git', 'cd %s && git ls-files'],
-                "\ 2: ['.hg', 'hg --cwd %s locate -I .'],
-            "\ },
-            "\ 'fallback': 'find %s -type f'
-        "\ }
+        if executable('ag')
+            let g:ctrlp_user_command = 'ag %s -l -i --nocolor --hidden -g ""'
+        else
+            let g:ctrlp_show_hidden = 1
+            let g:ctrlp_max_files = 0
+            let g:ctrlp_custom_ignore = {
+              \ 'dir':  '\.git$\|dist$\|tmp$',
+              \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+              \ }
 
-        " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-        if exists('g:ctrlp_user_command')
-            unlet g:ctrlp_user_command
         endif
-        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-        " ag is fast enough that CtrlP doesn't need to cache
-        let g:ctrlp_use_caching = 0
-
-        " for ctrl+p conflicts with
-        " https://github.com/terryma/vim-multiple-cursors
-        " use :CtrlP command or ctrl+shift+p
-        let g:ctrlp_map = '<c-s-p>'
      "}
 
 
