@@ -757,11 +757,13 @@
         let g:ctrlp_working_path_mode = 'a'
         let g:ctrlp_by_filename = 1
         let g:ctrlp_match_current_file = 1
+        let g:ctrlp_lazy_update = 1
+        set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
         let g:ctrlp_use_caching = 1
         let g:ctrlp_clear_cache_on_exit = 1
         let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-        set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+
 
         if executable('ag')
             let g:ctrlp_user_command = 'ag %s -l -i --nocolor --hidden -g ""'
