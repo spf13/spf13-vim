@@ -30,17 +30,17 @@
 
 " Bundles {
     " Use local bundles if available {
-        if filereadable(expand("~/.vimrc.bundles.local"))
+        if filereadable(expand('~/.vimrc.bundles.local'))
             source ~/.vimrc.bundles.local
         endif
     " }
     " Use fork bundles if available {
-        if filereadable(expand("~/.vimrc.bundles.fork"))
+        if filereadable(expand('~/.vimrc.bundles.fork'))
             source ~/.vimrc.bundles.fork
         endif
     " }
     " Use bundles config {
-        if filereadable(expand("~/.vimrc.bundles"))
+        if filereadable(expand('~/.vimrc.bundles'))
             source ~/.vimrc.bundles
         endif
     " }
@@ -53,6 +53,7 @@
     "endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " syntax highlighting
+    set synmaxcol=256
     "set mouse=a                 " automatically enable mouse usage
     "set mousehide               " hide the mouse cursor while typing
     scriptencoding utf-8
@@ -75,7 +76,10 @@
     "set spell                       " spell checking on
     set nospell
     " Git commits, Subversion commits.
-    autocmd FileType gitcommit,svn setlocal spell
+    augroup GitFileType
+        autocmd!
+        autocmd FileType gitcommit,svn setlocal spell
+    augroup END
     autocmd BufNewFile,BufReadPost *.md,*.mkd set filetype=markdown
     autocmd BufNewFile,BufReadPost *.mmd,*.mermaid set filetype=mermaid
     autocmd BufNewFile,BufReadPost *.conf     set filetype=conf
@@ -200,8 +204,13 @@
 " Formatting {
     "set nowrap                      " wrap long lines
     set wrap                         "折行显示
-    " @see http://stackoverflow.com/questions/16840433/forcing-vimdiff-to-wrap-lines
-    autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+
+    augroup ForceVimDiffWrapLines
+        autocmd!
+        " @see http://stackoverflow.com/questions/16840433/forcing-vimdiff-to-wrap-lines
+        autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+    augroup END
+
     "set autoindent                  " indent at the same level of the previous line
     set cindent
     set shiftwidth=4                " use indents of 4 spaces
@@ -359,14 +368,14 @@
 
      "ultisnips {
         " ultisnips conflicts with ycm, so change the key
-        let g:UltiSnipsListSnippets="<s-cr>"
-        let g:UltiSnipsExpandTrigger="<c-cr>"
-        let g:UltiSnipsJumpForwardTrigger="<c-j>"
-        let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+        let g:UltiSnipsListSnippets='<s-cr>'
+        let g:UltiSnipsExpandTrigger='<c-cr>'
+        let g:UltiSnipsJumpForwardTrigger='<c-j>'
+        let g:UltiSnipsJumpBackwardTrigger='<c-k>'
      "}
      "
      " vim-javacomplete2 {
-        autocmd FileType java set omnifunc=javacomplete#Complete
+        "autocmd FileType java set omnifunc=javacomplete#Complete
      " }
 
 
@@ -537,15 +546,15 @@
     " pangloss/vim-javascript {
         let g:javascript_enable_domhtmlcss = 1
 
-        let g:javascript_conceal_function   = "ƒ"
-        let g:javascript_conceal_null       = "ø"
-        let g:javascript_conceal_this       = "@"
-        let g:javascript_conceal_return     = "⇚"
-        let g:javascript_conceal_undefined  = "¿"
-        let g:javascript_conceal_NaN        = "ℕ"
-        let g:javascript_conceal_prototype  = "¶"
-        let g:javascript_conceal_static     = "•"
-        let g:javascript_conceal_super      = "Ω"
+        let g:javascript_conceal_function   = 'ƒ'
+        let g:javascript_conceal_null       = 'ø'
+        let g:javascript_conceal_this       = '@'
+        let g:javascript_conceal_return     = '⇚'
+        let g:javascript_conceal_undefined  = '¿'
+        let g:javascript_conceal_NaN        = 'ℕ'
+        let g:javascript_conceal_prototype  = '¶'
+        let g:javascript_conceal_static     = '•'
+        let g:javascript_conceal_super      = 'Ω'
     " }
 
     " tern_for_vim {
@@ -617,6 +626,31 @@
 
         let g:syntastic_objc_compiler = 'clang'
         let g:syntastic_php_checkers = ['phpmd']
+        let g:syntastic_vim_checkers = ['vint']
+
+        let g:syntastic_mode_map = {
+                    \ 'mode': 'passive',
+                    \ 'active_filetypes': [
+                        \ 'css',
+                        \ 'html',
+                        \ 'javascript',
+                        \ 'json',
+                        \ 'less',
+                        \ 'markdown',
+                        \ 'php',
+                        \ 'python',
+                        \ 'sh',
+                        \ 'vim',
+                        \ 'xhtml',
+                        \ 'xml',
+                        \ 'zsh'
+                    \],
+                    \ 'passive_filetypes': [
+                        \ 'c',
+                        \ 'cpp',
+                        \ 'java'
+                    \]
+                \}
     "}
 
     " PIV {
@@ -694,7 +728,10 @@
 
     " AutoCloseTag {
         " Make it so AutoCloseTag works for xml and xhtml files as well
-        autocmd FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+        augroup AutoCloseTagForXml
+            autocmd!
+            autocmd FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+        augroup END
         nnoremap <Leader>ac <Plug>ToggleAutoCloseMappings
     " }
 
@@ -760,9 +797,9 @@
         let g:ctrlp_lazy_update = 1
         set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
-        let g:ctrlp_use_caching = 1
-        let g:ctrlp_clear_cache_on_exit = 1
-        let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+        let g:ctrlp_use_caching = 0
+        "let g:ctrlp_clear_cache_on_exit = 1
+        "let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 
 
         if executable('ag')
@@ -781,7 +818,10 @@
 
 
      " nvie/vim-flake8 {
-        autocmd BufWritePost *.py call Flake8()
+        augroup CallFlake8OnWrite
+            autocmd!
+            autocmd BufWritePost *.py call Flake8()
+        augroup END
      " }
 
      " fs111/pydoc.vim {
@@ -804,7 +844,7 @@
         let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang'
 
      " will133/vim-dirdiff' {
-        let g:DirDiffExcludes = ".*"
+        let g:DirDiffExcludes = '.*'
         let g:DirDiffPreventSyntasticOpenLocationList = 1
      "}
 
@@ -841,7 +881,7 @@
             "do nothing
         endtry
     else
-        if &term == 'xterm' || &term == 'screen'
+        if &term ==? 'xterm' || &term ==? 'screen'
             set t_Co=256                 " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
         endif
         "set term=builtin_ansi       " Make arrow and other keys work
@@ -866,7 +906,7 @@ com! -nargs=+         UnBundle
 \ call UnBundle(<args>)
 
 function! InitializeDirectories()
-    let separator = "."
+    let separator = '.'
     let parent = $HOME
     let prefix = '.vim'
     let dir_list = {
@@ -879,18 +919,18 @@ function! InitializeDirectories()
     endif
 
     for [dirname, settingname] in items(dir_list)
-        let directory = parent . '/' . prefix . dirname . "/"
-        if exists("*mkdir")
+        let directory = parent . '/' . prefix . dirname . '/'
+        if exists('*mkdir')
             if !isdirectory(directory)
                 call mkdir(directory)
             endif
         endif
         if !isdirectory(directory)
-            echo "Warning: Unable to create backup directory: " . directory
-            echo "Try: mkdir -p " . directory
+            echo 'Warning: Unable to create backup directory: ' . directory
+            echo 'Try: mkdir -p ' . directory
         else
-            let directory = substitute(directory, " ", "\\\\ ", "g")
-            exec "set " . settingname . "=" . directory
+            let directory = substitute(directory, ' ', '\\\\ ', 'g')
+            exec 'set ' . settingname . '=' . directory
         endif
     endfor
 endfunction
@@ -912,20 +952,20 @@ call InitializeDirectories()
 " }
 
 " Use fork vimrc if available {
-    if filereadable(expand("~/.vimrc.fork"))
+    if filereadable(expand('~/.vimrc.fork'))
         source ~/.vimrc.fork
     endif
 " }
 
 " Use local vimrc if available {
-    if filereadable(expand("~/.vimrc.local"))
+    if filereadable(expand('~/.vimrc.local'))
         source ~/.vimrc.local
     endif
 " }
 
 " Use local gvimrc if available and gui is running {
     if has('gui_running')
-        if filereadable(expand("~/.gvimrc.local"))
+        if filereadable(expand('~/.gvimrc.local'))
             source ~/.gvimrc.local
         endif
     endif
