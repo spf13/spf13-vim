@@ -46,6 +46,10 @@
     " }
 " }
 
+augroup vimrc
+    autocmd!
+augroup END
+
 " General {
     set background=dark         " Assume a dark background
     "if !has('gui')
@@ -56,6 +60,7 @@
     set synmaxcol=256
     "set mouse=a                 " automatically enable mouse usage
     "set mousehide               " hide the mouse cursor while typing
+    set encoding=utf-8
     scriptencoding utf-8
 
     "if has ('x') && has ('gui') " on Linux use + register for copy-paste
@@ -76,14 +81,11 @@
     "set spell                       " spell checking on
     set nospell
     " Git commits, Subversion commits.
-    augroup GitFileType
-        autocmd!
-        autocmd FileType gitcommit,svn setlocal spell
-    augroup END
-    autocmd BufNewFile,BufReadPost *.md,*.mkd set filetype=markdown
-    autocmd BufNewFile,BufReadPost *.mmd,*.mermaid set filetype=mermaid
-    autocmd BufNewFile,BufReadPost *.conf     set filetype=conf
-    "autocmd FileType text,wiki,markdown,mkd setlocal spell
+    autocmd vimrc FileType gitcommit,svn setlocal spell
+    autocmd vimrc BufNewFile,BufReadPost *.md,*.mkd set filetype=markdown
+    autocmd vimrc BufNewFile,BufReadPost *.mmd,*.mermaid set filetype=mermaid
+    autocmd vimrc BufNewFile,BufReadPost *.conf     set filetype=conf
+    "autocmd vimrc FileType text,wiki,markdown,mkd setlocal spell
     "set hidden                      " allow buffer switching without saving
 
     " Setting up the directories {
@@ -101,7 +103,6 @@
     "Setup bomb "保留bomb头a
     set nobomb "去掉bomb头
     let &termencoding=&encoding  "vim 在与屏幕/键盘交互使用的编码
-    set encoding=utf-8
     if has('win32') || has('win64')
         "set encoding=utf-8 will cause displaying invalid characters
         "fix it in windows
@@ -192,7 +193,7 @@
         endif
     endfunction
     "set nofoldenable                "不启用折叠
-    autocmd BufNewFile,BufRead * call SetFolding()
+    autocmd vimrc BufNewFile,BufRead * call SetFolding()
 
     set list
     set listchars=tab:\:\ ,trail:~,extends:>,precedes:<,nbsp:.
@@ -205,11 +206,8 @@
     "set nowrap                      " wrap long lines
     set wrap                         "折行显示
 
-    augroup ForceVimDiffWrapLines
-        autocmd!
-        " @see http://stackoverflow.com/questions/16840433/forcing-vimdiff-to-wrap-lines
-        autocmd FilterWritePre * if &diff | setlocal wrap< | endif
-    augroup END
+    " @see http://stackoverflow.com/questions/16840433/forcing-vimdiff-to-wrap-lines
+    autocmd vimrc FilterWritePre * if &diff | setlocal wrap< | endif
 
     "set autoindent                  " indent at the same level of the previous line
     set cindent
@@ -221,7 +219,7 @@
     set formatoptions+=mB              "break at a multi-byte character above 255, see https://groups.google.com/forum/#!topic/vim_use/HYy7sqje3bQ
     "set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-    autocmd BufNewFile,BufRead,BufWritePre *.wiki setf wiki
+    autocmd vimrc BufNewFile,BufRead,BufWritePre *.wiki setf wiki
 " }
 
 " Key (re)Mappings {
@@ -375,12 +373,12 @@
      "}
      "
      " vim-javacomplete2 {
-        "autocmd FileType java set omnifunc=javacomplete#Complete
+        "autocmd vimrc FileType java set omnifunc=javacomplete#Complete
      " }
 
 
      " js-complete.vim {
-         "autocmd FileType javascript  :setl omnifunc=jscomplete#CompleteJS
+         "autocmd vimrc FileType javascript  :setl omnifunc=jscomplete#CompleteJS
      "}
 
     " AutoClose.vim {
@@ -540,7 +538,7 @@
 
 
     " FuDesign2008/WriteJSDocComment {
-        "autocmd FileType javascript nnoremap <leader>cc :call WriteJSDocComment()<CR>
+        "autocmd vimrc FileType javascript nnoremap <leader>cc :call WriteJSDocComment()<CR>
     "}
 
     " pangloss/vim-javascript {
@@ -578,16 +576,16 @@
 
     " coffeescript plugin {
         " http://www.vim.org/scripts/script.php?script_id=3590
-        autocmd BufRead,BufNewFile,BufWritePre *.coffee setf coffee
+        autocmd vimrc BufRead,BufNewFile,BufWritePre *.coffee setf coffee
     "}
 
     " typescript plugin {
-        autocmd BufRead,BufNewFile,BufWritePre *.ts setf typescript
+        autocmd vimrc BufRead,BufNewFile,BufWritePre *.ts setf typescript
     " }
 
 
     "less.vim {
-        autocmd BufRead,BufNewFile,BufWritePre *.less setf less
+        autocmd vimrc BufRead,BufNewFile,BufWritePre *.less setf less
     "}
 
     "calendar {
@@ -728,10 +726,7 @@
 
     " AutoCloseTag {
         " Make it so AutoCloseTag works for xml and xhtml files as well
-        augroup AutoCloseTagForXml
-            autocmd!
-            autocmd FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-        augroup END
+        autocmd vimrc FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
         nnoremap <Leader>ac <Plug>ToggleAutoCloseMappings
     " }
 
@@ -781,7 +776,7 @@
      " }
 
      " JSON {
-        autocmd BufNewFile,BufRead,BufWritePre .jshintrc setf json
+        autocmd vimrc BufNewFile,BufRead,BufWritePre .jshintrc setf json
         "nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
      " }
 
@@ -818,10 +813,7 @@
 
 
      " nvie/vim-flake8 {
-        augroup CallFlake8OnWrite
-            autocmd!
-            autocmd BufWritePost *.py call Flake8()
-        augroup END
+        autocmd vimrc BufWritePost *.py call Flake8()
      " }
 
      " fs111/pydoc.vim {
@@ -856,8 +848,8 @@
             "let g:indent_guides_auto_colors = 1
         "else
             " for some colorscheme ,autocolor will not work,like 'desert','ir_black'.
-            "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121   ctermbg=3
-            "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
+            "autocmd vimrc VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121   ctermbg=3
+            "autocmd vimrc VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
         "endif
         "set ts=4 sw=4 et
         "let g:indent_guides_start_level = 2

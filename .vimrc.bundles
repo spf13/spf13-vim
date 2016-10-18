@@ -1,5 +1,7 @@
 " Modeline and Notes {
 
+    scriptencoding utf-8
+
 " Environment {
     " Basics {
         set nocompatible        " must be first line
@@ -36,12 +38,12 @@
         Bundle 'tomtom/tlib_vim'
 
     " Use local bundles if available {
-        if filereadable(expand("~/.vimrc.bundles.local"))
+        if filereadable(expand('~/.vimrc.bundles.local'))
             source ~/.vimrc.bundles.local
         endif
     " }
     " Use fork bundles if available {
-        if filereadable(expand("~/.vimrc.bundles.fork"))
+        if filereadable(expand('~/.vimrc.bundles.fork'))
             source ~/.vimrc.bundles.fork
         endif
     " }
@@ -75,7 +77,7 @@
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
     " in your .vimrc.bundles.local file"
-    if !exists("g:override_spf13_bundles")
+    if !exists('g:override_spf13_bundles')
 
     " General
         if count(g:spf13_bundle_groups, 'general')
