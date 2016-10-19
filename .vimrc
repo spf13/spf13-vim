@@ -499,8 +499,6 @@ augroup END
         "let g:EasyMotion_leader_key = '<Leader>'
     "}
 
-    " FuDesign2008/translator.vim {
-    " }
 
     " FuDesign2008/randomColor.vim {
         "let g:favorite_color_schemes = ['pyte',
@@ -536,10 +534,14 @@ augroup END
         endif
     " }
 
+    " FuDesign2008/openUrl.vim {
 
-    " FuDesign2008/WriteJSDocComment {
-        "autocmd vimrc FileType javascript nnoremap <leader>cc :call WriteJSDocComment()<CR>
-    "}
+        " the url prefix for jira issue item
+        let g:open_jira_prefix='http://jira.corp.youdao.com/browse/'
+
+    " }
+
+
 
     " pangloss/vim-javascript {
         let g:javascript_enable_domhtmlcss = 1
