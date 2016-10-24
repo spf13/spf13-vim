@@ -514,19 +514,26 @@ augroup END
                         "\ 'wombat',
                         "\ 'lucius',
                         "\ 'peaksea']
-        let g:favorite_color_schemes = ['pyte',
-                        \ 'summerfruit',
-                        \ 'autumnleaf',
+        let g:favorite_color_schemes = [
+                        \ 'Tomorrow',
+                        \ 'Tomorrow-Night',
+                        \ 'Tomorrow-Night-Blue',
+                        \ 'Tomorrow-Night-Bright',
+                        \ 'Tomorrow-Night-Eighties',
+                        \ 'apprentice',
                         \ 'atom',
-                        \ 'github',
+                        \ 'autumnleaf',
                         \ 'bclear',
                         \ 'beauty256',
+                        \ 'github',
                         \ 'jellybeans',
+                        \ 'lucius',
                         \ 'molokai',
-                        \ 'solarized',
                         \ 'pencil',
-                        \ 'apprentice',
-                        \ 'lucius']
+                        \ 'pyte',
+                        \ 'solarized',
+                        \ 'summerfruit'
+                        \]
         let g:random_color_start = 2
         "colo pyte
         if !has('gui_running')
