@@ -56,22 +56,23 @@
             "\ 'ruby',
             "\ 'twig',
             "\ 'scala',
+            "\ 'java',
+            "\ 'coffeescript',
+            "\ 'php',
         let g:spf13_bundle_groups=[
             \ 'general',
             \ 'colors',
             \ 'programming',
             \ 'snip',
             \ 'python',
-            \ 'php',
             \ 'javascript',
             \ 'css',
             \ 'html',
-            \ 'coffeescript',
             \ 'typescript',
-            \ 'java',
             \ 'ios',
             \ 'document',
-            \ 'bash']
+            \ 'bash'
+            \ ]
     endif
 
     " To override all the included bundles, put
@@ -223,7 +224,7 @@
 
                 "snippets
                 Bundle 'honza/vim-snippets'
-                Bundle 'chrisgillis/vim-bootstrap3-snippets'
+                "Bundle 'chrisgillis/vim-bootstrap3-snippets'
                 Bundle 'FuDesign2008/fu-snippets'
             endif
 
