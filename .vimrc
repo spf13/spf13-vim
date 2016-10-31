@@ -604,18 +604,18 @@ augroup END
     "}
 
     "zoom.vim {
+            "\ 'DejaVu Sans Mono:h12',
+            "\ 'Unbuntu Mono:h12'
+            "\ 'Consolas:h12',
         let g:zoom_favorite_fonts = [
-            \ 'Consolas:h12',
-            \ 'DejaVu Sans Mono:h12',
             \ 'Inconsolata:h14',
             \ 'Menlo:h12',
             \ 'Monaco:h11',
-            \ 'Mononoki:h12',
-            \ 'Unbuntu Mono:h12'
+            \ 'Mononoki:h12'
             \ ]
         let g:zoom_key_map = 1
         "let g:zoom_random_font = is_win ? 0 : 1
-        let g:zoom_random_font = 0
+        let g:zoom_random_font = 1
 
     "}
 
