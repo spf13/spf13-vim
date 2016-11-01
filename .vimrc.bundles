@@ -1,10 +1,10 @@
+set nocompatible        " must be first line
 " Modeline and Notes {
 
     scriptencoding utf-8
 
 " Environment {
     " Basics {
-        set nocompatible        " must be first line
         set background=dark     " Assume a dark background
     " }
 

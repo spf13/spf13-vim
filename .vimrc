@@ -1,10 +1,7 @@
+set nocompatible        " must be first line
 " FuDesign2008's vimrc
 
 " Environment {
-    " Basics {
-        set nocompatible        " must be first line
-    " }
-
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
