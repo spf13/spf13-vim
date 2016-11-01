@@ -511,33 +511,33 @@ augroup END
                         "\ 'wombat',
                         "\ 'lucius',
                         "\ 'peaksea']
-        let g:favorite_color_schemes = [
-                        \ 'Tomorrow',
-                        \ 'Tomorrow-Night',
-                        \ 'Tomorrow-Night-Blue',
-                        \ 'Tomorrow-Night-Bright',
-                        \ 'Tomorrow-Night-Eighties',
-                        \ 'apprentice',
-                        \ 'atom',
-                        \ 'autumnleaf',
-                        \ 'bclear',
-                        \ 'beauty256',
-                        \ 'codeschool',
-                        \ 'github',
-                        \ 'hybrid',
-                        \ 'jellybeans',
-                        \ 'lucius',
-                        \ 'molokai',
-                        \ 'pencil',
-                        \ 'pyte',
-                        \ 'solarized',
-                        \ 'summerfruit'
-                        \]
-        let g:random_color_start = 2
+        "let g:favorite_color_schemes = [
+                        "\ 'Tomorrow',
+                        "\ 'Tomorrow-Night',
+                        "\ 'Tomorrow-Night-Blue',
+                        "\ 'Tomorrow-Night-Bright',
+                        "\ 'Tomorrow-Night-Eighties',
+                        "\ 'apprentice',
+                        "\ 'atom',
+                        "\ 'autumnleaf',
+                        "\ 'bclear',
+                        "\ 'beauty256',
+                        "\ 'codeschool',
+                        "\ 'github',
+                        "\ 'hybrid',
+                        "\ 'jellybeans',
+                        "\ 'lucius',
+                        "\ 'molokai',
+                        "\ 'pencil',
+                        "\ 'pyte',
+                        "\ 'solarized',
+                        "\ 'summerfruit'
+                        "\]
+        let g:random_color_start = 1
         "colo pyte
-        if !has('gui_running')
-            colo molokai
-        endif
+        "if !has('gui_running')
+            "colo molokai
+        "endif
     " }
 
     " FuDesign2008/openUrl.vim {
