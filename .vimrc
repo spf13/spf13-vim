@@ -346,10 +346,10 @@ augroup END
         let g:ycm_min_num_identifier_candidate_chars = 3
         let g:ycm_always_populate_location_list = 0
 
-        " ultisnips conflicts with ycm, so change the key
-        let g:ycm_key_list_select_completion = ['<c-n>', '<DOWN>']
-        let g:ycm_key_list_previous_completion = ['<c-p>', '<UP>']
-        let g:ycm_key_invoke_completion = '<c-cr>'
+        " default
+        "let g:ycm_key_list_select_completion = ['<TAB>', '<DOWN>'] " with vim default: <c-n>
+        "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<UP>'] " with vim default: <c-p>
+        let g:ycm_key_invoke_completion = '<C-N>'
 
 
         "the default setting
@@ -369,7 +369,7 @@ augroup END
 
      "ultisnips {
         " default
-        "let g:UltiSnipsExpandTrigger='<tab>'
+        let g:UltiSnipsExpandTrigger='<C-CR>'
         "let g:UltiSnipsListSnippets='<c-tab>'
         "let g:UltiSnipsJumpForwardTrigger='<c-j>'
         "let g:UltiSnipsJumpBackwardTrigger='<c-k>'
