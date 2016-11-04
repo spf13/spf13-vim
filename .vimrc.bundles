@@ -187,7 +187,6 @@ set nocompatible        " must be first line
             "@see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
             Bundle 'godlygeek/tabular'
 
-            Bundle 'FuDesign2008/GotoFile.vim'
             Bundle 'FuDesign2008/autoHighlight.vim'
             Bundle 'FuDesign2008/smartRename.vim'
 

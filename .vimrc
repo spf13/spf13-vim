@@ -254,7 +254,7 @@ augroup END
     nnoremap <silent> \ :nohls<CR>
 
     " ctrl + [ remember-able back for tags
-    nnoremap <C-\[> <C-T>
+    nnoremap <C-[> <C-T>
 
     "use sane regular expresion
     "nnoremap / /\v
@@ -346,6 +346,12 @@ augroup END
         let g:ycm_min_num_identifier_candidate_chars = 3
         let g:ycm_always_populate_location_list = 0
 
+        " ultisnips conflicts with ycm, so change the key
+        let g:ycm_key_list_select_completion = ['<c-n>', '<DOWN>']
+        let g:ycm_key_list_previous_completion = ['<c-p>', '<UP>']
+        let g:ycm_key_invoke_completion = '<c-cr>'
+
+
         "the default setting
               "\ 'markdown' : 1,
         let g:ycm_filetype_blacklist = {
@@ -362,11 +368,11 @@ augroup END
      "}
 
      "ultisnips {
-        " ultisnips conflicts with ycm, so change the key
-        let g:UltiSnipsListSnippets='<s-cr>'
-        let g:UltiSnipsExpandTrigger='<c-cr>'
-        let g:UltiSnipsJumpForwardTrigger='<c-j>'
-        let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+        " default
+        "let g:UltiSnipsExpandTrigger='<tab>'
+        "let g:UltiSnipsListSnippets='<c-tab>'
+        "let g:UltiSnipsJumpForwardTrigger='<c-j>'
+        "let g:UltiSnipsJumpBackwardTrigger='<c-k>'
      "}
      "
      " vim-javacomplete2 {
