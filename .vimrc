@@ -632,6 +632,12 @@ augroup END
         set statusline+=%{SyntasticStatuslineFlag()}
         set statusline+=%*
 
+        function! SyntasticCheckHook(errors)
+            if !empty(a:errors)
+                let g:syntastic_loc_list_height = min([len(a:errors), 3])
+            endif
+        endfunction
+
         if &diff
             let g:syntastic_always_populate_loc_list = 0
             let g:syntastic_auto_loc_list = 0
