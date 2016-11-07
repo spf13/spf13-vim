@@ -317,6 +317,7 @@ set nocompatible        " must be first line
         if count(g:spf13_bundle_groups, 'document')
             "Bundle 'junegunn/goyo.vim'
             "Bundle 'amix/vim-zenroom2'
+            Bundle 'jszakmeister/markdown2ctags'
             Bundle 'FuDesign2008/MarkdownViewer.vim'
             Bundle 'FuDesign2008/mkdInput.vim'
             Bundle 'FuDesign2008/mermaidViewer.vim'
