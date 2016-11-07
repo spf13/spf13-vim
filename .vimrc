@@ -136,7 +136,7 @@ augroup END
         " Always show status line, even for one window
         set laststatus=2
         "The commandbar height
-        set cmdheight=2
+        set cmdheight=1
 
         " Broken down into easily includeable segments
         set statusline=%<%f\    " Filename
