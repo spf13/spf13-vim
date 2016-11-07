@@ -349,7 +349,7 @@ augroup END
         " default
         "let g:ycm_key_list_select_completion = ['<TAB>', '<DOWN>'] " with vim default: <c-n>
         "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<UP>'] " with vim default: <c-p>
-        let g:ycm_key_invoke_completion = '<C-N>'
+        let g:ycm_key_invoke_completion = '<C-S-N>'
 
 
         "the default setting
@@ -707,7 +707,7 @@ augroup END
         let g:tagbar_show_linenumbers = 2
         let g:tagbar_iconchars = ['▸', '▾']
 
-        autocmd vimrc BufEnter * nested :call tagbar#autoopen(0)
+        autocmd vimrc BufEnter * nested :if !&diff | call tagbar#autoopen(0) | endif
 
         "for markdown
         let g:tagbar_type_markdown = {
