@@ -704,6 +704,11 @@ augroup END
         let g:tagbar_show_visibility = 0
         let g:tagbar_expand = 1
         let g:tagbar_left = 1
+        let g:tagbar_show_linenumbers = 2
+        let g:tagbar_iconchars = ['▸', '▾']
+
+        autocmd vimrc BufEnter * nested :call tagbar#autoopen(0)
+
         "for markdown
         let g:tagbar_type_markdown = {
             \ 'ctagstype' : 'markdown',
