@@ -253,9 +253,6 @@ augroup END
     "noremap <silent><Leader>/ :nohls<CR>
     nnoremap <silent> \ :nohls<CR>
 
-    " ctrl + [ remember-able back for tags
-    nnoremap <C-[> <C-T>
-
     "use sane regular expresion
     "nnoremap / /\v
     "vnoremap / /\v
