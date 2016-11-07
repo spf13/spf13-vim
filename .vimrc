@@ -704,7 +704,7 @@ augroup END
         let g:tagbar_show_linenumbers = 2
         let g:tagbar_iconchars = ['▸', '▾']
 
-        autocmd vimrc BufEnter * nested :if !&diff | call tagbar#autoopen(0) | endif
+        autocmd vimrc BufReadPost,BufNewFile * nested :if !&diff | call tagbar#autoopen(0) | endif
 
         " from https://github.com/jszakmeister/markdown2ctags
         " Add support for markdown files in tagbar.
