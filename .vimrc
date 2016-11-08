@@ -70,7 +70,7 @@ augroup END
     set noautochdir
     " Set to auto read when a file is changed from the outside
     set autoread
-    "set autowrite                  " automatically write a file when leaving a modified buffer
+    set autowrite                  " automatically write a file when leaving a modified buffer
     "set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     "set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
     "set virtualedit=onemore         " allow for cursor beyond last character
@@ -898,7 +898,7 @@ augroup END
 " GUI Settings {
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
-        set guioptions-=T           " remove the toolbar
+        set guioptions=egm           " remove the toolbar
         set lines=40                " 40 lines of text instead of 24,
         "字体是否好看与字号有很大关系
         try
