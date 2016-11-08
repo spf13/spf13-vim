@@ -59,6 +59,8 @@ set nocompatible        " must be first line
             "\ 'java',
             "\ 'coffeescript',
             "\ 'php',
+            "\ 'typescript',
+            "\ 'ios',
         let g:spf13_bundle_groups=[
             \ 'general',
             \ 'colors',
@@ -69,8 +71,6 @@ set nocompatible        " must be first line
             \ 'node',
             \ 'css',
             \ 'html',
-            \ 'typescript',
-            \ 'ios',
             \ 'document',
             \ 'bash'
             \ ]

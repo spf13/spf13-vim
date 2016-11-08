@@ -116,8 +116,6 @@ augroup END
 "}
 
 " Vim UI {
-    "color scheme will be set by GoodColors.vim
-    "colo molokai
     set tabpagemax=1               " only show 1 tabs
     set showmode                    " display the current mode
 
@@ -537,6 +535,7 @@ augroup END
                         \ 'summerfruit'
                         \]
         let g:random_color_start = 1
+
         "colo pyte
         "if !has('gui_running')
             "colo molokai
