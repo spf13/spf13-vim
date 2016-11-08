@@ -182,7 +182,7 @@ set nocompatible        " must be first line
             "Bundle 'mattn/webapi-vim'
             "Bundle 'mattn/gist-vim'
             Bundle 'scrooloose/nerdcommenter'
-            Bundle 'dimasg/vim-mark'
+            "Bundle 'dimasg/vim-mark'
 
             "@see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
             Bundle 'godlygeek/tabular'
@@ -196,14 +196,14 @@ set nocompatible        " must be first line
             Bundle 'chrisbra/vim-diff-enhanced'
             Bundle 'Chiel92/vim-autoformat'
 
-            if !g:is_win
+            "if !g:is_win
                 "Bundle 'tpope/vim-fugitive'
 
                 "dash.vim needs funcoo.vim
-                Bundle 'rizzatti/funcoo.vim'
-                Bundle 'rizzatti/dash.vim'
+                "Bundle 'rizzatti/funcoo.vim'
+                "Bundle 'rizzatti/dash.vim'
 
-            endif
+            "endif
 
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
