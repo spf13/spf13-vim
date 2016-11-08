@@ -66,6 +66,7 @@ set nocompatible        " must be first line
             \ 'snip',
             \ 'python',
             \ 'javascript',
+            \ 'node',
             \ 'css',
             \ 'html',
             \ 'typescript',
@@ -266,6 +267,9 @@ set nocompatible        " must be first line
             Bundle 'myhere/vim-nodejs-complete'
             Bundle 'sidorares/node-vim-debugger'
             Bundle 'moll/vim-node'
+
+            " for wxapp
+            Bundle 'chemzqm/wxapp.vim'
 
         endif
 
