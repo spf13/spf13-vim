@@ -534,12 +534,11 @@ augroup END
                         \ 'solarized',
                         \ 'summerfruit'
                         \]
-        let g:random_color_start = 1
 
-        "colo pyte
-        "if !has('gui_running')
-            "colo molokai
-        "endif
+        let g:random_color_start = 2
+        if !has('gui_running')
+            colo lucius
+        endif
     " }
 
     " FuDesign2008/openUrl.vim {
