@@ -446,13 +446,19 @@ augroup END
                 \ 1 : '1. 11:00 Sprint例会;',
                 \ 2 : '1. weekly report;',
                 \ 3 : '1. 11:00 Sprint例会;',
-                \ 5 : '1. Sprint计划;',
-                \ 6 : '1. 周回顾与计划;'
+                \ 5 : '1. Sprint计划;'
                 \}
             let g:plan_week_personal = {
                 \ 0 : '1. 看望/call 父母;1. 锻炼身体;',
                 \ 3 : '1. call 父母;'
                 \}
+
+            let g:plan_week_review = [
+                \ '1. Invest & Finance;',
+                \ '1. Tech & Managment;',
+                \ '1. Enjoy Life;'
+                \]
+
 
             let g:plan_month_work = {
                 \ 2 : '1. 确认上月考勤;',
@@ -463,6 +469,8 @@ augroup END
                 \ 5 : '1. 查询薪水发放;',
                 \ 7 : '1. 还房贷;'
                 \}
+
+            let g:plan_month_review = g:plan_week_review
 
             let g:plan_year_personal = {
                 \ '06-24': '1. 半年回顾与规划;',
