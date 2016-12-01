@@ -157,7 +157,6 @@
             Bundle 'mattn/gist-vim'
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
-            Bundle 'godlygeek/tabular'
             Bundle 'luochen1990/rainbow'
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'

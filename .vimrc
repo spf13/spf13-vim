@@ -1032,12 +1032,6 @@
         endif
     " }
 
-    " Wildfire {
-    let g:wildfire_objects = {
-                \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
-                \ "html,xml" : ["at"],
-                \ }
-    " }
 
     " vim-airline {
         " Set configuration options for the statusline plugin vim-airline.
