@@ -179,14 +179,14 @@ variable_set "$HOME"
 program_must_exist "vim"
 program_must_exist "git"
 
-do_backup       "$HOME/.vim" \
-                "$HOME/.vimrc" \
-                "$HOME/.gvimrc"
+#do_backup       "$HOME/.vim" \
+                #"$HOME/.vimrc" \
+                #"$HOME/.gvimrc"
 
-sync_repo       "$APP_PATH" \
-                "$REPO_URI" \
-                "$REPO_BRANCH" \
-                "$app_name"
+#sync_repo       "$APP_PATH" \
+                #"$REPO_URI" \
+                #"$REPO_BRANCH" \
+                #"$app_name"
 
 create_symlinks "$APP_PATH" \
                 "$HOME"
