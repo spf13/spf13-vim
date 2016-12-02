@@ -656,6 +656,8 @@ augroup END
         let g:syntastic_objc_compiler = 'clang'
         let g:syntastic_php_checkers = ['phpmd']
         let g:syntastic_vim_checkers = ['vint']
+        let g:syntastic_javascript_checkers = ['jshint', 'eslint', 'tern-lint']
+        let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
         let g:syntastic_mode_map = {
                     \ 'mode': 'passive',
@@ -820,6 +822,7 @@ augroup END
 
      " JSON {
         autocmd vimrc BufNewFile,BufRead,BufWritePre .jshintrc setf json
+        autocmd vimrc BufNewFile,BufRead,BufWritePre .eslintrc setf json
         "nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
      " }
 
