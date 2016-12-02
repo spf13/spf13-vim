@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-endpath="$HOME/fudesign2008.vim"
+endpath="$HOME/.fudesign2008.vim"
 
 warn() {
     echo "$1" >&2
@@ -11,8 +11,8 @@ die() {
     exit 1
 }
 
-rm $HOME/.vimrc
-rm $HOME/.vimrc.bundles
-rm $HOME/.vim
+rm "$HOME/.vimrc"
+rm "$HOME/.vimrc.bundles"
+rm "$HOME/.vim"
 
-rm -rf $endpath
+rm -rf "$endpath"
