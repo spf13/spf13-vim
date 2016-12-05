@@ -656,8 +656,30 @@ augroup END
         let g:syntastic_objc_compiler = 'clang'
         let g:syntastic_php_checkers = ['phpmd']
         let g:syntastic_vim_checkers = ['vint']
-        let g:syntastic_javascript_checkers = ['eslint', 'tern-lint']
-        let g:syntastic_javascript_eslint_exec = 'eslint_d'
+
+        let g:temp_cwd = fnamemodify(getcwd(), ':p:h')
+        let g:find_jshintrc_counter = 3
+        let g:jshintrc_exists = 0
+
+        while g:find_jshintrc_counter > 0
+            let g:jshintrc_exists = filereadable(g:temp_cwd . '/.jshintrc')
+            if g:jshintrc_exists
+                break
+            endif
+            let g:temp_cwd = fnamemodify(g:temp_cwd, ':p')
+            let g:find_jshintrc_counter = g:find_jshintrc_counter - 1
+        endwhile
+
+        if g:jshintrc_exists
+            let g:syntastic_javascript_checkers = ['jshint', 'tern-lint']
+        else
+            let g:syntastic_javascript_checkers = ['eslint', 'tern-lint']
+            let g:syntastic_javascript_eslint_exec = 'eslint_d'
+        endif
+
+        unlet g:temp_cwd
+        unlet g:find_jshintrc_counter
+        unlet g:jshintrc_exists
 
         let g:syntastic_mode_map = {
                     \ 'mode': 'passive',
