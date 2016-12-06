@@ -32,41 +32,53 @@
 " Environment {
 
     " Identify platform {
-        silent function! OSX()
-            return has('macunix')
-        endfunction
-        silent function! LINUX()
-            return has('unix') && !has('macunix') && !has('win32unix')
-        endfunction
-        silent function! WINDOWS()
-            return  (has('win32') || has('win64'))
-        endfunction
+    silent function! OSX()
+        return has('macunix')
+    endfunction
+    silent function! LINUX()
+        return has('unix') && !has('macunix') && !has('win32unix')
+    endfunction
+    silent function! WINDOWS()
+        return  (has('win32') || has('win64'))
+    endfunction
     " }
 
     " Basics {
-        set nocompatible        " Must be first line
-        if !WINDOWS()
-            set shell=/bin/sh
-        endif
+    set nocompatible        " Must be first line
+    if !WINDOWS()
+        set shell=/bin/sh
+    endif
     " }
 
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
-        if WINDOWS()
-          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-        endif
+    if WINDOWS()
+      set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+    endif
     " }
     
     " Arrow Key Fix {
         " https://github.com/spf13/spf13-vim/issues/780
-        if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
-            inoremap <silent> <C-[>OC <RIGHT>
-        endif
+    if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
+        inoremap <silent> <C-[>OC <RIGHT>
+    endif
     " }
 
 " }
 
+    "ctr-c 映射 为 Esc
+    inoremap <C-C> <Esc>
+    noremap <C-C> <Esc>
+    "屏蔽F1
+    inoremap <F1> <Esc>
+    noremap <F1> <Esc>
+    "F2打开，关闭代码折叠
+    nnoremap <F2> :set nofoldenable! nofoldenable?<CR>
+    "F3打开/关闭分行
+    nnoremap <F3> :set nowrap! nowrap?<CR>
+    " F4作为打开，关闭搜索结果高亮
+    nnoremap <F4> :set hlsearch! hlsearch?<CR>
 " Use before config if available {
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
