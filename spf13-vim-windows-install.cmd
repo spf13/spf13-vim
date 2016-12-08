@@ -16,7 +16,7 @@ REM    limitations under the License.
 @if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
 @if not exist "%HOME%" @set HOME=%USERPROFILE%
 
-@set APP_PATH=%HOME%\.spf13-vim-3
+@set APP_PATH=%cd%
 IF NOT EXIST "%APP_PATH%" (
     call git clone -b 3.0 https://github.com/leoatchina/spf13-vim-leoatchina.git "%APP_PATH%"
 ) ELSE (

@@ -15,7 +15,7 @@ REM    limitations under the License.
 @if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
 @if not exist "%HOME%" @set HOME=%USERPROFILE%
 
-@set APP_PATH=%HOME%\.spf13-vim-3
+@set APP_PATH=%cd%
 
 @if not exist "%APP_PATH%" (
     echo backing up existing vim config
