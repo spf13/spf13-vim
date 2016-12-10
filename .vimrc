@@ -580,8 +580,9 @@ augroup END
 
     " NERDCommenter {
         let g:NERDCustomDelimiters = {
-            \ 'python' : { 'left': '# '}
+            \ 'python' : { 'left': '#'}
             \}
+        let g:NERDSpaceDelims = 1
 
     " }
 
