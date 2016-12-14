@@ -667,7 +667,7 @@ augroup END
             if g:jshintrc_exists
                 break
             endif
-            let g:temp_cwd = fnamemodify(g:temp_cwd, ':p')
+            let g:temp_cwd = fnamemodify(g:temp_cwd, ':p:h:h')
             let g:find_jshintrc_counter = g:find_jshintrc_counter - 1
         endwhile
 
