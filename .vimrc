@@ -701,16 +701,13 @@
                     set conceallevel=2 concealcursor=i
                 endif
             endif
-
             " Disable the neosnippet preview candidate window
             " When enabled, there can be too much visual noise
             " especially when splits are used.
             set completeopt-=preview
-        endif
-    " }
 
     " neocomplete {
-        if count(g:spf13_bundle_groups, 'neocomplete')
+        elseif count(g:spf13_bundle_groups, 'neocomplete')
             let g:acp_enableAtStartup = 0
             let g:neocomplete#enable_at_startup = 1
             let g:neocomplete#enable_smart_case = 1
