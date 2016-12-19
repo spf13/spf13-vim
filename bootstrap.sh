@@ -131,7 +131,6 @@ create_symlinks() {
     fi
 
     touch  "$target_path/.vimrc.local"
-
     ret="$?"
     success "Setting up vim symlinks."
     debug

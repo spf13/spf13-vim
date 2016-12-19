@@ -98,6 +98,7 @@
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'scrooloose/nerdtree'
             Bundle 'Xuyuanp/nerdtree-git-plugin'
+            Bundle 'godlygeek/tabular'
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
@@ -187,7 +188,7 @@
             Bundle 'klen/python-mode'
             Bundle 'yssource/python.vim'
             Bundle 'python_match.vim'
-            Bundle 'davidhalter/jedi-vim'
+            Bundle 'pythoncomplete'
         endif
     " 
 
