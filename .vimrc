@@ -57,16 +57,13 @@
       set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
     endif
     " }
-    
     " Arrow Key Fix {
         " https://github.com/spf13/spf13-vim/issues/780
     if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
         inoremap <silent> <C-[>OC <RIGHT>
     endif
     " }
-
 " }
-
     "ctr-c 映射 为 Esc
     inoremap <C-C> <Esc>
     noremap <C-C> <Esc>
@@ -79,22 +76,20 @@
     nnoremap <F3> :set nowrap! nowrap?<CR>
     " F4作为打开，关闭搜索结果高亮
     nnoremap <F4> :set hlsearch! hlsearch?<CR>
-" Use before config if available {
+
+    " Use before config {
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
     endif
-" }
-
-" Use bundles config {
+    " }
+    " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
     endif
-" }
+    " }
 
-" General {
-
+    " General {
     set background=dark         " Assume a dark background
-
     " Allow to trigger background
     function! ToggleBG()
         let s:tbg = &background
@@ -107,9 +102,9 @@
     endfunction
     noremap <leader>bg :call ToggleBG()<CR>
 
-    " if !has('gui')
-        "set term=$TERM          " Make arrow and other keys work
-    " endif
+    if !has('gui')
+       set term=$TERM          " Make arrow and other keys work
+    endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
     set mouse=a                 " Automatically enable mouse usage
@@ -147,7 +142,6 @@
     " Instead of reverting the cursor to the last position in the buffer, we
     " set it to the first line when editing a git commit message
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
     " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
     " Restore cursor to file position in previous editing session
     " To disable this, add the following to your .vimrc.before.local file:
@@ -159,7 +153,6 @@
                 return 1
             endif
         endfunction
-
         augroup resCur
             autocmd!
             autocmd BufWinEnter * call ResCur()
@@ -167,28 +160,26 @@
     endif
 
     " Setting up the directories {
-        set backup                  " Backups are nice ...
-        if has('persistent_undo')
-            set undofile                " So is persistent undo ...
-            set undolevels=1000         " Maximum number of changes that can be undone
-            set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
-        endif
+    set backup                  " Backups are nice ...
+    if has('persistent_undo')
+        set undofile                " So is persistent undo ...
+        set undolevels=1000         " Maximum number of changes that can be undone
+        set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+    endif
 
-        " To disable views add the following to your .vimrc.before.local file:
-        "   let g:spf13_no_views = 1
-        if !exists('g:spf13_no_views')
-            " Add exclusions to mkview and loadview
-            " eg: *.*, svn-commit.tmp
-            let g:skipview_files = [
-                \ '\[example pattern\]'
-                \ ]
-        endif
+    " To disable views add the following to your .vimrc.before.local file:
+    "   let g:spf13_no_views = 1
+    if !exists('g:spf13_no_views')
+        " Add exclusions to mkview and loadview
+        " eg: *.*, svn-commit.tmp
+        let g:skipview_files = [
+            \ '\[example pattern\]'
+            \ ]
+    endif
     " }
-
 " }
 
-" Vim UI {
-
+    " Vim UI {
     if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
@@ -244,11 +235,9 @@
     set foldenable                  " Auto fold code
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-
 " }
 
-" Formatting {
-
+    " Formatting {
     set nowrap                      " Do not wrap long lines
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
@@ -277,17 +266,15 @@
     autocmd FileType haskell setlocal commentstring=--\ %s
     " Workaround broken colour highlighting in Haskell
     autocmd FileType haskell,rust setlocal nospell
-
 " }
 
-" Key (re)Mappings {
-
-    " The default leader is '\', but many people prefer ',' as it's in a standard
+    " Key (re)Mappings {
+    " The default leader is '\', but many people prefer ';' as it's in a standard
     " location. To override this behavior and set it back to '\' (or any other
     " character) add the following to your .vimrc.before.local file:
-    "   let g:spf13_leader='\'
+    " let g:spf13_leader='\'
     if !exists('g:spf13_leader')
-        let mapleader = ','
+        let mapleader = ';'
     else
         let mapleader=g:spf13_leader
     endif
@@ -511,8 +498,9 @@
     " }
 
     " Misc {
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            let g:NERDShutUp=1
+        if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
+            inoremap <C-CR><C-o>:call NERDComment(0,"toggle")<C-m>
+            noremap <C-CR> :call NERDComment(0,"toggle")<CR>
         endif
         if isdirectory(expand("~/.vim/bundle/matchit.zip"))
             let b:match_ignorecase = 1
@@ -566,13 +554,11 @@
         nmap <Leader>ac <Plug>ToggleAutoCloseMappings
     " }
 
-
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
             map <C-e> <plug>NERDTreeTabsToggle<CR>
             map <leader>e :NERDTreeFind<CR>
             nmap <leader>nt :NERDTreeFind<CR>
-
             let NERDTreeShowBookmarks=1
             let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
             let NERDTreeChDirMode=0
@@ -581,6 +567,25 @@
             let NERDTreeShowHidden=1
             let NERDTreeKeepTreeInNewTab=1
             let g:nerdtree_tabs_open_on_gui_startup=0
+            let g:NERDShutUp=1
+            let NERDTreeWinPos=0
+            let NERDTreeQuitOnOpen = 1
+            autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+            nnoremap <C-Y> :NERDTreeFocusToggle<CR>
+            " nerdtree-git
+            if isdirectory(expand("~/.vim/bundle/nerdtree-git-plugin"))
+                let g:NERDTreeIndicatorMapCustom = {
+                        \ "Modified"  : "*",
+                        \ "Staged"    : "+",
+                        \ "Untracked" : "★",
+                        \ "Renamed"   : "→ ",
+                        \ "Unmerged"  : "=",
+                        \ "Deleted"   : "X",
+                        \ "Dirty"     : "●",
+                        \ "Clean"     : "√",
+                        \ "Unknown"   : "?"
+                \ }
+            endif
         endif
     " }
 
@@ -666,18 +671,15 @@
             let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
         endif
     "}
-
     " YouCompleteMe {
         if count(g:spf13_bundle_groups, 'youcompleteme')
             let g:acp_enableAtStartup = 0
-
             " enable completion from tags
             let g:ycm_collect_identifiers_from_tags_files = 1
-
             " remap Ultisnips for compatibility for YCM
-            let g:UltiSnipsExpandTrigger = '<C-j>'
-            let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-            let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+            let g:UltiSnipsExpandTrigger = '<Tab>'
+            let g:UltiSnipsJumpForwardTrigger = '<Tab>'
+            let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 
             " Enable omni completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -694,18 +696,52 @@
             if !executable("ghcmod")
                 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
             endif
-
             " For snippet_complete marker.
             if !exists("g:spf13_no_conceal")
                 if has('conceal')
                     set conceallevel=2 concealcursor=i
                 endif
             endif
+            set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+            autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
+            "回车就选中当前项 
+            inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+            "上下左右键的行为 会显示其他信息
+            inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+            inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+            inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" :"\<PageDown>"
+            inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
+            "youcompleteme  默认tab  s-tab 和自动补全冲突
+            ""let g:ycm_key_list_select_completion=['<c-n>']
+            let g:ycm_key_list_select_completion = ['<Down>']
+            "let g:ycm_key_list_previous_completion=['<c-p>']
+            let g:ycm_key_list_previous_completion = ['<Up>']
+            let g:ycm_confirm_extra_conf=1 "加载.ycm_extra_conf.py提示
+            let g:ycm_global_ycm_extra_conf = '~/ycm_extra_conf.py' "这个是默认ycm配置文件所在目录
+            "
+            "let g:ycm_collect_identifiers_from_tags_files=1    " 开启 YCM
+            "基于标签引擎
+            "let g:ycm_min_num_of_chars_for_completion=2    "
+            "从第2个键入字符就开始罗列匹配项
+            let g:ycm_cache_omnifunc=0 " 禁止缓存匹配项,每次都重新生成匹配项
+            let g:ycm_seed_identifiers_with_syntax=1   " 语法关键字补全
+            "syntastic
+            "nnoremap <leader>lo :lopen<CR>    "open locationlist
+            "nnoremap <leader>lc :lclose<CR>    "close locationlist
+            "inoremap <leader><leader> <C-x><C-o>
+            ""在注释输入中也能补全
+            let g:ycm_complete_in_comments = 1
+            "在字符串输入中也能补全
+            let g:ycm_complete_in_strings = 1
+            "注释和字符串中的文字也会被收入补全
+            let g:ycm_collect_identifiers_from_comments_and_strings = 0
+            " 跳转到定义处
+            nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
             " Disable the neosnippet preview candidate window
             " When enabled, there can be too much visual noise
             " especially when splits are used.
             set completeopt-=preview
-
     " neocomplete {
         elseif count(g:spf13_bundle_groups, 'neocomplete')
             let g:acp_enableAtStartup = 0
@@ -714,20 +750,17 @@
             let g:neocomplete#enable_auto_delimiter = 1
             let g:neocomplete#max_list = 15
             let g:neocomplete#force_overwrite_completefunc = 1
-
             " Define dictionary.
             let g:neocomplete#sources#dictionary#dictionaries = {
                         \ 'default' : '',
                         \ 'vimshell' : $HOME.'/.vimshell_hist',
                         \ 'scheme' : $HOME.'/.gosh_completions'
                         \ }
-
             " Define keyword.
             if !exists('g:neocomplete#keyword_patterns')
                 let g:neocomplete#keyword_patterns = {}
             endif
             let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
             " Plugin key-mappings {
             " These two lines conflict with the default digraph mapping of <C-K>
             if !exists('g:spf13_no_neosnippet_expand')
@@ -744,8 +777,8 @@
                 inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
                 inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
                 " Jump up and down the list
-                inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-                inoremap <expr> <C-u>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+                inoremap <expr> <PageDown>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+                inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
             else
                 " <C-k> Complete Snippet
                 " <C-k> Jump to next snippet point
@@ -753,15 +786,12 @@
                             \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
                             \ "\<C-e>" : "\<Plug>(neosnippet_expand_or_jump)")
                 smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
-
                 inoremap <expr><C-g> neocomplete#undo_completion()
                 inoremap <expr><C-l> neocomplete#complete_common_string()
                 "inoremap <expr><CR> neocomplete#complete_common_string()
-
                 " <CR>: close popup
                 " <s-CR>: close popup and save indent.
                 inoremap <expr><s-CR> pumvisible() ? neocomplete#smart_close_popup()."\<CR>" : "\<CR>"
-
                 function! CleverCr()
                     if pumvisible()
                         if neosnippet#expandable()
@@ -774,7 +804,6 @@
                         return "\<CR>"
                     endif
                 endfunction
-
                 " <CR> close popup and save indent or expand snippet
                 imap <expr> <CR> CleverCr()
                 " <C-h>, <BS>: close popup and delete backword char.
@@ -783,10 +812,8 @@
             endif
             " <TAB>: completion.
             inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-            inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-
+            inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
             " Courtesy of Matteo Cavalleri
-
             function! CleverTab()
                 if pumvisible()
                     return "\<C-n>"
@@ -805,10 +832,7 @@
                     endif
                 endif
             endfunction
-
             imap <expr> <Tab> CleverTab()
-        " }
-
             " Enable heavy omni completion.
             if !exists('g:neocomplete#sources#omni#input_patterns')
                 let g:neocomplete#sources#omni#input_patterns = {}
@@ -891,7 +915,6 @@
                 \ "html,xml" : ["at"],
                 \ }
     " }
-
     " vim-airline {
         " Set configuration options for the statusline plugin vim-airline.
         " Use the powerline theme and optionally enable powerline symbols.

@@ -21,7 +21,6 @@
 " 
 
 " Environment 
-
     " Basics 
         set nocompatible        " Must be first line
         set background=dark     " Assume a dark background
@@ -63,15 +62,12 @@
       let bundle = vundle#config#init_bundle(a:arg, a:000)
       call filter(g:vundle#bundles, 'v:val["name_spec"] != "' . a:arg . '"')
     endfunction
-
     com! -nargs=+         UnBundle
     \ call UnBundle(<args>)
     " 
-
 " 
 
 " Bundles 
-
     " Deps 
         Bundle 'gmarik/vundle'
         Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -101,6 +97,7 @@
     " General 
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'scrooloose/nerdtree'
+            Bundle 'Xuyuanp/nerdtree-git-plugin'
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
