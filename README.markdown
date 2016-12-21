@@ -15,19 +15,21 @@ The distribution is completely customisable using a `~/.vimrc.local`, `~/.vimrc.
 
 ![spf13-vim image][spf13-vim-img]
 
-Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses the [Vundle] plugin management system to have a well organized vim directory (Similar to mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
+Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses the [Vundle] plugin management system to have a well-organized vim directory (similar to Mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
 
 Great care has been taken to ensure that each plugin plays nicely with others, and optional configuration has been provided for what we believe is the most efficient use.
 
-Lastly (and perhaps, most importantly) It is completely cross platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim] or Gvim additional features are enabled. So regardless of your environment just clone and run.
+Lastly (and perhaps most importantly) it is completely cross-platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim] or Gvim, additional features are enabled. So regardless of your environment just clone and run.
 
 # Installation
+
 ## Requirements
+
 To make all the plugins work, specifically [neocomplete](https://github.com/Shougo/neocomplete.vim), you need [vim with lua](https://github.com/Shougo/neocomplete.vim#requirements).
 
 ## Linux, \*nix, Mac OSX Installation
 
-The easiest way to install spf13-vim is to use our [automatic installer](https://j.mp/spf13-vim3) by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration. If you are upgrading from a prior version (before 3.0) this is also the recommended installation.
+The easiest way to install spf13-vim is to use our [automatic installer](https://j.mp/spf13-vim3) by simply copying and pasting the following line into a terminal. This will install spf13-vim and back up your existing vim configuration. If you are upgrading from a prior version (before 3.0), this is also the recommended installation.
 
 *Requires Git 1.7+ and Vim 7.3+*
 
@@ -36,7 +38,7 @@ The easiest way to install spf13-vim is to use our [automatic installer](https:/
     curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 ```
 
-If you have a bash-compatible shell you can run the script directly:
+If you have a bash-compatible shell, you can run the script directly:
 ```bash
 
     sh <(curl https://j.mp/spf13-vim3 -L)
@@ -59,24 +61,26 @@ If you want to install [msysgit], [Curl] and [spf13-vim] individually, follow th
 
 After the installation of Vim you must add a new directory to your environment variables path to make it work with the script installation of spf13.
 
-Open Vim and write the following command, it will show the installed directory:
+Open Vim and write the following command; it will show the installed directory:
 
     :echo $VIMRUNTIME
     C:\Program Files (X86)\Vim\vim74
 
-Then you need to add it to your environment variable path. After that try execute `vim` within command prompt (press Win-R, type `cmd`, press Enter) and you’ll see the default vim page.
+Then you need to add it to your environment variable path. After that try to execute `vim` within command prompt (press Win-R, type `cmd`, press Enter) and you’ll see the default vim page.
 
 #### Install [msysgit]
 
-After installation try running `git --version` within _command prompt_ (press Win-R,  type `cmd`, press Enter) to make sure all good:
+After installation, try running `git --version` within _command prompt_ (press Win-R,  type `cmd`, press Enter) to make sure it's all good:
 
     C:\> git --version
     git version 1.7.4.msysgit.0
 
-#### Setup [Curl]
-_Instructions blatently copied from vundle readme_
-Installing Curl on Windows is easy as [Curl] is bundled with [msysgit]!
-But before it can be used with [Vundle] it's required make `curl` run in _command prompt_.
+#### Set up [Curl]
+
+_Instructions blatantly copied from vundle readme_
+
+Installing Curl on Windows is easy, as [Curl] is bundled with [msysgit]!
+But before it can be used with [Vundle], it's required to make `curl` run in _command prompt_.
 The easiest way is to create `curl.cmd` with [this content](https://gist.github.com/912993)
 
     @rem Do not use "echo off" to not affect any child calls.
@@ -93,9 +97,9 @@ The easiest way is to create `curl.cmd` with [this content](https://gist.github.
     @curl.exe %*
 
 
-And copy it to `C:\Program Files\Git\cmd\curl.cmd`, assuming [msysgit] was installed to `c:\Program Files\Git`
+And copy it to `C:\Program Files\Git\cmd\curl.cmd`, assuming [msysgit] was installed to `c:\Program Files\Git`.
 
-to verify all good, run:
+To verify everything works, run:
 
     C:\> curl --version
     curl 7.21.1 (i686-pc-mingw32) libcurl/7.21.1 OpenSSL/0.9.8k zlib/1.2.3
@@ -108,7 +112,7 @@ to verify all good, run:
 The easiest way is to download and run the spf13-vim-windows-install.cmd file. Remember to run this file in **Administrator Mode** if you want the symlinks to be created successfully.
 
 ## Updating to the latest version
-The simpliest (and safest) way to update is to simply rerun the installer. It will completely and non destructively upgrade to the latest version.
+The simpliest (and safest) way to update is to simply rerun the installer. It will completely and non-destructively upgrade to the latest version.
 
 ```bash
 
@@ -116,7 +120,7 @@ The simpliest (and safest) way to update is to simply rerun the installer. It wi
 
 ```
 
-Alternatively you can manually perform the following steps. If anything has changed with the structure of the configuration you will need to create the appropriate symlinks.
+Alternatively you can manually perform the following steps. If anything has changed with the structure of the configuration, you will need to create the appropriate symlinks.
 
 ```bash
     cd $HOME/to/spf13-vim/
@@ -132,22 +136,22 @@ I'm always happy to take pull requests from others. A good number of people are 
 
 ![spf13-vimrc image][spf13-vimrc-img]
 
-The .vimrc file is suited to programming. It is extremely well organized and folds in sections.
+The .vimrc file is optimized for programming. It is extremely well organized and folds in sections.
 Each section is labeled and each option is commented.
 
-It fixes many of the inconveniences of vanilla vim including
+It fixes many of the inconveniences of vanilla vim as follows:
 
- * A single config can be used across Windows, Mac and linux
+ * A single config can be used across Windows, Mac and linux.
  * Eliminates swap and backup files from littering directories, preferring to store in a central location.
- * Fixes common typos like :W, :Q, etc
- * Setup a solid set of settings for Formatting (change to meet your needs)
- * Setup the interface to take advantage of vim's features including
-   * omnicomplete
-   * line numbers
-   * syntax highlighting
-   * A better ruler & status line
-   * & more
- * Configuring included plugins
+ * Fixes common typos such as :W, :Q, etc.
+ * Creates a solid set of settings for formatting (change to meet your needs)
+ * Sets up the interface to take advantage of vim's features, including
+   * omnicomplete,
+   * line numbers,
+   * syntax highlighting,
+   * a better ruler & status line,
+   * and more.
+ * Configuring the included plugins
 
 ## Customization
 
@@ -169,7 +173,7 @@ For example, to prevent autocd into a file directory:
 ```bash
     echo let g:spf13_no_autochdir = 1 >> ~/.vimrc.before.local
 ```
-For a list of available spf13-vim specific customization options, look at the `~/.vimrc.before` file.
+For a list of available customization options specific to spf13-vim, look at the `~/.vimrc.before` file.
 
 
 ### Fork Customization
@@ -189,11 +193,10 @@ and `.vimrc.bundles.fork` files in the root of their fork.  The load order for t
 8. `.vimrc.local` - local user configuration
 
 See `.vimrc.bundles` for specifics on what options can be set to override bundle configuration. See `.vimrc.before` for specifics
-on what options can be overridden. Most vim configuration options should be set in your `.vimrc.fork` file, bundle configuration
+on what options can be overridden. Most vim configuration options should be set in your `.vimrc.fork` file; bundle configuration
 needs to be set in your `.vimrc.bundles.fork` file.
 
-You can specify the default bundles for your fork using `.vimrc.before.fork` file. Here is how to create an example `.vimrc.before.fork` file
-in a fork repo for the default bundles.
+You can specify the default bundles for your fork using `.vimrc.before.fork` file. Here is how to create an example `.vimrc.before.fork` file in a fork repo for the default bundles.
 ```bash
     echo let g:spf13_bundle_groups=[\'general\', \'programming\', \'misc\', \'youcompleteme\'] >> .vimrc.before.fork
 ```
@@ -258,9 +261,7 @@ Here are a few of the plugins:
 
 ## [Undotree]
 
-If you undo changes and then make a new change, in most editors the changes you undid are gone forever, as their undo-history is a simple list.
-Since version 7.0 vim uses an undo-tree instead. If you make a new change after undoing changes, a new branch is created in that tree.
-Combined with persistent undo, this is nearly as flexible and safe as git ;-)
+If you undo changes and then make a new change, in most editors the changes you undid are gone forever, as their undo-history is a simple list. Since version 7.0 vim uses an undo-tree instead. If you make a new change after undoing changes, a new branch is created in that tree. Combined with persistent undo, this is nearly as flexible and safe as git ;-)
 
 Undotree makes that feature more accessible by creating a visual representation of said undo-tree.
 
