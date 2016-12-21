@@ -11,15 +11,15 @@ spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and [MacV
 
 It is a good starting point for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
 
-The distribution is completely customisable using a `~/.vimrc.local`, `~/.vimrc.bundles.local`, and `~/.vimrc.before.local` Vim RC files.
+The distribution is completely customizable using a `~/.vimrc.local`, `~/.vimrc.bundles.local`, and `~/.vimrc.before.local` Vim RC files.
 
 ![spf13-vim image][spf13-vim-img]
 
-Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses the [Vundle] plugin management system to have a well-organized vim directory (similar to Mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
+Unlike traditional Vim plugin structure, which (similar to UNIX) throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses the [Vundle] plugin management system to have a well-organized vim directory (similar to Mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
 
 Great care has been taken to ensure that each plugin plays nicely with others, and optional configuration has been provided for what we believe is the most efficient use.
 
-Lastly (and perhaps most importantly) it is completely cross-platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim] or Gvim, additional features are enabled. So regardless of your environment just clone and run.
+Lastly (and perhaps most importantly), it is completely cross-platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim] or Gvim, additional features are enabled. So regardless of your environment just clone and run.
 
 # Installation
 
@@ -112,6 +112,7 @@ To verify everything works, run:
 The easiest way is to download and run the spf13-vim-windows-install.cmd file. Remember to run this file in **Administrator Mode** if you want the symlinks to be created successfully.
 
 ## Updating to the latest version
+
 The simpliest (and safest) way to update is to simply rerun the installer. It will completely and non-destructively upgrade to the latest version.
 
 ```bash
@@ -261,7 +262,9 @@ Here are a few of the plugins:
 
 ## [Undotree]
 
-If you undo changes and then make a new change, in most editors the changes you undid are gone forever, as their undo-history is a simple list. Since version 7.0 vim uses an undo-tree instead. If you make a new change after undoing changes, a new branch is created in that tree. Combined with persistent undo, this is nearly as flexible and safe as git ;-)
+If you undo changes and then make a new change, in most editors the changes you undid are gone forever, as their undo-history is a simple list. 
+
+Since version 7.0 Vim uses an undo-tree instead. If you make a new change after undoing changes, a new branch is created in that tree. Combined with persistent undo, this is nearly as flexible and safe as git ;-)
 
 Undotree makes that feature more accessible by creating a visual representation of said undo-tree.
 
