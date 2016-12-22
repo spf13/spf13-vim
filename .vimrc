@@ -103,7 +103,9 @@
     noremap <leader>bg :call ToggleBG()<CR>
 
     if !has('gui')
-       set term=$TERM          " Make arrow and other keys work
+        if !has('nvim')
+            set term=$TERM          " Make arrow and other keys work
+        endif
     endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
@@ -444,98 +446,96 @@
 " }
 
 " Plugins {
-
     " GoLang {
-        if count(g:spf13_bundle_groups, 'go')
-            let g:go_highlight_functions = 1
-            let g:go_highlight_methods = 1
-            let g:go_highlight_structs = 1
-            let g:go_highlight_operators = 1
-            let g:go_highlight_build_constraints = 1
-            let g:go_fmt_command = "goimports"
-            let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-            let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-            au FileType go nmap <Leader>s <Plug>(go-implements)
-            au FileType go nmap <Leader>i <Plug>(go-info)
-            au FileType go nmap <Leader>e <Plug>(go-rename)
-            au FileType go nmap <leader>r <Plug>(go-run)
-            au FileType go nmap <leader>b <Plug>(go-build)
-            au FileType go nmap <leader>t <Plug>(go-test)
-            au FileType go nmap <Leader>gd <Plug>(go-doc)
-            au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-            au FileType go nmap <leader>co <Plug>(go-coverage)
-        endif
+    if count(g:spf13_bundle_groups, 'go')
+        let g:go_highlight_functions = 1
+        let g:go_highlight_methods = 1
+        let g:go_highlight_structs = 1
+        let g:go_highlight_operators = 1
+        let g:go_highlight_build_constraints = 1
+        let g:go_fmt_command = "goimports"
+        let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+        let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+        au FileType go nmap <Leader>s <Plug>(go-implements)
+        au FileType go nmap <Leader>i <Plug>(go-info)
+        au FileType go nmap <Leader>e <Plug>(go-rename)
+        au FileType go nmap <leader>r <Plug>(go-run)
+        au FileType go nmap <leader>b <Plug>(go-build)
+        au FileType go nmap <leader>t <Plug>(go-test)
+        au FileType go nmap <Leader>gd <Plug>(go-doc)
+        au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+        au FileType go nmap <leader>co <Plug>(go-coverage)
+    endif
         " }
 
-
     " TextObj Sentence {
-        if count(g:spf13_bundle_groups, 'writing')
-            augroup textobj_sentence
-              autocmd!
-              autocmd FileType markdown call textobj#sentence#init()
-              autocmd FileType textile call textobj#sentence#init()
-              autocmd FileType text call textobj#sentence#init()
-            augroup END
-        endif
+    if count(g:spf13_bundle_groups, 'writing')
+        augroup textobj_sentence
+          autocmd!
+          autocmd FileType markdown call textobj#sentence#init()
+          autocmd FileType textile call textobj#sentence#init()
+          autocmd FileType text call textobj#sentence#init()
+        augroup END
+    endif
     " }
 
     " TextObj Quote {
-        if count(g:spf13_bundle_groups, 'writing')
-            augroup textobj_quote
-                autocmd!
-                autocmd FileType markdown call textobj#quote#init()
-                autocmd FileType textile call textobj#quote#init()
-                autocmd FileType text call textobj#quote#init({'educate': 0})
-            augroup END
-        endif
+    if count(g:spf13_bundle_groups, 'writing')
+        augroup textobj_quote
+            autocmd!
+            autocmd FileType markdown call textobj#quote#init()
+            autocmd FileType textile call textobj#quote#init()
+            autocmd FileType text call textobj#quote#init({'educate': 0})
+        augroup END
+    endif
     " }
 
     " PIV {
-        if isdirectory(expand("~/.vim/bundle/PIV"))
-            let g:DisableAutoPHPFolding = 0
-            let g:PIVAutoClose = 0
-        endif
+    if isdirectory(expand("~/.vim/bundle/PIV"))
+        let g:DisableAutoPHPFolding = 0
+        let g:PIVAutoClose = 0
+    endif
     " }
 
     " Misc {
-        if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
-            inoremap <C-CR><C-o>:call NERDComment(0,"toggle")<C-m>
-            noremap <C-CR> :call NERDComment(0,"toggle")<CR>
-        endif
-        if isdirectory(expand("~/.vim/bundle/matchit.zip"))
-            let b:match_ignorecase = 1
-        endif
+    if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
+        inoremap <C-CR><C-o>:call NERDComment(0,"toggle")<C-m>
+        noremap <C-CR> :call NERDComment(0,"toggle")<CR>
+    endif
+    if isdirectory(expand("~/.vim/bundle/matchit.zip"))
+        let b:match_ignorecase = 1
+    endif
     " }
 
     " OmniComplete {
         " To disable omni complete, add the following to your .vimrc.before.local file:
         "   let g:spf13_no_omni_complete = 1
-        if !exists('g:spf13_no_omni_complete')
-            if has("autocmd") && exists("+omnifunc")
-                autocmd Filetype *
-                    \if &omnifunc == "" |
-                    \setlocal omnifunc=syntaxcomplete#Complete |
-                    \endif
-            endif
-
-            hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-            hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-            hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
-
-            " Some convenient mappings
-            "inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-            if exists('g:spf13_map_cr_omni_complete')
-                inoremap <expr> <CR>     pumvisible() ? "\<C-y>" : "\<CR>"
-            endif
-            inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-            inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-            inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-            inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
-
-            " Automatically open and close the popup menu / preview window
-            au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-            set completeopt=menu,preview,longest
+    if !exists('g:spf13_no_omni_complete')
+        if has("autocmd") && exists("+omnifunc")
+            autocmd Filetype *
+                \if &omnifunc == "" |
+                \setlocal omnifunc=syntaxcomplete#Complete |
+                \endif
         endif
+
+        hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+        hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+        hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+
+        " Some convenient mappings
+        "inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+        if exists('g:spf13_map_cr_omni_complete')
+            inoremap <expr> <CR>     pumvisible() ? "\<C-y>" : "\<CR>"
+        endif
+        inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+        inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+        inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+        inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+
+        " Automatically open and close the popup menu / preview window
+        au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+        set completeopt=menu,preview,longest
+    endif
     " }
 
     " Ctags {
