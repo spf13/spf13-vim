@@ -680,7 +680,38 @@
             let g:UltiSnipsExpandTrigger = '<Tab>'
             let g:UltiSnipsJumpForwardTrigger = '<Tab>'
             let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+            let g:UltiSnipsListSnippets="<C-Tab>"
+            " Ulti的代码片段的文件夹 
+            let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips"]
+            let g:ycm_filetype_blacklist = {
+                  \ 'tagbar' : 1,
+                  \ 'nerdtree' : 1,
+                  \}
+            function! g:UltiSnips_Complete()
+                call UltiSnips#ExpandSnippet()
+                if g:ulti_expand_res == 0
+                    if pumvisible()
+                        return "\<C-n>"
+                    else
+                        call UltiSnips#JumpForwards()
+                        if g:ulti_jump_forwards_res == 0
+                           return "\<TAB>"
+                        endif
+                    endif
+                endif
+                return ""
+            endfunction
+            au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
+            let g:ulti_expand_res = 1
+            function! Ulti_ExpandOrEnter()
+                call UltiSnips#ExpandSnippet()
+                if g:ulti_expand_res
+                    return ''
+                else
+                    return "\<return>"
+            endfunction
+            inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>
             " Enable omni completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -713,23 +744,15 @@
             inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
             "youcompleteme  默认tab  s-tab 和自动补全冲突
-            ""let g:ycm_key_list_select_completion=['<c-n>']
             let g:ycm_key_list_select_completion = ['<Down>']
-            "let g:ycm_key_list_previous_completion=['<c-p>']
             let g:ycm_key_list_previous_completion = ['<Up>']
+
             let g:ycm_confirm_extra_conf=1 "加载.ycm_extra_conf.py提示
             let g:ycm_global_ycm_extra_conf = '~/ycm_extra_conf.py' "这个是默认ycm配置文件所在目录
-            "
-            "let g:ycm_collect_identifiers_from_tags_files=1    " 开启 YCM
-            "基于标签引擎
-            "let g:ycm_min_num_of_chars_for_completion=2    "
-            "从第2个键入字符就开始罗列匹配项
+            let g:ycm_collect_identifiers_from_tags_files=1    " 开启 YC基于标签引擎
+            let g:ycm_min_num_of_chars_for_completion=2   " 从第2个键入字符就开始罗列匹配项
             let g:ycm_cache_omnifunc=0 " 禁止缓存匹配项,每次都重新生成匹配项
             let g:ycm_seed_identifiers_with_syntax=1   " 语法关键字补全
-            "syntastic
-            "nnoremap <leader>lo :lopen<CR>    "open locationlist
-            "nnoremap <leader>lc :lclose<CR>    "close locationlist
-            "inoremap <leader><leader> <C-x><C-o>
             ""在注释输入中也能补全
             let g:ycm_complete_in_comments = 1
             "在字符串输入中也能补全
