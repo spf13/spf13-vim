@@ -673,16 +673,29 @@
     "}
     " YouCompleteMe {
         if count(g:spf13_bundle_groups, 'youcompleteme')
+            set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+            autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后关闭预览窗口
             let g:acp_enableAtStartup = 0
+            "youcompleteme  默认tab  s-tab 和ultrasnips的自动补全冲突
+            let g:ycm_key_list_select_completion = ['<Down>']
+            let g:ycm_key_list_previous_completion = ['<Up>']
+            "回车就选中当前项 
+            inoremap <expr> <CR>       pumvisible() ? "\<C-y><CR>" : "\<CR>"
+            "翻页键的行为
+            inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" :"\<PageDown>"
+            inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
             " enable completion from tags
             let g:ycm_collect_identifiers_from_tags_files = 1
             " remap Ultisnips for compatibility for YCM
+            let g:UltiSnipsListSnippets="<C-e>"
             let g:UltiSnipsExpandTrigger = '<Tab>'
-            let g:UltiSnipsJumpForwardTrigger = '<Tab>'
-            let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
-            let g:UltiSnipsListSnippets="<C-Tab>"
+            let g:UltiSnipsJumpForwardTrigger = '<C-k>'
+            let g:UltiSnipsJumpBackwardTrigger = '<C-j>'
             " Ulti的代码片段的文件夹 
             let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips"]
+            " 自定义代码片段的文件夹
+            let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
             let g:ycm_filetype_blacklist = {
                   \ 'tagbar' : 1,
                   \ 'nerdtree' : 1,
@@ -721,31 +734,7 @@
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
-            " Haskell post write lint and check with ghcmod
-            " $ `cabal install ghcmod` if missing and ensure
-            " ~/.cabal/bin is in your $PATH.
-            if !executable("ghcmod")
-                autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-            endif
-            " For snippet_complete marker.
-            if !exists("g:spf13_no_conceal")
-                if has('conceal')
-                    set conceallevel=2 concealcursor=i
-                endif
-            endif
-            "set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
-            autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
-            "回车就选中当前项 
-            inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-            "上下左右键的行为 会显示其他信息
-            inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-            inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-            inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" :"\<PageDown>"
-            inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
-            "youcompleteme  默认tab  s-tab 和自动补全冲突
-            let g:ycm_key_list_select_completion = ['<Down>']
-            let g:ycm_key_list_previous_completion = ['<Up>']
 
             let g:ycm_confirm_extra_conf=1 "加载.ycm_extra_conf.py提示
             let g:ycm_global_ycm_extra_conf = '~/ycm_extra_conf.py' "这个是默认ycm配置文件所在目录
@@ -762,6 +751,18 @@
             " 跳转到定义处
             nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
             " Disable the neosnippet preview candidate window
+            " Haskell post write lint and check with ghcmod
+            " $ `cabal install ghcmod` if missing and ensure
+            " ~/.cabal/bin is in your $PATH.
+            if !executable("ghcmod")
+                autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+            endif
+            " For snippet_complete marker.
+            if !exists("g:spf13_no_conceal")
+                if has('conceal')
+                    set conceallevel=2 concealcursor=i
+                endif
+            endif
             " When enabled, there can be too much visual noise
             " especially when splits are used.
             set completeopt-=preview
