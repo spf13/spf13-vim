@@ -790,7 +790,9 @@
                 imap <C-k> <Plug>(neosnippet_expand_or_jump)
                 smap <C-k> <Plug>(neosnippet_expand_or_jump)
             endif
-            if exists('g:spf13_noninvasive_completion')
+            if !exists('g:spf13_invasive_completion')
+                imap <Tab> <Plug>(neosnippet_expand_or_jump)
+                smap <Tab> <Plug>(neosnippet_expand_or_jump)
                 inoremap <CR> <CR>
                 " <ESC> takes you out of insert mode
                 inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
@@ -832,30 +834,29 @@
                 " <C-h>, <BS>: close popup and delete backword char.
                 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
                 inoremap <expr><C-y> neocomplete#smart_close_popup()
-            endif
-            " <TAB>: completion.
-            inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-            inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-            " Courtesy of Matteo Cavalleri
-            function! CleverTab()
-                if pumvisible()
-                    return "\<C-n>"
-                endif
-                let substr = strpart(getline('.'), 0, col('.') - 1)
-                let substr = matchstr(substr, '[^ \t]*$')
-                if strlen(substr) == 0
-                    " nothing to match on empty string
-                    return "\<Tab>"
-                else
-                    " existing text matching
-                    if neosnippet#expandable_or_jumpable()
-                        return "\<Plug>(neosnippet_expand_or_jump)"
-                    else
-                        return neocomplete#start_manual_complete()
+                " Courtesy of Matteo Cavalleri
+                function! CleverTab()
+                    if pumvisible()
+                        return "\<C-n>"
                     endif
-                endif
-            endfunction
-            imap <expr> <Tab> CleverTab()
+                    let substr = strpart(getline('.'), 0, col('.') - 1)
+                    let substr = matchstr(substr, '[^ \t]*$')
+                    if strlen(substr) == 0
+                        " nothing to match on empty string
+                        return "\<Tab>"
+                    else
+                        " existing text matching
+                        if neosnippet#expandable_or_jumpable()
+                            return "\<Plug>(neosnippet_expand_or_jump)"
+                        else
+                            return neocomplete#start_manual_complete()
+                        endif
+                    endif
+                endfunction
+                " <TAB>: completion.
+                imap <expr> <Tab> CleverTab()
+            endif
+            " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
             " Enable heavy omni completion.
             if !exists('g:neocomplete#sources#omni#input_patterns')
                 let g:neocomplete#sources#omni#input_patterns = {}

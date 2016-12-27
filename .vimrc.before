@@ -63,7 +63,7 @@
     " automatically complete, pressing <CR> inserts a newline, etc. Iff the
     " menu is open, tab will cycle through it. If a snippet is selected, <C-k>
     " expands it and jumps between fields.
-    "   let g:spf13_noninvasive_completion = 1
+    "   let g:spf13_invasive_completion = 1
 
     " Don't turn conceallevel or concealcursor
     "   let g:spf13_no_conceal = 1
