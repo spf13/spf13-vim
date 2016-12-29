@@ -869,22 +869,14 @@
     " Snippets  and key map for neocomplete && neocomplcache{
         if count(g:spf13_bundle_groups, 'neocomplcache') || count(g:spf13_bundle_groups, 'neocomplete')
             imap <silent><expr><Tab> neosnippet#expandable() ?
-                \ "\<Plug>(neosnippet_expand_or_jump)" : ( pumvisible() ?
-                    \ has_key(v:completed_item,'F') ?
-                        "  has  F
-                        \ ((get(v:completed_item,'F',0) ?
-                            \ "\<C-y>" : "\<C-n>"."<C-y>")
-                        "  not has F, check menu
-                        \ :(has_key(v:completed_item,'menu') ?
-                            " has menu
-                            \ (get(v:completed_item,'menu',0) ?
-                                \ "\<C-y>" : "\<C-n>"."<C-y>")
-                            " not has menu
-                            \ :"\<Tab>" ))
-                    \ : "\<Tab>")
-
-            imap <C-f> <Right><Plug>(neosnippet_jump_or_expand)
-            smap <C-f> <Right><Plug>(neosnippet_jump_or_expand)
+                \ "\<Plug>(neosnippet_expand_or_jump)" : ( pumvisible()?
+                    \ (get(v:completed_item,"nsip",0)? "\<C-k>":"\<C-n><C-k>")
+                    \ : "\<Tab>" )
+            
+            imap <C-k> <Plug>(neosnippet_expand)
+            smap <C-k> <Plug>(neosnippet_expand)
+            imap <C-f> <Right><Plug>(neosnippet_jump)
+            smap <C-f> <Right><Plug>(neosnippet_jump)
 
             " <TAB>: completion.
             inoremap <expr><Up> pumvisible() ? "\<C-p>" : "\<Up>"
