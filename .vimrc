@@ -743,12 +743,12 @@ augroup END
         let g:tagbar_iconchars = ['▸', '▾']
 
         function OpenTagbarIfAvailable()
-            if exists('*tagbar#autoopen')
+            if exists(':Tagbar')
                 call tagbar#autoopen(1)
             endif
         endfunction
 
-        autocmd vimrc VimEnter * nested :call OpenTagbarIfAvailable()
+        autocmd vimrc VimEnter * nested :call OpenTagbarIfAvailable
 
         " from https://github.com/jszakmeister/markdown2ctags
         " Add support for markdown files in tagbar.
