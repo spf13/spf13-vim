@@ -673,14 +673,14 @@
     "}
     " YouCompleteMe {
         if count(g:spf13_bundle_groups, 'youcompleteme')
-            set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+            set completeopt=longest,menu,preview "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
             autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后关闭预览窗口
             let g:acp_enableAtStartup = 0
             "youcompleteme  默认tab  s-tab 和ultrasnips的自动补全冲突
             let g:ycm_key_list_select_completion = ['<Down>']
             let g:ycm_key_list_previous_completion = ['<Up>']
-            "回车就选中当前项 
-            inoremap <expr> <CR>       pumvisible() ? "\<C-y><CR>" : "\<CR>"
+            " "回车就选中当前项 
+            " inoremap <expr> <CR>       pumvisible() ? "\<C-y><CR>" : "\<CR>"
             "翻页键的行为
             inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" :"\<PageDown>"
             inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
@@ -688,10 +688,10 @@
             " enable completion from tags
             let g:ycm_collect_identifiers_from_tags_files = 1
             " remap Ultisnips for compatibility for YCM
-            let g:UltiSnipsListSnippets="<C-e>"
+            let g:UltiSnipsListSnippets="<C-l>"
             let g:UltiSnipsExpandTrigger = '<Tab>'
-            let g:UltiSnipsJumpForwardTrigger = '<C-k>'
-            let g:UltiSnipsJumpBackwardTrigger = '<C-j>'
+            let g:UltiSnipsJumpForwardTrigger = '<Tab>'
+            let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
             " Ulti的代码片段的文件夹 
             let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips"]
             " 自定义代码片段的文件夹
@@ -700,11 +700,24 @@
                   \ 'tagbar' : 1,
                   \ 'nerdtree' : 1,
                   \}
+
+            " Haskell post write lint and check with ghcmod
+            " $ `cabal install ghcmod` if missing and ensure
+            " ~/.cabal/bin is in your $PATH.
+            if !executable("ghcmod")
+                autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+            endif
+            " For snippet_complete marker.
+            if !exists("g:spf13_no_conceal")
+                if has('conceal')
+                    set conceallevel=2 concealcursor=i
+                endif
+            endif
             function! g:UltiSnips_Complete()
                 call UltiSnips#ExpandSnippet()
                 if g:ulti_expand_res == 0
                     if pumvisible()
-                        return "\<C-n>"
+                        return "\<C-y>"
                     else
                         call UltiSnips#JumpForwards()
                         if g:ulti_jump_forwards_res == 0
@@ -751,21 +764,9 @@
             " 跳转到定义处
             nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
             " Disable the neosnippet preview candidate window
-            " Haskell post write lint and check with ghcmod
-            " $ `cabal install ghcmod` if missing and ensure
-            " ~/.cabal/bin is in your $PATH.
-            if !executable("ghcmod")
-                autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-            endif
-            " For snippet_complete marker.
-            if !exists("g:spf13_no_conceal")
-                if has('conceal')
-                    set conceallevel=2 concealcursor=i
-                endif
-            endif
             " When enabled, there can be too much visual noise
             " especially when splits are used.
-            set completeopt-=preview
+            " set completeopt-=preview
     " neocomplete {
         elseif count(g:spf13_bundle_groups, 'neocomplete')
             let g:acp_enableAtStartup = 0
