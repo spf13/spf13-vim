@@ -675,6 +675,7 @@
         if count(g:spf13_bundle_groups, 'youcompleteme')
             set completeopt=longest,menu,preview "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
             autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后关闭预览窗口
+            let g:ycm_python_binary_path = 'python'
             let g:acp_enableAtStartup = 0
             "youcompleteme  默认tab  s-tab 和ultrasnips的自动补全冲突
             let g:ycm_key_list_select_completion = ['<Down>']
@@ -690,8 +691,13 @@
             " remap Ultisnips for compatibility for YCM
             let g:UltiSnipsListSnippets="<C-l>"
             let g:UltiSnipsExpandTrigger = '<Tab>'
+<<<<<<< HEAD
             let g:UltiSnipsJumpForwardTrigger = '<Tab>'
             let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+=======
+            let g:UltiSnipsJumpForwardTrigger = '<C-f>'
+            let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
+>>>>>>> 7708a797a1443a2a982d64846bb62c4af1eeb7e6
             " Ulti的代码片段的文件夹 
             let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips"]
             " 自定义代码片段的文件夹
@@ -746,7 +752,6 @@
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
 
 
             let g:ycm_confirm_extra_conf=1 "加载.ycm_extra_conf.py提示
