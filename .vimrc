@@ -742,7 +742,13 @@ augroup END
         let g:tagbar_show_linenumbers = 2
         let g:tagbar_iconchars = ['▸', '▾']
 
-        autocmd vimrc VimEnter * nested :call tagbar#autoopen(1)
+        function OpenTagbarIfAvailable()
+            if exists('*tagbar#autoopen')
+                call tagbar#autoopen(1)
+            endif
+        endfunction
+
+        autocmd vimrc VimEnter * nested :call OpenTagbarIfAvailable()
 
         " from https://github.com/jszakmeister/markdown2ctags
         " Add support for markdown files in tagbar.
