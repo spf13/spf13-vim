@@ -611,18 +611,25 @@ augroup END
     "}
 
     "zoom.vim {
-            "\ 'DejaVu Sans Mono:h12',
-            "\ 'Unbuntu Mono:h12'
-            "\ 'Consolas:h12',
-        let g:zoom_favorite_fonts = [
-            \ 'Inconsolata:h14',
-            \ 'Menlo:h12',
-            \ 'Monaco:h11',
-            \ 'Mononoki:h12'
-            \ ]
-        let g:zoom_key_map = 1
-        "let g:zoom_random_font = is_win ? 0 : 1
-        let g:zoom_random_font = 1
+
+        if has('gui_running')
+            if has('gui_macvim')
+                set guifont=Monaco:h12
+                "\ 'DejaVu Sans Mono:h12',
+                "\ 'Unbuntu Mono:h12'
+                "\ 'Consolas:h12',
+                let g:zoom_favorite_fonts = [
+                    \ 'Inconsolata:h14',
+                    \ 'Menlo:h12',
+                    \ 'Monaco:h11',
+                    \ 'Mononoki:h12'
+                    \ ]
+                let g:zoom_key_map = 1
+                let g:zoom_random_font = 1
+            else
+                set guifont=Consolas:h12
+            endif
+        endif
 
     "}
 
@@ -933,26 +940,16 @@ augroup END
     if has('gui_running')
         set guioptions=egm           " remove the toolbar
         set lines=40                " 40 lines of text instead of 24,
-        "字体是否好看与字号有很大关系
-        try
-            set guifont=Mononoki:h12  "font
-            "set guifont=Consolas:h12  "font
-            "set guifont=Droid\ Sans\ Mono:h16  "font
-        catch
-            "do nothing
-        endtry
     else
         if &term ==? 'xterm' || &term ==? 'screen'
             set t_Co=256                 " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
         endif
         "set term=builtin_ansi       " Make arrow and other keys work
     endif
+
     "macVim
     if has('gui_macvim')
-        "enter full mode when start
-        set fu
-        "set guifont=Monaco:h12
-        "set transparency=5          " Make the window slightly transparent
+        set fullscreen
     endif
 " }
 
