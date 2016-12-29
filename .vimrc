@@ -673,31 +673,31 @@
     "}
     " YouCompleteMe {
         if count(g:spf13_bundle_groups, 'youcompleteme')
-            set completeopt=longest,menu,preview "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
-            autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后关闭预览窗口
+            set completeopt=longest,menuone"让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+            au InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后关闭预览窗口
+            le
             let g:ycm_python_binary_path = 'python'
             let g:acp_enableAtStartup = 0
+            let g:ycm_add_preview_to_completeopt = 1
             "youcompleteme  默认tab  s-tab 和ultrasnips的自动补全冲突
             let g:ycm_key_list_select_completion = ['<Down>']
             let g:ycm_key_list_previous_completion = ['<Up>']
-            " "回车就选中当前项 
-            " inoremap <expr> <CR>       pumvisible() ? "\<C-y><CR>" : "\<CR>"
-            "翻页键的行为
-            inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" :"\<PageDown>"
-            inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
+            
+            "  补全后关键窗口
+            let g:ycm_autoclose_preview_window_after_completion = 1
+            "  插入后关键窗口
+            let g:ycm_autoclose_preview_window_after_insertion = 1
+
 
             " enable completion from tags
             let g:ycm_collect_identifiers_from_tags_files = 1
             " remap Ultisnips for compatibility for YCM
             let g:UltiSnipsListSnippets="<C-l>"
-            let g:UltiSnipsExpandTrigger = '<Tab>'
-<<<<<<< HEAD
-            let g:UltiSnipsJumpForwardTrigger = '<Tab>'
-            let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
-=======
+            let g:UltiSnipsExpandTrigger = '<C-k>'
             let g:UltiSnipsJumpForwardTrigger = '<C-f>'
             let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
->>>>>>> 7708a797a1443a2a982d64846bb62c4af1eeb7e6
+
             " Ulti的代码片段的文件夹 
             let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips"]
             " 自定义代码片段的文件夹
@@ -723,27 +723,27 @@
                 call UltiSnips#ExpandSnippet()
                 if g:ulti_expand_res == 0
                     if pumvisible()
-                        return "\<C-y>"
-                    else
-                        call UltiSnips#JumpForwards()
-                        if g:ulti_jump_forwards_res == 0
-                           return "\<TAB>"
+                        " if not in the popupmenu, selet the first item in popup menu
+                        if v:completed_item['menu'] == ""
+                            return "\<C-n>"."\<C-y>"
+                        else
+                            return "\<C-y>"
                         endif
+                    else
+                        return "\<Tab>"
                     endif
                 endif
                 return ""
             endfunction
-            au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+            au BufEnter * exec "inoremap <silent> <Tab> <C-R>=g:UltiSnips_Complete()<CR>"
 
-            let g:ulti_expand_res = 1
-            function! Ulti_ExpandOrEnter()
-                call UltiSnips#ExpandSnippet()
-                if g:ulti_expand_res
-                    return ''
-                else
-                    return "\<return>"
-            endfunction
-            inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>
+
+            inoremap <expr><CR> pumvisible()? "\<C-y>" : "\<CR>"
+
+
+            
+            
+
             " Enable omni completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
