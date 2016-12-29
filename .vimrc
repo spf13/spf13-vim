@@ -748,7 +748,7 @@ augroup END
             endif
         endfunction
 
-        autocmd vimrc VimEnter * nested :call OpenTagbarIfAvailable
+        autocmd vimrc VimEnter * nested :call OpenTagbarIfAvailable()
 
         " from https://github.com/jszakmeister/markdown2ctags
         " Add support for markdown files in tagbar.
