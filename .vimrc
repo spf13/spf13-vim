@@ -673,7 +673,7 @@
     "}
     " YouCompleteMe {
         if count(g:spf13_bundle_groups, 'youcompleteme')
-            set completeopt=longest,menuone"让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+            set completeopt=longest,menu
             au InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后关闭预览窗口
             le
             let g:ycm_python_binary_path = 'python'
@@ -723,10 +723,10 @@
                 if g:ulti_expand_res == 0
                     if pumvisible()
                         " if not in the popupmenu, selet the first item in popup menu
-                        if v:completed_item['menu'] == ""
-                            return "\<C-n>"."\<C-y>"
-                        else
+                        if has_key(v:completed_item,'menu')
                             return "\<C-y>"
+                        else
+                            return "\<C-n>"."\<C-y>"
                         endif
                     else
                         return "\<Tab>"
@@ -761,7 +761,7 @@
             " Disable the neosnippet preview candidate window
             " When enabled, there can be too much visual noise
             " especially when splits are used.
-            " set completeopt-=preview
+            set completeopt-=preview
     " neocomplete {
         elseif count(g:spf13_bundle_groups, 'neocomplete')
             let g:acp_enableAtStartup = 0
@@ -807,7 +807,7 @@
             inoremap <expr><C-y> neocomplete#close_popup()
      " neocomplcache
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
-            let g:acp_enableAtStartup = 0
+            
             let g:neocomplcache_enable_at_startup = 1
             let g:neocomplcache_enable_camel_case_completion = 1
             let g:neocomplcache_enable_smart_case = 1
@@ -868,15 +868,24 @@
 
     " Snippets  and key map for neocomplete && neocomplcache{
         if count(g:spf13_bundle_groups, 'neocomplcache') || count(g:spf13_bundle_groups, 'neocomplete')
-            imap <silent><expr><Tab> neosnippet#expandable() ?
-                \ "\<Plug>(neosnippet_expand_or_jump)" : ( pumvisible()?
-                    \ (get(v:completed_item,"nsip",0)? "\<C-k>":"\<C-n><C-k>")
-                    \ : "\<Tab>" )
-            
+            let g:acp_enableAtStartup = 1
             imap <C-k> <Plug>(neosnippet_expand)
             smap <C-k> <Plug>(neosnippet_expand)
             imap <C-f> <Right><Plug>(neosnippet_jump)
             smap <C-f> <Right><Plug>(neosnippet_jump)
+            function! g:Neo_Complete()
+                if pumvisible()
+                    if has_key(v:completed_item,'menu')
+                        return neosnippet#mappings#expand_impl()
+                    else
+                        return "\<C-n>".neosnippet#mappings#expand_impl()
+                    endif
+                else
+                    return "\<Tab>"
+                endif
+                return ""
+            endfunction
+            inoremap <silent> <Tab> <C-R>=g:Neo_Complete()<CR>
 
             " <TAB>: completion.
             inoremap <expr><Up> pumvisible() ? "\<C-p>" : "\<Up>"
@@ -910,7 +919,7 @@
             " Disable the neosnippet preview candidate window
             " When enabled, there can be too much visual noise
             " especially when splits are used.
-            set completeopt-=preview
+            " set completeopt-=preview
         endif
     " }
 
