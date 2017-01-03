@@ -783,6 +783,7 @@
         elseif count(g:spf13_bundle_groups, 'neocomplete')
             let g:acp_enableAtStartup = 0
             let g:neocomplete_enable_at_startup = 1
+            let g:neocomplete_enable_auto_select = 1
             let g:neocomplete_enable_camel_case_completion = 1
             let g:neocomplete_enable_smart_case = 1
             let g:neocomplete_enable_underbar_completion = 1
@@ -824,8 +825,8 @@
             inoremap <expr><C-y> neocomplete#close_popup()
      " neocomplcache
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
-            let g:neocompl = 1 
             let g:neocomplcache_enable_at_startup = 1
+            let g:neocomplcache_enable_auto_select = 1
             let g:neocomplcache_enable_camel_case_completion = 1
             let g:neocomplcache_enable_smart_case = 1
             let g:neocomplcache_enable_underbar_completion = 1
@@ -879,14 +880,9 @@
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
         endif
-
-
     " Snippets  and key map for neocomplete && neocomplcache{
         if count(g:spf13_bundle_groups, 'neocomplcache') || count(g:spf13_bundle_groups, 'neocomplete')
-            let g:acp_enableAtStartup = 1
-	    let g:testsnip = 1
             imap <C-k> <Plug>(neosnippet_expand)
             smap <C-k> <Plug>(neosnippet_expand)
             imap <C-f> <Right><Plug>(neosnippet_jump)
@@ -933,7 +929,6 @@
 
             " Enable neosnippets when using go
             let g:go_snippet_engine = "neosnippet"
-
             " Disable the neosnippet preview candidate window
             " When enabled, there can be too much visual noise
             " especially when splits are used.
