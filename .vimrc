@@ -678,7 +678,6 @@
             let g:ycm_python_binary_path = 'python'
             let g:acp_enableAtStartup = 0
             let g:ycm_add_preview_to_completeopt = 1
-            
 
             "  补全后关键窗口
             let g:ycm_autoclose_preview_window_after_completion = 1
@@ -754,9 +753,6 @@
 
             au BufEnter * exec "inoremap <silent> <CR> <C-R>=g:UltiSnips_CR()<cr>"
 
-
-
-
             " Enable omni completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -828,7 +824,7 @@
             inoremap <expr><C-y> neocomplete#close_popup()
      " neocomplcache
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
-            
+            let g:neocompl = 1 
             let g:neocomplcache_enable_at_startup = 1
             let g:neocomplcache_enable_camel_case_completion = 1
             let g:neocomplcache_enable_smart_case = 1
@@ -890,6 +886,7 @@
     " Snippets  and key map for neocomplete && neocomplcache{
         if count(g:spf13_bundle_groups, 'neocomplcache') || count(g:spf13_bundle_groups, 'neocomplete')
             let g:acp_enableAtStartup = 1
+	    let g:testsnip = 1
             imap <C-k> <Plug>(neosnippet_expand)
             smap <C-k> <Plug>(neosnippet_expand)
             imap <C-f> <Right><Plug>(neosnippet_jump)
