@@ -724,8 +724,8 @@
                 if g:ulti_expand_res == 0
                     if pumvisible()
                         " if not in the popupmenu, selet the first item in popup menu
-                        if v:completed_item['menu'] == ""
-                            return "\<C-n>"."\<C-y>"
+                        if  has_key(v:completed_item,"menu") && v:completed_item['menu'] == ""
+                            return "\<C-n>\<C-y>"
                         else
                             return "\<C-y>"
                         endif
@@ -737,12 +737,7 @@
             endfunction
             au BufEnter * exec "inoremap <silent> <Tab> <C-R>=g:UltiSnips_Complete()<CR>"
 
-
             inoremap <expr><CR> pumvisible()? "\<C-y>" : "\<CR>"
-
-
-            
-            
 
             " Enable omni completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
