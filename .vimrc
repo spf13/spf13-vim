@@ -438,6 +438,16 @@ augroup END
 
             " regular task
 
+            let g:plan_week_keypoint = [
+                \ '1. 技术博客;',
+                \ '    - 每周一篇;',
+                \ '1. 知乎;',
+                \ '    - 每周一答;',
+                \ '    - 每天一赞;',
+                \ '1. 微信朋友圈;',
+                \ '    - 每天1-2条;'
+                \]
+
             "0 = sunday
             "1 = monday
             "...
@@ -454,11 +464,16 @@ augroup END
                 \}
 
             let g:plan_week_review = [
-                \ '1. Invest & Finance;',
-                \ '1. Tech & Managment;',
-                \ '1. Enjoy Life;'
+                \ '1. (Invest & Finance);',
+                \ '1. (Tech & Managment);',
+                \ '1. (Enjoy Life);'
                 \]
 
+            let g:plan_month_keypoint = [
+                \ '1. (Invest & Finance):;',
+                \ '1. (Enjoy Life):;',
+                \ '1. (Tech & Managment):;'
+                \]
 
             let g:plan_month_work = {
                 \ 2 : '1. 确认上月考勤;',
@@ -466,8 +481,9 @@ augroup END
                 \ 27: '1. 月回顾与计划;'
                 \}
             let g:plan_month_personal = {
+                \ 1 : '1. 还农行房贷(6);',
                 \ 5 : '1. 查询薪水发放;',
-                \ 7 : '1. 还房贷;'
+                \ 10 : '1. 还工行房贷(17);'
                 \}
 
             let g:plan_month_review = g:plan_week_review
@@ -742,7 +758,7 @@ augroup END
         let g:tagbar_show_linenumbers = 2
         let g:tagbar_iconchars = ['▸', '▾']
 
-        function OpenTagbarIfAvailable()
+        function! OpenTagbarIfAvailable()
             if exists(':Tagbar')
                 call tagbar#autoopen(1)
             endif
