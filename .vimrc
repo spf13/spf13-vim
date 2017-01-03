@@ -185,7 +185,6 @@
     if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
-        let g:solarized_contrast="normal"
         let g:solarized_visibility="normal"
         color solarized             " Load a colorscheme
     endif
@@ -234,7 +233,7 @@
     set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
-    set foldenable                  " Auto fold code
+    set nofoldenable                  " Auto fold code
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 " }
@@ -861,8 +860,7 @@
             " <CR>: close popup
             inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
             " <s-CR>: close popup and save indent.
-            inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()."\<CR>" : "\<CR>"
-            
+            inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()."\<CR>" : "\<S-CR>"
             " <C-h>, <BS>: close popup and delete backword char.
             inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
             inoremap <expr><C-y> neocomplcache#close_popup()
@@ -889,18 +887,16 @@
             smap <C-f> <Right><Plug>(neosnippet_jump)
             function! g:Neo_Complete()
                 if pumvisible()
-                    if has_key(v:completed_item,'menu')
+                    if neosnippet#expandable()
                         return neosnippet#mappings#expand_impl()
                     else
-                        return "\<C-n>".neosnippet#mappings#expand_impl()
+                        return "\<C-y>"
                     endif
                 else
                     return "\<Tab>"
                 endif
-                return ""
             endfunction
-            inoremap <silent> <Tab> <C-R>=g:Neo_Complete()<CR>
-
+            au BufEnter * exec "inoremap <silent> <Tab> <C-R>=g:Neo_Complete()<cr>"
             " <TAB>: completion.
             inoremap <expr><Up> pumvisible() ? "\<C-p>" : "\<Up>"
             inoremap <expr><Down> pumvisible() ? "\<C-n>" : "\<Down>"
