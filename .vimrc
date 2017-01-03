@@ -675,7 +675,6 @@
         if count(g:spf13_bundle_groups, 'youcompleteme')
             set completeopt=longest,menu
             au InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后关闭预览窗口
-            le
             let g:ycm_python_binary_path = 'python'
             let g:acp_enableAtStartup = 0
             let g:ycm_add_preview_to_completeopt = 1
@@ -693,7 +692,7 @@
             let g:ycm_key_list_previous_completion = ['<Up>']
             " remap Ultisnips for compatibility for YCM
             let g:UltiSnipsListSnippets="<C-l>"
-            let g:UltiSnipsExpandTrigger = '<Tab>'
+            let g:UltiSnipsExpandTrigger = '<C-k>'
             let g:UltiSnipsJumpForwardTrigger = '<C-f>'
             let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
 
@@ -718,24 +717,37 @@
                     set conceallevel=2 concealcursor=i
                 endif
             endif
-            function! g:UltiSnips_Complete_Or_Jump()
-                call UltiSnips#ExpandSnippet()
-                if g:ulti_expand_res == 0
-                    if pumvisible()
-                        " if not in the popupmenu, selet the first item in popup menu
-                        if has_key(v:completed_item,'menu')
-                            return "\<C-y>"
-                        else
-                            return "\<C-n>"."\<C-y>"
-                        endif
-                    else
-                        return "\<Tab>"
-                    endif
+            function! g:UltiSnips_Tab()
+                if pumvisible()
+                    return "\<C-n>"
+                else
+                    return "\<TAB>"
                 endif
-                return ""
             endfunction
-            au BufEnter * exec "inoremap <silent> <Tab> <C-R>=g:UltiSnips_Complete_Or_Jump()<CR>"
-            inoremap <expr><CR> pumvisible()? "\<C-y>" : "\<CR>"
+            inoremap <silent><expr><Tab> g:UltiSnips_Tab()
+
+            function! g:UltiSnips_STab()
+                if pumvisible()
+                    return "\<C-p>"
+                else
+                    return "\<S-Tab>"
+                endif
+            endfunction
+            inoremap <silent><expr><S-Tab> g:UltiSnips_STab()
+
+            function! g:UltiSnips_CR()
+                if pumvisible() && !get(v:completed_item,'menu',0)
+                    call UltiSnips#ExpandSnippet()
+                    if g:ulti_expand_res == 0
+                        return "\<C-y>"
+                    else
+                        return ""
+                    endif
+                else
+                    return "\<CR>"
+                endif
+            endfunction
+            inoremap <silent><expr><CR> g:UltiSnips_CR()
             " Enable omni completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
