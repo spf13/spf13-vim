@@ -717,14 +717,8 @@
                     set conceallevel=2 concealcursor=i
                 endif
             endif
-<<<<<<< HEAD
+
             function! g:UltiSnips_Tab()
-                if pumvisible()
-                    return "\<C-n>"
-                else
-                    return "\<TAB>"
-=======
-            function! g:UltiSnips_Complete()
                 call UltiSnips#ExpandSnippet()
                 if g:ulti_expand_res == 0
                     if pumvisible()
@@ -737,20 +731,13 @@
                     else
                         return "\<Tab>"
                     endif
->>>>>>> temp
-                endif
-            endfunction
-<<<<<<< HEAD
-            inoremap <silent><expr><Tab> g:UltiSnips_Tab()
 
-            function! g:UltiSnips_STab()
-                if pumvisible()
-                    return "\<C-p>"
-                else
-                    return "\<S-Tab>"
                 endif
             endfunction
-            inoremap <silent><expr><S-Tab> g:UltiSnips_STab()
+
+            au BufEnter * exec "inoremap <silent> <Tab> <C-R>=g:UltiSnips_Tab()<cr>"
+
+
 
             function! g:UltiSnips_CR()
                 if pumvisible() && !get(v:completed_item,'menu',0)
@@ -764,13 +751,12 @@
                     return "\<CR>"
                 endif
             endfunction
-            inoremap <silent><expr><CR> g:UltiSnips_CR()
-=======
-            au BufEnter * exec "inoremap <silent> <Tab> <C-R>=g:UltiSnips_Complete()<CR>"
 
-            inoremap <expr><CR> pumvisible()? "\<C-y>" : "\<CR>"
+            au BufEnter * exec "inoremap <silent> <CR> <C-R>=g:UltiSnips_CR()<cr>"
 
->>>>>>> temp
+
+
+
             " Enable omni completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
