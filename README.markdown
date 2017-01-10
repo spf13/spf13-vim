@@ -501,7 +501,7 @@ Here's some tips if you've never used VIM before:
 
 * Type `vimtutor` into a shell to go through a brief interactive
   tutorial inside VIM.
-* Read the slides at [VIM: Walking Without Crutches](https://walking-without-crutches.heroku.com/#1).
+
 
 ## Modes
 
