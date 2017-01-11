@@ -396,12 +396,13 @@
 
     if has('statusline')
         set laststatus=2
-
         " Broken down into easily includeable segments
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
         if !exists('g:override_spf13_bundles')
-            set statusline+=%{fugitive#statusline()} " Git Hotness
+            if isdirectory(expand("~/.vim/bundle/fugitive"))
+                set statusline+=%{fugitive#statusline()} " Git Hotness
+            endif
         endif
         set statusline+=\ [%{&ff}/%Y]            " Filetype
         set statusline+=\ [%{getcwd()}]          " Current dir
@@ -962,7 +963,7 @@
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
             let g:ycm_confirm_extra_conf=1 "加载.ycm_extra_conf.py提示
-            let g:ycm_global_ycm_extra_conf = '~/ycm_extra_conf.py' "这个是默认ycm配置文件所在目录
+            let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py' "这个是默认ycm配置文件所在目录
             let g:ycm_collect_identifiers_from_tags_files=1    " 开启 YC基于标签引擎
             let g:ycm_min_num_of_chars_for_completion=2   " 从第2个键入字符就开始罗列匹配项
             let g:ycm_cache_omnifunc=0 " 禁止缓存匹配项,每次都重新生成匹配项
