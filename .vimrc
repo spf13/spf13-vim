@@ -261,11 +261,6 @@
             \set fileformat=unix
             \set foldenable
             \set foldmethod=indent
-        au BufNewFile,BufRead *.js, *.html, *.css
-            \ set tabstop=4
-            \ set softtabstop=4
-            \ set shiftwidth=4
-        " 禁止闪烁
         set gcr=a:block-blinkon0
         " 显示滚动条
         set guioptions-=l
