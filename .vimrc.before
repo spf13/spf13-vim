@@ -20,6 +20,8 @@
 " }
 
 " spf13 options {
+    " Prevent leoatchina's vimrc config
+    "   let g:no_leoatchina_config = 1
 
     " Prevent automatically changing to open file directory
     "   let g:spf13_no_autochdir = 1
@@ -36,12 +38,6 @@
 
     " Disable wrap relative motion for start/end line motions
     "   let g:spf13_no_wrapRelMotion = 1
-
-    " Disable fast tab navigation
-    "   let g:spf13_no_fastTabs = 1
-
-    " Clear search highlighting
-    "   let g:spf13_clear_search_highlight = 1
 
     " Disable neosnippet expansion
     " This maps over <C-k> and does some Supertab
@@ -95,7 +91,7 @@
     " Mappings for editing/applying spf13 config
     "   let g:spf13_edit_config_mapping='<leader>ev'
     "   let g:spf13_apply_config_mapping='<leader>sv'
-    
+
 " }
 
 " Use fork before if available {

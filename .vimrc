@@ -8,11 +8,11 @@
 "        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
 "            |_|
 "
-"   This is the personal .vimrc file of Steve Francia.
+"   This is the personal .vimrc file of leoathina, forked from Steve Francia.
 "   While much of it is beneficial for general use, I would
 "   recommend picking out the parts you want and understand.
 "
-"   You can find me at http://spf13.com
+"   You can find the origin config  at http://spf13.com, and leoatchina's github repo at https://github.com/leoatchina/spf13-vim-leoatchina
 "
 "   Copyright 2014 Steve Francia
 "
@@ -28,9 +28,7 @@
 "   See the License for the specific language governing permissions and
 "   limitations under the License.
 " }
-
 " Environment {
-
     " Identify platform {
     silent function! OSX()
         return has('macunix')
@@ -47,71 +45,262 @@
     set nocompatible        " Must be first line
     if !WINDOWS()
         set shell=/bin/sh
-    endif
+    else
     " }
-
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
-    if WINDOWS()
-      set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+        set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
     endif
     " }
-    " Arrow Key Fix {
+    " Arrow Key Fix 
         " https://github.com/spf13/spf13-vim/issues/780
     if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
         inoremap <silent> <C-[>OC <RIGHT>
     endif
-    " }
-" }
-    "ctr-c 映射 为 Esc
-    inoremap <C-C> <Esc>
-    noremap <C-C> <Esc>
-    "屏蔽F1
-    inoremap <F1> <Esc>
-    noremap <F1> <Esc>
-    "F2打开，关闭代码折叠
-    nnoremap <F2> :set nofoldenable! nofoldenable?<CR>
-    "F3打开/关闭分行
-    nnoremap <F3> :set nowrap! nowrap?<CR>
-    " F4作为打开，关闭搜索结果高亮
-    nnoremap <F4> :set hlsearch! hlsearch?<CR>
 
-    " Use before config {
+    " Use before config 
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
     endif
-    " }
-    " Use bundles config {
+
+    " Use bundles config 
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
     endif
-    " }
+    " Key (re)Mappings {
+    " The default leader is '\', but many people prefer ';' as it's in a standard
+    " location. To override this behavior and set it back to '\' (or any other
+    " character) add the following to your .vimrc.before.local file:
+    " let g:spf13_leader='\'
+    if !exists('g:spf13_leader')
+        let mapleader=';'
+    else
+        let mapleader=g:spf13_leader
+    endif
+    if !exists('g:spf13_localleader')
+        let maplocalleader = '_'
+    else
+        let maplocalleader=g:spf13_localleader
+    endif            
+
+    " leoatchina's config , of his persnal key mapping and Environment settings
+    " if you donot want to use his config 
+    " set your .vimrc.before.local file:
+    " let g:no_leoatchina_config = 1
+    if !exists('g:no_leoatchina_config')
+        set mouse=a                 " Automatically enable mouse usage
+        set mousehide               " Hide the mouse cursor while typing
+        scriptencoding utf-8
+        let mapleader=';'
+        " 设置快捷键将选中文本块复制至系统剪贴板
+        vnoremap  <leader>y  "+y
+        nnoremap  <leader>y  "+y
+        nnoremap  <leader>Y  "+yg
+        nnoremap  <leader>yy  "+yy
+
+        nnoremap <leader>p "+p
+        nnoremap <leader>P "+P
+        vnoremap <leader>p "+p
+        vnoremap <leader>P "+P
+
+        "F2打开，关闭代码折叠
+        nnoremap <F2> :set nofoldenable! nofoldenable?<CR>
+        "F3打开/关闭分行
+        nnoremap <F3> :set nowrap! nowrap?<CR>
+        " F4作为打开，关闭搜索结果高亮
+        nnoremap <F4> :set hlsearch! hlsearch?<CR>
+        " F5运行脚本
+        noremap <F5> :call CompileRunGcc()<CR>
+        func! CompileRunGcc()
+            exec "w"
+            if &filetype == 'c'
+                exec "!g++ % -o %<"
+                exec "!./%<"
+            elseif &filetype == 'cpp'
+                exec "!g++ % -o %<"
+                exec "!./%<"
+            elseif &filetype == 'java'
+                exec "!javac %"
+                exec "!java %<"
+            elseif &filetype == 'sh'
+                exec "!bash %"
+            elseif &filetype == 'python'
+                exec "!python2.7 %"
+            elseif &filetype == 'perl'
+                exec "!perl %"
+            elseif &filetype == 'html'
+                exec "!firefox % &"
+            elseif &filetype == 'go'
+                exec "!go run %"
+            endif
+        endfunc
+        " S-F5 time the program testing
+        noremap <S-F5> :call TimeCompileRunGcc()<CR>
+        func! TimeCompileRunGcc()
+            exec "w"
+            if &filetype == 'c'
+                exec "!g++ % -o %<"
+                exec "!time ./%<"
+            elseif &filetype == 'cpp'
+                exec "!g++ % -o %<"
+                exec "!time ./%<"
+            elseif &filetype == 'java'
+                exec "!javac %"
+                exec "!time java %<"
+            elseif &filetype == 'sh'
+                exec "!time bash %"
+            elseif &filetype == 'python'
+                exec "!time python2.7 %"
+            elseif &filetype == 'perl'
+                exec "!time perl %"
+            elseif &filetype == 'html'
+                exec "!time firefox % &"
+            elseif &filetype == 'go'
+                exec "!time go run %"
+            endif
+        endfunc
+        "关闭代码折叠
+        set nofoldenable
+        "让配置变更立即生效
+
+        " 关闭拼写检查
+        set nospell
+        " 关闭声音
+        set noeb
+        set vb
+        " 关闭列光标加亮
+        set nocursorcolumn
+        "开启行光标加亮
+        set cursorline
+        " 允许折行
+        set wrap
+   
+        "用tab来控制缩进
+        nnoremap <tab> V><ESC>
+        nnoremap <s-tab> V<<ESC>
+        vnoremap <tab> >gv
+        vnoremap <s-tab> <gv
+        " 
+        nnoremap - ^
+        nnoremap _ k^
+        nnoremap + j^
+        nnoremap = $
+        " move to the next position to the last letter of line
+        nnoremap <c-\> <End><Right>
+        inoremap <c-\> <ESC>:w<CR><End><Right>i
+        " 定义快捷键关闭当前窗口
+        nmap <Leader>q :q<CR>
+        " 标签控制
+        set showtabline=2
+        nnoremap <Leader>tn :tabnew<CR>
+        nnoremap <Leader>tc :tabc<CR>
+        nnoremap <Leader>ta :tabs<CR>
+        nnoremap <Leader>ts :tab split<CR>
+        nnoremap <Leader>te :tabe<SPACE>
+        nnoremap <Leader>tf :tabfirst<CR>
+        nnoremap <Leader>tl :tablast<CR>
+        nnoremap <Leader>tm :tabm<SPACE>
+        nnoremap <Leader>td :tabdo
+        " 定义快捷键保存当前窗口内容
+        nmap <Leader>w :w<CR>
+        " 定义快捷键保存所有窗口内容并退出 vim
+        nmap <Leader>WQ :wa<CR>:q<CR>
+        " 不做任何保存，直接退出 vim
+        nmap <Leader>Q :qa!<CR>
+        " 设置分割页面
+        nmap <Leader>- :split<CR>
+        nmap <leader>\ :vsplit<CR>
+        "设置垂直高度减增
+        nmap <Leader>, :resize -3<CR>
+        nmap <Leader>. :resize +3<CR>
+        "设置水平宽度减增
+        nmap <Leader>[ :vertical resize -3<CR>
+        nmap <Leader>] :vertical resize +3<CR>
+        "设置成同样的大小
+        nmap <leader>= <C-W>=
+        "至左方的子窗口
+        nnoremap <Leader>h <C-W>h
+        nnoremap <Leader>H <C-W>H
+        nnoremap <C-LEFT> <C-W>h
+        nnoremap <C-S-LEFT> <C-W>H
+        "至右方的子窗口
+        nnoremap <Leader>l <C-W>l
+        nnoremap <Leader>L <C-W>L
+        nnoremap <C-RIGHT> <C-W>l
+        nnoremap <C-S-RIGHT> <C-W>L
+        "至上方的子窗口
+        nnoremap <Leader>k <C-W>k
+        nnoremap <Leader>>K <C-W>K
+        nnoremap <C-UP> <C-W>k
+        nnoremap <C-S-UP> <C-W>K
+        "至下方的子窗口
+        nnoremap <Leader>j <C-W>j
+        nnoremap <Leader>J <C-W>J
+        nnoremap <C-DOWN>  <C-W>j
+        nnoremap <C-S-DOWN> <C-W>J
+        " 定义快捷键在结对符之间跳转
+        nmap <Leader>M %
+        " 开启实时搜索功能
+        set incsearch
+        " 搜索时大小写不敏感
+        set ignorecase
+        " 显示光标当前位置
+        set ruler
+        " 开启行号显示
+        set number
+        " 高亮显示搜索结果
+        set hlsearch
+
+        au BufNewFile,BufRead *.py
+            \set tabstop = 4
+            \set softtabstop=4
+            \set shiftwidth=4
+            \set expandtab
+            \set autoindent
+            \set fileformat=unix
+            \set foldenable
+            \set foldmethod=indent
+        au BufNewFile,BufRead *.js, *.html, *.css
+            \ set tabstop=4
+            \ set softtabstop=4
+            \ set shiftwidth=4
+        " 禁止闪烁
+        set gcr=a:block-blinkon0
+        " 显示滚动条
+        set guioptions-=l
+        set guioptions-=L
+        set guioptions-=r
+        set guioptions-=R
+        " 菜单和工具条
+        set guioptions-=m
+        set guioptions-=T
+        " 总是显示状态栏
+        set laststatus=2
+        
+    endif
+    
+    " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
+    map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
+    " map F1 , Ctrl-C  to Esc
+    noremap <F1> <Esc>
+    noremap <C-C> <Esc>
+    filetype plugin indent on   " Automatically detect file types.
+    filetype on                 " 开启文件类型侦测
+    filetype plugin on          " 根据侦测到的不同类型:加载对应的插件
+    syntax on           
+
 
     " General {
     set background=dark         " Assume a dark background
-    " Allow to trigger background
-    function! ToggleBG()
-        let s:tbg = &background
-        " Inversion
-        if s:tbg == "dark"
-            set background=light
-        else
-            set background=dark
-        endif
-    endfunction
-    noremap <leader>bg :call ToggleBG()<CR>
+
 
     if !has('gui')
         if !has('nvim')
             set term=$TERM          " Make arrow and other keys work
         endif
     endif
-    filetype plugin indent on   " Automatically detect file types.
-    syntax on                   " Syntax highlighting
-    set mouse=a                 " Automatically enable mouse usage
-    set mousehide               " Hide the mouse cursor while typing
-    scriptencoding utf-8
+
 
     if has('clipboard')
         if has('unnamedplus')  " When possible use + register for copy-paste
@@ -269,21 +458,7 @@
     autocmd FileType haskell,rust setlocal nospell
 " }
 
-    " Key (re)Mappings {
-    " The default leader is '\', but many people prefer ';' as it's in a standard
-    " location. To override this behavior and set it back to '\' (or any other
-    " character) add the following to your .vimrc.before.local file:
-    " let g:spf13_leader='\'
-    if !exists('g:spf13_leader')
-        let mapleader = ';'
-    else
-        let mapleader=g:spf13_leader
-    endif
-    if !exists('g:spf13_localleader')
-        let maplocalleader = '_'
-    else
-        let maplocalleader=g:spf13_localleader
-    endif
+
 
     " The default mappings for editing and applying the spf13 configuration
     " are <leader>ev and <leader>sv respectively. Change them to your preference
@@ -344,15 +519,7 @@
         vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
     endif
 
-    " The following two lines conflict with moving to top and
-    " bottom of the screen
-    " If you prefer that functionality, add the following to your
-    " .vimrc.before.local file:
-    "   let g:spf13_no_fastTabs = 1
-    if !exists('g:spf13_no_fastTabs')
-        map <S-H> gT
-        map <S-L> gt
-    endif
+
 
     " Stupid shift key fixes
     if !exists('g:spf13_no_keyfixes')
@@ -385,17 +552,6 @@
     nmap <leader>f7 :set foldlevel=7<CR>
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
-
-    " Most prefer to toggle search highlighting rather than clear the current
-    " search results. To clear search highlighting rather than toggle it on
-    " and off, add the following to your .vimrc.before.local file:
-    "   let g:spf13_clear_search_highlight = 1
-    if exists('g:spf13_clear_search_highlight')
-        nmap <silent> <leader>/ :nohlsearch<CR>
-    else
-        nmap <silent> <leader>/ :set invhlsearch<CR>
-    endif
-
 
     " Find merge conflict markers
     map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
@@ -435,14 +591,19 @@
     map zl zL
     map zh zH
 
-    " Easier formatting
-    nnoremap <silent> <leader>q gwip
 
-    " FIXME: Revert this f70be548
-    " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
-    map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
+    " take config into effect after saving
+    au! bufwritepost .vimrc source %
+    au! bufwritepost .vimrc.before source %
+    au! bufwritepost .vimrc.bundles source %
+    au! bufwritepost .vimrc.local source %
+    au! bufwritepost .vimrc.before.local source %
+    au! bufwritepost .vimrc.bundles.local source %
 
 " }
+
+
+
 
 " Plugins {
     " GoLang {
@@ -662,6 +823,46 @@
     " TagBar {
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
             nnoremap <silent> <leader>tt :TagbarToggle<CR>
+            " 设置 tagbar 子窗口的位置出现在主编辑区的左边
+            let tagbar_left=0
+            " 设置显示／隐藏标签列表子窗口的快捷键。速记：identifier list by tag
+            nnoremap <Leader>ilt :TagbarToggle<CR>
+            let tagbar_width=32
+            let g:tagbar_compact=1
+            let g:tagbar_type_cpp = {
+                \ 'ctagstype' : 'c++',
+                \ 'kinds'     : [
+                    \ 'c:classes:0:1',
+                    \ 'd:macros:0:1',
+                    \ 'e:enumerators:0:0',
+                    \ 'f:functions:0:1',
+                    \ 'g:enumeration:0:1',
+                    \ 'l:local:0:1',
+                    \ 'm:members:0:1',
+                    \ 'n:namespaces:0:1',
+                    \ 'p:functions_prototypes:0:1',
+                    \ 's:structs:0:1',
+                    \ 't:typedefs:0:1',
+                    \ 'u:unions:0:1',
+                    \ 'v:global:0:1',
+                    \ 'x:external:0:1'
+                \ ],
+            \ 'sro'        : '::',
+            \ 'kind2scope' : {
+                \ 'g' : 'enum',
+                \ 'n' : 'namespace',
+                \ 'c' : 'class',
+                \ 's' : 'struct',
+                \ 'u' : 'union'
+            \ },
+            \ 'scope2kind' : {
+                \ 'enum'      : 'g',
+                \ 'namespace' : 'n',
+                \ 'class'     : 'c',
+                \ 'struct'    : 's',
+                \ 'union'     : 'u'
+            \ }
+            \ }
         endif
     "}
 
