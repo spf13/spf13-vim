@@ -259,7 +259,8 @@ set nocompatible        " must be first line
             "Bundle 'jelera/vim-javascript-syntax'
             Bundle 'briancollins/vim-jst'
             Bundle 'marijnh/tern_for_vim'
-            Bundle 'scheakur/vim-jsdocy'
+            " Bundle 'scheakur/vim-jsdocy'
+            Bundle 'heavenshell/vim-jsdoc'
             Bundle 'maksimr/vim-jsbeautify'
 
             " for node
