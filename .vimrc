@@ -595,6 +595,13 @@ augroup END
 
     " }
 
+    " vim-jsdoc {
+        let g:jsdoc_allow_input_prompt = 1
+        let g:jsdoc_access_descriptions = 1
+        let g:jsdoc_underscore_private = 1
+        let g:jsdoc_enable_es6 = 1
+    " }
+
     " NERDCommenter {
         let g:NERDCustomDelimiters = {
             \ 'python' : { 'left': '#'}
