@@ -103,8 +103,6 @@
         nnoremap <leader>P "+P
         vnoremap <leader>p "+p
         vnoremap <leader>P "+P
-
-        
         " F5  run script
         noremap <F5> :call CompileRunGcc()<CR>
         func! CompileRunGcc()
@@ -162,10 +160,8 @@
         nnoremap <F7> :set nowrap! nowrap?<CR>
         "F8 toggle hlsearch
         nnoremap <F8> :set hlsearch! hlsearch?<CR>
-        
         "关闭代码折叠
         set nofoldenable
-        "让配置变更立即生效
 
         " 关闭拼写检查
         set nospell
@@ -275,18 +271,17 @@
         set guioptions-=T
         " 总是显示状态栏
         set laststatus=2
-        
+
     endif
-    
+
     " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
     map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
     " map F1 , Ctrl-C  to Esc
-    noremap <F1> <Esc>
     noremap <C-C> <Esc>
     filetype plugin indent on   " Automatically detect file types.
     filetype on                 " 开启文件类型侦测
     filetype plugin on          " 根据侦测到的不同类型:加载对应的插件
-    syntax on           
+    syntax on
 
 
     " General {
@@ -421,7 +416,6 @@
     set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
-    set nofoldenable                  " Auto fold code
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 " }
@@ -679,6 +673,7 @@
 
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
+            noremap <F1> <Esc>
             map <F2> <plug>NERDTreeTabsToggle<CR>
             map <F3> :NERDTreeFind<CR>
             map <F4> <plug>NERDTreeFocusToggle<CR>
