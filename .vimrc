@@ -82,7 +82,7 @@
         let maplocalleader = '_'
     else
         let maplocalleader=g:spf13_localleader
-    endif            
+    endif
 
     " leoatchina's config , of his persnal key mapping and Environment settings
     " if you donot want to use his config 
@@ -92,7 +92,6 @@
         set mouse=a                 " Automatically enable mouse usage
         set mousehide               " Hide the mouse cursor while typing
         scriptencoding utf-8
-        let mapleader=';'
         " 设置快捷键将选中文本块复制至系统剪贴板
         vnoremap  <leader>y  "+y
         nnoremap  <leader>y  "+y
@@ -103,7 +102,14 @@
         nnoremap <leader>P "+P
         vnoremap <leader>p "+p
         vnoremap <leader>P "+P
-
+        " Ctrl+j for enter
+        inoremap <C-j> <CR>
+        nnoremap <C-j> i<CR><Esc>
+        " Ctrk for insert commneter
+        if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
+            imap <C-k> <Plug>NERDCommenterInsert
+            nmap <C-k> i<Plug>NERDCommenterInsert<Esc>
+        endif
         "F2 toggleFold
         nnoremap <F2> :set nofoldenable! nofoldenable?<CR>
         "F3 toggleWrap
@@ -374,7 +380,7 @@
         color solarized             " Load a colorscheme
     endif
 
-    set tabpagemax=15               " Only show 15 tabs
+    set tabpagemax=9               " Only show 9 tabs
     set showmode                    " Display the current mode
 
     set cursorline                  " Highlight current line
@@ -649,10 +655,6 @@
     " }
 
     " Misc {
-    if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
-        inoremap <C-CR><C-o>:call NERDComment(0,"toggle")<C-m>
-        noremap <C-CR> :call NERDComment(0,"toggle")<CR>
-    endif
     if isdirectory(expand("~/.vim/bundle/matchit.zip"))
         let b:match_ignorecase = 1
     endif
@@ -678,8 +680,8 @@
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
             map <C-e> <plug>NERDTreeTabsToggle<CR>
-            map <leader>e :NERDTreeFind<CR>
-            nmap <leader>nt :NERDTreeFind<CR>
+            noremap <leader>e :NERDTreeFind<CR>
+            nnoremap <C-y> :NERDTreeFocusToggle<CR>
             let NERDTreeShowBookmarks=1
             let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
             let NERDTreeChDirMode=0
@@ -692,7 +694,6 @@
             let NERDTreeWinPos=0
             let NERDTreeQuitOnOpen = 1
             autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-            nnoremap <C-Y> :NERDTreeFocusToggle<CR>
             " nerdtree-git
             if isdirectory(expand("~/.vim/bundle/nerdtree-git-plugin"))
                 let g:NERDTreeIndicatorMapCustom = {
@@ -850,7 +851,7 @@
             let g:ycm_key_list_previous_completion = ['<Up>']
             " remap Ultisnips for compatibility for YCM
             let g:UltiSnipsListSnippets="<C-l>"
-            let g:UltiSnipsExpandTrigger = '<C-k>'
+            let g:UltiSnipsExpandTrigger = '<C-g>'
             let g:UltiSnipsJumpForwardTrigger = '<C-f>'
             let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
 
@@ -1062,8 +1063,8 @@
         endif
     " Snippets  and key map for neocomplete && neocomplcache{
         if count(g:spf13_bundle_groups, 'neocomplcache') || count(g:spf13_bundle_groups, 'neocomplete')
-            imap <C-k> <Plug>(neosnippet_expand)
-            smap <C-k> <Plug>(neosnippet_expand)
+            imap <C-g> <Plug>(neosnippet_expand)
+            smap <C-g> <Plug>(neosnippet_expand)
             imap <C-f> <Right><Plug>(neosnippet_jump)
             smap <C-f> <Right><Plug>(neosnippet_jump)
             function! g:Neo_Complete()
