@@ -18,23 +18,31 @@ REM    limitations under the License.
 
 @set APP_PATH=%~dp0
 echo "%APP_PATH%"
-call mklink "%HOME%/.vimrc" "%APP_PATH%/.vimrc"
-call mklink "%HOME%/_vimrc" "%APP_PATH%/.vimrc"
-call mklink "%HOME%/.vimrc.bundles" "%APP_PATH%/.vimrc.bundles"
-call mklink "%HOME%/.vimrc.before" "%APP_PATH%/.vimrc.before"
+call del "%HOME%\.vimrc"
+call del "%HOME%\_vimrc"
+call del "%HOME%\.vimrc.before"
+call del "%HOME%\.vimrc.bundles"
 
-call mkdir "%HOME%/.vim"
+call mklink "%HOME%\.vimrc"                 "%APP_PATH%\.vimrc"
+call mklink "%HOME%\_vimrc"                 "%APP_PATH%\.vimrc"
+call mklink "%HOME%\.vimrc.bundles"         "%APP_PATH%\.vimrc.bundles"
+call mklink "%HOME%\.vimrc.before"          "%APP_PATH%\.vimrc.before"
+call mklink "%HOME%\.ycm_extra_conf.py"     "%APP_PATH%\.ycm_extra_conf.py"
 
-IF NOT EXIST "%HOME%/.vim/bundle" (
-    call mkdir "%HOME%/.vim/bundle"
+
+IF NOT EXIST "%HOME%\.vim" (
+    call mkdir "%HOME%\.vim"
+)
+IF NOT EXIST "%HOME%\.vim\bundle" (
+    call mkdir "%HOME%\.vim\bundle"
 )
 
-IF NOT EXIST "%HOME%/.vim/bundle/vundle" (
-    call git clone https://github.com/gmarik/vundle.git "%HOME%/.vim/bundle/vundle"
+IF NOT EXIST "%HOME%\.vim\bundle\vundle" (
+    call git clone https://github.com/gmarik/vundle.git "%HOME%\.vim\bundle\vundle"
 ) ELSE (
-  call cd "%HOME%/.vim/bundle/vundle"
-  call git pull
-  call cd %HOME%
+    call cd "%HOME%\.vim\bundle\vundle"
+    call git pull
+    call cd %HOME%
 )
 
-call vim -u "%HOME%/.vimrc.bundles" +BundleInstall! +BundleClean +qall
+call vim -u "%HOME%\.vimrc.bundles" +BundleInstall! +BundleClean +qall
