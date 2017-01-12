@@ -107,8 +107,8 @@
         nnoremap <C-j> i<CR><Esc>
         " Ctrk for insert commneter
         if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
-            imap <C-k> <Plug>NERDCommenterInsert
-            nmap <C-k> i<Plug>NERDCommenterInsert<Esc>
+            imap <C-g> <Plug>NERDCommenterInsert
+            nmap <C-g> i<Plug>NERDCommenterInsert<Esc>
         endif
         "F2 toggleFold
         noremap <F2> :set nofoldenable! nofoldenable?<CR>
@@ -851,7 +851,7 @@
             let g:ycm_key_list_previous_completion = ['<Up>']
             " remap Ultisnips for compatibility for YCM
             let g:UltiSnipsListSnippets="<C-l>"
-            let g:UltiSnipsExpandTrigger = '<C-g>'
+            let g:UltiSnipsExpandTrigger = '<C-k>'
             let g:UltiSnipsJumpForwardTrigger = '<C-f>'
             let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
 
@@ -1063,8 +1063,8 @@
         endif
     " Snippets  and key map for neocomplete && neocomplcache{
         if count(g:spf13_bundle_groups, 'neocomplcache') || count(g:spf13_bundle_groups, 'neocomplete')
-            imap <C-g> <Plug>(neosnippet_expand)
-            smap <C-g> <Plug>(neosnippet_expand)
+            imap <C-k> <Plug>(neosnippet_expand)
+            smap <C-k> <Plug>(neosnippet_expand)
             imap <C-f> <Right><Plug>(neosnippet_jump)
             smap <C-f> <Right><Plug>(neosnippet_jump)
             function! g:Neo_Complete()
