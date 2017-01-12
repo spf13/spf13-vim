@@ -107,8 +107,8 @@
         nnoremap <C-j> i<CR><Esc>
         " Ctrk for insert commneter
         if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
-            imap <C-g> <Plug>NERDCommenterInsert
-            nmap <C-g> i<Plug>NERDCommenterInsert<Esc>
+            imap <C-h> <Plug>NERDCommenterInsert
+            nmap <C-h> i<Plug>NERDCommenterInsert<Esc>
         endif
         "F2 toggleFold
         noremap <F2> :set nofoldenable! nofoldenable?<CR>
