@@ -104,11 +104,12 @@
         vnoremap <leader>p "+p
         vnoremap <leader>P "+P
 
-        "F2打开，关闭代码折叠
+        "F2 toggleFold
         nnoremap <F2> :set nofoldenable! nofoldenable?<CR>
-        "F3打开/关闭分行
+        "F3 toggleWrap
         nnoremap <F3> :set nowrap! nowrap?<CR>
-        " F4作为打开，关闭搜索结果高亮
+        "F4 toggle hlsearch
+        "desire fd 
         nnoremap <F4> :set hlsearch! hlsearch?<CR>
         " F5运行脚本
         noremap <F5> :call CompileRunGcc()<CR>
@@ -175,7 +176,7 @@
         set cursorline
         " 允许折行
         set wrap
-   
+
         "用tab来控制缩进
         nnoremap <tab> V><ESC>
         nnoremap <s-tab> V<<ESC>
@@ -595,14 +596,8 @@
     au! bufwritepost .vimrc.local source %
     au! bufwritepost .vimrc.before.local source %
     au! bufwritepost .vimrc.bundles.local source %
-
-" }
-
-
-
-
-" Plugins {
-    " GoLang {
+" Plugins 
+    " GoLang 
     if count(g:spf13_bundle_groups, 'go')
         let g:go_highlight_functions = 1
         let g:go_highlight_methods = 1
@@ -663,36 +658,6 @@
     endif
     " }
 
-    " OmniComplete {
-        " To disable omni complete, add the following to your .vimrc.before.local file:
-        "   let g:spf13_no_omni_complete = 1
-    if !exists('g:spf13_no_omni_complete')
-        if has("autocmd") && exists("+omnifunc")
-            autocmd Filetype *
-                \if &omnifunc == "" |
-                \setlocal omnifunc=syntaxcomplete#Complete |
-                \endif
-        endif
-
-        hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-        hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-        hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
-
-        " Some convenient mappings
-        "inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-        if exists('g:spf13_map_cr_omni_complete')
-            inoremap <expr> <CR>     pumvisible() ? "\<C-y>" : "\<CR>"
-        endif
-        inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-        inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-        inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-        inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
-
-        " Automatically open and close the popup menu / preview window
-        au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-        set completeopt=menu,preview,longest
-    endif
-    " }
 
     " Ctags {
         set tags=./tags;/,~/.vimtags
@@ -821,8 +786,6 @@
             nnoremap <silent> <leader>tt :TagbarToggle<CR>
             " 设置 tagbar 子窗口的位置出现在主编辑区的左边
             let tagbar_left=0
-            " 设置显示／隐藏标签列表子窗口的快捷键。速记：identifier list by tag
-            nnoremap <Leader>ilt :TagbarToggle<CR>
             let tagbar_width=32
             let g:tagbar_compact=1
             let g:tagbar_type_cpp = {
@@ -931,8 +894,6 @@
             endfunction
 
             au BufEnter * exec "inoremap <silent> <Tab> <C-R>=g:UltiSnips_Tab()<cr>"
-
-
 
             function! g:UltiSnips_CR()
                 if pumvisible() && !get(v:completed_item,'menu',0)
@@ -1062,8 +1023,7 @@
             inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
             inoremap <expr><C-y> neocomplcache#close_popup()
 
-
-    " Normal Vim omni-completion {
+    " Normal Vim omni-completion ,if not set completion method , it works
     " To disable omni complete, add the following to your .vimrc.before.local file:
     "   let g:spf13_no_omni_complete = 1
         elseif !exists('g:spf13_no_omni_complete')
@@ -1075,6 +1035,30 @@
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+            if has("autocmd") && exists("+omnifunc")
+            autocmd Filetype *
+                \if &omnifunc == "" |
+                \setlocal omnifunc=syntaxcomplete#Complete |
+                \endif
+            endif
+
+            hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+            hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+            hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+
+            " Some convenient mappings
+            "inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+            if exists('g:spf13_map_cr_omni_complete')
+                inoremap <expr> <CR>     pumvisible() ? "\<C-y>" : "\<CR>"
+            endif
+            inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+            inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+            inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+            inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+            " Automatically open and close the popup menu / preview window
+            au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+            set completeopt=menu,preview,longest
         endif
     " Snippets  and key map for neocomplete && neocomplcache{
         if count(g:spf13_bundle_groups, 'neocomplcache') || count(g:spf13_bundle_groups, 'neocomplete')
