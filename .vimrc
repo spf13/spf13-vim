@@ -104,14 +104,8 @@
         vnoremap <leader>p "+p
         vnoremap <leader>P "+P
 
-        "F2 toggleFold
-        nnoremap <F2> :set nofoldenable! nofoldenable?<CR>
-        "F3 toggleWrap
-        nnoremap <F3> :set nowrap! nowrap?<CR>
-        "F4 toggle hlsearch
-        "desire fd 
-        nnoremap <F4> :set hlsearch! hlsearch?<CR>
-        " F5运行脚本
+        
+        " F5  run script
         noremap <F5> :call CompileRunGcc()<CR>
         func! CompileRunGcc()
             exec "w"
@@ -161,6 +155,14 @@
                 exec "!time go run %"
             endif
         endfunc
+
+        "F6 toggleFold
+        nnoremap <F6> :set nofoldenable! nofoldenable?<CR>
+        "F7 toggleWrap
+        nnoremap <F7> :set nowrap! nowrap?<CR>
+        "F8 toggle hlsearch
+        nnoremap <F8> :set hlsearch! hlsearch?<CR>
+        
         "关闭代码折叠
         set nofoldenable
         "让配置变更立即生效
@@ -677,9 +679,9 @@
 
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            map <C-e> <plug>NERDTreeTabsToggle<CR>
-            map <leader>e :NERDTreeFind<CR>
-            nmap <leader>nt :NERDTreeFind<CR>
+            map <F2> <plug>NERDTreeTabsToggle<CR>
+            map <F3> :NERDTreeFind<CR>
+            map <F4> <plug>NERDTreeFocusToggle<CR>
             let NERDTreeShowBookmarks=1
             let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
             let NERDTreeChDirMode=0
@@ -687,12 +689,14 @@
             let NERDTreeMouseMode=2
             let NERDTreeShowHidden=1
             let NERDTreeKeepTreeInNewTab=1
-            let g:nerdtree_tabs_open_on_gui_startup=0
+            let g:nerdtree_tabs_open_on_gui_startup=1
+            let g:nerdtree_tabs_open_on_console_startup=1
+            let g:nerdtree_tabs_smart_startup_focus=2
             let g:NERDShutUp=1
             let NERDTreeWinPos=0
             let NERDTreeQuitOnOpen = 1
             autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-            nnoremap <C-Y> :NERDTreeFocusToggle<CR>
+            
             " nerdtree-git
             if isdirectory(expand("~/.vim/bundle/nerdtree-git-plugin"))
                 let g:NERDTreeIndicatorMapCustom = {
