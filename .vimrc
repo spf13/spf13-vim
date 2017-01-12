@@ -111,12 +111,12 @@
             nmap <C-k> i<Plug>NERDCommenterInsert<Esc>
         endif
         "F2 toggleFold
-        nnoremap <F2> :set nofoldenable! nofoldenable?<CR>
+        noremap <F2> :set nofoldenable! nofoldenable?<CR>
         "F3 toggleWrap
-        nnoremap <F3> :set nowrap! nowrap?<CR>
+        noremap <F3> :set nowrap! nowrap?<CR>
         "F4 toggle hlsearch
         "desire fd 
-        nnoremap <F4> :set hlsearch! hlsearch?<CR>
+        noremap <F4> :set nohlsearch! nohlsearch?<CR>
         " F5运行脚本
         noremap <F5> :call CompileRunGcc()<CR>
         func! CompileRunGcc()
@@ -195,7 +195,7 @@
         nnoremap = $
         " move to the next position to the last letter of line
         nnoremap <c-\> <End><Right>
-        inoremap <c-\> <ESC>:w<CR><End><Right>i
+        inoremap <c-\> <End>
         " 定义快捷键关闭当前窗口
         nmap <Leader>q :q<CR>
         " 标签控制
@@ -247,7 +247,7 @@
         nnoremap <C-DOWN>  <C-W>j
         nnoremap <C-S-DOWN> <C-W>J
         " 定义快捷键在结对符之间跳转
-        nmap <Leader>M %
+        nmap <Leader>m %
         " 开启实时搜索功能
         set incsearch
         " 搜索时大小写不敏感
