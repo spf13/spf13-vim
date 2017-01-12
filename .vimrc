@@ -103,7 +103,15 @@
         nnoremap <leader>P "+P
         vnoremap <leader>p "+p
         vnoremap <leader>P "+P
-        " F5  run script
+
+        "F2 toggleFold
+        nnoremap <F2> :set nofoldenable! nofoldenable?<CR>
+        "F3 toggleWrap
+        nnoremap <F3> :set nowrap! nowrap?<CR>
+        "F4 toggle hlsearch
+        "desire fd 
+        nnoremap <F4> :set hlsearch! hlsearch?<CR>
+        " F5运行脚本
         noremap <F5> :call CompileRunGcc()<CR>
         func! CompileRunGcc()
             exec "w"
@@ -153,15 +161,9 @@
                 exec "!time go run %"
             endif
         endfunc
-
-        "F6 toggleFold
-        nnoremap <F6> :set nofoldenable! nofoldenable?<CR>
-        "F7 toggleWrap
-        nnoremap <F7> :set nowrap! nowrap?<CR>
-        "F8 toggle hlsearch
-        nnoremap <F8> :set hlsearch! hlsearch?<CR>
         "关闭代码折叠
         set nofoldenable
+        "让配置变更立即生效
 
         " 关闭拼写检查
         set nospell
@@ -271,17 +273,18 @@
         set guioptions-=T
         " 总是显示状态栏
         set laststatus=2
-
+        
     endif
-
+    
     " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
     map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
     " map F1 , Ctrl-C  to Esc
+    noremap <F1> <Esc>
     noremap <C-C> <Esc>
     filetype plugin indent on   " Automatically detect file types.
     filetype on                 " 开启文件类型侦测
     filetype plugin on          " 根据侦测到的不同类型:加载对应的插件
-    syntax on
+    syntax on           
 
 
     " General {
@@ -416,6 +419,7 @@
     set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
+    set nofoldenable                  " Auto fold code
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 " }
@@ -673,10 +677,9 @@
 
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            noremap <F1> <Esc>
-            map <F2> <plug>NERDTreeTabsToggle<CR>
-            map <F3> :NERDTreeFind<CR>
-            map <F4> <plug>NERDTreeFocusToggle<CR>
+            map <C-e> <plug>NERDTreeTabsToggle<CR>
+            map <leader>e :NERDTreeFind<CR>
+            nmap <leader>nt :NERDTreeFind<CR>
             let NERDTreeShowBookmarks=1
             let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
             let NERDTreeChDirMode=0
@@ -684,14 +687,12 @@
             let NERDTreeMouseMode=2
             let NERDTreeShowHidden=1
             let NERDTreeKeepTreeInNewTab=1
-            let g:nerdtree_tabs_open_on_gui_startup=1
-            let g:nerdtree_tabs_open_on_console_startup=1
-            let g:nerdtree_tabs_smart_startup_focus=2
+            let g:nerdtree_tabs_open_on_gui_startup=0
             let g:NERDShutUp=1
             let NERDTreeWinPos=0
             let NERDTreeQuitOnOpen = 1
             autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-            
+            nnoremap <C-Y> :NERDTreeFocusToggle<CR>
             " nerdtree-git
             if isdirectory(expand("~/.vim/bundle/nerdtree-git-plugin"))
                 let g:NERDTreeIndicatorMapCustom = {

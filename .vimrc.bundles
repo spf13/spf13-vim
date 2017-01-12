@@ -118,7 +118,6 @@
                 Bundle 'vim-airline/vim-airline'
                 Bundle 'vim-airline/vim-airline-themes'
             endif
-            Bundle 'powerline/fonts'
             Bundle 'bling/vim-bufferline'
             Bundle 'jistr/vim-nerdtree-tabs'
             Bundle 'flazz/vim-colorschemes'
@@ -132,6 +131,7 @@
             Bundle 'osyo-manga/vim-over'
             Bundle 'kana/vim-textobj-user'
             Bundle 'kana/vim-textobj-indent'
+            Bundle 'easymotion/vim-easymotion'
         endif
     " 
 
@@ -149,7 +149,6 @@
             " Pick one of the checksyntax, jslint, or syntastic
             Bundle 'scrooloose/syntastic'
             Bundle 'mattn/webapi-vim'
-            Bundle 'mattn/gist-vim'
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
             Bundle 'luochen1990/rainbow'
