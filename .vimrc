@@ -1,6 +1,5 @@
 " Modeline and Notes {
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
-"
 "                    __ _ _____              _
 "         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
 "        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
@@ -8,7 +7,8 @@
 "        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
 "            |_|
 "
-"   This is the personal .vimrc file of leoathina, forked from Steve Francia.
+"   This is the personal .vimrc file of leoathina, forked from Steve Francia
+"   Thank Steve Francia for his great job.
 "   While much of it is beneficial for general use, I would
 "   recommend picking out the parts you want and understand.
 "
