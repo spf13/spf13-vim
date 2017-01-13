@@ -98,7 +98,6 @@
             Bundle 'scrooloose/nerdtree'
             Bundle 'Xuyuanp/nerdtree-git-plugin'
             Bundle 'jistr/vim-nerdtree-tabs'
-            Bundle 'leoatchina/winmanager'
             Bundle 'godlygeek/tabular'
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'spf13/vim-colors'

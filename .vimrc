@@ -645,21 +645,17 @@
         augroup END
     endif
     " }
-
     " PIV {
     if isdirectory(expand("~/.vim/bundle/PIV"))
         let g:DisableAutoPHPFolding = 0
         let g:PIVAutoClose = 0
     endif
     " }
-
     " Misc {
     if isdirectory(expand("~/.vim/bundle/matchit.zip"))
         let b:match_ignorecase = 1
     endif
     " }
-
-
     " Ctags {
         set tags=./tags;/,~/.vimtags
 
@@ -669,19 +665,19 @@
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
     " }
-
     " AutoCloseTag {
         " Make it so AutoCloseTag works for xml and xhtml files as well
         au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
         nmap <Leader>ac <Plug>ToggleAutoCloseMappings
     " }
-
     " NerdTree {
+        let s:has_nerdtree = 0
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            "map <C-b> <plug>NERDTreeTabsToggle<CR>
-            "noremap <leader>nt :NERDTreeFind<CR>
-            "nnoremap <C-f> :NERDTreeFocusToggle<CR>
-            let g:NERDTreeWinSize=30
+            map <C-b> <plug>NERDTreeTabsToggle<CR>
+            noremap <leader>nt :NERDTreeFind<CR>
+            nnoremap <C-f> :NERDTreeFocusToggle<CR>
+            let s:has_nerdtree = 1
+            let g:NERDTreeWinSize=25
             let g:NERDTreeShowBookmarks=1
             let g:NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
             let g:NERDTreeChDirMode=0
@@ -713,10 +709,12 @@
     " }
 
     " TagBar {
+        let s:has_tagbar = 0
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
-            "map <silent><C-t> :TagbarToggle<CR>
+            map <silent><C-t> :TagbarToggle<CR>
+            let s:has_tagbar = 1
             let tagbar_left=0
-            let tagbar_width=30
+            let tagbar_width=25
             let g:tagbar_compact=1
             let g:tagbar_type_cpp = {
                 \ 'ctagstype' : 'c++',
@@ -751,10 +749,9 @@
                 \ 'struct'    : 's',
                 \ 'union'     : 'u'
             \ }
-            \ }
+        \ }
         endif
     "}
-
     " Session List {
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
         if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
