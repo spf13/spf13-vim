@@ -104,7 +104,6 @@
         vnoremap <leader>P "+P
         " Ctrl+j for enter
         inoremap <C-j> <CR>
-        nnoremap <C-j> i<CR><Esc>
         " Ctrk for insert commneter
         if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
             imap <C-g> <Plug>NERDCommenterInsert
