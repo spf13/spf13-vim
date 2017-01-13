@@ -107,8 +107,8 @@
         nnoremap <C-j> i<CR><Esc>
         " Ctrk for insert commneter
         if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
-            imap <C-h> <Plug>NERDCommenterInsert
-            nmap <C-h> i<Plug>NERDCommenterInsert<Esc>
+            imap <C-g> <Plug>NERDCommenterInsert
+            nmap <C-g> i<Plug>NERDCommenterInsert<Esc><Right>
         endif
         "F2 toggleFold
         noremap <F2> :set nofoldenable! nofoldenable?<CR>
@@ -679,9 +679,9 @@
 
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            map <C-b> <plug>NERDTreeTabsToggle<CR>
-            noremap <leader>nt :NERDTreeFind<CR>
-            nnoremap <C-f> :NERDTreeFocusToggle<CR>
+            "map <C-b> <plug>NERDTreeTabsToggle<CR>
+            "noremap <leader>nt :NERDTreeFind<CR>
+            "nnoremap <C-f> :NERDTreeFocusToggle<CR>
             let g:NERDTreeWinSize=30
             let g:NERDTreeShowBookmarks=1
             let g:NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
@@ -713,6 +713,48 @@
         endif
     " }
 
+    " TagBar {
+        if isdirectory(expand("~/.vim/bundle/tagbar/"))
+            "map <silent><C-t> :TagbarToggle<CR>
+            let tagbar_left=0
+            let tagbar_width=30
+            let g:tagbar_compact=1
+            let g:tagbar_type_cpp = {
+                \ 'ctagstype' : 'c++',
+                \ 'kinds'     : [
+                    \ 'c:classes:0:1',
+                    \ 'd:macros:0:1',
+                    \ 'e:enumerators:0:0',
+                    \ 'f:functions:0:1',
+                    \ 'g:enumeration:0:1',
+                    \ 'l:local:0:1',
+                    \ 'm:members:0:1',
+                    \ 'n:namespaces:0:1',
+                    \ 'p:functions_prototypes:0:1',
+                    \ 's:structs:0:1',
+                    \ 't:typedefs:0:1',
+                    \ 'u:unions:0:1',
+                    \ 'v:global:0:1',
+                    \ 'x:external:0:1'
+                \ ],
+            \ 'sro'        : '::',
+            \ 'kind2scope' : {
+                \ 'g' : 'enum',
+                \ 'n' : 'namespace',
+                \ 'c' : 'class',
+                \ 's' : 'struct',
+                \ 'u' : 'union'
+            \ },
+            \ 'scope2kind' : {
+                \ 'enum'      : 'g',
+                \ 'namespace' : 'n',
+                \ 'class'     : 'c',
+                \ 'struct'    : 's',
+                \ 'union'     : 'u'
+            \ }
+            \ }
+        endif
+    "}
 
     " Session List {
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
@@ -781,49 +823,6 @@
                 "funky
                 nnoremap <Leader>fu :CtrlPFunky<Cr>
             endif
-        endif
-    "}
-
-    " TagBar {
-        if isdirectory(expand("~/.vim/bundle/tagbar/"))
-            map <silent><C-t> :TagbarToggle<CR>
-            let tagbar_left=0
-            let tagbar_width=30
-            let g:tagbar_compact=1
-            let g:tagbar_type_cpp = {
-                \ 'ctagstype' : 'c++',
-                \ 'kinds'     : [
-                    \ 'c:classes:0:1',
-                    \ 'd:macros:0:1',
-                    \ 'e:enumerators:0:0',
-                    \ 'f:functions:0:1',
-                    \ 'g:enumeration:0:1',
-                    \ 'l:local:0:1',
-                    \ 'm:members:0:1',
-                    \ 'n:namespaces:0:1',
-                    \ 'p:functions_prototypes:0:1',
-                    \ 's:structs:0:1',
-                    \ 't:typedefs:0:1',
-                    \ 'u:unions:0:1',
-                    \ 'v:global:0:1',
-                    \ 'x:external:0:1'
-                \ ],
-            \ 'sro'        : '::',
-            \ 'kind2scope' : {
-                \ 'g' : 'enum',
-                \ 'n' : 'namespace',
-                \ 'c' : 'class',
-                \ 's' : 'struct',
-                \ 'u' : 'union'
-            \ },
-            \ 'scope2kind' : {
-                \ 'enum'      : 'g',
-                \ 'namespace' : 'n',
-                \ 'class'     : 'c',
-                \ 'struct'    : 's',
-                \ 'union'     : 'u'
-            \ }
-            \ }
         endif
     "}
 
@@ -1178,15 +1177,6 @@
     if has('gui_running')
         set guioptions-=T           " Remove the toolbar
         set lines=40                " 40 lines of text instead of 24
-        if !exists("g:spf13_no_big_font")
-            if LINUX() && has("gui_running")
-                set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
-            elseif OSX() && has("gui_running")
-                set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
-            elseif WINDOWS() && has("gui_running")
-                set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
-            endif
-        endif
     else
         if &term == 'xterm' || &term == 'screen'
             set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
