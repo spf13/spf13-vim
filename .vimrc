@@ -682,17 +682,19 @@
             map <C-e> <plug>NERDTreeTabsToggle<CR>
             noremap <leader>e :NERDTreeFind<CR>
             nnoremap <C-y> :NERDTreeFocusToggle<CR>
-            let NERDTreeShowBookmarks=1
-            let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-            let NERDTreeChDirMode=0
-            let NERDTreeQuitOnOpen=1
-            let NERDTreeMouseMode=2
-            let NERDTreeShowHidden=1
-            let NERDTreeKeepTreeInNewTab=1
-            let g:nerdtree_tabs_open_on_gui_startup=0
-            let g:NERDShutUp=1
-            let NERDTreeWinPos=0
-            let NERDTreeQuitOnOpen = 1
+            let g:NERDTreeWinSize=30
+            let g:NERDTreeShowBookmarks=1
+            let g:NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+            let g:NERDTreeChDirMode=0
+            let g:NERDTreeQuitOnOpen=1
+            let g:NERDTreeMouseMode=2
+            let g:NERDTreeShowHidden=1
+            let g:NERDTreeKeepTreeInNewTab=1
+            let g:nerdtree_tabs_focus_on_files = 1
+            let g:nerdtree_tabs_open_on_gui_startup = 0
+            let g:NERDTreeWinPos=0
+            let g:NERDTreeDirArrowExpandable = '▸'
+            let g:NERDTreeDirArrowCollapsible = '▾'
             autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
             " nerdtree-git
             if isdirectory(expand("~/.vim/bundle/nerdtree-git-plugin"))
@@ -784,10 +786,9 @@
 
     " TagBar {
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
-            nnoremap <silent> <leader>tt :TagbarToggle<CR>
-            " 设置 tagbar 子窗口的位置出现在主编辑区的左边
+            map <silent><C-t> :TagbarToggle<CR>
             let tagbar_left=0
-            let tagbar_width=32
+            let tagbar_width=30
             let g:tagbar_compact=1
             let g:tagbar_type_cpp = {
                 \ 'ctagstype' : 'c++',
