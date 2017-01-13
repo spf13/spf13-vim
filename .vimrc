@@ -679,9 +679,9 @@
 
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            map <C-e> <plug>NERDTreeTabsToggle<CR>
-            noremap <leader>e :NERDTreeFind<CR>
-            nnoremap <C-y> :NERDTreeFocusToggle<CR>
+            map <C-b> <plug>NERDTreeTabsToggle<CR>
+            noremap <leader>nt :NERDTreeFind<CR>
+            nnoremap <C-f> :NERDTreeFocusToggle<CR>
             let g:NERDTreeWinSize=30
             let g:NERDTreeShowBookmarks=1
             let g:NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
