@@ -110,7 +110,9 @@
             Bundle 'terryma/vim-multiple-cursors'
             Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
-            Bundle 'fcitx.vim'
+            if !WINDOWS()
+                Bundle 'fcitx.vim'
+            endif
             Bundle 'easymotion/vim-easymotion'
             Bundle 'mbbill/undotree'
             if (has("python") || has("python3")) && exists('g:spf13_use_powerline') && !exists('g:spf13_use_old_powerline')

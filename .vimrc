@@ -28,7 +28,7 @@
 "   See the License for the specific language governing permissions and
 "   limitations under the License.
 " }
-" Environment {
+" Environment 
     " Identify platform {
     silent function! OSX()
         return has('macunix')
@@ -132,7 +132,7 @@
             elseif &filetype == 'sh'
                 exec "!bash %"
             elseif &filetype == 'python'
-                exec "!python2.7 %"
+                exec "!python %"
             elseif &filetype == 'perl'
                 exec "!perl %"
             elseif &filetype == 'html'
@@ -157,7 +157,7 @@
             elseif &filetype == 'sh'
                 exec "!time bash %"
             elseif &filetype == 'python'
-                exec "!time python2.7 %"
+                exec "!time python %"
             elseif &filetype == 'perl'
                 exec "!time perl %"
             elseif &filetype == 'html'
@@ -319,7 +319,6 @@
         set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
         set virtualedit=onemore             " Allow for cursor beyond last character
         set history=1000                    " Store a ton of history (default is 20)
-        set spell                           " Spell checking on
         set hidden                          " Allow buffer switching without saving
         set iskeyword-=.                    " '.' is an end of word designator
         set iskeyword-=#                    " '#' is an end of word designator
@@ -666,9 +665,9 @@
     " NerdTree {
         let s:has_nerdtree = 0
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            map <C-b> <plug>NERDTreeTabsToggle<CR>
+            map <C-e> <plug>NERDTreeTabsToggle<CR>
             noremap <leader>nt :NERDTreeFind<CR>
-            nnoremap <C-f> :NERDTreeFocusToggle<CR>
+            nnoremap <C-y> :NERDTreeFocusToggle<CR>
             let s:has_nerdtree = 1
             let g:NERDTreeWinSize=25
             let g:NERDTreeShowBookmarks=1
@@ -1343,4 +1342,4 @@
             source ~/.gvimrc.local
         endif
     endif
-" }
+" 
