@@ -171,13 +171,13 @@ augroup END
     set scrolloff=3                 " minimum lines to keep above and below cursor
     set lazyredraw                  " for performance
 
-    "making folding enabled for the file that has more than 100 lines
+    "making folding enabled for the file that has more than 1000 lines
     function! SetFolding()
         let lines = line('$')
         "types that disable folding
         "help may be set as `text`
         let folding_disabled_types = ['text', 'help', 'javascript', 'objc', 'markdown', 'vim']
-        let folding_start = 300
+        let folding_start = 1000
         if lines < folding_start || index(folding_disabled_types, tolower(&filetype)) > -1
             setlocal nofoldenable
         else
@@ -760,8 +760,8 @@ augroup END
             "\ 'ctagsbin' : '~/workspace/github/tools/doctorjs/bin'
         "\ }
         let g:tagbar_sort = 0
-        let g:tagbar_compact = 1
-        let g:tagbar_show_visibility = 0
+        let g:tagbar_compact = 0
+        let g:tagbar_show_visibility = 1
         let g:tagbar_expand = 1
         let g:tagbar_left = 1
         let g:tagbar_show_linenumbers = 2
