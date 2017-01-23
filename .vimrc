@@ -752,9 +752,28 @@ augroup END
     " }
 
 
+    "easytags {
+        let g:easytags_async = 1
+        let g:easytags_syntax_keyword = 'always'
 
-    " tagbar & ctags {
-        "set tags=./tags;/,~/.vimtags
+        set tags=./.tags;,~/.vimtags
+        set cpoptions=aAceFsBd
+        let g:easytags_dynamic_files = 2
+
+        let g:easytags_languages = {
+        \   'javascript': {
+        \     'cmd': 'jsctags',
+        \       'args': [],
+        \       'fileoutput_opt': '-f',
+        \       'stdout_opt': '-f-',
+        \       'recurse_flag': '-R'
+        \   }
+        \}
+
+
+    "}
+
+    " tagbar {
         "let g:tagbar_ctags_bin = "/usr/local/Cellar/ctags/5.8/bin/ctags"
         "let g:tagbar_type_javascript = {
             "\ 'ctagsbin' : '~/workspace/github/tools/doctorjs/bin'
@@ -826,8 +845,6 @@ augroup END
                 \ 'enumeration'    : 'e'
             \ }
         \ }
-
-        nnoremap <silent> <leader>tb :TagbarToggle<CR>
     " }
 
     " AutoCloseTag {
@@ -893,20 +910,21 @@ augroup END
      " }
 
      " ctrlp {
-        let g:ctrlp_working_path_mode = 'a'
-        let g:ctrlp_by_filename = 1
+        let g:ctrlp_working_path_mode = 'raw'
+        let g:ctrlp_by_filename = 0
         let g:ctrlp_match_current_file = 1
         let g:ctrlp_lazy_update = 1
         set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
-        let g:ctrlp_use_caching = 0
-        "let g:ctrlp_clear_cache_on_exit = 1
-        "let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-
 
         if executable('ag')
             let g:ctrlp_user_command = 'ag %s -l -i --nocolor --hidden -g ""'
+            let g:ctrlp_use_caching = 0
         else
+            let g:ctrlp_use_caching = 1
+            let g:ctrlp_clear_cache_on_exit = 1
+            let g:ctrlp_cache_dir = expand('~/.cache/ctrlp')
+
             let g:ctrlp_show_hidden = 1
             let g:ctrlp_max_files = 0
             let g:ctrlp_custom_ignore = {
