@@ -207,8 +207,9 @@ set nocompatible        " must be first line
 
             if executable('ctags') && !g:is_win
                 Bundle 'majutsushi/tagbar'
-                "Bundle 'xolox/vim-misc'
-                "Bundle 'xolox/vim-easytags'
+
+                Bundle 'xolox/vim-misc'
+                Bundle 'xolox/vim-easytags'
             endif
         endif
     " Snippets
