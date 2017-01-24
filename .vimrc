@@ -196,9 +196,7 @@
         nmap <Leader>q :q<CR>
         " 标签控制
         set showtabline=2
-        nnoremap <leader>tt :tabnew<CR>
-        nnoremap <Leader>tn :tabnext<CR>
-        nnoremap <Leader>tp :tabprevious<CR>
+        nnoremap <leader>tn :tabnew<CR>
         nnoremap <Leader>tc :tabc<CR>
         nnoremap <Leader>ta :tabs<CR>
         nnoremap <Leader>ts :tab split<CR>
