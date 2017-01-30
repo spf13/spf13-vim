@@ -92,6 +92,8 @@
         set mouse=a                 " Automatically enable mouse usage
         set mousehide               " Hide the mouse cursor while typing
         scriptencoding utf-8
+        " exchange ; and \
+        noremap \ ;
         " 设置快捷键将选中文本块复制至系统剪贴板
         vnoremap  <leader>y  "+y
         nnoremap  <leader>y  "+y
@@ -342,7 +344,7 @@
             augroup END
         endif
 
-        " Setting up the directories {
+        " Setting up the directories 
         set backup                  " Backups are nice ...
         if has('persistent_undo')
             set undofile                " So is persistent undo ...
@@ -359,8 +361,6 @@
                 \ '\[example pattern\]'
                 \ ]
         endif
-        " }
-    " }
 
         " Vim UI {
         if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
@@ -526,7 +526,6 @@
                 command! -bang QA qa<bang>
                 command! -bang Qa qa<bang>
             endif
-
             cmap Tabe tabe
         endif
 
@@ -663,9 +662,9 @@
     " NerdTree {
         let s:has_nerdtree = 0
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            map <C-e> <plug>NERDTreeTabsToggle<CR>
+            map <C-b> <plug>NERDTreeTabsToggle<CR>
             noremap <leader>nt :NERDTreeFind<CR>
-            nnoremap <C-y> :NERDTreeFocusToggle<CR>
+            nnoremap <C-f> :NERDTreeFocusToggle<CR>
             let s:has_nerdtree = 1
             let g:NERDTreeWinSize=25
             let g:NERDTreeShowBookmarks=1
