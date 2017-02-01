@@ -89,7 +89,7 @@
         let g:spf13_bundle_groups=['general', 'writing', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'javascript', 'html',]
     endif
 
-    " To override all the included bundles, add the following to your
+   " To override all the included bundles, add the following to your
     " .vimrc.bundles.local file:
     "   let g:override_spf13_bundles = 1
     if !exists("g:override_spf13_bundles")

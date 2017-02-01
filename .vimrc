@@ -28,7 +28,7 @@
 "   See the License for the specific language governing permissions and
 "   limitations under the License.
 " }
-" Environment 
+" Environment
     " Identify platform {
     silent function! OSX()
         return has('macunix')
@@ -53,18 +53,18 @@
         set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
     endif
     " }
-    " Arrow Key Fix 
+    " Arrow Key Fix
         " https://github.com/spf13/spf13-vim/issues/780
     if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
         inoremap <silent> <C-[>OC <RIGHT>
     endif
 
-    " Use before config 
+    " Use before config
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
     endif
 
-    " Use bundles config 
+    " Use bundles config
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
     endif
@@ -85,7 +85,7 @@
     endif
 
     " leoatchina's config , of his persnal key mapping and Environment settings
-    " if you donot want to use his config 
+    " if you donot want to use his config
     " set your .vimrc.before.local file:
     " let g:no_leoatchina_config = 1
     if !exists('g:no_leoatchina_config')
@@ -116,7 +116,7 @@
         "F3 toggleWrap
         noremap <F3> :set nowrap! nowrap?<CR>
         "F4 toggle hlsearch
-        "desire fd 
+        "desire fd
         noremap <F4> :set nohlsearch! nohlsearch?<CR>
         " F5运行脚本
         noremap <F5> :call CompileRunGcc()<CR>
@@ -198,7 +198,9 @@
         nmap <Leader>q :q<CR>
         " 标签控制
         set showtabline=2
-        nnoremap <leader>tn :tabnew<CR>
+        nnoremap <leader>tt :tabnew<CR>
+        nnoremap <leader>tn :tabnext<CR>
+        nnoremap <leader>tp :tabprevious<CR>
         nnoremap <Leader>tc :tabc<CR>
         nnoremap <Leader>ta :tabs<CR>
         nnoremap <Leader>ts :tab split<CR>
@@ -344,7 +346,7 @@
             augroup END
         endif
 
-        " Setting up the directories 
+        " Setting up the directories
         set backup                  " Backups are nice ...
         if has('persistent_undo')
             set undofile                " So is persistent undo ...
@@ -590,8 +592,8 @@
         au! bufwritepost .vimrc.local source %
         au! bufwritepost .vimrc.before.local source %
         au! bufwritepost .vimrc.bundles.local source %
-    " Plugins 
-        " GoLang 
+    " Plugins
+        " GoLang
         if count(g:spf13_bundle_groups, 'go')
             let g:go_highlight_functions = 1
             let g:go_highlight_methods = 1
@@ -841,7 +843,7 @@
             let g:UltiSnipsJumpForwardTrigger = '<C-f>'
             let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
 
-            " Ulti的代码片段的文件夹 
+            " Ulti的代码片段的文件夹
             let g:UtiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips"]
             " 自定义代码片段的文件夹
             let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
@@ -849,9 +851,9 @@
                   \ 'tagbar' : 1,
                   \ 'nerdtree' : 1,
                   \}
-            let g:ycm_filetype_whitelist = { 
-                \ 'cpp': 1, 
-                \ 'c': 1, 
+            let g:ycm_filetype_whitelist = {
+                \ 'cpp': 1,
+                \ 'c': 1,
                 \ 'perl':1,
                 \ 'python':1,
                 \ 'vim':1,
@@ -1242,7 +1244,6 @@
 
     " Strip whitespace {
     function! StripTrailingWhitespace()
-        " Preparation: save last search, and cursor position.
         let _s=@/
         let l = line(".")
         let c = col(".")
@@ -1288,23 +1289,23 @@
         endfor
         return s:is_fork
     endfunction
-     
+
     function! s:ExpandFilenameAndExecute(command, file)
         execute a:command . " " . expand(a:file, ":p")
     endfunction
-     
+
     function! s:EditSpf13Config()
         call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
         call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.before")
         call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
-     
+
         execute bufwinnr(".vimrc") . "wincmd w"
         call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.local")
         wincmd l
         call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.before.local")
         wincmd l
         call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.bundles.local")
-     
+
         if <SID>IsSpf13Fork()
             execute bufwinnr(".vimrc") . "wincmd w"
             call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.fork")
@@ -1313,10 +1314,10 @@
             wincmd l
             call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.bundles.fork")
         endif
-     
+
         execute bufwinnr(".vimrc.local") . "wincmd w"
     endfunction
-     
+
     execute "noremap " . s:spf13_edit_config_mapping " :call <SID>EditSpf13Config()<CR>"
     execute "noremap " . s:spf13_apply_config_mapping . " :source ~/.vimrc<CR>"
 " }
@@ -1339,4 +1340,4 @@
             source ~/.gvimrc.local
         endif
     endif
-" 
+"
