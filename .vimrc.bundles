@@ -270,7 +270,7 @@ set nocompatible        " must be first line
             Bundle 'moll/vim-node'
 
             " for wxapp
-            Bundle 'chemzqm/wxapp.vim'
+            " Bundle 'chemzqm/wxapp.vim'
 
         endif
 
