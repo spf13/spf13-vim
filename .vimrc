@@ -664,9 +664,9 @@
     " NerdTree {
         let s:has_nerdtree = 0
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            map <C-b> <plug>NERDTreeTabsToggle<CR>
+            map <C-e> <plug>NERDTreeTabsToggle<CR>
             noremap <leader>nt :NERDTreeFind<CR>
-            nnoremap <C-f> :NERDTreeFocusToggle<CR>
+            nnoremap <C-y> :NERDTreeFocusToggle<CR>
             let s:has_nerdtree = 1
             let g:NERDTreeWinSize=25
             let g:NERDTreeShowBookmarks=1
