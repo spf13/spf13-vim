@@ -109,7 +109,7 @@
         " Ctrk for insert commneter
         if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
             imap <C-g> <Plug>NERDCommenterInsert
-            nmap <C-g> i<Plug>NERDCommenterInsert<Esc><Right>
+            nmap <C-g> i<Plug>NERDCommenterInsert
         endif
         "F2 toggleFold
         noremap <F2> :set nofoldenable! nofoldenable?<CR>
@@ -168,7 +168,9 @@
                 exec "!time go run %"
             endif
         endfunc
-
+        " 运行python2和python3脚本
+        nnoremap <Leader>p2 :!python2 %
+        nnoremap <Leader>p3 :!python3 %
         " 关闭拼写检查
         set nospell
         " 关闭声音
