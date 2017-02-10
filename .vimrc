@@ -706,6 +706,7 @@
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
             map <silent><C-t> :TagbarToggle<CR>
             map <silent><leader>jt :TagbarOpen j<CR>
+            nnoremap <silent><c-j> :TagbarOpen j<CR>
             let s:has_tagbar = 1
             let tagbar_left=0
             let tagbar_width=25
