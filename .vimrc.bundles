@@ -94,7 +94,12 @@
     "   let g:override_spf13_bundles = 1
     if !exists("g:override_spf13_bundles")
     " General 
+        let g:vim8 = 0
         if count(g:spf13_bundle_groups, 'general')
+            if v:version > 799
+                let g:vim8 = 1
+                Bundle 'skywind3000/asyncrun.vim'
+            endif
             Bundle 'scrooloose/nerdtree'
             Bundle 'Xuyuanp/nerdtree-git-plugin'
             Bundle 'jistr/vim-nerdtree-tabs'

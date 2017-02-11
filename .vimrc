@@ -122,25 +122,48 @@
         noremap <F5> :call CompileRunGcc()<CR>
         func! CompileRunGcc()
             exec "w"
-            if &filetype == 'c'
-                exec "!g++ % -o %<"
-                exec "!./%<"
-            elseif &filetype == 'cpp'
-                exec "!g++ % -o %<"
-                exec "!./%<"
-            elseif &filetype == 'java'
-                exec "!javac %"
-                exec "!java %<"
-            elseif &filetype == 'sh'
-                exec "!bash %"
-            elseif &filetype == 'python'
-                exec "!python %"
-            elseif &filetype == 'perl'
-                exec "!perl %"
-            elseif &filetype == 'html'
-                exec "!firefox % &"
-            elseif &filetype == 'go'
-                exec "!go run %"
+            if g:vim8 > 0
+                if &filetype == 'c'
+                    exec "AsyncRun g++ % -o %<"
+                    exec "AsyncRun ./%<"
+                elseif &filetype == 'cpp'
+                    exec "AsyncRun g++ % -o %<"
+                    exec "AsyncRun ./%<"
+                elseif &filetype == 'java'
+                    exec "AsyncRun javac %"
+                    exec "AsyncRun java %<"
+                elseif &filetype == 'sh'
+                    exec "AsyncRun bash %"
+                elseif &filetype == 'python'
+                    exec "AsyncRun python %"
+                elseif &filetype == 'perl'
+                    exec "AsyncRun perl %"
+                elseif &filetype == 'html'
+                    exec "AsyncRun firefox % &"
+                elseif &filetype == 'go'
+                    exec "AsyncRun go run %"
+                endif
+            else
+                if &filetype == 'c'
+                    exec "!g++ % -o %<"
+                    exec "!./%<"
+                elseif &filetype == 'cpp'
+                    exec "!g++ % -o %<"
+                    exec "!./%<"
+                elseif &filetype == 'java'
+                    exec "!javac %"
+                    exec "!java %<"
+                elseif &filetype == 'sh'
+                    exec "!bash %"
+                elseif &filetype == 'python'
+                    exec "!python %"
+                elseif &filetype == 'perl'
+                    exec "!perl %"
+                elseif &filetype == 'html'
+                    exec "!firefox % &"
+                elseif &filetype == 'go'
+                    exec "!go run %"
+                endif
             endif
         endfunc
         " S-F5 time the program testing
@@ -169,8 +192,13 @@
             endif
         endfunc
         " 运行python2和python3脚本
-        nnoremap <Leader>p2 :!python2 %
-        nnoremap <Leader>p3 :!python3 %
+        if g:vim8 >0
+            nnoremap <Leader>p2 :AsyncRun python2 %
+            nnoremap <Leader>p3 :AsyncRun python3 %
+        else
+            nnoremap <Leader>p2 :!python2 %
+            nnoremap <Leader>p3 :!python3 %
+        endif
         " 关闭拼写检查
         set nospell
         " 关闭声音
@@ -272,7 +300,7 @@
             \set nofoldenable
             \set foldmethod=indent
         set gcr=a:block-blinkon0
-        " 显示滚动条
+        " 滚动条
         set guioptions-=l
         set guioptions-=L
         set guioptions-=r
@@ -286,6 +314,11 @@
         " map F1 , Ctrl-C
         nmap <F1> :h<SPACE>
         noremap <C-C> <Esc>
+        " Open Quickfix window automatically after running :make
+        augroup OpenQuickfixWindowAfterMake
+            autocmd QuickFixCmdPost [^l]* nested cwindow
+            autocmd QuickFixCmdPost    l* nested lwindow
+        augroup END
         " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
         map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
         filetype plugin indent on   " Automatically detect file types.
@@ -421,7 +454,6 @@
         set nofoldenable                  " Auto fold code
         set list
         set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-    " }
 
         " Formatting {
         set nowrap                      " Do not wrap long lines
@@ -452,25 +484,8 @@
         autocmd FileType haskell setlocal commentstring=--\ %s
         " Workaround broken colour highlighting in Haskell
         autocmd FileType haskell,rust setlocal nospell
-    " }
 
 
-
-        " The default mappings for editing and applying the spf13 configuration
-        " are <leader>ev and <leader>sv respectively. Change them to your preference
-        " by adding the following to your .vimrc.before.local file:
-        "   let g:spf13_edit_config_mapping='<leader>ec'
-        "   let g:spf13_apply_config_mapping='<leader>sc'
-        if !exists('g:spf13_edit_config_mapping')
-            let s:spf13_edit_config_mapping = '<leader>ev'
-        else
-            let s:spf13_edit_config_mapping = g:spf13_edit_config_mapping
-        endif
-        if !exists('g:spf13_apply_config_mapping')
-            let s:spf13_apply_config_mapping = '<leader>sv'
-        else
-            let s:spf13_apply_config_mapping = g:spf13_apply_config_mapping
-        endif
 
         " Wrapped lines goes down/up to next row, rather than next line in file.
         noremap j gj
@@ -573,7 +588,6 @@
         map <leader>ew :e %%
         map <leader>es :sp %%
         map <leader>ev :vsp %%
-        map <leader>et :tabe %%
 
         " Adjust viewports to the same size
         map <Leader>= <C-w>=
@@ -617,6 +631,7 @@
     endif
         " }
 
+
     " TextObj Sentence {
     if count(g:spf13_bundle_groups, 'writing')
         augroup textobj_sentence
@@ -644,6 +659,10 @@
         let g:PIVAutoClose = 0
     endif
     " }
+    " AsyncRun
+    if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
+        map <Leader><F5> :AsynRun<Space>
+    endif
     " Misc {
     if isdirectory(expand("~/.vim/bundle/matchit.zip"))
         let b:match_ignorecase = 1
@@ -706,7 +725,7 @@
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
             map <silent><C-t> :TagbarToggle<CR>
             map <silent><leader>jt :TagbarOpen j<CR>
-            nnoremap <silent><c-j> :TagbarOpen j<CR>
+            nnoremap <silent><leader>jt :TagbarOpen j<CR>
             let s:has_tagbar = 1
             let tagbar_left=0
             let tagbar_width=25
@@ -1321,9 +1340,6 @@
         execute bufwinnr(".vimrc.local") . "wincmd w"
     endfunction
 
-    execute "noremap " . s:spf13_edit_config_mapping " :call <SID>EditSpf13Config()<CR>"
-    execute "noremap " . s:spf13_apply_config_mapping . " :source ~/.vimrc<CR>"
-" }
 
 " Use fork vimrc if available {
     if filereadable(expand("~/.vimrc.fork"))
