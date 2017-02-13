@@ -149,24 +149,24 @@
             exec "w"
             if g:vim8 > 0
                 if &filetype == 'c'
-                    exec ":AsyncRun g++ % -o %<"
-                    exec ":AsyncRun ./%<"
+                    exec "AsyncRun g++ % -o %<"
+                    exec "AsyncRun ./%<"
                 elseif &filetype == 'cpp'
-                    exec ":AsyncRun g++ % -o %<"
-                    exec ":AsyncRun ./%<"
+                    exec "AsyncRun g++ % -o %<"
+                    exec "AsyncRun ./%<"
                 elseif &filetype == 'java'
-                    exec ":AsyncRun javac %"
-                    exec ":AsyncRun java %<"
+                    exec "AsyncRun javac %"
+                    exec "AsyncRun java %<"
                 elseif &filetype == 'sh'
-                    exec ":AsyncRun bash %"
+                    exec "AsyncRun bash %"
                 elseif &filetype == 'python'
-                    exec ":AsyncRun python %"
+                    exec "AsyncRun python %"
                 elseif &filetype == 'perl'
-                    exec ":AsyncRun perl %"
+                    exec "AsyncRun perl %"
                 elseif &filetype == 'html'
-                    exec ":AsyncRun firefox % &"
+                    exec "AsyncRun firefox % &"
                 elseif &filetype == 'go'
-                    exec ":AsyncRun go run %"
+                    exec "AsyncRun go run %"
                 endif
             else
                 if &filetype == 'c'
@@ -327,11 +327,6 @@
     endif
         nmap <F1> :h<SPACE>
         map <C-C> <Esc>
-        " Open Quickfix window automatically after running :make
-        "augroup OpenQuickfixWindowAfterMake
-        "autocmd QuickFixCmdPost [^l]* nested cwindow
-        "autocmd QuickFixCmdPost    l* nested lwindow
-        "augroup END
         " quickfix widows under all other buffer windows
         autocmd FileType qf wincmd J
         " In the quickfix window, <CR> is used to jump to the error under the
@@ -1114,14 +1109,14 @@
             inoremap <expr><Up> pumvisible() ? "\<C-p>" : "\<Up>"
             inoremap <expr><Down> pumvisible() ? "\<C-n>" : "\<Down>"
 
-            " Enable omni completion.
-            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-            autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+             "Enable omni completion.
+            "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+            "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+            "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+            "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+            "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+            "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+            "autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
             " Use honza's snippets.
             let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
