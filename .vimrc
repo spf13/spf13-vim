@@ -122,82 +122,93 @@
         noremap <F5> :call CompileRunGcc()<CR>
         func! CompileRunGcc()
             exec "w"
-            if g:vim8 > 0
-                if &filetype == 'c'
-                    exec "AsyncRun g++ % -o %<"
-                    exec "AsyncRun ./%<"
-                elseif &filetype == 'cpp'
-                    exec "AsyncRun g++ % -o %<"
-                    exec "AsyncRun ./%<"
-                elseif &filetype == 'java'
-                    exec "AsyncRun javac %"
-                    exec "AsyncRun java %<"
-                elseif &filetype == 'sh'
-                    exec "AsyncRun bash %"
-                elseif &filetype == 'python'
-                    exec "AsyncRun python %"
-                elseif &filetype == 'perl'
-                    exec "AsyncRun perl %"
-                elseif &filetype == 'html'
-                    exec "AsyncRun firefox % &"
-                elseif &filetype == 'go'
-                    exec "AsyncRun go run %"
-                endif
-            else
-                if &filetype == 'c'
-                    exec "!g++ % -o %<"
-                    exec "!./%<"
-                elseif &filetype == 'cpp'
-                    exec "!g++ % -o %<"
-                    exec "!./%<"
-                elseif &filetype == 'java'
-                    exec "!javac %"
-                    exec "!java %<"
-                elseif &filetype == 'sh'
-                    exec "!bash %"
-                elseif &filetype == 'python'
-                    exec "!python %"
-                elseif &filetype == 'perl'
-                    exec "!perl %"
-                elseif &filetype == 'html'
-                    exec "!firefox % &"
-                elseif &filetype == 'go'
-                    exec "!go run %"
-                endif
+            if &filetype == 'c'
+                exec "!g++ % -o %<"
+                exec "!./%<"
+            elseif &filetype == 'cpp'
+                exec "!g++ % -o %<"
+                exec "!./%<"
+            elseif &filetype == 'java'
+                exec "!javac %"
+                exec "!java %<"
+            elseif &filetype == 'sh'
+                exec "!bash %"
+            elseif &filetype == 'python'
+                exec "!python %"
+            elseif &filetype == 'perl'
+                exec "!perl %"
+            elseif &filetype == 'html'
+                exec "!firefox % &"
+            elseif &filetype == 'go'
+                exec "!go run %"
             endif
         endfunc
         " S-F5 time the program testing
         noremap <S-F5> :call TimeCompileRunGcc()<CR>
         func! TimeCompileRunGcc()
             exec "w"
-            if &filetype == 'c'
-                exec "!g++ % -o %<"
-                exec "!time ./%<"
-            elseif &filetype == 'cpp'
-                exec "!g++ % -o %<"
-                exec "!time ./%<"
-            elseif &filetype == 'java'
-                exec "!javac %"
-                exec "!time java %<"
-            elseif &filetype == 'sh'
-                exec "!time bash %"
-            elseif &filetype == 'python'
-                exec "!time python %"
-            elseif &filetype == 'perl'
-                exec "!time perl %"
-            elseif &filetype == 'html'
-                exec "!time firefox % &"
-            elseif &filetype == 'go'
-                exec "!time go run %"
+            if g:vim8 > 0
+                if &filetype == 'c'
+                    exec ":AsyncRun g++ % -o %<"
+                    exec ":AsyncRun ./%<"
+                elseif &filetype == 'cpp'
+                    exec ":AsyncRun g++ % -o %<"
+                    exec ":AsyncRun ./%<"
+                elseif &filetype == 'java'
+                    exec ":AsyncRun javac %"
+                    exec ":AsyncRun java %<"
+                elseif &filetype == 'sh'
+                    exec ":AsyncRun bash %"
+                elseif &filetype == 'python'
+                    exec ":AsyncRun python %"
+                elseif &filetype == 'perl'
+                    exec ":AsyncRun perl %"
+                elseif &filetype == 'html'
+                    exec ":AsyncRun firefox % &"
+                elseif &filetype == 'go'
+                    exec ":AsyncRun go run %"
+                endif
+            else
+                if &filetype == 'c'
+                    exec "!g++ % -o %<"
+                    exec "!time ./%<"
+                elseif &filetype == 'cpp'
+                    exec "!g++ % -o %<"
+                    exec "!time ./%<"
+                elseif &filetype == 'java'
+                    exec "!javac %"
+                    exec "!time java %<"
+                elseif &filetype == 'sh'
+                    exec "!time bash %"
+                elseif &filetype == 'python'
+                    exec "!time python %"
+                elseif &filetype == 'perl'
+                    exec "!time perl %"
+                elseif &filetype == 'html'
+                    exec "!time firefox % &"
+                elseif &filetype == 'go'
+                    exec "!time go run %"
+                endif
             endif
         endfunc
+        " open quickfix window
+        func! QFixToggle()
+            if exists("g:qfix_win")
+                cclose
+                unlet g:qfix_win
+            else
+                copen 10
+                let g:qfix_win = 1
+            endif
+        endfunc
+        nnoremap <F6> :call QFixToggle()<CR>
         " 运行python2和python3脚本
-        if g:vim8 >0
+        if g:vim8 > 0
             nnoremap <Leader>p2 :AsyncRun python2 %
             nnoremap <Leader>p3 :AsyncRun python3 %
         else
-            nnoremap <Leader>p2 :!python2 %
-            nnoremap <Leader>p3 :!python3 %
+            nnoremap <Leader>p2 :!time python2 %
+            nnoremap <Leader>p3 :!time python3 %
         endif
         " 关闭拼写检查
         set nospell
@@ -231,6 +242,8 @@
         nnoremap <leader>tt :tabnew<CR>
         nnoremap <leader>tn :tabnext<CR>
         nnoremap <leader>tp :tabprevious<CR>
+        map gt <Nop>
+        map gT <Nop>
         nnoremap <Leader>tc :tabc<CR>
         nnoremap <Leader>ta :tabs<CR>
         nnoremap <Leader>ts :tab split<CR>
@@ -311,14 +324,21 @@
         " 总是显示状态栏
         set laststatus=2
     endif
-        " map F1 , Ctrl-C
         nmap <F1> :h<SPACE>
-        noremap <C-C> <Esc>
+        map <C-C> <Esc>
         " Open Quickfix window automatically after running :make
-        augroup OpenQuickfixWindowAfterMake
-            autocmd QuickFixCmdPost [^l]* nested cwindow
-            autocmd QuickFixCmdPost    l* nested lwindow
-        augroup END
+        "augroup OpenQuickfixWindowAfterMake
+            "autocmd QuickFixCmdPost [^l]* nested cwindow
+            "autocmd QuickFixCmdPost    l* nested lwindow
+        "augroup END
+        " quickfix widows under all other buffer windows
+        autocmd FileType qf wincmd J
+        " In the quickfix window, <CR> is used to jump to the error under the
+        " cursor, so undefine the mapping there.
+        autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+        " quickfix window  s/v to open in split window,  ,gd/,jd => quickfix window => open it
+        autocmd BufReadPost quickfix nnoremap <buffer> v <C-w><Enter><C-w>L
+        autocmd BufReadPost quickfix nnoremap <buffer> s <C-w><Enter><C-w>K
         " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
         map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
         filetype plugin indent on   " Automatically detect file types.
@@ -408,9 +428,7 @@
         endif
 
         set tabpagemax=10               " Only show 10 tabs
-        set showmode                    " Display the current mode
 
-        set cursorline                  " Highlight current line
 
         highlight clear SignColumn      " SignColumn should match background
         highlight clear LineNr          " Current line number row will have same background color in relative mode
@@ -455,7 +473,7 @@
         set list
         set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
-        " Formatting {
+        " Formatting
         set nowrap                      " Do not wrap long lines
         set autoindent                  " Indent at the same level of the previous line
         set shiftwidth=4                " Use indents of 4 spaces
@@ -465,7 +483,6 @@
         set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
         set splitright                  " Puts new vsplit windows to the right of the current
         set splitbelow                  " Puts new split windows to the bottom of the current
-        "set matchpairs+=<:>             " Match, to be used with %
         set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
         "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
         " Remove trailing whitespaces and ^M chars
@@ -484,7 +501,6 @@
         autocmd FileType haskell setlocal commentstring=--\ %s
         " Workaround broken colour highlighting in Haskell
         autocmd FileType haskell,rust setlocal nospell
-
 
 
         " Wrapped lines goes down/up to next row, rather than next line in file.
@@ -585,9 +601,6 @@
         " Some helpers to edit mode
         " http://vimcasts.org/e/14
         cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-        map <leader>ew :e %%
-        map <leader>es :sp %%
-        map <leader>ev :vsp %%
 
         " Adjust viewports to the same size
         map <Leader>= <C-w>=
@@ -629,7 +642,6 @@
         au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
         au FileType go nmap <leader>co <Plug>(go-coverage)
     endif
-        " }
 
 
     " TextObj Sentence {
@@ -641,7 +653,6 @@
           autocmd FileType text call textobj#sentence#init()
         augroup END
     endif
-    " }
 
     " TextObj Quote {
     if count(g:spf13_bundle_groups, 'writing')
@@ -661,7 +672,7 @@
     " }
     " AsyncRun
     if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
-        map <Leader><F5> :AsynRun<Space>
+        map <Leader><F5> :AsyncRun<Space>
     endif
     " Misc {
     if isdirectory(expand("~/.vim/bundle/matchit.zip"))
