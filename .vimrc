@@ -199,6 +199,7 @@
             else
                 copen 10
                 let g:qfix_win = 1
+                call feedkeys("\<C-w>\w")
             endif
         endfunc
         nnoremap <F6> :call QFixToggle()<CR>
@@ -328,8 +329,8 @@
         map <C-C> <Esc>
         " Open Quickfix window automatically after running :make
         "augroup OpenQuickfixWindowAfterMake
-            "autocmd QuickFixCmdPost [^l]* nested cwindow
-            "autocmd QuickFixCmdPost    l* nested lwindow
+        "autocmd QuickFixCmdPost [^l]* nested cwindow
+        "autocmd QuickFixCmdPost    l* nested lwindow
         "augroup END
         " quickfix widows under all other buffer windows
         autocmd FileType qf wincmd J
