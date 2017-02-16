@@ -135,7 +135,6 @@
 
     " General Programming 
         if count(g:spf13_bundle_groups, 'programming')
-            let g:vim8 = 0
             " Pick one of the checksyntax, jslint, or syntastic
             Bundle 'scrooloose/syntastic'
             Bundle 'mattn/webapi-vim'
@@ -143,7 +142,6 @@
             Bundle 'tpope/vim-commentary'
             Bundle 'luochen1990/rainbow'
             if v:version > 799
-                let g:vim8 = 1
                 Bundle 'skywind3000/asyncrun.vim'
             endif
             if executable('ctags')

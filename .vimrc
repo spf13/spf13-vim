@@ -147,7 +147,7 @@
         noremap <S-F5> :call TimeCompileRunGcc()<CR>
         func! TimeCompileRunGcc()
             exec "w"
-            if g:vim8 > 0
+            if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
                 if &filetype == 'c'
                     exec "AsyncRun g++ % -o %<"
                     exec "AsyncRun ./%<"
@@ -191,25 +191,23 @@
                 endif
             endif
         endfunc
-        " open quickfix window
-        func! QFixToggle()
-            if exists("g:qfix_win")
-                cclose
-                unlet g:qfix_win
-            else
-                copen 10
-                let g:qfix_win = 1
-                call feedkeys("\<C-w>\w")
-            endif
-        endfunc
-        nnoremap <F6> :call QFixToggle()<CR>
         " 运行python2和python3脚本
-        if g:vim8 > 0
-            nnoremap <Leader>p2 :AsyncRun python2 %
-            nnoremap <Leader>p3 :AsyncRun python3 %
+        if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
+            func! AsyncRunPy(pytype)
+                cclose
+                copen 10
+                call feedkeys("\<C-w>\w")
+                if a:pytype == 2
+                    call feedkeys("\:AsyncRun python2 %")
+                else
+                    call feedkeys("\:AsyncRun python3 %")
+                endif
+            endfunc
+            map <silent><Leader><F2> :call AsyncRunPy(2)<CR>
+            map <silent><Leader><F3> :call AsyncRunPy(3)<CR>
         else
-            nnoremap <Leader>p2 :!time python2 %
-            nnoremap <Leader>p3 :!time python3 %
+            map <Leader><F2> :!time python2 %
+            map <Leader><F3> :!time python3 %
         endif
         " 关闭拼写检查
         set nospell
@@ -862,7 +860,6 @@
             let g:ycm_autoclose_preview_window_after_insertion = 1
             " enable completion from tags
             let g:ycm_collect_identifiers_from_tags_files = 1
-
             "youcompleteme  默认tab  s-tab 和ultrasnips的自动补全冲突,改成上下键
             let g:ycm_key_list_select_completion = ['<Down>']
             let g:ycm_key_list_previous_completion = ['<Up>']
@@ -872,6 +869,7 @@
             let g:UltiSnipsJumpForwardTrigger = '<C-f>'
             let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
 
+            let g:UltiSnipsUsePythonVersion = 2
             " Ulti的代码片段的文件夹
             let g:UtiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips"]
             " 自定义代码片段的文件夹
