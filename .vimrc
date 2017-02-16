@@ -191,12 +191,31 @@
                 endif
             endif
         endfunc
+
+        let g:qfix = 0
+        func! QFixClose()
+            cclose
+            let g:qfix = 0
+        endfun
+
+        func! QFixOpen()
+            copen 10
+            call feedkeys("\<C-w>\w")
+            let g:qfix = 1
+        endfunc
+
+        func! QFixToggle()
+            if g:qfix == 1
+                call QFixClose()
+            else
+                call QFixOpen()
+            endif
+        endfun
+        nnoremap <F6> :call QFixToggle()<CR>
         " 运行python2和python3脚本
         if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
             func! AsyncRunPy(pytype)
-                cclose
-                copen 10
-                call feedkeys("\<C-w>\w")
+                call QFixOpen()
                 if a:pytype == 2
                     call feedkeys("\:AsyncRun python2 %")
                 else
@@ -221,11 +240,6 @@
         " 允许折行
         set wrap
 
-        "用tab来控制缩进
-        nnoremap <tab> V><ESC>
-        nnoremap <s-tab> V<<ESC>
-        vnoremap <tab> >gv
-        vnoremap <s-tab> <gv
 
         nnoremap - ^
         nnoremap _ k^
@@ -883,7 +897,6 @@
                 \ 'c': 1,
                 \ 'perl':1,
                 \ 'python':1,
-                \ 'vim':1,
                 \ 'js':1,
                 \ 'java':1
             \}
