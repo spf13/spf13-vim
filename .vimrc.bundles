@@ -137,6 +137,7 @@
             Bundle 'kana/vim-textobj-user'
             Bundle 'kana/vim-textobj-indent'
             Bundle 'gcmt/wildfire.vim'
+            Bundle 'myusuf3/numbers.vim'
         endif
     " }
 
