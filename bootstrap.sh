@@ -17,7 +17,7 @@
 ############################  SETUP PARAMETERS
 app_name='spf13-vim'
 [ -z "$APP_PATH" ] && APP_PATH="$HOME/.spf13-vim-3"
-[ -z "$REPO_URI" ] && REPO_URI='https://github.com/ibreaker/spf13-vim.git'
+[ -z "$REPO_URI" ] && REPO_URI='https://git.coding.net/breaker/spf13-vim.git'
 [ -z "$REPO_BRANCH" ] && REPO_BRANCH='3.0'
 debug_mode='0'
 fork_maintainer='0'
@@ -127,8 +127,8 @@ create_symlinks() {
     lnif "$source_path/.vim"           "$target_path/.vim"
 
     lnif "$source_path/.vimrc.local"                "$target_path/.vimrc.local"
-    lnif "$source_path/.vim.bundles.local"          "$target_path/.vim.bundles.local"
-    lnif "$source_path/.vim.before.local"           "$target_path/.vim.before.local"
+    lnif "$source_path/.vimrc.bundles.local"          "$target_path/.vimrc.bundles.local"
+    lnif "$source_path/.vimrc.before.local"           "$target_path/.vimrc.before.local"
 
     if program_exists "nvim"; then
         lnif "$source_path/.vim"       "$target_path/.config/nvim"
