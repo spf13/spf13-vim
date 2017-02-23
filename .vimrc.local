@@ -1,0 +1,7 @@
+syntax keyword cppSTLtype initializer_list
+let g:indexer_ctagsCommandLineOptions="--c++-kinds=+l+p+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
+" 正向遍历同名标签
+nmap <Leader>tn :tnext<CR>
+" " 反向遍历同名标签
+nmap <Leader>tp :tprevious<CR>"
+
