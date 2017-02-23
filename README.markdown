@@ -27,19 +27,19 @@ To make all the plugins work, specifically [neocomplete](https://github.com/Shou
 
 ## Linux, \*nix, Mac OSX Installation
 
-The easiest way to install spf13-vim is to use our [automatic installer](https://j.mp/spf13-vim3) by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration. If you are upgrading from a prior version (before 3.0) this is also the recommended installation.
+The easiest way to install spf13-vim is to use our [automatic installer](https://raw.githubusercontent.com/ibreaker/spf13-vim/3.0/bootstrap.sh) by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration. If you are upgrading from a prior version (before 3.0) this is also the recommended installation.
 
 *Requires Git 1.7+ and Vim 7.3+*
 
 ```bash
 
-    curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+    curl https://raw.githubusercontent.com/ibreaker/spf13-vim/3.0/bootstrap.sh -L > spf13-vim.sh && sh spf13-vim.sh
 ```
 
 If you have a bash-compatible shell you can run the script directly:
 ```bash
 
-    sh <(curl https://j.mp/spf13-vim3 -L)
+    sh <(curl https://raw.githubusercontent.com/ibreaker/spf13-vim/3.0/bootstrap.sh -L)
 ```
 
 ## Installing on Windows
@@ -112,7 +112,7 @@ The simpliest (and safest) way to update is to simply rerun the installer. It wi
 
 ```bash
 
-    curl https://j.mp/spf13-vim3 -L -o - | sh
+    curl https://raw.githubusercontent.com/ibreaker/spf13-vim/3.0/bootstrap.sh -L -o - | sh
 
 ```
 
@@ -337,7 +337,7 @@ To enable YouCompleteMe add `youcompleteme` to your list of groups by overriding
 
 Once you have done this you will need to get Vundle to grab the latest code from git. You can do this by calling `:BundleInstall!`. You should see YouCompleteMe in the list.
 
-You will now have the code in your bundles directory and can proceed to compile the core. Change to the directory it has been downloaded to. If you have a vanilla install then `cd ~/.spf13-vim-3/.vim/bundle/YouCompleteMe/` should do the trick. You should see a file in this directory called install.sh. There are a few options to consider before running the installer:
+You will now have the code in your bundles directory and can proceed to compile the core. Change to the directory it has been downloaded to. If you have a vanilla install then `cd ~/.vim/bundle/YouCompleteMe/` should do the trick. You should see a file in this directory called install.sh. There are a few options to consider before running the installer:
 
   * Do you want clang support (if you don't know what this is then you likely don't need it)?
     * Do you want to link against a local libclang or have the installer download the latest for you?
@@ -501,7 +501,7 @@ Here's some tips if you've never used VIM before:
 
 * Type `vimtutor` into a shell to go through a brief interactive
   tutorial inside VIM.
-* Read the slides at [VIM: Walking Without Crutches](https://walking-without-crutches.heroku.com/#1).
+
 
 ## Modes
 

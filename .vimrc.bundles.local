@@ -1,0 +1,5 @@
+Bundle 'wsdjeg/vim-chat'
+Bundle 'octol/vim-cpp-enhanced-highlight'
+Plugin 'vim-scripts/indexer.tar.gz'
+Plugin 'vim-scripts/DfrankUtil'
+Plugin 'vim-scripts/vimprj'
