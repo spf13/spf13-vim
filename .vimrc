@@ -92,8 +92,9 @@
         set mouse=a                 " Automatically enable mouse usage
         set mousehide               " Hide the mouse cursor while typing
         scriptencoding utf-8
-        " exchange ; and \
+        " 交换 ;和 \
         noremap \ ;
+
         " 设置快捷键将选中文本块复制至系统剪贴板
         vnoremap  <leader>y  "+y
         nnoremap  <leader>y  "+y

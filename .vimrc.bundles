@@ -136,7 +136,8 @@
     " General Programming 
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
-            Bundle 'scrooloose/syntastic'
+            " cause some errors disabled 
+            "Bundle 'scrooloose/syntastic'
             Bundle 'mattn/webapi-vim'
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
@@ -188,8 +189,8 @@
             " Pick either python-mode or pyflakes & pydoc
             Bundle 'python-mode/python-mode'
             Bundle 'yssource/python.vim'
-            Bundle 'python_match.vim'
-            Bundle 'pythoncomplete'
+            "Bundle 'python_match.vim'
+            "Bundle 'pythoncomplete'
         endif
     " 
 
