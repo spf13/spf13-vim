@@ -98,7 +98,6 @@
             Bundle 'scrooloose/nerdtree'
             Bundle 'Xuyuanp/nerdtree-git-plugin'
             Bundle 'jistr/vim-nerdtree-tabs'
-            Bundle 'godlygeek/tabular'
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
@@ -140,6 +139,7 @@
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
             Bundle 'luochen1990/rainbow'
+            Bundle 'godlygeek/tabular'
             if v:version > 799
                 Bundle 'skywind3000/asyncrun.vim'
             endif

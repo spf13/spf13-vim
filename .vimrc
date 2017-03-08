@@ -287,23 +287,15 @@
         "至左方的子窗口
         nnoremap <Leader>h <C-W>h
         nnoremap <Leader>H <C-W>H
-        nnoremap <C-LEFT> <C-W>h
-        nnoremap <C-S-LEFT> <C-W>H
         "至右方的子窗口
         nnoremap <Leader>l <C-W>l
         nnoremap <Leader>L <C-W>L
-        nnoremap <C-RIGHT> <C-W>l
-        nnoremap <C-S-RIGHT> <C-W>L
         "至上方的子窗口
         nnoremap <Leader>k <C-W>k
         nnoremap <Leader>K <C-W>K
-        nnoremap <C-UP> <C-W>k
-        nnoremap <C-S-UP> <C-W>K
         "至下方的子窗口
         nnoremap <Leader>j <C-W>j
         nnoremap <Leader>J <C-W>J
-        nnoremap <C-DOWN>  <C-W>j
-        nnoremap <C-S-DOWN> <C-W>J
         " 定义快捷键在结对符之间跳转
         nmap <Leader>m %
         " 开启实时搜索功能
@@ -433,6 +425,7 @@
             let g:solarized_termcolors=256
             let g:solarized_termtrans=1
             let g:solarized_visibility="normal"
+            let g:solarized_contrast = "narmal"
             color solarized             " Load a colorscheme
         endif
 
@@ -478,12 +471,10 @@
         set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
         set scrolljump=5                " Lines to scroll when cursor leaves screen
         set scrolloff=3                 " Minimum lines to keep above and below cursor
-        set nofoldenable                  " Auto fold code
         set list
         set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
         " Formatting
-        set nowrap                      " Do not wrap long lines
         set autoindent                  " Indent at the same level of the previous line
         set shiftwidth=4                " Use indents of 4 spaces
         set expandtab                   " Tabs are spaces, not tabs
@@ -786,6 +777,27 @@
         \ }
         endif
     "}
+    " Tabularize {
+
+        if isdirectory(expand("~/.vim/bundle/tabular"))
+            nmap <Leader>a& :Tabularize /&<CR>
+            vmap <Leader>a& :Tabularize /&<CR>
+            nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+            vmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+            nmap <Leader>a=> :Tabularize /=><CR>
+            vmap <Leader>a=> :Tabularize /=><CR>
+            nmap <Leader>a: :Tabularize /:<CR>
+            vmap <Leader>a: :Tabularize /:<CR>
+            nmap <Leader>a:: :Tabularize /:\zs<CR>
+            vmap <Leader>a:: :Tabularize /:\zs<CR>
+            nmap <Leader>a, :Tabularize /,<CR>
+            vmap <Leader>a, :Tabularize /,<CR>
+            nmap <Leader>a,, :Tabularize /,\zs<CR>
+            vmap <Leader>a,, :Tabularize /,\zs<CR>
+            nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+            vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+        endif
+    " }
     " Session List {
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
         if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
