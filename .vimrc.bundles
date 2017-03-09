@@ -140,6 +140,7 @@
             Bundle 'tpope/vim-commentary'
             Bundle 'luochen1990/rainbow'
             Bundle 'godlygeek/tabular'
+            Bundle 'shougo/vimshell.vim'
             if v:version > 799
                 Bundle 'skywind3000/asyncrun.vim'
             endif

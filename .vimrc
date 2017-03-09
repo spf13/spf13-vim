@@ -212,7 +212,7 @@
                 call QFixOpen()
             endif
         endfun
-        nnoremap <F6> :call QFixToggle()<CR>
+        nnoremap <F7> :call QFixToggle()<CR>
         " 运行python2和python3脚本
         if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
             func! AsyncRunPy(pytype)
