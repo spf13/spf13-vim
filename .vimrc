@@ -928,19 +928,21 @@
             endif
 
             function! g:UltiSnips_Tab()
+                "call feedkeys("\<C-k>")
                 call UltiSnips#ExpandSnippet()
+                " 0:ExpandSnippet failed
                 if g:ulti_expand_res == 0
                     if pumvisible()
                         " if not in the popupmenu, selet the first item in popup menu
                         if  has_key(v:completed_item,"menu") && v:completed_item['menu'] == ""
                             return "\<C-n>\<C-y>"
+                        " stop UltiSnips
                         else
                             return "\<C-y>"
                         endif
                     else
                         return "\<Tab>"
                     endif
-
                 endif
             endfunction
 
@@ -949,6 +951,7 @@
             function! g:UltiSnips_CR()
                 if pumvisible() && !get(v:completed_item,'menu',0)
                     call UltiSnips#ExpandSnippet()
+                    " 0:ExpandSnippet failed
                     if g:ulti_expand_res == 0
                         return "\<C-y>"
                     else
@@ -962,13 +965,13 @@
             au BufEnter * exec "inoremap <silent> <CR> <C-R>=g:UltiSnips_CR()<cr>"
 
             " Enable omni completion.
-            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-            autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+            "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+            "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+            "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+            "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+            "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+            "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+            "autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
             let g:ycm_confirm_extra_conf=1 "加载.ycm_extra_conf.py提示
             let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py' "这个是默认ycm配置文件所在目录
             let g:ycm_collect_identifiers_from_tags_files=1    " 开启 YC基于标签引擎
@@ -986,7 +989,7 @@
             " Disable the neosnippet preview candidate window
             " When enabled, there can be too much visual noise
             " especially when splits are used.
-            set completeopt-=preview
+            "set completeopt-=preview
     " neocomplete {
         elseif count(g:spf13_bundle_groups, 'neocomplete')
             let g:acp_enableAtStartup = 0
