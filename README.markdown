@@ -21,18 +21,9 @@ Great care has been taken to ensure that each plugin plays nicely with others, a
 
 Lastly (and perhaps, most importantly) It is completely cross platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim] or Gvim additional features are enabled. So regardless of your environment just clone and run.
 
-# spf13-vim 3.0
-January 2012 spf13-vim released it's third major iteration. **This is important as it requires a reinstall**, but trust me it's worth it.
-
-The biggest change is the switch from using git submodules to using the excellent [Vundle] system. While git submodules seemed like a good idea at the time, it wasn't. It was always problematic. Additionally because a submodule points to a refspec and not a branch, it was a constant maintenance nightmare to keep everything up to date.
-
-[Vundle] has an excellent system built on the same principles as Pathogen, but with an integrated plugin management system that is Git and Github aware.
-
-We have also changed out most of the plugins in favor of newer more stable alternatives. Additionally we have significantly reduced the number of plugins requiring python or ruby.
-
-The goal has always been to add functionality without changing all the features, functionality and keystrokes we all love. Using spf13-vim we've kept all the default behaviors (by and large), so if you ever find yourself on a vanilla environment you'll feel right at home.
-
 # Installation
+## Requirements
+To make all the plugins work, specifically [neocomplete](https://github.com/Shougo/neocomplete.vim), you need [vim with lua](https://github.com/Shougo/neocomplete.vim#requirements).
 
 ## Linux, \*nix, Mac OSX Installation
 
@@ -53,19 +44,27 @@ If you have a bash-compatible shell you can run the script directly:
 
 ## Installing on Windows
 
-On Windows and \*nix [Git] and [Curl] are required. Also, if you haven't already, you'll need to install [Vim].  
-The quickest option to install all three dependencies ([Git], [Curl], [Vim] and [spf13-vim]) via [Chocolatey] NuGet and the [spf13.vim package]. After running the [Chocolatey] install, execute the following commands on the _command prompt_:
+On Windows and \*nix [Git] and [Curl] are required. Also, if you haven't done so already, you'll need to install [Vim].
+The quickest option to install all three dependencies ([Git], [Curl], [Vim] and [spf13-vim]) is via [Chocolatey] NuGet. After installing [Chocolatey], execute the following commands on the _command prompt_:
 
-    cinst git
-    cinst curl
-    cinst ctags
-    cinst spf13.vim
+    C:\> choco install spf13-vim
 
-_Note: The spf13.vim package will install Vim also! _
+_Note: The [spf13-vim package] will install Vim also!_
 
 If you want to install [msysgit], [Curl] and [spf13-vim] individually, follow the directions below.
 
 ### Installing dependencies
+
+#### Install [Vim]
+
+After the installation of Vim you must add a new directory to your environment variables path to make it work with the script installation of spf13.
+
+Open Vim and write the following command, it will show the installed directory:
+
+    :echo $VIMRUNTIME
+    C:\Program Files (X86)\Vim\vim74
+
+Then you need to add it to your environment variable path. After that try execute `vim` within command prompt (press Win-R, type `cmd`, press Enter) and you’ll see the default vim page.
 
 #### Install [msysgit]
 
@@ -193,10 +192,30 @@ See `.vimrc.bundles` for specifics on what options can be set to override bundle
 on what options can be overridden. Most vim configuration options should be set in your `.vimrc.fork` file, bundle configuration
 needs to be set in your `.vimrc.bundles.fork` file.
 
+You can specify the default bundles for your fork using `.vimrc.before.fork` file. Here is how to create an example `.vimrc.before.fork` file
+in a fork repo for the default bundles.
+```bash
+    echo let g:spf13_bundle_groups=[\'general\', \'programming\', \'misc\', \'youcompleteme\'] >> .vimrc.before.fork
+```
+Once you have this file in your repo, only the bundles you specified will be installed during the first installation of your fork.
+
 You may also want to update your `README.markdown` file so that the `bootstrap.sh` link points to your repository and your `bootstrap.sh`
 file to pull down your fork.
 
 For an example of a fork of spf13-vim that provides customization in this manner see [taxilian's fork](https://github.com/taxilian/spf13-vim).
+
+### Easily Editing Your Configuration
+
+`<Leader>ev` opens a new tab containing the .vimrc configuration files listed above. This makes it easier to get an overview of your
+configuration and make customizations.
+
+`<Leader>sv` sources the .vimrc file, instantly applying your customizations to the currently running vim instance.
+
+These two mappings can themselves be customized by setting the following in .vimrc.before.local:
+```bash
+let g:spf13_edit_config_mapping='<Leader>ev'
+let g:spf13_apply_config_mapping='<Leader>sv'
+```
 
 # Plugins
 
@@ -206,10 +225,16 @@ spf13-vim contains a curated set of popular vim plugins, colors, snippets and sy
 
 Create `~/.vimrc.bundles.local` for any additional bundles.
 
-To add a new bundle
+To add a new bundle, just add one line for each bundle you want to install. The line should start with the word "Bundle" followed by a string of either the vim.org project name or the githubusername/githubprojectname. For example, the github project [spf13/vim-colors](https://github.com/spf13/vim-colors) can be added with the following command
 
 ```bash
     echo Bundle \'spf13/vim-colors\' >> ~/.vimrc.bundles.local
+```
+
+Once new plugins are added, they have to be installed.
+
+```bash
+    vim +BundleInstall! +BundleClean +q
 ```
 
 ## Removing (disabling) an included plugin
@@ -221,8 +246,8 @@ Add the UnBundle command to this line. It takes the same input as the Bundle lin
 For example, disabling the 'AutoClose' and 'scrooloose/syntastic' plugins
 
 ```bash
-    echo UnBundle \'AutoClose\' >> ~/.vimrc.local
-    echo UnBundle \'scrooloose/syntastic\' >> ~/.vimrc.local
+    echo UnBundle \'AutoClose\' >> ~/.vimrc.bundles.local
+    echo UnBundle \'scrooloose/syntastic\' >> ~/.vimrc.bundles.local
 ```
 
 **Remember to run ':BundleClean!' after this to remove the existing directories**
@@ -245,7 +270,7 @@ Undotree makes that feature more accessible by creating a visual representation 
 
 NERDTree is a file explorer plugin that provides "project drawer"
 functionality to your vim editing.  You can learn more about it with
-:help NERDTree.
+`:help NERDTree`.
 
 **QuickStart** Launch using `<Leader>e`.
 
@@ -290,9 +315,9 @@ filetype. View `help :NERDCommenter` or checkout my post on [NERDCommenter](http
 
 **QuickStart** Toggle comments using `<Leader>c<space>` in Visual or Normal mode.
 
-## [neocomplcache]
+## [neocomplete]
 
-NeoComplCache is an amazing autocomplete plugin with additional support for snippets. It can complete simulatiously from the dictionary, buffer, omnicomplete and snippets. This is the one true plugin that brings Vim autocomplete on par with the best editors.
+Neocomplete is an amazing autocomplete plugin with additional support for snippets. It can complete simulatiously from the dictionary, buffer, omnicomplete and snippets. This is the one true plugin that brings Vim autocomplete on par with the best editors.
 
 **QuickStart** Just start typing, it will autocomplete where possible
 
@@ -300,9 +325,9 @@ NeoComplCache is an amazing autocomplete plugin with additional support for snip
 
  * Automatically present the autocomplete menu
  * Support tab and enter for autocomplete
- * `<C-k>` for completing snippets.
+ * `<C-k>` for completing snippets using [Neosnippet](https://github.com/Shougo/neosnippet.vim).
 
-![neocomplcache image][autocomplete-img]
+![neocomplete image][autocomplete-img]
 
 ## [YouCompleteMe]
 
@@ -376,10 +401,10 @@ PIV provides:
 
 ![php vim itegration image][phpmanual-img]
 
-## Ack.vim
+## [Ack.vim]
 
 Ack.vim uses ack to search inside the current directory for a pattern.
-You can learn more about it with :help Ack
+You can learn more about it with `:help Ack`
 
 **QuickStart** :Ack
 
@@ -399,7 +424,7 @@ Tabularize lets you align statements on their equal signs and other characters
 
 spf13-vim includes the Tagbar plugin. This plugin requires exuberant-ctags and will automatically generate tags for your open files. It also provides a panel to navigate easily via tags
 
-**QuickStart** `CTRL-]` while the cursor is on a keyword (such as a function name) to jump to it's definition.
+**QuickStart** `CTRL-]` while the cursor is on a keyword (such as a function name) to jump to its definition.
 
 **Customizations**: spf13-vim binds `<Leader>tt` to toggle the tagbar panel
 
@@ -465,7 +490,7 @@ Terminal emulator colorschemes:
 
 ## Snippets
 
-It also contains a very complete set of [snippets](https://github.com/spf13/snipmate-snippets) for use with snipmate or [NeoComplCache].
+It also contains a very complete set of [snippets](https://github.com/spf13/snipmate-snippets) for use with snipmate or [neocomplete].
 
 
 # Intro to VIM
@@ -492,7 +517,7 @@ Here's some tips if you've never used VIM before:
 * Certain commands are prefixed with a `<Leader>` key, which by default maps to `\`.
   Spf13-vim uses `let mapleader = ","` to change this to `,` which is in a consistent and
   convenient location.
-* Keyboard [cheat sheet](https://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
+* Keyboard [cheat sheet](http://www.viemu.com/vi-vim-cheat-sheet.gif).
 
 [![Analytics](https://ga-beacon.appspot.com/UA-7131036-5/spf13-vim/readme)](https://github.com/igrigorik/ga-beacon)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/spf13/spf13-vim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
@@ -501,9 +526,9 @@ Here's some tips if you've never used VIM before:
 [Git]:http://git-scm.com
 [Curl]:http://curl.haxx.se
 [Vim]:http://www.vim.org/download.php#pc
-[msysgit]:http://code.google.com/p/msysgit
+[msysgit]:http://msysgit.github.io
 [Chocolatey]: http://chocolatey.org/
-[spf13.vim package]: http://chocolatey.org/packages/spf13.vim
+[spf13-vim package]: https://chocolatey.org/packages/spf13-vim
 [MacVim]:http://code.google.com/p/macvim/
 [spf13-vim]:https://github.com/spf13/spf13-vim
 [contributors]:https://github.com/spf13/spf13-vim/contributors
@@ -515,7 +540,7 @@ Here's some tips if you've never used VIM before:
 [NERDTree]:https://github.com/scrooloose/nerdtree
 [ctrlp]:https://github.com/kien/ctrlp.vim
 [solarized]:https://github.com/altercation/vim-colors-solarized
-[neocomplcache]:https://github.com/shougo/neocomplcache
+[neocomplete]:https://github.com/shougo/neocomplete
 [Fugitive]:https://github.com/tpope/vim-fugitive
 [Surround]:https://github.com/tpope/vim-surround
 [Tagbar]:https://github.com/majutsushi/tagbar
@@ -529,6 +554,7 @@ Here's some tips if you've never used VIM before:
 [Powerline]:https://github.com/lokaltog/powerline
 [Powerline Fonts]:https://github.com/Lokaltog/powerline-fonts
 [AutoClose]:https://github.com/spf13/vim-autoclose
+[Ack.vim]:https://github.com/mileszs/ack.vim
 
 [spf13-vim-img]:https://i.imgur.com/UKToY.png
 [spf13-vimrc-img]:https://i.imgur.com/kZWj1.png
