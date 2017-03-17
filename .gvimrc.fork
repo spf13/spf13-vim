@@ -1,0 +1,8 @@
+if(has("win32") || has("win64"))
+    set guifont=Consolas:h13
+    set langmenu=zh_CN.utf-8
+    source $VIMRUNTIME/delmenu.vim
+    source $VIMRUNTIME/menu.vim
+else
+    set guifont=Consolas\ 13
+endif

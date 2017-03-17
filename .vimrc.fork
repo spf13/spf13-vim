@@ -1,0 +1,9 @@
+" set encoding
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gb2312,gbk
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
+" language messages utf-8
+"
+" set eclim
+set mouse=v
