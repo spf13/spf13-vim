@@ -967,14 +967,12 @@
             let g:neocomplete_enable_auto_delimiter = 1
             let g:neocomplete_max_list = 15
             let g:neocomplete_force_overwrite_completefunc = 1
-
             " Define dictionary.
             let g:neocomplete_dictionary_filetype_lists = {
                         \ 'default' : '',
                         \ 'vimshell' : $HOME.'/.vimshell_hist',
                         \ 'scheme' : $HOME.'/.gosh_completions'
                         \ }
-
             " Define keyword.
             if !exists('g:neocomplete_keyword_patterns')
                 let g:neocomplete_keyword_patterns = {}
@@ -991,15 +989,6 @@
             let g:neocomplete_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
             let g:neocomplete_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
             let g:neocomplete_omni_patterns.go = '\h\w*\.\?'
-
-            " <CR>: close popup
-            inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
-            " <s-CR>: close popup and save indent.
-            inoremap <expr><s-CR> pumvisible() ? neocomplete#close_popup()."\<CR>" : "\<CR>"
-
-            " <C-h>, <BS>: close popup and delete backword char.
-            inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-            inoremap <expr><C-y> neocomplete#close_popup()
      " neocomplcache
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
             let g:neocomplcache_enable_at_startup = 1
@@ -1035,13 +1024,6 @@
             endif
             let g:neocomplcache_keyword_patterns._ = '\h\w*'
 
-            " <CR>: close popup
-            inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-            " <s-CR>: close popup and save indent.
-            inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()."\<CR>" : "\<S-CR>"
-            " <C-h>, <BS>: close popup and delete backword char.
-            inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-            inoremap <expr><C-y> neocomplcache#close_popup()
 
     " Normal Vim omni-completion ,if not set completion method , it works
     " To disable omni complete, add the following to your .vimrc.before.local file:
@@ -1081,26 +1063,49 @@
             set completeopt=menu,preview,longest
         endif
     " Snippets  and key map for neocomplete && neocomplcache{
+
         if count(g:spf13_bundle_groups, 'neocomplcache') || count(g:spf13_bundle_groups, 'neocomplete')
             imap <C-k> <Plug>(neosnippet_expand)
             smap <C-k> <Plug>(neosnippet_expand)
             imap <C-f> <Right><Plug>(neosnippet_jump)
             smap <C-f> <Right><Plug>(neosnippet_jump)
+
+            " <C-h>, <BS>: close popup and delete backword char.
+            if count(g:spf13_bundle_groups,'necomplcache')
+                inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+            else
+                inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+            endif
+            " <TAB><S-Tab> to select
+            inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+            inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+
+            " Ctrl+j for enter or stop pum
+            inoremap <expr> <C-j> pumvisible() ? "\<C-e>\<C-e>" : "\<CR>"
+            " cr to expand when available,or just cr
+
             function! g:Neo_Complete()
                 if pumvisible()
                     if neosnippet#expandable()
-                        return neosnippet#mappings#expand_impl()
+                        let exp = "\<Plug>(neosnippet_expand)"
+                        if count(g:spf13_bundle_groups,'neocomplcache')
+                            return exp.neocomplcache#smart_close_popup()
+                        else
+                            return exp.neocomplete#smart_close_popup()
+                        endif
                     else
-                        return "\<C-y>"
+                        if count(g:spf13_bundle_groups,'neocomplcache')
+                            return neocomplcache#smart_close_popup()
+                        else
+                            return neocomplete#smart_close_popup()
+                        endif
                     endif
                 else
-                    return "\<Tab>"
+                    return "\<CR>"
                 endif
             endfunction
-            au BufEnter * exec "inoremap <silent> <Tab> <C-R>=g:Neo_Complete()<cr>"
-            " <TAB>: completion.
-            inoremap <expr><Up> pumvisible() ? "\<C-p>" : "\<Up>"
-            inoremap <expr><Down> pumvisible() ? "\<C-n>" : "\<Down>"
+
+            au BufEnter * exec "inoremap <CR> <C-R>=g:Neo_Complete()<cr>"
 
              "Enable omni completion.
             "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
