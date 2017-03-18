@@ -1065,39 +1065,41 @@
     " Snippets  and key map for neocomplete && neocomplcache{
 
         if count(g:spf13_bundle_groups, 'neocomplcache') || count(g:spf13_bundle_groups, 'neocomplete')
-            imap <C-k> <Plug>(neosnippet_expand)
-            smap <C-k> <Plug>(neosnippet_expand)
-            imap <C-f> <Right><Plug>(neosnippet_jump)
-            smap <C-f> <Right><Plug>(neosnippet_jump)
-
             " <C-h>, <BS>: close popup and delete backword char.
-            if count(g:spf13_bundle_groups,'necomplcache')
+            if count(g:spf13_bundle_groups,'neocomplcache')
                 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+                " c-l to list
+                inoremap <expr><C-l> neocomplcache#complete_common_string()
+                snoremap <expr><C-l> neocomplcache#complete_common_string()
             else
                 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+                " c-l to list
+                inoremap <expr><C-l> neocomplete#complete_common_string()
+                snoremap <expr><C-l> neocomplete#complete_common_string()
             endif
-            " <TAB><S-Tab> to select
-            inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-            inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-
-            " Ctrl+j for enter or stop pum
+            " c-j to complete pum or cr
             inoremap <expr> <C-j> pumvisible() ? "\<C-e>\<C-e>" : "\<CR>"
-            " cr to expand when available,or just cr
-
+            snoremap <expr> <C-j> pumvisible() ? "\<C-e>\<C-e>" : "\<CR>"
+            " c-k to expand
+            imap <C-k> <Plug>(neosnippet_expand)
+            smap <C-k> <Plug>(neosnippet_expand)
+            " c-f tu jump 
+            imap <C-f> <Right><Plug>(neosnippet_jump)
+            smap <C-f> <Right><Plug>(neosnippet_jump)
+            " <TAB><S-Tab> to select
+            inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+            inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+            " Ctrl+j for enter or stop pum
+            " cr to expand when available,or just enter
             function! g:Neo_Complete()
                 if pumvisible()
                     if neosnippet#expandable()
-                        let exp = "\<Plug>(neosnippet_expand)"
-                        if count(g:spf13_bundle_groups,'neocomplcache')
-                            return exp.neocomplcache#smart_close_popup()
-                        else
-                            return exp.neocomplete#smart_close_popup()
-                        endif
+                        return neosnippet#mappings#expand_impl()
                     else
                         if count(g:spf13_bundle_groups,'neocomplcache')
-                            return neocomplcache#smart_close_popup()
+                            return neocomplcache#close_popup()
                         else
-                            return neocomplete#smart_close_popup()
+                            return neocomplete#close_popup()
                         endif
                     endif
                 else
