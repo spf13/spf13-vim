@@ -889,9 +889,9 @@
             let g:ycm_autoclose_preview_window_after_insertion = 1
             " enable completion from tags
             let g:ycm_collect_identifiers_from_tags_files = 1
-            "youcompleteme  默认tab  s-tab 和ultrasnips的自动补全冲突,改成上下键
-            let g:ycm_key_list_select_completion = ['<Down>']
-            let g:ycm_key_list_previous_completion = ['<Up>']
+
+            let g:ycm_key_list_select_completion = ['<Tab>']
+            let g:ycm_key_list_previous_completion = ['<S-Tab>']
             " remap Ultisnips for compatibility for YCM
             let g:UltiSnipsListSnippets="<C-l>"
             let g:UltiSnipsExpandTrigger = '<C-k>'
@@ -928,44 +928,10 @@
                     set conceallevel=2 concealcursor=i
                 endif
             endif
+            " cr for ExpandTrigger
+            inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippet()<CR>" : "\<CR>"
 
-            function! g:UltiSnips_Tab()
-                "call feedkeys("\<C-k>")
-                call UltiSnips#ExpandSnippet()
-                " 0:ExpandSnippet failed
-                if g:ulti_expand_res == 0
-                    if pumvisible()
-                        " if not in the popupmenu, selet the first item in popup menu
-                        if  has_key(v:completed_item,"menu") && v:completed_item['menu'] == ""
-                            return "\<C-n>\<C-y>"
-                        " stop UltiSnips
-                        else
-                            return "\<C-y>"
-                        endif
-                    else
-                        return "\<Tab>"
-                    endif
-                endif
-            endfunction
-
-            au BufEnter * exec "inoremap <silent> <Tab> <C-R>=g:UltiSnips_Tab()<cr>"
-
-            function! g:UltiSnips_CR()
-                if pumvisible() && !get(v:completed_item,'menu',0)
-                    call UltiSnips#ExpandSnippet()
-                    " 0:ExpandSnippet failed
-                    if g:ulti_expand_res == 0
-                        return "\<C-y>"
-                    else
-                        return ""
-                    endif
-                else
-                    return "\<CR>"
-                endif
-            endfunction
-
-            au BufEnter * exec "inoremap <silent> <CR> <C-R>=g:UltiSnips_CR()<cr>"
-
+            inoremap <C-CR> pumvisible() ? "\<C-y>\<C-y>"
             " Enable omni completion.
             "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
