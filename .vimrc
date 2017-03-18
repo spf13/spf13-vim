@@ -105,8 +105,6 @@
         nnoremap <leader>P "+P
         vnoremap <leader>p "+p
         vnoremap <leader>P "+P
-        " Ctrl+j for enter
-        inoremap <C-j> <CR>
         " Ctrk for insert commneter
         if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
             imap <C-g> <Plug>NERDCommenterInsert
@@ -889,7 +887,7 @@
             let g:ycm_autoclose_preview_window_after_insertion = 1
             " enable completion from tags
             let g:ycm_collect_identifiers_from_tags_files = 1
-
+            let g:ycm_key_invoke_completion = '<Nop>'
             let g:ycm_key_list_select_completion = ['<Tab>']
             let g:ycm_key_list_previous_completion = ['<S-Tab>']
             " remap Ultisnips for compatibility for YCM
@@ -897,6 +895,10 @@
             let g:UltiSnipsExpandTrigger = '<C-k>'
             let g:UltiSnipsJumpForwardTrigger = '<C-f>'
             let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
+            " Ctrl+j for enter or stop pum
+            inoremap <expr> <C-j> pumvisible() ? "\<C-y>" : "\<CR>"
+            " cr for ExpandTrigger
+            inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippet()<CR>" : "\<CR>"
 
             let g:UltiSnipsUsePythonVersion = 2
             " Ulti的代码片段的文件夹
@@ -928,10 +930,6 @@
                     set conceallevel=2 concealcursor=i
                 endif
             endif
-            " cr for ExpandTrigger
-            inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippet()<CR>" : "\<CR>"
-
-            inoremap <C-CR> pumvisible() ? "\<C-y>\<C-y>"
             " Enable omni completion.
             "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
