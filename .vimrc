@@ -1071,15 +1071,17 @@
                 " c-l to list
                 inoremap <expr><C-l> neocomplcache#complete_common_string()
                 snoremap <expr><C-l> neocomplcache#complete_common_string()
+                " c-j to complete pum or cr
+                inoremap <expr> <C-j> pumvisible() ? neocomplcache#close_popup(): "\<CR>"
+                snoremap <expr> <C-j> pumvisible() ? neocomplcache#close_popup(): "\<CR>"
             else
                 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
                 " c-l to list
                 inoremap <expr><C-l> neocomplete#complete_common_string()
                 snoremap <expr><C-l> neocomplete#complete_common_string()
+                inoremap <expr> <C-j> pumvisible() ? neocomplete#close_popup(): "\<CR>"
+                snoremap <expr> <C-j> pumvisible() ? neocomplete#close_popup(): "\<CR>"
             endif
-            " c-j to complete pum or cr
-            inoremap <expr> <C-j> pumvisible() ? "\<C-e>\<C-e>" : "\<CR>"
-            snoremap <expr> <C-j> pumvisible() ? "\<C-e>\<C-e>" : "\<CR>"
             " c-k to expand
             imap <C-k> <Plug>(neosnippet_expand)
             smap <C-k> <Plug>(neosnippet_expand)
