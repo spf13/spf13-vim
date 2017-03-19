@@ -94,7 +94,6 @@
         scriptencoding utf-8
         " 交换 ;和 \
         noremap \ ;
-
         " 设置快捷键将选中文本块复制至系统剪贴板
         vnoremap  <leader>y  "+y
         nnoremap  <leader>y  "+y
@@ -110,6 +109,7 @@
             imap <C-g> <Plug>NERDCommenterInsert
             nmap <C-g> i<Plug>NERDCommenterInsert
         endif
+        imap <C-t> <Nop>
         "F2 toggleFold
         noremap <F2> :set nofoldenable! nofoldenable?<CR>
         "F3 toggleWrap
@@ -331,7 +331,7 @@
         set laststatus=2
     endif
         nmap <F1> :h<SPACE>
-        map <C-C> <Esc>
+        map <C-C> <C-[>
         " quickfix widows under all other buffer windows
         autocmd FileType qf wincmd J
         " In the quickfix window, <CR> is used to jump to the error under the
@@ -734,7 +734,7 @@
     " TagBar {
         let s:has_tagbar = 0
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
-            map <silent><C-t> :TagbarToggle<CR>
+            nmap <silent><C-t> :TagbarToggle<CR>
             map <silent><leader>jt :TagbarOpen j<CR>
             nnoremap <silent><leader>jt :TagbarOpen j<CR>
             let s:has_tagbar = 1
@@ -896,10 +896,25 @@
             let g:UltiSnipsJumpForwardTrigger = '<C-f>'
             let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
             " Ctrl+j for enter or stop pum
-            inoremap <expr> <C-j> pumvisible() ? "\<C-y>" : "\<CR>"
+            inoremap <expr> <C-j> pumvisible() ? "\<C-y>\<C-y>" : "\<CR>"
             " cr for ExpandTrigger
-            inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippet()<CR>" : "\<CR>"
+            "inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippet()<CR>" : "\<CR>"
+            function! g:UltiSnips_CR()
+                if pumvisible()
+                    call UltiSnips#ExpandSnippet()
+                    "call feedkeys("\<C-k>")
+                    " 0:ExpandSnippet failed
+                    if g:ulti_expand_res == 0
+                        return "\<C-y>\<C-y>"
+                    else
+                        return ""
+                    endif
+                else
+                    return "\<CR>"
+                endif
+            endfunction
 
+            au BufEnter * exec "inoremap <silent> <CR> <C-R>=g:UltiSnips_CR()<cr>"
             let g:UltiSnipsUsePythonVersion = 2
             " Ulti的代码片段的文件夹
             let g:UtiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips"]
