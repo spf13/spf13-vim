@@ -639,7 +639,7 @@ augroup END
 
         if has('gui_running')
             if has('gui_macvim')
-                set guifont=Monaco:h12
+                set guifont=Monaco:h11
                 "\ 'DejaVu Sans Mono:h12',
                 "\ 'Unbuntu Mono:h12'
                 "\ 'Consolas:h12',
@@ -650,7 +650,7 @@ augroup END
                     \ 'Mononoki:h12'
                     \ ]
                 let g:zoom_key_map = 1
-                let g:zoom_random_font = 1
+                let g:zoom_random_font = 0
             else
                 set guifont=Consolas:h12
             endif
