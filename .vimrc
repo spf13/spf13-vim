@@ -888,8 +888,8 @@
             " enable completion from tags
             let g:ycm_collect_identifiers_from_tags_files = 1
             let g:ycm_key_invoke_completion = '<Nop>'
-            let g:ycm_key_list_select_completion = ['<Tab>']
-            let g:ycm_key_list_previous_completion = ['<S-Tab>']
+            let g:ycm_key_list_select_completion = ['<Tab>','<Down>']
+            let g:ycm_key_list_previous_completion = ['<S-Tab>','<Up>']
             " remap Ultisnips for compatibility for YCM
             let g:UltiSnipsListSnippets="<C-l>"
             let g:UltiSnipsExpandTrigger = '<C-k>'
