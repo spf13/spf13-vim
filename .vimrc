@@ -73,8 +73,9 @@
     " location. To override this behavior and set it back to '\' (or any other
     " character) add the following to your .vimrc.before.local file:
     " let g:spf13_leader='\'
+    " but , leoatchina use space as leader
     if !exists('g:spf13_leader')
-        let mapleader=';'
+        let mapleader=' '
     else
         let mapleader=g:spf13_leader
     endif
@@ -93,7 +94,7 @@
         set mousehide               " Hide the mouse cursor while typing
         scriptencoding utf-8
         " 交换 ;和 \
-        noremap \ ;
+        "noremap "\ ;
         " 设置快捷键将选中文本块复制至系统剪贴板
         vnoremap  <leader>y  "+y
         nnoremap  <leader>y  "+y
@@ -253,11 +254,11 @@
         nmap <Leader>q :q<CR>
         " 标签控制
         set showtabline=2
+        map gt <Nop>
+        map gT <Nop>
         nnoremap <leader>tt :tabnew<CR>
         nnoremap <leader>tn :tabnext<CR>
         nnoremap <leader>tp :tabprevious<CR>
-        map gt <Nop>
-        map gT <Nop>
         nnoremap <Leader>tc :tabc<CR>
         nnoremap <Leader>ta :tabs<CR>
         nnoremap <Leader>ts :tab split<CR>
@@ -266,6 +267,8 @@
         nnoremap <Leader>tl :tablast<CR>
         "nnoremap <Leader>tm :tabm<SPACE>
         "nnoremap <Leader>td :tabdo
+        nnoremap <Tab> >>
+        nnoremap <S-Tab> <<
         " 定义快捷键保存当前窗口内容
         nmap <Leader>w :w<CR>
         nmap <Leader>W :wq!<CR>
@@ -298,6 +301,8 @@
         nnoremap <Leader>J <C-W>J
         " 定义快捷键在结对符之间跳转
         nmap <Leader>m %
+        " easymotion
+        "map <Leader>s  <Plug>(easymotion-prefix)
         " 开启实时搜索功能
         set incsearch
         " 搜索时大小写不敏感
@@ -310,13 +315,12 @@
         set hlsearch
 
         au BufNewFile,BufRead *.py
-            \set tabstop = 4
-            \set softtabstop=4
             \set shiftwidth=4
+            \set tabstop=4
+            \set softtabstop=4
+            "\set smartindent
             \set expandtab
             \set autoindent
-            \set fileformat=unix
-            \set nofoldenable
             \set foldmethod=indent
         set gcr=a:block-blinkon0
         " 滚动条
@@ -697,10 +701,10 @@
         let s:has_nerdtree = 0
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
             map <C-e> <plug>NERDTreeTabsToggle<CR>
-            noremap <leader>nt :NERDTreeFind<CR>
+            nnoremap <leader>nt :NERDTreeFind<CR>
             nnoremap <C-y> :NERDTreeFocusToggle<CR>
             let s:has_nerdtree = 1
-            let g:NERDTreeWinSize=25
+            let g:NERDTreeWinSize=30
             let g:NERDTreeShowBookmarks=1
             let g:NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
             let g:NERDTreeChDirMode=0
@@ -735,11 +739,10 @@
         let s:has_tagbar = 0
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
             nmap <silent><C-t> :TagbarToggle<CR>
-            map <silent><leader>jt :TagbarOpen j<CR>
             nnoremap <silent><leader>jt :TagbarOpen j<CR>
             let s:has_tagbar = 1
             let tagbar_left=0
-            let tagbar_width=25
+            let tagbar_width=30
             let g:tagbar_compact=1
             let g:tagbar_type_cpp = {
                 \ 'ctagstype' : 'c++',
@@ -905,7 +908,7 @@
                     "call feedkeys("\<C-k>")
                     " 0:ExpandSnippet failed
                     if g:ulti_expand_res == 0
-                        return "\<C-y>\<C-y>"
+                        return "\<C-y>"
                     else
                         return ""
                     endif
