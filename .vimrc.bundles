@@ -285,7 +285,6 @@
 
     endif
 
-" 
 
 " Use fork bundles config if available 
     if filereadable(expand("~/.vimrc.bundles.fork"))
