@@ -258,7 +258,9 @@
         map gT <Nop>
         nnoremap <leader>tt :tabnew<CR>
         nnoremap <leader>tn :tabnext<CR>
+        nnoremap <PageDown> :tabnext<CR>
         nnoremap <leader>tp :tabprevious<CR>
+        nnoremap <PageUp> :tabprevious<CR>
         nnoremap <Leader>tc :tabc<CR>
         nnoremap <Leader>ta :tabs<CR>
         nnoremap <Leader>ts :tab split<CR>
