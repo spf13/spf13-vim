@@ -239,10 +239,8 @@
         set cursorline
         " 允许折行
         set wrap
-
         " 不折叠
         set nofoldenable
-
         nnoremap - ^
         nnoremap _ k^
         nnoremap + j^
@@ -260,7 +258,7 @@
         nnoremap <leader>tn :tabnext<CR>
         nnoremap <PageDown> :tabnext<CR>
         nnoremap <leader>tp :tabprevious<CR>
-        nnoremap <PageUp> :tabprevious<CR>
+        nnoremap <PageUp>   :tabprevious<CR>
         nnoremap <Leader>tc :tabc<CR>
         nnoremap <Leader>ta :tabs<CR>
         nnoremap <Leader>ts :tab split<CR>
@@ -303,18 +301,19 @@
         nnoremap <Leader>J <C-W>J
         " 定义快捷键在结对符之间跳转
         nmap <Leader>m %
-        " easymotion
-        "map <Leader>s  <Plug>(easymotion-prefix)
         " 开启实时搜索功能
         set incsearch
-        " 搜索时大小写不敏感
-        set ignorecase
         " 显示光标当前位置
         set ruler
-        " 开启行号显示
-        set number
         " 高亮显示搜索结果
         set hlsearch
+
+        set textwidth=200
+        set formatoptions-=tc           " Not aut break a line into multiple lines
+        set shiftwidth=4                " Use indents of 4 spaces
+        set expandtab                   " Tabs are spaces, not tabs
+        set tabstop=4                   " An indentation every four columns
+        set softtabstop=4               " Let backspace delete indent
 
         au BufNewFile,BufRead *.py
             \set shiftwidth=4
@@ -467,14 +466,12 @@
         set linespace=0                 " No extra spaces between rows
         set number                      " Line numbers on
         set showmatch                   " Show matching brackets/parenthesis
-        set incsearch                   " Find as you type search
-        set hlsearch                    " Highlight search terms
         set winminheight=0              " Windows can be 0 line high
         set ignorecase                  " Case insensitive search
         set smartcase                   " Case sensitive when uc present
         set wildmenu                    " Show list instead of just completing
         set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
-        set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+        "set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
         set scrolljump=5                " Lines to scroll when cursor leaves screen
         set scrolloff=3                 " Minimum lines to keep above and below cursor
         set list
@@ -482,10 +479,6 @@
 
         " Formatting
         set autoindent                  " Indent at the same level of the previous line
-        set shiftwidth=4                " Use indents of 4 spaces
-        set expandtab                   " Tabs are spaces, not tabs
-        set tabstop=4                   " An indentation every four columns
-        set softtabstop=4               " Let backspace delete indent
         set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
         set splitright                  " Puts new vsplit windows to the right of the current
         set splitbelow                  " Puts new split windows to the bottom of the current
@@ -608,8 +601,6 @@
         " http://vimcasts.org/e/14
         cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
-        " Adjust viewports to the same size
-        map <Leader>= <C-w>=
 
         " Map <Leader>ff to display all lines with keyword under cursor
         " and ask which one to jump to
@@ -628,28 +619,32 @@
         au! bufwritepost .vimrc.before.local source %
         au! bufwritepost .vimrc.bundles.local source %
     " Plugins
-        " GoLang
-        if count(g:spf13_bundle_groups, 'go')
-            let g:go_highlight_functions = 1
-            let g:go_highlight_methods = 1
-            let g:go_highlight_structs = 1
-            let g:go_highlight_operators = 1
-            let g:go_highlight_build_constraints = 1
-            let g:go_fmt_command = "goimports"
-            let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-            let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-            au FileType go nmap <Leader>s <Plug>(go-implements)
-            au FileType go nmap <Leader>i <Plug>(go-info)
-            au FileType go nmap <Leader>e <Plug>(go-rename)
-            au FileType go nmap <leader>r <Plug>(go-run)
-            au FileType go nmap <leader>b <Plug>(go-build)
-            au FileType go nmap <leader>t <Plug>(go-test)
-            au FileType go nmap <Leader>gd <Plug>(go-doc)
+    " GoLang
+    if count(g:spf13_bundle_groups, 'go')
+        let g:go_highlight_functions = 1
+        let g:go_highlight_methods = 1
+        let g:go_highlight_structs = 1
+        let g:go_highlight_operators = 1
+        let g:go_highlight_build_constraints = 1
+        let g:go_fmt_command = "goimports"
+        let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+        let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+        au FileType go nmap <Leader>s <Plug>(go-implements)
+        au FileType go nmap <Leader>i <Plug>(go-info)
+        au FileType go nmap <Leader>e <Plug>(go-rename)
+        au FileType go nmap <leader>r <Plug>(go-run)
+        au FileType go nmap <leader>b <Plug>(go-build)
+        au FileType go nmap <leader>t <Plug>(go-test)
+        au FileType go nmap <Leader>gd <Plug>(go-doc)
         au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
         au FileType go nmap <leader>co <Plug>(go-coverage)
     endif
-
-
+    " VOom{
+    if isdirectory(expand("~/.vim/bundle/VOom"))
+        let g:voom_ft_modes = {'markdown': 'markdown', 'c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
+        nmap <silent><leader>vt :VoomToggle<cr>
+    endif
+    "}
     " PIV {
     if isdirectory(expand("~/.vim/bundle/PIV"))
         let g:DisableAutoPHPFolding = 0
@@ -667,7 +662,6 @@
     " }
     " Ctags {
         set tags=./tags;/,~/.vimtags
-
         " Make tags placed in .git/tags file available in all levels of a repository
         let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
         if gitroot != ''
@@ -720,8 +714,8 @@
     " TagBar {
         let s:has_tagbar = 0
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
-            nmap <silent><C-t> :TagbarToggle<CR>
-            nnoremap <silent><leader>jt :TagbarOpen j<CR>
+            nmap <silent><F8>> :TagbarToggle<CR>
+            nnoremap <silent><C-t> :TagbarOpen j<CR>
             let s:has_tagbar = 1
             let tagbar_left=0
             let tagbar_width=30
