@@ -248,8 +248,9 @@
         " move to the next position to the last letter of line
         nnoremap <c-\> <End><Right>
         inoremap <c-\> <End>
-        " 定义快捷键关闭当前窗口
-        nmap <Leader>q :q<CR>
+        " buffer
+        nnoremap <leader>bn :bn<CR>
+        nnoremap <leader>bp :bp<CR>
         " 标签控制
         set showtabline=2
         map gt <Nop>
@@ -274,6 +275,8 @@
         nmap <Leader>W :wq!<CR>
         " 定义快捷键保存所有窗口内容并退出 vim
         nmap <Leader>WQ :wa<CR>:q<CR>
+        " 定义快捷键关闭当前窗口
+        nmap <Leader>q :q<CR>
         " 不做任何保存，直接退出 vim
         nmap <Leader>Q :qa!<CR>
         " 设置分割页面
@@ -438,6 +441,7 @@
 
 
         highlight clear SignColumn      " SignColumn should match background
+
         highlight clear LineNr          " Current line number row will have same background color in relative mode
         "highlight clear CursorLineNr    " Remove highlight color from current line number
 
@@ -639,10 +643,19 @@
         au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
         au FileType go nmap <leader>co <Plug>(go-coverage)
     endif
+    " Ag{"
+    if isdirectory(expand("~/.vim/bundle/ag.vim"))
+        nnoremap <leader>ag :Ag<space>
+        nnoremap <leader>af :AgFile<space>
+        "let g:ag_working_path_mode="r"
+        set runtimepath^=~/.vim/bundle/ag"
+    endif
+
+    "}
     " VOom{
     if isdirectory(expand("~/.vim/bundle/VOom"))
         let g:voom_ft_modes = {'markdown': 'markdown', 'c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
-        nmap <silent><leader>vt :VoomToggle<cr>
+        nmap <silent><leader>vo :VoomToggle<cr>
     endif
     "}
     " PIV {
@@ -686,36 +699,36 @@
             let g:NERDTreeChDirMode=0
             let g:NERDTreeQuitOnOpen=1
             let g:NERDTreeMouseMode=2
-            let g:NERDTreeShowHidden=1
-            let g:NERDTreeKeepTreeInNewTab=1
-            let g:nerdtree_tabs_focus_on_files = 1
-            let g:nerdtree_tabs_open_on_gui_startup = 0
-            let g:NERDTreeWinPos=0
-            let g:NERDTreeDirArrowExpandable = '▸'
-            let g:NERDTreeDirArrowCollapsible = '▾'
-            autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-            " nerdtree-git
-            if isdirectory(expand("~/.vim/bundle/nerdtree-git-plugin"))
-                let g:NERDTreeIndicatorMapCustom = {
-                        \ "Modified"  : "*",
-                        \ "Staged"    : "+",
-                        \ "Untracked" : "★",
-                        \ "Renamed"   : "→ ",
-                        \ "Unmerged"  : "=",
-                        \ "Deleted"   : "X",
-                        \ "Dirty"     : "●",
-                        \ "Clean"     : "√",
-                        \ "Unknown"   : "?"
-                \ }
+                let g:NERDTreeShowHidden=1
+                let g:NERDTreeKeepTreeInNewTab=1
+                let g:nerdtree_tabs_focus_on_files = 1
+                let g:nerdtree_tabs_open_on_gui_startup = 0
+                let g:NERDTreeWinPos=0
+                let g:NERDTreeDirArrowExpandable = '▸'
+                let g:NERDTreeDirArrowCollapsible = '▾'
+                autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+                " nerdtree-git
+                if isdirectory(expand("~/.vim/bundle/nerdtree-git-plugin"))
+                    let g:NERDTreeIndicatorMapCustom = {
+                            \ "Modified"  : "*",
+                            \ "Staged"    : "+",
+                            \ "Untracked" : "★",
+                            \ "Renamed"   : "→ ",
+                            \ "Unmerged"  : "=",
+                            \ "Deleted"   : "X",
+                            \ "Dirty"     : "●",
+                            \ "Clean"     : "√",
+                            \ "Unknown"   : "?"
+                    \ }
+                endif
             endif
-        endif
-    " }
+        " }
 
     " TagBar {
         let s:has_tagbar = 0
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
-            nmap <silent><F8>> :TagbarToggle<CR>
-            nnoremap <silent><C-t> :TagbarOpen j<CR>
+            nmap <silent><c-t> :TagbarToggle<CR>
+            nnoremap <silent><leader>jt :TagbarOpen j<CR>
             let s:has_tagbar = 1
             let tagbar_left=0
             let tagbar_width=30
@@ -843,6 +856,7 @@
 
                 "funky
                 nnoremap <Leader>fu :CtrlPFunky<Cr>
+                "nmap <silent><F7> :CtrlPFunky<Cr>
             endif
         endif
     "}
