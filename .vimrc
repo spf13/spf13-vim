@@ -923,9 +923,9 @@
                 \ 'perl':1,
                 \ 'python':1,
                 \ 'js':1,
-                \ 'java':1
+                \ 'java':1,
+                \ 'vim':1
             \}
-
             " Haskell post write lint and check with ghcmod
             " $ `cabal install ghcmod` if missing and ensure
             " ~/.cabal/bin is in your $PATH.
