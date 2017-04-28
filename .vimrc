@@ -924,6 +924,7 @@
                 \ 'python':1,
                 \ 'js':1,
                 \ 'java':1,
+                \ 'php':1,
                 \ 'vim':1
             \}
             " Haskell post write lint and check with ghcmod
