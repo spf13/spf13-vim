@@ -253,21 +253,17 @@
         set showtabline=2
         map gt <Nop>
         map gT <Nop>
-        nnoremap <leader>tt :tabnew<CR>
-        nnoremap <leader>tn :tabnext<CR>
-        nnoremap <PageDown> :tabnext<CR>
-        nnoremap tt=          :tabnext<CR>
-        nnoremap <leader>tp :tabprevious<CR>
-        nnoremap <PageUp>   :tabprevious<CR>
-        nnoremap tt-         :tabprevious<CR>
-        nnoremap <Leader>tc :tabc<CR>
-        nnoremap <Leader>ta :tabs<CR>
-        nnoremap <Leader>ts :tab split<CR>
-        nnoremap <Leader>te :tabe<SPACE>
-        nnoremap <Leader>tf :tabfirst<CR>
-        nnoremap <Leader>tl :tablast<CR>
-        "nnoremap <Leader>tm :tabm<SPACE>
-        "nnoremap <Leader>td :tabdo
+        nnoremap <leader>tt  : tabnew<CR>
+        nnoremap <leader>tn  : tabnext<CR>
+        nnoremap t]          : tabnext<CR>
+        nnoremap <leader>tp  : tabprevious<CR>
+        nnoremap t[          : tabprevious<CR>
+        nnoremap <Leader>tc  : tabc<CR>
+        nnoremap <Leader>ta  : tabs<CR>
+        nnoremap <Leader>ts  : tab split<CR>
+        nnoremap <Leader>te  : tabe<SPACE>
+        nnoremap <Leader>tf  : tabfirst<CR>
+        nnoremap <Leader>tl  : tablast<CR>
         nnoremap <Tab> >>
         nnoremap <S-Tab> <<
         " 定义快捷键保存当前窗口内容
