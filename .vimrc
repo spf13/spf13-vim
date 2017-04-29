@@ -318,11 +318,10 @@
         set tabstop=4                   " An indentation every four columns
         set softtabstop=4               " Let backspace delete indent
 
-        au BufNewFile,BufRead *.py
+        au BufNewFile,BufRead *.py,*php
             \set shiftwidth=4
             \set tabstop=4
             \set softtabstop=4
-            "\set smartindent
             \set expandtab
             \set autoindent
             \set foldmethod=indent
@@ -647,7 +646,7 @@
     if isdirectory(expand("~/.vim/bundle/ag.vim"))
         nnoremap <leader>ag :Ag<space>
         nnoremap <leader>af :AgFile<space>
-        "let g:ag_working_path_mode="r"
+        let g:ag_working_path_mode="r"
         set runtimepath^=~/.vim/bundle/ag"
     endif
 
