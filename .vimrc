@@ -90,11 +90,9 @@
     " set your .vimrc.before.local file:
     " let g:no_leoatchina_config = 1
     if !exists('g:no_leoatchina_config')
-        set mouse=a                 " Automatically enable mouse usage
-        set mousehide               " Hide the mouse cursor while typing
+        set mouse=v
+        set mousehide
         scriptencoding utf-8
-        " 交换 ;和 \
-        "noremap "\ ;
         " 设置快捷键将选中文本块复制至系统剪贴板
         vnoremap  <leader>y  "+y
         nnoremap  <leader>y  "+y
@@ -258,8 +256,10 @@
         nnoremap <leader>tt :tabnew<CR>
         nnoremap <leader>tn :tabnext<CR>
         nnoremap <PageDown> :tabnext<CR>
+        nnoremap tt=          :tabnext<CR>
         nnoremap <leader>tp :tabprevious<CR>
         nnoremap <PageUp>   :tabprevious<CR>
+        nnoremap tt-         :tabprevious<CR>
         nnoremap <Leader>tc :tabc<CR>
         nnoremap <Leader>ta :tabs<CR>
         nnoremap <Leader>ts :tab split<CR>
@@ -922,9 +922,8 @@
                 \ 'perl':1,
                 \ 'python':1,
                 \ 'js':1,
-                \ 'java':1,
+                \ 'html':1,
                 \ 'php':1,
-                \ 'vim':1
             \}
             " Haskell post write lint and check with ghcmod
             " $ `cabal install ghcmod` if missing and ensure
