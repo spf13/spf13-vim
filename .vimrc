@@ -314,7 +314,7 @@
         set tabstop=4                   " An indentation every four columns
         set softtabstop=4               " Let backspace delete indent
 
-        au BufNewFile,BufRead *.py,*php
+        au BufNewFile,BufRead *.py
             \set shiftwidth=4
             \set tabstop=4
             \set softtabstop=4
