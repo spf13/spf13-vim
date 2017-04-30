@@ -375,7 +375,6 @@
             " Always switch to the current file directory
         endif
 
-        "set autowrite                       " Automatically write a file when leaving a modified buffer
         set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
         set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
         set virtualedit=onemore             " Allow for cursor beyond last character
@@ -428,17 +427,15 @@
             let g:solarized_termcolors=256
             let g:solarized_termtrans=1
             let g:solarized_visibility="normal"
-            let g:solarized_contrast = "narmal"
-            color solarized             " Load a colorscheme
+            set background=dark
+            colorscheme solarized
+            "color solarized
         endif
 
         set tabpagemax=10               " Only show 10 tabs
-
-
         highlight clear SignColumn      " SignColumn should match background
-
         highlight clear LineNr          " Current line number row will have same background color in relative mode
-        "highlight clear CursorLineNr    " Remove highlight color from current line number
+        highlight clear CursorLineNr    " Remove highlight color from current line number
 
         if has('cmdline_info')
             set ruler                   " Show the ruler
@@ -488,7 +485,6 @@
         " .vimrc.before.local file:
         "   let g:spf13_keep_trailing_whitespace = 1
         autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
-        "autocmd FileType go autocmd BufWritePre <buffer> Fmt
         autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
         autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
         " preceding line best in a plugin but here for now.
@@ -543,8 +539,6 @@
             vnoremap <Home> :<C-U>call WrapRelativeMotion("0", 1)<CR>
             vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
         endif
-
-
 
         " Stupid shift key fixes
         if !exists('g:spf13_no_keyfixes')
@@ -1209,11 +1203,6 @@
     if has('gui_running')
         set guioptions-=T           " Remove the toolbar
         set lines=40                " 40 lines of text instead of 24
-    else
-        if &term == 'xterm' || &term == 'screen'
-            set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
-        endif
-        "set term=builtin_ansi       " Make arrow and other keys work
     endif
 
 " }
