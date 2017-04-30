@@ -90,7 +90,7 @@
     " set your .vimrc.before.local file:
     " let g:no_leoatchina_config = 1
     if !exists('g:no_leoatchina_config')
-        set mouse=v
+        set mouse=a
         set mousehide
         scriptencoding utf-8
         " 设置快捷键将选中文本块复制至系统剪贴板
