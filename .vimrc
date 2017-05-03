@@ -246,8 +246,8 @@
         " move to the next position to the last letter of line
         nnoremap <c-\> <End><Right>
         inoremap <c-\> <End>
-        nnoremap <c-]> 0w
-        inoremap <c-]> <ESC>0wi
+        nnoremap <c-]> 0eb
+        inoremap <c-]> <ESC>0ebi
         " buffer
         nnoremap <leader>bn :bn<CR>
         nnoremap <leader>bp :bp<CR>
