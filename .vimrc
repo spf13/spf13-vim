@@ -406,8 +406,9 @@
             augroup END
         endif
 
-        " Setting up the directories
-        set backup                  " Backups are nice ...
+        set nobackup
+        set noswapfile
+        set nowritebackup
         if has('persistent_undo')
             set undofile                " So is persistent undo ...
             set undolevels=1000         " Maximum number of changes that can be undone
