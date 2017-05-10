@@ -472,6 +472,7 @@
         "set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
         set scrolljump=5                " Lines to scroll when cursor leaves screen
         set scrolloff=3                 " Minimum lines to keep above and below cursor
+        "set paste
         set list
         set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 

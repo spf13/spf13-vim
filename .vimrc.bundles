@@ -1,5 +1,4 @@
 " Modeline and Notes 
-"
 "                    __ _ _____              _
 "         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
 "        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
@@ -108,13 +107,13 @@
             Bundle 'jiangmiao/auto-pairs'
             Bundle 'ctrlpvim/ctrlp.vim'
             Bundle 'tacahiroy/ctrlp-funky'
-            Bundle 'terryma/vim-multiple-cursors'
-            Bundle 'vim-scripts/sessionman.vim'
-            Bundle 'matchit.zip'
+            Bundle 'mbbill/undotree'
+            Bundle 'bling/vim-bufferline'
+            "Bundle 'flazz/vim-colorschemes'
+            Bundle 'nathanaelkane/vim-indent-guides'
             if !WINDOWS()
                 Bundle 'fcitx.vim'
             endif
-            Bundle 'mbbill/undotree'
             if (has("python") || has("python3")) && exists('g:spf13_use_powerline') && !exists('g:spf13_use_old_powerline')
                 Bundle 'Lokaltog/powerline', 'rtp':'/powerline/bindings/vim'
             elseif exists('g:spf13_use_powerline') && exists('g:spf13_use_old_powerline')
@@ -123,9 +122,6 @@
                 Bundle 'vim-airline/vim-airline'
                 Bundle 'vim-airline/vim-airline-themes'
             endif
-            Bundle 'bling/vim-bufferline'
-            Bundle 'flazz/vim-colorschemes'
-            Bundle 'nathanaelkane/vim-indent-guides'
             if !exists('g:spf13_no_views')
                 Bundle 'vim-scripts/restore_view.vim'
             endif
@@ -135,15 +131,10 @@
 
     " General Programming 
         if count(g:spf13_bundle_groups, 'programming')
-            " Pick one of the checksyntax, jslint, or syntastic
-            " cause some errors disabled 
-            "Bundle 'scrooloose/syntastic'
             Bundle 'mattn/webapi-vim'
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
-            Bundle 'luochen1990/rainbow'
             Bundle 'godlygeek/tabular'
-            Bundle 'shougo/vimshell.vim'
             if v:version > 799
                 Bundle 'skywind3000/asyncrun.vim'
             endif
@@ -180,9 +171,7 @@
 
     " PHP 
         if count(g:spf13_bundle_groups, 'php')
-            Bundle 'spf13/PIV'
             Bundle 'arnaud-lb/vim-php-namespace'
-            Bundle 'beyondwords/vim-twig'
         endif
     " 
 
