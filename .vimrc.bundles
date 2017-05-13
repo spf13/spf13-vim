@@ -101,6 +101,7 @@
 
     " General {
         if count(g:spf13_bundle_groups, 'general')
+            Bundle 'ap/vim-buftabline'
             Bundle 'scrooloose/nerdtree'
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'spf13/vim-colors'
