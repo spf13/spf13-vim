@@ -233,8 +233,8 @@
         set vb
         " 关闭列光标加亮
         set nocursorcolumn
-        "开启行光标加亮
-        set cursorline
+        " 关闭行光标加亮
+        set nocursorline
         " 允许折行
         set wrap
         " 不折叠
@@ -253,13 +253,9 @@
         nnoremap <leader>bp :bp<CR>
         " 标签控制
         set showtabline=2
-        map gt <Nop>
-        map gT <Nop>
-        nnoremap <leader>tt  : tabnew<CR>
-        nnoremap <leader>tn  : tabnext<CR>
         nnoremap t]          : tabnext<CR>
-        nnoremap <leader>tp  : tabprevious<CR>
         nnoremap t[          : tabprevious<CR>
+        nnoremap <leader>tt  : tabnew<CR>
         nnoremap <Leader>tc  : tabc<CR>
         nnoremap <Leader>ta  : tabs<CR>
         nnoremap <Leader>ts  : tab split<CR>
@@ -436,9 +432,9 @@
         endif
 
         set tabpagemax=10               " Only show 10 tabs
-        highlight clear SignColumn      " SignColumn should match background
-        highlight clear LineNr          " Current line number row will have same background color in relative mode
-        highlight clear CursorLineNr    " Remove highlight color from current line number
+        "highlight clear SignColumn      " SignColumn should match background
+        "highlight clear LineNr          " Current line number row will have same background color in relative mode
+        "highlight clear CursorLineNr    " Remove highlight color from current line number
 
         if has('cmdline_info')
             set ruler                   " Show the ruler
