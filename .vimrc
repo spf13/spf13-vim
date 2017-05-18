@@ -262,8 +262,6 @@
         nnoremap <Leader>te  : tabe<SPACE>
         nnoremap <Leader>tf  : tabfirst<CR>
         nnoremap <Leader>tl  : tablast<CR>
-        nnoremap <Tab> >>
-        nnoremap <S-Tab> <<
         " 定义快捷键保存当前窗口内容
         nmap <Leader>w :w<CR>
         nmap <Leader>W :wq!<CR>
