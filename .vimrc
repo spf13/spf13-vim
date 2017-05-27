@@ -371,7 +371,7 @@ augroup END
      "}
      "
      " vim-javacomplete2 {
-        autocmd vimrc FileType java set omnifunc=javacomplete#Complete
+        " autocmd vimrc FileType java set omnifunc=javacomplete#Complete
      " }
 
 

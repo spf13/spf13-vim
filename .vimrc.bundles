@@ -345,7 +345,7 @@ set nocompatible        " must be first line
     "Java
         "
         if count(g:spf13_bundle_groups, 'java') && !g:is_win
-            Bundle 'artur-shaik/vim-javacomplete2'
+            " Bundle 'artur-shaik/vim-javacomplete2'
         endif
 
     "iOS
