@@ -932,36 +932,115 @@ augroup END
         let g:ctrlp_lazy_update = 1
         let g:ctrlp_match_current_file = 1
 
+        " @param {String} type  available values:
+        "
+        "  wildignore
+        "  ctrlp_user_command
+        "  ctrlp_custom_ignore_dir
+        "  ctrlp_custom_ignore_file
+        "
+        " @return {String}
+        "
+        function! CreateIgnoredCommand(type)
+            let directoryList = [
+                            \ '.git',
+                            \ '.gitmodules',
+                            \ '.svn',
+                            \ 'node_modules',
+                            \ 'bower_components',
+                            \ 'node_modules',
+                            \ 'dist',
+                            \ 'libs'
+                        \]
+            let fileListWithFullName = [
+                    \ '.DS_Store'
+                    \]
 
-        set wildignore+=*/.git/*,.git,.gitmodules
-        set wildignore+=*/.hg/*,.hg
-        set wildignore+=*/.svn/*,.svn
+            let fileListWithEndName = [
+                    \ 'png',
+                    \ 'jpg',
+                    \ 'gif',
+                    \ 'class'
+                    \]
 
-        set wildignore+=*.png,*.jpg,*.gif
+            let prefix = ''
+            let suffix = ''
+            let splitter = ' '
+            let strList = []
 
-        set wildignore+=node_modules
-        set wildignore+=bower_components
-        set wildignore+=dist,libs
-        set wildignore+=.DS_Store
-        set wildignore+=.class
+            if a:type ==# 'wildignore'
+                let splitter = ','
+                for item in directoryList
+                    call add(strList, '*/' . item . '/*')
+                endfor
+                for item in fileListWithFullName
+                    call add(strList, item)
+                endfor
+                for item in fileListWithEndName
+                    call add(strList, '*.' . item)
+                endfor
+            elseif a:type ==# 'ctrlp_user_command'
+                let prefix = 'ag %s -i --nocolor --nogroup '
+                let suffix = ' --hidden -g ""'
+                let splitter = ' '
+                for item in directoryList
+                    call add(strList, "--ignore '" . item . "'")
+                endfor
+                for item in fileListWithFullName
+                    call add(strList, "--ignore '" . item . "'")
+                endfor
+                for item in fileListWithEndName
+                    call add(strList, "--ignore '*." . item . "'")
+                endfor
+            elseif a:type ==# 'ctrlp_custom_ignore_dir'
+                let prefix = '\v[\/]('
+                let suffix = ')$'
+                let splitter = '|'
+                for item in directoryList
+                    if stridx(item, '.') == 0
+                        call add(strList, '\' . item)
+                    else
+                        call add(strList, item)
+                    endif
+                endfor
+            elseif a:type ==# 'ctrlp_custom_ignore_file'
+                let prefix = '\v('
+                let suffix = ')$'
+                let splitter = '|'
+                for item in fileListWithFullName
+                    if stridx(item, '.') == 0
+                        call add(strList,  '\' . item)
+                    else
+                        call add(strList, item)
+                    endif
+                endfor
+                for item in fileListWithEndName
+                    call add(strList, '\.' .item)
+                endfor
+            endif
+
+            let commandStr = prefix . join(strList, splitter) . suffix
+            return commandStr
+        endfunction
+
+        let vimrc_temp_str = 'set wildignore+=' .  CreateIgnoredCommand('wildignore')
+        exec vimrc_temp_str
 
 
         if executable('ag')
-            let g:ctrlp_user_command = 'ag %s -l -i --nocolor --hidden -g ""'
+            let g:ctrlp_user_command = CreateIgnoredCommand('ctrlp_user_command')
             let g:ctrlp_use_caching = 0
         else
             let g:ctrlp_use_caching = 1
             let g:ctrlp_clear_cache_on_exit = 1
             let g:ctrlp_cache_dir = expand('~/.cache/ctrlp')
-
             let g:ctrlp_show_hidden = 1
             let g:ctrlp_max_files = 0
-            let g:ctrlp_custom_ignore = {
-              \ 'dir':  '\.git$\|dist$\|tmp$',
-              \ 'file': '\.so$\|\.dat$|\.DS_Store$'
-              \ }
-
+            let g:ctrlp_custom_ignore = {}
+            let g:ctrlp_custom_ignore['dir'] = CreateIgnoredCommand('ctrlp_custom_ignore_dir')
+            let g:ctrlp_custom_ignore['file'] = CreateIgnoredCommand('ctrlp_custom_ignore_file')
         endif
+
 
      "}
 
