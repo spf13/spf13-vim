@@ -371,7 +371,7 @@ augroup END
      "}
      "
      " vim-javacomplete2 {
-        "autocmd vimrc FileType java set omnifunc=javacomplete#Complete
+        autocmd vimrc FileType java set omnifunc=javacomplete#Complete
      " }
 
 
@@ -689,7 +689,9 @@ augroup END
         let g:syntastic_objc_compiler = 'clang'
         let g:syntastic_php_checkers = ['phpmd']
         let g:syntastic_vim_checkers = ['vint']
+
         let g:syntastic_java_checkers = ['javac', 'checkstyle']
+        let g:syntastic_java_javac_config_file_enabled = 1
 
         let g:temp_cwd = fnamemodify(getcwd(), ':p:h')
         let g:find_jshintrc_counter = 3
@@ -793,7 +795,7 @@ augroup END
             endif
         endfunction
 
-        autocmd vimrc BufEnter * nested :call OpenTagbarIfAvailable()
+        autocmd vimrc VimEnter * nested :call OpenTagbarIfAvailable()
 
         " from https://github.com/jszakmeister/markdown2ctags
         " Add support for markdown files in tagbar.
@@ -916,7 +918,19 @@ augroup END
         let g:ctrlp_match_current_file = 1
         let g:ctrlp_lazy_update = 1
         let g:ctrlp_match_current_file = 1
-        set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+
+
+        set wildignore+=*/.git/*,.git,.gitmodules
+        set wildignore+=*/.hg/*,.hg
+        set wildignore+=*/.svn/*,.svn
+
+        set wildignore+=*.png,*.jpg,*.gif
+
+        set wildignore+=node_modules
+        set wildignore+=bower_components
+        set wildignore+=dist, libs
+        set wildignore+=.DS_Store
+        set wildignore+=.class
 
 
         if executable('ag')
