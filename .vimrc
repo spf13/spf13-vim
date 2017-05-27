@@ -928,7 +928,7 @@ augroup END
 
         set wildignore+=node_modules
         set wildignore+=bower_components
-        set wildignore+=dist, libs
+        set wildignore+=dist,libs
         set wildignore+=.DS_Store
         set wildignore+=.class
 
