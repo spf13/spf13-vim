@@ -684,6 +684,28 @@ augroup END
             let g:syntastic_check_on_open = 1
         endif
 
+        " @param {String} fileName
+        " @param {Integer} limitTimes
+        " @return {String}
+        function! FindFileUp(fileName, limitTimes)
+            let tempDir = fnamemodify(getcwd(), ':p:h')
+            let tempFile = ''
+            let counter = a:limitTimes
+            let isExist = 0
+
+            while counter > 0
+                let tempFile = tempDir . '/' . a:fileName
+                let isExist = filereadable(tempFile)
+                if isExist
+                    return tempFile
+                endif
+                let tempDir = fnamemodify(tempDir, ':p:h:h')
+                let counter = counter - 1
+            endwhile
+
+            return ''
+        endfunction
+
         let g:syntastic_check_on_wq = 1
 
         let g:syntastic_objc_compiler = 'clang'
@@ -693,29 +715,20 @@ augroup END
         let g:syntastic_java_checkers = ['javac', 'checkstyle']
         let g:syntastic_java_javac_config_file_enabled = 1
 
-        let g:temp_cwd = fnamemodify(getcwd(), ':p:h')
-        let g:find_jshintrc_counter = 3
-        let g:jshintrc_exists = 0
+        let g:find_file_path = FindFileUp('.syntastic_javac_config', 10)
+        if strlen(g:find_file_path) > 1
+            let g:syntastic_java_javac_config_file = g:find_file_path
+        endif
 
-        while g:find_jshintrc_counter > 0
-            let g:jshintrc_exists = filereadable(g:temp_cwd . '/.jshintrc')
-            if g:jshintrc_exists
-                break
-            endif
-            let g:temp_cwd = fnamemodify(g:temp_cwd, ':p:h:h')
-            let g:find_jshintrc_counter = g:find_jshintrc_counter - 1
-        endwhile
-
-        if g:jshintrc_exists
+        let g:find_file_path = FindFileUp('.jshintrc', 5)
+        if strlen(g:find_file_path) > 1
             let g:syntastic_javascript_checkers = ['jshint', 'tern-lint']
         else
             let g:syntastic_javascript_checkers = ['eslint', 'tern-lint']
             let g:syntastic_javascript_eslint_exec = 'eslint_d'
         endif
 
-        unlet g:temp_cwd
-        unlet g:find_jshintrc_counter
-        unlet g:jshintrc_exists
+        unlet g:find_file_path
 
         let g:syntastic_mode_map = {
                     \ 'mode': 'passive',
