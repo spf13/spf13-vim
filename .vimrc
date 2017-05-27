@@ -745,12 +745,12 @@ augroup END
                         \ 'vim',
                         \ 'xhtml',
                         \ 'xml',
-                        \ 'zsh',
+                        \ 'zsh'
+                    \],
+                    \ 'passive_filetypes': [
                         \ 'c',
                         \ 'cpp',
                         \ 'java'
-                    \],
-                    \ 'passive_filetypes': [
                     \]
                 \}
     "}
