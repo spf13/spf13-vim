@@ -926,7 +926,7 @@ augroup END
      " }
 
      " ctrlp {
-        let g:ctrlp_working_path_mode = 'ra'
+        let g:ctrlp_working_path_mode = 'a'
         let g:ctrlp_by_filename = 0
         let g:ctrlp_match_current_file = 1
         let g:ctrlp_lazy_update = 1
