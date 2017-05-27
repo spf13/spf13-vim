@@ -946,6 +946,7 @@ augroup END
                             \ '.git',
                             \ '.gitmodules',
                             \ '.svn',
+                            \ '.setting',
                             \ 'node_modules',
                             \ 'bower_components',
                             \ 'node_modules',
@@ -960,7 +961,9 @@ augroup END
                     \ 'png',
                     \ 'jpg',
                     \ 'gif',
-                    \ 'class'
+                    \ 'class',
+                    \ 'jar',
+                    \ 'so'
                     \]
 
             let prefix = ''
