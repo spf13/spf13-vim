@@ -689,6 +689,7 @@ augroup END
         let g:syntastic_objc_compiler = 'clang'
         let g:syntastic_php_checkers = ['phpmd']
         let g:syntastic_vim_checkers = ['vint']
+        let g:syntastic_java_checkers = ['javac', 'checkstyle']
 
         let g:temp_cwd = fnamemodify(getcwd(), ':p:h')
         let g:find_jshintrc_counter = 3
@@ -729,12 +730,12 @@ augroup END
                         \ 'vim',
                         \ 'xhtml',
                         \ 'xml',
-                        \ 'zsh'
-                    \],
-                    \ 'passive_filetypes': [
+                        \ 'zsh',
                         \ 'c',
                         \ 'cpp',
                         \ 'java'
+                    \],
+                    \ 'passive_filetypes': [
                     \]
                 \}
     "}
@@ -792,7 +793,7 @@ augroup END
             endif
         endfunction
 
-        autocmd vimrc VimEnter * nested :call OpenTagbarIfAvailable()
+        autocmd vimrc BufEnter * nested :call OpenTagbarIfAvailable()
 
         " from https://github.com/jszakmeister/markdown2ctags
         " Add support for markdown files in tagbar.
@@ -910,10 +911,11 @@ augroup END
      " }
 
      " ctrlp {
-        let g:ctrlp_working_path_mode = 'raw'
+        let g:ctrlp_working_path_mode = 'ra'
         let g:ctrlp_by_filename = 0
         let g:ctrlp_match_current_file = 1
         let g:ctrlp_lazy_update = 1
+        let g:ctrlp_match_current_file = 1
         set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
 

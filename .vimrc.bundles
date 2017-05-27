@@ -67,6 +67,7 @@ set nocompatible        " must be first line
             \ 'programming',
             \ 'snip',
             \ 'python',
+            \ 'java',
             \ 'javascript',
             \ 'css',
             \ 'html',
