@@ -946,7 +946,7 @@ augroup END
                             \ '.git',
                             \ '.gitmodules',
                             \ '.svn',
-                            \ '.setting',
+                            \ '.settings',
                             \ 'node_modules',
                             \ 'bower_components',
                             \ 'node_modules',
