@@ -1,0 +1,433 @@
+inoremap kj <Esc>
+inoremap <Left>  <NOP>
+inoremap <Right> <NOP>
+inoremap <Up>    <NOP>
+inoremap <Down>  <NOP>
+
+nmap <Leader>cd :lcd %:p:h<CR>
+
+" Buffer Management {
+
+    " F2 to save all bufers
+    map <F2> :wa<CR>
+    imap <F2> <ESC>:wa<CR>a
+
+    " F1 to save all bufers
+    map <F1> :wa<CR>
+    imap <F1> <ESC>:wa<CR>a
+
+    " F4 to close a buffer
+    map <F4> :bd<CR>
+    imap <F4> <ESC>:bd<CR>
+
+    " Map for buffer switching
+    map gn :bn<cr>
+    map gp :bp<cr>
+    map gd :bd<cr>
+
+    set hidden " Don't unload buffer when it's hidden
+    
+    if bufname('%') == ''
+        set bufhidden=wipe
+    endif
+"}
+
+" Toggle relative numbering
+function! ToggleNumbering()
+    if &relativenumber
+        set number
+        set norelativenumber
+    else
+        set relativenumber
+        set nonumber
+    endif
+endfunc
+noremap <leader>n :call ToggleNumbering()<cr>
+
+" Bind F5 to remove trailing whitespace or tabs in your files
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+
+" <Control>+h will move the cursor to the beginning of the text on that line
+" and change the first word
+map <silent> <C-h> ^cw
+"  in visual mode hitting D will duplicate whatever’s selected directly below
+vmap D y'>p
+
+" Customization Based on Current Directory {
+  " This allows me to put a .vim.custom file in every directory to load commands
+  " and options specific to that directory. If you're working on multiple
+  " projects that have deep directory structures you might need something more
+  " sophisticated (e.g. walk up the directory tree until a .vim.custom is
+  " found), but the same basic idea will work.
+  if filereadable(".vim.custom")
+      so .vim.custom
+  endif
+" }
+
+" General {
+  " Changing Vim's idea of the terminal.
+  if !has('gui_running')
+    if match($TERM, "screen") != -1
+      set term=xterm-256color  " while running in GNU screen override TERM
+    endif
+  endif
+
+  " I like to have a different background in GUI and terminal modes,
+  " so I can use the following if-then.
+  if !empty($SOLARIZEDBACKGROUND)
+    if match(['light', 'dark'], $SOLARIZEDBACKGROUND) != -1
+      let &background=$SOLARIZEDBACKGROUND
+    endif
+  else
+    if has('gui_running')
+      set background=dark  " in GUI run with light background
+    endif
+  endif
+
+  " Maximize gvim window.
+  if has("gui_running")
+      set lines=999 columns=999
+  else
+      " This is console Vim.
+      if exists("+lines")
+          set lines=50
+      endif
+      if exists("+columns")
+          set columns=100
+      endif
+  endif
+
+  set shortmess+=I "disable extra splash buffer"
+  set cryptmethod=blowfish
+  set list!  " hide unprintable characters
+  set nospell  " disable spell checking
+  set number
+  set scrolloff=9999
+  set viewoptions=cursor,folds,slash,unix  " suggested view settings
+" }
+
+" GUI Settings {
+  if has('gui_running')
+    set noantialias
+    set guifont=Dina\ 12
+
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L  "remove left-hand scroll bar
+  endif
+" }
+
+" Formatting {
+  set autoindent  " copy indentation from previous line
+  "set cindent  " do C program indenting
+  "set smartindent=off  " has no effect if use cindent
+
+  " By default indents text with 2 space characters.
+  if !exists('g:q_indent_width')
+    let g:q_indent_width=2
+  endif
+
+  let &tabstop=g:q_indent_width  " Use 2 space chars to display tab char
+  let &softtabstop=g:q_indent_width  " Use 2 space chars instead of tab chars
+  let &shiftwidth=g:q_indent_width  " indent with 2 spaces, represents >> shift
+  set expandtab  " put spaces instead of tab character
+  set autoindent
+
+  "set textwidth=80  " maximum text width
+  set textwidth=0  " disables textwidth to make completion
+                     " working for long lines.
+  "set wrap  " should automatically wrap text longer than 80 characters
+
+  " Marks long columns depeding on background color.
+  if &background == 'dark'
+    highlight OverLength ctermbg=black guibg=#073642
+  else
+    highlight OverLength ctermbg=lightgrey guibg=#eee8d5
+  endif
+  " Sets priority lower than hlsearch. Effectively highlights search matches.
+  if exists('w:overlengthmatch')
+      call matchdelete(w:overlengthmatch)
+  endif
+  let w:overlengthmatch = matchadd('OverLength', '\%80v.*', -1)
+
+" }
+
+" Bundles {
+  " UnBundle unnecessary Vundle bundles (plugins)
+  " Remember to run ':BundleClean!' after this to remove
+  " the existing directories.
+  "
+  " Those plugins don't properly work for me with basic configuration.
+
+    " Disable automtic surrounding with quote or bracket characters.
+    "UnBundle 'tpope/vim-surround'
+    " Disable autoclose
+    "UnBundle 'spf13/vim-autoclose'
+    "UnBundle 'Lokaltog/powerline'
+    "UnBundle 'Lokaltog/vim-powerline'
+    "UnBundle 'jistr/vim-nerdtree-tabs'
+
+  " General Programming
+    "UnBundle 'scrooloose/syntastic'
+    "UnBundle 'tpope/vim-fugitive'
+    "UnBundle 'majutsushi/tagbar'
+
+  " Misc
+    "UnBundle 'scrooloose/nerdtree'
+    UnBundle 'tpope/vim-cucumber'
+    UnBundle 'quentindecock/vim-cucumber-align-pipes'
+    "UnBundle 'Puppet-Syntax-Highlighting'
+  "
+  " PHP
+    UnBundle 'spf13/PIV'
+    UnBundle 'arnaud-lb/vim-php-namespace'
+    UnBundle 'beyondwords/vim-twig'
+
+  " Python
+    UnBundle 'klen/python-mode'
+    UnBundle 'yssource/python.vim'
+    UnBundle 'python_match.vim'
+    UnBundle 'pythoncomplete'
+
+  " Javascript
+    UnBundle 'elzr/vim-json'
+    UnBundle 'groeneweg/vim-less'
+    UnBundle 'pangloss/vim-javascript'
+    UnBundle 'briancollins/vim-jst'
+    UnBundle 'kchmck/vim-coffee-script'
+
+    " Scala
+    UnBundle 'derekwyatt/vim-scala'
+    UnBundle 'derekwyatt/vim-sbt'
+    UnBundle 'xptemplate'
+
+    " Ruby
+    UnBundle 'tpope/vim-rails'
+    UnBundle 'gorodinskiy/vim-coloresque'
+    UnBundle 'tpope/vim-haml'
+
+    " Puppet
+    UnBundle 'rodjek/vim-puppet'
+
+    " Go Lang
+    UnBundle 'fatih/vim-go'
+" }
+
+
+" Customization {
+
+  " Override default status line by disabling unnecessary fugitive part.
+  if has('statusline')
+      set laststatus=2
+
+      " Broken down into easily includeable segments
+      set statusline=%<%f\                     " Filename
+      set statusline+=%w%h%m%r                 " Options
+      set statusline+=%{fugitive#statusline()} " Git Hotness
+      set statusline+=\ [%{&ff}/%Y]            " Filetype
+      set statusline+=\ [%{getcwd()}]          " Current dir
+      set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+  endif
+
+  " General {
+    " A list of file patterns which will be used to exclude
+    " files when completing file or directory names.
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj
+
+    " Ignore autocommand events set for BufEnter
+    " set eventignore+=BufEnter
+    " Most prefer to automatically switch to the current file directory when
+    " a new buffer is opened; to prevent this behavior, add the following to
+    " your .vimrc.bundles.local file:
+    "let g:spf13_no_autochdir = 1
+  " }
+
+  " Plugins {
+
+    " vim-autoclose {
+      " Note: in Vim files (including .vimrc), you may not want pairing of "
+      " because it is the comment character. If you set a value for
+      " g:autoclose_vim_commentmode, the " character will not be paired if Vim
+      " considers the current buffer to be a Vim file.
+      let g:autoclose_vim_commentmode = 1
+      let g:autoclose_on = 0
+    " }
+
+    " vim-airline {
+      " Enables powerlines fonts.
+      let g:airline_powerline_fonts = 1
+
+      " Automatically displays all buffers when there's only one tab open.
+      let g:airline#extensions#tabline#enabled = 1
+
+      " Separators can be configured independently for the tabline, so here is
+      " how you can define "straight" tabs
+      let g:airline#extensions#tabline#left_sep = ' '
+      let g:airline#extensions#tabline#left_alt_sep = '|'
+    " }
+
+    " ctrlp {
+      "When starting up, CtrlP sets its local working directory according to
+      "this variable: 0 - disable this feature
+      "let g:ctrlp_working_path_mode=0
+      let g:ctrlp_show_hidden = 1
+
+      " Set no max file limit
+      let g:ctrlp_max_files = 0
+
+      " Use a leader instead of the actual named binding
+      nmap <leader>p :CtrlP<cr>
+      " Easy bindings for its various modes
+      nnoremap <leader>bb :CtrlPBuffer<cr>
+      nnoremap <leader>bm :CtrlPMixed<cr>
+      nnoremap <leader>bs :CtrlPMRU<cr>
+
+      let g:ctrlp_custom_ignore = {
+                  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+                  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+                  \}
+
+      " Fallback search ignores .svn directories.
+      let g:ctrlp_user_command = {
+          \ 'types': {
+              \ 1: ['.git', 'cd %s && git ls-files && cd -'],
+              \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+          \ },
+          \ 'fallback': 'find %s -type d -name .svn -prune -o -type f -name "*[o|a]$" -prune -o -type f -print'
+      \ }
+    " }
+
+    " neocomplcache {
+      "let g:neocomplcache_enable_insert_char_pre = 1
+      if count(g:spf13_bundle_groups, 'neocomplcache')
+          unlet g:neocomplcache_max_list
+      endif
+
+      "if !exists('g:neocomplcache_omni_patterns')
+      "    let g:neocomplcache_omni_patterns = {}
+      "endif
+      "let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+      "let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+
+      " For below type expression types, overrides neocomplcache omni_complete
+      " with direct call to omnifunc.
+      if !exists('g:neocomplcache_force_omni_patterns')
+          let g:neocomplcache_force_omni_patterns = {}
+      endif
+      let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+      let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+    " }
+
+    " OmniCppComplete {
+      "
+      let OmniCpp_NamespaceSearch = 1
+      let OmniCpp_GlobalScopeSearch = 1
+      let OmniCpp_ShowAccess = 1
+      let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+      let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+
+      " Lets Neocompletecache takes care about auto completion.
+      "
+      let OmniCpp_MayCompleteDot = 0 " autocomplete after .
+      let OmniCpp_MayCompleteArrow = 0 " autocomplete after ->
+      let OmniCpp_MayCompleteScope = 0 " autocomplete after ::
+
+
+      " Without preview option (working with Neocompletecache).
+      "
+      "set completeopt=menuone,menu,longest
+      set completeopt-=preview
+
+      " As Neocompletecache does not support preview window,
+      " this functionality has been deliberately disabled.
+      "
+      " automatically open and close the popup menu / preview window
+      "au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+      "set completeopt=menuone,menu,longest,preview
+    " }
+
+
+  " }
+" }
+
+" Tags {
+  " Checks if variable for ctags top directory is set
+  if !exists('g:q_ctags_top_dir')
+    let g:q_ctags_top_dir = "."  " By default stores tags in current directory.
+  endif
+  let g:q_ctags_output_file = "" . g:q_ctags_top_dir . "/tags"
+
+  set tags += "" . g:q_ctags_output_file
+" }
+
+
+" C/C++ Settings {
+  " Automatically apply C++ syntax hightlight to C files.
+  au FileType c set filetype=cpp
+  " Detecting file type for C++ standard headers with vim.
+  au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
+
+  " On buffer save generate local tags file (non-recursive as it should be fast).
+  "au BufWritePost * if &ft =~ 'cpp' | silent !ctags --c++-kinds=+p --fields=+iaS --extra=+q .
+" }"
+
+" Keyboard mappings {
+  " Does not automatically maximize windows on switching
+  map <C-J> <C-W>j
+  map <C-K> <C-W>k
+  map <C-L> <C-W>l
+  map <C-H> <C-W>h
+
+  " Grep {
+    " Recommended installing ack-grep, which is a grep-like utility designed
+    " specifically for grepping source code files. Then configure vim to use
+    " it instead of regular grep.
+    set grepprg=ack-grep\ --cpp\ --cc\ --perl\ --python\ --make
+    " Pressing <Leader>gr will grep source code files recursively,
+    " starting from the vim's current working directory, for the word under
+    " the cursor. Results are put inside 'quickfix' window.
+    nmap <Leader>gr :grep <C-R>=expand("<cword>")<CR><CR>
+    " Navigate through quickfix entries by calling :cnext and :cprev.
+    map <Leader>qw :botright cwindow<CR>
+    map <Leader>qp :cprev<CR>
+    map <Leader>qn :cnext<CR>
+  " }
+
+  " Shows svn blame in visual mode on highlighted lines.
+  vmap <Leader>bl :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
+  " Ctags generation.
+  "
+  " Re-generate ctags
+  " To get mapping characters, press Ctrl-V while in Insert mode, and then the required key.
+  "au FileType * execute "map <Leader>8 :"
+  "      \ . "echomsg 'No ctags mapping defined for ' . &filetype . ' "
+  "      \ . "filetype'<CR>"
+  "au FileType * execute "map <Leader>8 :"
+  "      \ . "!ctags -R "
+  "      \ . "--sort=yes "
+  "      \ . "--c++-kinds=+p "
+  "      \ . "--fields=+iaSt --extra=+q "
+  "      \ . "-f " g:q_ctags_output_file . " " . g:q_ctags_top_dir . "<CR><CR>"
+
+  " For case insensitive searching enable fold-case sorting for ctags files.
+  " It should make searching a lot faster.
+  execute "map <Leader>8 :"
+        \ . "!ctags -R "
+        \ . "--sort=foldcase "
+        \ . "--c++-kinds=+p "
+        \ . "--fields=+iaSt --extra=+q "
+        \ . "--langmap=c:,c++:+.c "
+        \ . "--exclude=*.so "
+        \ . "-f " g:q_ctags_output_file . " " . g:q_ctags_top_dir . "<CR><CR>"
+
+  " Press Space to turn off highlighting and clear any message already displayed
+  nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>  
+  " }
+
+
+" Airline + Restore View workaround for spf13/spf13-vim#423 issue {
+  au VimEnter * AirlineToggle
+  au VimEnter * AirlineToggle
+" }

@@ -1,0 +1,40 @@
+" General {
+
+  " Most prefer to automatically switch to the current file directory when
+  " a new buffer is opened; to prevent this behavior, add the following to
+  " your .vimrc.bundles.local file:
+  let g:spf13_no_autochdir = 1
+  "
+  " Plugins {
+  " }
+    " vim-kolor theme {
+    let g:kolor_italic=1                    " Enable italic. Default: 1
+    let g:kolor_bold=1                      " Enable bold. Default: 1
+    let g:kolor_underlined=0                " Enable underline. Default: 0
+    let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
+    "colorscheme kolor
+  " }
+    " grb256 theme {
+    let g:grb256_italic=1                    " Enable italic. Default: 1
+    let g:grb256_bold=1                      " Enable bold. Default: 1
+    let g:grb256_underlined=0                " Enable underline. Default: 0
+    let g:grb256_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
+    colorscheme grb256
+  " }
+
+" }
+
+" Personal bundles {
+  " Instead of using vim.org to find and install plugins manually, it's easier
+  " to just run something like :BundleSearch! ... . Then navigate to and select
+  " bundle of your choice and press i.
+  " If you want to keep it - copy that Bundle ... line to your .vimrc file.
+
+  " Required if you would like to use sql completion.
+  "Bundle 'dbext.vim'
+  "
+  "Bundle 'cppcomplete'
+  Bundle 'OmniCppComplete'
+  Bundle 'tpope/vim-unimpaired'
+
+" }
