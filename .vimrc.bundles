@@ -270,11 +270,23 @@ set nocompatible        " must be first line
             Bundle 'sidorares/node-vim-debugger'
             Bundle 'moll/vim-node'
 
-            "for es6
+            "for es6/typescript
             Bundle 'Quramy/vim-js-pretty-template'
 
             " for wxapp
             " Bundle 'chemzqm/wxapp.vim'
+
+            " typescript
+            if count(g:spf13_bundle_groups, 'typescript')
+                Bundle 'leafgarland/typescript-vim'
+                Bundle 'HerringtonDarkholme/yats.vim'
+                Bundle 'Quramy/tsuquyomi'
+            endif
+
+            " coffeescript
+            if count(g:spf13_bundle_groups, 'coffeescript')
+                Bundle 'kchmck/vim-coffee-script'
+            endif
 
         endif
 
@@ -304,18 +316,6 @@ set nocompatible        " must be first line
             "Bundle 'lepture/vim-velocity'
         endif
 
-    " coffeescript
-        if count(g:spf13_bundle_groups, 'coffeescript')
-            Bundle 'kchmck/vim-coffee-script'
-        endif
-
-    " typescript
-        if count(g:spf13_bundle_groups, 'typescript')
-            Bundle 'leafgarland/typescript-vim'
-            Bundle 'HerringtonDarkholme/yats.vim'
-            Bundle 'Quramy/vim-js-pretty-template'
-            Bundle 'Quramy/tsuquyomi'
-        endif
 
     " Ruby
         if count(g:spf13_bundle_groups, 'ruby')
