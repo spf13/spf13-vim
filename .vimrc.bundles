@@ -59,7 +59,6 @@ set nocompatible        " must be first line
             "\ 'java',
             "\ 'coffeescript',
             "\ 'php',
-            "\ 'typescript',
             "\ 'ios',
         let g:spf13_bundle_groups=[
             \ 'general',
@@ -69,6 +68,7 @@ set nocompatible        " must be first line
             \ 'python',
             \ 'java',
             \ 'javascript',
+            \ 'typescript',
             \ 'css',
             \ 'html',
             \ 'document',
@@ -270,6 +270,9 @@ set nocompatible        " must be first line
             Bundle 'sidorares/node-vim-debugger'
             Bundle 'moll/vim-node'
 
+            "for es6
+            Bundle 'Quramy/vim-js-pretty-template'
+
             " for wxapp
             " Bundle 'chemzqm/wxapp.vim'
 
@@ -309,6 +312,9 @@ set nocompatible        " must be first line
     " typescript
         if count(g:spf13_bundle_groups, 'typescript')
             Bundle 'leafgarland/typescript-vim'
+            Bundle 'HerringtonDarkholme/yats.vim'
+            Bundle 'Quramy/vim-js-pretty-template'
+            Bundle 'Quramy/tsuquyomi'
         endif
 
     " Ruby
