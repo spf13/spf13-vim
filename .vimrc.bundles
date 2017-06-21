@@ -95,6 +95,8 @@
     " General 
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'easymotion/vim-easymotion'
+            Bundle 'vim-pandoc/vim-pandoc'
+            Bundle 'vim-pandoc/vim-pandoc-syntax'
             Bundle 'vim-voom/VOoM'
             Bundle 'scrooloose/nerdtree'
             Bundle 'Xuyuanp/nerdtree-git-plugin'
@@ -180,6 +182,13 @@
             " Pick either python-mode or pyflakes & pydoc
             Bundle 'python-mode/python-mode'
             Bundle 'yssource/python.vim'
+        endif
+    " 
+
+    " R
+        if count(g:spf13_bundle_groups, 'r')
+            Bundle 'vim-pandoc/vim-rmarkdown'
+            Bundle 'jalvesaq/Nvim-R'
         endif
     " 
 

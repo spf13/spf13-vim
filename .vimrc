@@ -253,15 +253,15 @@
         nnoremap <leader>bp :bp<CR>
         " 标签控制
         set showtabline=2
-        nnoremap t]          : tabnext<CR>
-        nnoremap t[          : tabprevious<CR>
-        nnoremap <leader>tt  : tabnew<CR>
-        nnoremap <Leader>tc  : tabc<CR>
-        nnoremap <Leader>ta  : tabs<CR>
-        nnoremap <Leader>ts  : tab split<CR>
-        nnoremap <Leader>te  : tabe<SPACE>
-        nnoremap <Leader>tf  : tabfirst<CR>
-        nnoremap <Leader>tl  : tablast<CR>
+        nnoremap <silent>}  : tabnext<CR>
+        nnoremap <silent>{  : tabprevious<CR>
+        nnoremap <leader>tt : tabnew<CR>
+        nnoremap <Leader>tc : tabc<CR>
+        nnoremap <Leader>ta : tabs<CR>
+        nnoremap <Leader>ts : tab split<CR>
+        nnoremap <Leader>te : tabe<SPACE>
+        nnoremap <Leader>tf : tabfirst<CR>
+        nnoremap <Leader>tl : tablast<CR>
         " 定义快捷键保存当前窗口内容
         nmap <Leader>w :w<CR>
         nmap <Leader>W :wq!<CR>
