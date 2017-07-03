@@ -496,7 +496,10 @@ augroup END
             let g:plan_month_review = g:plan_week_review
 
             let g:plan_year_personal = {
+                \ '01-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
+                \ '05-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
                 \ '06-24': '1. 半年回顾与规划;',
+                \ '09-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
                 \ '12-24': '1. 半年回顾与规划;',
                 \ '12-31': '1. 结婚纪念日;'
                 \}
