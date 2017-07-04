@@ -736,8 +736,9 @@ augroup END
             let g:syntastic_javascript_checkers = ['eslint', 'tern-lint']
             let g:syntastic_javascript_eslint_exec = 'eslint_d'
         endif
-
         unlet g:find_file_path
+
+        let g:syntastic_typescript_checkers = ['tslint']
 
         let g:syntastic_mode_map = {
                     \ 'mode': 'passive',
@@ -745,6 +746,7 @@ augroup END
                         \ 'css',
                         \ 'html',
                         \ 'javascript',
+                        \ 'typescript',
                         \ 'json',
                         \ 'less',
                         \ 'markdown',
