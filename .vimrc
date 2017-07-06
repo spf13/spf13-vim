@@ -887,7 +887,8 @@
                     if g:ulti_expand_res == 0
                         return "\<C-y>"
                     else
-                        return ""
+                        call feedkeys("\<C-c>")
+                        return "\<Right>"
                     endif
                 else
                     return "\<CR>"
@@ -1105,7 +1106,7 @@
                 endif
             endfunction
 
-            au BufEnter * exec "inoremap <CR> <C-R>=g:Neo_Complete()<cr>"
+            au BufEnter * exec "inoremap <CR> <C-R>=g:Neo_Complete()<cr><C-c>"
 
              "Enable omni completion.
             "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
