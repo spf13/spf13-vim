@@ -799,9 +799,14 @@
 
         if isdirectory(expand("~/.vim/bundle/python-mode"))
             let g:pymode_lint_checkers = ['pyflakes']
+            let g:pymode_lint_cwindow = 0
+            let g:pymode_lint_message = 0
+            let g:pymode_lint = 1
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
             let g:pymode_rope = 0
+            let g:pymode_indent = 1
+            let g:pymode_motion = 1
         endif
     " }
 
