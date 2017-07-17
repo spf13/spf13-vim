@@ -246,8 +246,6 @@
         " move to the next position to the last letter of line
         nnoremap <c-\> <End><Right>
         inoremap <c-\> <End>
-        nnoremap <c-]> 0eb
-        inoremap <c-]> <ESC>0ebi
         " buffer
         nnoremap <leader>bn :bn<CR>
         nnoremap <leader>bp :bp<CR>
@@ -792,21 +790,21 @@
     " }
 
     " PyMode {
-        " Disable if python support not present
-        if !has('python') && !has('python3')
-            let g:pymode = 0
-        endif
 
         if isdirectory(expand("~/.vim/bundle/python-mode"))
-            let g:pymode_lint_checkers = ['pyflakes']
-            let g:pymode_lint_cwindow = 0
-            let g:pymode_lint_message = 0
             let g:pymode_lint = 1
+            let g:pymode_lint_on_write = 1
+            let g:pymode_lint_checkers = ['pyflakes','pep8']
+            let g:pymode_lint_ignore = "E2,E3"
+            let g:pymode_lint_cwindow = 1
+            let g:pymode_lint_message = 0
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
             let g:pymode_rope = 0
-            let g:pymode_indent = 1
-            let g:pymode_motion = 1
+        endif
+        " Disable if python support not present
+        if !has('python') && !has('python3')
+            let g:pymode = 0
         endif
     " }
 
