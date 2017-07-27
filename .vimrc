@@ -795,7 +795,7 @@
             let g:pymode_lint = 1
             let g:pymode_lint_on_write = 1
             let g:pymode_lint_checkers = ['pyflakes','pep8']
-            let g:pymode_lint_ignore = "E2,E3"
+            let g:pymode_lint_ignore = "E2,E3,E501"
             let g:pymode_lint_cwindow = 1
             let g:pymode_lint_message = 0
             let g:pymode_trim_whitespaces = 0
