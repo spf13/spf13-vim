@@ -1,60 +1,49 @@
-" Modeline and Notes 
+" This is leoatchina's vim config forked from https://github.com/spf13/spf13-vim
+" Sincerely thank him for his great job, and I have made some change according to own requires.
+" These ones whole use this config can also make changes,
+" For my pool English , I sometimes type in Chines comments
+"
 "                    __ _ _____              _
 "         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
 "        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
 "        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
 "        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
 "            |_|
-"
-"   This is the personal .vimrc.bundles file of Steve Francia.
-"   While much of it is beneficial for general use, I would
-"   recommend picking out the parts you want and understand.
-"
-"   This file imports the various plugins of spf13. If you
-"   wish to alter which groups are imported, see vimrc.before.
-"   If you wish to add or remove individual bundles, create
-"   ~/.vimrc.bundles.local and `Bundle` or `UnBundle` as needed
-"   from there.
-"
-"   You can find me at http://spf13.com
-" 
+" You can find spf13's gread config  at http://spf13.com
 
 " Environment 
     " Basics 
-        set nocompatible        " Must be first line
-        set background=dark     " Assume a dark background
-    " 
+    set nocompatible        " Must be first line
+    set background=dark     " Assume a dark background
 
     " Windows Compatible 
-        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
-        if has('win32') || has('win64')
-          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+    " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+    " across (heterogeneous) systems easier.
+    if has('win32') || has('win64')
+      set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 
-          " Be nice and check for multi_byte even if the config requires
-          " multi_byte support most of the time
-          if has("multi_byte")
-            " Windows cmd.exe still uses cp850. If Windows ever moved to
-            " Powershell as the primary terminal, this would be utf-8
-            set termencoding=cp850
-            " Let Vim use utf-8 internally, because many scripts require this
-            set encoding=utf-8
-            setglobal fileencoding=utf-8
-            " Windows has traditionally used cp1252, so it's probably wise to
-            " fallback into cp1252 instead of eg. iso-8859-15.
-            " Newer Windows files might contain utf-8 or utf-16 LE so we might
-            " want to try them first.
-            set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
-          endif
-        endif
-    " 
+      " Be nice and check for multi_byte even if the config requires
+      " multi_byte support most of the time
+      if has("multi_byte")
+        " Windows cmd.exe still uses cp850. If Windows ever moved to
+        " Powershell as the primary terminal, this would be utf-8
+        set termencoding=cp850
+        " Let Vim use utf-8 internally, because many scripts require this
+        set encoding=utf-8
+        setglobal fileencoding=utf-8
+        " Windows has traditionally used cp1252, so it's probably wise to
+        " fallback into cp1252 instead of eg. iso-8859-15.
+        " Newer Windows files might contain utf-8 or utf-16 LE so we might
+        " want to try them first.
+        set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
+      endif
+    endif
 
     " Setup Bundle Support 
-        " The next three lines ensure that the ~/.vim/bundle/ system works
-        filetype off
-        set rtp+=~/.vim/bundle/vundle
-        call vundle#rc()
-    " 
+    " The next three lines ensure that the ~/.vim/bundle/ system works
+    filetype off
+    set rtp+=~/.vim/bundle/vundle
+    call vundle#rc()
 
     " Add an UnBundle command 
     function! UnBundle(arg, ...)
@@ -63,25 +52,20 @@
     endfunction
     com! -nargs=+         UnBundle
     \ call UnBundle(<args>)
-    " 
-" 
 
 " Bundles 
-    " Deps 
-        Bundle 'gmarik/vundle'
-        Bundle 'MarcWeber/vim-addon-mw-utils'
-        Bundle 'tomtom/tlib_vim'
-        if executable('ag')
-            Bundle 'rking/ag.vim'
-            let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-        elseif executable('ack-grep')
-            let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-            Bundle 'mileszs/ack.vim'
-        elseif executable('ack')
-            Bundle 'mileszs/ack.vim'
-        endif
-    " 
-
+    Bundle 'gmarik/vundle'
+    Bundle 'MarcWeber/vim-addon-mw-utils'
+    Bundle 'tomtom/tlib_vim'
+    if executable('ag')
+        Bundle 'rking/ag.vim'
+        let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+    elseif executable('ack-grep')
+        let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+        Bundle 'mileszs/ack.vim'
+    elseif executable('ack')
+        Bundle 'mileszs/ack.vim'
+    endif
     " In your .vimrc.before.local file
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
@@ -128,9 +112,6 @@
                 Bundle 'vim-scripts/restore_view.vim'
             endif
         endif
-    " 
-
-
     " General Programming 
         if count(g:spf13_bundle_groups, 'programming')
             Bundle 'mattn/webapi-vim'
@@ -144,7 +125,6 @@
                 Bundle 'majutsushi/tagbar'
             endif
         endif
-    " 
 
     " Snippets & AutoComplete 
         if count(g:spf13_bundle_groups, 'snipmate')
@@ -169,13 +149,11 @@
             Bundle 'Shougo/neosnippet-snippets'
             Bundle 'honza/vim-snippets'
         endif
-    " 
 
     " PHP 
         if count(g:spf13_bundle_groups, 'php')
             Bundle 'arnaud-lb/vim-php-namespace'
         endif
-    " 
 
     " Python 
         if count(g:spf13_bundle_groups, 'python')
@@ -183,21 +161,18 @@
             Bundle 'python-mode/python-mode'
             Bundle 'yssource/python.vim'
         endif
-    " 
 
     " R
         if count(g:spf13_bundle_groups, 'r')
             Bundle 'vim-pandoc/vim-rmarkdown'
             Bundle 'jalvesaq/Nvim-R'
         endif
-    " 
 
     " Perl
         if count(g:spf13_bundle_groups, 'perl')
             Bundle 'vim-perl/vim-perl'
             Bundle 'perl-support.vim'
         endif
-    " 
     " Javascript 
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'elzr/vim-json'
@@ -206,7 +181,6 @@
             Bundle 'briancollins/vim-jst'
             Bundle 'kchmck/vim-coffee-script'
         endif
-    " 
 
     " Scala 
         if count(g:spf13_bundle_groups, 'scala')
@@ -214,7 +188,6 @@
             Bundle 'derekwyatt/vim-sbt'
             Bundle 'xptemplate'
         endif
-    " 
 
     " Haskell 
         if count(g:spf13_bundle_groups, 'haskell')
@@ -229,7 +202,6 @@
             Bundle 'adinapoli/cumino'
             Bundle 'bitc/vim-hdevtools'
         endif
-    " 
 
     " HTML 
         if count(g:spf13_bundle_groups, 'html')
@@ -239,7 +211,6 @@
             Bundle 'tpope/vim-haml'
             Bundle 'mattn/emmet-vim'
         endif
-    " 
 
     " Ruby 
         if count(g:spf13_bundle_groups, 'ruby')
@@ -248,20 +219,17 @@
             "let g:rubycomplete_classes_in_global = 1
             "let g:rubycomplete_rails = 1
         endif
-    " 
 
     " Puppet 
         if count(g:spf13_bundle_groups, 'puppet')
             Bundle 'rodjek/vim-puppet'
         endif
-    " 
 
     " Go Lang 
         if count(g:spf13_bundle_groups, 'go')
             "Bundle 'Blackrush/vim-gocode'
             Bundle 'fatih/vim-go'
         endif
-    " 
 
     " Elixir 
         if count(g:spf13_bundle_groups, 'elixir')
@@ -269,7 +237,6 @@
             Bundle 'carlosgaldino/elixir-snippets'
             Bundle 'mattreduce/vim-mix'
         endif
-    " 
 
     " Misc 
         if count(g:spf13_bundle_groups, 'misc')
@@ -281,19 +248,15 @@
             Bundle 'quentindecock/vim-cucumber-align-pipes'
             Bundle 'saltstack/salt-vim'
         endif
-    " 
 
     endif
-
 
 " Use fork bundles config if available 
     if filereadable(expand("~/.vimrc.bundles.fork"))
         source ~/.vimrc.bundles.fork
     endif
-" 
 
 " Use local bundles config if available 
     if filereadable(expand("~/.vimrc.bundles.local"))
         source ~/.vimrc.bundles.local
     endif
-" 
