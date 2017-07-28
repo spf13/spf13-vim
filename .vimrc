@@ -253,6 +253,7 @@
     " Workaround broken colour highlighting in Haskell
     autocmd FileType haskell,rust setlocal nospell
     " Formatting
+    set number                      " show line number"
     set autoindent                  " Indent at the same level of the previous line
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
     set splitright                  " Puts new vsplit windows to the right of the current
