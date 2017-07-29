@@ -1,4 +1,6 @@
-# spf13-vim : Steve Francia's Vim Distribution
+# leoatchina的vim配置文件,从spf13的配置fork得来
+
+This is leoatchina's vim config forked from [spf13-vim : steve francia's vim distribution](https://github.com/spf13/spf13-vim)
 
                     __ _ _____              _
          ___ _ __  / _/ |___ /      __   __(_)_ __ ___
@@ -7,155 +9,79 @@
         |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
             |_|
 
+**原作者的介绍:**
+```bash
 spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and [MacVim].
 
 It is a good starting point for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
 
 The distribution is completely customisable using a `~/.vimrc.local`, `~/.vimrc.bundles.local`, and `~/.vimrc.before.local` Vim RC files.
+```
 
 ![spf13-vim image][spf13-vim-img]
 
+```bash
 Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses the [Vundle] plugin management system to have a well organized vim directory (Similar to mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
 
 Great care has been taken to ensure that each plugin plays nicely with others, and optional configuration has been provided for what we believe is the most efficient use.
 
 Lastly (and perhaps, most importantly) It is completely cross platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim] or Gvim additional features are enabled. So regardless of your environment just clone and run.
-
-# Installation
-## Requirements
-To make all the plugins work, specifically [neocomplete](https://github.com/Shougo/neocomplete.vim), you need [vim with lua](https://github.com/Shougo/neocomplete.vim#requirements).
-
-## Linux, \*nix, Mac OSX Installation
-
-The easiest way to install spf13-vim is to use our [automatic installer](https://j.mp/spf13-vim3) by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration. If you are upgrading from a prior version (before 3.0) this is also the recommended installation.
-
-*Requires Git 1.7+ and Vim 7.3+*
-
-```bash
-
-    curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 ```
 
-If you have a bash-compatible shell you can run the script directly:
-```bash
 
-    sh <(curl https://j.mp/spf13-vim3 -L)
+# 安装 
+## 要求 
+如果要安装[neocomplete](https://github.com/Shougo/neocomplete.vim), 需要[vim with lua](https://github.com/Shougo/neocomplete.vim#requirements).
+*需要 Git 1.7+ 和 Vim 7.3+，部分插件需要Vim8.0*
+
+## Linux, \*nix, Mac OSX 下的安装
+```
+    git clone https://github.com/leoatchina/spf13-vim-leoatchina.git
+    cd spf13-vim-leoatchina
+    bash bootstrap.sh
 ```
 
-## Installing on Windows
-
-On Windows and \*nix [Git] and [Curl] are required. Also, if you haven't done so already, you'll need to install [Vim].
-The quickest option to install all three dependencies ([Git], [Curl], [Vim] and [spf13-vim]) is via [Chocolatey] NuGet. After installing [Chocolatey], execute the following commands on the _command prompt_:
-
-    C:\> choco install spf13-vim
-
-_Note: The [spf13-vim package] will install Vim also!_
-
-If you want to install [msysgit], [Curl] and [spf13-vim] individually, follow the directions below.
-
-### Installing dependencies
-
-#### Install [Vim]
-
-After the installation of Vim you must add a new directory to your environment variables path to make it work with the script installation of spf13.
-
-Open Vim and write the following command, it will show the installed directory:
-
-    :echo $VIMRUNTIME
-    C:\Program Files (X86)\Vim\vim74
-
-Then you need to add it to your environment variable path. After that try execute `vim` within command prompt (press Win-R, type `cmd`, press Enter) and you’ll see the default vim page.
-
-#### Install [msysgit]
-
-After installation try running `git --version` within _command prompt_ (press Win-R,  type `cmd`, press Enter) to make sure all good:
-
-    C:\> git --version
-    git version 1.7.4.msysgit.0
-
-#### Setup [Curl]
-_Instructions blatently copied from vundle readme_
-Installing Curl on Windows is easy as [Curl] is bundled with [msysgit]!
-But before it can be used with [Vundle] it's required make `curl` run in _command prompt_.
-The easiest way is to create `curl.cmd` with [this content](https://gist.github.com/912993)
-
-    @rem Do not use "echo off" to not affect any child calls.
-    @setlocal
-
-    @rem Get the abolute path to the parent directory, which is assumed to be the
-    @rem Git installation root.
-    @for /F "delims=" %%I in ("%~dp0..") do @set git_install_root=%%~fI
-    @set PATH=%git_install_root%\bin;%git_install_root%\mingw\bin;%PATH%
-
-    @if not exist "%HOME%" @set HOME=%HOMEDRIVE%%HOMEPATH%
-    @if not exist "%HOME%" @set HOME=%USERPROFILE%
-
-    @curl.exe %*
-
-
-And copy it to `C:\Program Files\Git\cmd\curl.cmd`, assuming [msysgit] was installed to `c:\Program Files\Git`
-
-to verify all good, run:
-
-    C:\> curl --version
-    curl 7.21.1 (i686-pc-mingw32) libcurl/7.21.1 OpenSSL/0.9.8k zlib/1.2.3
-    Protocols: dict file ftp ftps http https imap imaps ldap ldaps pop3 pop3s rtsp smtp smtps telnet tftp
-    Features: Largefile NTLM SSL SSPI libz
-
-
-#### Installing spf13-vim on Windows
-
-The easiest way is to download and run the spf13-vim-windows-install.cmd file. Remember to run this file in **Administrator Mode** if you want the symlinks to be created successfully.
-
-## Updating to the latest version
-The simpliest (and safest) way to update is to simply rerun the installer. It will completely and non destructively upgrade to the latest version.
-
-```bash
-
-    curl https://j.mp/spf13-vim3 -L -o - | sh
-
+## windows下的安装 
+```
+    git clone https://github.com/leoatchina/spf13-vim-leoatchina.git
+    cd spf13-vim-leoatchina
+    双击install.cmd    
 ```
 
-Alternatively you can manually perform the following steps. If anything has changed with the structure of the configuration you will need to create the appropriate symlinks.
 
+## 升级到最新版本
 ```bash
-    cd $HOME/to/spf13-vim/
+    cd spf13-vim-leoatchina 
     git pull
     vim +BundleInstall! +BundleClean +q
 ```
 
-### Fork me on GitHub
 
-I'm always happy to take pull requests from others. A good number of people are already [contributors] to [spf13-vim]. Go ahead and fork me.
-
-# A highly optimized .vimrc config file
+# 高度优化的.vimrc配置文件
 
 ![spf13-vimrc image][spf13-vimrc-img]
 
-The .vimrc file is suited to programming. It is extremely well organized and folds in sections.
+spf13对他作品的介绍是
+> The .vimrc file is suited to programming. 
+It is extremely well organized and folds in sections.
 Each section is labeled and each option is commented.
 
-It fixes many of the inconveniences of vanilla vim including
+我在他的基础上，做了一些*微小*的工作
 
- * A single config can be used across Windows, Mac and linux
- * Eliminates swap and backup files from littering directories, preferring to store in a central location.
- * Fixes common typos like :W, :Q, etc
- * Setup a solid set of settings for Formatting (change to meet your needs)
- * Setup the interface to take advantage of vim's features including
-   * omnicomplete
-   * line numbers
-   * syntax highlighting
-   * A better ruler & status line
-   * & more
- * Configuring included plugins
+1. 去除了一些比除冗余的插件，如[wildfire](wildfire)、[fugitive](fugitive)，并加入了自己喜欢的插件
+2. 修改了安装代码，变成直接从clone下的目录软链接到用户目录下，不再支持XP
+3. 按自己习惯修改了快捷键
+4. 去除了原来定义的一些函数
+5. 重点修改了代码补全插件[YouCompleteMe]、[Neocomplete]的配置和快捷键
+6. 去除了fork配置功能
 
-## Customization
+## 定制个人的配置
 
 Create `~/.vimrc.local` and `~/.gvimrc.local` for any local
 customizations.
 
 For example, to override the default color schemes:
-
+如，代替原有的代码高亮
 ```bash
     echo colorscheme ir_black  >> ~/.vimrc.local
 ```
@@ -172,7 +98,7 @@ For example, to prevent autocd into a file directory:
 For a list of available spf13-vim specific customization options, look at the `~/.vimrc.before` file.
 
 
-### Fork Customization
+V### Fork Customization
 
 There is an additional tier of customization available to those who want to maintain a
 fork of spf13-vim specialized for a particular group. These users can create `.vimrc.fork`
@@ -204,18 +130,6 @@ file to pull down your fork.
 
 For an example of a fork of spf13-vim that provides customization in this manner see [taxilian's fork](https://github.com/taxilian/spf13-vim).
 
-### Easily Editing Your Configuration
-
-`<Leader>ev` opens a new tab containing the .vimrc configuration files listed above. This makes it easier to get an overview of your
-configuration and make customizations.
-
-`<Leader>sv` sources the .vimrc file, instantly applying your customizations to the currently running vim instance.
-
-These two mappings can themselves be customized by setting the following in .vimrc.before.local:
-```bash
-let g:spf13_edit_config_mapping='<Leader>ev'
-let g:spf13_apply_config_mapping='<Leader>sv'
-```
 
 # Plugins
 
@@ -360,32 +274,6 @@ AutoClose does what you expect. It's simple, if you open a bracket, paren, brace
 etc, it automatically closes it. It handles curlys correctly and doesn't get in the
 way of double curlies for things like jinja and twig.
 
-## [Fugitive]
-
-Fugitive adds pervasive git support to git directories in vim. For more
-information, use `:help fugitive`
-
-Use `:Gstatus` to view `git status` and type `-` on any file to stage or
-unstage it. Type `p` on a file to enter `git add -p` and stage specific
-hunks in the file.
-
-Use `:Gdiff` on an open file to see what changes have been made to that
-file
-
-**QuickStart** `<leader>gs` to bring up git status
-
-**Customizations**:
-
- * `<leader>gs` :Gstatus<CR>
- * `<leader>gd` :Gdiff<CR>
- * `<leader>gc` :Gcommit<CR>
- * `<leader>gb` :Gblame<CR>
- * `<leader>gl` :Glog<CR>
- * `<leader>gp` :Git push<CR>
- * `<leader>gw` :Gwrite<CR>
- * :Git ___ will pass anything along to git.
-
-![fugitive image][fugitive-img]
 
 ## [PIV]
 
@@ -521,7 +409,6 @@ Here's some tips if you've never used VIM before:
 
 [![Analytics](https://ga-beacon.appspot.com/UA-7131036-5/spf13-vim/readme)](https://github.com/igrigorik/ga-beacon)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/spf13/spf13-vim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
 
 [Git]:http://git-scm.com
 [Curl]:http://curl.haxx.se

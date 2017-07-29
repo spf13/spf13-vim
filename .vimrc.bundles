@@ -118,6 +118,9 @@
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
             Bundle 'godlygeek/tabular'
+            Bundle 'plasticboy/vim-markdown'
+            Bundle 'iamcco/mathjax-support-for-mkdp'
+            Bundle 'iamcco/markdown-preview.vim'
             if v:version > 799
                 Bundle 'skywind3000/asyncrun.vim'
             endif
@@ -241,7 +244,6 @@
     " Misc 
         if count(g:spf13_bundle_groups, 'misc')
             Bundle 'rust-lang/rust.vim'
-            Bundle 'tpope/vim-markdown'
             Bundle 'spf13/vim-preview'
             Bundle 'tpope/vim-cucumber'
             Bundle 'cespare/vim-toml'
