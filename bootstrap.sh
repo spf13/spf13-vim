@@ -20,7 +20,7 @@ app_name='chanson-vim'
 [ -z "$REPO_URI" ] && REPO_URI='https://github.com/shenchsh/chanson-vim.git'
 [ -z "$REPO_BRANCH" ] && REPO_BRANCH='3.0'
 debug_mode='0'
-fork_maintainer='0'
+fork_maintainer='1'
 [ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
 
 ############################  BASIC SETUP TOOLS
