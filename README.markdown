@@ -32,7 +32,7 @@ The easiest way to install spf13-vim is to use our [automatic installer](https:/
 *Requires Git 1.7+ and Vim 7.3+*
 
 ```bash
-    curl https://bit.ly/2v7835M -L > spf13-vim.sh && sh spf13-vim.sh
+    curl https://bit.ly/2v7835M -L > chanson-vim.sh && sh chanson-vim.sh
 ```
 
 If you have a bash-compatible shell you can run the script directly:
