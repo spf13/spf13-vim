@@ -1,3 +1,4 @@
 if count(g:spf13_bundle_groups, 'programming')
+    UnBundle 'scrooloose/syntastic'
     Bundle 'w0rp/ale'
 endif
