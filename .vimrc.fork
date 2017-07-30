@@ -2,6 +2,14 @@ if has("gui_running")
     if exists("g:airline_powerline_fonts") && g:airline_powerline_fonts
         set guifont=Meslo\ LG\ M\ for\ Powerline
     endif
+
+    if has('gui_macvim')
+        set transparency=3          " Make the window slightly transparent
+        set guioptions-=r
+        set guioptions-=R
+        set guioptions-=l
+        set guioptions-=L
+    endif
 endif
 
 " Enable snipMate compatibility feature.
