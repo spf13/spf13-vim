@@ -1,0 +1,5 @@
+if has("gui_running")
+    if exists("g:airline_powerline_fonts") && g:airline_powerline_fonts
+        set guifont=Meslo\ LG\ M\ for\ Powerline
+    endif
+endif
