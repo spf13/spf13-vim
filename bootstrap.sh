@@ -15,9 +15,9 @@
 #   limitations under the License.
 
 ############################  SETUP PARAMETERS
-app_name='chanson-vim'
-[ -z "$APP_PATH" ] && APP_PATH="$HOME/.chanson-vim"
-[ -z "$REPO_URI" ] && REPO_URI='https://github.com/shenchsh/chanson-vim.git'
+app_name='vim-conf'
+[ -z "$APP_PATH" ] && APP_PATH="$HOME/.vim-conf"
+[ -z "$REPO_URI" ] && REPO_URI='https://github.com/shenchsh/vim-conf.git'
 [ -z "$REPO_BRANCH" ] && REPO_BRANCH='3.0'
 debug_mode='0'
 fork_maintainer='1'
