@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-app_dir="$HOME/.chanson-vim"
+app_dir="$HOME/.vim-conf"
 
 warn() {
     echo "$1" >&2
