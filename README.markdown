@@ -98,7 +98,7 @@ For example, to prevent autocd into a file directory:
 For a list of available spf13-vim specific customization options, look at the `~/.vimrc.before` file.
 
 
-V### Fork Customization
+### Fork Customization
 
 There is an additional tier of customization available to those who want to maintain a
 fork of spf13-vim specialized for a particular group. These users can create `.vimrc.fork`

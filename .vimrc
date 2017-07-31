@@ -22,7 +22,8 @@
     endfunction
 " Basics
     set nocompatible        " Must be first line
-    set mousehide
+    set mouse=a                 " Automatically enable mouse usage
+    set mousehide               " Hide the mouse cursor while typing    set mousehide
     scriptencoding utf-8
     if !WINDOWS()
         set shell=/bin/sh
@@ -262,6 +263,7 @@
     " Remove trailing whitespaces and ^M chars
     autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
+    autocmd BufRead,BufNewFile *.md,*.markdown set filetype=markdown
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
     " preceding line best in a plugin but here for now.
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
@@ -372,6 +374,9 @@
     nnoremap <Leader>J <C-W>J
     " 定义快捷键在结对符之间跳转
     nmap <Leader>m %
+    " Visual shifting (does not exit Visual mode)
+    vnoremap < <gv
+    vnoremap > >gv
     " Ctrl G for insert commneter
     if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
         imap <C-g> <Plug>NERDCommenterInsert
@@ -507,8 +512,10 @@
         endif
     " VOom
         if isdirectory(expand("~/.vim/bundle/VOom"))
-            let g:voom_ft_modes = {'markdown': 'markdown', 'c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
-            nmap <silent><leader>vo :VoomToggle<cr>
+            let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
+            nmap <silent><F8> :VoomToggle<cr>
+            imap <silent><F8> :VoomToggle<cr>
+            nmap <leader>vo :Voom<Space>
         endif
     " PIV
         if isdirectory(expand("~/.vim/bundle/PIV"))
@@ -525,10 +532,8 @@
         endif
     " markdown
         if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
-            nmap <silent> <F7> <Plug>MarkdownPreview        " for normal mode
-            imap <silent> <F7> <Plug>MarkdownPreview        " for insert mode
-            nmap <silent> <F8> <Plug>StopMarkdownPreview    " for normal mode
-            imap <silent> <F8> <Plug>StopMarkdownPreview    " for insert mode
+            nmap <silent><F7> <Plug>MarkdownPreview        " for normal mode
+            imap <silent><F7> <Plug>MarkdownPreview        " for insert mode
             if OSX()
                 let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
             else
@@ -724,9 +729,8 @@
             if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
                 " CtrlP extensions
                 let g:ctrlp_extensions = ['funky']
-                "funky
+                " funky
                 nnoremap <Leader>fu :CtrlPFunky<Cr>
-                "nmap <silent><F7> :CtrlPFunky<Cr>
             endif
         endif
     " Rainbow
@@ -1093,47 +1097,9 @@
         1
     endfunction
     command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
-    " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
-    function! s:IsSpf13Fork()
-        let s:is_fork = 0
-        let s:fork_files = ["~/.vimrc.fork", "~/.vimrc.before.fork", "~/.vimrc.bundles.fork"]
-        for fork_file in s:fork_files
-            if filereadable(expand(fork_file, ":p"))
-                let s:is_fork = 1
-                break
-            endif
-        endfor
-        return s:is_fork
-    endfunction
-
     function! s:ExpandFilenameAndExecute(command, file)
         execute a:command . " " . expand(a:file, ":p")
     endfunction
-
-    function! s:EditSpf13Config()
-        call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
-        call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.before")
-        call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
-        execute bufwinnr(".vimrc") . "wincmd w"
-        call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.local")
-        wincmd l
-        call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.before.local")
-        wincmd l
-        call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.bundles.local")
-        if <SID>IsSpf13Fork()
-            execute bufwinnr(".vimrc") . "wincmd w"
-            call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.fork")
-            wincmd l
-            call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.before.fork")
-            wincmd l
-            call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.bundles.fork")
-        endif
-        execute bufwinnr(".vimrc.local") . "wincmd w"
-    endfunction
-" Use fork vimrc if available
-    if filereadable(expand("~/.vimrc.fork"))
-        source ~/.vimrc.fork
-    endif
 " Use local vimrc if available
     if filereadable(expand("~/.vimrc.local"))
         source ~/.vimrc.local
