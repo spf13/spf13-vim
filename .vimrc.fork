@@ -12,6 +12,8 @@ if has("gui_running")
     endif
 endif
 
+set pastetoggle=<F2>
+
 " Enable snipMate compatibility feature.
 "let g:neosnippet#enable_snipmate_compatibility = 1
 
