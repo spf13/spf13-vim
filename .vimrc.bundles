@@ -79,8 +79,6 @@
     " General 
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'easymotion/vim-easymotion'
-            Bundle 'vim-pandoc/vim-pandoc'
-            Bundle 'vim-pandoc/vim-pandoc-syntax'
             Bundle 'vim-voom/VOoM'
             Bundle 'scrooloose/nerdtree'
             Bundle 'Xuyuanp/nerdtree-git-plugin'
@@ -117,8 +115,9 @@
             Bundle 'mattn/webapi-vim'
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
+            Bundle 'tpope/vim-fugitive'
             Bundle 'godlygeek/tabular'
-            Bundle 'plasticboy/vim-markdown'
+            Bundle 'tamlok/vim-markdown'
             Bundle 'iamcco/mathjax-support-for-mkdp'
             Bundle 'iamcco/markdown-preview.vim'
             if v:version > 799

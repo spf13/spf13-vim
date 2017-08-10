@@ -515,12 +515,16 @@
             let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
             nmap <silent><F8> :VoomToggle<cr>
             imap <silent><F8> :VoomToggle<cr>
-            nmap <leader>vo :Voom<Space>
+            nmap <leader><F8> :Voom<Space>
         endif
     " PIV
         if isdirectory(expand("~/.vim/bundle/PIV"))
             let g:DisableAutoPHPFolding = 0
             let g:PIVAutoClose = 0
+        endif
+    " fugitive 
+        if isdirectory(expand("~/.vim/bundle/vim-fugitive"))
+            nmap <Leader>gi :Git<Space>
         endif
     " AsyncRun
         if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
@@ -532,8 +536,10 @@
         endif
     " markdown
         if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
-            nmap <silent><F7> <Plug>MarkdownPreview        " for normal mode
-            imap <silent><F7> <Plug>MarkdownPreview        " for insert mode
+            nmap <silent><F7> <Plug>MarkdownPreview             " for normal mode
+            nmap <silent><F7> <Plug>MarkdownPreview             " for normal mode
+            imap <silent><S-F7> <Plug>MarkdownPreviewStop       " for insert mode
+            imap <silent><S-F7> <Plug>MarkdownPreviewStop       " for insert mode
             if OSX()
                 let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
             else

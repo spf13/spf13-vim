@@ -1,53 +1,26 @@
-# leoatchina的vim配置文件,从spf13的配置fork得来
-
+# leoatchina的vim配置文件,从spf13的配置fork而来
 This is leoatchina's vim config forked from [spf13-vim : steve francia's vim distribution](https://github.com/spf13/spf13-vim)
-
-                    __ _ _____              _
-         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
-        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
-        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
-        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
-            |_|
-
-**原作者的介绍:**
-```bash
-spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and [MacVim].
-
-It is a good starting point for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
-
-The distribution is completely customisable using a `~/.vimrc.local`, `~/.vimrc.bundles.local`, and `~/.vimrc.before.local` Vim RC files.
-```
-
-![spf13-vim image][spf13-vim-img]
-
-```bash
-Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses the [Vundle] plugin management system to have a well organized vim directory (Similar to mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
-
-Great care has been taken to ensure that each plugin plays nicely with others, and optional configuration has been provided for what we believe is the most efficient use.
-
-Lastly (and perhaps, most importantly) It is completely cross platform. It works well on Windows, Linux and OSX without any modifications or additional configurations. If you are using [MacVim] or Gvim additional features are enabled. So regardless of your environment just clone and run.
-```
-
+Thanks him for great job.I changed lots of settings and plugins to suit my needs.
 
 # 安装 
 ## 要求 
 如果要安装[neocomplete](https://github.com/Shougo/neocomplete.vim), 需要[vim with lua](https://github.com/Shougo/neocomplete.vim#requirements).
-*需要 Git 1.7+ 和 Vim 7.3+，部分插件需要Vim8.0*
+*安装本config 需要 Git 1.7+ 和 Vim 7.3+，部分插件需要Vim8.0*
 
 ## Linux, \*nix, Mac OSX 下的安装
-```
+
+```bash
     git clone https://github.com/leoatchina/spf13-vim-leoatchina.git
     cd spf13-vim-leoatchina
     bash bootstrap.sh
 ```
 
 ## windows下的安装 
-```
+```bash
     git clone https://github.com/leoatchina/spf13-vim-leoatchina.git
     cd spf13-vim-leoatchina
-    双击install.cmd    
+    双击install.cmd 
 ```
-
 
 ## 升级到最新版本
 ```bash
@@ -56,88 +29,65 @@ Lastly (and perhaps, most importantly) It is completely cross platform. It works
     vim +BundleInstall! +BundleClean +q
 ```
 
-
 # 高度优化的.vimrc配置文件
-
 ![spf13-vimrc image][spf13-vimrc-img]
-
 spf13对他作品的介绍是
 > The .vimrc file is suited to programming. 
 It is extremely well organized and folds in sections.
 Each section is labeled and each option is commented.
 
 我在他的基础上，做了一些*微小*的工作
-
-1. 去除了一些比除冗余的插件，如[wildfire](wildfire)、[fugitive](fugitive)，并加入了自己喜欢的插件
+1. 去除了一些比较冗余的插件，如[wildfire](wildfire)，并加入了自己喜欢的插件
 2. 修改了安装代码，变成直接从clone下的目录软链接到用户目录下，不再支持XP
 3. 按自己习惯修改了快捷键
 4. 去除了原来定义的一些函数
-5. 重点修改了代码补全插件[YouCompleteMe]、[Neocomplete]的配置和快捷键
-6. 去除了fork配置功能
+5. 重点修改了代码补全插件[YouCompleteMe](YoucompleteME)、[Neocomplete](Neocomplet)的配置和快捷键
+6. 去除了fork功能，仅保留before功能
+7. 默认不进行代码补全，要使用者在 `~/.vimrc.before.local`里进行配置
 
-## 定制个人的配置
+## 快捷键
+* `<leader>`键为空格键
+* `F1`: 为`:h `，方便启动帮助
+* `F2`: 打开关闭代码折叠
+* `F3`: 打开关闭换行
+* `F4`: 打开关闭搜索高亮
+* `F5`: 运行脚本(python、perl等);`S+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun异步运行脚本
+* `F6`: 打开关闭quickfix窗口(在用AsyncRun时用) # 这快捷键可能以后取消
+* `F7`: 打开markdown-preview; `S-F7`:关闭markdown-preview
+* `F8`: Voom显示关闭大纲
+* `F11`: 全屏
+* `F12`: 切换paste模式
 
-Create `~/.vimrc.local` and `~/.gvimrc.local` for any local
-customizations.
 
-For example, to override the default color schemes:
+## 定制个人配置
+
+
+建立 `~/.vimrc.local` 或者`~/.gvimrc.local` 
+在里面写入自己的sglf
 如，代替原有的代码高亮
 ```bash
     echo colorscheme ir_black  >> ~/.vimrc.local
 ```
 
-### Before File
+### Before文件
 
-Create a `~/.vimrc.before.local` file to define any customizations
-that get loaded *before* the spf13-vim `.vimrc`.
+[spf13](spf13)设计了一系列巧妙的`配置变量`，在`.vimrc.before.local`里写入配置变量后，可打开/关闭某些配置
 
-For example, to prevent autocd into a file directory:
+如，关闭自动cd到某个目录
 ```bash
     echo let g:spf13_no_autochdir = 1 >> ~/.vimrc.before.local
 ```
-For a list of available spf13-vim specific customization options, look at the `~/.vimrc.before` file.
+在 `~/.vimrc.before`文件里可以看到详细的说明
 
 
-### Fork Customization
 
-There is an additional tier of customization available to those who want to maintain a
-fork of spf13-vim specialized for a particular group. These users can create `.vimrc.fork`
-and `.vimrc.bundles.fork` files in the root of their fork.  The load order for the configuration is:
+# 插件
 
-1. `.vimrc.before` - spf13-vim before configuration
-2. `.vimrc.before.fork` - fork before configuration
-3. `.vimrc.before.local` - before user configuration
-4. `.vimrc.bundles` - spf13-vim bundle configuration
-5. `.vimrc.bundles.fork` - fork bundle configuration
-6. `.vimrc.bundles.local` - local user bundle configuration
-6. `.vimrc` - spf13-vim vim configuration
-7. `.vimrc.fork` - fork vim configuration
-8. `.vimrc.local` - local user configuration
+可以说，强大的插件系统是spf13的突出优点，通过这些插件，将原版的vim的功能作了极大的丰富。让界面更加美观，操作更加方便。
+## 定制自用的插件 
 
-See `.vimrc.bundles` for specifics on what options can be set to override bundle configuration. See `.vimrc.before` for specifics
-on what options can be overridden. Most vim configuration options should be set in your `.vimrc.fork` file, bundle configuration
-needs to be set in your `.vimrc.bundles.fork` file.
-
-You can specify the default bundles for your fork using `.vimrc.before.fork` file. Here is how to create an example `.vimrc.before.fork` file
-in a fork repo for the default bundles.
-```bash
-    echo let g:spf13_bundle_groups=[\'general\', \'programming\', \'misc\', \'youcompleteme\'] >> .vimrc.before.fork
-```
-Once you have this file in your repo, only the bundles you specified will be installed during the first installation of your fork.
-
-You may also want to update your `README.markdown` file so that the `bootstrap.sh` link points to your repository and your `bootstrap.sh`
-file to pull down your fork.
-
-For an example of a fork of spf13-vim that provides customization in this manner see [taxilian's fork](https://github.com/taxilian/spf13-vim).
-
-
-# Plugins
-
-spf13-vim contains a curated set of popular vim plugins, colors, snippets and syntaxes. Great care has been made to ensure that these plugins play well together and have optimal configuration.
-
-## Adding new plugins
-
-Create `~/.vimrc.bundles.local` for any additional bundles.
+spf13的定制插件配置在`.vimr.bundles`文件里，如果
+建立`~/.vimrc.bundles.local` for any additional bundles.
 
 To add a new bundle, just add one line for each bundle you want to install. The line should start with the word "Bundle" followed by a string of either the vim.org project name or the githubusername/githubprojectname. For example, the github project [spf13/vim-colors](https://github.com/spf13/vim-colors) can be added with the following command
 
@@ -153,7 +103,6 @@ Once new plugins are added, they have to be installed.
 
 ## Removing (disabling) an included plugin
 
-Create `~/.vimrc.local` if it doesn't already exist.
 
 Add the UnBundle command to this line. It takes the same input as the Bundle line, so simply copy the line you want to disable and add 'Un' to the beginning.
 
@@ -223,11 +172,7 @@ For instance, if the cursor was inside `"foo bar"`, you could type
 There's a lot more, check it out at `:help surround`
 
 ## [NERDCommenter]
-
-NERDCommenter allows you to wrangle your code comments, regardless of
-filetype. View `help :NERDCommenter` or checkout my post on [NERDCommenter](http://spf13.com/post/vim-plugins-nerd-commenter).
-
-**QuickStart** Toggle comments using `<Leader>c<space>` in Visual or Normal mode.
+非常好用的注释插件
 
 ## [neocomplete]
 
@@ -451,4 +396,3 @@ Here's some tips if you've never used VIM before:
 [nerdtree-img]:https://i.imgur.com/9xIfu.png
 [phpmanual-img]:https://i.imgur.com/c0GGP.png
 [easymotion-img]:https://i.imgur.com/ZsrVL.png
-[airline-img]:https://i.imgur.com/D4ZYADr.png
