@@ -820,6 +820,8 @@ augroup END
         endfunction
 
         autocmd vimrc VimEnter * nested :call OpenTagbarIfAvailable()
+        " @see http://vim.1045645.n5.nabble.com/Different-working-directories-in-different-tabs-td4441751.html
+        autocmd vimrc TabEnter * if exists("t:wd") | exe "cd" t:wd | endif
 
         " from https://github.com/jszakmeister/markdown2ctags
         " Add support for markdown files in tagbar.
