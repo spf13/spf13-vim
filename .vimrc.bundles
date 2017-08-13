@@ -166,7 +166,7 @@ set nocompatible        " must be first line
             " instead of ack
             Bundle 'rking/ag.vim'
             Bundle 'FuDesign2008/vim-qargs'
-            Bundle 'rargo/vim-tab'
+            Bundle 'FuDesign2008/vim-tab'
 
         endif
 
