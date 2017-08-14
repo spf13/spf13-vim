@@ -70,7 +70,7 @@
         let mapleader=g:spf13_leader
     endif
     if !exists('g:leoatchina_localleader')
-        let maplocalleader = '_'
+        let maplocalleader = '\'
     else
         let maplocalleader=g:spf13_localleader
     endif

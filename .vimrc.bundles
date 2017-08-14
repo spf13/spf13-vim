@@ -164,12 +164,6 @@
             Bundle 'yssource/python.vim'
         endif
 
-    " R
-        if count(g:spf13_bundle_groups, 'r')
-            Bundle 'vim-pandoc/vim-rmarkdown'
-            Bundle 'jalvesaq/Nvim-R'
-        endif
-
     " Perl
         if count(g:spf13_bundle_groups, 'perl')
             Bundle 'vim-perl/vim-perl'
@@ -183,15 +177,14 @@
             Bundle 'briancollins/vim-jst'
             Bundle 'kchmck/vim-coffee-script'
         endif
-
-    " Scala 
+    " Scala
         if count(g:spf13_bundle_groups, 'scala')
             Bundle 'derekwyatt/vim-scala'
             Bundle 'derekwyatt/vim-sbt'
             Bundle 'xptemplate'
         endif
 
-    " Haskell 
+    " Haskell
         if count(g:spf13_bundle_groups, 'haskell')
             Bundle 'travitch/hasksyn'
             Bundle 'dag/vim2hs'
