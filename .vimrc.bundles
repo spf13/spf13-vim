@@ -93,7 +93,10 @@
             Bundle 'tacahiroy/ctrlp-funky'
             Bundle 'mbbill/undotree'
             Bundle 'bling/vim-bufferline'
-            "Bundle 'flazz/vim-colorschemes'
+            Bundle 'godlygeek/tabular'
+            Bundle 'tamlok/vim-markdown'
+            Bundle 'iamcco/mathjax-support-for-mkdp'
+            Bundle 'iamcco/markdown-preview.vim'
             Bundle 'nathanaelkane/vim-indent-guides'
             if !WINDOWS()
                 Bundle 'fcitx.vim'
@@ -110,16 +113,12 @@
                 Bundle 'vim-scripts/restore_view.vim'
             endif
         endif
-    " General Programming 
+    " General Programming
         if count(g:spf13_bundle_groups, 'programming')
             Bundle 'mattn/webapi-vim'
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
             Bundle 'tpope/vim-fugitive'
-            Bundle 'godlygeek/tabular'
-            Bundle 'tamlok/vim-markdown'
-            Bundle 'iamcco/mathjax-support-for-mkdp'
-            Bundle 'iamcco/markdown-preview.vim'
             if v:version > 799
                 Bundle 'skywind3000/asyncrun.vim'
             endif
@@ -128,7 +127,7 @@
             endif
         endif
 
-    " Snippets & AutoComplete 
+    " Snippets & AutoComplete
         if count(g:spf13_bundle_groups, 'snipmate')
             Bundle 'garbas/vim-snipmate'
             Bundle 'honza/vim-snippets'
@@ -172,7 +171,7 @@
     " Javascript 
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'elzr/vim-json'
-            Bundle 'groenewege/vim-less'
+            "Bundle 'groenewege/vim-less'
             Bundle 'pangloss/vim-javascript'
             Bundle 'briancollins/vim-jst'
             Bundle 'kchmck/vim-coffee-script'
