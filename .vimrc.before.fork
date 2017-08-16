@@ -1,0 +1,15 @@
+"Avoid press <F1> by accident on new Macbook with touch bar
+map <F1> <nop>
+imap <F1> <nop>
+
+let g:airline_powerline_fonts = 1
+let g:spf13_no_autochdir = 1
+let g:spf13_no_fastTabs = 1
+let g:spf13_no_keyfixes = 1
+let g:spf13_no_views = 1
+let g:spf13_noninvasive_completion = 1
+let g:spf13_no_conceal = 1
+
+if !exists("g:spf13_bundle_groups")
+    let g:spf13_bundle_groups=['general', 'neocomplete', 'programming', 'python', 'javascript', 'html']
+endif

@@ -1,0 +1,9 @@
+if count(g:spf13_bundle_groups, 'programming')
+    UnBundle 'scrooloose/syntastic'
+    Bundle 'christoomey/vim-tmux-navigator'
+    Bundle 'w0rp/ale'
+endif
+
+if count(g:spf13_bundle_groups, 'neocomplete')
+    Bundle 'shenchsh/swniets'
+endif
