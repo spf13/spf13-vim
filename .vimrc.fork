@@ -13,6 +13,9 @@ if has("gui_running")
 endif
 
 set pastetoggle=<F2>
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 " Enable snipMate compatibility feature.
 "let g:neosnippet#enable_snipmate_compatibility = 1
