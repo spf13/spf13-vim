@@ -512,8 +512,18 @@
         if isdirectory(expand("~/.vim/bundle/VOom"))
             let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
             nmap <F7> :VoomToggle<cr>
-            imap <F7> :VoomToggle<cr>
-            nmap <leader><F7> :Voom<Space>
+            imap <F7> <ESC>:VoomToggle<cr>i
+            nmap <leader><F7> :Voom
+        endif
+    " markdown
+        if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
+            nmap <F8> <Plug>MarkdownPreview
+            imap <F8> <Plug>MarkdownPreview
+            if OSX()
+                let g:mkdp_path_to_chrome = "OPEN -a Google\\ Chrome"
+            else
+                let g:mkdp_path_to_chrome = "google-chrome"
+            endif
         endif
     " PIV
         if isdirectory(expand("~/.vim/bundle/PIV"))
@@ -531,18 +541,6 @@
     " Misc
         if isdirectory(expand("~/.vim/bundle/matchit.zip"))
             let b:match_ignorecase = 1
-        endif
-    " markdown
-        if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
-            nmap <F8> <Plug>MarkdownPreview             " for normal mode
-            nmap <F8> <Plug>MarkdownPreview             " for normal mode
-            imap <S-F8> <Plug>MarkdownPreviewStop       " for insert mode
-            imap <S-F8> <Plug>MarkdownPreviewStop       " for insert mode
-            if OSX()
-                let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
-            else
-                let g:mkdp_path_to_chrome = "google-chrome"
-            endif
         endif
     " Ctags
         set tags=./tags;/,~/.vimtags
