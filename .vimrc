@@ -105,8 +105,8 @@
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     " tab contral
     set tabpagemax=10 " Only show 10 tabs
-    nnoremap <silent>}  : tabnext<CR>
-    nnoremap <silent>{  : tabprevious<CR>
+    nnoremap <silent>{  : tabnext<CR>
+    nnoremap <silent>]  : tabprevious<CR>
     nnoremap <leader>tt : tabnew<CR>
     nnoremap <Leader>tc : tabc<CR>
     nnoremap <Leader>ta : tabs<CR>
@@ -188,24 +188,24 @@
         " asyncrun 是一个异步执行脚本的插件，要vim8.0以上才支持
         if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
             if &filetype == 'c'
-                exec "AsyncRun g++ % -o %<"
-                exec "AsyncRun ./%<"
+                exec ":AsyncRun g++ % -o %<"
+                exec ":AsyncRun ./%<"
             elseif &filetype == 'cpp'
-                exec "AsyncRun g++ % -o %<"
-                exec "AsyncRun ./%<"
+                exec ":AsyncRun g++ % -o %<"
+                exec ":AsyncRun ./%<"
             elseif &filetype == 'java'
-                exec "AsyncRun javac %"
-                exec "AsyncRun java %<"
+                exec ":AsyncRun javac %"
+                exec ":AsyncRun java %<"
             elseif &filetype == 'sh'
-                exec "AsyncRun bash %"
+                exec ":AsyncRun bash %"
             elseif &filetype == 'python'
-                exec "AsyncRun python %"
+                exec ":AsyncRun python %"
             elseif &filetype == 'perl'
-                exec "AsyncRun perl %"
+                exec ":AsyncRun perl %"
             elseif &filetype == 'html'
-                exec "AsyncRun firefox % &"
+                exec ":AsyncRun firefox % &"
             elseif &filetype == 'go'
-                exec "AsyncRun go run %"
+                exec ":AsyncRun go run %"
             endif
         else
             if &filetype == 'c'
@@ -249,8 +249,6 @@
             call QFixOpen()
         endif
     endfun
-    " F6，打开关闭quickfix窗口
-    nnoremap <F6> :call QFixToggle()<CR>
 
     au BufNewFile,BufRead *.py
         \set shiftwidth=4
@@ -513,9 +511,9 @@
     " VOom
         if isdirectory(expand("~/.vim/bundle/VOom"))
             let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
-            nmap <silent><F8> :VoomToggle<cr>
-            imap <silent><F8> :VoomToggle<cr>
-            nmap <leader><F8> :Voom<Space>
+            nmap <silent><F7> :VoomToggle<cr>
+            imap <silent><F7> :VoomToggle<cr>
+            nmap <leader><F7> :Voom<Space>
         endif
     " PIV
         if isdirectory(expand("~/.vim/bundle/PIV"))
@@ -536,10 +534,10 @@
         endif
     " markdown
         if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
-            nmap <silent><F7> <Plug>MarkdownPreview             " for normal mode
-            nmap <silent><F7> <Plug>MarkdownPreview             " for normal mode
-            imap <silent><S-F7> <Plug>MarkdownPreviewStop       " for insert mode
-            imap <silent><S-F7> <Plug>MarkdownPreviewStop       " for insert mode
+            nmap <silent><F8> <Plug>MarkdownPreview             " for normal mode
+            nmap <silent><F8> <Plug>MarkdownPreview             " for normal mode
+            imap <silent><S-F8> <Plug>MarkdownPreviewStop       " for insert mode
+            imap <silent><S-F8> <Plug>MarkdownPreviewStop       " for insert mode
             if OSX()
                 let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
             else
@@ -691,7 +689,6 @@
             let g:pymode_lint = 1
             let g:pymode_lint_on_write = 1
             let g:pymode_lint_checkers = ['pyflakes','pep8']
-            " ignore some warnning
             let g:pymode_lint_ignore = "E2,E3,E501"
             let g:pymode_lint_cwindow = 1
             let g:pymode_lint_message = 0
