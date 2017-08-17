@@ -511,8 +511,8 @@
     " VOom
         if isdirectory(expand("~/.vim/bundle/VOom"))
             let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
-            nmap <silent><F7> :VoomToggle<cr>
-            imap <silent><F7> :VoomToggle<cr>
+            nmap <F7> :VoomToggle<cr>
+            imap <F7> :VoomToggle<cr>
             nmap <leader><F7> :Voom<Space>
         endif
     " PIV
@@ -534,10 +534,10 @@
         endif
     " markdown
         if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
-            nmap <silent><F8> <Plug>MarkdownPreview             " for normal mode
-            nmap <silent><F8> <Plug>MarkdownPreview             " for normal mode
-            imap <silent><S-F8> <Plug>MarkdownPreviewStop       " for insert mode
-            imap <silent><S-F8> <Plug>MarkdownPreviewStop       " for insert mode
+            nmap <F8> <Plug>MarkdownPreview             " for normal mode
+            nmap <F8> <Plug>MarkdownPreview             " for normal mode
+            imap <S-F8> <Plug>MarkdownPreviewStop       " for insert mode
+            imap <S-F8> <Plug>MarkdownPreviewStop       " for insert mode
             if OSX()
                 let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
             else
