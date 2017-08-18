@@ -125,8 +125,11 @@
     nmap <leader>f7 :set foldlevel=7<CR>
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
-    " ctrl-c same as Ctrl-[
-    map <C-C> <C-[>
+" auto close qfixwindows when leave vim
+    aug QFClose
+      au!
+      au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+    aug END
 " 下面是leoatchina的设置 
     " 设置快捷键将选中文本块复制至系统剪贴板
     vnoremap  <leader>y  "+y
@@ -684,15 +687,27 @@
         let g:vim_json_syntax_conceal = 0
     " PyMode
         if isdirectory(expand("~/.vim/bundle/python-mode"))
+            " pymode check
             let g:pymode_lint = 1
-            let g:pymode_lint_on_write = 1
+            let g:pymode_lint_on_write = 0
             let g:pymode_lint_checkers = ['pyflakes','pep8']
             let g:pymode_lint_ignore = "E2,E3,E501"
             let g:pymode_lint_cwindow = 1
             let g:pymode_lint_message = 0
-            let g:pymode_trim_whitespaces = 0
+            nmap <F6> :PymodeLint<CR>
+            imap <F6> <ESC>:PymodeLint<CR>i
+            " motion
+            let g:pymode_motion = 1
+            " no doc for python
+            let g:pymode_doc = 1
+            " run python
+            let g:pymode_run_bind = '<F5>'
+            " breakpoint
+            let g:pymode_breakpoint_bind = '<S-F6>'
+            let g:pymode_trim_whitespaces = 1
             let g:pymode_options = 0
             let g:pymode_rope = 0
+            let g:pymode_rope_completion = 0
         endif
         " Disable if python support not present
         if !has('python') && !has('python3')

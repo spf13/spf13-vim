@@ -115,7 +115,6 @@
         endif
     " General Programming
         if count(g:spf13_bundle_groups, 'programming')
-            Bundle 'mattn/webapi-vim'
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
             Bundle 'tpope/vim-fugitive'
@@ -158,7 +157,6 @@
 
     " Python 
         if count(g:spf13_bundle_groups, 'python')
-            " Pick either python-mode or pyflakes & pydoc
             Bundle 'python-mode/python-mode'
             Bundle 'yssource/python.vim'
         endif
@@ -171,7 +169,6 @@
     " Javascript 
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'elzr/vim-json'
-            "Bundle 'groenewege/vim-less'
             Bundle 'pangloss/vim-javascript'
             Bundle 'briancollins/vim-jst'
             Bundle 'kchmck/vim-coffee-script'
