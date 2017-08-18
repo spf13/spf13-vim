@@ -100,6 +100,13 @@
     " Map <Leader>ff to display all lines with keyword under cursor
     " and ask which one to jump to
     nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+    " move to last or first position of a line
+    imap <C-\> <ESC>$i
+    imap <C-]> <ESC>0wi
+    if isdirectory(expand("~/.vim/bundle/vim-toggle-quickfix"))
+        nmap <F10> <Plug>window:quickfix:toggle
+        imap <F10> <Plug>window:quickfix:toggle
+    endif
     " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
     map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
@@ -233,25 +240,6 @@
             endif
         endif
     endfunc
-
-    let g:qfix = 0
-    func! QFixClose()
-        cclose
-        let g:qfix = 0
-    endfun
-
-    func! QFixOpen()
-        copen 10
-        call feedkeys("\<C-w>\w")
-        let g:qfix = 1
-    endfunc
-    func! QFixToggle()
-        if g:qfix == 1
-            call QFixClose()
-        else
-            call QFixOpen()
-        endif
-    endfun
 
     au BufNewFile,BufRead *.py
         \set shiftwidth=4
@@ -480,7 +468,7 @@
         onoremap $ v:call WrapRelativeMotion("$")<CR>
         onoremap <End> v:call WrapRelativeMotion("$")<CR>
         " Overwrite the Visual+select mode mappings from above
-        " to ensure the correct vis_sel flag is passed to function
+        " to ensuwe the correct vis_sel flag is passed to function
         vnoremap $ :<C-U>call WrapRelativeMotion("$", 1)<CR>
         vnoremap <End> :<C-U>call WrapRelativeMotion("$", 1)<CR>
         vnoremap 0 :<C-U>call WrapRelativeMotion("0", 1)<CR>
@@ -514,14 +502,14 @@
     " VOom
         if isdirectory(expand("~/.vim/bundle/VOom"))
             let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
-            nmap <F7> :VoomToggle<cr>
-            imap <F7> <ESC>:VoomToggle<cr>i
-            nmap <leader><F7> :Voom
+            nmap <F6> :VoomToggle<cr>
+            imap <F6> <ESC>:VoomToggle<cr>i
+            nmap <leader><F6> :Voom
         endif
     " markdown
         if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
-            nmap <F8> <Plug>MarkdownPreview
-            imap <F8> <Plug>MarkdownPreview
+            nmap <F7> <Plug>MarkdownPreview
+            imap <F7> <Plug>MarkdownPreview
             if OSX()
                 let g:mkdp_path_to_chrome = "OPEN -a Google\\ Chrome"
             else
@@ -694,8 +682,8 @@
             let g:pymode_lint_ignore = "E2,E3,E501"
             let g:pymode_lint_cwindow = 1
             let g:pymode_lint_message = 0
-            nmap <F6> :PymodeLint<CR>
-            imap <F6> <ESC>:PymodeLint<CR>i
+            nmap <F8> :PymodeLint<CR>
+            imap <F8> <ESC>:PymodeLint<CR>i
             " motion
             let g:pymode_motion = 1
             " no doc for python
@@ -703,7 +691,7 @@
             " run python
             let g:pymode_run_bind = '<F5>'
             " breakpoint
-            let g:pymode_breakpoint_bind = '<S-F6>'
+            let g:pymode_breakpoint_bind = '<F9>'
             let g:pymode_trim_whitespaces = 1
             let g:pymode_options = 0
             let g:pymode_rope = 0

@@ -98,6 +98,7 @@
             Bundle 'iamcco/mathjax-support-for-mkdp'
             Bundle 'iamcco/markdown-preview.vim'
             Bundle 'nathanaelkane/vim-indent-guides'
+            Bundle 'drmingdrmer/vim-toggle-quickfix'
             if !WINDOWS()
                 Bundle 'fcitx.vim'
             endif
