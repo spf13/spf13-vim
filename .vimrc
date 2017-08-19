@@ -502,9 +502,9 @@
     " VOom
         if isdirectory(expand("~/.vim/bundle/VOom"))
             let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
-            nmap <F6> :VoomToggle<cr>
-            imap <F6> <ESC>:VoomToggle<cr>i
-            nmap <leader><F6> :Voom
+            nmap <F6> :Voom<Space>
+            imap <F6> <ESC>:Voom<Space>
+            nmap <leader><F6> :VoomToggle<CR>
         endif
     " markdown
         if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
