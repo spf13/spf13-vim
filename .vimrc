@@ -527,7 +527,7 @@
         endif
     " AsyncRun
         if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
-            map <Leader><F5> :AsyncRun<Space>
+            nmap <Leader><F5> :AsyncRun<Space>
         endif
     " Misc
         if isdirectory(expand("~/.vim/bundle/matchit.zip"))

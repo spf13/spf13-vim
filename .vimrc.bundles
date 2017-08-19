@@ -79,10 +79,6 @@
     " General 
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'easymotion/vim-easymotion'
-            Bundle 'vim-voom/VOoM'
-            Bundle 'scrooloose/nerdtree'
-            Bundle 'Xuyuanp/nerdtree-git-plugin'
-            Bundle 'jistr/vim-nerdtree-tabs'
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
@@ -99,6 +95,7 @@
             Bundle 'iamcco/markdown-preview.vim'
             Bundle 'nathanaelkane/vim-indent-guides'
             Bundle 'drmingdrmer/vim-toggle-quickfix'
+            Bundle 'VOoM'
             if !WINDOWS()
                 Bundle 'fcitx.vim'
             endif
@@ -119,6 +116,9 @@
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
             Bundle 'tpope/vim-fugitive'
+            Bundle 'scrooloose/nerdtree'
+            Bundle 'Xuyuanp/nerdtree-git-plugin'
+            Bundle 'jistr/vim-nerdtree-tabs'
             if v:version > 799
                 Bundle 'skywind3000/asyncrun.vim'
             endif
