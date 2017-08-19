@@ -95,7 +95,7 @@
             Bundle 'iamcco/markdown-preview.vim'
             Bundle 'nathanaelkane/vim-indent-guides'
             Bundle 'drmingdrmer/vim-toggle-quickfix'
-            Bundle 'VOoM'
+            Bundle 'vim-voom/VOoM'
             if !WINDOWS()
                 Bundle 'fcitx.vim'
             endif
