@@ -8,8 +8,7 @@
 "        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
 "        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
 "            |_|
-" You can find spf13's gread config  at http://spf13.com
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
+" You can find spf13's greate config at http://spf13.com
 " Identify platform
     silent function! OSX()
         return has('macunix')
@@ -22,8 +21,8 @@
     endfunction
 " Basics
     set nocompatible        " Must be first line
-    set mouse=a                 " Automatically enable mouse usage
-    set mousehide               " Hide the mouse cursor while typing    set mousehide
+    set mouse=a             " Automatically enable mouse usage
+    set mousehide           " Hide the mouse cursor while typing    set mousehide
     scriptencoding utf-8
     if !WINDOWS()
         set shell=/bin/sh
@@ -40,8 +39,8 @@
         endif
     endif
 " Clipboard
-    if has('clipboard')
-        if has('unnamedplus')  " When possible use + register for copy-paste
+if has('clipboard')
+    if has('unnamedplus')  " When possible use + register for copy-paste
             set clipboard=unnamed,unnamedplus
         else         " On mac and Windows, use * register for copy-paste
             set clipboard=unnamed
@@ -61,8 +60,8 @@
         source ~/.vimrc.bundles
     endif
 " Key (re)Mappings
-    " The default leader is '\', spf13 prefer ',' as it's in a standard location
-    " But leatchina prefer space To override this behavior and set it back to '\' 
+    " The default leader is '\', spf13 prefer ';' as it's in a standard location
+    " But leatchina prefer space. To override this behavior and set it back to '\'
     " (or any other character) add the following to your .vimrc.before.local file:
     if !exists('g:leoatchina_leader')
         let mapleader=' '
@@ -97,30 +96,31 @@
     " Some helpers to edit mode
     " http://vimcasts.org/e/14
     cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-    " Map <Leader>ff to display all lines with keyword under cursor
+    " Map <Leader>fw to display all lines with keyword under cursor
     " and ask which one to jump to
-    nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+    nmap <Leader>fw [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
     " move to last or first position of a line
-    imap <C-\> <ESC>$i
-    imap <C-]> <ESC>0wi
+    nmap <silent><C-e> ^
+    imap <silent><C-e> <ESC>^i
+    nmap <silent><C-y> $
+    imap <silent><C-y> <ESC>A
     if isdirectory(expand("~/.vim/bundle/vim-toggle-quickfix"))
         nmap <F10> <Plug>window:quickfix:toggle
         imap <F10> <Plug>window:quickfix:toggle
     endif
     " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
     map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
-    set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+    set pastetoggle=<F12>      " pastetoggle (sane indentation on pastes)
     " tab contral
     set tabpagemax=10 " Only show 10 tabs
-    nnoremap <silent>{  : tabnext<CR>
-    nnoremap <silent>]  : tabprevious<CR>
+    nnoremap <silent>-  : tabprevious<CR>
+    nnoremap <silent>=  : tabnext<CR>
+    nnoremap <silent>_  : tabfirst<CR>
+    nnoremap <silent>+  : tablast<CR>
     nnoremap <leader>tt : tabnew<CR>
-    nnoremap <Leader>tc : tabc<CR>
-    nnoremap <Leader>ta : tabs<CR>
-    nnoremap <Leader>ts : tab split<CR>
+    nnoremap <Leader>ts : tabs<CR>
+    nnoremap <Leader>tc : tab split<CR>
     nnoremap <Leader>te : tabe<SPACE>
-    nnoremap <Leader>tf : tabfirst<CR>
-    nnoremap <Leader>tl : tablast<CR>
     " Code folding options
     nmap <leader>f0 :set foldlevel=0<CR>
     nmap <leader>f1 :set foldlevel=1<CR>
@@ -321,11 +321,6 @@
     set guioptions-=T
     " 总是显示状态栏
     set laststatus=2
-    " move contral
-    nnoremap - ^
-    nnoremap _ k^
-    nnoremap + j^
-    nnoremap = $
     " buffer
     nnoremap <leader>bn :bn<CR>
     nnoremap <leader>bp :bp<CR>
@@ -340,7 +335,7 @@
     nmap <Leader>Q :qa!<CR>
     " 设置分割页面
     nmap <Leader>- :split<CR>
-    nmap <leader>\ :vsplit<CR>
+    nmap <leader>= :vsplit<CR>
     "设置垂直高度减增
     nmap <Leader>, :resize -3<CR>
     nmap <Leader>. :resize +3<CR>
@@ -475,7 +470,6 @@
         vnoremap <Home> :<C-U>call WrapRelativeMotion("0", 1)<CR>
         vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
     endif
-
 " Stupid shift key fixes
     if !exists('g:spf13_no_keyfixes')
         if has("user_commands")
@@ -544,42 +538,6 @@
         " Make it so AutoCloseTag works for xml and xhtml files as well
         au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
         nmap <Leader>ac <Plug>ToggleAutoCloseMappings
-    " NerdTree
-        let s:has_nerdtree = 0
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            map <C-e> <plug>NERDTreeTabsToggle<CR>
-            nnoremap <leader>nt :NERDTreeFind<CR>
-            nnoremap <C-y> :NERDTreeFocusToggle<CR>
-            let s:has_nerdtree = 1
-            let g:NERDTreeWinSize=30
-            let g:NERDTreeShowBookmarks=1
-            let g:NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-            let g:NERDTreeChDirMode=0
-            let g:NERDTreeQuitOnOpen=1
-            let g:NERDTreeMouseMode=2
-            let g:NERDTreeShowHidden=1
-            let g:NERDTreeKeepTreeInNewTab=1
-            let g:nerdtree_tabs_focus_on_files = 1
-            let g:nerdtree_tabs_open_on_gui_startup = 0
-            let g:NERDTreeWinPos=0
-            let g:NERDTreeDirArrowExpandable = '▸'
-            let g:NERDTreeDirArrowCollapsible = '▾'
-            autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-            " nerdtree-git
-            if isdirectory(expand("~/.vim/bundle/nerdtree-git-plugin"))
-                let g:NERDTreeIndicatorMapCustom = {
-                    \ "Modified"  : "*",
-                    \ "Staged"    : "+",
-                    \ "Untracked" : "★",
-                    \ "Renamed"   : "→ ",
-                    \ "Unmerged"  : "=",
-                    \ "Deleted"   : "X",
-                    \ "Dirty"     : "●",
-                    \ "Clean"     : "√",
-                    \ "Unknown"   : "?"
-                \ }
-            endif
-        endif
     " TagBar
         let s:has_tagbar = 0
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
@@ -587,6 +545,7 @@
             nnoremap <silent><leader>jt :TagbarOpen j<CR>
             let s:has_tagbar = 1
             let tagbar_left=0
+            let g:tagbar_sort = 0
             let tagbar_width=30
             let g:tagbar_compact=1
             let g:tagbar_type_cpp = {
@@ -766,11 +725,9 @@
             " Ctrl+j for enter or stop pum
             inoremap <expr> <C-j> pumvisible() ? "\<C-y>\<C-y>" : "\<CR>"
             " cr for ExpandTrigger
-            "inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippet()<CR>" : "\<CR>"
             function! g:UltiSnips_CR()
                 if pumvisible()
                     call UltiSnips#ExpandSnippet()
-                    "call feedkeys("\<C-k>")
                     " 0:ExpandSnippet failed
                     if g:ulti_expand_res == 0
                         return "\<C-y>"
