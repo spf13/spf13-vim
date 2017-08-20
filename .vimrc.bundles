@@ -89,6 +89,7 @@
             Bundle 'tacahiroy/ctrlp-funky'
             Bundle 'mbbill/undotree'
             Bundle 'bling/vim-bufferline'
+            Bundle 'terryma/vim-multiple-cursors'
             Bundle 'godlygeek/tabular'
             Bundle 'tamlok/vim-markdown'
             Bundle 'iamcco/mathjax-support-for-mkdp'
@@ -96,6 +97,8 @@
             Bundle 'nathanaelkane/vim-indent-guides'
             Bundle 'drmingdrmer/vim-toggle-quickfix'
             Bundle 'vim-voom/VOoM'
+            Bundle 'mhinz/vim-signify'
+            Bundle 'powerline/fonts'
             if !WINDOWS()
                 Bundle 'fcitx.vim'
             endif
@@ -114,6 +117,7 @@
     " General Programming
         if count(g:spf13_bundle_groups, 'programming')
             Bundle 'scrooloose/nerdcommenter'
+            Bundle 'mattn/webapi-vim'
             Bundle 'tpope/vim-commentary'
             Bundle 'tpope/vim-fugitive'
             if v:version > 799

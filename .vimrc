@@ -100,10 +100,10 @@ if has('clipboard')
     " and ask which one to jump to
     nmap <Leader>fw [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
     " move to last or first position of a line
-    nmap <silent><C-e> ^
-    imap <silent><C-e> <ESC>^i
-    nmap <silent><C-y> $
-    imap <silent><C-y> <ESC>A
+    nmap <silent><C-y> ^
+    imap <silent><C-y> <ESC>^i
+    nmap <silent><C-e> $
+    imap <silent><C-e> <ESC>A
     if isdirectory(expand("~/.vim/bundle/vim-toggle-quickfix"))
         nmap <F10> <Plug>window:quickfix:toggle
         imap <F10> <Plug>window:quickfix:toggle
@@ -156,8 +156,6 @@ if has('clipboard')
     nnoremap <leader>P "+P
     vnoremap <leader>p "+p
     vnoremap <leader>P "+P
-    " disable macro record
-    nmap q <Nop>
     "F1 help
     nmap <F1> :h<SPACE>
     "F2 toggleFold
