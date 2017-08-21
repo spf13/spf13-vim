@@ -21,9 +21,9 @@
     endfunction
 " Basics
     set nocompatible        " Must be first line
-    set timeoutlen=300
+    set timeoutlen=200
     set mouse=a             " Automatically enable mouse usage
-    "set mousehide           " Hide the mouse cursor while typing    set mousehide
+    set mousehide           " Hide the mouse cursor while typing
     scriptencoding utf-8
     if !WINDOWS()
         set shell=/bin/sh
@@ -493,9 +493,8 @@ if has('clipboard')
     " VOom
         if isdirectory(expand("~/.vim/bundle/VOom"))
             let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
-            nmap <F6> :Voom<Space>
-            imap <F6> <ESC>:Voom<Space>
-            nmap <leader><F6> :VoomToggle<CR>
+            nmap <F6> :VoomToggle<CR>
+            nmap <leader>vo :Voom<Space>
         endif
     " markdown
         if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
@@ -633,13 +632,14 @@ if has('clipboard')
         if isdirectory(expand("~/.vim/bundle/python-mode"))
             " pymode check
             let g:pymode_lint = 1
-            let g:pymode_lint_on_write = 0
+            let g:pymode_lint_on_write = 1
             let g:pymode_lint_checkers = ['pyflakes','pep8']
             let g:pymode_lint_ignore = "E2,E3,E501"
             let g:pymode_lint_cwindow = 1
             let g:pymode_lint_message = 0
             nmap <F8> :PymodeLint<CR>
             imap <F8> <ESC>:PymodeLint<CR>i
+            nmap <leader><F8> :PymodeLintToggle<cr>
             " motion
             let g:pymode_motion = 1
             " no doc for python
