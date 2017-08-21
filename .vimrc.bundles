@@ -96,6 +96,7 @@
             Bundle 'iamcco/markdown-preview.vim'
             Bundle 'nathanaelkane/vim-indent-guides'
             Bundle 'drmingdrmer/vim-toggle-quickfix'
+            Bundle 'vim-scripts/sessionman.vim'
             Bundle 'vim-voom/VOoM'
             Bundle 'mhinz/vim-signify'
             Bundle 'powerline/fonts'

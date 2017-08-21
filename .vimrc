@@ -21,8 +21,9 @@
     endfunction
 " Basics
     set nocompatible        " Must be first line
+    set timeoutlen=300
     set mouse=a             " Automatically enable mouse usage
-    set mousehide           " Hide the mouse cursor while typing    set mousehide
+    "set mousehide           " Hide the mouse cursor while typing    set mousehide
     scriptencoding utf-8
     if !WINDOWS()
         set shell=/bin/sh
@@ -250,7 +251,8 @@ if has('clipboard')
     " Remove trailing whitespaces and ^M chars
     autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd BufRead,BufNewFile *.md,*.markdown set filetype=markdown
+    autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
+    autocmd BufNewFile,BufRead *.pandoc set filetype=pandoc
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
     " preceding line best in a plugin but here for now.
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
@@ -275,8 +277,8 @@ if has('clipboard')
     set vb
     " 关闭列光标加亮
     set nocursorcolumn
-    " 关闭行光标加亮
-    set nocursorline
+    " 行光标加亮
+    set cursorline
     " 允许折行
     set wrap
     " 不折叠
@@ -408,13 +410,11 @@ if has('clipboard')
         colorscheme solarized
         "color solarized
     endif
-
     if has('cmdline_info')
         set ruler                   " Show the ruler
         set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
         set showcmd                 " Show partial commands in status line and
     endif
-
     if has('statusline')
         set laststatus=2
         " Broken down into easily includeable segments
@@ -429,7 +429,6 @@ if has('clipboard')
         set statusline+=\ [%{getcwd()}]          " Current dir
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
     endif
-
     " End/Start of line motion keys act relative to row/wrap width in the
     " presence of `:set wrap`, and relative to line for `:set nowrap`.
     " Default vim behaviour is to act relative to text line in both cases
@@ -605,7 +604,7 @@ if has('clipboard')
         if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
             nmap <leader>sl :SessionList<CR>
             nmap <leader>ss :SessionSave<CR>
-            nmap <leader>sc :SessionClose<CR>
+            nmap <leader>sc :SessionClose<CR>n
         endif
     " GoLang
         if count(g:spf13_bundle_groups, 'go')
