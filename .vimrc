@@ -345,22 +345,16 @@ if has('clipboard')
     "设置水平宽度减增
     nmap <Leader>[ :vertical resize -3<CR>
     nmap <Leader>] :vertical resize +3<CR>
-    "设置成同样的大小
-    nmap <leader>= <C-W>=
     "至左方的子窗口
-    nnoremap <Leader>h <C-W>h
     nnoremap <Leader>H <C-W>H
     "至右方的子窗口
-    nnoremap <Leader>l <C-W>l
     nnoremap <Leader>L <C-W>L
     "至上方的子窗口
-    nnoremap <Leader>k <C-W>k
     nnoremap <Leader>K <C-W>K
     "至下方的子窗口
-    nnoremap <Leader>j <C-W>j
     nnoremap <Leader>J <C-W>J
     " 定义快捷键在结对符之间跳转
-    nmap <Leader>m %
+    nmap <Leader>\ %
     " Visual shifting (does not exit Visual mode)
     vnoremap < <gv
     vnoremap > >gv
