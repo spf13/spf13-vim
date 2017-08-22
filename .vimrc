@@ -21,7 +21,7 @@
     endfunction
 " Basics
     set nocompatible        " Must be first line
-    set timeoutlen=300
+    set timeoutlen=400
     set mouse=a             " Automatically enable mouse usage
     set mousehide           " Hide the mouse cursor while typing
     scriptencoding utf-8
@@ -338,7 +338,7 @@ if has('clipboard')
     nmap <Leader>Q :qa!<CR>
     " 设置分割页面
     nmap <Leader>- :split<CR>
-    nmap <leader>= :vsplit<CR>
+    nmap <leader>\ :vsplit<CR>
     "设置垂直高度减增
     nmap <Leader>, :resize -3<CR>
     nmap <Leader>. :resize +3<CR>
@@ -354,7 +354,7 @@ if has('clipboard')
     "至下方的子窗口
     nnoremap <Leader>J <C-W>J
     " 定义快捷键在结对符之间跳转
-    nmap <Leader>\ %
+    nmap <Leader>m %
     " Visual shifting (does not exit Visual mode)
     vnoremap < <gv
     vnoremap > >gv
