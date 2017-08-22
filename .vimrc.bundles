@@ -69,7 +69,7 @@
     " In your .vimrc.before.local file
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['general',  'programming', 'php', 'python', 'javascript', 'html',]
+        let g:spf13_bundle_groups=['general',  'programming', 'python', 'php', 'javascript', 'html',]
     endif
 
    " To override all the included bundles, add the following to your

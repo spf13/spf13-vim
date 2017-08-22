@@ -21,7 +21,7 @@
     endfunction
 " Basics
     set nocompatible        " Must be first line
-    set timeoutlen=200
+    set timeoutlen=300
     set mouse=a             " Automatically enable mouse usage
     set mousehide           " Hide the mouse cursor while typing
     scriptencoding utf-8
@@ -133,6 +133,9 @@ if has('clipboard')
     nmap <leader>f7 :set foldlevel=7<CR>
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
+" Q for no function
+    "nmap q <Nop>
+    nmap Q :qa!
 " auto close qfixwindows when leave vim
     aug QFClose
       au!
