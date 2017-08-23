@@ -337,8 +337,8 @@ if has('clipboard')
     " 不做任何保存，直接退出 vim
     nmap <Leader>Q :qa!<CR>
     " 设置分割页面
-    nmap <Leader>- :split<CR>
-    nmap <leader>\ :vsplit<CR>
+    nmap <Leader>- :split<Space>
+    nmap <leader>= :vsplit<Space>
     "设置垂直高度减增
     nmap <Leader>, :resize -3<CR>
     nmap <Leader>. :resize +3<CR>
@@ -354,15 +354,10 @@ if has('clipboard')
     "至下方的子窗口
     nnoremap <Leader>J <C-W>J
     " 定义快捷键在结对符之间跳转
-    nmap <Leader>m %
+    nmap <Leader>\ %
     " Visual shifting (does not exit Visual mode)
     vnoremap < <gv
     vnoremap > >gv
-    " Ctrl G for insert commneter
-    if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
-        imap <C-g> <Plug>NERDCommenterInsert
-        nmap <C-g> i<Plug>NERDCommenterInsert
-    endif
 " General
     " Most prefer to automatically switch to the current file directory when
     " a new buffer is opened; to prevent this behavior, add the following to
