@@ -227,7 +227,7 @@ call plug#begin('~/.vim/bundle')
 
     " HTML {
         if count(g:spf13_bundle_groups, 'html')
-            Plug 'amirh/HTML-AutoCloseTag'
+            Plug 'vim-scripts/HTML-AutoCloseTag'
             Plug 'hail2u/vim-css3-syntax'
             Plug 'gorodinskiy/vim-coloresque'
             Plug 'tpope/vim-haml'
