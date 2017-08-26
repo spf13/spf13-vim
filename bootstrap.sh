@@ -19,8 +19,8 @@ app_name='spf13-vim'
 [ -z "$APP_PATH" ] && APP_PATH="$HOME/.spf13-vim-3"
 [ -z "$REPO_URI" ] && REPO_URI='https://github.com/compleatguru/spf13-vim.git'
 [ -z "$REPO_BRANCH" ] && REPO_BRANCH='feature/vim-plug'
-debug_mode='1'
-fork_maintainer='1'
+debug_mode='0'
+fork_maintainer='0'
 [ -z "$VIM_PLUG_URI" ] && VIM_PLUG_URI="https://github.com/junegunn/vim-plug.git"
 
 ############################  BASIC SETUP TOOLS
