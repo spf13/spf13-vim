@@ -394,10 +394,10 @@ if has('clipboard')
     endif
 
 " Vim UI
-    if !exists('g:override_spf13_bundles') && isdirectory(expand("~/.vim/bundle/papercolor-theme"))
-        set t_Co=256   " This is may or may not needed.
+    if !exists('g:override_spf13_bundles') && isdirectory(expand("~/.vim/bundle/vim-hybrid-material"))
         set background=dark
-        colorscheme PaperColor
+        let g:enable_bold_font = 1
+        colorscheme hybrid_material
     endif
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -951,6 +951,9 @@ if has('clipboard')
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
+            if isdirectory(expand("~/.vim/bundle/vim-hybrid-material/"))
+                let g:airline_theme = "hybrid"
+            endif
             if !exists('g:airline_powerline_fonts')
                 " Use the default set of separators with a few customizations
                 let g:airline_left_sep='›'  " Slightly fancier than '>'
@@ -1002,18 +1005,6 @@ if has('clipboard')
         endfor
     endfunction
     call InitializeDirectories()
-    " Initialize NERDTree as needed
-    function! NERDTreeInitAsNeeded()
-        redir => bufoutput
-        buffers!
-        redir END
-        let idx = stridx(bufoutput, "NERD_tree")
-        if idx > -1
-            NERDTreeMirror
-            NERDTreeFind
-            wincmd l
-        endif
-    endfunction
     " Strip whitespace
     function! StripTrailingWhitespace()
         let _s=@/

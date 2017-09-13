@@ -2,7 +2,6 @@
 " Sincerely thank him for his great job, and I have made some change according to own requires.
 " These ones whole use this config can also make changes,
 " For my pool English , I sometimes type in Chines comments
-"
 "                    __ _ _____              _
 "         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
 "        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
@@ -79,7 +78,7 @@
     " General 
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'easymotion/vim-easymotion'
-            Bundle 'NLKNguyen/papercolor-theme'
+            Bundle 'kristijanhusak/vim-hybrid-material'
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-repeat'
