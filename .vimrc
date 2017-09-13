@@ -394,13 +394,10 @@ if has('clipboard')
     endif
 
 " Vim UI
-    if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-        let g:solarized_termcolors=256
-        let g:solarized_termtrans=1
-        let g:solarized_visibility="normal"
+    if !exists('g:override_spf13_bundles') && isdirectory(expand("~/.vim/bundle/papercolor-theme"))
+        set t_Co=256   " This is may or may not needed.
         set background=dark
-        colorscheme solarized
-        "color solarized
+        colorscheme PaperColor
     endif
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -651,7 +648,7 @@ if has('clipboard')
         endif
     " ctrlp
         if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
-            let g:ctrlp_working_path_mode = 'ra'
+            let g:ctrlp_working_path_mode = 'ar'
             nnoremap <silent> <D-t> :CtrlP<CR>
             nnoremap <silent> <D-r> :CtrlPMRU<CR>
             let g:ctrlp_custom_ignore = {
@@ -954,9 +951,6 @@ if has('clipboard')
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
-            if !exists('g:airline_theme')
-                let g:airline_theme = 'solarized'
-            endif
             if !exists('g:airline_powerline_fonts')
                 " Use the default set of separators with a few customizations
                 let g:airline_left_sep='›'  " Slightly fancier than '>'

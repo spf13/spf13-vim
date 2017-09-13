@@ -79,7 +79,7 @@
     " General 
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'easymotion/vim-easymotion'
-            Bundle 'altercation/vim-colors-solarized'
+            Bundle 'NLKNguyen/papercolor-theme'
             Bundle 'spf13/vim-colors'
             Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-repeat'
@@ -118,9 +118,12 @@
     " General Programming
         if count(g:spf13_bundle_groups, 'programming')
             Bundle 'scrooloose/nerdcommenter'
-            Bundle 'mattn/webapi-vim'
             Bundle 'tpope/vim-commentary'
             Bundle 'tpope/vim-fugitive'
+            Bundle 'mattn/webapi-vim'
+            if OSX()
+                Bundle 'rizzatti/dash.vim'
+            endif
             if v:version > 799
                 Bundle 'skywind3000/asyncrun.vim'
             endif
