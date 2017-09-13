@@ -133,8 +133,7 @@ if has('clipboard')
     nmap <leader>f7 :set foldlevel=7<CR>
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
-" Q for no function
-    "nmap q <Nop>
+" Q for qa! 
     nmap Q :qa!
 " auto close qfixwindows when leave vim
     aug QFClose
@@ -242,27 +241,6 @@ if has('clipboard')
             endif
         endif
     endfunc
-
-    au BufNewFile,BufRead *.py
-        \set shiftwidth=4
-        \set tabstop=4
-        \set softtabstop=4
-        \set expandtab
-        \set autoindent
-        \set foldmethod=indent
-    "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-    " Remove trailing whitespaces and ^M chars
-    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
-    autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
-    autocmd BufNewFile,BufRead *.pandoc set filetype=pandoc
-    autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
-    " preceding line best in a plugin but here for now.
-    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-    " Workaround vim-commentary for Haskell
-    autocmd FileType haskell setlocal commentstring=--\ %s
-    " Workaround broken colour highlighting in Haskell
-    autocmd FileType haskell,rust setlocal nospell
     " Formatting
     set number                      " show line number"
     set autoindent                  " Indent at the same level of the previous line
@@ -324,7 +302,28 @@ if has('clipboard')
     set guioptions-=T
     " 总是显示状态栏
     set laststatus=2
-    " buffer
+    " sepcial setting for different type of files
+    au BufNewFile,BufRead *.py
+        \set shiftwidth=4
+        \set tabstop=4
+        \set softtabstop=4
+        \set expandtab
+        \set autoindent
+        \set foldmethod=indent
+    "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
+    " Remove trailing whitespaces and ^M chars
+    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
+    autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
+    autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
+    autocmd BufNewFile,BufRead *.pandoc set filetype=pandoc
+    autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
+    " preceding line best in a plugin but here for now.
+    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+    " Workaround vim-commentary for Haskell
+    autocmd FileType haskell setlocal commentstring=--\ %s
+    " Workaround broken colour highlighting in Haskell
+    autocmd FileType haskell,rust setlocal nospell
+    " buffer switch
     nnoremap <leader>bn :bn<CR>
     nnoremap <leader>bp :bp<CR>
     " 定义快捷键保存当前窗口内容
