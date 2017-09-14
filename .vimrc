@@ -247,9 +247,8 @@ if has('clipboard')
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
-    " 不生成swp文件
+    " 不生成back文件
     set nobackup
-    set noswapfile
     set nowritebackup
     " 关闭拼写检查
     set nospell
@@ -525,7 +524,7 @@ if has('clipboard')
     " TagBar
         let s:has_tagbar = 0
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
-            nmap <silent><c-t> :TagbarToggle<CR>
+            nmap <silent><C-t> :TagbarToggle<CR>
             nnoremap <silent><leader>jt :TagbarOpen j<CR>
             let s:has_tagbar = 1
             let tagbar_left=0
@@ -625,9 +624,9 @@ if has('clipboard')
             let g:pymode_lint_ignore = "E128,E2,E3,E501"
             let g:pymode_lint_cwindow = 1
             let g:pymode_lint_message = 0
-            nmap <F8> :PymodeLint<CR>
-            imap <F8> <ESC>:PymodeLint<CR>i
-            nmap <leader><F8> :PymodeLintToggle<cr>
+            nmap <S-F9> :PymodeLint<CR>
+            imap <S-F9> <ESC>:PymodeLint<CR>i
+            nmap <leader><F9> :PymodeLintToggle<cr>
             " motion
             let g:pymode_motion = 1
             " no doc for python
