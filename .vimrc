@@ -9,30 +9,6 @@
 "        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
 "            |_|
 " You can find spf13's greate config at http://spf13.com
-" Identify platform
-    silent function! OSX()
-        return has('macunix')
-    endfunction
-    silent function! LINUX()
-        return has('unix') && !has('macunix') && !has('win32unix')
-    endfunction
-    silent function! WINDOWS()
-        return  (has('win32') || has('win64'))
-    endfunction
-" Basics
-    set nocompatible        " Must be first line
-    set timeoutlen=400
-    set mouse=a             " Automatically enable mouse usage
-    set mousehide           " Hide the mouse cursor while typing
-    scriptencoding utf-8
-    if !WINDOWS()
-        set shell=/bin/sh
-    else
-    " Windows Compatible
-        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
-        set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-    endif
 " Gui
     if !has('gui')
         if !has('nvim')
@@ -116,8 +92,8 @@ if has('clipboard')
     set tabpagemax=10 " Only show 10 tabs
     nnoremap <silent>-  : tabprevious<CR>
     nnoremap <silent>=  : tabnext<CR>
-    nnoremap <silent>_  : tabfirst<CR>
-    nnoremap <silent>+  : tablast<CR>
+    nnoremap <leader>tf : tabfirst<CR>
+    nnoremap <leader>tl : tablast<CR>
     nnoremap <leader>tt : tabnew<CR>
     nnoremap <Leader>ts : tabs<CR>
     nnoremap <Leader>tc : tab split<CR>
@@ -336,10 +312,11 @@ if has('clipboard')
     nmap <Leader>Q :qa!<CR>
     " 设置分割页面
     nmap <Leader>- :split<Space>
-    nmap <leader>= :vsplit<Space>
+    nmap <leader>\ :vsplit<Space>
+    nmap <leader>= <C-W>=
     "设置垂直高度减增
-    nmap <Leader>, :resize -3<CR>
-    nmap <Leader>. :resize +3<CR>
+    nmap <Leader>{ :resize -3<CR>
+    nmap <Leader>} :resize +3<CR>
     "设置水平宽度减增
     nmap <Leader>[ :vertical resize -3<CR>
     nmap <Leader>] :vertical resize +3<CR>
@@ -351,8 +328,6 @@ if has('clipboard')
     nnoremap <Leader>K <C-W>K
     "至下方的子窗口
     nnoremap <Leader>J <C-W>J
-    " 定义快捷键在结对符之间跳转
-    nmap <Leader>\ %
     " Visual shifting (does not exit Visual mode)
     vnoremap < <gv
     vnoremap > >gv
@@ -390,12 +365,11 @@ if has('clipboard')
             \ '\[example pattern\]'
             \ ]
     endif
-
 " Vim UI
-    if !exists('g:override_spf13_bundles') && isdirectory(expand("~/.vim/bundle/vim-hybrid-material"))
+    if !exists('g:override_spf13_bundles') && isdirectory(expand("~/.vim/bundle/vim-quantum"))
         set background=dark
-        let g:enable_bold_font = 1
-        colorscheme hybrid_material
+        set termguicolors
+        colorscheme quantum
     endif
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -949,8 +923,8 @@ if has('clipboard')
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
-            if isdirectory(expand("~/.vim/bundle/vim-hybrid-material/"))
-                let g:airline_theme = "hybrid"
+            if isdirectory(expand("~/.vim/bundle/vim-quantum/"))
+                let g:airline_theme = "quantum"
             endif
             if !exists('g:airline_powerline_fonts')
                 " Use the default set of separators with a few customizations

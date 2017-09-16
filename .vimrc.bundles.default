@@ -1,5 +1,4 @@
 " Default Bundles {
-
     " Use before config if available {
         if filereadable(expand("~/.vimrc.before"))
             source ~/.vimrc.before
