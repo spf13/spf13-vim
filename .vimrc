@@ -9,6 +9,7 @@
 "        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
 "            |_|
 " You can find spf13's greate config at http://spf13.com
+" Os detect functions have been move to .vimrc.bundles
 " Gui
     if !has('gui')
         if !has('nvim')
@@ -40,12 +41,12 @@ if has('clipboard')
     " The default leader is '\', spf13 prefer ';' as it's in a standard location
     " But leatchina prefer space. To override this behavior and set it back to '\'
     " (or any other character) add the following to your .vimrc.before.local file:
-    if !exists('g:leoatchina_leader')
+    if !exists('g:spf13_leader')
         let mapleader=' '
     else
         let mapleader=g:spf13_leader
     endif
-    if !exists('g:leoatchina_localleader')
+    if !exists('g:spf13_localleader')
         let maplocalleader = '\'
     else
         let maplocalleader=g:spf13_localleader
@@ -62,7 +63,7 @@ if has('clipboard')
     au! bufwritepost .vimrc.local source %
     au! bufwritepost .vimrc.before.local source %
     au! bufwritepost .vimrc.bundles.local source %
-" Some useful shortcuts
+" Some useful shortcuts by spf13
     " Find merge conflict markers
     map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
     " Allow using the repeat operator with a visual selection (!)
@@ -76,28 +77,6 @@ if has('clipboard')
     " Map <Leader>fw to display all lines with keyword under cursor
     " and ask which one to jump to
     nmap <Leader>fw [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
-    " move to last or first position of a line
-    nmap <silent><C-y> ^
-    imap <silent><C-y> <ESC>^i
-    nmap <silent><C-e> $
-    imap <silent><C-e> <ESC>A
-    if isdirectory(expand("~/.vim/bundle/vim-toggle-quickfix"))
-        nmap <F10> <Plug>window:quickfix:toggle
-        imap <F10> <Plug>window:quickfix:toggle
-    endif
-    " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
-    map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
-    set pastetoggle=<F12>      " pastetoggle (sane indentation on pastes)
-    " tab contral
-    set tabpagemax=10 " Only show 10 tabs
-    nnoremap <silent>-  : tabprevious<CR>
-    nnoremap <silent>=  : tabnext<CR>
-    nnoremap <leader>tf : tabfirst<CR>
-    nnoremap <leader>tl : tablast<CR>
-    nnoremap <leader>tt : tabnew<CR>
-    nnoremap <Leader>ts : tabs<CR>
-    nnoremap <Leader>tc : tab split<CR>
-    nnoremap <Leader>te : tabe<SPACE>
     " Code folding options
     nmap <leader>f0 :set foldlevel=0<CR>
     nmap <leader>f1 :set foldlevel=1<CR>
@@ -109,115 +88,172 @@ if has('clipboard')
     nmap <leader>f7 :set foldlevel=7<CR>
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
-" Q for qa! 
-    nmap Q :qa!
-" auto close qfixwindows when leave vim
+    " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
+    map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
+    set pastetoggle=<F12>      " pastetoggle (sane indentation on pastes)
+" shortcuts by leatchina
+    if !exists('g:no_leoatchina_config')
+        " move to last or first position of a line
+        nmap <silent><C-y> ^
+        imap <silent><C-y> <ESC>^i
+        nmap <silent><C-e> $
+        imap <silent><C-e> <ESC>A
+        if isdirectory(expand("~/.vim/bundle/vim-toggle-quickfix"))
+            nmap <F10> <Plug>window:quickfix:toggle
+            imap <F10> <Plug>window:quickfix:toggle
+        endif
+        " tab contral
+        set tabpagemax=10 " Only show 10 tabs
+        nnoremap <silent>-  : tabprevious<CR>
+        nnoremap <silent>=  : tabnext<CR>
+        nnoremap <leader>tf : tabfirst<CR>
+        nnoremap <leader>tl : tablast<CR>
+        nnoremap <leader>tt : tabnew<CR>
+        nnoremap <Leader>ts : tabs<CR>
+        nnoremap <Leader>tc : tab split<CR>
+        nnoremap <Leader>te : tabe<SPACE>
+        " Q for qa! 
+        nmap Q :qa!
+        " auto close qfixwindows when leave vim
+        " 设置快捷键将选中文本块复制至系统剪贴板
+        vnoremap  <leader>y  "+y
+        nnoremap  <leader>y  "+y
+        nnoremap  <leader>Y  "+yg
+        nnoremap  <leader>yy  "+yy
+        " Yank from the cursor to the end of the line, to be consistent with C and D.
+        nnoremap Y y$
+        " Easier horizontal scrolling
+        map zl zL
+        map zh zH
+        " Wrapped lines goes down/up to next row, rather than next line in file.
+        noremap j gj
+        noremap k gk
+        " p and P for paste
+        nnoremap <leader>p "+p
+        nnoremap <leader>P "+P
+        vnoremap <leader>p "+p
+        vnoremap <leader>P "+P
+        "F1 help
+        nmap <F1> :h<SPACE>
+        "F2 toggleFold
+        noremap <F2> :set nofoldenable! nofoldenable?<CR>
+        "F3 toggleWrap
+        noremap <F3> :set nowrap! nowrap?<CR>
+        "F4 toggle hlsearch
+        noremap <F4> :set nohlsearch! nohlsearch?<CR>
+        " F5运行脚本
+        noremap <F5> :call CompileRunGcc()<CR>
+        func! CompileRunGcc()
+            exec "w"
+            if &filetype == 'c'
+                exec "!g++ % -o %<"
+                exec "!./%<"
+            elseif &filetype == 'cpp'
+                exec "!g++ % -o %<"
+                exec "!./%<"
+            elseif &filetype == 'java'
+                exec "!javac %"
+                exec "!java %<"
+            elseif &filetype == 'sh'
+                exec "!bash %"
+            elseif &filetype == 'python'
+                exec "!python %"
+            elseif &filetype == 'perl'
+                exec "!perl %"
+            elseif &filetype == 'html'
+                exec "!firefox % &"
+            elseif &filetype == 'go'
+                exec "!go run %"
+            endif
+       endfunc
+        " S-F5 time the program testing
+        noremap <S-F5> :call TimeCompileRunGcc()<CR>
+        func! TimeCompileRunGcc()
+            exec "w"
+            " asyncrun 是一个异步执行脚本的插件，要vim8.0以上才支持
+            if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
+                if &filetype == 'c'
+                    exec ":AsyncRun g++ % -o %<"
+                    exec ":AsyncRun ./%<"
+                elseif &filetype == 'cpp'
+                    exec ":AsyncRun g++ % -o %<"
+                    exec ":AsyncRun ./%<"
+                elseif &filetype == 'java'
+                    exec ":AsyncRun javac %"
+                    exec ":AsyncRun java %<"
+                elseif &filetype == 'sh'
+                    exec ":AsyncRun bash %"
+                elseif &filetype == 'python'
+                    exec ":AsyncRun python %"
+                elseif &filetype == 'perl'
+                    exec ":AsyncRun perl %"
+                elseif &filetype == 'html'
+                    exec ":AsyncRun firefox % &"
+                elseif &filetype == 'go'
+                    exec ":AsyncRun go run %"
+                endif
+            else
+                if &filetype == 'c'
+                    exec "!g++ % -o %<"
+                    exec "!time ./%<"
+                elseif &filetype == 'cpp'
+                    exec "!g++ % -o %<"
+                    exec "!time ./%<"
+                elseif &filetype == 'java'
+                    exec "!javac %"
+                    exec "!time java %<"
+                elseif &filetype == 'sh'
+                    exec "!time bash %"
+                elseif &filetype == 'python'
+                    exec "!time python %"
+                elseif &filetype == 'perl'
+                    exec "!time perl %"
+                elseif &filetype == 'html'
+                    exec "!time firefox % &"
+                elseif &filetype == 'go'
+                    exec "!time go run %"
+                endif
+            endif
+        endfunc
+        " buffer switch
+        nnoremap <leader>bn :bn<CR>
+        nnoremap <leader>bp :bp<CR>
+        " 定义快捷键保存当前窗口内容
+        nmap <Leader>w :w<CR>
+        nmap <Leader>W :wq!<CR>
+        " 定义快捷键保存所有窗口内容并退出 vim
+        nmap <Leader>WQ :wa<CR>:q<CR>
+        " 定义快捷键关闭当前窗口
+        nmap <Leader>q :q<CR>
+        " 不做任何保存，直接退出 vim
+        nmap <Leader>Q :qa!<CR>
+        " 设置分割页面
+        nmap <Leader>- :split<Space>
+        nmap <leader>\ :vsplit<Space>
+        nmap <leader>= <C-W>=
+        "设置垂直高度减增
+        nmap <Leader>{ :resize -3<CR>
+        nmap <Leader>} :resize +3<CR>
+        "设置水平宽度减增
+        nmap <Leader>[ :vertical resize -3<CR>
+        nmap <Leader>] :vertical resize +3<CR>
+        "至左方的子窗口
+        nnoremap <Leader>H <C-W>H
+        "至右方的子窗口
+        nnoremap <Leader>L <C-W>L
+        "至上方的子窗口
+        nnoremap <Leader>K <C-W>K
+        "至下方的子窗口
+        nnoremap <Leader>J <C-W>J
+        " Visual shifting (does not exit Visual mode)
+        vnoremap < <gv
+        vnoremap > >gv
+    endif
+" Formatting
     aug QFClose
       au!
       au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
     aug END
-" 下面是leoatchina的设置 
-    " 设置快捷键将选中文本块复制至系统剪贴板
-    vnoremap  <leader>y  "+y
-    nnoremap  <leader>y  "+y
-    nnoremap  <leader>Y  "+yg
-    nnoremap  <leader>yy  "+yy
-    " Yank from the cursor to the end of the line, to be consistent with C and D.
-    nnoremap Y y$
-    " Easier horizontal scrolling
-    map zl zL
-    map zh zH
-    " Wrapped lines goes down/up to next row, rather than next line in file.
-    noremap j gj
-    noremap k gk
-    " p and P for paste
-    nnoremap <leader>p "+p
-    nnoremap <leader>P "+P
-    vnoremap <leader>p "+p
-    vnoremap <leader>P "+P
-    "F1 help
-    nmap <F1> :h<SPACE>
-    "F2 toggleFold
-    noremap <F2> :set nofoldenable! nofoldenable?<CR>
-    "F3 toggleWrap
-    noremap <F3> :set nowrap! nowrap?<CR>
-    "F4 toggle hlsearch
-    noremap <F4> :set nohlsearch! nohlsearch?<CR>
-    " F5运行脚本
-    noremap <F5> :call CompileRunGcc()<CR>
-    func! CompileRunGcc()
-        exec "w"
-        if &filetype == 'c'
-            exec "!g++ % -o %<"
-            exec "!./%<"
-        elseif &filetype == 'cpp'
-            exec "!g++ % -o %<"
-            exec "!./%<"
-        elseif &filetype == 'java'
-            exec "!javac %"
-            exec "!java %<"
-        elseif &filetype == 'sh'
-            exec "!bash %"
-        elseif &filetype == 'python'
-            exec "!python %"
-        elseif &filetype == 'perl'
-            exec "!perl %"
-        elseif &filetype == 'html'
-            exec "!firefox % &"
-        elseif &filetype == 'go'
-            exec "!go run %"
-        endif
-   endfunc
-    " S-F5 time the program testing
-    noremap <S-F5> :call TimeCompileRunGcc()<CR>
-    func! TimeCompileRunGcc()
-        exec "w"
-        " asyncrun 是一个异步执行脚本的插件，要vim8.0以上才支持
-        if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
-            if &filetype == 'c'
-                exec ":AsyncRun g++ % -o %<"
-                exec ":AsyncRun ./%<"
-            elseif &filetype == 'cpp'
-                exec ":AsyncRun g++ % -o %<"
-                exec ":AsyncRun ./%<"
-            elseif &filetype == 'java'
-                exec ":AsyncRun javac %"
-                exec ":AsyncRun java %<"
-            elseif &filetype == 'sh'
-                exec ":AsyncRun bash %"
-            elseif &filetype == 'python'
-                exec ":AsyncRun python %"
-            elseif &filetype == 'perl'
-                exec ":AsyncRun perl %"
-            elseif &filetype == 'html'
-                exec ":AsyncRun firefox % &"
-            elseif &filetype == 'go'
-                exec ":AsyncRun go run %"
-            endif
-        else
-            if &filetype == 'c'
-                exec "!g++ % -o %<"
-                exec "!time ./%<"
-            elseif &filetype == 'cpp'
-                exec "!g++ % -o %<"
-                exec "!time ./%<"
-            elseif &filetype == 'java'
-                exec "!javac %"
-                exec "!time java %<"
-            elseif &filetype == 'sh'
-                exec "!time bash %"
-            elseif &filetype == 'python'
-                exec "!time python %"
-            elseif &filetype == 'perl'
-                exec "!time perl %"
-            elseif &filetype == 'html'
-                exec "!time firefox % &"
-            elseif &filetype == 'go'
-                exec "!time go run %"
-            endif
-        endif
-    endfunc
-    " Formatting
     set number                      " show line number"
     set autoindent                  " Indent at the same level of the previous line
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
@@ -298,39 +334,6 @@ if has('clipboard')
     autocmd FileType haskell setlocal commentstring=--\ %s
     " Workaround broken colour highlighting in Haskell
     autocmd FileType haskell,rust setlocal nospell
-    " buffer switch
-    nnoremap <leader>bn :bn<CR>
-    nnoremap <leader>bp :bp<CR>
-    " 定义快捷键保存当前窗口内容
-    nmap <Leader>w :w<CR>
-    nmap <Leader>W :wq!<CR>
-    " 定义快捷键保存所有窗口内容并退出 vim
-    nmap <Leader>WQ :wa<CR>:q<CR>
-    " 定义快捷键关闭当前窗口
-    nmap <Leader>q :q<CR>
-    " 不做任何保存，直接退出 vim
-    nmap <Leader>Q :qa!<CR>
-    " 设置分割页面
-    nmap <Leader>- :split<Space>
-    nmap <leader>\ :vsplit<Space>
-    nmap <leader>= <C-W>=
-    "设置垂直高度减增
-    nmap <Leader>{ :resize -3<CR>
-    nmap <Leader>} :resize +3<CR>
-    "设置水平宽度减增
-    nmap <Leader>[ :vertical resize -3<CR>
-    nmap <Leader>] :vertical resize +3<CR>
-    "至左方的子窗口
-    nnoremap <Leader>H <C-W>H
-    "至右方的子窗口
-    nnoremap <Leader>L <C-W>L
-    "至上方的子窗口
-    nnoremap <Leader>K <C-W>K
-    "至下方的子窗口
-    nnoremap <Leader>J <C-W>J
-    " Visual shifting (does not exit Visual mode)
-    vnoremap < <gv
-    vnoremap > >gv
 " General
     " Most prefer to automatically switch to the current file directory when
     " a new buffer is opened; to prevent this behavior, add the following to
