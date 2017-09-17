@@ -17,8 +17,8 @@
         endif
     endif
 " Clipboard
-if has('clipboard')
-    if has('unnamedplus')  " When possible use + register for copy-paste
+    if has('clipboard')
+        if has('unnamedplus')  " When possible use + register for copy-paste
             set clipboard=unnamed,unnamedplus
         else         " On mac and Windows, use * register for copy-paste
             set clipboard=unnamed
@@ -98,6 +98,8 @@ if has('clipboard')
         imap <silent><C-y> <ESC>^i
         nmap <silent><C-e> $
         imap <silent><C-e> <ESC>A
+        nmap <silent><C-m> %
+        vmap <silent><C-m> %
         if isdirectory(expand("~/.vim/bundle/vim-toggle-quickfix"))
             nmap <F10> <Plug>window:quickfix:toggle
             imap <F10> <Plug>window:quickfix:toggle
@@ -106,13 +108,13 @@ if has('clipboard')
         set tabpagemax=10 " Only show 10 tabs
         nnoremap <silent>-  : tabprevious<CR>
         nnoremap <silent>=  : tabnext<CR>
-        nnoremap <leader>tf : tabfirst<CR>
-        nnoremap <leader>tl : tablast<CR>
-        nnoremap <leader>tt : tabnew<CR>
+        nnoremap <silent>_  : tabfirst<CR>
+        nnoremap <silent>+  : tablast<CR>
+        nnoremap <leader>tn : tabnew<CR>
         nnoremap <Leader>ts : tabs<CR>
-        nnoremap <Leader>tc : tab split<CR>
+        nnoremap <Leader>tp : tab split<CR>
         nnoremap <Leader>te : tabe<SPACE>
-        " Q for qa! 
+        " Q for qa!
         nmap Q :qa!
         " auto close qfixwindows when leave vim
         " 设置快捷键将选中文本块复制至系统剪贴板
@@ -457,7 +459,7 @@ if has('clipboard')
     " VOom
         if isdirectory(expand("~/.vim/bundle/VOom"))
             let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
-            nmap <F6> :VoomToggle<CR>
+            nmap <6> :VoomToggle<CR>
             nmap <leader>vo :Voom<Space>
         endif
     " markdown
