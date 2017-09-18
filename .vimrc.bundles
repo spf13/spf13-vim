@@ -101,10 +101,15 @@
     if !exists("g:override_spf13_bundles")
     " General 
         if count(g:spf13_bundle_groups, 'general')
+            Bundle 'scrooloose/nerdtree'
+            Bundle 'jistr/vim-nerdtree-tabs'
+            Bundle 'Xuyuanp/nerdtree-git-plugin'
+            Bundle 'vim-voom/VOoM'
             Bundle 'easymotion/vim-easymotion'
             Bundle 'tyrannicaltoucan/vim-quantum'
-            Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-repeat'
+            Bundle 'tpope/vim-surround'
+            Bundle 'VimIM'
             Bundle 'rhysd/conflict-marker.vim'
             Bundle 'jiangmiao/auto-pairs'
             Bundle 'ctrlpvim/ctrlp.vim'
@@ -119,13 +124,8 @@
             Bundle 'nathanaelkane/vim-indent-guides'
             Bundle 'drmingdrmer/vim-toggle-quickfix'
             Bundle 'vim-scripts/sessionman.vim'
-            Bundle 'vim-voom/VOoM'
             Bundle 'mhinz/vim-signify'
             Bundle 'powerline/fonts'
-            " install fcitx.vim if not windows
-            if !WINDOWS()
-                Bundle 'fcitx.vim'
-            endif
             if (has("python") || has("python3")) && exists('g:spf13_use_powerline') && !exists('g:spf13_use_old_powerline')
                 Bundle 'Lokaltog/powerline', 'rtp':'/powerline/bindings/vim'
             elseif exists('g:spf13_use_powerline') && exists('g:spf13_use_old_powerline')

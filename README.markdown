@@ -58,9 +58,9 @@ Each section is labeled and each option is commented.
 * `F3`: 打开关闭换行
 * `F4`: 打开关闭搜索高亮
 * `F5`: 运行脚本(python、perl等);`S+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun异步运行脚本
-* `F6`: 打开关闭quickfix窗口(在用AsyncRun时用) # 这快捷键可能以后取消
+* `F6`: 打开NerdTree(文件浏览器)
 * `F7`: 打开markdown-preview; `S-F7`:关闭markdown-preview
-* `F8`: Voom显示关闭大纲
+* `F9`: python调试节点
 * `F11`: 全屏
 * `F12`: 切换paste模式
 

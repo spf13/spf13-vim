@@ -29,6 +29,8 @@
     if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
         inoremap <silent> <C-[>OC <RIGHT>
     endif
+" set timeout
+    set ttimeout ttimeoutlen=100
 " Use before config
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
@@ -449,6 +451,14 @@
         cmap Tabe tabe
     endif
 " Plugins
+    " VimIM
+        if isdirectory(expand("~/.vim/bundle/VimIM"))
+            let g:vimim_map='no-gi' " 即取消按gi进入中文输入模式
+            let g:vimim_mode='dynamic' " 动态输入模式（缺省），如果设为static，则需要按空格才会出候选框
+            let g:vimim_punctuation=0 " 常用中文标点（缺省），为0时不用中文标点
+            let g:vimim_plugin='~/.vim/bundle/VimIM/plugin' " 缺省是vim plugin，如果你的插件不是放在默认目录，这里需要设置
+            let g:vimim_cloud=-1 " 彻底关闭云输入
+        endif
     " Ag
         if isdirectory(expand("~/.vim/bundle/ag.vim"))
             nnoremap <leader>ag :Ag<space>
@@ -456,11 +466,25 @@
             let g:ag_working_path_mode="r"
             set runtimepath^=~/.vim/bundle/ag"
         endif
+    " NerdTree
+        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+            nmap <F6> <plug>NERDTreeTabsToggle<CR>
+            nmap <leader>nt :NERDTreeFind<CR>
+            "let g:NERDShutUp=1
+            let NERDTreeShowBookmarks=1
+            let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+            let NERDTreeChDirMode=0
+            let NERDTreeQuitOnOpen=1
+            let NERDTreeMouseMode=2
+            let NERDTreeShowHidden=1
+            let NERDTreeKeepTreeInNewTab=1
+            let g:nerdtree_tabs_open_on_gui_startup=0
+        endif
     " VOom
         if isdirectory(expand("~/.vim/bundle/VOom"))
             let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
-            nmap <6> :VoomToggle<CR>
-            nmap <leader>vo :Voom<Space>
+            nmap <silent><leader>vt :VoomToggle<CR>
+            nmap <silent><leader>vo :Voom<Space>
         endif
     " markdown
         if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
