@@ -452,20 +452,32 @@
         cmap Tabe tabe
     endif
 " Plugins
-    " VimIM
-        if isdirectory(expand("~/.vim/bundle/VimIM"))
-            let g:vimim_map='no-gi' " 即取消按gi进入中文输入模式
-            let g:vimim_mode='dynamic' " 动态输入模式（缺省），如果设为static，则需要按空格才会出候选框
-            let g:vimim_punctuation=0 " 常用中文标点（缺省），为0时不用中文标点
-            let g:vimim_plugin='~/.vim/bundle/VimIM/plugin' " 缺省是vim plugin，如果你的插件不是放在默认目录，这里需要设置
-            let g:vimim_cloud=-1 " 彻底关闭云输入
+    " ywvim
+        if isdirectory(expand("~/.vim/bundle/ywvim"))
+            let g:ywvim_ims=[
+                        \['wb', '五笔', 'wubi.ywvim'],
+                        \['py', '拼音', 'pinyin.ywvim'],
+                        \]
+            let g:ywvim_py = { 'helpim':'wb', 'gb':0 }
+            let g:ywvim_zhpunc = 0
+            let g:ywvim_listmax = 8
+            let g:ywvim_esc_autoff = 0
+            let g:ywvim_autoinput = 0
+            let g:ywvim_circlecandidates = 1
+            let g:ywvim_helpim_on = 0
+            let g:ywvim_matchexact = 0
+            let g:ywvim_chinesecode = 1
+            let g:ywvim_gb = 0
+            let g:ywvim_preconv = 'g2b'
+            let g:ywvim_conv = ''
+            let g:ywvim_lockb = 1
         endif
     " Ag
         if isdirectory(expand("~/.vim/bundle/ag.vim"))
             nnoremap <leader>ag :Ag<space>
             nnoremap <leader>af :AgFile<space>
             let g:ag_working_path_mode="r"
-            set runtimepath^=~/.vim/bundle/ag"
+            set runtimepath^=~/.vim/bundle/ag.vim"
         endif
     " NerdTree
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
