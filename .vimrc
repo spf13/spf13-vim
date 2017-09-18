@@ -97,7 +97,7 @@
     if !exists('g:no_leoatchina_config')
         " move to last or first position of a line
         nmap <silent><C-y> ^
-        imap <silent><C-y> <ESC>^i
+        imap <silent><C-y> <ESC>0wi
         nmap <silent><C-e> $
         imap <silent><C-e> <ESC>A
         nmap <silent><C-m> %
