@@ -30,7 +30,7 @@
         inoremap <silent> <C-[>OC <RIGHT>
     endif
 " set timeout
-    set ttimeout ttimeoutlen=100
+    set ttimeout ttimeoutlen=300
 " Use before config
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
@@ -97,7 +97,8 @@
     if !exists('g:no_leoatchina_config')
         " move to last or first position of a line
         nmap <silent><C-y> ^
-        imap <silent><C-y> <ESC>0wi
+        " FIXME: c-y sometime not work in centos
+        imap <silent><C-y> <ESC>^i
         nmap <silent><C-e> $
         imap <silent><C-e> <ESC>A
         nmap <silent><C-m> %
@@ -118,7 +119,6 @@
         nnoremap <Leader>te : tabe<SPACE>
         " Q for qa!
         nmap Q :qa!
-        " auto close qfixwindows when leave vim
         " 设置快捷键将选中文本块复制至系统剪贴板
         vnoremap  <leader>y  "+y
         nnoremap  <leader>y  "+y
@@ -254,6 +254,7 @@
         vnoremap > >gv
     endif
 " Formatting
+    " auto close qfixwindows when leave vim
     aug QFClose
       au!
       au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
@@ -468,7 +469,7 @@
         endif
     " NerdTree
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            nmap <F6> <plug>NERDTreeTabsToggle<CR>
+            nmap <F8> <plug>NERDTreeTabsToggle<CR>
             nmap <leader>nt :NERDTreeFind<CR>
             "let g:NERDShutUp=1
             let NERDTreeShowBookmarks=1
@@ -484,7 +485,7 @@
         if isdirectory(expand("~/.vim/bundle/VOom"))
             let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
             nmap <silent><leader>vt :VoomToggle<CR>
-            nmap <silent><leader>vo :Voom<Space>
+            nmap <leader>vo :Voom<Space>
         endif
     " markdown
         if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
