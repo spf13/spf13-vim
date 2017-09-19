@@ -108,6 +108,7 @@
             Bundle 'leoatchina/ywvim'
             Bundle 'easymotion/vim-easymotion'
             Bundle 'tyrannicaltoucan/vim-quantum'
+            Bundle 'altercation/vim-colors-solarized'
             Bundle 'tpope/vim-repeat'
             Bundle 'tpope/vim-surround'
             Bundle 'lilydjwg/fcitx.vim'

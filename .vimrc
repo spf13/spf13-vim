@@ -374,10 +374,20 @@
             \ ]
     endif
 " Vim UI
-    if !exists('g:override_spf13_bundles') && isdirectory(expand("~/.vim/bundle/vim-quantum"))
-        set background=dark
-        set termguicolors
-        colorscheme quantum
+    if OSX()
+        if !exists('g:override_spf13_bundles') && isdirectory(expand("~/.vim/bundle/vim-quantum"))
+            set background=dark
+            set termguicolors
+            colorscheme quantum
+        endif
+    else
+        if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+            let g:solarized_termcolors=256
+            let g:solarized_termtrans=1
+            "let g:solarized_contrast="normal"
+            let g:solarized_visibility="normal"
+            color solarized             " Load a colorscheme
+        endif
     endif
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -452,11 +462,16 @@
         cmap Tabe tabe
     endif
 " Plugins
-    " ywvim
+    " ywvim,vim里的中文输入法
         if isdirectory(expand("~/.vim/bundle/ywvim"))
-            let g:ywvim_ims=[
-                        \['wb', '五笔', 'wubi.ywvim'],
-                        \['py', '拼音', 'pinyin.ywvim'],
+            let g:ywvim_ims=[ 
+                        \['wb', '五笔', 'wubi.ywvim'], 
+                        \['py', '拼音', 'pinyin.ywvim'], 
+                        \['cj', '仓颉', 'cangjie.ywvim'], 
+                        \['wb98', '五笔98', 'wubi98.ywvim'], 
+                        \['zm', '郑码', 'zhengma.ywvim'], 
+                        \['zy', '注音', 'zhuyin.ywvim'], 
+                        \['ar30', '行列', 'array30.ywvim'], 
                         \]
             let g:ywvim_py = { 'helpim':'wb', 'gb':0 }
             let g:ywvim_zhpunc = 0
@@ -965,8 +980,14 @@
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
-            if isdirectory(expand("~/.vim/bundle/vim-quantum/"))
-                let g:airline_theme = "quantum"
+            if OSX()
+                if isdirectory(expand("~/.vim/bundle/vim-quantum/"))
+                    let g:airline_theme = 'quantum'
+                endif
+            else
+                if  filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+                    let g:airline_theme = 'solarized'
+                endif
             endif
             if !exists('g:airline_powerline_fonts')
                 " Use the default set of separators with a few customizations
