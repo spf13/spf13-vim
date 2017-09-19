@@ -10,6 +10,13 @@
 "            |_|
 " You can find spf13's greate config at http://spf13.com
 " Os detect functions have been move to .vimrc.bundles
+" Environment 
+    " Basics 
+    set nocompatible        " Must be first line
+    set background=dark     " Assume a dark background
+    set mouse=a             " Automatically enable mouse usage
+    scriptencoding utf-8
+    set mousehide           " Hide the mouse cursor while typing
 " Gui
     if !has('gui')
         if !has('nvim')
@@ -30,6 +37,7 @@
         inoremap <silent> <C-[>OC <RIGHT>
     endif
 " set timeout
+    set timeoutlen=400
     set ttimeout ttimeoutlen=300
 " Use before config
     if filereadable(expand("~/.vimrc.before"))

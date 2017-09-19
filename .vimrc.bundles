@@ -11,10 +11,6 @@
 "            |_|
 " You can find spf13's gread config  at http://spf13.com
 
-" Environment 
-    " Basics 
-    set nocompatible        " Must be first line
-    set background=dark     " Assume a dark background
 " Identify platform
     silent function! OSX()
         return has('macunix')
@@ -26,11 +22,6 @@
         return  (has('win32') || has('win64'))
     endfunction
 " Basics
-    set nocompatible        " Must be first line
-    set timeoutlen=400
-    set mouse=a             " Automatically enable mouse usage
-    set mousehide           " Hide the mouse cursor while typing
-    scriptencoding utf-8
     if !WINDOWS()
         set shell=/bin/sh
     else
