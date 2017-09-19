@@ -10,8 +10,7 @@
 "            |_|
 " You can find spf13's greate config at http://spf13.com
 " Os detect functions have been move to .vimrc.bundles
-" Environment 
-    " Basics 
+" Basics 
     set nocompatible        " Must be first line
     set background=dark     " Assume a dark background
     set mouse=a             " Automatically enable mouse usage
@@ -38,7 +37,7 @@
     endif
 " set timeout
     set timeoutlen=400
-    set ttimeout ttimeoutlen=300
+    set ttimeout ttimeoutlen=200
 " Use before config
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
@@ -382,19 +381,21 @@
             \ ]
     endif
 " Vim UI
-    if OSX()
-        if !exists('g:override_spf13_bundles') && isdirectory(expand("~/.vim/bundle/vim-quantum"))
-            set background=dark
-            set termguicolors
-            colorscheme quantum
-        endif
-    else
-        if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-            let g:solarized_termcolors=256
-            let g:solarized_termtrans=1
-            "let g:solarized_contrast="normal"
-            let g:solarized_visibility="normal"
-            color solarized             " Load a colorscheme
+    if !exists('g:override_spf13_bundles') && !exists('g:no_colorscheme')
+        if OSX()
+            if  isdirectory(expand("~/.vim/bundle/vim-quantum"))
+                set background=dark
+                set termguicolors
+                colorscheme quantum
+            endif
+        else
+            if  filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+                let g:solarized_termcolors=256
+                let g:solarized_termtrans=1
+                "let g:solarized_contrast="normal"
+                let g:solarized_visibility="normal"
+                colorscheme solarized             " Load a colorscheme
+            endif
         endif
     endif
     if has('cmdline_info')
