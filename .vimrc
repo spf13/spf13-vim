@@ -14,8 +14,8 @@
     set nocompatible        " Must be first line
     set background=dark     " Assume a dark background
     set mouse=a             " Automatically enable mouse usage
-    scriptencoding utf-8
     set mousehide           " Hide the mouse cursor while typing
+    scriptencoding utf-8
 " Gui
     if !has('gui')
         if !has('nvim')
@@ -118,12 +118,15 @@
         set tabpagemax=10 " Only show 10 tabs
         nnoremap <silent>-  : tabprevious<CR>
         nnoremap <silent>=  : tabnext<CR>
-        nnoremap <silent>_  : tabfirst<CR>
-        nnoremap <silent>+  : tablast<CR>
+        nnoremap <leader>tf : tabfirst<CR>
+        nnoremap <Leader>tl : tablast<CR>
         nnoremap <leader>tn : tabnew<CR>
         nnoremap <Leader>ts : tabs<CR>
         nnoremap <Leader>tp : tab split<CR>
         nnoremap <Leader>te : tabe<SPACE>
+        nnoremap <Leader>tm : tabm<SPACE>
+        nnoremap <silent>_  : tabm -1<CR>
+        nnoremap <silent>+  : tabm +1<CR>
         " Q for qa!
         nmap Q :qa!
         " 设置快捷键将选中文本块复制至系统剪贴板
@@ -259,6 +262,8 @@
         " Visual shifting (does not exit Visual mode)
         vnoremap < <gv
         vnoremap > >gv
+        " Ctrl-m for switch between brackets
+        map <C-m> %
     endif
 " Formatting
     " auto close qfixwindows when leave vim
@@ -496,6 +501,29 @@
             let g:ywvim_conv = ''
             let g:ywvim_lockb = 1
         endif
+    " Nvim-R
+        if isdirectory(expand("~/.vim/bundle/Nvim-R"))
+            let R_rconsole_width = 0
+            map <leader>RR \rf\ro<C-w>h
+            map <leader>RQ \rq
+            let R_objbr_place = "script,right"
+            autocmd VimResized * let R_rconsole_height = winheight(0) /3
+            let R_objbr_h = 25
+            let R_objbr_opendf = 1    " Show data.frames elements
+            let R_objbr_openlist = 1  " Show lists elements
+            let R_objbr_allnames = 0  " Show .GlobalEnv hidden objects
+            let R_objbr_labelerr = 1  " Warn if label is not a valid text
+            "if executable('tmux')
+                "let R_in_buffer = 0
+            "else
+                "let R_in_buffer = 1
+            "endif
+            let R_hl_term = 1
+            let R_close_term = 1
+            let Rout_more_colors = 1
+            let R_hi_fun_paren = 1
+            let R_rmd_environment = "new.env()"
+        endif
     " Ag
         if isdirectory(expand("~/.vim/bundle/ag.vim"))
             nnoremap <leader>ag :Ag<space>
@@ -505,7 +533,7 @@
         endif
     " NerdTree
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            nmap <F8> <plug>NERDTreeTabsToggle<CR>
+            nmap <silent><C-n> <plug>NERDTreeTabsToggle<CR>
             nmap <leader>nt :NERDTreeFind<CR>
             "let g:NERDShutUp=1
             let NERDTreeShowBookmarks=1

@@ -52,15 +52,16 @@ Each section is labeled and each option is commented.
   Spf13-vim uses `let mapleader = ","` to change this to `,` which is in a consistent and
   convenient location.
 * Keyboard [cheat sheet](http://www.viemu.com/vi-vim-cheat-sheet.gif).
-* `<leader>`键为空格键
+* `<leader>`键改为空格键,`<localleader>`改为`\`
+* 集成了`ywvim`输入法,在`insert`模式下通过`CTRL+\`开启,`CTRL+^`进行配置
 * `F1`: 为`:h `，方便启动帮助
 * `F2`: 打开关闭代码折叠
 * `F3`: 打开关闭换行
 * `F4`: 打开关闭搜索高亮
 * `F5`: 运行脚本(python、perl等);`S+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun异步运行脚本
-* `F6`: 打开NerdTree(文件浏览器)
 * `F7`: 打开markdown-preview; `S-F7`:关闭markdown-preview
-* `F9`: python调试节点
+* `F8`: 打开NerdTree(文件浏览器)
+* `F9`: python调试节点,`S+F9`进行python语法检查,`<leader>+F9`切换语法是否检查
 * `F11`: 全屏
 * `F12`: 切换paste模式
 
@@ -74,7 +75,7 @@ Each section is labeled and each option is commented.
     echo colorscheme ir_black  >> ~/.vimrc.local
 ```
 
-### Before文件
+### local文件
 
 [spf13](spf13)设计了一系列巧妙的`配置变量`，在`.vimrc.before.local`里写入配置变量后，可打开/关闭某些配置
 
@@ -140,7 +141,7 @@ NERDTree is a file explorer plugin that provides "project drawer"
 functionality to your vim editing.  You can learn more about it with
 `:help NERDTree`.
 
-**QuickStart** Launch using `<Leader>e`.
+**QuickStart** Launch using `<Ctrl-n>`.
 
 **Customizations**:
 
@@ -304,58 +305,3 @@ spf13-vim ships with a few additional syntaxes:
 * Markdown (bound to \*.markdown, \*.md, and \*.mk)
 * Twig
 * Git commits (set your `EDITOR` to `mvim -f`)
-
-## Amazing Colors
-
-spf13-vim includes [solarized] and [spf13 vim color pack](https://github.com/spf13/vim-colors/):
-
-* ir_black
-* molokai
-* peaksea
-
-Use `:color molokai` to switch to a color scheme.
-
-Terminal Vim users will benefit from solarizing their terminal emulators and setting solarized support to 16 colors:
-
-    let g:solarized_termcolors=16
-    color solarized
-
-Terminal emulator colorschemes:
-
-* http://ethanschoonover.com/solarized (iTerm2, Terminal.app)
-* https://github.com/phiggins/konsole-colors-solarized (KDE Konsole)
-* https://github.com/sigurdga/gnome-terminal-colors-solarized (Gnome Terminal)
-
-## Snippets
-
-It also contains a very complete set of [snippets](https://github.com/spf13/snipmate-snippets) for use with snipmate or [neocomplete].
-
-
-# Intro to VIM
-
-Here's some tips if you've never used VIM before:
-
-## Tutorials
-
-* Type `vimtutor` into a shell to go through a brief interactive
-  tutorial inside VIM.
-* Read the slides at [VIM: Walking Without Crutches](https://walking-without-crutches.heroku.com/#1).
-
-## Modes
-
-* VIM has two (common) modes:
-  * insert mode- stuff you type is added to the buffer
-  * normal mode- keys you hit are interpreted as commands
-* To enter insert mode, hit `i`
-* To exit insert mode, hit `<ESC>`
-
-## Useful commands
-
-* Use `:q` to exit vim
-* Certain commands are prefixed with a `<Leader>` key, which by default maps to `\`.
-  Spf13-vim uses `let mapleader = ","` to change this to `,` which is in a consistent and
-  convenient location.
-* Keyboard [cheat sheet](http://www.viemu.com/vi-vim-cheat-sheet.gif).
-
-[![Analytics](https://ga-beacon.appspot.com/UA-7131036-5/spf13-vim/readme)](https://github.com/igrigorik/ga-beacon)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/spf13/spf13-vim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
