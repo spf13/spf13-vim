@@ -393,8 +393,8 @@
                 let g:solarized_termcolors=256
                 let g:solarized_termtrans=1
                 let g:solarized_visibility="normal"
-                colorscheme solarized             " Load a colorscheme
-                color solarized             " Load a colorscheme
+                colorscheme solarized
+                color solarized
             endif
         endif
     endif
@@ -989,19 +989,21 @@
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
-            if OSX()
-                if isdirectory(expand("~/.vim/bundle/vim-quantum/"))
-                    let g:airline_theme = 'quantum'
+            if !exists('g:no_colorscheme')
+                if OSX()
+                    if isdirectory(expand("~/.vim/bundle/vim-quantum/"))
+                        let g:airline_theme = 'quantum'
+                    endif
+                else
+                    if  filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+                        let g:airline_theme = 'solarized'
+                    endif
                 endif
-            else
-                if  filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-                    let g:airline_theme = 'solarized'
+                if !exists('g:airline_powerline_fonts')
+                    " Use the default set of separators with a few customizations
+                    let g:airline_left_sep='›'  " Slightly fancier than '>'
+                    let g:airline_right_sep='‹' " Slightly fancier than '<'
                 endif
-            endif
-            if !exists('g:airline_powerline_fonts')
-                " Use the default set of separators with a few customizations
-                let g:airline_left_sep='›'  " Slightly fancier than '>'
-                let g:airline_right_sep='‹' " Slightly fancier than '<'
             endif
         endif
 " GUI Settings
