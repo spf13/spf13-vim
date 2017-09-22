@@ -1,11 +1,15 @@
 # leoatchina的vim配置文件,从spf13的配置fork而来
-This is leoatchina's vim config forked from [spf13-vim : steve francia's vim distribution](https://github.com/spf13/spf13-vim)
+> This is leoatchina's vim config forked from [spf13-vim : steve francia's vim distribution](https://github.com/spf13/spf13-vim)
 Thanks him for great job.I changed lots of settings and plugins to suit my needs.
+
+# 写在前面 
+本人是生信工程师,主要使用的语文是python R perl shell,经常要ssh到远程服务器上写代码,为了提高效率,学习了vim,后来发现了`spf13`先生的大作,
+大大美化了本人的工作界面和提高了写代码的效率.但是,仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.
 
 # 安装 
 ## 要求 
 如果要安装[neocomplete](https://github.com/Shougo/neocomplete.vim), 需要[vim with lua](https://github.com/Shougo/neocomplete.vim#requirements).
-*安装本config 需要 Git 1.7+ 和 Vim 7.3+，部分插件需要Vim8.0*
+*安装本配置 需要 Git 1.7+ 和 Vim 7.3+，部分插件需要Vim8.0*
 
 ## Linux, \*nix, Mac OSX 下的安装
 
@@ -43,27 +47,30 @@ Each section is labeled and each option is commented.
 4. 去除了原来定义的一些函数
 5. 重点修改了代码补全插件[YouCompleteMe](YoucompleteME)、[Neocomplete](Neocomplet)的配置和快捷键
 6. 去除了fork功能，仅保留before功能
-7. 默认不进行代码补全，要使用者在 `~/.vimrc.before.local`里进行配置
+7. 增加对R和Markdown的支持
+8. 用`ywvim`作为中文输入法,请按`ctrl+\`切换到中文输入法,`ctrl+^`进行输入法配置
+9. 默认不进行代码补全，要使用者在 `~/.vimrc.before.local`里进行配置,如我的,加入了`youcompletme`
+```
+let g:spf13_bundle_groups=['general',  'programming', 'python', 'youcompleteme','php', 'javascript', 'html','R',]
+```
 
 ## 快捷键
 
-* Use `:q` to exit vim
 * Certain commands are prefixed with a `<Leader>` key, which by default maps to `\`.
   Spf13-vim uses `let mapleader = ","` to change this to `,` which is in a consistent and
   convenient location.
-* Keyboard [cheat sheet](http://www.viemu.com/vi-vim-cheat-sheet.gif).
-* `<leader>`键改为空格键,`<localleader>`改为`\`
+* `<leader>`键改为空格键,`<localleader>`改为`\`,后者在R语言编写时使用率比较高
 * 集成了`ywvim`输入法,在`insert`模式下通过`CTRL+\`开启,`CTRL+^`进行配置
 * `F1`: 为`:h `，方便启动帮助
 * `F2`: 打开关闭代码折叠
 * `F3`: 打开关闭换行
 * `F4`: 打开关闭搜索高亮
-* `F5`: 运行脚本(python、perl等);`S+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun异步运行脚本
-* `F7`: 打开markdown-preview; `S-F7`:关闭markdown-preview
-* `F8`: 打开NerdTree(文件浏览器)
+* `F5`: 运行脚本(python、perl go);生成markdown preview;`S+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun
+* `F8`: `NerdTree`
 * `F9`: python调试节点,`S+F9`进行python语法检查,`<leader>+F9`切换语法是否检查
-* `F11`: 全屏
+* `F11`: gvim里的全屏
 * `F12`: 切换paste模式
+* `Ctrl+N`: nerdtree
 
 
 ## 定制个人配置

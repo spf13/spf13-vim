@@ -170,12 +170,8 @@
                 exec "!java %<"
             elseif &filetype == 'sh'
                 exec "!bash %"
-            elseif &filetype == 'python'
-                exec "!python %"
             elseif &filetype == 'perl'
                 exec "!perl %"
-            elseif &filetype == 'html'
-                exec "!firefox % &"
             elseif &filetype == 'go'
                 exec "!go run %"
             endif
@@ -201,8 +197,6 @@
                     exec ":AsyncRun python %"
                 elseif &filetype == 'perl'
                     exec ":AsyncRun perl %"
-                elseif &filetype == 'html'
-                    exec ":AsyncRun firefox % &"
                 elseif &filetype == 'go'
                     exec ":AsyncRun go run %"
                 endif
@@ -220,420 +214,409 @@
                     exec "!time bash %"
                 elseif &filetype == 'python'
                     exec "!time python %"
-                elseif &filetype == 'perl'
-                    exec "!time perl %"
-                elseif &filetype == 'html'
-                    exec "!time firefox % &"
-                elseif &filetype == 'go'
-                    exec "!time go run %"
+                    elseif &filetype == 'perl'
+                        exec "!time perl %"
+                    elseif &filetype == 'go'
+                        exec "!time go run %"
+                    endif
+                endif
+            endfunc
+            " buffer switch
+            nnoremap <leader>bn :bn<CR>
+            nnoremap <leader>bp :bp<CR>
+            " 定义快捷键保存当前窗口内容
+            nmap <Leader>w :w<CR>
+            nmap <Leader>W :wq!<CR>
+            " 定义快捷键保存所有窗口内容并退出 vim
+            nmap <Leader>WQ :wa<CR>:q<CR>
+            " 定义快捷键关闭当前窗口
+            nmap <Leader>q :q<CR>
+            " 不做任何保存，直接退出 vim
+            nmap <Leader>Q :qa!<CR>
+            " 设置分割页面
+            nmap <Leader>- :split<Space>
+            nmap <leader>\ :vsplit<Space>
+            nmap <leader>= <C-W>=
+            "设置垂直高度减增
+            nmap <Leader>{ :resize -3<CR>
+            nmap <Leader>} :resize +3<CR>
+            "设置水平宽度减增
+            nmap <Leader>[ :vertical resize -3<CR>
+            nmap <Leader>] :vertical resize +3<CR>
+            "至左方的子窗口
+            nnoremap <Leader>H <C-W>H
+            "至右方的子窗口
+            nnoremap <Leader>L <C-W>L
+            "至上方的子窗口
+            nnoremap <Leader>K <C-W>K
+            "至下方的子窗口
+            nnoremap <Leader>J <C-W>J
+            " Visual shifting (does not exit Visual mode)
+            vnoremap < <gv
+            vnoremap > >gv
+            " Ctrl-m for switch between brackets
+            map <C-m> %
+        endif
+    " Formatting
+        " auto close qfixwindows when leave vim
+        aug QFClose
+          au!
+          au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+        aug END
+        set number                      " show line number"
+        set autoindent                  " Indent at the same level of the previous line
+        set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
+        set splitright                  " Puts new vsplit windows to the right of the current
+        set splitbelow                  " Puts new split windows to the bottom of the current
+        " 不生成back文件
+        set nobackup
+        set nowritebackup
+        " 关闭拼写检查
+        set nospell
+        " 关闭声音
+        set noeb
+        set vb
+        " 关闭列光标加亮
+        set nocursorcolumn
+        " 行光标加亮
+        set cursorline
+        " 允许折行
+        set wrap
+        " 不折叠
+        set nofoldenable
+        " 标签控制
+        set showtabline=2
+        " 开启实时搜索功能
+        set incsearch
+        " 显示光标当前位置
+        set ruler
+        " 高亮显示搜索结果
+        set hlsearch
+        set incsearch                   " Find as you type search
+        set smartcase                   " Case sensitive when uc present
+        set ignorecase                  " Case insensitive search
+        " 一些格式
+        set backspace=indent,eol,start  " Backspace for dummies
+        set linespace=0                 " No extra spaces between rows
+        set showmatch                   " Show matching brackets/parenthesis
+        set winminheight=0              " Windows can be 0 line high
+        set wildmenu                    " Show list instead of just completing
+        set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+        set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+        set scrolljump=5                " Lines to scroll when cursor leaves screen
+        set scrolloff=3                 " Minimum lines to keep above and below cursor
+        set list
+        set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespacetextwidth=200
+        set formatoptions-=tc           " Not aut break a line into multiple lines
+        set shiftwidth=4                " Use indents of 4 spaces
+        set expandtab                   " Tabs are spaces, not tabs
+        set tabstop=4                   " An indentation every four columns
+        set softtabstop=4               " Let backspace delete indent
+        " 没有滚动条
+        set guioptions-=l
+        set guioptions-=L
+        set guioptions-=r
+        set guioptions-=R
+        " 没有菜单和工具条
+        set guioptions-=m
+        set guioptions-=T
+        " 总是显示状态栏
+        set laststatus=2
+        " sepcial setting for different type of files
+        au BufNewFile,BufRead *.py
+            \set shiftwidth=4
+            \set tabstop=4
+            \set softtabstop=4
+            \set expandtab
+            \set autoindent
+            \set foldmethod=indent
+        "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
+        " Remove trailing whitespaces and ^M chars
+        autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
+        autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
+        autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
+        autocmd BufNewFile,BufRead *.pandoc set filetype=pandoc
+        autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
+        " preceding line best in a plugin but here for now.
+        autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+        " Workaround vim-commentary for Haskell
+        autocmd FileType haskell setlocal commentstring=--\ %s
+        " Workaround broken colour highlighting in Haskell
+        autocmd FileType haskell,rust setlocal nospell
+    " General
+        " Most prefer to automatically switch to the current file directory when
+        " a new buffer is opened; to prevent this behavior, add the following to
+        " your .vimrc.before.local file:
+        "   let g:spf13_no_autochdir = 1
+        if !exists('g:spf13_no_autochdir')
+            autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+            " Always switch to the current file directory
+        endif
+        " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+        " Restore cursor to file position in previous editing session
+        " To disable this, add the following to your .vimrc.before.local file:
+        "   let g:spf13_no_restore_cursor = 1
+        if !exists('g:spf13_no_restore_cursor')
+            function! ResCur()
+                if line("'\"") <= line("$")
+                    silent! normal! g`"
+                    return 1
+                endif
+            endfunction
+            augroup resCur
+                autocmd!
+                autocmd BufWinEnter * call ResCur()
+            augroup END
+        endif
+        " To disable views add the following to your .vimrc.before.local file:
+        "   let g:spf13_no_views = 1
+        if !exists('g:spf13_no_views')
+            " Add exclusions to mkview and loadview
+            " eg: *.*, svn-commit.tmp
+            let g:skipview_files = [
+                \ '\[example pattern\]'
+                \ ]
+        endif
+    " Vim UI
+        if !exists('g:override_spf13_bundles') && !exists('g:no_colorscheme')
+            if OSX()
+                if  isdirectory(expand("~/.vim/bundle/vim-quantum"))
+                    set background=dark
+                    set termguicolors
+                    colorscheme quantum
+                endif
+            else
+                if  filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+                    let g:solarized_termcolors=256
+                    let g:solarized_termtrans=1
+                    let g:solarized_visibility="normal"
+                    colorscheme solarized
+                    color solarized
                 endif
             endif
-        endfunc
-        " buffer switch
-        nnoremap <leader>bn :bn<CR>
-        nnoremap <leader>bp :bp<CR>
-        " 定义快捷键保存当前窗口内容
-        nmap <Leader>w :w<CR>
-        nmap <Leader>W :wq!<CR>
-        " 定义快捷键保存所有窗口内容并退出 vim
-        nmap <Leader>WQ :wa<CR>:q<CR>
-        " 定义快捷键关闭当前窗口
-        nmap <Leader>q :q<CR>
-        " 不做任何保存，直接退出 vim
-        nmap <Leader>Q :qa!<CR>
-        " 设置分割页面
-        nmap <Leader>- :split<Space>
-        nmap <leader>\ :vsplit<Space>
-        nmap <leader>= <C-W>=
-        "设置垂直高度减增
-        nmap <Leader>{ :resize -3<CR>
-        nmap <Leader>} :resize +3<CR>
-        "设置水平宽度减增
-        nmap <Leader>[ :vertical resize -3<CR>
-        nmap <Leader>] :vertical resize +3<CR>
-        "至左方的子窗口
-        nnoremap <Leader>H <C-W>H
-        "至右方的子窗口
-        nnoremap <Leader>L <C-W>L
-        "至上方的子窗口
-        nnoremap <Leader>K <C-W>K
-        "至下方的子窗口
-        nnoremap <Leader>J <C-W>J
-        " Visual shifting (does not exit Visual mode)
-        vnoremap < <gv
-        vnoremap > >gv
-        " Ctrl-m for switch between brackets
-        map <C-m> %
-    endif
-" Formatting
-    " auto close qfixwindows when leave vim
-    aug QFClose
-      au!
-      au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
-    aug END
-    set number                      " show line number"
-    set autoindent                  " Indent at the same level of the previous line
-    set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
-    set splitright                  " Puts new vsplit windows to the right of the current
-    set splitbelow                  " Puts new split windows to the bottom of the current
-    " 不生成back文件
-    set nobackup
-    set nowritebackup
-    " 关闭拼写检查
-    set nospell
-    " 关闭声音
-    set noeb
-    set vb
-    " 关闭列光标加亮
-    set nocursorcolumn
-    " 行光标加亮
-    set cursorline
-    " 允许折行
-    set wrap
-    " 不折叠
-    set nofoldenable
-    " 标签控制
-    set showtabline=2
-    " 开启实时搜索功能
-    set incsearch
-    " 显示光标当前位置
-    set ruler
-    " 高亮显示搜索结果
-    set hlsearch
-    set incsearch                   " Find as you type search
-    set smartcase                   " Case sensitive when uc present
-    set ignorecase                  " Case insensitive search
-    " 一些格式
-    set backspace=indent,eol,start  " Backspace for dummies
-    set linespace=0                 " No extra spaces between rows
-    set showmatch                   " Show matching brackets/parenthesis
-    set winminheight=0              " Windows can be 0 line high
-    set wildmenu                    " Show list instead of just completing
-    set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
-    set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
-    set scrolljump=5                " Lines to scroll when cursor leaves screen
-    set scrolloff=3                 " Minimum lines to keep above and below cursor
-    set list
-    set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespacetextwidth=200
-    set formatoptions-=tc           " Not aut break a line into multiple lines
-    set shiftwidth=4                " Use indents of 4 spaces
-    set expandtab                   " Tabs are spaces, not tabs
-    set tabstop=4                   " An indentation every four columns
-    set softtabstop=4               " Let backspace delete indent
-    " 没有滚动条
-    set guioptions-=l
-    set guioptions-=L
-    set guioptions-=r
-    set guioptions-=R
-    " 没有菜单和工具条
-    set guioptions-=m
-    set guioptions-=T
-    " 总是显示状态栏
-    set laststatus=2
-    " sepcial setting for different type of files
-    au BufNewFile,BufRead *.py
-        \set shiftwidth=4
-        \set tabstop=4
-        \set softtabstop=4
-        \set expandtab
-        \set autoindent
-        \set foldmethod=indent
-    "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-    " Remove trailing whitespaces and ^M chars
-    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
-    autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
-    autocmd BufNewFile,BufRead *.pandoc set filetype=pandoc
-    autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
-    " preceding line best in a plugin but here for now.
-    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-    " Workaround vim-commentary for Haskell
-    autocmd FileType haskell setlocal commentstring=--\ %s
-    " Workaround broken colour highlighting in Haskell
-    autocmd FileType haskell,rust setlocal nospell
-" General
-    " Most prefer to automatically switch to the current file directory when
-    " a new buffer is opened; to prevent this behavior, add the following to
-    " your .vimrc.before.local file:
-    "   let g:spf13_no_autochdir = 1
-    if !exists('g:spf13_no_autochdir')
-        autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-        " Always switch to the current file directory
-    endif
-    " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-    " Restore cursor to file position in previous editing session
-    " To disable this, add the following to your .vimrc.before.local file:
-    "   let g:spf13_no_restore_cursor = 1
-    if !exists('g:spf13_no_restore_cursor')
-        function! ResCur()
-            if line("'\"") <= line("$")
-                silent! normal! g`"
-                return 1
-            endif
-        endfunction
-        augroup resCur
-            autocmd!
-            autocmd BufWinEnter * call ResCur()
-        augroup END
-    endif
-    " To disable views add the following to your .vimrc.before.local file:
-    "   let g:spf13_no_views = 1
-    if !exists('g:spf13_no_views')
-        " Add exclusions to mkview and loadview
-        " eg: *.*, svn-commit.tmp
-        let g:skipview_files = [
-            \ '\[example pattern\]'
-            \ ]
-    endif
-" Vim UI
-    if !exists('g:override_spf13_bundles') && !exists('g:no_colorscheme')
-        if OSX()
-            if  isdirectory(expand("~/.vim/bundle/vim-quantum"))
-                set background=dark
-                set termguicolors
-                colorscheme quantum
-            endif
-        else
-            if  filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-                let g:solarized_termcolors=256
-                let g:solarized_termtrans=1
-                let g:solarized_visibility="normal"
-                colorscheme solarized
-                color solarized
-            endif
         endif
-    endif
-    if has('cmdline_info')
-        set ruler                   " Show the ruler
-        set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
-        set showcmd                 " Show partial commands in status line and
-    endif
-    if has('statusline')
-        set laststatus=2
-        " Broken down into easily includeable segments
-        set statusline=%<%f\                     " Filename
-        set statusline+=%w%h%m%r                 " Options
-        if !exists('g:override_spf13_bundles')
-            if isdirectory(expand("~/.vim/bundle/fugitive"))
-                set statusline+=%{fugitive#statusline()} " Git Hotness
-            endif
+        if has('cmdline_info')
+            set ruler                   " Show the ruler
+            set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
+            set showcmd                 " Show partial commands in status line and
         endif
-        set statusline+=\ [%{&ff}/%Y]            " Filetype
-        set statusline+=\ [%{getcwd()}]          " Current dir
-        set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-    endif
-    " End/Start of line motion keys act relative to row/wrap width in the
-    " presence of `:set wrap`, and relative to line for `:set nowrap`.
-    " Default vim behaviour is to act relative to text line in both cases
-    " If you prefer the default behaviour, add the following to your
-    " .vimrc.before.local file:
-    "   let g:spf13_no_wrapRelMotion = 1
-    if !exists('g:spf13_no_wrapRelMotion')
-        " Same for 0, home, end, etc
-        function! WrapRelativeMotion(key, ...)
-            let vis_sel=""
-            if a:0
-                let vis_sel="gv"
+        if has('statusline')
+            set laststatus=2
+            " Broken down into easily includeable segments
+            set statusline=%<%f\                     " Filename
+            set statusline+=%w%h%m%r                 " Options
+            if !exists('g:override_spf13_bundles')
+                if isdirectory(expand("~/.vim/bundle/fugitive"))
+                    set statusline+=%{fugitive#statusline()} " Git Hotness
+                endif
             endif
-            if &wrap
-                execute "normal!" vis_sel . "g" . a:key
-            else
-                execute "normal!" vis_sel . a:key
-            endif
-        endfunction
+            set statusline+=\ [%{&ff}/%Y]            " Filetype
+            set statusline+=\ [%{getcwd()}]          " Current dir
+            set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+        endif
+        " End/Start of line motion keys act relative to row/wrap width in the
+        " presence of `:set wrap`, and relative to line for `:set nowrap`.
+        " Default vim behaviour is to act relative to text line in both cases
+        " If you prefer the default behaviour, add the following to your
+        " .vimrc.before.local file:
+        "   let g:spf13_no_wrapRelMotion = 1
+        if !exists('g:spf13_no_wrapRelMotion')
+            " Same for 0, home, end, etc
+            function! WrapRelativeMotion(key, ...)
+                let vis_sel=""
+                if a:0
+                    let vis_sel="gv"
+                endif
+                if &wrap
+                    execute "normal!" vis_sel . "g" . a:key
+                else
+                    execute "normal!" vis_sel . a:key
+                endif
+            endfunction
 
-        " Map g* keys in Normal, Operator-pending, and Visual+select
-        noremap $ :call WrapRelativeMotion("$")<CR>
-        noremap <End> :call WrapRelativeMotion("$")<CR>
-        noremap 0 :call WrapRelativeMotion("0")<CR>
-        noremap <Home> :call WrapRelativeMotion("0")<CR>
-        noremap ^ :call WrapRelativeMotion("^")<CR>
-        " Overwrite the operator pending $/<End> mappings from above
-        " to force inclusive motion with :execute normal!
-        onoremap $ v:call WrapRelativeMotion("$")<CR>
-        onoremap <End> v:call WrapRelativeMotion("$")<CR>
-        " Overwrite the Visual+select mode mappings from above
-        " to ensuwe the correct vis_sel flag is passed to function
-        vnoremap $ :<C-U>call WrapRelativeMotion("$", 1)<CR>
-        vnoremap <End> :<C-U>call WrapRelativeMotion("$", 1)<CR>
-        vnoremap 0 :<C-U>call WrapRelativeMotion("0", 1)<CR>
-        vnoremap <Home> :<C-U>call WrapRelativeMotion("0", 1)<CR>
-        vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
-    endif
-" Stupid shift key fixes
-    if !exists('g:spf13_no_keyfixes')
-        if has("user_commands")
-            command! -bang -nargs=* -complete=file E e<bang> <args>
-            command! -bang -nargs=* -complete=file W w<bang> <args>
-            command! -bang -nargs=* -complete=file Wq wq<bang> <args>
-            command! -bang -nargs=* -complete=file WQ wq<bang> <args>
-            command! -bang Wa wa<bang>
-            command! -bang WA wa<bang>
-            command! -bang Q q<bang>
-            command! -bang QA qa<bang>
-            command! -bang Qa qa<bang>
+            " Map g* keys in Normal, Operator-pending, and Visual+select
+            noremap $ :call WrapRelativeMotion("$")<CR>
+            noremap <End> :call WrapRelativeMotion("$")<CR>
+            noremap 0 :call WrapRelativeMotion("0")<CR>
+            noremap <Home> :call WrapRelativeMotion("0")<CR>
+            noremap ^ :call WrapRelativeMotion("^")<CR>
+            " Overwrite the operator pending $/<End> mappings from above
+            " to force inclusive motion with :execute normal!
+            onoremap $ v:call WrapRelativeMotion("$")<CR>
+            onoremap <End> v:call WrapRelativeMotion("$")<CR>
+            " Overwrite the Visual+select mode mappings from above
+            " to ensuwe the correct vis_sel flag is passed to function
+            vnoremap $ :<C-U>call WrapRelativeMotion("$", 1)<CR>
+            vnoremap <End> :<C-U>call WrapRelativeMotion("$", 1)<CR>
+            vnoremap 0 :<C-U>call WrapRelativeMotion("0", 1)<CR>
+            vnoremap <Home> :<C-U>call WrapRelativeMotion("0", 1)<CR>
+            vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
         endif
-        cmap Tabe tabe
-    endif
-" Plugins
-    " ywvim,vim里的中文输入法
-        if isdirectory(expand("~/.vim/bundle/ywvim"))
-            let g:ywvim_ims=[ 
-                        \['wb', '五笔', 'wubi.ywvim'], 
-                        \['py', '拼音', 'pinyin.ywvim'], 
-                        \['cj', '仓颉', 'cangjie.ywvim'], 
-                        \['wb98', '五笔98', 'wubi98.ywvim'], 
-                        \['zm', '郑码', 'zhengma.ywvim'], 
-                        \['zy', '注音', 'zhuyin.ywvim'], 
-                        \['ar30', '行列', 'array30.ywvim'], 
-                        \]
-            let g:ywvim_py = { 'helpim':'wb', 'gb':0 }
-            let g:ywvim_zhpunc = 0
-            let g:ywvim_listmax = 8
-            let g:ywvim_esc_autoff = 0
-            let g:ywvim_autoinput = 0
-            let g:ywvim_circlecandidates = 1
-            let g:ywvim_helpim_on = 0
-            let g:ywvim_matchexact = 0
-            let g:ywvim_chinesecode = 1
-            let g:ywvim_gb = 0
-            let g:ywvim_preconv = 'g2b'
-            let g:ywvim_conv = ''
-            let g:ywvim_lockb = 1
-        endif
-    " Nvim-R
-        if isdirectory(expand("~/.vim/bundle/Nvim-R"))
-            let R_rconsole_width = 0
-            map <leader>RR \rf\ro<C-w>h
-            map <leader>RQ \rq
-            let R_objbr_place = "script,right"
-            autocmd VimResized * let R_rconsole_height = winheight(0) /3
-            let R_objbr_h = 25
-            let R_objbr_opendf = 1    " Show data.frames elements
-            let R_objbr_openlist = 1  " Show lists elements
-            let R_objbr_allnames = 0  " Show .GlobalEnv hidden objects
-            let R_objbr_labelerr = 1  " Warn if label is not a valid text
-            "if executable('tmux')
-                "let R_in_buffer = 0
-            "else
-                "let R_in_buffer = 1
-            "endif
-            let R_hl_term = 1
-            let R_close_term = 1
-            let Rout_more_colors = 1
-            let R_hi_fun_paren = 1
-            let R_rmd_environment = "new.env()"
-        endif
-    " Ag
-        if isdirectory(expand("~/.vim/bundle/ag.vim"))
-            nnoremap <leader>ag :Ag<space>
-            nnoremap <leader>af :AgFile<space>
-            let g:ag_working_path_mode="r"
-            set runtimepath^=~/.vim/bundle/ag.vim"
-        endif
-    " NerdTree
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            nmap <silent><C-n> <plug>NERDTreeTabsToggle<CR>
-            nmap <leader>nt :NERDTreeFind<CR>
-            "let g:NERDShutUp=1
-            let NERDTreeShowBookmarks=1
-            let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-            let NERDTreeChDirMode=0
-            let NERDTreeQuitOnOpen=1
-            let NERDTreeMouseMode=2
-            let NERDTreeShowHidden=1
-            let NERDTreeKeepTreeInNewTab=1
-            let g:nerdtree_tabs_open_on_gui_startup=0
-        endif
-    " VOom
-        if isdirectory(expand("~/.vim/bundle/VOom"))
-            let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
-            nmap <silent><leader>vt :VoomToggle<CR>
-            nmap <leader>vo :Voom<Space>
-        endif
-    " markdown
-        if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
-            nmap <F7> <Plug>MarkdownPreview
-            imap <F7> <Plug>MarkdownPreview
-            if OSX()
-                let g:mkdp_path_to_chrome = "OPEN -a Google\\ Chrome"
-            else
-                let g:mkdp_path_to_chrome = "google-chrome"
+    " Stupid shift key fixes
+        if !exists('g:spf13_no_keyfixes')
+            if has("user_commands")
+                command! -bang -nargs=* -complete=file E e<bang> <args>
+                command! -bang -nargs=* -complete=file W w<bang> <args>
+                command! -bang -nargs=* -complete=file Wq wq<bang> <args>
+                command! -bang -nargs=* -complete=file WQ wq<bang> <args>
+                command! -bang Wa wa<bang>
+                command! -bang WA wa<bang>
+                command! -bang Q q<bang>
+                command! -bang QA qa<bang>
+                command! -bang Qa qa<bang>
             endif
+            cmap Tabe tabe
         endif
-    " PIV
-        if isdirectory(expand("~/.vim/bundle/PIV"))
-            let g:DisableAutoPHPFolding = 0
-            let g:PIVAutoClose = 0
-        endif
-    " fugitive 
-        if isdirectory(expand("~/.vim/bundle/vim-fugitive"))
-            nmap <Leader>gi :Git<Space>
-        endif
-    " AsyncRun
-        if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
-            nmap <Leader><F5> :AsyncRun<Space>
-        endif
-    " Misc
-        if isdirectory(expand("~/.vim/bundle/matchit.zip"))
-            let b:match_ignorecase = 1
-        endif
-    " Ctags
-        set tags=./tags;/,~/.vimtags
-        " Make tags placed in .git/tags file available in all levels of a repository
-        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
-        if gitroot != ''
-            let &tags = &tags . ',' . gitroot . '/.git/tags'
-        endif
-    " AutoCloseTag
-        " Make it so AutoCloseTag works for xml and xhtml files as well
-        au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-        nmap <Leader>ac <Plug>ToggleAutoCloseMappings
-    " TagBar
-        let s:has_tagbar = 0
-        if isdirectory(expand("~/.vim/bundle/tagbar/"))
-            nmap <silent><C-t> :TagbarToggle<CR>
-            nnoremap <silent><leader>jt :TagbarOpen j<CR>
-            let s:has_tagbar = 1
-            let tagbar_left=0
-            let g:tagbar_sort = 0
-            let tagbar_width=30
-            let g:tagbar_compact=1
-            let g:tagbar_type_cpp = {
-                \ 'ctagstype' : 'c++',
-                \ 'kinds'     : [
-                    \ 'c:classes:0:1',
-                    \ 'd:macros:0:1',
-                    \ 'e:enumerators:0:0',
-                    \ 'f:functions:0:1',
-                    \ 'g:enumeration:0:1',
-                    \ 'l:local:0:1',
-                    \ 'm:members:0:1',
-                    \ 'n:namespaces:0:1',
-                    \ 'p:functions_prototypes:0:1',
-                    \ 's:structs:0:1',
-                    \ 't:typedefs:0:1',
-                    \ 'u:unions:0:1',
-                    \ 'v:global:0:1',
-                    \ 'x:external:0:1'
-                \ ],
-                \ 'sro'        : '::',
-                \ 'kind2scope' : {
-                    \ 'g' : 'enum',
-                    \ 'n' : 'namespace',
-                    \ 'c' : 'class',
-                    \ 's' : 'struct',
-                    \ 'u' : 'union'
-                \ },
-                \ 'scope2kind' : {
-                    \ 'enum'      : 'g',
-                    \ 'namespace' : 'n',
-                    \ 'class'     : 'c',
-                    \ 'struct'    : 's',
-                    \ 'union'     : 'u'
-                \ }
-            \ }
-        endif
+    " Plugins
+        " ywvim,vim里的中文输入法
+            if isdirectory(expand("~/.vim/bundle/ywvim"))
+                let g:ywvim_ims=[ 
+                            \['wb', '五笔', 'wubi.ywvim'], 
+                            \['py', '拼音', 'pinyin.ywvim'], 
+                            \['cj', '仓颉', 'cangjie.ywvim'], 
+                            \['wb98', '五笔98', 'wubi98.ywvim'], 
+                            \['zm', '郑码', 'zhengma.ywvim'], 
+                            \['zy', '注音', 'zhuyin.ywvim'], 
+                            \['ar30', '行列', 'array30.ywvim'], 
+                            \]
+                let g:ywvim_py = { 'helpim':'wb', 'gb':0 }
+                let g:ywvim_zhpunc = 0
+                let g:ywvim_listmax = 8
+                let g:ywvim_esc_autoff = 1
+                let g:ywvim_autoinput = 2
+                let g:ywvim_circlecandidates = 1
+                let g:ywvim_helpim_on = 0
+                let g:ywvim_matchexact = 0
+                let g:ywvim_chinesecode = 1
+                let g:ywvim_gb = 0
+                let g:ywvim_preconv = 'g2b'
+                let g:ywvim_conv = ''
+                let g:ywvim_lockb = 1
+            endif
+        " Nvim-R
+            if isdirectory(expand("~/.vim/bundle/Nvim-R"))
+                let R_rconsole_width = 0
+                map <leader>RR \rf\ro<C-w>h
+                map <leader>RQ \rq
+                let R_objbr_place = "script,right"
+                autocmd VimResized * let R_rconsole_height = winheight(0) /3
+                let R_objbr_h = 25
+                let R_objbr_opendf = 1    " Show data.frames elements
+                let R_objbr_openlist = 1  " Show lists elements
+                let R_objbr_allnames = 0  " Show .GlobalEnv hidden objects
+                let R_objbr_labelerr = 1  " Warn if label is not a valid text
+                "if executable('tmux')
+                    "let R_in_buffer = 0
+                "else
+                    "let R_in_buffer = 1
+                "endif
+                let R_hl_term = 1
+                let R_close_term = 1
+                let Rout_more_colors = 1
+                let R_hi_fun_paren = 1
+                let R_rmd_environment = "new.env()"
+            endif
+        " Ag
+            if isdirectory(expand("~/.vim/bundle/ag.vim"))
+                nnoremap <leader>ag :Ag<space>
+                nnoremap <leader>af :AgFile<space>
+                let g:ag_working_path_mode="r"
+                set runtimepath^=~/.vim/bundle/ag.vim"
+            endif
+        " NerdTree
+            if isdirectory(expand("~/.vim/bundle/nerdtree"))
+                nmap <silent><C-n> <plug>NERDTreeTabsToggle<CR>
+                nmap <leader>nn <plug>NERDTreeTabsToggle<CR>
+                nmap <leader>nt :NERDTreeFind<CR>
+                "let g:NERDShutUp=1
+                let NERDTreeShowBookmarks=1
+                let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+                let NERDTreeChDirMode=0
+                let NERDTreeQuitOnOpen=1
+                let NERDTreeMouseMode=2
+                let NERDTreeShowHidden=1
+                let NERDTreeKeepTreeInNewTab=1
+                let g:nerdtree_tabs_open_on_gui_startup=0
+            endif
+        " VOom
+            if isdirectory(expand("~/.vim/bundle/VOom"))
+                let g:voom_ft_modes = {'md':'markdown','markdown': 'markdown', 'pandoc': 'pandoc','c':'fmr2', 'cpp':'fmr2', 'python':'python','vim':'vimwiki'}
+                nmap <silent><leader>vt :VoomToggle<CR>
+                nmap <leader>vo :Voom<Space>
+            endif
+        " markdown
+            if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
+                map <F5> <Plug>MarkdownPreview
+                if OSX()
+                    let g:mkdp_path_to_chrome = "OPEN -a Google\\ Chrome"
+                else
+                    let g:mkdp_path_to_chrome = "google-chrome"
+                endif
+            endif
+        " PIV
+            if isdirectory(expand("~/.vim/bundle/PIV"))
+                let g:DisableAutoPHPFolding = 0
+                let g:PIVAutoClose = 0
+            endif
+        " fugitive 
+            if isdirectory(expand("~/.vim/bundle/vim-fugitive"))
+                nmap <Leader>gi :Git<Space>
+            endif
+        " AsyncRun
+            if isdirectory(expand("~/.vim/bundle/asyncrun.vim"))
+                nmap <Leader><F5> :AsyncRun<Space>
+            endif
+        " Misc
+            if isdirectory(expand("~/.vim/bundle/matchit.zip"))
+                let b:match_ignorecase = 1
+            endif
+        " Ctags
+            set tags=./tags;/,~/.vimtags
+            " Make tags placed in .git/tags file available in all levels of a repository
+            let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
+            if gitroot != ''
+                let &tags = &tags . ',' . gitroot . '/.git/tags'
+            endif
+        " AutoCloseTag
+            " Make it so AutoCloseTag works for xml and xhtml files as well
+            au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+            nmap <Leader>ac <Plug>ToggleAutoCloseMappings
+        " TagBar
+            let s:has_tagbar = 0
+            if isdirectory(expand("~/.vim/bundle/tagbar/"))
+                nmap <silent><C-T> :TagbarToggle<CR>
+                nmap <silent><leader>tt :TagbarToggle<CR>
+                nnoremap <silent><leader>jt :TagbarOpen j<CR>
+                let s:has_nerdtree = 1
+                let g:NERDTreeWinSize=30
+                let g:NERDTreeShowBookmarks=1
+                let g:NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+                let g:NERDTreeChDirMode=0
+                let g:NERDTreeQuitOnOpen=1
+                let g:NERDTreeMouseMode=2
+                let g:NERDTreeShowHidden=1
+                let g:NERDTreeKeepTreeInNewTab=1
+                let g:nerdtree_tabs_focus_on_files = 1
+                let g:nerdtree_tabs_open_on_gui_startup = 0
+                let g:NERDTreeWinPos=0
+                let g:NERDTreeDirArrowExpandable = '▸'
+                let g:NERDTreeDirArrowCollapsible = '▾'
+                autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+                " nerdtree-git
+                if isdirectory(expand("~/.vim/bundle/nerdtree-git-plugin"))
+                    let g:NERDTreeIndicatorMapCustom = {
+                            \ "Modified"  : "*",
+                            \ "Staged"    : "+",
+                            \ "Untracked" : "★",
+                            \ "Renamed"   : "→ ",
+                            \ "Unmerged"  : "=",
+                            \ "Deleted"   : "X",
+                            \ "Dirty"     : "●",
+                            \ "Clean"     : "√",
+                            \ "Unknown"   : "?"
+                    \ }
+                endif
+            endif
     " Tabularize
         if isdirectory(expand("~/.vim/bundle/tabular"))
             nmap <Leader>a& :Tabularize /&<CR>
