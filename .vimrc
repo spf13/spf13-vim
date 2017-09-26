@@ -301,25 +301,17 @@ augroup END
 " }
 
 " Plugins {
-    " ack.vim {
-        "set grepprg=ack
-    " }
-    " ag.vim {
+    " ack.vim/ag.vim {
         " @see http://robots.thoughtbot.com/faster-grepping-in-vim
+        "set grepprg=ack
         "
         " The Silver Searcher
         if executable('ag')
-          " Use ag over grep
-          set grepprg=ag\ --nogroup\ --nocolor
+            " Use ag over grep
+            set grepprg=ag\ --nogroup\ --nocolor
+            let g:ackprg = 'ag --vimgrep --smart-case'
         endif
 
-        " bind K to grep word under cursor
-        " use :Ag <enter>  instead
-        "nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-        " bind \ (backward slash) to grep shortcut
-        "command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-        "nnoremap \ :Ag<SPACE>
     " }
 
     " autoHighlight.vim {
