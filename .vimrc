@@ -67,6 +67,13 @@
 
 " }
 
+" Load Vim Plug - UnPlug Function {
+    if filereadable(expand("~/.spf13-vim-3/.vim_plug.unplug"))
+        source ~/.spf13-vim-3/.vim_plug.unplug"
+    endif
+" }
+
+
 " Use before config if available {
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
@@ -1061,9 +1068,6 @@
             endif
         endif
     " }
-
-
-
 " }
 
 " GUI Settings {
