@@ -379,7 +379,7 @@
         endif
     " Vim UI
         if !exists('g:override_spf13_bundles') && !exists('g:no_colorscheme')
-            if OSX()
+            if OSX() || WINDOWS()
                 if  isdirectory(expand("~/.vim/bundle/vim-quantum"))
                     set background=dark
                     set termguicolors
@@ -1001,7 +1001,7 @@
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
             if !exists('g:no_colorscheme')
-                if OSX()
+                if OSX() || WINDOWS()
                     if isdirectory(expand("~/.vim/bundle/vim-quantum/"))
                         let g:airline_theme = 'quantum'
                     endif

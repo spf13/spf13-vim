@@ -180,10 +180,6 @@
             Bundle 'python-mode/python-mode'
             Bundle 'yssource/python.vim'
         endif
-    " R
-        if count(g:spf13_bundle_groups, 'R')
-            Bundle 'jalvesaq/Nvim-R'
-        endif
     " Perl
         if count(g:spf13_bundle_groups, 'perl')
             Bundle 'vim-perl/vim-perl'
@@ -195,6 +191,10 @@
             Bundle 'pangloss/vim-javascript'
             Bundle 'briancollins/vim-jst'
             Bundle 'kchmck/vim-coffee-script'
+        endif
+    " R
+        if count(g:spf13_bundle_groups, 'R')
+            Bundle 'jalvesaq/Nvim-R'
         endif
     " Scala
         if count(g:spf13_bundle_groups, 'scala')
