@@ -136,17 +136,17 @@
         nnoremap  <leader>yy  "+yy
         " Yank from the cursor to the end of the line, to be consistent with C and D.
         nnoremap Y y$
+        " p and P for paste
+        nnoremap <leader>p "+p
+        nnoremap <leader>P "+P
+        vnoremap <leader>p "+p
+        vnoremap <leader>P "+P
         " Easier horizontal scrolling
         map zl zL
         map zh zH
         " Wrapped lines goes down/up to next row, rather than next line in file.
         noremap j gj
         noremap k gk
-        " p and P for paste
-        nnoremap <leader>p "+p
-        nnoremap <leader>P "+P
-        vnoremap <leader>p "+p
-        vnoremap <leader>P "+P
         "F1 help
         nmap <F1> :h<SPACE>
         "F2 toggleFold
@@ -473,11 +473,6 @@
                 let g:ywvim_ims=[ 
                             \['wb', '五笔', 'wubi.ywvim'], 
                             \['py', '拼音', 'pinyin.ywvim'], 
-                            \['cj', '仓颉', 'cangjie.ywvim'], 
-                            \['wb98', '五笔98', 'wubi98.ywvim'], 
-                            \['zm', '郑码', 'zhengma.ywvim'], 
-                            \['zy', '注音', 'zhuyin.ywvim'], 
-                            \['ar30', '行列', 'array30.ywvim'], 
                             \]
                 let g:ywvim_py = { 'helpim':'wb', 'gb':0 }
                 let g:ywvim_zhpunc = 0

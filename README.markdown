@@ -2,39 +2,45 @@
 > This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim)
 Thanks him for great job.I changed lots of settings and plugins to suit my needs.
 
-![](https://camo.githubusercontent.com/693928543616d498a4203b93a768d94aed45b95d/68747470733a2f2f692e696d6775722e636f6d2f554b546f592e706e67)
 
-# 写在前面
+## 前言
 本人是生信工程师,主要使用的语文是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率.但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.
 
-# 安装 
-## 要求 
+上一张我的工作界面，配合iterm2的半透明效果看起来很酷炫
+
+![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171009103355823.png)
+
+
+## 安装 
+### 要求 
 *安装本配置 需要 Git 1.7+ 和 Vim 7.3+（编译时加入对lua和python的支持），部分插件如`Nvim-R`,`AsyncRun`,需要Vim8.0*
 如果要安装[neocomplete](https://github.com/Shougo/neocomplete.vim), 需要[vim with lua]().
 
-## Linux, \*nix, Mac OSX 下的安装
+### Linux, \*nix, Mac OSX 下的安装
 ```bash
     git clone https://github.com/leoatchina/spf13-vim-leoatchina.git
     cd spf13-vim-leoatchina
     bash bootstrap.sh
 ```
 
-## windows下的安装 
+### windows下的安装 
 ```bash
     git clone https://github.com/leoatchina/spf13-vim-leoatchina.git
     cd spf13-vim-leoatchina
     点击install.cmd 
 ```
 
-## 升级到最新版本
+### 升级到最新版本
 ```bash
     cd spf13-vim-leoatchina 
     git pull
-    vim +BundleInstall! +BundleClean +q
+    vim +BundleUpdate
+    或者在vim里直接:BundleUpdate
 ```
+![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171009103100770.png)
 
-# 主要改动
-我在他的基础上，做了一些*微小*的工作
+## 主要改动
+我在spf13的基础上，做了一些*微小*的工作
 1. 去除了一些比较冗余的插件，如[wildfire](wildfire)，并加入了自己喜欢的插件
 2. 修改了安装代码，变成直接从clone下的目录软链接到用户目录下，**不再支持XP**
 3. 按自己习惯修改了大量插件的快捷键
@@ -45,26 +51,26 @@ Thanks him for great job.I changed lots of settings and plugins to suit my needs
 8. 用`ywvim`作为中文输入法,请按`ctrl+\`切换到中文输入法,`ctrl+^`进行输入法配置
 9. 默认不进行代码补全，要使用者在 `~/.vimrc.before.local`里进行配置,如我加入了对`youcompletme`的配置
 ```
-let g:spf13_bundle_groups=['general',  'programming', 'python', 'youcompleteme','php', 'javascript', 'html','R',]
+  let g:spf13_bundle_groups=['general',  'programming', 'python', 'youcompleteme','php', 'javascript', 'html','R',]
 ```
 
-# 对使用者的要求
-了解基本的vim操作，知道`leader键`,`map系列命令`,`搜索`，`命令`等
+## 对使用者的要求
+了解基本的vim操作，知道`leader键`,`map`,`hjkl`,`d`,`w`,`s`,`i`,`u`,`:`,`\`等操作命令
 
 ## 基本快捷键
-* `<leader>`键改为空格键,`<localleader>`改为`\`,`\`在R编写调试时使用率比较高
-* 集成了`ywvim`输入法,在`insert`模式下通过`CTRL+\`开启,`CTRL+^`进行配置
-* `F1`: 为`:h `，方便启动帮助
-* `F2`: 打开关闭代码折叠
-* `F3`: 打开关闭换行
-* `F4`: 打开关闭搜索高亮
-* `F5`: 运行脚本（python、perl、c等）或生成markdown preview（markdown）;`S+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun
-* `F9`: python调试节点,`S+F9`进行python语法检查,`<leader>+F9`切换语法是否检查
-* `F11`: gvim里的全屏
-* `F12`: 切换paste模式
-* `Ctrl+N` or `<leader>nn`: nerdtreeToggle
-* `Ctrl+T` or `<leader>tt`: tagbarToggle
-* 标签页控制
+  * `<leader>`键改为空格键,`<localleader>`改为`\`,`\`在R编写调试时使用率比较高
+  * 集成了`ywvim`输入法,在`insert`模式下通过`CTRL+\`开启,`CTRL+^`进行配置
+  * `F1`: 为`:h `，方便启动帮助
+  * `F2`: 打开关闭代码折叠
+  * `F3`: 打开关闭换行
+  * `F4`: 打开关闭搜索高亮
+  * `F5`: 运行脚本（python、perl、c等）或生成markdown preview（markdown）;`Shift+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun
+  * `F9`: python调试节点,`S+F9`进行python语法检查,`<leader>+F9`切换语法是否检查
+  * `F11`: gvim里的全屏切换
+  * `F12`: 切换paste模式
+  * `Ctrl+N` or `<leader>nn`: nerdtreeToggle
+  * `Ctrl+T` or `<leader>tt`: tagbarToggle
+  * 标签页控制
 ```
     nnoremap <silent>-  : tabprevious<CR> 
     nnoremap <silent>=  : tabnext<CR> 
@@ -78,243 +84,84 @@ let g:spf13_bundle_groups=['general',  'programming', 'python', 'youcompleteme',
     nnoremap <silent>_  : tabm -1<CR>
     nnoremap <silent>+  : tabm +1<CR> 
 ```
-
-
-## 定制个人配置
-
-建立 `~/.vimrc.local` 或者`~/.gvimrc.local`并写入自己的配置
-如，代替原有的代码高亮
-```bash
-    echo colorscheme ir_black  >> ~/.vimrc.local
+* `Ctrl+e`移到一行的结尾;`Ctrl+y`移到一行的开头。
+* `<leader>w`保存当前文件;`<leader>W`保存所有文件
+* `<leader>q`关闭当然文件;`Q`为`:qa`,不过给你反悔的机会
+* 复制粘贴等
+```
+    " 设置快捷键将选中文本块复制至系统剪贴板
+    vnoremap  <leader>y  "+y
+    nnoremap  <leader>y  "+y
+    nnoremap  <leader>Y  "+yg
+    nnoremap  <leader>yy  "+yy
+    " Yank from the cursor to the end of the line 
+    nnoremap Y y$
+    " p and P for paste
+    nnoremap <leader>p "+p
+    nnoremap <leader>P "+P
+    vnoremap <leader>p "+p
+    vnoremap <leader>P "+P
 ```
 
-### local文件
+* 其他一些快捷键
+```
+    " buffer switch
+    nnoremap <leader>bn :bn<CR>
+    nnoremap <leader>bp :bp<CR>
+    " 定义快捷键保存当前窗口内容
+    nmap <Leader>w :w<CR>
+    nmap <Leader>W :wq!<CR>
+    " 定义快捷键保存所有窗口内容并退出 vim
+    nmap <Leader>WQ :wa<CR>:q<CR>
+    " 定义快捷键关闭当前窗口
+    nmap <Leader>q :q<CR>
+    " 不做任何保存，直接退出 vim
+    nmap <Leader>Q :qa!<CR>
+    " 设置分割页面
+    nmap <Leader>- :split<Space>
+    nmap <leader>\ :vsplit<Space>
+    nmap <leader>= <C-W>=
+    "设置垂直高度减增
+    nmap <Leader>{ :resize -3<CR>
+    nmap <Leader>} :resize +3<CR>
+    "设置水平宽度减增
+    nmap <Leader>[ :vertical resize -3<CR>
+    nmap <Leader>] :vertical resize +3<CR>
+    "至左方的子窗口
+    nnoremap <Leader>H <C-W>H
+    "至右方的子窗口
+    nnoremap <Leader>L <C-W>L
+    "至上方的子窗口
+    nnoremap <Leader>K <C-W>K
+    "至下方的子窗口
+    nnoremap <Leader>J <C-W>J
+    " Visual shifting (does not exit Visual mode)
+    vnoremap < <gv
+    vnoremap > >gv
+    " Ctrl-m for switch between brackets
+    map <C-m> %
+```
+
+## 定制个人配置
+*各配置文件执行次序*
+  * `.vimrc.before` 
+  * `.vimrc.before.local`
+  * `.vimrc.bundles`
+  * `.vimrc.bundles.local`
+  * `.vimrc`
+  * `.vimrc.local`
 
 [spf13](spf13)设计了一系列巧妙的`配置变量`，在`.vimrc.before.local`里写入配置变量后，可打开/关闭某些配置
-
 如，关闭自动cd到某个目录
 ```bash
     echo let g:spf13_no_autochdir = 1 >> ~/.vimrc.before.local
 ```
-在 `~/.vimrc.before`文件里可以看到详细的说明
+在 `~/.vimrc.before`文件里可以看到各个变量详细说明
 
+## 插件系统
+可以说，强大的插件系统是[spf13-vim]()的突出优点，通过这些插件，将原版的vim的功能作了极大的丰富。让界面更加美观，操作更加方便。
 
+由于历史原因，没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件管理器，还是选用经典的[vundle]()
 
-# 插件
-
-可以说，强大的插件系统是spf13的突出优点，通过这些插件，将原版的vim的功能作了极大的丰富。让界面更加美观，操作更加方便。
 ## 定制自用的插件 
-
 spf13的定制插件配置在`.vimr.bundles`文件里，如果
-建立`~/.vimrc.bundles.local` for any additional bundles.
-
-To add a new bundle, just add one line for each bundle you want to install. The line should start with the word "Bundle" followed by a string of either the vim.org project name or the githubusername/githubprojectname. For example, the github project [spf13/vim-colors](https://github.com/spf13/vim-colors) can be added with the following command
-
-```bash
-    echo Bundle \'spf13/vim-colors\' >> ~/.vimrc.bundles.local
-```
-
-Once new plugins are added, they have to be installed.
-
-```bash
-    vim +BundleInstall! +BundleClean +q
-```
-
-## Removing (disabling) an included plugin
-
-
-Add the UnBundle command to this line. It takes the same input as the Bundle line, so simply copy the line you want to disable and add 'Un' to the beginning.
-
-For example, disabling the 'AutoClose' and 'scrooloose/syntastic' plugins
-
-```bash
-    echo UnBundle \'AutoClose\' >> ~/.vimrc.bundles.local
-    echo UnBundle \'scrooloose/syntastic\' >> ~/.vimrc.bundles.local
-```
-
-**Remember to run ':BundleClean!' after this to remove the existing directories**
-
-
-Here are a few of the plugins:
-
-
-## [Undotree]
-
-If you undo changes and then make a new change, in most editors the changes you undid are gone forever, as their undo-history is a simple list.
-Since version 7.0 vim uses an undo-tree instead. If you make a new change after undoing changes, a new branch is created in that tree.
-Combined with persistent undo, this is nearly as flexible and safe as git ;-)
-
-Undotree makes that feature more accessible by creating a visual representation of said undo-tree.
-
-**QuickStart** Launch using `<Leader>u`.
-
-## [NERDTree]
-
-NERDTree is a file explorer plugin that provides "project drawer"
-functionality to your vim editing.  You can learn more about it with
-`:help NERDTree`.
-
-**QuickStart** Launch using `<Ctrl-n>`.
-
-**Customizations**:
-
-* Use `<C-E>` to toggle NERDTree
-* Use `<leader>e` or `<leader>nt` to load NERDTreeFind which opens NERDTree where the current file is located.
-* Hide clutter ('\.pyc', '\.git', '\.hg', '\.svn', '\.bzr')
-* Treat NERDTree more like a panel than a split.
-
-## [ctrlp]
-Ctrlp replaces the Command-T plugin with a 100% viml plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files.
-
-**QuickStart** Launch using `<c-p>`.
-
-## [Surround]
-
-This plugin is a tool for dealing with pairs of "surroundings."  Examples
-of surroundings include parentheses, quotes, and HTML tags.  They are
-closely related to what Vim refers to as text-objects.  Provided
-are mappings to allow for removing, changing, and adding surroundings.
-
-Details follow on the exact semantics, but first, consider the following
-examples.  An asterisk (*) is used to denote the cursor position.
-
-      Old text                  Command     New text ~
-      "Hello *world!"           ds"         Hello world!
-      [123+4*56]/2              cs])        (123+456)/2
-      "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
-      if *x>3 {                 ysW(        if ( x>3 ) {
-      my $str = *whee!;         vllllS'     my $str = 'whee!';
-
-For instance, if the cursor was inside `"foo bar"`, you could type
-`cs"'` to convert the text to `'foo bar'`.
-
-There's a lot more, check it out at `:help surround`
-
-## [NERDCommenter]
-非常好用的注释插件
-
-## [neocomplete]
-
-Neocomplete is an amazing autocomplete plugin with additional support for snippets. It can complete simulatiously from the dictionary, buffer, omnicomplete and snippets. This is the one true plugin that brings Vim autocomplete on par with the best editors.
-
-**QuickStart** Just start typing, it will autocomplete where possible
-
-**Customizations**:
-
- * Automatically present the autocomplete menu
- * Support tab and enter for autocomplete
- * `<C-k>` for completing snippets using [Neosnippet](https://github.com/Shougo/neosnippet.vim).
-
-![neocomplete image][autocomplete-img]
-
-## [YouCompleteMe]
-
-YouCompleteMe is another amazing completion engine. It is slightly more involved to set up as it contains a binary component that the user needs to compile before it will work. As a result of this however it is very fast.
-
-To enable YouCompleteMe add `youcompleteme` to your list of groups by overriding it in your `.vimrc.before.local` like so: `let g:spf13_bundle_groups=['general', 'programming', 'misc', 'scala', 'youcompleteme']` This is just an example. Remember to choose the other groups you want here.
-
-Once you have done this you will need to get Vundle to grab the latest code from git. You can do this by calling `:BundleInstall!`. You should see YouCompleteMe in the list.
-
-You will now have the code in your bundles directory and can proceed to compile the core. Change to the directory it has been downloaded to. If you have a vanilla install then `cd ~/.spf13-vim-3/.vim/bundle/YouCompleteMe/` should do the trick. You should see a file in this directory called install.sh. There are a few options to consider before running the installer:
-
-  * Do you want clang support (if you don't know what this is then you likely don't need it)?
-    * Do you want to link against a local libclang or have the installer download the latest for you?
-  * Do you want support for c# via the omnisharp server?
-
-The plugin is well documented on the site linked above. Be sure to give that a read and make sure you understand the options you require.
-
-For java users wanting to use eclim be sure to add `let g:EclimCompletionMethod = 'omnifunc'` to your .vimrc.local.
-
-## [Syntastic]
-
-Syntastic is a syntax checking plugin that runs buffers through external syntax
-checkers as they are saved and opened. If syntax errors are detected, the user
-is notified and is happy because they didn't have to compile their code or
-execute their script to find them.
-
-## [AutoClose]
-
-AutoClose does what you expect. It's simple, if you open a bracket, paren, brace, quote,
-etc, it automatically closes it. It handles curlys correctly and doesn't get in the
-way of double curlies for things like jinja and twig.
-
-
-## [PIV]
-
-The most feature complete and up to date PHP Integration for Vim with proper support for PHP 5.3+ including latest syntax, functions, better fold support, etc.
-
-PIV provides:
-
- * PHP 5.3 support
- * Auto generation of PHP Doc (,pd on (function, variable, class) definition line)
- * Autocomplete of classes, functions, variables, constants and language keywords
- * Better indenting
- * Full PHP documentation manual (hit K on any function for full docs)
-
-![php vim itegration image][phpmanual-img]
-
-## [Ack.vim]
-
-Ack.vim uses ack to search inside the current directory for a pattern.
-You can learn more about it with `:help Ack`
-
-**QuickStart** :Ack
-
-## [Tabularize]
-
-Tabularize lets you align statements on their equal signs and other characters
-
-**Customizations**:
-
- * `<Leader>a= :Tabularize /=<CR>`
- * `<Leader>a: :Tabularize /:<CR>`
- * `<Leader>a:: :Tabularize /:\zs<CR>`
- * `<Leader>a, :Tabularize /,<CR>`
- * `<Leader>a<Bar> :Tabularize /<Bar><CR>`
-
-## [Tagbar]
-
-spf13-vim includes the Tagbar plugin. This plugin requires exuberant-ctags and will automatically generate tags for your open files. It also provides a panel to navigate easily via tags
-
-**QuickStart** `CTRL-]` while the cursor is on a keyword (such as a function name) to jump to its definition.
-
-**Customizations**: spf13-vim binds `<Leader>tt` to toggle the tagbar panel
-
-![tagbar image][tagbar-img]
-
-**Note**: For full language support, run `brew install ctags` to install
-exuberant-ctags.
-
-**Tip**: Check out `:help ctags` for information about VIM's built-in
-ctag support. Tag navigation creates a stack which can traversed via
-`Ctrl-]` (to find the source of a token) and `Ctrl-T` (to jump back up
-one level).
-
-## [EasyMotion]
-
-EasyMotion provides an interactive way to use motions in Vim.
-
-It quickly maps each possible jump destination to a key allowing very fast and
-straightforward movement.
-
-**QuickStart** EasyMotion is triggered using the normal movements, but prefixing them with `<leader><leader>`
-
-For example this screen shot demonstrates pressing `,,w`
-
-![easymotion image][easymotion-img]
-
-## [Airline]
-
-Airline provides a lightweight themable statusline with no external dependencies. By default this configuration uses the symbols `‹` and `›` as separators for different statusline sections but can be configured to use the same symbols as [Powerline]. An example first without and then with powerline symbols is shown here:
-
-![airline image][airline-img]
-
-To enable powerline symbols first install one of the [Powerline Fonts] or patch your favorite font using the provided instructions. Configure your terminal, MacVim, or Gvim to use the desired font. Finally add `let g:airline_powerline_fonts=1` to your `.vimrc.before.local`.
-
-## Additional Syntaxes
-
-spf13-vim ships with a few additional syntaxes:
-
-* Markdown (bound to \*.markdown, \*.md, and \*.mk)
-* Twig
-a* Git commits (set your `EDITOR` to `mvim -f`)
