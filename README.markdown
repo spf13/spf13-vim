@@ -1,6 +1,7 @@
 # leoatchina的vim配置文件
-This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim).I sincerely thank him for great job.To meet my needs,I have changed lots of settings and plugins.
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim).I sincerely thank him for great job. To meet my needs,I have changed lots of settings and plugins.
+
+
 
 - [leoatchina的vim配置文件](#leoatchina的vim配置文件)
 	- [前言](#前言)
@@ -17,7 +18,6 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 		- [插件管理程序](#插件管理程序)
 		- [定制自用的插件](#定制自用的插件)
 
-<!-- /TOC -->
 
 ## 前言
 本人是生信工程师,主要使用的语文是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率。但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.
@@ -52,7 +52,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 ### 升级到最新版本
 ```bash
   vim +BundleUpdate
-  或者在vim里直接:BundleUpdate
+  或者在vim里直接  :BundleUpdate
 ```
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171009103100770.png)
 
@@ -66,7 +66,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 6. 去除了fork功能，仅保留before功能
 7. 增加对R和Markdown的支持
 8. 用`ywvim`作为中文输入法,请按`ctrl+\`切换到中文输入法,`ctrl+^`进行输入法配置
-9. 默认不进行代码补全，要使用者在 `~/.vimrc.before.local`里进行配置,如我加入了对`youcompletme`的配置
+9. 默认不进行代码补全，要使用者在 `~/.vimrc.before.local`里进行配置,如我加入了对`youcompletme`的配置,也可以使用`neocomplte`和`neocomplcache`
 ```
   let g:spf13_bundle_groups=['general',  'programming', 'python', 'youcompleteme','php', 'javascript', 'html','R',]
 ```
@@ -85,7 +85,8 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
   * `Ctrl+N` or `<leader>nn`: nerdtreeToggle
   * `Ctrl+T` or `<leader>tt`: tagbarToggle
   * 标签页控制
-```
+  
+	```
     nnoremap <silent>-  : tabprevious<CR> 
     nnoremap <silent>=  : tabnext<CR> 
     nnoremap <leader>tf : tabfirst<CR>
@@ -97,13 +98,14 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
     nnoremap <Leader>tm : tabm<SPACE>
     nnoremap <silent>_  : tabm -1<CR>
     nnoremap <silent>+  : tabm +1<CR> 
-```
-* `Ctrl+e`移到一行的结尾;`Ctrl+y`移到一行的开头
-* `Ctrl+m`括号之间跳转
-* `<leader>w`保存当前文件;`<leader>W`保存所有文件
-* `<leader>q`关闭当然文件;`Q`为`:qa`,不过给你反悔的机会
-* 复制粘贴等
-```
+	```
+
+	* `Ctrl+e`移到一行的结尾;`Ctrl+y`移到一行的开头
+	* `Ctrl+m`括号之间跳转
+	* `<leader>w`保存当前文件;`<leader>W`保存所有文件
+	* `<leader>q`关闭当然文件;`Q`为`:qa`,不过给你反悔的机会
+	* 复制粘贴等
+	```
     " 设置快捷键将选中文本块复制至系统剪贴板
     vnoremap  <leader>y  "+y
     nnoremap  <leader>y  "+y
@@ -116,10 +118,10 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
     nnoremap <leader>P "+P
     vnoremap <leader>p "+p
     vnoremap <leader>P "+P
-```
+	```
 
-* 其他一些快捷键
-```
+	* 其他一些快捷键
+	```
     " buffer switch
     nnoremap <leader>bn :bn<CR>
     nnoremap <leader>bp :bp<CR>
@@ -154,11 +156,11 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
     vnoremap < <gv
     vnoremap > >gv
     " Ctrl-m for switch between brackets
-    map <C-m> %
-```
+    map <C-m> %	
+	```
 
 ## 定制个人配置
-*各配置文件执行次序*
+**各配置文件执行次序**
   * `.vimrc.before`  # 参数配置文件
   * `.vimrc.before.local`
   * `.vimrc.bundles` # 配件管理文件
@@ -173,11 +175,10 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 ```
 在 `~/.vimrc.before`文件里可以看到各个变量详细说明
 
-## 插件系统
+## 插件
 可以说，强大的插件系统是[spf13-vim](https://github.com/spf13/spf13-vim)的突出优点，通过这些插件，将原版的vim的功能作了极大的丰富。让界面更加美观，操作更加方便。
 
 ### 插件管理程序
 spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件管理器，还是选用经典的[vundle](https://github.com/VundleVim/Vundle.vim)
 
-### 定制自用的插件 
-spf13的定制插件配置在`.vimr.bundles`文件里，如果
+### 自用的插件 

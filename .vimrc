@@ -278,8 +278,8 @@
         set vb
         " 关闭列光标加亮
         set nocursorcolumn
-        " 行光标加亮
-        set cursorline
+        " 关闭行光标加亮
+        set nocursorline
         " 允许折行
         set wrap
         " 不折叠
