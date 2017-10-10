@@ -21,6 +21,8 @@
         if !has('nvim')
             set term=$TERM          " Make arrow and other keys work
         endif
+    else
+        set guifont=Consolas:h11
     endif
 " Clipboard
     if has('clipboard')
@@ -98,7 +100,15 @@
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
     " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
-    map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
+    if !WINDOWS()
+        map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
+    else
+        autocmd GUIEnter * simalt ~x
+        " 按 F11 切换全屏
+        noremap <F11> <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleFullscreen', 0)<cr>
+        " 按 S-F11 切换窗口透明度
+        noremap <S-F11> <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "247,180")<cr>
+    endif
     set pastetoggle=<F12>      " pastetoggle (sane indentation on pastes)
 " shortcuts by leatchina
     if !exists('g:no_leoatchina_config')
@@ -379,12 +389,10 @@
         endif
     " Vim UI
         if !exists('g:override_spf13_bundles') && !exists('g:no_colorscheme')
-            if OSX() || WINDOWS()
-                if  isdirectory(expand("~/.vim/bundle/vim-quantum"))
-                    set background=dark
-                    set termguicolors
-                    colorscheme quantum
-                endif
+            if count(g:spf13_bundle_groups, 'material') && isdirectory(expand("~/.vim/bundle/vim-quantum"))
+                set background=dark
+                set termguicolors
+                colorscheme quantum
             else
                 if  filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
                     let g:solarized_termcolors=256
@@ -996,10 +1004,8 @@
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
             if !exists('g:no_colorscheme')
-                if OSX() || WINDOWS()
-                    if isdirectory(expand("~/.vim/bundle/vim-quantum/"))
-                        let g:airline_theme = 'quantum'
-                    endif
+                if count(g:spf13_bundle_groups, 'material') && isdirectory(expand("~/.vim/bundle/vim-quantum"))
+                    let g:airline_theme = 'quantum'
                 else
                     if  filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
                         let g:airline_theme = 'solarized'

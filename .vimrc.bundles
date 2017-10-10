@@ -109,13 +109,10 @@
             Bundle 'jiangmiao/auto-pairs'
             Bundle 'ctrlpvim/ctrlp.vim'
             Bundle 'tacahiroy/ctrlp-funky'
+            Bundle 'godlygeek/tabular'
             Bundle 'mbbill/undotree'
             Bundle 'bling/vim-bufferline'
-            Bundle 'terryma/vim-multiple-cursors'
-            Bundle 'godlygeek/tabular'
-            Bundle 'tamlok/vim-markdown'
             Bundle 'iamcco/mathjax-support-for-mkdp'
-            Bundle 'iamcco/markdown-preview.vim'
             Bundle 'nathanaelkane/vim-indent-guides'
             Bundle 'drmingdrmer/vim-toggle-quickfix'
             Bundle 'vim-scripts/sessionman.vim'
@@ -132,12 +129,19 @@
                 Bundle 'vim-scripts/restore_view.vim'
             endif
         endif
-    " General Programming
+        if count(g:spf13_bundle_groups, 'markdown')
+            Bundle 'terryma/vim-multiple-cursors'
+            Bundle 'tamlok/vim-markdown'
+            Bundle 'iamcco/markdown-preview.vim'
+        endif
+   " General Programming
         if count(g:spf13_bundle_groups, 'programming')
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
-            Bundle 'tpope/vim-fugitive'
             Bundle 'mattn/webapi-vim'
+            if executable('git')
+              Bundle 'tpope/vim-fugitive'
+            endif
             if OSX()
                 Bundle 'rizzatti/dash.vim'
             endif
