@@ -1121,10 +1121,10 @@ augroup END
         "set term=builtin_ansi       " Make arrow and other keys work
     endif
 
-    "macVim
-    if has('gui_macvim')
-        set fullscreen
-    endif
+    "macVim - full screen in high sierra is buggy, so disable it
+    " if has('gui_macvim')
+        " set fullscreen
+    " endif
 " }
 
  " Functions {
