@@ -72,7 +72,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 ```
 
 ## 基本快捷键
-  * `<leader>`键改为空格键,这个在键盘上最大的按键就有了更强的作用;`<localleader>`改为`\`,`\`在R编写调试时使用率比较高
+  * `<leader>`键改为空格键,这个在键盘上最大的按键就有了更强的作用;`<localleader>`改为`\`,`\`在R编写调试时使用率比较高
   * 集成了`ywvim`输入法,在`insert`模式下通过`CTRL+\`开启,`CTRL+^`进行配置
   * `F1`: 为`:h `，方便启动帮助
   * `F2`: 打开关闭代码折叠
@@ -102,9 +102,9 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 
 	* `Ctrl+e`移到一行的结尾;`Ctrl+y`移到一行的开头
 	* `Ctrl+m`括号之间跳转
-	* `<leader>w`保存当前文件;`<leader>W`保存所有文件
-	* `<leader>q`关闭当然文件;`Q`为`:qa`,不过给你反悔的机会
-	* 复制粘贴等
+	* `<leader>w`保存当前文件;`<leader>W`保存所有文件
+	* `<leader>q`关闭当然文件;`Q`为`:qa`,不过给你反悔的机会不直接按下回车
+	* 复制粘贴等
 	```
     " 设置快捷键将选中文本块复制至系统剪贴板
     vnoremap  <leader>y  "+y
@@ -120,7 +120,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
     vnoremap <leader>P "+P
 	```
 
-	* 其他一些快捷键
+	* 其他一些快捷键
 	```
     " buffer switch
     nnoremap <leader>bn :bn<CR>
@@ -160,10 +160,10 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 	```
 
 ## 定制个人配置
-**各配置文件执行次序**
-  * `.vimrc.before`  # 参数配置文件
+**各配置文件执行次序**
+  * `.vimrc.before`  # 参数配置文件
   * `.vimrc.before.local`
-  * `.vimrc.bundles` # 配件管理文件
+  * `.vimrc.bundles` # 插件管理文件
   * `.vimrc.bundles.local`
   * `.vimrc`      # 最主要的配置文件
   * `.vimrc.local`
@@ -179,6 +179,6 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 可以说，强大的插件系统是[spf13-vim](https://github.com/spf13/spf13-vim)的突出优点，通过这些插件，将原版的vim的功能作了极大的丰富。让界面更加美观，操作更加方便。
 
 ### 插件管理程序
-spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件管理器，还是选用经典的[vundle](https://github.com/VundleVim/Vundle.vim)
+spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件管理器，还是选用经典的[vundle](https://github.com/VundleVim/Vundle.vim)
 
 ### 自用的插件 
