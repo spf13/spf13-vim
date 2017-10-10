@@ -1,41 +1,58 @@
-# leoatchina的vim配置文件，从spf13的配置fork而来
-> This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim)
-Thanks him for great job.I changed lots of settings and plugins to suit my needs.
+# leoatchina的vim配置文件
+This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim).I sincerely thank him for great job.To meet my needs,I have changed lots of settings and plugins.
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
+- [leoatchina的vim配置文件](#leoatchina的vim配置文件)
+	- [前言](#前言)
+	- [对使用者的要求](#对使用者的要求)
+	- [安装](#安装)
+		- [要求](#要求)
+		- [Linux, \*nix, Mac OSX 下的安装](#linux-nix-mac-osx-下的安装)
+		- [windows下的安装](#windows下的安装)
+		- [升级到最新版本](#升级到最新版本)
+	- [主要改动](#主要改动)
+	- [基本快捷键](#基本快捷键)
+	- [定制个人配置](#定制个人配置)
+	- [插件系统](#插件系统)
+		- [插件管理程序](#插件管理程序)
+		- [定制自用的插件](#定制自用的插件)
+
+<!-- /TOC -->
 
 ## 前言
-本人是生信工程师,主要使用的语文是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率.但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.
+本人是生信工程师,主要使用的语文是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率。但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.
 
-上一张我的工作界面，配合iterm2的半透明效果看起来很酷炫
+上一张我的工作界面，配合iterm2的半透明效果看起来很酷炫
 
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171009103355823.png)
 
+
+## 对使用者的要求
+了解`leader`,`map`,`hjkl`,`d`,`w`,`s`,`i`,`u`,`:`,`\`等操作命令
 
 ## 安装 
 ### 要求 
 *安装本配置 需要 Git 1.7+ 和 Vim 7.3+（编译时加入对lua和python的支持），部分插件如`Nvim-R`,`AsyncRun`,需要Vim8.0*
 如果要安装[neocomplete](https://github.com/Shougo/neocomplete.vim), 需要[vim with lua]().
-
+
 ### Linux, \*nix, Mac OSX 下的安装
 ```bash
-    git clone https://github.com/leoatchina/spf13-vim-leoatchina.git
-    cd spf13-vim-leoatchina
-    bash bootstrap.sh
+  git clone https://github.com/leoatchina/spf13-vim-leoatchina.git
+  cd spf13-vim-leoatchina
+  bash bootstrap.sh
 ```
 
 ### windows下的安装 
 ```bash
-    git clone https://github.com/leoatchina/spf13-vim-leoatchina.git
-    cd spf13-vim-leoatchina
-    点击install.cmd 
+  git clone https://github.com/leoatchina/spf13-vim-leoatchina.git
+  cd spf13-vim-leoatchina
+  点击install.cmd 
 ```
 
 ### 升级到最新版本
 ```bash
-    cd spf13-vim-leoatchina 
-    git pull
-    vim +BundleUpdate
-    或者在vim里直接:BundleUpdate
+  vim +BundleUpdate
+  或者在vim里直接:BundleUpdate
 ```
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171009103100770.png)
 
@@ -45,7 +62,7 @@ Thanks him for great job.I changed lots of settings and plugins to suit my needs
 2. 修改了安装代码，变成直接从clone下的目录软链接到用户目录下，**不再支持XP**
 3. 按自己习惯修改了大量插件的快捷键
 4. 去除了原来定义的一些函数
-5. 重点修改了代码补全插件[YouCompleteMe](YoucompleteMe)、[Neocomplete](Neocomplet)的配置和快捷键
+5. 重点修改了代码补全插件[YouCompleteMe](YoucompleteMe)、[Neocomplete](Neocomplete)的配置和快捷键
 6. 去除了fork功能，仅保留before功能
 7. 增加对R和Markdown的支持
 8. 用`ywvim`作为中文输入法,请按`ctrl+\`切换到中文输入法,`ctrl+^`进行输入法配置
@@ -54,11 +71,8 @@ Thanks him for great job.I changed lots of settings and plugins to suit my needs
   let g:spf13_bundle_groups=['general',  'programming', 'python', 'youcompleteme','php', 'javascript', 'html','R',]
 ```
 
-## 对使用者的要求
-了解基本的vim操作，知道`leader键`,`map`,`hjkl`,`d`,`w`,`s`,`i`,`u`,`:`,`\`等操作命令
-
 ## 基本快捷键
-  * `<leader>`键改为空格键,`<localleader>`改为`\`,`\`在R编写调试时使用率比较高
+  * `<leader>`键改为空格键,这个在键盘上最大的按键就有了更强的作用;`<localleader>`改为`\`,`\`在R编写调试时使用率比较高
   * 集成了`ywvim`输入法,在`insert`模式下通过`CTRL+\`开启,`CTRL+^`进行配置
   * `F1`: 为`:h `，方便启动帮助
   * `F2`: 打开关闭代码折叠
@@ -84,7 +98,8 @@ Thanks him for great job.I changed lots of settings and plugins to suit my needs
     nnoremap <silent>_  : tabm -1<CR>
     nnoremap <silent>+  : tabm +1<CR> 
 ```
-* `Ctrl+e`移到一行的结尾;`Ctrl+y`移到一行的开头。
+* `Ctrl+e`移到一行的结尾;`Ctrl+y`移到一行的开头
+* `Ctrl+m`括号之间跳转
 * `<leader>w`保存当前文件;`<leader>W`保存所有文件
 * `<leader>q`关闭当然文件;`Q`为`:qa`,不过给你反悔的机会
 * 复制粘贴等
@@ -144,11 +159,11 @@ Thanks him for great job.I changed lots of settings and plugins to suit my needs
 
 ## 定制个人配置
 *各配置文件执行次序*
-  * `.vimrc.before` 
+  * `.vimrc.before`  # 参数配置文件
   * `.vimrc.before.local`
-  * `.vimrc.bundles`
+  * `.vimrc.bundles` # 配件管理文件
   * `.vimrc.bundles.local`
-  * `.vimrc`
+  * `.vimrc`      # 最主要的配置文件
   * `.vimrc.local`
 
 [spf13](spf13)设计了一系列巧妙的`配置变量`，在`.vimrc.before.local`里写入配置变量后，可打开/关闭某些配置
@@ -159,9 +174,10 @@ Thanks him for great job.I changed lots of settings and plugins to suit my needs
 在 `~/.vimrc.before`文件里可以看到各个变量详细说明
 
 ## 插件系统
-可以说，强大的插件系统是[spf13-vim]()的突出优点，通过这些插件，将原版的vim的功能作了极大的丰富。让界面更加美观，操作更加方便。
+可以说，强大的插件系统是[spf13-vim](https://github.com/spf13/spf13-vim)的突出优点，通过这些插件，将原版的vim的功能作了极大的丰富。让界面更加美观，操作更加方便。
 
-由于历史原因，没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件管理器，还是选用经典的[vundle]()
+### 插件管理程序
+spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件管理器，还是选用经典的[vundle](https://github.com/VundleVim/Vundle.vim)
 
-## 定制自用的插件 
+### 定制自用的插件 
 spf13的定制插件配置在`.vimr.bundles`文件里，如果
