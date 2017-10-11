@@ -192,12 +192,12 @@ spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件�
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011102150785.png)
 
 #### [vim-voom/VOoM](https://github.com/vim-voom/VOoM)
-另一个显示文档结构的插件，和`TagBar`逻辑不一样，`python`里肯定有用，其他语言我还没有测试出来。快捷键'<leader>vo'打开 `:Voom`命令;`<leader>vt`为`:VoomToggle`
+另一个显示文档结构的插件，和`TagBar`逻辑不一样，`python`里肯定有用，其他语言我还没有测试出来。快捷键`<leader>vo`打开 `:Voom`命令;`<leader>vt`为`:VoomToggle`voom状态切换
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011102503348.png)
 
 #### [mbbill/undotree](https://github.com/mbbill/undotree)
 undo顾名思义，就是增强版的回退插件，通过`<leader>u`开启
 
 #### [airline]()
-漂亮的状态栏
+漂亮的状态栏,能够显示很多状态。
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011105655369.png)
