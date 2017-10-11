@@ -342,7 +342,7 @@
             \set foldmethod=indent
         "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
         " Remove trailing whitespaces and ^M chars
-        autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
+        autocmd FileType markdown,vim,c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
         autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
         autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
         autocmd BufNewFile,BufRead *.pandoc set filetype=pandoc
@@ -549,7 +549,7 @@
             endif
         " markdown
             if isdirectory(expand("~/.vim/bundle/markdown-preview.vim"))
-                map <F5> <Plug>MarkdownPreview
+                nmap <leader>mk <Plug>MarkdownPreview
                 if OSX()
                     let g:mkdp_path_to_chrome = "OPEN -a Google\\ Chrome"
                 else

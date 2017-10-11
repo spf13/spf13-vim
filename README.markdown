@@ -1,22 +1,14 @@
 # leoatchina的vim配置文件
 This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim).I sincerely thank him for great job. To meet my needs,I have changed lots of settings and plugins.
 
-
-
-
-
-
 ## 前言
 本人是生信工程师,主要使用的语文是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率。但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.
 
-
-
-
 ## 对使用者的要求
-了解`leader`,`map`,`hjkl`,`d`,`w`,`s`,`i`,`u`,`:`,`\`等操作命令
+掌握vim的大部分操作,了解`leader`,`map`,`hjkl`,`d`,`w`,`s`,`i`,`u`,`:`,`\`等操作命令
 
-## 安装 
-### 要求 
+## 安装
+### 要求
 *安装本配置 需要 Git 1.7+ 和 Vim 7.3+（编译时加入对lua和python的支持），部分插件如`Nvim-R`,`AsyncRun`,需要Vim8.0*
 如果要安装[neocomplete](https://github.com/Shougo/neocomplete.vim), 需要[vim with lua]().
 
@@ -27,7 +19,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
   bash bootstrap.sh
 ```
 
-### windows下的安装 
+### windows下的安装
 ```bash
   git clone https://github.com/leoatchina/spf13-vim-leoatchina.git
   cd spf13-vim-leoatchina
@@ -40,6 +32,29 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
   或者在vim里直接  :BundleUpdate
 ```
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171009103100770.png)
+
+## 一些功能
+* 复制内容直接放到系统剪贴本
+* 显示行号,多种语法高亮
+* 修改文档后马上生效
+* Visual模式下用`>`,`<`移动文字不会取消选择
+* 不生成back文件
+* 关闭拼写检查
+* 关闭声音
+* 关闭列光标加亮
+* 关闭行光标加亮
+* 允许折行
+* 不折叠
+* 标签控制
+* 开启实时搜索功能
+* 显示光标当前位置
+* 高亮显示搜索结果
+* 折叠模式下翻页的改进
+* 智能缩进
+* 没有滚动条
+* 没有菜单和工具条
+* 总是显示状态栏
+* 智能去除行末空格
 
 ## 主要改动
 我在spf13的基础上，做了一些*微小*的工作
@@ -59,22 +74,22 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 
 ## 基本快捷键
 * `<leader>`键改为空格键,这个在键盘上最大的按键就有了更强的作用;`<localleader>`改为`\`,`\`在R编写调试时使用率比较高
-* 集成了`ywvim`输入法,在`insert`模式下通过`CTRL+\`开启,`CTRL+^`进行配置
 * `F1`: 为`:h `，方便启动帮助
 * `F2`: 打开关闭代码折叠
 * `F3`: 打开关闭换行
 * `F4`: 打开关闭搜索高亮
-* `F5`: 运行脚本（python、perl、c等）或生成markdown preview（markdown）;`Shift+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun
+* `F5`: 运行脚本（python、perl、c等）;`Shift+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun
 * `F9`: python调试节点,`S+F9`进行python语法检查,`<leader>+F9`切换语法是否检查
-* `F11`: gvim里的全屏切换
+* `F11`: 全屏切换,如果是windows下的gvim,要把本目录下的`gvim_fullscreen.dll`放到`gvim`的安装目录下
 * `F12`: 切换paste模式
 * `<leader>fc`:fixed confict markers
-* `<leader>fw`:对当前行进行搜索
+* `<leader>fw`:对当前光标下文字进行搜索
+* `<leader>mk`:markdown调用chrome生成markdown preview
 * 在`Visual`模式下按`.`为退出`Visual`模式
 * 标签页控制
 ```
-  nnoremap <silent>-  : tabprevious<CR> 
-  nnoremap <silent>=  : tabnext<CR> 
+  nnoremap <silent>-  : tabprevious<CR>
+  nnoremap <silent>=  : tabnext<CR>
   nnoremap <leader>tf : tabfirst<CR>
   nnoremap <Leader>tl : tablast<CR>
   nnoremap <leader>tn : tabnew<CR>
@@ -83,7 +98,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
   nnoremap <Leader>te : tabe<SPACE>
   nnoremap <Leader>tm : tabm<SPACE>
   nnoremap <silent>_  : tabm -1<CR>
-  nnoremap <silent>+  : tabm +1<CR> 
+  nnoremap <silent>+  : tabm +1<CR>
 ```
 * `Ctrl+e`移到一行的结尾;`Ctrl+y`移到一行的开头
 * `Ctrl+m`括号之间跳转
@@ -96,7 +111,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
   nnoremap  <leader>y  "+y
   nnoremap  <leader>Y  "+yg
   nnoremap  <leader>yy  "+yy
-  " Yank from the cursor to the end of the line 
+  " Yank from the cursor to the end of the line
   nnoremap Y y$
   " p and P for paste
   nnoremap <leader>p "+p
@@ -140,7 +155,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
   vnoremap < <gv
   vnoremap > >gv
   " Ctrl-m for switch between brackets
-  map <C-m> %	
+  map <C-m> %
 ```
 
 ## 定制个人配置
@@ -149,7 +164,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 * `.vimrc.before.local`
 * `.vimrc.bundles` # 插件管理文件
 * `.vimrc.bundles.local`
-* `.vimrc`      # 最主要的配置文件
+* `.vimrc`      # 最主要的配置文件,配色、快捷键、显示方式等参数都在这里设置
 * `.vimrc.local`
 
 [spf13](spf13)设计了一系列巧妙的`配置变量`，在`.vimrc.before.local`里写入配置变量后，可打开/关闭某些配置
@@ -198,6 +213,48 @@ spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件�
 #### [mbbill/undotree](https://github.com/mbbill/undotree)
 undotree顾名思义,增强版的回退插件，快捷键`<leader>u`
 
-#### [airline]()
+#### [airline](https://github.com/vim-airline-themes)
 漂亮的状态栏,能够显示很多状态。
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011105655369.png)
+
+#### [ywvim中文输入法](https://github.com/leoatchina/ywvim)
+我直接在自己的github上clone了`ywvim`输入法,在`insert`模式下通过`CTRL+\`开启,`CTRL+^`进行配置,进行输入法切换切换等;`;`临时英文输入法;注意,默认只输入**英文状态**的标点,而且首选是`五笔`;`z`临时拼音;`,.-=`上下翻页;
+![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011215538461.png)
+![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011212612850.png)
+
+#### [markdown]()
+默认开户对markdown语言的高亮支持,如`.vimrc.before.local`里指定`markdown`支持,按`<leadr>mk`调用`chrome`打开markdown预览,不过这个功能还要仔细测试过.
+
+#### [fugitive](https://github.com/tpope/vim-fugitive)
+对git的支持,具体可以看官方说明,不过我就设置了快捷键`<leader>gi :Git<Space>`,操作体验接近终端下输入`git`命令
+
+#### [scrooloose/nerdcommenter](https://github.com/scrooloose/nerdcommenter)
+注释插件,神器,直接上官方的快捷键,最常用的是`<leader>c<space>`
+  * `[count]<leader>cc` **|NERDComComment|**
+    Comment out the current line or text selected in visual mode.
+  * `[count]<leader>cn` **|NERDComNestedComment|**
+    Same as <leader>cc but forces nesting.
+  * `[count]<leader>c<space>` **|NERDComToggleComment|**
+    Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are uncommented and vice versa.
+  * `[count]<leader>cm` **|NERDComMinimalComment|**
+    Comments the given lines using only one set of multipart delimiters.
+  * `[count]<leader>ci` **|NERDComInvertComment|**
+    Toggles the comment state of the selected line(s) individually.
+  * `[count]<leader>cs` **|NERDComSexyComment|**
+    Comments out the selected lines with a pretty block formatted layout.
+  * `[count]<leader>cy` **|NERDComYankComment|**
+    Same as <leader>cc except that the commented line(s) are yanked first.
+  * `<leader>c$` **|NERDComEOLComment|**
+    Comments the current line from the cursor to the end of line.
+  * `<leader>cA` **|NERDComAppendComment|**
+    Adds comment delimiters to the end of line and goes into insert mode between them.
+  * **|NERDComInsertComment|**
+    Adds comment delimiters at the current cursor position and inserts between. Disabled by default.
+  * `<leader>ca` **|NERDComAltDelim|**
+    Switches to the alternative set of delimiters.
+  * `[count]<leader>cl`
+    `[count]<leader>cb` **|NERDComAlignedComment|**
+    Same as **|NERDComComment|** except that the delimiters are aligned down the left side (`<leader>cl`) or both sides (`<leader>cb`).
+  * `[count]<leader>cu` **|NERDComUncommentLine|**
+    Uncomments the selected line(s).
+
