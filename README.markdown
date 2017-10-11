@@ -2,6 +2,9 @@
 This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim).I sincerely thank him for great job. To meet my needs,I have changed lots of settings and plugins.
 
 
+
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
 - [leoatchina的vim配置文件](#leoatchina的vim配置文件)
 	- [前言](#前言)
 	- [对使用者的要求](#对使用者的要求)
@@ -17,12 +20,14 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 		- [插件管理程序](#插件管理程序)
 		- [插件网址](#插件网址)
 		- [使用的插件](#使用的插件)
-			- [颜色主题，内置两套](#颜色主题内置两套)
-				- [[tyrannicaltoucan/vim-quantum]()](#tyrannicaltoucanvim-quantum)
+			- [颜色主题，内置两套](#颜色主题内置两套)
+				- [[tyrannicaltoucan/vim-quantum]()](#tyrannicaltoucanvim-quantum)
 				- [[altercation/vim-colors-solarized]()](#altercationvim-colors-solarized)
 			- [[scrooloose/nerdtree]()](#scrooloosenerdtree)
 			- [[majutsushi/tagbar]()](#majutsushitagbar)
 			- [[vim-voom/VOoM]()](#vim-voomvoom)
+
+<!-- /TOC -->
 
 
 ## 前言
@@ -88,7 +93,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 * `F11`: gvim里的全屏切换
 * `F12`: 切换paste模式
 * `<leader>fc`:fixed confict markers
-* `<leader>fw`:对当前行进行搜索
+* `<leader>fw`:对当前行进行搜索
 * 在`Visual`模式下按`.`为退出`Visual`模式
 * 标签页控制
 ```
@@ -186,14 +191,14 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件管理器，还是选用经典的[vundle](https://github.com/VundleVim/Vundle.vim)
 
 ### 插件网址
-大部分插件网址为标题前加上`https://github.com`即可访问原网址
+大部分插件网址为标题前加上`https://github.com`即可访问原网址
 
 ### 使用的插件
-#### 颜色主题，内置两套
-##### [tyrannicaltoucan/vim-quantum]()
+#### 颜色主题，内置两套
+##### [tyrannicaltoucan/vim-quantum]()
 这是我在mac下的iterm2终端下使用的主题，material配色，配合半透明效果看起来很酷炫。
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171009103355823.png)
-但终端支持`True Color`，如果不支持，效果会惨不忍睹，所以改成手动开启。方法：在`~/.vimrc.before.local`里的`g:spf13_bundle_groups`列表里加入`material`
+但终端支持`True Color`，如果不支持，效果会惨不忍睹，所以改成手动开启。方法：在`~/.vimrc.before.local`里的`g:spf13_bundle_groups`列表里加入`material`
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011100637235.png)
 
 ##### [altercation/vim-colors-solarized]()
@@ -202,14 +207,14 @@ spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件�
 ![](https://raw.githubusercontent.com/altercation/solarized/master/img/solarized-vim.png)
 
 #### [scrooloose/nerdtree]()
-在侧边显示当前目录，Toggle快捷键为`Ctrl-N`或者`<leader>nn`
+在侧边显示当前目录，Toggle快捷键为`Ctrl-N`或者`<leader>nn`
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011101641847.png)
 
 #### [majutsushi/tagbar]()
-显示文档结构，在`python`,`vim`里肯定有用，要求在系统里安装`ctags`
-用`Ctrl+T` or `<leader>tt`切换在测边显示文档结构
+显示文档结构，在`python`,`vim`里肯定有用，要求在系统里安装`ctags`
+用`Ctrl+T` or `<leader>tt`切换在测边显示文档结构
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011102150785.png)
 
 #### [vim-voom/VOoM]()
-另一个显示文档结构的插件，和`TagBar`逻辑不一样，`python`里肯定有用，其他语言我还没有测试出来。快捷键'<leader>vo'打开 `:Voom`命令;`<leader>vt`为`:VoomToggle`
+另一个显示文档结构的插件，和`TagBar`逻辑不一样，`python`里肯定有用，其他语言我还没有测试出来。快捷键'<leader>vo'打开 `:Voom`命令;`<leader>vt`为`:VoomToggle`
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011102503348.png)
