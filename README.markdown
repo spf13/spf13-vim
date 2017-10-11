@@ -174,7 +174,7 @@ spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件�
 ##### [tyrannicaltoucan/vim-quantum](https://github.com/tyrannicaltoucan/vim-quantum)
 这是我在mac下的iterm2终端下使用的主题，material配色，配合半透明效果看起来很酷炫。
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171009103355823.png)
-但要求终端支持`True Color`，如果不支持，效果会惨不忍睹。因此改成手动开启，方法：在`~/.vimrc.before.local`里的`g:spf13_bundle_groups`列表里加入`material`
+但要求终端支持`True Color`，如果不支持，效果会惨不忍睹。因此改成手动开启，方法：在`~/.vimrc.before.local`里的`g:spf13_bundle_groups`列表里加入`material`
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011100637235.png)
 
 ##### [altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
@@ -196,7 +196,7 @@ spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件�
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011102503348.png)
 
 #### [mbbill/undotree](https://github.com/mbbill/undotree)
-undo顾名思义，就是增强版的回退插件，通过`<leader>u`开启
+undotree顾名思义，就是增强版的回退插件，快捷键`<leader>u`
 
 #### [airline]()
 漂亮的状态栏,能够显示很多状态。
