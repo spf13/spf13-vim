@@ -3,31 +3,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 
 
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [leoatchina的vim配置文件](#leoatchina的vim配置文件)
-	- [前言](#前言)
-	- [对使用者的要求](#对使用者的要求)
-	- [安装](#安装)
-		- [要求](#要求)
-		- [Linux, \*nix, Mac OSX 下的安装](#linux-nix-mac-osx-下的安装)
-		- [windows下的安装](#windows下的安装)
-		- [升级到最新版本](#升级到最新版本)
-	- [主要改动](#主要改动)
-	- [基本快捷键](#基本快捷键)
-	- [定制个人配置](#定制个人配置)
-	- [插件](#插件)
-		- [插件管理程序](#插件管理程序)
-		- [插件网址](#插件网址)
-		- [使用的插件](#使用的插件)
-			- [颜色主题，内置两套](#颜色主题内置两套)
-				- [[tyrannicaltoucan/vim-quantum]()](#tyrannicaltoucanvim-quantum)
-				- [[altercation/vim-colors-solarized]()](#altercationvim-colors-solarized)
-			- [[scrooloose/nerdtree]()](#scrooloosenerdtree)
-			- [[majutsushi/tagbar]()](#majutsushitagbar)
-			- [[vim-voom/VOoM]()](#vim-voomvoom)
-
-<!-- /TOC -->
 
 
 ## 前言
@@ -195,26 +171,33 @@ spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件�
 
 ### 使用的插件
 #### 颜色主题，内置两套
-##### [tyrannicaltoucan/vim-quantum]()
+##### [tyrannicaltoucan/vim-quantum](https://github.com/tyrannicaltoucan/vim-quantum)
 这是我在mac下的iterm2终端下使用的主题，material配色，配合半透明效果看起来很酷炫。
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171009103355823.png)
-但终端支持`True Color`，如果不支持，效果会惨不忍睹，所以改成手动开启。方法：在`~/.vimrc.before.local`里的`g:spf13_bundle_groups`列表里加入`material`
+但要求终端支持`True Color`，如果不支持，效果会惨不忍睹。因此改成手动开启，方法：在`~/.vimrc.before.local`里的`g:spf13_bundle_groups`列表里加入`material`
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011100637235.png)
 
-##### [altercation/vim-colors-solarized]()
+##### [altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 
 经典主题，默认开启，给一张官方的图
 ![](https://raw.githubusercontent.com/altercation/solarized/master/img/solarized-vim.png)
 
-#### [scrooloose/nerdtree]()
+#### [scrooloose/nerdtree](https://github.com/scrooloose/nerdtree)
 在侧边显示当前目录，Toggle快捷键为`Ctrl-N`或者`<leader>nn`
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011101641847.png)
 
-#### [majutsushi/tagbar]()
+#### [majutsushi/tagbar](https://github.com/majutsushi/tagbar)
 显示文档结构，在`python`,`vim`里肯定有用，要求在系统里安装`ctags`
 用`Ctrl+T` or `<leader>tt`切换在测边显示文档结构
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011102150785.png)
 
-#### [vim-voom/VOoM]()
+#### [vim-voom/VOoM](https://github.com/vim-voom/VOoM)
 另一个显示文档结构的插件，和`TagBar`逻辑不一样，`python`里肯定有用，其他语言我还没有测试出来。快捷键'<leader>vo'打开 `:Voom`命令;`<leader>vt`为`:VoomToggle`
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011102503348.png)
+
+#### [mbbill/undotree](https://github.com/mbbill/undotree)
+undo顾名思义，就是增强版的回退插件，通过`<leader>u`开启
+
+#### [airline]()
+漂亮的状态栏
+![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011105655369.png)
