@@ -196,8 +196,8 @@ spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件�
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011102503348.png)
 
 #### [mbbill/undotree](https://github.com/mbbill/undotree)
-undotree顾名思义，增强版的回退插件，快捷键`<leader>u`
+undotree顾名思义,增强版的回退插件，快捷键`<leader>u`
 
 #### [airline]()
-漂亮的状态栏，能够显示很多状态。
+漂亮的状态栏,能够显示很多状态。
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011105655369.png)
