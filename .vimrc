@@ -635,6 +635,7 @@
                 let R_objbr_openlist = 1  " Show lists elements
                 let R_objbr_allnames = 0  " Show .GlobalEnv hidden objects
                 let R_objbr_labelerr = 1  " Warn if label is not a valid text
+                let R_in_buffer = 0
                 let R_hl_term = 1
                 let R_close_term = 1
                 let Rout_more_colors = 1

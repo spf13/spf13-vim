@@ -2,7 +2,7 @@
 This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim).I sincerely thank him for great job. To meet my needs,I have changed lots of settings and plugins.
 
 ## 前言
-本人是生信工程师,主要使用的语文是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率。但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.请访问[leoatchina的vim配置文件](https://github.com/leoatchina/spf13-vim-leoatchina)
+本人是生信工程师,主要使用的语文是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率。但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.请访问[leoatchina的vim配置文件](https://github.com/leoatchina/spf13-vim-leoatchina).由于本人水平所限,一定有很多错误和bug,望各位指正.
 
 ## 对使用者的要求
 掌握vim的大部分操作,了解`leader`,`map`,`hjkl`,`d`,`w`,`s`,`i`,`u`,`:`,`\`等操作命令
@@ -160,7 +160,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 * `.vimrc.before.local`
 * `.vimrc.bundles` # 插件管理文件
 * `.vimrc.bundles.local`
-* `.vimrc`      # 最主要的配置文件,配色、快捷键、显示方式等参数都在这里设置
+* `.vimrc`      # 最主要的配置文件,配色、快捷键、显示方式等参数都在这里设置
 * `.vimrc.local`
 
 [spf13](spf13)设计了一系列巧妙的`配置变量`，在`.vimrc.before.local`里写入配置变量后，可打开/关闭某些配置
@@ -175,7 +175,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件管理器，还是选用经典的[vundle](https://github.com/VundleVim/Vundle.vim)
 
 ### 使用的插件
-#### 颜色主题，内置两套
+#### 内置两套颜色主题
 ##### [tyrannicaltoucan/vim-quantum](https://github.com/tyrannicaltoucan/vim-quantum)
 这是我在mac下的iterm2终端下使用的主题，material配色，配合半透明效果看起来很酷炫。
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171012074022187.png)
@@ -185,6 +185,7 @@ spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件�
 ##### [altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 经典主题，默认开启，给一张官方的图
 ![](https://raw.githubusercontent.com/altercation/solarized/master/img/solarized-vim.png)
+还有三套内置配色方案`ir_black`,`molokai`,`peaksea`,通过`:color`命令开启
 
 #### [scrooloose/nerdtree](https://github.com/scrooloose/nerdtree)
 在侧边显示当前目录，Toggle快捷键为`Ctrl-N`或者`<leader>nn`
@@ -292,3 +293,51 @@ sessionmanager,`<leader>sl`显示session列表;`<leader>ss`保存session;`<leade
 `python`用的插件,具有语法检查,调试等功能
 `F9`: python调试节点,`S+F9`进行python语法检查,`<leader>+F9`切换语法是否检查
 
+#### [surround](https://github.com/tpope/vim-surround)
+给一段文字加上括号的插件，下面说明文字引用自[vim中的杀手级别的插件：surround](http://zuyunfei.com/2013/04/17/killer-plugin-of-vim-surround/)
+```
+   Old text                  Command     New text
+   "Hello *world!"           ds"         Hello world!
+   [123+4*56]/2              cs])        (123+456)/2
+   "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
+   if *x>3 {                 ysW(        if ( x>3 ) {
+   my $str = *whee!;         vlllls'     my $str = 'whee!';
+   <div>Yo!*</div>           dst         Yo!
+   <div>Yo!*</div>           cst<p>      <p>Yo!</p>
+```
+如上面代码块所示，添加替换时使用后半括号)]}，添加的括号和内容间就没有空格（如第2个示例），反之会在内容前后添加一个空格（如第4个实例）。第6个示例中的t代表一对HTML或者xml tag。其他表示范围的符号：w代表word, W代表WORD(被空格分开的连续的字符窜），p代表paragraph。
+
+命令列表
+```
+    Normal mode
+    -----------
+    ds  - delete a surrounding
+    cs  - change a surrounding
+    ys  - add a surrounding
+    yS  - add a surrounding and place the surrounded text on a new line + indent it
+    yss - add a surrounding to the whole line
+    ySs - add a surrounding to the whole line, place it on a new line + indent it
+    ySS - same as ySs
+    Visual mode
+    -----------
+    s   - in visual mode, add a surrounding
+    S   - in visual mode, add a surrounding but place text on new line + indent it
+    Insert mode "不建议使用
+    -----------
+    <CTRL-s> - in insert mode, add a surrounding
+    <CTRL-s><CTRL-s> - in insert mode, add a new line + surrounding + indent
+    <CTRL-g>s - same as <CTRL-s>
+    <CTRL-g>S - same as <CTRL-s><CTRL-s>
+```
+
+#### [Nvim-R](https://github.com/jalvesaq/Nvim-R)
+支持R语言的插件,需要`Vim8.0+`并在`.vimrc.before.local`里加入`R`.通过`<leader>RR`激活界面,`<leader>RQ`退出R程序
+![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171012132459533.png)
+![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171012132515614.png)
+快捷键极多,请自行`:h nvim-r`查询
+
+#### [EasyMotion](https://github.com/easymotion/vim-easymotion)
+
+#### 代码补全插件
+##### [YouComplteMe]
+##### [neocomplete&&neocomplcache]
