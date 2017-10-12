@@ -2,13 +2,12 @@
 This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim).I sincerely thank him for great job. To meet my needs,I have changed lots of settings and plugins.
 
 ## 前言
-本人是生信工程师,主要使用的语文是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率。但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.
+本人是生信工程师,主要使用的语文是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率。但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.请访问[leoatchina的vim配置文件](https://github.com/leoatchina/spf13-vim-leoatchina)
 
 ## 对使用者的要求
 掌握vim的大部分操作,了解`leader`,`map`,`hjkl`,`d`,`w`,`s`,`i`,`u`,`:`,`\`等操作命令
 
 ## 安装
-### 要求
 *安装本配置 需要 Git 1.7+ 和 Vim 7.3+（编译时加入对lua和python的支持），部分插件如`Nvim-R`,`AsyncRun`,需要Vim8.0*
 如果要安装[neocomplete](https://github.com/Shougo/neocomplete.vim), 需要[vim with lua]().
 
@@ -38,14 +37,13 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 * 显示行号,多种语法高亮
 * 修改文档后马上生效
 * Visual模式下用`>`,`<`移动文字不会取消选择
-* 不生成back文件
+* 不生成backup文件
 * 关闭拼写检查
 * 关闭声音
 * 关闭列光标加亮
 * 关闭行光标加亮
 * 允许折行
-* 不折叠
-* 标签控制
+* 不代码折叠
 * 开启实时搜索功能
 * 显示光标当前位置
 * 高亮显示搜索结果
@@ -54,7 +52,6 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 * 没有滚动条
 * 没有菜单和工具条
 * 总是显示状态栏
-* 智能去除行末空格
 
 ## 主要改动
 我在spf13的基础上，做了一些*微小*的工作
@@ -79,7 +76,6 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 * `F3`: 打开关闭换行
 * `F4`: 打开关闭搜索高亮
 * `F5`: 运行脚本（python、perl、c等）;`Shift+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun
-* `F9`: python调试节点,`S+F9`进行python语法检查,`<leader>+F9`切换语法是否检查
 * `F11`: 全屏切换,如果是windows下的gvim,要把本目录下的`gvim_fullscreen.dll`放到`gvim`的安装目录下
 * `F12`: 切换paste模式
 * `<leader>fc`:fixed confict markers
@@ -181,19 +177,15 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 ### 插件管理程序
 spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件管理器，还是选用经典的[vundle](https://github.com/VundleVim/Vundle.vim)
 
-### 插件网址
-大部分插件网址为标题前加上`https://github.com`即可访问原网址
-
 ### 使用的插件
 #### 颜色主题，内置两套
 ##### [tyrannicaltoucan/vim-quantum](https://github.com/tyrannicaltoucan/vim-quantum)
 这是我在mac下的iterm2终端下使用的主题，material配色，配合半透明效果看起来很酷炫。
-![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171009103355823.png)
+![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171012074022187.png)
 但要求终端支持`True Color`，如果不支持，效果会惨不忍睹。因此改成手动开启，方法：在`~/.vimrc.before.local`里的`g:spf13_bundle_groups`列表里加入`material`
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011100637235.png)
 
 ##### [altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
-
 经典主题，默认开启，给一张官方的图
 ![](https://raw.githubusercontent.com/altercation/solarized/master/img/solarized-vim.png)
 
@@ -203,8 +195,9 @@ spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件�
 
 #### [majutsushi/tagbar](https://github.com/majutsushi/tagbar)
 显示文档结构，在`python`,`vim`里肯定有用，要求在系统里安装`ctags`
-用`Ctrl+T` or `<leader>tt`切换在测边显示文档结构
+用`Ctrl+T` or `<leader>tt`切换在测边显示文档结构.在bar窗口里按`F1`调出帮助窗口
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011102150785.png)
+
 
 #### [vim-voom/VOoM](https://github.com/vim-voom/VOoM)
 另一个显示文档结构的插件，和`TagBar`逻辑不一样，`python`里肯定有用，其他语言我还没有测试出来。快捷键`<leader>vo`打开 `:Voom`命令;`<leader>vt`为`:VoomToggle`voom状态切换
@@ -258,3 +251,48 @@ undotree顾名思义,增强版的回退插件，快捷键`<leader>u`
   * `[count]<leader>cu` **|NERDComUncommentLine|**
     Uncomments the selected line(s).
 
+#### [rking/ag.vim](https://github.com/rking/ag.vim)
+ `Ag`是一个非常快的文件/文本搜索工具,通过`<leader>ag`开遍文本搜索,`<leader>af`文件搜索
+![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171012075230167.png)
+
+#### [Tabularize](https://github.com/godlygeek/tabular)
+自动按特定的符号对齐,快捷键见`.vimrc`里的配置文件
+  ```
+      nmap <Leader>a& :Tabularize /&<CR>
+      vmap <Leader>a& :Tabularize /&<CR>
+      nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+      vmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+      nmap <Leader>a=> :Tabularize /=><CR>
+      vmap <Leader>a=> :Tabularize /=><CR>
+      nmap <Leader>a: :Tabularize /:<CR>
+      vmap <Leader>a: :Tabularize /:<CR>
+      nmap <Leader>a:: :Tabularize /:\zs<CR>
+      vmap <Leader>a:: :Tabularize /:\zs<CR>
+      nmap <Leader>a, :Tabularize /,<CR>
+      vmap <Leader>a, :Tabularize /,<CR>
+      nmap <Leader>a,, :Tabularize /,\zs<CR>
+      vmap <Leader>a,, :Tabularize /,\zs<CR>
+      nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+      vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+  ```
+
+#### [sessionman](https://github.com/vim-scripts/sessionman.vim)
+sessionmanager,`<leader>sl`显示session列表;`<leader>ss`保存session;`<leader>sc`关闭session
+
+#### [ctrlp](https://github.com/ctrlpvim/ctrlp.vim)
+杀手级插件,引用网上的一段话对它的介绍
+> 在 VIM 世界里，有人是分窗口编辑文件的忠实拥护者，有人则是多文件 tab 页的死忠骨灰粉。但无论哪种人， 在一些大项目内进行编辑工作时，如果要快速打开 './lib/foo/bar/comm/base_utils.py' 这类藏在大山深处的文件，都需像剥粽子一样，一层一层往下找，让人头疼。
+>
+> ctrlp.vim 则完美帮你解决了这个痛点，当你想打开某个文件时，只要按下 Ctrl + p 快捷键，输入文件名。 所有和这个文件名匹配的文件都会被按照优先级列出来，按下 enter 或者 Ctrl + t 就可以在当前 buffer 或者新 tab 页打开你要的文件了。
+
+网上找来的图
+![](http://zuyunfei.com/images/ctrlp-vim-demo.gif)
+
+`ctrl+p`启动插件,`<leader>fu`启动funksky函数查询功能,在启动后,用`Ctrl+f`,`Ctrl+b`在不同模式中切换.
+在文件列表中,`Ctrl+k/j`或者方向键向上/下选择文件,`t`在新标签里打开文件.其他快捷键见[ctrlp中文介绍](http://blog.codepiano.com/pages/ctrlp-cn.light.html)
+
+#### [Pymode](https://github.com/python-mode/python-mode)
+`python`用的插件,具有语法检查,调试等功能
+`F9`: python调试节点,`S+F9`进行python语法检查,`<leader>+F9`切换语法是否检查
+
+####

@@ -10,7 +10,7 @@
 "            |_|
 " You can find spf13's greate config at http://spf13.com
 " Os detect functions have been move to .vimrc.bundles
-" Basics 
+" Basics
     set nocompatible        " Must be first line
     set background=dark     " Assume a dark background
     set mouse=a             " Automatically enable mouse usage
@@ -478,9 +478,9 @@
     " Plugins
         " ywvim,vim里的中文输入法
             if isdirectory(expand("~/.vim/bundle/ywvim"))
-                let g:ywvim_ims=[ 
-                            \['wb', '五笔', 'wubi.ywvim'], 
-                            \['py', '拼音', 'pinyin.ywvim'], 
+                let g:ywvim_ims=[
+                            \['wb', '五笔', 'wubi.ywvim'],
+                            \['py', '拼音', 'pinyin.ywvim'],
                             \]
                 let g:ywvim_py = { 'helpim':'wb', 'gb':0 }
                 let g:ywvim_zhpunc = 0
@@ -495,29 +495,6 @@
                 let g:ywvim_preconv = 'g2b'
                 let g:ywvim_conv = ''
                 let g:ywvim_lockb = 1
-            endif
-        " Nvim-R
-            if isdirectory(expand("~/.vim/bundle/Nvim-R"))
-                let R_rconsole_width = 0
-                map <leader>RR \rf\ro<C-w>h
-                map <leader>RQ \rq
-                let R_objbr_place = "script,right"
-                autocmd VimResized * let R_rconsole_height = winheight(0) /3
-                let R_objbr_h = 25
-                let R_objbr_opendf = 1    " Show data.frames elements
-                let R_objbr_openlist = 1  " Show lists elements
-                let R_objbr_allnames = 0  " Show .GlobalEnv hidden objects
-                let R_objbr_labelerr = 1  " Warn if label is not a valid text
-                "if executable('tmux')
-                    "let R_in_buffer = 0
-                "else
-                    "let R_in_buffer = 1
-                "endif
-                let R_hl_term = 1
-                let R_close_term = 1
-                let Rout_more_colors = 1
-                let R_hi_fun_paren = 1
-                let R_rmd_environment = "new.env()"
             endif
         " Ag
             if isdirectory(expand("~/.vim/bundle/ag.vim"))
@@ -561,7 +538,7 @@
                 let g:DisableAutoPHPFolding = 0
                 let g:PIVAutoClose = 0
             endif
-        " fugitive 
+        " fugitive
             if isdirectory(expand("~/.vim/bundle/vim-fugitive"))
                 nmap <Leader>gi :Git<Space>
             endif
@@ -620,404 +597,422 @@
                     \ }
                 endif
             endif
-    " Tabularize
-        if isdirectory(expand("~/.vim/bundle/tabular"))
-            nmap <Leader>a& :Tabularize /&<CR>
-            vmap <Leader>a& :Tabularize /&<CR>
-            nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
-            vmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
-            nmap <Leader>a=> :Tabularize /=><CR>
-            vmap <Leader>a=> :Tabularize /=><CR>
-            nmap <Leader>a: :Tabularize /:<CR>
-            vmap <Leader>a: :Tabularize /:<CR>
-            nmap <Leader>a:: :Tabularize /:\zs<CR>
-            vmap <Leader>a:: :Tabularize /:\zs<CR>
-            nmap <Leader>a, :Tabularize /,<CR>
-            vmap <Leader>a, :Tabularize /,<CR>
-            nmap <Leader>a,, :Tabularize /,\zs<CR>
-            vmap <Leader>a,, :Tabularize /,\zs<CR>
-            nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-            vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-        endif
-    " Session List
-        set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-        if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
-            nmap <leader>sl :SessionList<CR>
-            nmap <leader>ss :SessionSave<CR>
-            nmap <leader>sc :SessionClose<CR>n
-        endif
-    " GoLang
-        if count(g:spf13_bundle_groups, 'go')
-            let g:go_highlight_functions = 1
-            let g:go_highlight_methods = 1
-            let g:go_highlight_structs = 1
-            let g:go_highlight_operators = 1
-            let g:go_highlight_build_constraints = 1
-            let g:go_fmt_command = "goimports"
-            let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-            let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-            au FileType go nmap <Leader>s <Plug>(go-implements)
-            au FileType go nmap <Leader>i <Plug>(go-info)
-            au FileType go nmap <Leader>e <Plug>(go-rename)
-            au FileType go nmap <leader>r <Plug>(go-run)
-            au FileType go nmap <leader>b <Plug>(go-build)
-            au FileType go nmap <leader>t <Plug>(go-test)
-            au FileType go nmap <Leader>gd <Plug>(go-doc)
-            au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-            au FileType go nmap <leader>co <Plug>(go-coverage)
-        endif
-    " JSON
-        nmap <leader>jst <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
-        let g:vim_json_syntax_conceal = 0
-    " PyMode
-        if isdirectory(expand("~/.vim/bundle/python-mode"))
-            " pymode check
-            let g:pymode_lint = 1
-            let g:pymode_lint_on_write = 1
-            let g:pymode_lint_checkers = ['pyflakes','pep8']
-            let g:pymode_lint_ignore = "E128,E2,E3,E501"
-            let g:pymode_lint_cwindow = 1
-            let g:pymode_lint_message = 0
-            nmap <S-F9> :PymodeLint<CR>
-            imap <S-F9> <ESC>:PymodeLint<CR>i
-            nmap <leader><F9> :PymodeLintToggle<cr>
-            " motion
-            let g:pymode_motion = 1
-            " no doc for python
-            let g:pymode_doc = 1
-            " run python
-            let g:pymode_run_bind = '<F5>'
-            " breakpoint
-            let g:pymode_breakpoint_bind = '<F9>'
-            let g:pymode_trim_whitespaces = 1
-            let g:pymode_options = 0
-            let g:pymode_rope = 0
-            let g:pymode_rope_completion = 0
-        endif
-        " Disable if python support not present
-        if !has('python') && !has('python3')
-            let g:pymode = 0
-        endif
-    " ctrlp
-        if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
-            let g:ctrlp_working_path_mode = 'ar'
-            nnoremap <silent> <D-t> :CtrlP<CR>
-            nnoremap <silent> <D-r> :CtrlPMRU<CR>
-            let g:ctrlp_custom_ignore = {
-                \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-                \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
-            if executable('ag')
-                let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
-            elseif executable('ack-grep')
-                let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
-            elseif executable('ack')
-                let s:ctrlp_fallback = 'ack %s --nocolor -f'
-            " On Windows use "dir" as fallback command.
-            elseif WINDOWS()
-                let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
-            else
-                let s:ctrlp_fallback = 'find %s -type f'
+        " Tabularize
+            if isdirectory(expand("~/.vim/bundle/tabular"))
+                nmap <Leader>a& :Tabularize /&<CR>
+                vmap <Leader>a& :Tabularize /&<CR>
+                nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+                vmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+                nmap <Leader>a=> :Tabularize /=><CR>
+                vmap <Leader>a=> :Tabularize /=><CR>
+                nmap <Leader>a: :Tabularize /:<CR>
+                vmap <Leader>a: :Tabularize /:<CR>
+                nmap <Leader>a:: :Tabularize /:\zs<CR>
+                vmap <Leader>a:: :Tabularize /:\zs<CR>
+                nmap <Leader>a, :Tabularize /,<CR>
+                vmap <Leader>a, :Tabularize /,<CR>
+                nmap <Leader>a,, :Tabularize /,\zs<CR>
+                vmap <Leader>a,, :Tabularize /,\zs<CR>
+                nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+                vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             endif
-            if exists("g:ctrlp_user_command")
-                unlet g:ctrlp_user_command
+        " Session List
+            set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+            if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
+                nmap <leader>sl :SessionList<CR>
+                nmap <leader>ss :SessionSave<CR>
+                nmap <leader>sc :SessionClose<CR>n
             endif
-            let g:ctrlp_user_command = {
-                \ 'types': {
-                    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-                \ },
-                \ 'fallback': s:ctrlp_fallback
-            \ }
-            if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
-                " CtrlP extensions
-                let g:ctrlp_extensions = ['funky']
-                " funky
-                nnoremap <Leader>fu :CtrlPFunky<Cr>
+        " Nvim-R
+            if isdirectory(expand("~/.vim/bundle/Nvim-R"))
+                let R_rconsole_width = 0
+                map <leader>RR \rf\ro<C-w>h
+                map <leader>RQ \rq
+                let R_objbr_place = "script,right"
+                autocmd VimResized * let R_rconsole_height = winheight(0) /3
+                let R_objbr_h = 25
+                let R_objbr_opendf = 1    " Show data.frames elements
+                let R_objbr_openlist = 1  " Show lists elements
+                let R_objbr_allnames = 0  " Show .GlobalEnv hidden objects
+                let R_objbr_labelerr = 1  " Warn if label is not a valid text
+                let R_hl_term = 1
+                let R_close_term = 1
+                let Rout_more_colors = 1
+                let R_hi_fun_paren = 1
+                let R_rmd_environment = "new.env()"
             endif
-        endif
-    " Rainbow
-        if isdirectory(expand("~/.vim/bundle/rainbow/"))
-            let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
-        endif
-    " YouCompleteMe
-        if count(g:spf13_bundle_groups, 'youcompleteme')
-            set completeopt=longest,menu
-            au InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后关闭预览窗口
-            let g:ycm_python_binary_path = 'python'
-            let g:acp_enableAtStartup = 0
-            let g:ycm_add_preview_to_completeopt = 1
-            "  补全后关键窗口
-            let g:ycm_autoclose_preview_window_after_completion = 1
-            "  插入后关键窗口
-            let g:ycm_autoclose_preview_window_after_insertion = 1
-            " enable completion from tags
-            let g:ycm_collect_identifiers_from_tags_files = 1
-            let g:ycm_key_invoke_completion = '<Nop>'
-            let g:ycm_key_list_select_completion = ['<Tab>','<Down>']
-            let g:ycm_key_list_previous_completion = ['<S-Tab>','<Up>']
-            " remap Ultisnips for compatibility for YCM
-            let g:UltiSnipsListSnippets="<C-l>"
-            let g:UltiSnipsExpandTrigger = '<C-k>'
-            let g:UltiSnipsJumpForwardTrigger = '<C-f>'
-            let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
-            " Ctrl+j for enter or stop pum
-            inoremap <expr> <C-j> pumvisible() ? "\<C-y>\<C-y>" : "\<CR>"
-            " cr for ExpandTrigger
-            function! g:UltiSnips_CR()
-                if pumvisible()
-                    call UltiSnips#ExpandSnippet()
-                    " 0:ExpandSnippet failed
-                    if g:ulti_expand_res == 0
-                        return "\<C-y>"
-                    else
-                        call feedkeys("\<C-c>")
-                        return "\<Right>"
-                    endif
+        " GoLang
+            if count(g:spf13_bundle_groups, 'go')
+                let g:go_highlight_functions = 1
+                let g:go_highlight_methods = 1
+                let g:go_highlight_structs = 1
+                let g:go_highlight_operators = 1
+                let g:go_highlight_build_constraints = 1
+                let g:go_fmt_command = "goimports"
+                let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+                let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+                au FileType go nmap <Leader>s <Plug>(go-implements)
+                au FileType go nmap <Leader>i <Plug>(go-info)
+                au FileType go nmap <Leader>e <Plug>(go-rename)
+                au FileType go nmap <leader>r <Plug>(go-run)
+                au FileType go nmap <leader>b <Plug>(go-build)
+                au FileType go nmap <leader>t <Plug>(go-test)
+                au FileType go nmap <Leader>gd <Plug>(go-doc)
+                au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+                au FileType go nmap <leader>co <Plug>(go-coverage)
+            endif
+        " JSON
+            nmap <leader>jst <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+            let g:vim_json_syntax_conceal = 0
+        " PyMode
+            if isdirectory(expand("~/.vim/bundle/python-mode"))
+                " pymode check
+                let g:pymode_lint = 1
+                let g:pymode_lint_on_write = 1
+                let g:pymode_lint_checkers = ['pyflakes','pep8']
+                let g:pymode_lint_ignore = "E128,E2,E3,E501"
+                let g:pymode_lint_cwindow = 1
+                let g:pymode_lint_message = 0
+                nmap <S-F9> :PymodeLint<CR>
+                imap <S-F9> <ESC>:PymodeLint<CR>i
+                nmap <leader><F9> :PymodeLintToggle<cr>
+                " motion
+                let g:pymode_motion = 1
+                " no doc for python
+                let g:pymode_doc = 1
+                " run python
+                let g:pymode_run_bind = '<F5>'
+                " breakpoint
+                let g:pymode_breakpoint_bind = '<F9>'
+                let g:pymode_trim_whitespaces = 1
+                let g:pymode_options = 0
+                let g:pymode_rope = 0
+                let g:pymode_rope_completion = 0
+            endif
+            " Disable if python support not present
+            if !has('python') && !has('python3')
+                let g:pymode = 0
+            endif
+        " ctrlp
+            if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
+                let g:ctrlp_working_path_mode = 'ar'
+                nnoremap <silent> <D-t> :CtrlP<CR>
+                nnoremap <silent> <D-r> :CtrlPMRU<CR>
+                let g:ctrlp_custom_ignore = {
+                    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+                    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+                if executable('ag')
+                    let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+                elseif executable('ack-grep')
+                    let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
+                elseif executable('ack')
+                    let s:ctrlp_fallback = 'ack %s --nocolor -f'
+                " On Windows use "dir" as fallback command.
+                elseif WINDOWS()
+                    let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
                 else
-                    return "\<CR>"
+                    let s:ctrlp_fallback = 'find %s -type f'
                 endif
-            endfunction
-            au BufEnter * exec "inoremap <silent> <CR> <C-R>=g:UltiSnips_CR()<cr>"
-            let g:UltiSnipsUsePythonVersion = 2
-            " Ulti的代码片段的文件夹
-            let g:UtiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips"]
-            " 自定义代码片段的文件夹
-            let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
-            let g:ycm_filetype_blacklist = {
-                  \ 'tagbar' : 1,
-                  \ 'nerdtree' : 1,
-                  \}
-            let g:ycm_filetype_whitelist = {
-                \ 'cpp': 1,
-                \ 'c': 1,
-                \ 'perl':1,
-                \ 'python':1,
-                \ 'js':1,
-                \ 'html':1,
-                \ 'php':1,
-            \}
-            " Haskell post write lint and check with ghcmod
-            " $ `cabal install ghcmod` if missing and ensure
-            " ~/.cabal/bin is in your $PATH.
-            if !executable("ghcmod")
-                autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-            endif
-            " For snippet_complete marker.
-            if !exists("g:spf13_no_conceal")
-                if has('conceal')
-                    set conceallevel=2 concealcursor=i
+                if exists("g:ctrlp_user_command")
+                    unlet g:ctrlp_user_command
+                endif
+                let g:ctrlp_user_command = {
+                    \ 'types': {
+                        \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+                        \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+                    \ },
+                    \ 'fallback': s:ctrlp_fallback
+                \ }
+                if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
+                    " CtrlP extensions
+                    let g:ctrlp_extensions = ['funky']
+                    " funky
+                    nnoremap <Leader>fu :CtrlPFunky<Cr>
                 endif
             endif
-            let g:ycm_confirm_extra_conf=1 "加载.ycm_extra_conf.py提示
-            let g:ycm_collect_identifiers_from_tags_files=1    " 开启 YC基于标签引擎
-            let g:ycm_min_num_of_chars_for_completion=2   " 从第2个键入字符就开始罗列匹配项
-            let g:ycm_cache_omnifunc=0 " 禁止缓存匹配项,每次都重新生成匹配项
-            let g:ycm_seed_identifiers_with_syntax=1   " 语法关键字补全
-            ""在注释输入中也能补全
-            let g:ycm_complete_in_comments = 1
-            "在字符串输入中也能补全
-            let g:ycm_complete_in_strings = 1
-            "注释和字符串中的文字也会被收入补全
-            let g:ycm_collect_identifiers_from_comments_and_strings = 0
-            " 跳转到定义处
-            nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-    " neocomplete
-        elseif count(g:spf13_bundle_groups, 'neocomplete')
-            let g:neocomplete_enable_insert_char_pre = 1
-            let g:neocomplete_enable_at_startup = 1
-            let g:neocomplete_enable_auto_select = 1
-            let g:neocomplete_enable_camel_case_completion = 1
-            let g:neocomplete_enable_smart_case = 1
-            let g:neocomplete_enable_underbar_completion = 1
-            let g:neocomplete_enable_auto_delimiter = 1
-            let g:neocomplete_max_list = 15
-            let g:neocomplete_force_overwrite_completefunc = 1
-            " Define dictionary.
-            let g:neocomplete_dictionary_filetype_lists = {
-                        \ 'default' : '',
-                        \ 'vimshell' : $HOME.'/.vimshell_hist',
-                        \ 'scheme' : $HOME.'/.gosh_completions'
-                        \ }
-            " Define keyword.
-            if !exists('g:neocomplete_keyword_patterns')
-                let g:neocomplete_keyword_patterns = {}
+        " Rainbow
+            if isdirectory(expand("~/.vim/bundle/rainbow/"))
+                let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
             endif
-            let g:neocomplete_keyword_patterns._ = '\h\w*'
-
-            " Enable heavy omni completion.
-            if !exists('g:neocomplete_omni_patterns')
-                let g:neocomplete_omni_patterns = {}
-            endif
-            let g:neocomplete_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-            let g:neocomplete_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-            let g:neocomplete_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-            let g:neocomplete_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-            let g:neocomplete_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-            let g:neocomplete_omni_patterns.go = '\h\w*\.\?'
-     " neocomplcache
-        elseif count(g:spf13_bundle_groups, 'neocomplcache')
-            let g:neocomplcache_enable_insert_char_pre = 1
-            let g:neocomplcache_enable_at_startup = 1
-            let g:neocomplcache_enable_auto_select = 1
-            let g:neocomplcache_enable_camel_case_completion = 1
-            let g:neocomplcache_enable_smart_case = 1
-            let g:neocomplcache_enable_underbar_completion = 1
-            let g:neocomplcache_enable_auto_delimiter = 1
-            let g:neocomplcache_max_list = 15
-            let g:neocomplcache_force_overwrite_completefunc = 1
-            " Define dictionary.
-            let g:neocomplcache_dictionary_filetype_lists = {
-                        \ 'default' : '',
-                        \ 'vimshell' : $HOME.'/.vimshell_hist',
-                        \ 'scheme' : $HOME.'/.gosh_completions'
-                        \ }
-            " Enable heavy omni completion.
-            if !exists('g:neocomplcache_omni_patterns')
-                let g:neocomplcache_omni_patterns = {}
-            endif
-            let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-            let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-            let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-            let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-            let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-            let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
-            " Define keyword.
-            if !exists('g:neocomplcache_keyword_patterns')
-                let g:neocomplcache_keyword_patterns = {}
-            endif
-            let g:neocomplcache_keyword_patterns._ = '\h\w*'
-    " Normal Vim omni-completion ,if not set completion method , it works
-    " To disable omni complete, add the following to your .vimrc.before.local file:
-    " let g:spf13_no_omni_complete = 1
-        elseif !exists('g:spf13_no_omni_complete')
-            " Enable omni-completion.
-            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-            autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
-            if has("autocmd") && exists("+omnifunc")
-            autocmd Filetype *
-                \if &omnifunc == "" |
-                \setlocal omnifunc=syntaxcomplete#Complete |
-                \endif
-            endif
-            hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-            hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-            hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
-            " Some convenient mappings
-            "inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-            if exists('g:spf13_map_cr_omni_complete')
-                inoremap <expr> <CR>     pumvisible() ? "\<C-y>" : "\<CR>"
-            endif
-            inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-            inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-            inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-            inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
-            " Automatically open and close the popup menu / preview window
-            au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-            set completeopt=menu,preview,longest
-        endif
-    " Snippets  and key map for neocomplete && neocomplcache
-        if count(g:spf13_bundle_groups, 'neocomplcache') || count(g:spf13_bundle_groups, 'neocomplete')
-            " <C-h>, <BS>: close popup and delete backword char.
-            if count(g:spf13_bundle_groups,'neocomplcache')
-                inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-                " c-l to list
-                inoremap <expr><C-l> neocomplcache#complete_common_string()
-                snoremap <expr><C-l> neocomplcache#complete_common_string()
-                " c-j to complete pum or cr
-                inoremap <expr> <C-j> pumvisible() ? neocomplcache#close_popup(): "\<CR>"
-                snoremap <expr> <C-j> pumvisible() ? neocomplcache#close_popup(): "\<CR>"
-            else
-                inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-                " c-l to list
-                inoremap <expr><C-l> neocomplete#complete_common_string()
-                snoremap <expr><C-l> neocomplete#complete_common_string()
-                inoremap <expr> <C-j> pumvisible() ? neocomplete#close_popup(): "\<CR>"
-                snoremap <expr> <C-j> pumvisible() ? neocomplete#close_popup(): "\<CR>"
-            endif
-            " c-k to expand
-            imap <C-k> <Plug>(neosnippet_expand)
-            smap <C-k> <Plug>(neosnippet_expand)
-            " c-f tu jump 
-            imap <C-f> <Right><Plug>(neosnippet_jump)
-            smap <C-f> <Right><Plug>(neosnippet_jump)
-            " <TAB><S-Tab> to select
-            inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-            inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-            " Ctrl+j for enter or stop pum
-            " cr to expand when available,or just enter
-            function! g:Neo_Complete()
-                if pumvisible()
-                    if neosnippet#expandable()
-                        return neosnippet#mappings#expand_impl()
-                    else
-                        if count(g:spf13_bundle_groups,'neocomplcache')
-                            return neocomplcache#close_popup()
+        " YouCompleteMe
+            if count(g:spf13_bundle_groups, 'youcompleteme')
+                set completeopt=longest,menu
+                au InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后关闭预览窗口
+                let g:ycm_python_binary_path = 'python'
+                let g:acp_enableAtStartup = 0
+                let g:ycm_add_preview_to_completeopt = 1
+                "  补全后关键窗口
+                let g:ycm_autoclose_preview_window_after_completion = 1
+                "  插入后关键窗口
+                let g:ycm_autoclose_preview_window_after_insertion = 1
+                " enable completion from tags
+                let g:ycm_collect_identifiers_from_tags_files = 1
+                let g:ycm_key_invoke_completion = '<Nop>'
+                let g:ycm_key_list_select_completion = ['<Tab>','<Down>']
+                let g:ycm_key_list_previous_completion = ['<S-Tab>','<Up>']
+                " remap Ultisnips for compatibility for YCM
+                let g:UltiSnipsListSnippets="<C-l>"
+                let g:UltiSnipsExpandTrigger = '<C-k>'
+                let g:UltiSnipsJumpForwardTrigger = '<C-f>'
+                let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
+                " Ctrl+j for enter or stop pum
+                inoremap <expr> <C-j> pumvisible() ? "\<C-y>\<C-y>" : "\<CR>"
+                " cr for ExpandTrigger
+                function! g:UltiSnips_CR()
+                    if pumvisible()
+                        call UltiSnips#ExpandSnippet()
+                        " 0:ExpandSnippet failed
+                        if g:ulti_expand_res == 0
+                            return "\<C-y>"
                         else
-                            return neocomplete#close_popup()
+                            call feedkeys("\<C-c>")
+                            return "\<Right>"
+                        endif
+                    else
+                        return "\<CR>"
+                    endif
+                endfunction
+                au BufEnter * exec "inoremap <silent> <CR> <C-R>=g:UltiSnips_CR()<cr>"
+                let g:UltiSnipsUsePythonVersion = 2
+                " Ulti的代码片段的文件夹
+                let g:UtiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips"]
+                " 自定义代码片段的文件夹
+                let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+                let g:ycm_filetype_blacklist = {
+                      \ 'tagbar' : 1,
+                      \ 'nerdtree' : 1,
+                      \}
+                let g:ycm_filetype_whitelist = {
+                    \ 'cpp': 1,
+                    \ 'c': 1,
+                    \ 'perl':1,
+                    \ 'python':1,
+                    \ 'js':1,
+                    \ 'html':1,
+                    \ 'php':1,
+                \}
+                " Haskell post write lint and check with ghcmod
+                " $ `cabal install ghcmod` if missing and ensure
+                " ~/.cabal/bin is in your $PATH.
+                if !executable("ghcmod")
+                    autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+                endif
+                " For snippet_complete marker.
+                if !exists("g:spf13_no_conceal")
+                    if has('conceal')
+                        set conceallevel=2 concealcursor=i
+                    endif
+                endif
+                let g:ycm_confirm_extra_conf=1 "加载.ycm_extra_conf.py提示
+                let g:ycm_collect_identifiers_from_tags_files=1    " 开启 YC基于标签引擎
+                let g:ycm_min_num_of_chars_for_completion=2   " 从第2个键入字符就开始罗列匹配项
+                let g:ycm_cache_omnifunc=0 " 禁止缓存匹配项,每次都重新生成匹配项
+                let g:ycm_seed_identifiers_with_syntax=1   " 语法关键字补全
+                ""在注释输入中也能补全
+                let g:ycm_complete_in_comments = 1
+                "在字符串输入中也能补全
+                let g:ycm_complete_in_strings = 1
+                "注释和字符串中的文字也会被收入补全
+                let g:ycm_collect_identifiers_from_comments_and_strings = 0
+                " 跳转到定义处
+                nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+        " neocomplete
+            elseif count(g:spf13_bundle_groups, 'neocomplete')
+                let g:neocomplete_enable_insert_char_pre = 1
+                let g:neocomplete_enable_at_startup = 1
+                let g:neocomplete_enable_auto_select = 1
+                let g:neocomplete_enable_camel_case_completion = 1
+                let g:neocomplete_enable_smart_case = 1
+                let g:neocomplete_enable_underbar_completion = 1
+                let g:neocomplete_enable_auto_delimiter = 1
+                let g:neocomplete_max_list = 15
+                let g:neocomplete_force_overwrite_completefunc = 1
+                " Define dictionary.
+                let g:neocomplete_dictionary_filetype_lists = {
+                            \ 'default' : '',
+                            \ 'vimshell' : $HOME.'/.vimshell_hist',
+                            \ 'scheme' : $HOME.'/.gosh_completions'
+                            \ }
+                " Define keyword.
+                if !exists('g:neocomplete_keyword_patterns')
+                    let g:neocomplete_keyword_patterns = {}
+                endif
+                let g:neocomplete_keyword_patterns._ = '\h\w*'
+
+                " Enable heavy omni completion.
+                if !exists('g:neocomplete_omni_patterns')
+                    let g:neocomplete_omni_patterns = {}
+                endif
+                let g:neocomplete_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+                let g:neocomplete_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+                let g:neocomplete_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+                let g:neocomplete_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+                let g:neocomplete_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+                let g:neocomplete_omni_patterns.go = '\h\w*\.\?'
+         " neocomplcache
+            elseif count(g:spf13_bundle_groups, 'neocomplcache')
+                let g:neocomplcache_enable_insert_char_pre = 1
+                let g:neocomplcache_enable_at_startup = 1
+                let g:neocomplcache_enable_auto_select = 1
+                let g:neocomplcache_enable_camel_case_completion = 1
+                let g:neocomplcache_enable_smart_case = 1
+                let g:neocomplcache_enable_underbar_completion = 1
+                let g:neocomplcache_enable_auto_delimiter = 1
+                let g:neocomplcache_max_list = 15
+                let g:neocomplcache_force_overwrite_completefunc = 1
+                " Define dictionary.
+                let g:neocomplcache_dictionary_filetype_lists = {
+                            \ 'default' : '',
+                            \ 'vimshell' : $HOME.'/.vimshell_hist',
+                            \ 'scheme' : $HOME.'/.gosh_completions'
+                            \ }
+                " Enable heavy omni completion.
+                if !exists('g:neocomplcache_omni_patterns')
+                    let g:neocomplcache_omni_patterns = {}
+                endif
+                let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+                let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+                let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+                let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+                let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+                let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
+                " Define keyword.
+                if !exists('g:neocomplcache_keyword_patterns')
+                    let g:neocomplcache_keyword_patterns = {}
+                endif
+                let g:neocomplcache_keyword_patterns._ = '\h\w*'
+        " Normal Vim omni-completion ,if not set completion method , it works
+        " To disable omni complete, add the following to your .vimrc.before.local file:
+        " let g:spf13_no_omni_complete = 1
+            elseif !exists('g:spf13_no_omni_complete')
+                " Enable omni-completion.
+                autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+                autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+                autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+                autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+                autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+                autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+                autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+                if has("autocmd") && exists("+omnifunc")
+                autocmd Filetype *
+                    \if &omnifunc == "" |
+                    \setlocal omnifunc=syntaxcomplete#Complete |
+                    \endif
+                endif
+                hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+                hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+                hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+                " Some convenient mappings
+                "inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+                if exists('g:spf13_map_cr_omni_complete')
+                    inoremap <expr> <CR>     pumvisible() ? "\<C-y>" : "\<CR>"
+                endif
+                inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+                inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+                inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+                inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+                " Automatically open and close the popup menu / preview window
+                au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+                set completeopt=menu,preview,longest
+            endif
+        " Snippets  and key map for neocomplete && neocomplcache
+            if count(g:spf13_bundle_groups, 'neocomplcache') || count(g:spf13_bundle_groups, 'neocomplete')
+                " <C-h>, <BS>: close popup and delete backword char.
+                if count(g:spf13_bundle_groups,'neocomplcache')
+                    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+                    " c-l to list
+                    inoremap <expr><C-l> neocomplcache#complete_common_string()
+                    snoremap <expr><C-l> neocomplcache#complete_common_string()
+                    " c-j to complete pum or cr
+                    inoremap <expr> <C-j> pumvisible() ? neocomplcache#close_popup(): "\<CR>"
+                    snoremap <expr> <C-j> pumvisible() ? neocomplcache#close_popup(): "\<CR>"
+                else
+                    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+                    " c-l to list
+                    inoremap <expr><C-l> neocomplete#complete_common_string()
+                    snoremap <expr><C-l> neocomplete#complete_common_string()
+                    inoremap <expr> <C-j> pumvisible() ? neocomplete#close_popup(): "\<CR>"
+                    snoremap <expr> <C-j> pumvisible() ? neocomplete#close_popup(): "\<CR>"
+                endif
+                " c-k to expand
+                imap <C-k> <Plug>(neosnippet_expand)
+                smap <C-k> <Plug>(neosnippet_expand)
+                " c-f tu jump
+                imap <C-f> <Right><Plug>(neosnippet_jump)
+                smap <C-f> <Right><Plug>(neosnippet_jump)
+                " <TAB><S-Tab> to select
+                inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+                inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+                " Ctrl+j for enter or stop pum
+                " cr to expand when available,or just enter
+                function! g:Neo_Complete()
+                    if pumvisible()
+                        if neosnippet#expandable()
+                            return neosnippet#mappings#expand_impl()
+                        else
+                            if count(g:spf13_bundle_groups,'neocomplcache')
+                                return neocomplcache#close_popup()
+                            else
+                                return neocomplete#close_popup()
+                            endif
+                        endif
+                    else
+                        return "\<CR>"
+                    endif
+                endfunction
+                au BufEnter * exec "inoremap <CR> <C-R>=g:Neo_Complete()<cr><C-c>"
+                " Use honza's snippets.
+                let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+                " Enable neosnippet snipmate compatibility mode
+                let g:neosnippet#enable_snipmate_compatibility = 1
+                " For snippet_complete marker.
+                if !exists("g:spf13_no_conceal")
+                    if has('conceal')
+                        set conceallevel=2 concealcursor=i
+                    endif
+                endif
+                " Enable neosnippets when using go
+                let g:go_snippet_engine = "neosnippet"
+            endif
+        " UndoTree
+            if isdirectory(expand("~/.vim/bundle/undotree/"))
+                nnoremap <Leader>u :UndotreeToggle<CR>
+                " If undotree is opened, it is likely one wants to interact with it.
+                let g:undotree_SetFocusWhenToggle=1
+            endif
+        " indent_guides
+            if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
+                let g:indent_guides_start_level = 2
+                let g:indent_guides_guide_size = 1
+                let g:indent_guides_enable_on_vim_startup = 1
+            endif
+        " vim-airline
+            " Set configuration options for the statusline plugin vim-airline.
+            " Use the powerline theme and optionally enable powerline symbols.
+            " To use the symbols , , , , , , and .in the statusline
+            " segments add the following to your .vimrc.before.local file:
+            " let g:airline_powerline_fonts=1
+            " If the previous symbols do not render for you then install a
+            " powerline enabled font.
+            " See `:echo g:airline_theme_map` for some more choices
+            " Default in terminal vim is 'dark'
+            if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
+                if !exists('g:no_colorscheme')
+                    if count(g:spf13_bundle_groups, 'material') && isdirectory(expand("~/.vim/bundle/vim-quantum"))
+                        let g:airline_theme = 'quantum'
+                    else
+                        if  filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+                            let g:airline_theme = 'solarized'
                         endif
                     endif
-                else
-                    return "\<CR>"
-                endif
-            endfunction
-            au BufEnter * exec "inoremap <CR> <C-R>=g:Neo_Complete()<cr><C-c>"
-            " Use honza's snippets.
-            let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-            " Enable neosnippet snipmate compatibility mode
-            let g:neosnippet#enable_snipmate_compatibility = 1
-            " For snippet_complete marker.
-            if !exists("g:spf13_no_conceal")
-                if has('conceal')
-                    set conceallevel=2 concealcursor=i
-                endif
-            endif
-            " Enable neosnippets when using go
-            let g:go_snippet_engine = "neosnippet"
-        endif
-    " UndoTree
-        if isdirectory(expand("~/.vim/bundle/undotree/"))
-            nnoremap <Leader>u :UndotreeToggle<CR>
-            " If undotree is opened, it is likely one wants to interact with it.
-            let g:undotree_SetFocusWhenToggle=1
-        endif
-    " indent_guides
-        if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
-            let g:indent_guides_start_level = 2
-            let g:indent_guides_guide_size = 1
-            let g:indent_guides_enable_on_vim_startup = 1
-        endif
-    " vim-airline
-        " Set configuration options for the statusline plugin vim-airline.
-        " Use the powerline theme and optionally enable powerline symbols.
-        " To use the symbols , , , , , , and .in the statusline
-        " segments add the following to your .vimrc.before.local file:
-        " let g:airline_powerline_fonts=1
-        " If the previous symbols do not render for you then install a
-        " powerline enabled font.
-        " See `:echo g:airline_theme_map` for some more choices
-        " Default in terminal vim is 'dark'
-        if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
-            if !exists('g:no_colorscheme')
-                if count(g:spf13_bundle_groups, 'material') && isdirectory(expand("~/.vim/bundle/vim-quantum"))
-                    let g:airline_theme = 'quantum'
-                else
-                    if  filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-                        let g:airline_theme = 'solarized'
+                    if !exists('g:airline_powerline_fonts')
+                        " Use the default set of separators with a few customizations
+                        let g:airline_left_sep='›'  " Slightly fancier than '>'
+                        let g:airline_right_sep='‹' " Slightly fancier than '<'
                     endif
                 endif
-                if !exists('g:airline_powerline_fonts')
-                    " Use the default set of separators with a few customizations
-                    let g:airline_left_sep='›'  " Slightly fancier than '>'
-                    let g:airline_right_sep='‹' " Slightly fancier than '<'
-                endif
             endif
-        endif
 " GUI Settings
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
@@ -1098,7 +1093,7 @@
     if filereadable(expand("~/.vimrc.local"))
         source ~/.vimrc.local
     endif
-" Use local gvimrc if available and gui is running 
+" Use local gvimrc if available and gui is running
     if has('gui_running')
         if filereadable(expand("~/.gvimrc.local"))
             source ~/.gvimrc.local
