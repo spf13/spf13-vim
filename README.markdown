@@ -170,11 +170,8 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 ```
 在 `~/.vimrc.before`文件里可以看到各个变量详细说明
 
-## 插件
-强大的插件系统是[spf13-vim](https://github.com/spf13/spf13-vim)的突出优点，通过这些插件，将原版的vim的功能作了极大的丰富。让界面更加美观，操作更加方便。
-在原有的基础上，我加入了很多自己用的插件和对配置文件进行了修改
-
-### 插件管理程序
+## 插件系统
+强大的插件系统是[spf13-vim](https://github.com/spf13/spf13-vim)的突出优点，通过这些插件，将原版的vim的功能作了极大的丰富。让界面更加美观，操作更加方便。在原有的基础上，我加入了很多自己用的插件和对配置文件进行了修改
 spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件管理器，还是选用经典的[vundle](https://github.com/VundleVim/Vundle.vim)
 
 ### 使用的插件
@@ -201,7 +198,7 @@ spf13没有选用[pathongen](https://github.com/tpope/vim-pathogen)作为插件�
 
 #### [vim-voom/VOoM](https://github.com/vim-voom/VOoM)
 另一个显示文档结构的插件，和`TagBar`逻辑不一样，`python`里肯定有用，其他语言我还没有测试出来。快捷键`<leader>vo`打开 `:Voom`命令;`<leader>vt`为`:VoomToggle`voom状态切换
-![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011102503348.png)
+![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171012105213969.png)
 
 #### [mbbill/undotree](https://github.com/mbbill/undotree)
 undotree顾名思义,增强版的回退插件，快捷键`<leader>u`
@@ -295,4 +292,3 @@ sessionmanager,`<leader>sl`显示session列表;`<leader>ss`保存session;`<leade
 `python`用的插件,具有语法检查,调试等功能
 `F9`: python调试节点,`S+F9`进行python语法检查,`<leader>+F9`切换语法是否检查
 
-####
