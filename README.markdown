@@ -1,11 +1,31 @@
 # leoatchina的vim配置文件
 This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim).I sincerely thank him for great job. To meet my needs,I have changed lots of settings and plugins.
 
-## 前言
+                    __ _ _____              _
+         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
+        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
+        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
+        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
+            |_|
+[spf13]()对他自己作品的介绍
+> spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and MacVim.
+> It is a good starting point for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
+> The distribution is completely customisable using a `~/.vimrc.local`, `~/.vimrc.bundles.local`, and `~/.vimrc.before.local` Vim RC files.
+
+## 背景
 本人是生信工程师,主要使用的语文是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率。但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.请访问[leoatchina的vim配置文件](https://github.com/leoatchina/spf13-vim-leoatchina).由于本人水平所限,一定有很多错误和bug,望各位指正.
 
 ## 对使用者的要求
 掌握vim的大部分操作,了解`leader`,`map`,`hjkl`,`d`,`w`,`s`,`i`,`u`,`:`,`\`等操作命令
+
+## 配置文件
+**各配置文件执行次序**
+* `.vimrc.before`  # 参数配置文件
+* `.vimrc.before.local`
+* `.vimrc.bundles` # 插件管理文件
+* `.vimrc.bundles.local`
+* `.vimrc`      # 最主要的配置文件,配色、快捷键、显示方式等参数都在这里设置
+* `.vimrc.local`
 
 ## 安装
 *安装本配置 需要 Git 1.7+ 和 Vim 7.3+（编译时加入对lua和python的支持），部分插件如`Nvim-R`,`AsyncRun`,需要Vim8.0*
@@ -153,15 +173,6 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
   " Ctrl-m for switch between brackets
   map <C-m> %
 ```
-
-## 定制个人配置
-**各配置文件执行次序**
-* `.vimrc.before`  # 参数配置文件
-* `.vimrc.before.local`
-* `.vimrc.bundles` # 插件管理文件
-* `.vimrc.bundles.local`
-* `.vimrc`      # 最主要的配置文件,配色、快捷键、显示方式等参数都在这里设置
-* `.vimrc.local`
 
 [spf13](spf13)设计了一系列巧妙的`配置变量`，在`.vimrc.before.local`里写入配置变量后，可打开/关闭某些配置
 如，关闭自动cd到某个目录
@@ -330,6 +341,17 @@ sessionmanager,`<leader>sl`显示session列表;`<leader>ss`保存session;`<leade
     <CTRL-g>S - same as <CTRL-s><CTRL-s>
 ```
 
+#### [PIV](https://github.com/spf13/PIV)
+The most feature complete and up to date PHP Integration for Vim with proper support for PHP 5.3+ including latest syntax, functions, better fold support, etc.
+
+PIV provides:
+ * PHP 5.3 support
+ * Auto generation of PHP Doc (,pd on (function, variable, class) definition line)
+ * Autocomplete of classes, functions, variables, constants and language keywords
+ * Better indenting
+ * Full PHP documentation manual (hit K on any function for full docs)
+![](https://camo.githubusercontent.com/7650c13f52fd73dc788a218f6d5862be4399cd4d/68747470733a2f2f692e696d6775722e636f6d2f63304747502e706e67)
+
 #### [Nvim-R](https://github.com/jalvesaq/Nvim-R)
 支持R语言的插件,需要`Vim8.0+`并在`.vimrc.before.local`里加入`R`.通过`<leader>RR`激活界面,`<leader>RQ`退出R程序
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171012132459533.png)
@@ -339,5 +361,6 @@ sessionmanager,`<leader>sl`显示session列表;`<leader>ss`保存session;`<leade
 #### [EasyMotion](https://github.com/easymotion/vim-easymotion)
 
 #### 代码补全插件
+
 ##### [YouComplteMe]
 ##### [neocomplete&&neocomplcache]
