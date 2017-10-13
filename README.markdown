@@ -82,7 +82,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 5. 重点修改了代码补全插件[YouCompleteMe](YoucompleteMe)、[Neocomplete](Neocomplete)的配置和快捷键
 6. 去除了fork功能，仅保留before功能
 7. 增加对R和Markdown的支持,不过要在`~/.vimrc.before.local`里开启
-8. 用`ywvim`作为中文输入法,请按`ctrl+\`切换到中文输入法,`ctrl+^`进行输入法配置
+8. 用`ywvim`作为中文输入法,请按`ctrl+shift+2`切换到中文输入法,`ctrl+shift+6`进行输入法配置
 9. 默认**不进行代码补全**，要使用者在 `~/.vimrc.before.local`里进行配置,如我加入了对`youcompletme`的配置,也可以使用`neocomplte`和`neocomplcache`
 10. 我的`~/.vimrc.before.local`,可以看到有对`python`,`R`,`markdown`的支持
 ```
@@ -221,7 +221,7 @@ undotree顾名思义,增强版的回退插件，快捷键`<leader>u`
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011105655369.png)
 
 #### [ywvim中文输入法](https://github.com/leoatchina/ywvim)
-我直接在自己的github上clone了`ywvim`输入法,在`insert`模式下通过`CTRL+\`开启,`CTRL+^`进行配置,进行输入法切换切换等;`;`临时英文输入法;注意,默认只输入**英文状态**的标点,而且首选是`五笔`;`z`临时拼音;`,.-=`上下翻页;
+我直接在自己的github上clone了`ywvim`输入法,在`insert`模式下通过`CTRL+@`开启,`CTRL+^`进行配置,进行输入法切换切换等;`;`临时英文输入法;注意,默认只输入**英文状态**的标点,而且首选是`五笔`;`z`临时拼音;`,.-=`上下翻页;
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011215538461.png)
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011212612850.png)
 

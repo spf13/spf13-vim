@@ -31,7 +31,7 @@
         set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
     endif
 
-    " Windows Compatible 
+    " Windows Compatible
     " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
     " across (heterogeneous) systems easier.
     if WINDOWS()
@@ -53,13 +53,13 @@
       endif
     endif
 
-    " Setup Bundle Support 
+    " Setup Bundle Support
     " The next three lines ensure that the ~/.vim/bundle/ system works
     filetype off
     set rtp+=~/.vim/bundle/vundle
     call vundle#rc()
 
-    " Add an UnBundle command 
+    " Add an UnBundle command
     function! UnBundle(arg, ...)
       let bundle = vundle#config#init_bundle(a:arg, a:000)
       call filter(g:vundle#bundles, 'v:val["name_spec"] != "' . a:arg . '"')
@@ -67,7 +67,7 @@
     com! -nargs=+         UnBundle
     \ call UnBundle(<args>)
 
-" Bundles 
+" Bundles
     Bundle 'gmarik/vundle'
     Bundle 'MarcWeber/vim-addon-mw-utils'
     Bundle 'tomtom/tlib_vim'
@@ -90,7 +90,7 @@
     " .vimrc.bundles.local file:
     "   let g:override_spf13_bundles = 1
     if !exists("g:override_spf13_bundles")
-        " General 
+        " General
         Bundle 'scrooloose/nerdtree'
         Bundle 'jistr/vim-nerdtree-tabs'
         Bundle 'Xuyuanp/nerdtree-git-plugin'
@@ -173,11 +173,11 @@
             Bundle 'Shougo/neosnippet-snippets'
             Bundle 'honza/vim-snippets'
         endif
-    " PHP 
+    " PHP
         if count(g:spf13_bundle_groups, 'php')
             Bundle 'arnaud-lb/vim-php-namespace'
         endif
-    " Python 
+    " Python
         if count(g:spf13_bundle_groups, 'python')
             Bundle 'python-mode/python-mode'
             Bundle 'yssource/python.vim'
@@ -187,7 +187,7 @@
             Bundle 'vim-perl/vim-perl'
             Bundle 'perl-support.vim'
         endif
-    " Javascript 
+    " Javascript
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'elzr/vim-json'
             Bundle 'pangloss/vim-javascript'
@@ -217,25 +217,25 @@
             Bundle 'adinapoli/cumino'
             Bundle 'bitc/vim-hdevtools'
         endif
-    " HTML 
+    " HTML
         if count(g:spf13_bundle_groups, 'html')
             Bundle 'hail2u/vim-css3-syntax'
             Bundle 'gorodinskiy/vim-coloresque'
             Bundle 'tpope/vim-haml'
             Bundle 'mattn/emmet-vim'
         endif
-    " Ruby 
+    " Ruby
         if count(g:spf13_bundle_groups, 'ruby')
             Bundle 'tpope/vim-rails'
             let g:rubycomplete_buffer_loading = 1
             "let g:rubycomplete_classes_in_global = 1
             "let g:rubycomplete_rails = 1
         endif
-    " Puppet 
+    " Puppet
         if count(g:spf13_bundle_groups, 'puppet')
             Bundle 'rodjek/vim-puppet'
         endif
-    " Go Lang 
+    " Go Lang
         if count(g:spf13_bundle_groups, 'go')
             "Bundle 'Blackrush/vim-gocode'
             Bundle 'fatih/vim-go'
@@ -248,7 +248,7 @@
         endif
     endif
 
-" Use local bundles config if available 
+" Use local bundles config if available
     if filereadable(expand("~/.vimrc.bundles.local"))
         source ~/.vimrc.bundles.local
     endif
