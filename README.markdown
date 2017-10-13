@@ -91,7 +91,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 
 ## 基本快捷键
 * `<leader>`键改为空格键,这个在键盘上最大的按键就有了更强的作用;`<localleader>`改为`\`,`\`在R编写调试时使用率比较高
-* `~`作为进入`ex`模式的快捷键
+* `~`作为进入`ex`模式的快捷键,`Q`键map为`<Nop>`
 * `F1`: 为`:h `，方便启动帮助
 * `F2`: 打开关闭代码折叠 或 `<leader>wd`
 * `F3`: 打开关闭换行 或 `<leader>fd`
@@ -221,7 +221,7 @@ undotree顾名思义,增强版的回退插件，快捷键`<leader>u`
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011105655369.png)
 
 #### [ywvim中文输入法](https://github.com/leoatchina/ywvim)
-我直接在自己的github上clone了`ywvim`输入法,在`insert`模式下通过`CTRL+@`开启,`CTRL+^`进行配置,进行输入法切换切换等;`;`临时英文输入法;注意,默认只输入**英文状态**的标点,而且首选是`五笔`;`z`临时拼音;`,.-=`上下翻页;
+我直接在自己的github上clone了`ywvim`输入法,在`insert`模式下通过`CTRL+@`开启,`CTRL+^`进行配置,进行输入法切换切换等;`;`临时英文输入法;注意,默认只输入**英文状态**的标点,而且首选是`五笔`;`z`临时拼音;`,.-=`上下翻页;**不知道和哪个插件冲突,本来可以用`ctrl+\`切换中英输入法,现在不行了!**
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011215538461.png)
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011212612850.png)
 
@@ -304,7 +304,8 @@ sessionmanager,`<leader>sl`显示session列表;`<leader>ss`保存session;`<leade
 #### [Pymode](https://github.com/python-mode/python-mode)
 `python`用的插件,具有语法检查,调试等功能.`F9`: python语法检查,`S+F9`切换语法是否检查.`<leader>R`:运行脚本;`<leader>T`:track_point toggle
 
-#### [surround](https://github.com/tpope/vim-surround)给一段文字加上括号的插件，下面说明文字引用自[vim中的杀手级别的插件：surround](http://zuyunfei.com/2013/04/17/killer-plugin-of-vim-surround/)
+#### [surround](https://github.com/tpope/vim-surround)
+给一段文字加上括号的插件，下面说明文字引用自[vim中的杀手级别的插件：surround](http://zuyunfei.com/2013/04/17/killer-plugin-of-vim-surround/)
 ```
    Old text                  Command     New text
    "Hello *world!"           ds"         Hello world!
@@ -317,7 +318,7 @@ sessionmanager,`<leader>sl`显示session列表;`<leader>ss`保存session;`<leade
 ```
 如上面代码块所示，添加替换时使用后半括号)]}，添加的括号和内容间就没有空格（如第2个示例），反之会在内容前后添加一个空格（如第4个实例）。第6个示例中的t代表一对HTML或者xml tag。其他表示范围的符号：w代表word, W代表WORD(被空格分开的连续的字符窜），p代表paragraph。
 
-命令列表
+*命令列表*
 ```
     Normal mode
     -----------
@@ -358,6 +359,14 @@ PIV provides:
 快捷键极多,请自行`:h nvim-r`查询
 
 #### [EasyMotion](https://github.com/easymotion/vim-easymotion)
+ 又一个杀手级别的插件
+ ![](http://www.wklken.me/imgs/vim/easy_motion_search.gif)
+ 1. 跳转到当前光标前后,快捷键`<leader><leader>w`和`<leader><leader>b`
+ 2. 搜索跳转,`<leader><leader>s`,然后输入要搜索的字母
+ 3. 行间/行内级别跳转,`<leader><leader>`再`hjkl`不解释
+ 4. 重复上一次的动作,`<leader><leader>.`
+ 5. 还可以`<leader><leader>f`和`<leader><leader>t`,不过不建议使用
+
 
 #### 代码补全插件
 ##### [YouComplteMe]
