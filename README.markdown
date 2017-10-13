@@ -91,13 +91,14 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 
 ## 基本快捷键
 * `<leader>`键改为空格键,这个在键盘上最大的按键就有了更强的作用;`<localleader>`改为`\`,`\`在R编写调试时使用率比较高
+* `~`作为进入`ex`模式的快捷键
 * `F1`: 为`:h `，方便启动帮助
 * `F2`: 打开关闭代码折叠 或 `<leader>wd`
 * `F3`: 打开关闭换行 或 `<leader>fd`
 * `F4`: 打开关闭搜索高亮 或 `<leader>hl`
 * `F5`: 运行脚本（python、perl、c等）或 `<leader>R`;`Shift+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun
 * `F11`: 全屏切换,如果是windows下的gvim,要把本目录下的`gvim_fullscreen.dll`放到`gvim`的安装目录下
-* `F12`: 切换paste模式
+* `F12`: 切换paste模式,或者`<leader>tg`
 * `<leader>fc`:fixed confict markers
 * `<leader>fw`:对当前光标下文字进行搜索
 * `<leader>mk`:markdown调用chrome生成markdown preview

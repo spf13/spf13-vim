@@ -247,6 +247,9 @@
             nmap <Leader>q :q<CR>
             " 不做任何保存，直接退出 vim
             nmap <Leader>Q :qa!
+            " Q
+            nnoremap ~ Q
+            nmap Q <Nop>
             " 设置分割页面
             nmap <Leader>- :split<Space>
             nmap <leader>\ :vsplit<Space>
