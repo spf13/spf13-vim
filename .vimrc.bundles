@@ -247,7 +247,6 @@
             Bundle 'mattreduce/vim-mix'
         endif
     endif
-
 " Use local bundles config if available
     if filereadable(expand("~/.vimrc.bundles.local"))
         source ~/.vimrc.bundles.local

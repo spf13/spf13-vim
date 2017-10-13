@@ -701,11 +701,6 @@
             if !has('python') && !has('python3')
                 let g:pymode = 0
             endif
-        " ywvim
-            if isdirectory(expand("~/.vim/bundle/ywvim/"))
-                imap <silent> <C-\> <C-R>=Ywvim_toggle()<CR>
-                cmap <silent> <C-\> <C-R>=Ywvim_toggle()<CR>
-            endif
         " ctrlp
             if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
                 let g:ctrlp_working_path_mode = 'ar'
