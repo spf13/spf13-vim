@@ -110,6 +110,8 @@
         noremap <S-F11> <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "247,180")<cr>
     endif
     set pastetoggle=<F12>      " pastetoggle (sane indentation on pastes)
+    noremap <leader>tg :set nopaste! nopaste?<CR>
+
 " shortcuts by leatchina
     if !exists('g:no_leoatchina_config')
         " move to last or first position of a line
@@ -137,8 +139,6 @@
         nnoremap <Leader>tm : tabm<SPACE>
         nnoremap <silent>_  : tabm -1<CR>
         nnoremap <silent>+  : tabm +1<CR>
-        " Q for qa!
-        nmap Q :qa!
         " 设置快捷键将选中文本块复制至系统剪贴板
         vnoremap  <leader>y  "+y
         nnoremap  <leader>y  "+y
@@ -161,12 +161,16 @@
         nmap <F1> :h<SPACE>
         "F2 toggleFold
         noremap <F2> :set nofoldenable! nofoldenable?<CR>
+        noremap <leader>fd :set nofoldenable! nofoldenable?<CR>
         "F3 toggleWrap
         noremap <F3> :set nowrap! nowrap?<CR>
+        noremap <leader>nw :set nowrap! nowrap?<CR>
         "F4 toggle hlsearch
         noremap <F4> :set nohlsearch! nohlsearch?<CR>
+        noremap <leader>hl :set nohlsearch! nohlsearch?<CR>
         " F5运行脚本
         noremap <F5> :call CompileRunGcc()<CR>
+        noremap <leader>R :call CompileRunGcc()<CR>
         func! CompileRunGcc()
             exec "w"
             if &filetype == 'c'
@@ -242,7 +246,7 @@
             " 定义快捷键关闭当前窗口
             nmap <Leader>q :q<CR>
             " 不做任何保存，直接退出 vim
-            nmap <Leader>Q :qa!<CR>
+            nmap <Leader>Q :qa!
             " 设置分割页面
             nmap <Leader>- :split<Space>
             nmap <leader>\ :vsplit<Space>
@@ -626,8 +630,8 @@
         " Nvim-R
             if isdirectory(expand("~/.vim/bundle/Nvim-R"))
                 let R_rconsole_width = 0
-                map <leader>RR \rf\ro<C-w>h
-                map <leader>RQ \rq
+                map <leader>rr \rf\ro<C-w>h
+                map <leader>rq \rq
                 let R_objbr_place = "script,right"
                 autocmd VimResized * let R_rconsole_height = winheight(0) /3
                 let R_objbr_h = 25
@@ -652,12 +656,12 @@
                 let g:go_fmt_command = "goimports"
                 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
                 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-                au FileType go nmap <Leader>s <Plug>(go-implements)
-                au FileType go nmap <Leader>i <Plug>(go-info)
-                au FileType go nmap <Leader>e <Plug>(go-rename)
-                au FileType go nmap <leader>r <Plug>(go-run)
-                au FileType go nmap <leader>b <Plug>(go-build)
-                au FileType go nmap <leader>t <Plug>(go-test)
+                au FileType go nmap <Leader>S <Plug>(go-implements)
+                au FileType go nmap <Leader>S <Plug>(go-info)
+                au FileType go nmap <Leader>E <Plug>(go-rename)
+                au FileType go nmap <leader>R <Plug>(go-run)
+                au FileType go nmap <leader>B <Plug>(go-build)
+                au FileType go nmap <leader>T <Plug>(go-test)
                 au FileType go nmap <Leader>gd <Plug>(go-doc)
                 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
                 au FileType go nmap <leader>co <Plug>(go-coverage)
@@ -674,17 +678,17 @@
                 let g:pymode_lint_ignore = "E128,E2,E3,E501"
                 let g:pymode_lint_cwindow = 1
                 let g:pymode_lint_message = 0
-                nmap <S-F9> :PymodeLint<CR>
-                imap <S-F9> <ESC>:PymodeLint<CR>i
-                nmap <leader><F9> :PymodeLintToggle<cr>
+                nmap <F9> :PymodeLint<CR>
+                imap <F9> <ESC>:PymodeLint<CR>i
+                nmap <S-F9> :PymodeLintToggle<cr>
                 " motion
                 let g:pymode_motion = 1
                 " no doc for python
                 let g:pymode_doc = 1
                 " run python
-                let g:pymode_run_bind = '<F5>'
+                let g:pymode_run_bind = '<leader>R'
                 " breakpoint
-                let g:pymode_breakpoint_bind = '<F9>'
+                let g:pymode_breakpoint_bind = '<leader>T'
                 let g:pymode_trim_whitespaces = 1
                 let g:pymode_options = 0
                 let g:pymode_rope = 0

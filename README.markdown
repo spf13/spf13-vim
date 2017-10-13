@@ -92,10 +92,10 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 ## 基本快捷键
 * `<leader>`键改为空格键,这个在键盘上最大的按键就有了更强的作用;`<localleader>`改为`\`,`\`在R编写调试时使用率比较高
 * `F1`: 为`:h `，方便启动帮助
-* `F2`: 打开关闭代码折叠
-* `F3`: 打开关闭换行
-* `F4`: 打开关闭搜索高亮
-* `F5`: 运行脚本（python、perl、c等）;`Shift+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun
+* `F2`: 打开关闭代码折叠 或 `<leader>wd`
+* `F3`: 打开关闭换行 或 `<leader>fd`
+* `F4`: 打开关闭搜索高亮 或 `<leader>hl`
+* `F5`: 运行脚本（python、perl、c等）或 `<leader>R`;`Shift+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun
 * `F11`: 全屏切换,如果是windows下的gvim,要把本目录下的`gvim_fullscreen.dll`放到`gvim`的安装目录下
 * `F12`: 切换paste模式
 * `<leader>fc`:fixed confict markers
@@ -301,11 +301,9 @@ sessionmanager,`<leader>sl`显示session列表;`<leader>ss`保存session;`<leade
 在文件列表中,`Ctrl+k/j`或者方向键向上/下选择文件,`t`在新标签里打开文件.其他快捷键见[ctrlp中文介绍](http://blog.codepiano.com/pages/ctrlp-cn.light.html)
 
 #### [Pymode](https://github.com/python-mode/python-mode)
-`python`用的插件,具有语法检查,调试等功能
-`F9`: python调试节点,`S+F9`进行python语法检查,`<leader>+F9`切换语法是否检查
+`python`用的插件,具有语法检查,调试等功能.`F9`: python语法检查,`S+F9`切换语法是否检查.`<leader>R`:运行脚本;`<leader>T`:track_point toggle
 
-#### [surround](https://github.com/tpope/vim-surround)
-给一段文字加上括号的插件，下面说明文字引用自[vim中的杀手级别的插件：surround](http://zuyunfei.com/2013/04/17/killer-plugin-of-vim-surround/)
+#### [surround](https://github.com/tpope/vim-surround)给一段文字加上括号的插件，下面说明文字引用自[vim中的杀手级别的插件：surround](http://zuyunfei.com/2013/04/17/killer-plugin-of-vim-surround/)
 ```
    Old text                  Command     New text
    "Hello *world!"           ds"         Hello world!
@@ -361,6 +359,5 @@ PIV provides:
 #### [EasyMotion](https://github.com/easymotion/vim-easymotion)
 
 #### 代码补全插件
-
 ##### [YouComplteMe]
 ##### [neocomplete&&neocomplcache]
