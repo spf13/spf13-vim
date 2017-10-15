@@ -381,5 +381,7 @@ PIV provides:
      python2 install.py #可能仅支持python等不需要编译的语言
   ```
 ##### [neocomplete&&neocomplcache]()
-  - 这两者是同一个作者编写，`neocomplte`需要`lua`的支持
+  - 这两者是同一个作者编写，`neocomplte`需要`lua`的支持
+  - 相对来说，neo系列没ycm稳定，速度也不如，不过配置方便
+  
   ![](https://camo.githubusercontent.com/2e00f5d1f66bcf290533cc0b006a692339dfa4a6/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f34313439352f3632323435372f66653930616435652d636634322d313165322d386530332d3866313839623565323665352e706e67)
