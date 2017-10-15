@@ -502,6 +502,8 @@
                 let g:ywvim_preconv = 'g2b'
                 let g:ywvim_conv = ''
                 let g:ywvim_lockb = 1
+                imap <silent> <C-\> <C-R>=Ywvim_toggle()<CR>
+                cmap <silent> <C-\> <C-R>=Ywvim_toggle()<CR>
             endif
         " Ag
             if isdirectory(expand("~/.vim/bundle/ag.vim"))

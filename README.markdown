@@ -14,6 +14,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 
 ## 背景
 本人是生信工程师,主要使用的语文是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率。但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.请访问[leoatchina的vim配置文件](https://github.com/leoatchina/spf13-vim-leoatchina).由于本人水平所限,一定有很多错误和bug,望各位指正.
+**注意**使本配置文件后可能会影响vim运行流畅度.
 
 ## 对使用者的要求
 掌握vim的大部分操作,了解`leader`,`map`,`hjkl`,`d`,`w`,`s`,`i`,`u`,`:`,`\`等操作命令
@@ -220,7 +221,7 @@ undotree顾名思义,增强版的回退插件，快捷键`<leader>u`
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011105655369.png)
 
 #### [ywvim中文输入法](https://github.com/leoatchina/ywvim)
-`ywvim`中文输入法,直接在vim里内置,无意中发现要和[fcitx](https://github.com/fcitx/fcitx)配合使用否则会有bug,在`insert`模式下通过`CTRL+@`或`CTRL+\``开启,`CTRL+^`进行配置;`;`临时英文输入法;注意,默认只输入**英文状态**的标点,而且首选是`五笔`;`z`临时拼音;`,.-=`上下翻页;
+`ywvim`中文输入法,直接在vim里内置,无意中发现要和[fcitx](https://github.com/fcitx/fcitx)配合使用否则会有bug,在`insert`模式下通过`CTRL+@`或`CTRL+\`开启,`CTRL+^`进行配置.`;`临时英文输入法;注意,默认只输入**英文状态**的标点,而且首选是`五笔`;`z`临时拼音;`,.-=`上下翻页;
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011215538461.png)
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171011212612850.png)
 
@@ -352,7 +353,7 @@ PIV provides:
 ![](https://camo.githubusercontent.com/7650c13f52fd73dc788a218f6d5862be4399cd4d/68747470733a2f2f692e696d6775722e636f6d2f63304747502e706e67)
 
 #### [Nvim-R](https://github.com/jalvesaq/Nvim-R)
-支持R语言的插件,需要`Vim8.0+`并在`.vimrc.before.local`里加入`R`.通过`<leader>RR`激活界面,`<leader>RQ`退出R程序
+支持R语言的插件,需要`Vim8.0+`并在`.vimrc.before.local`里加入`R`.通过`<leader>rr`激活界面,`<leader>rq`退出R程序
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171012132459533.png)
 ![](http://oxa21co60.bkt.clouddn.com/markdown-img-paste-20171012132515614.png)
 快捷键极多,请自行`:h nvim-r`查询
@@ -366,7 +367,19 @@ PIV provides:
  4. 重复上一次的动作,`<leader><leader>.`
  5. 还可以`<leader><leader>f`和`<leader><leader>t`,不过不建议使用
 
-
 #### 代码补全插件
-##### [YouComplteMe]
-##### [neocomplete&&neocomplcache]
+- 用了三种补全插件，要在`~/.vimrc.before.local`里加入`youcomplteme`或`neocomplte`或`neocomplcache`来激活安装。
+- 基本快捷键统一为`Tab`、`Shift-Tab`为`向下`，`向上`翻页，`ctrl-n/p`也能进行翻页.`enter`或`Ctrl+k`激活补全。`ctrl+l`显示各种实例可能
+##### [YouComplteMe](https://github.com/Valloric/YouCompleteMe)
+  ![](https://camo.githubusercontent.com/1f3f922431d5363224b20e99467ff28b04e810e2/687474703a2f2f692e696d6775722e636f6d2f304f50346f6f642e676966)
+  - 需要安装一系列编译用软件
+  - 跳转键，`Ctrl+f`跳转到下一个待补全处，`Ctrl+b`中转到上一个待补全处。
+  - 具体可参考[Vim 自动补全插件 YouCompleteMe 安装与配置](http://howiefh.github.io/2015/05/22/vim-install-youcompleteme-plugin/).
+  - 在安装好各种编译用的工具后
+  ```
+     cd ~/.vim/bundle/YouCompleteMe
+     python2 install.py #可能仅支持python等不需要编译的语言
+  ```
+##### [neocomplete&&neocomplcache]()
+  - 这两者是同一个作者编写，`neocomplte`需要`lua`的支持
+  ![](https://camo.githubusercontent.com/2e00f5d1f66bcf290533cc0b006a692339dfa4a6/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f34313439352f3632323435372f66653930616435652d636634322d313165322d386530332d3866313839623565323665352e706e67)
