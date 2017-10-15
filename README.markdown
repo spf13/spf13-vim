@@ -13,7 +13,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 > The distribution is completely customisable using a `~/.vimrc.local`, `~/.vimrc.bundles.local`, and `~/.vimrc.before.local` Vim RC files.
 
 ## 背景
-本人是生信工程师,主要使用的语文是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率。但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.请访问[leoatchina的vim配置文件](https://github.com/leoatchina/spf13-vim-leoatchina).由于本人水平所限,一定有很多错误和bug,望各位指正.
+本人是生信工程师,主要使用的语言是`python`,`R`,`perl`,`shell`,经常要ssh到远程服务器上写代码,因此学习了vim,后来发现了[spf13-vim:steve francia's vim distribution](https://github.com/spf13/spf13-vim),大大提高了写代码的效率。但是,原配置仍然有很多插件和配置不符合我的需要,因此,fork后进行了大量的修改.请访问[leoatchina的vim配置文件](https://github.com/leoatchina/spf13-vim-leoatchina).由于本人水平所限,一定有很多错误和bug,望各位指正.
 **注意**使本配置文件后可能会影响vim运行流畅度.
 
 ## 对使用者的要求
@@ -383,5 +383,5 @@ PIV provides:
 ##### [neocomplete&&neocomplcache]()
   - 这两者是同一个作者编写，`neocomplete`需要`lua`的支持
   - 相对来说，neo系列没ycm稳定，速度也不如，不过配置方便
-  
+
   ![](https://camo.githubusercontent.com/2e00f5d1f66bcf290533cc0b006a692339dfa4a6/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f34313439352f3632323435372f66653930616435652d636634322d313165322d386530332d3866313839623565323665352e706e67)
