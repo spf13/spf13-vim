@@ -1,8 +1,14 @@
 function! s:deregister(repo)
   let repo = substitute(a:repo, '[\/]\+$', '', '')
   let name = fnamemodify(repo, ':t:s?\.git$??')
-  call remove(g:plugs, name)
-  call remove(g:plugs_order, index(g:plugs_order, name))
+
+  try
+    call remove(g:plugs, name)
+    call remove(g:plugs_order, index(g:plugs_order, name))
+  catch /^Vim\%((\a\+)\)\=:E716/ " Key Not present in Dictionary
+    "echom name . ' already removed'
+  endtry
+
 endfunction
 
 command! -nargs=1 -bar UnPlug call s:deregister(<args>)
