@@ -74,7 +74,7 @@ call plug#begin('~/.vim/bundle')
     " In your .vimrc.before.local file
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['general', 'writing', 'neocomplete', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc',]
+        let g:spf13_bundle_groups=['general', 'writing', 'neocomplete', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc', 'rust',]
     endif
 
     " To override all the included bundles, add the following to your
@@ -129,6 +129,8 @@ call plug#begin('~/.vim/bundle')
             Plug 'reedes/vim-textobj-sentence'
             Plug 'reedes/vim-textobj-quote'
             Plug 'reedes/vim-wordy'
+            Plug 'tpope/vim-markdown'
+            Plug 'greyblake/vim-preview'
         endif
     " }
 
@@ -238,6 +240,8 @@ call plug#begin('~/.vim/bundle')
     " Ruby {
         if count(g:spf13_bundle_groups, 'ruby')
             Plug 'tpope/vim-rails'
+            Plug 'tpope/vim-cucumber'
+            Plug 'quentindecock/vim-cucumber-align-pipes'
             let g:rubycomplete_buffer_loading = 1
             "let g:rubycomplete_classes_in_global = 1
             "let g:rubycomplete_rails = 1
@@ -265,14 +269,15 @@ call plug#begin('~/.vim/bundle')
         endif
     " }
 
+    " Rust {
+        if count(g:spf13_bundle_groups, 'rust')
+            Plug 'rust-lang/rust.vim'
+        endif
+    " }
+
     " Misc {
         if count(g:spf13_bundle_groups, 'misc')
-            Plug 'rust-lang/rust.vim'
-            Plug 'tpope/vim-markdown'
-            Plug 'spf13/vim-preview'
-            Plug 'tpope/vim-cucumber'
             Plug 'cespare/vim-toml'
-            Plug 'quentindecock/vim-cucumber-align-pipes'
             Plug 'saltstack/salt-vim'
         endif
     " }
