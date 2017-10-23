@@ -38,8 +38,8 @@
         inoremap <silent> <C-[>OC <RIGHT>
     endif
 " set timeout
-    set timeoutlen=400
-    set ttimeout ttimeoutlen=200
+    set timeout
+    set timeoutlen=500 ttimeoutlen=50
 " Use before config
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
@@ -110,7 +110,7 @@
         noremap <S-F11> <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "247,180")<cr>
     endif
     set pastetoggle=<F12>      " pastetoggle (sane indentation on pastes)
-    noremap <leader>tg :set nopaste! nopaste?<CR>
+    noremap <leader>fp :set nopaste! nopaste?<CR>
 
 " shortcuts by leatchina
     if !exists('g:no_leoatchina_config')
@@ -164,10 +164,10 @@
         noremap <leader>fd :set nofoldenable! nofoldenable?<CR>
         "F3 toggleWrap
         noremap <F3> :set nowrap! nowrap?<CR>
-        noremap <leader>nw :set nowrap! nowrap?<CR>
+        noremap <leader>fr :set nowrap! nowrap?<CR>
         "F4 toggle hlsearch
         noremap <F4> :set nohlsearch! nohlsearch?<CR>
-        noremap <leader>hl :set nohlsearch! nohlsearch?<CR>
+        noremap <leader>fh :set nohlsearch! nohlsearch?<CR>
         " F5运行脚本
         noremap <F5> :call CompileRunGcc()<CR>
         noremap <leader>R :call CompileRunGcc()<CR>
@@ -635,8 +635,6 @@
         " Nvim-R
             if isdirectory(expand("~/.vim/bundle/Nvim-R"))
                 let R_rconsole_width = 0
-                map <leader>rr \rf\ro<C-w>h
-                map <leader>rq \rq
                 let R_objbr_place = "script,right"
                 autocmd VimResized * let R_rconsole_height = winheight(0) /3
                 let R_objbr_h = 25
@@ -644,12 +642,14 @@
                 let R_objbr_openlist = 1  " Show lists elements
                 let R_objbr_allnames = 0  " Show .GlobalEnv hidden objects
                 let R_objbr_labelerr = 1  " Warn if label is not a valid text
-                let R_in_buffer = 0
+                let R_in_buffer = 1
                 let R_hl_term = 1
                 let R_close_term = 1
                 let Rout_more_colors = 1
                 let R_hi_fun_paren = 1
                 let R_rmd_environment = "new.env()"
+                nmap <leader>rr <localleader>rf<localleader>ro<C-w>h
+                nmap <leader>rq <localleader>rq
             endif
         " GoLang
             if count(g:spf13_bundle_groups, 'go')
@@ -1109,4 +1109,3 @@
             source ~/.gvimrc.local
         endif
     endif
-

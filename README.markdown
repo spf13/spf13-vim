@@ -56,7 +56,6 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 ## 一些功能
 * 复制内容直接放到系统剪贴本
 * 显示行号,多种语法高亮
-* 修改文档后马上生效
 * Visual模式下用`>`,`<`移动文字不会取消选择
 * 不生成backup文件
 * 关闭拼写检查
@@ -81,24 +80,25 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 3. 按自己习惯修改了大量插件的快捷键
 4. 去除了原来定义的一些函数
 5. 重点修改了代码补全插件[YouCompleteMe](YoucompleteMe)、[Neocomplete](Neocomplete)的配置和快捷键
-6. 去除了fork功能，仅保留before功能
-7. 增加对R和Markdown的支持,不过要在`~/.vimrc.before.local`里开启
-8. 默认**不进行代码补全**，要使用者在 `~/.vimrc.before.local`里进行配置,如我加入了对`youcompletme`的配置,也可以使用`neocomplte`和`neocomplcache`
+6. 去除了fork文件功能，仅保留before文件功能
+7. 增加对R和Markdown的支持,要在`~/.vimrc.before.local`里加入`markdown`和`R`开启，支持语法高亮，不过暂时这两个语言的支持都有一些问题，要改动。
+8. 默认**不进行代码补全**，要使用者在 `~/.vimrc.before.local`里进行配置,如我加入了对`youcompletme`的配置,也可以使用`neocomplete`或`neocomplcache`
 9. 我的`~/.vimrc.before.local`,可以看到有对`python`,`R`,`markdown`的支持
 ```
   let g:spf13_bundle_groups=['general',  'programming', 'python', 'youcompleteme','php', 'javascript', 'html','R','markdown','material']
 ```
 
 ## 基本快捷键
-* `<leader>`键改为空格键,这个在键盘上最大的按键就有了更强的作用;`<localleader>`改为`\`,`\`在R编写调试时使用率比较高
+* `<leader>`键改为空格键,这个在键盘上最大的按键就有了更强的作用;
+* `<localleader>`改为`\`,`\`在R编写调试时使用率比较高
 * `~`作为进入`ex`模式的快捷键,`Q`键map为`<Nop>`
 * `F1`: 为`:h `，方便启动帮助
-* `F2`: 打开关闭代码折叠 或 `<leader>wd`
-* `F3`: 打开关闭换行 或 `<leader>fd`
-* `F4`: 打开关闭搜索高亮 或 `<leader>hl`
-* `F5`: 运行脚本（python、perl、c等）或 `<leader>R`;`Shift+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun
-* `F11`: 全屏切换,如果是windows下的gvim,要把本目录下的`gvim_fullscreen.dll`放到`gvim`的安装目录下
-* `F12`: 切换paste模式,或者`<leader>tg`
+* `F2`: 打开关闭代码折叠 或 `<leader>fd`
+* `F3`: 打开关闭换行 或 `<leader>fr`
+* `F4`: 打开关闭搜索高亮 或 `<leader>fh`
+* `F5`: 运行脚本（python、perl、c等）或 `<leader>R`;`Shift+F5`:运行脚本并记录时间;`<leader>+F5`: AsyncRun命令
+* `F11`: 全屏切换,如果是windows下的gvim,要把本目录下的`gvim_fullscreen.dll`放到`gvim`的安装目录下，此时<S+F11>为切换透明度
+* `F12`: 切换paste模式,或者`<leader>fp`
 * `<leader>fc`:fixed confict markers
 * `<leader>fw`:对当前光标下文字进行搜索
 * `<leader>mk`:markdown调用chrome生成markdown preview
@@ -120,7 +120,7 @@ This is leoatchina's vim config forked from [spf13-vim:steve francia's vim distr
 * `Ctrl+e`移到一行的结尾;`Ctrl+y`移到一行的开头
 * `Ctrl+m`括号之间跳转
 * `<leader>w`保存当前文件;`<leader>W`保存所有文件
-* `<leader>q`关闭当然文件;`Q`为`:qa`,不过给你反悔的机会不直接按下回车
+* `<leader>q`关闭当然文件;`Q`为`:qa!`,不过给你反悔的机会不直接按下回车
 * 复制粘贴等
 ```
   " 设置快捷键将选中文本块复制至系统剪贴板
