@@ -95,14 +95,20 @@
         Bundle 'jistr/vim-nerdtree-tabs'
         Bundle 'Xuyuanp/nerdtree-git-plugin'
         Bundle 'vim-voom/VOoM'
-        Bundle 'leoatchina/ywvim'
+        if count(g:spf13_bundle_groups, 'chinese')
+            Bundle 'leoatchina/ywvim'
+        endif
         Bundle 'easymotion/vim-easymotion'
         Bundle 'tyrannicaltoucan/vim-quantum'
         Bundle 'altercation/vim-colors-solarized'
         Bundle 'spf13/vim-colors'
         Bundle 'tpope/vim-repeat'
         Bundle 'tpope/vim-surround'
-        Bundle 'lilydjwg/fcitx.vim'
+        if OSX()
+            Bundle 'CodeFalling/fcitx-vim-osx'
+        else
+            Bundle 'lilydjwg/fcitx.vim'
+        endif
         Bundle 'powerline/fonts'
         Bundle 'rhysd/conflict-marker.vim'
         Bundle 'jiangmiao/auto-pairs'

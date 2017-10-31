@@ -12,6 +12,7 @@
 " Os detect functions have been move to .vimrc.bundles
 " Basics
     set nocompatible        " Must be first line
+    set termguicolors       " True Color
     set background=dark     " Assume a dark background
     set mouse=a             " Automatically enable mouse usage
     set mousehide           " Hide the mouse cursor while typing
@@ -130,8 +131,6 @@
         set tabpagemax=10 " Only show 10 tabs
         nnoremap <silent>-  : tabprevious<CR>
         nnoremap <silent>=  : tabnext<CR>
-        nnoremap <leader>tf : tabfirst<CR>
-        nnoremap <Leader>tl : tablast<CR>
         nnoremap <leader>tn : tabnew<CR>
         nnoremap <Leader>ts : tabs<CR>
         nnoremap <Leader>tp : tab split<CR>
@@ -261,13 +260,17 @@
             nmap <Leader>[ :vertical resize -3<CR>
             nmap <Leader>] :vertical resize +3<CR>
             "至左方的子窗口
-            nnoremap <Leader>H <C-W>H
+            nnoremap <Leader>HH <C-W>H
+            nnoremap <Leader>hh <C-W>h
             "至右方的子窗口
-            nnoremap <Leader>L <C-W>L
+            nnoremap <Leader>LL <C-W>L
+            nnoremap <Leader>ll <C-W>l
             "至上方的子窗口
-            nnoremap <Leader>K <C-W>K
+            nnoremap <Leader>KK <C-W>K
+            nnoremap <Leader>kk <C-W>k
             "至下方的子窗口
-            nnoremap <Leader>J <C-W>J
+            nnoremap <Leader>JJ <C-W>J
+            nnoremap <Leader>jj <C-W>j
             " Visual shifting (does not exit Visual mode)
             vnoremap < <gv
             vnoremap > >gv
@@ -280,7 +283,7 @@
           au!
           au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
         aug END
-        set number                      " show line number"
+        set number                      " show line number
         set autoindent                  " Indent at the same level of the previous line
         set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
         set splitright                  " Puts new vsplit windows to the right of the current
