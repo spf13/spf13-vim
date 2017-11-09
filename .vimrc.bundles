@@ -268,7 +268,7 @@ set nocompatible        " must be first line
             Bundle 'maksimr/vim-jsbeautify'
 
             " for node
-            Bundle 'myhere/vim-nodejs-complete'
+            " Bundle 'myhere/vim-nodejs-complete'
             Bundle 'sidorares/node-vim-debugger'
             Bundle 'moll/vim-node'
 
