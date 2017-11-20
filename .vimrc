@@ -453,10 +453,8 @@ augroup END
             "...
             "6 = sat
             let g:plan_week_work = {
-                \ 1 : '1. 11:00 Sprint例会;',
                 \ 2 : '1. weekly report;',
-                \ 3 : '1. 11:00 Sprint例会;',
-                \ 5 : '1. Sprint计划;'
+                \ 3 : '1. 新项目例会;'
                 \}
             let g:plan_week_personal = {
                 \ 0 : '1. 看望/call 父母;1. 锻炼身体;',
@@ -472,18 +470,7 @@ augroup END
             let g:plan_month_keypoint = [
                 \ '1. (Invest & Finance):;',
                 \ '1. (Enjoy Life):;',
-                \ '1. (Tech & Managment):;',
-                \ ';',
-                \ '|  客户端 | 收入 | 日／周／月活 | 产品进展 | 产品上线 |;',
-                \ '|:-------:|:----:|:------------:|:--------:|:--------:|;',
-                \ '| PC      |      |              |          |          |;',
-                \ '| Mac     |      |              |          |          |;',
-                \ '| Android |      |              |          |          |;',
-                \ '| iPhone  |      |              |          |          |;',
-                \ '| iPad    |      |              |          |          |;',
-                \ '| 总计    |      |              |          |          |;',
-                \ '|:-------:|:----:|:------------:|:--------:|:--------:|;',
-                \ ';'
+                \ '1. (Tech & Managment):;'
                 \]
 
             let g:plan_month_work = {
