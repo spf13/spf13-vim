@@ -278,6 +278,9 @@ set nocompatible        " must be first line
             " for wxapp
             " Bundle 'chemzqm/wxapp.vim'
 
+            " for vue
+            Bundle 'posva/vim-vue'
+
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
                 Bundle 'leafgarland/typescript-vim'
