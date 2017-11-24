@@ -182,6 +182,7 @@ set nocompatible        " must be first line
         if count(g:spf13_bundle_groups, 'programming')
             "Bundle 'editorconfig/editorconfig-vim'
             Bundle 'scrooloose/syntastic'
+            Bundle 'mtscout6/syntastic-local-eslint.vim'
             "Bundle 'mattn/webapi-vim'
             "Bundle 'mattn/gist-vim'
             Bundle 'scrooloose/nerdcommenter'

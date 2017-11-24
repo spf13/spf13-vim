@@ -739,7 +739,7 @@ augroup END
             let g:syntastic_javascript_checkers = ['jshint', 'tern-lint']
         else
             let g:syntastic_javascript_checkers = ['eslint', 'tern-lint']
-            " let g:syntastic_javascript_eslint_exec = 'eslint_d'
+            let g:syntastic_javascript_eslint_exec = 'eslint_d'
         endif
         unlet g:find_file_path
 
