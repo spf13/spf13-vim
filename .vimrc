@@ -770,9 +770,6 @@ augroup END
                     \]
                 \}
 
-        " let g:syntastic_filetype_map = {
-                " \ "vue": "javascript"
-            " \}
     "}
 
     " PIV {

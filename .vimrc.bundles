@@ -60,6 +60,7 @@ set nocompatible        " must be first line
             "\ 'coffeescript',
             "\ 'php',
             "\ 'ios',
+            "\ 'vue'
         let g:spf13_bundle_groups=[
             \ 'general',
             \ 'colors',
@@ -279,10 +280,12 @@ set nocompatible        " must be first line
             " for wxapp
             " Bundle 'chemzqm/wxapp.vim'
 
-            " for vue
-            Bundle 'posva/vim-vue'
-            Bundle 'buranelus/vim-vue-template.vim'
-            Bundle 'pocke/vueim'
+            " vue
+            if count(g:spf13_bundle_groups, 'vue')
+                Bundle 'posva/vim-vue'
+                Bundle 'buranelus/vim-vue-template.vim'
+                Bundle 'pocke/vueim'
+            endif
 
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
