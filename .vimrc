@@ -706,6 +706,20 @@ augroup END
             return ''
         endfunction
 
+        " @param {List<String>} fileNames
+        " @param {Integer} limitTimes
+        " @return {String}
+        function! FindFilesUp(fileNames, limitTimes)
+            let found = ''
+            for item in a:fileNames
+                let found = FindFileUp(item, a:limitTimes)
+                if len(found) > 0
+                    return found
+                endif
+            endfor
+            return ''
+        endfunction
+
         let g:syntastic_check_on_wq = 1
 
         let g:syntastic_objc_compiler = 'clang'
@@ -720,7 +734,7 @@ augroup END
             let g:syntastic_java_javac_config_file = g:find_file_path
         endif
 
-        let g:find_file_path = FindFileUp('.jshintrc', 5)
+        let g:find_file_path = FindFilesUp( ['.jshintrc',  '.jshintrc.js'], 5)
         if strlen(g:find_file_path) > 1
             let g:syntastic_javascript_checkers = ['jshint', 'tern-lint']
         else
@@ -755,6 +769,10 @@ augroup END
                         \ 'java'
                     \]
                 \}
+
+        let g:syntastic_filetype_map = {
+                \ "vue": "javascript"
+            \}
     "}
 
     " PIV {
