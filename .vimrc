@@ -1067,11 +1067,11 @@ augroup END
      " posva/vim-vue {
         " autocmd vimrc BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
         let g:vue_disable_pre_processors=1
-        autocmd FileType vue syntax sync fromstart
+        autocmd vimrc FileType vue syntax sync fromstart
 
         let g:ft = ''
         function! NERDCommenter_before()
-          if &ft == 'vue'
+          if &ft ==# 'vue'
             let g:ft = 'vue'
             let stack = synstack(line('.'), col('.'))
             if len(stack) > 0
@@ -1083,7 +1083,7 @@ augroup END
           endif
         endfunction
         function! NERDCommenter_after()
-          if g:ft == 'vue'
+          if g:ft ==# 'vue'
             setf vue
             let g:ft = ''
           endif
