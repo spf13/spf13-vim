@@ -400,11 +400,12 @@ augroup END
             let cur_month = strftime('%m')
             let cur_month = cur_year . '-' . cur_month
 
-            let plan_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/plan.*'
+            let plan_year_path = '~/Dropbox/plan/' . cur_year
+            let plan_file_pattern = plan_year_path .'/' . cur_month . '/plan.*'
             "  ~/Dropbox/plan/2013/2013-04/2013-04.*
             "  the plan file may has different file extension
-            let plan_file_pattern_old = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/' . cur_month . '.*'
-            let diary_file_pattern = '~/Dropbox/plan/' . cur_year .'/' . cur_month . '/diary.*'
+            let plan_file_pattern_old = plan_year_path .'/' . cur_month . '/' . cur_month . '.*'
+            let diary_file_pattern = plan_year_path .'/' . cur_month . '/diary.*'
             unlet cur_year
             unlet cur_month
 
@@ -418,6 +419,8 @@ augroup END
                 let plan_file_path = get(fileList, 0, '')
                 if strlen(plan_file_path) > 0
                     let g:p_edit_files['plan'] = plan_file_path
+                else
+                    let g:p_edit_files['plan'] = plan_year_path
                 endif
             endif
 
@@ -429,8 +432,11 @@ augroup END
             let diary_file_path = get(fileList, 0, '')
             if strlen(diary_file_path) > 0
                 let g:p_edit_files['diary'] = diary_file_path
+            else
+                let g:p_edit_files['diary'] = plan_year_path
             endif
 
+            unlet plan_year_path
             unlet diary_file_pattern
             unlet diary_file_path
             unlet fileList
@@ -476,12 +482,13 @@ augroup END
             let g:plan_month_work = {
                 \ 2 : '1. 确认上月考勤;',
                 \ 15: '1. 查看有道云笔记的新闻, 浏览论坛;',
-                \ 27: '1. 月回顾与计划;'
+                \ 27: '1. 月回顾与下月规划;'
                 \}
             let g:plan_month_personal = {
                 \ 1 : '1. 还农行房贷(6);',
                 \ 5 : '1. 查询薪水发放;',
-                \ 10 : '1. 还工行房贷(17);'
+                \ 10 : '1. 还工行房贷(17);',
+                \ 28: '1. 家庭总结与下月规划;'
                 \}
 
             let g:plan_month_review = g:plan_week_review
