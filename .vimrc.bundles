@@ -25,7 +25,7 @@ set nocompatible        " must be first line
     " Setup Bundle Support {
     " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
-        set rtp+=~/.vim/bundle/vundle
+        set runtimepath+=~/.vim/bundle/vundle
         call vundle#rc()
     " }
 
@@ -185,8 +185,9 @@ set nocompatible        " must be first line
             " see http://editorconfig.org/
             Bundle 'editorconfig/editorconfig-vim'
 
-            Bundle 'scrooloose/syntastic'
-            Bundle 'mtscout6/syntastic-local-eslint.vim'
+            " ALE and Syntastic are conflict
+            " Bundle 'scrooloose/syntastic'
+            " Bundle 'mtscout6/syntastic-local-eslint.vim'
 
             Bundle 'w0rp/ale'
 

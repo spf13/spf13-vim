@@ -780,7 +780,7 @@ augroup END
     " ALE {
 
         if &diff
-            g:ale_enabled = 0
+            let g:ale_enabled = 0
         else
             let g:ale_linters = {
                         \ 'javascript': ['eslint'],
