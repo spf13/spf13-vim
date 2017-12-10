@@ -5,8 +5,8 @@ set nocompatible        " must be first line
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
-        let is_win = has('win32') || has('win64')
-        if is_win
+        let g:is_win = has('win32') || has('win64')
+        if g:is_win
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         else
             " use bash as the default shell for vim
@@ -384,7 +384,7 @@ augroup END
 
     " FuDesign2008/plan.vim {
     "
-        if !is_win
+        if !g:is_win
 
             let g:p_edit_files = {
                 \ 'book': expand('~/百度云同步盘/books'),
@@ -782,6 +782,19 @@ augroup END
 
     " ALE {
         let g:ale_sign_column_always = 1
+        let g:ale_open_list = 1
+        let g:ale_lint_on_text_changed = 'never'
+        let g:ale_lint_on_insert_leave = 0
+        let g:ale_completion_max_suggestions = 5
+        let g:ale_max_signs = 50
+        let g:ale_maximum_file_size = 1024 * 1024
+        let g:ale_echo_delay = 50
+        " Do not lint or fix minified files.
+        let g:ale_pattern_options = {
+            \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+            \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+            \ 'dist/**/*.*': { 'ale_linters': [], 'ale_fixers': [] }
+            \ }
     " }
 
     " PIV {
