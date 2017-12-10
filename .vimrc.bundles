@@ -60,7 +60,6 @@ set nocompatible        " must be first line
             "\ 'coffeescript',
             "\ 'php',
             "\ 'ios',
-            "\ 'vue'
         let g:spf13_bundle_groups=[
             \ 'general',
             \ 'colors',
@@ -69,6 +68,7 @@ set nocompatible        " must be first line
             \ 'python',
             \ 'java',
             \ 'javascript',
+            \ 'vue',
             \ 'react',
             \ 'typescript',
             \ 'css',
