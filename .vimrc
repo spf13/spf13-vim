@@ -751,6 +751,7 @@ augroup END
         unlet g:find_file_path
 
         let g:syntastic_typescript_checkers = ['tslint']
+        let g:syntastic_vue_checkers = ['eslint']
 
         let g:syntastic_mode_map = {
                     \ 'mode': 'passive',
