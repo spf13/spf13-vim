@@ -185,8 +185,8 @@ set nocompatible        " must be first line
             " see http://editorconfig.org/
             Bundle 'editorconfig/editorconfig-vim'
 
-            " Bundle 'scrooloose/syntastic'
-            " Bundle 'mtscout6/syntastic-local-eslint.vim'
+            Bundle 'scrooloose/syntastic'
+            Bundle 'mtscout6/syntastic-local-eslint.vim'
 
             Bundle 'w0rp/ale'
 

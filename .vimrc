@@ -668,133 +668,147 @@ augroup END
     "ZoomWin {
         nnoremap <C-W>z <Plug>ZoomWin
     "}
+
+    let g:use_ale_instead_of_syntastic = 1
+
     "
     "Syntastic {
-        " the recommend setting form README
-        set statusline+=%#warningmsg#
-        set statusline+=%{SyntasticStatuslineFlag()}
-        set statusline+=%*
 
-        function! SyntasticCheckHook(errors)
-            if !empty(a:errors)
-                let g:syntastic_loc_list_height = min([len(a:errors), 3])
+        if exists('g:use_ale_instead_of_syntastic') && g:use_ale_instead_of_syntastic == 0
+            " the recommend setting form README
+            set statusline+=%#warningmsg#
+            set statusline+=%{SyntasticStatuslineFlag()}
+            set statusline+=%*
+
+            function! SyntasticCheckHook(errors)
+                if !empty(a:errors)
+                    let g:syntastic_loc_list_height = min([len(a:errors), 3])
+                endif
+            endfunction
+
+            if &diff
+                let g:syntastic_always_populate_loc_list = 0
+                let g:syntastic_auto_loc_list = 0
+                let g:syntastic_check_on_open = 0
+            else
+                let g:syntastic_always_populate_loc_list = 1
+                let g:syntastic_auto_loc_list = 1
+                let g:syntastic_check_on_open = 1
             endif
-        endfunction
 
-        if &diff
-            let g:syntastic_always_populate_loc_list = 0
-            let g:syntastic_auto_loc_list = 0
-            let g:syntastic_check_on_open = 0
-        else
-            let g:syntastic_always_populate_loc_list = 1
-            let g:syntastic_auto_loc_list = 1
-            let g:syntastic_check_on_open = 1
+            " @param {String} fileName
+            " @param {Integer} limitTimes
+            " @return {String}
+            function! FindFileUp(fileName, limitTimes)
+                let tempDir = fnamemodify(getcwd(), ':p:h')
+                let tempFile = ''
+                let counter = a:limitTimes
+                let isExist = 0
+
+                while counter > 0
+                    let tempFile = tempDir . '/' . a:fileName
+                    let isExist = filereadable(tempFile)
+                    if isExist
+                        return tempFile
+                    endif
+                    let tempDir = fnamemodify(tempDir, ':p:h:h')
+                    let counter = counter - 1
+                endwhile
+
+                return ''
+            endfunction
+
+            " @param {List<String>} fileNames
+            " @param {Integer} limitTimes
+            " @return {String}
+            function! FindFilesUp(fileNames, limitTimes)
+                let found = ''
+                for item in a:fileNames
+                    let found = FindFileUp(item, a:limitTimes)
+                    if len(found) > 0
+                        return found
+                    endif
+                endfor
+                return ''
+            endfunction
+
+            let g:syntastic_check_on_wq = 1
+
+            let g:syntastic_objc_compiler = 'clang'
+            let g:syntastic_php_checkers = ['phpmd']
+            let g:syntastic_vim_checkers = ['vint']
+
+            let g:syntastic_java_checkers = ['javac', 'checkstyle']
+            let g:syntastic_java_javac_config_file_enabled = 1
+
+            let g:find_file_path = FindFileUp('.syntastic_javac_config', 10)
+            if strlen(g:find_file_path) > 1
+                let g:syntastic_java_javac_config_file = g:find_file_path
+            endif
+
+            let g:find_file_path = FindFilesUp( ['.jshintrc',  '.jshintrc.js'], 5)
+            if strlen(g:find_file_path) > 1
+                let g:syntastic_javascript_checkers = ['jshint', 'tern-lint']
+            else
+                let g:syntastic_javascript_checkers = ['eslint', 'tern-lint']
+                let g:syntastic_javascript_eslint_exec = 'eslint_d'
+            endif
+            unlet g:find_file_path
+
+            let g:syntastic_typescript_checkers = ['tslint']
+            let g:syntastic_vue_checkers = ['eslint']
+
+            let g:syntastic_mode_map = {
+                        \ 'mode': 'passive',
+                        \ 'active_filetypes': [
+                            \ 'css',
+                            \ 'html',
+                            \ 'javascript',
+                            \ 'typescript',
+                            \ 'json',
+                            \ 'less',
+                            \ 'markdown',
+                            \ 'php',
+                            \ 'python',
+                            \ 'sh',
+                            \ 'vim',
+                            \ 'xhtml',
+                            \ 'xml',
+                            \ 'zsh'
+                        \],
+                        \ 'passive_filetypes': [
+                            \ 'c',
+                            \ 'cpp',
+                            \ 'java'
+                        \]
+                    \}
         endif
-
-        " @param {String} fileName
-        " @param {Integer} limitTimes
-        " @return {String}
-        function! FindFileUp(fileName, limitTimes)
-            let tempDir = fnamemodify(getcwd(), ':p:h')
-            let tempFile = ''
-            let counter = a:limitTimes
-            let isExist = 0
-
-            while counter > 0
-                let tempFile = tempDir . '/' . a:fileName
-                let isExist = filereadable(tempFile)
-                if isExist
-                    return tempFile
-                endif
-                let tempDir = fnamemodify(tempDir, ':p:h:h')
-                let counter = counter - 1
-            endwhile
-
-            return ''
-        endfunction
-
-        " @param {List<String>} fileNames
-        " @param {Integer} limitTimes
-        " @return {String}
-        function! FindFilesUp(fileNames, limitTimes)
-            let found = ''
-            for item in a:fileNames
-                let found = FindFileUp(item, a:limitTimes)
-                if len(found) > 0
-                    return found
-                endif
-            endfor
-            return ''
-        endfunction
-
-        let g:syntastic_check_on_wq = 1
-
-        let g:syntastic_objc_compiler = 'clang'
-        let g:syntastic_php_checkers = ['phpmd']
-        let g:syntastic_vim_checkers = ['vint']
-
-        let g:syntastic_java_checkers = ['javac', 'checkstyle']
-        let g:syntastic_java_javac_config_file_enabled = 1
-
-        let g:find_file_path = FindFileUp('.syntastic_javac_config', 10)
-        if strlen(g:find_file_path) > 1
-            let g:syntastic_java_javac_config_file = g:find_file_path
-        endif
-
-        let g:find_file_path = FindFilesUp( ['.jshintrc',  '.jshintrc.js'], 5)
-        if strlen(g:find_file_path) > 1
-            let g:syntastic_javascript_checkers = ['jshint', 'tern-lint']
-        else
-            let g:syntastic_javascript_checkers = ['eslint', 'tern-lint']
-            let g:syntastic_javascript_eslint_exec = 'eslint_d'
-        endif
-        unlet g:find_file_path
-
-        let g:syntastic_typescript_checkers = ['tslint']
-        let g:syntastic_vue_checkers = ['eslint']
-
-        let g:syntastic_mode_map = {
-                    \ 'mode': 'passive',
-                    \ 'active_filetypes': [
-                        \ 'css',
-                        \ 'html',
-                        \ 'javascript',
-                        \ 'typescript',
-                        \ 'json',
-                        \ 'less',
-                        \ 'markdown',
-                        \ 'php',
-                        \ 'python',
-                        \ 'sh',
-                        \ 'vim',
-                        \ 'xhtml',
-                        \ 'xml',
-                        \ 'zsh'
-                    \],
-                    \ 'passive_filetypes': [
-                        \ 'c',
-                        \ 'cpp',
-                        \ 'java'
-                    \]
-                \}
 
     "}
 
     " ALE {
-        let g:ale_sign_column_always = 1
-        let g:ale_open_list = 1
-        let g:ale_lint_on_text_changed = 'never'
-        let g:ale_lint_on_insert_leave = 0
-        let g:ale_completion_max_suggestions = 5
-        let g:ale_max_signs = 50
-        let g:ale_maximum_file_size = 1024 * 1024
-        let g:ale_echo_delay = 50
-        " Do not lint or fix minified files.
-        let g:ale_pattern_options = {
-            \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-            \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-            \ 'dist/**/*.*': { 'ale_linters': [], 'ale_fixers': [] }
-            \ }
+        if exists('g:use_ale_instead_of_syntastic') && g:use_ale_instead_of_syntastic == 1
+            if &diff
+                let g:ale_enabled = 0
+            else
+                let g:ale_sign_column_always = 1
+                let g:ale_open_list = 1
+                let g:ale_lint_on_text_changed = 'never'
+                let g:ale_lint_on_insert_leave = 0
+                let g:ale_completion_max_suggestions = 5
+                let g:ale_max_signs = 50
+                let g:ale_maximum_file_size = 1024 * 1024
+                let g:ale_echo_delay = 50
+                " Do not lint or fix minified files.
+                let g:ale_pattern_options = {
+                    \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+                    \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+                    \ 'dist/**/*.*': { 'ale_linters': [], 'ale_fixers': [] }
+                    \ }
+            endif
+        else
+            let g:ale_enabled = 0
+        endif
     " }
 
     " PIV {
