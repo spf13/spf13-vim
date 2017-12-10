@@ -780,6 +780,10 @@ augroup END
 
     "}
 
+    " ALE {
+        let g:ale_sign_column_always = 1
+    " }
+
     " PIV {
         "let g:DisableAutoPHPFolding = 0
         "let g:PIVAutoClose = 0
