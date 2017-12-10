@@ -19,7 +19,7 @@ set nocompatible        " must be first line
     " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype on
         filetype off
-        set rtp+=~/.vim/bundle/vundle
+        set runtimepath+=~/.vim/bundle/vundle
         call vundle#rc()
     " }
 
@@ -173,12 +173,12 @@ augroup END
 
     "making folding enabled for the file that has more than 1000 lines
     function! SetFolding()
-        let lines = line('$')
+        let l:lines = line('$')
         "types that disable folding
         "help may be set as `text`
-        let folding_disabled_types = ['text', 'help', 'javascript', 'objc', 'markdown', 'vim']
-        let folding_start = 1000
-        if lines < folding_start || index(folding_disabled_types, tolower(&filetype)) > -1
+        let l:folding_disabled_types = ['text', 'help', 'javascript', 'objc', 'markdown', 'vim']
+        let l:folding_start = 1000
+        if l:lines < l:folding_start || index(l:folding_disabled_types, tolower(&filetype)) > -1
             setlocal nofoldenable
         else
             setlocal foldenable
@@ -223,7 +223,7 @@ augroup END
     "location. To override this behavior and set it back to '\' (or any other
     "character) add let g:spf13_leader='\' in your .vimrc.bundles.local file
     "if !exists('g:spf13_leader')
-    let mapleader = ','
+    let g:mapleader = ','
     "else
         "let mapleader=g:spf13_leader
     "endif
@@ -385,122 +385,115 @@ augroup END
     " FuDesign2008/plan.vim {
     "
         if !g:is_win
+            function! ConfigPlanPlugin()
+                let g:p_edit_files = {
+                    \ 'book': expand('~/百度云同步盘/books'),
+                    \ 'todo': expand('~/Dropbox/plan/fuyg-todo'),
+                    \ 'dev' : expand('~/Dropbox/plan/family-dev'),
+                    \ 'pdp' : expand('~/Dropbox/plan/pdp'),
+                    \ 'pwd' : expand('~/Dropbox/common/pwd.markdown'),
+                    \ 'youdao': expand('~/Dropbox/common/youdao.mkd')
+                    \}
 
-            let g:p_edit_files = {
-                \ 'book': expand('~/百度云同步盘/books'),
-                \ 'todo': expand('~/Dropbox/plan/fuyg-todo'),
-                \ 'dev' : expand('~/Dropbox/plan/family-dev'),
-                \ 'pdp' : expand('~/Dropbox/plan/pdp'),
-                \ 'pwd' : expand('~/Dropbox/common/pwd.markdown'),
-                \ 'youdao': expand('~/Dropbox/common/youdao.mkd')
-                \}
+                let l:cur_year = strftime('%Y')
+                "01-12
+                let l:cur_month = strftime('%m')
+                let l:cur_month = l:cur_year . '-' . l:cur_month
 
-            let cur_year = strftime('%Y')
-            "01-12
-            let cur_month = strftime('%m')
-            let cur_month = cur_year . '-' . cur_month
+                let l:plan_year_path = '~/Dropbox/plan/' . l:cur_year
+                let l:plan_file_pattern = l:plan_year_path .'/' . l:cur_month . '/plan.*'
+                "  ~/Dropbox/plan/2013/2013-04/2013-04.*
+                "  the plan file may has different file extension
+                let l:plan_file_pattern_old = l:plan_year_path .'/' . l:cur_month . '/' . l:cur_month . '.*'
+                let l:diary_file_pattern = l:plan_year_path .'/' . l:cur_month . '/diary.*'
 
-            let plan_year_path = '~/Dropbox/plan/' . cur_year
-            let plan_file_pattern = plan_year_path .'/' . cur_month . '/plan.*'
-            "  ~/Dropbox/plan/2013/2013-04/2013-04.*
-            "  the plan file may has different file extension
-            let plan_file_pattern_old = plan_year_path .'/' . cur_month . '/' . cur_month . '.*'
-            let diary_file_pattern = plan_year_path .'/' . cur_month . '/diary.*'
-            unlet cur_year
-            unlet cur_month
-
-            "
-            let fileList = glob(plan_file_pattern, 0, 1)
-            let plan_file_path = get(fileList, 0, '')
-            if strlen(plan_file_path) > 0
-                let g:p_edit_files['plan'] = plan_file_path
-            else
-                let fileList = glob(plan_file_pattern_old, 0, 1)
-                let plan_file_path = get(fileList, 0, '')
-                if strlen(plan_file_path) > 0
-                    let g:p_edit_files['plan'] = plan_file_path
+                "
+                let l:fileList = glob(l:plan_file_pattern, 0, 1)
+                let l:plan_file_path = get(l:fileList, 0, '')
+                if strlen(l:plan_file_path) > 0
+                    let g:p_edit_files['plan'] = l:plan_file_path
                 else
-                    let g:p_edit_files['plan'] = plan_year_path
+                    let l:fileList = glob(l:plan_file_pattern_old, 0, 1)
+                    let l:plan_file_path = get(l:fileList, 0, '')
+                    if strlen(l:plan_file_path) > 0
+                        let g:p_edit_files['plan'] = l:plan_file_path
+                    else
+                        let g:p_edit_files['plan'] = l:plan_year_path
+                    endif
                 endif
-            endif
 
-            unlet plan_file_pattern
-            unlet plan_file_pattern_old
-            unlet plan_file_path
+                let l:fileList = glob(l:diary_file_pattern, 0, 1)
+                let l:diary_file_path = get(l:fileList, 0, '')
+                if strlen(l:diary_file_path) > 0
+                    let g:p_edit_files['diary'] = l:diary_file_path
+                else
+                    let g:p_edit_files['diary'] = l:plan_year_path
+                endif
 
-            let fileList = glob(diary_file_pattern, 0, 1)
-            let diary_file_path = get(fileList, 0, '')
-            if strlen(diary_file_path) > 0
-                let g:p_edit_files['diary'] = diary_file_path
-            else
-                let g:p_edit_files['diary'] = plan_year_path
-            endif
+                " regular task
 
-            unlet plan_year_path
-            unlet diary_file_pattern
-            unlet diary_file_path
-            unlet fileList
+                let g:plan_week_keypoint = [
+                    \ '1. 技术博客;',
+                    \ '    - 每周一篇;',
+                    \ '1. 知乎;',
+                    \ '    - 每周一答;',
+                    \ '    - 每天一赞一评;',
+                    \ '1. 微信朋友圈;',
+                    \ '    - 每天一发;',
+                    \ '    - 每天一赞一评;'
+                    \]
 
-            " regular task
+                "0 = sunday
+                "1 = monday
+                "...
+                "6 = sat
+                let g:plan_week_work = {
+                    \ 2 : '1. weekly report;',
+                    \ 3 : '1. 新项目例会;'
+                    \}
+                let g:plan_week_personal = {
+                    \ 0 : '1. 看望/call 父母;1. 锻炼身体;',
+                    \ 3 : '1. call 父母;'
+                    \}
 
-            let g:plan_week_keypoint = [
-                \ '1. 技术博客;',
-                \ '    - 每周一篇;',
-                \ '1. 知乎;',
-                \ '    - 每周一答;',
-                \ '    - 每天一赞一评;',
-                \ '1. 微信朋友圈;',
-                \ '    - 每天一发;',
-                \ '    - 每天一赞一评;'
-                \]
+                let g:plan_week_review = [
+                    \ '1. (Invest & Finance);',
+                    \ '1. (Tech & Managment);',
+                    \ '1. (Enjoy Life);'
+                    \]
 
-            "0 = sunday
-            "1 = monday
-            "...
-            "6 = sat
-            let g:plan_week_work = {
-                \ 2 : '1. weekly report;',
-                \ 3 : '1. 新项目例会;'
-                \}
-            let g:plan_week_personal = {
-                \ 0 : '1. 看望/call 父母;1. 锻炼身体;',
-                \ 3 : '1. call 父母;'
-                \}
+                let g:plan_month_keypoint = [
+                    \ '1. (Invest & Finance):;',
+                    \ '1. (Enjoy Life):;',
+                    \ '1. (Tech & Managment):;'
+                    \]
 
-            let g:plan_week_review = [
-                \ '1. (Invest & Finance);',
-                \ '1. (Tech & Managment);',
-                \ '1. (Enjoy Life);'
-                \]
+                let g:plan_month_work = {
+                    \ 2 : '1. 确认上月考勤;',
+                    \ 15: '1. 查看有道云笔记的新闻, 浏览论坛;',
+                    \ 27: '1. 月回顾与下月规划;'
+                    \}
+                let g:plan_month_personal = {
+                    \ 1 : '1. 还农行房贷(6);',
+                    \ 5 : '1. 查询薪水发放;',
+                    \ 10 : '1. 还工行房贷(17);',
+                    \ 28: '1. 家庭总结与下月规划;'
+                    \}
 
-            let g:plan_month_keypoint = [
-                \ '1. (Invest & Finance):;',
-                \ '1. (Enjoy Life):;',
-                \ '1. (Tech & Managment):;'
-                \]
+                let g:plan_month_review = g:plan_week_review
 
-            let g:plan_month_work = {
-                \ 2 : '1. 确认上月考勤;',
-                \ 15: '1. 查看有道云笔记的新闻, 浏览论坛;',
-                \ 27: '1. 月回顾与下月规划;'
-                \}
-            let g:plan_month_personal = {
-                \ 1 : '1. 还农行房贷(6);',
-                \ 5 : '1. 查询薪水发放;',
-                \ 10 : '1. 还工行房贷(17);',
-                \ 28: '1. 家庭总结与下月规划;'
-                \}
+                let g:plan_year_personal = {
+                    \ '01-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
+                    \ '05-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
+                    \ '06-24': '1. 半年回顾与规划;',
+                    \ '09-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
+                    \ '12-24': '1. 半年回顾与规划;',
+                    \ '12-31': '1. 结婚纪念日;'
+                    \}
+            endfunction
 
-            let g:plan_month_review = g:plan_week_review
+            call ConfigPlanPlugin()
 
-            let g:plan_year_personal = {
-                \ '01-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
-                \ '05-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
-                \ '06-24': '1. 半年回顾与规划;',
-                \ '09-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
-                \ '12-24': '1. 半年回顾与规划;',
-                \ '12-31': '1. 结婚纪念日;'
-                \}
         endif
 
     "}
@@ -668,147 +661,155 @@ augroup END
     "ZoomWin {
         nnoremap <C-W>z <Plug>ZoomWin
     "}
-
-    let g:use_ale_instead_of_syntastic = 1
-
     "
+    " @param {String} fileName
+    " @param {Integer} limitTimes
+    " @return {String}
+    function! FindFileUp(fileName, limitTimes)
+        let l:tempDir = fnamemodify(getcwd(), ':p:h')
+        let l:tempFile = ''
+        let l:counter = a:limitTimes
+        let l:isExist = 0
+
+        while l:counter > 0
+            let l:tempFile = l:tempDir . '/' . a:fileName
+            let l:isExist = filereadable(l:tempFile)
+            if l:isExist
+                return l:tempFile
+            endif
+            let l:tempDir = fnamemodify(l:tempDir, ':p:h:h')
+            let l:counter = l:counter - 1
+        endwhile
+
+        return ''
+    endfunction
+
+    " @param {List<String>} fileNames
+    " @param {Integer} limitTimes
+    " @return {String}
+    function! FindFilesUp(fileNames, limitTimes)
+        let l:found = ''
+        for l:item in a:fileNames
+            let l:found = FindFileUp(l:item, a:limitTimes)
+            if len(l:found) > 0
+                return l:found
+            endif
+        endfor
+        return ''
+    endfunction
+
+    let g:find_file_path = FindFilesUp( ['.jshintrc',  '.jshintrc.js'], 5)
+    let g:use_jshint = strlen(g:find_file_path) > 1
+    unlet g:find_file_path
+
     "Syntastic {
+        " the recommend setting form README
+        " set statusline+=%#warningmsg#
+        " set statusline+=%{SyntasticStatuslineFlag()}
+        " set statusline+=%*
 
-        if exists('g:use_ale_instead_of_syntastic') && g:use_ale_instead_of_syntastic == 0
-            " the recommend setting form README
-            set statusline+=%#warningmsg#
-            set statusline+=%{SyntasticStatuslineFlag()}
-            set statusline+=%*
-
-            function! SyntasticCheckHook(errors)
-                if !empty(a:errors)
-                    let g:syntastic_loc_list_height = min([len(a:errors), 3])
-                endif
-            endfunction
-
-            if &diff
-                let g:syntastic_always_populate_loc_list = 0
-                let g:syntastic_auto_loc_list = 0
-                let g:syntastic_check_on_open = 0
-            else
-                let g:syntastic_always_populate_loc_list = 1
-                let g:syntastic_auto_loc_list = 1
-                let g:syntastic_check_on_open = 1
+        function! SyntasticCheckHook(errors)
+            if !empty(a:errors)
+                let g:syntastic_loc_list_height = min([len(a:errors), 3])
             endif
+        endfunction
 
-            " @param {String} fileName
-            " @param {Integer} limitTimes
-            " @return {String}
-            function! FindFileUp(fileName, limitTimes)
-                let tempDir = fnamemodify(getcwd(), ':p:h')
-                let tempFile = ''
-                let counter = a:limitTimes
-                let isExist = 0
-
-                while counter > 0
-                    let tempFile = tempDir . '/' . a:fileName
-                    let isExist = filereadable(tempFile)
-                    if isExist
-                        return tempFile
-                    endif
-                    let tempDir = fnamemodify(tempDir, ':p:h:h')
-                    let counter = counter - 1
-                endwhile
-
-                return ''
-            endfunction
-
-            " @param {List<String>} fileNames
-            " @param {Integer} limitTimes
-            " @return {String}
-            function! FindFilesUp(fileNames, limitTimes)
-                let found = ''
-                for item in a:fileNames
-                    let found = FindFileUp(item, a:limitTimes)
-                    if len(found) > 0
-                        return found
-                    endif
-                endfor
-                return ''
-            endfunction
-
-            let g:syntastic_check_on_wq = 1
-
-            let g:syntastic_objc_compiler = 'clang'
-            let g:syntastic_php_checkers = ['phpmd']
-            let g:syntastic_vim_checkers = ['vint']
-
-            let g:syntastic_java_checkers = ['javac', 'checkstyle']
-            let g:syntastic_java_javac_config_file_enabled = 1
-
-            let g:find_file_path = FindFileUp('.syntastic_javac_config', 10)
-            if strlen(g:find_file_path) > 1
-                let g:syntastic_java_javac_config_file = g:find_file_path
-            endif
-
-            let g:find_file_path = FindFilesUp( ['.jshintrc',  '.jshintrc.js'], 5)
-            if strlen(g:find_file_path) > 1
-                let g:syntastic_javascript_checkers = ['jshint', 'tern-lint']
-            else
-                let g:syntastic_javascript_checkers = ['eslint', 'tern-lint']
-                let g:syntastic_javascript_eslint_exec = 'eslint_d'
-            endif
-            unlet g:find_file_path
-
-            let g:syntastic_typescript_checkers = ['tslint']
-            let g:syntastic_vue_checkers = ['eslint']
-
-            let g:syntastic_mode_map = {
-                        \ 'mode': 'passive',
-                        \ 'active_filetypes': [
-                            \ 'css',
-                            \ 'html',
-                            \ 'javascript',
-                            \ 'typescript',
-                            \ 'json',
-                            \ 'less',
-                            \ 'markdown',
-                            \ 'php',
-                            \ 'python',
-                            \ 'sh',
-                            \ 'vim',
-                            \ 'xhtml',
-                            \ 'xml',
-                            \ 'zsh'
-                        \],
-                        \ 'passive_filetypes': [
-                            \ 'c',
-                            \ 'cpp',
-                            \ 'java'
-                        \]
-                    \}
+        if &diff
+            let g:syntastic_always_populate_loc_list = 0
+            let g:syntastic_auto_loc_list = 0
+            let g:syntastic_check_on_open = 0
+        else
+            let g:syntastic_always_populate_loc_list = 1
+            let g:syntastic_auto_loc_list = 1
+            let g:syntastic_check_on_open = 1
         endif
+
+
+        let g:syntastic_check_on_wq = 1
+
+        let g:syntastic_objc_compiler = 'clang'
+        let g:syntastic_php_checkers = ['phpmd']
+        let g:syntastic_vim_checkers = ['vint']
+
+        let g:syntastic_java_checkers = ['javac', 'checkstyle']
+        let g:syntastic_java_javac_config_file_enabled = 1
+
+        let g:find_file_path = FindFileUp('.syntastic_javac_config', 10)
+        if strlen(g:find_file_path) > 1
+            let g:syntastic_java_javac_config_file = g:find_file_path
+        endif
+
+        if g:use_jshint
+            let g:syntastic_javascript_checkers = ['jshint', 'tern-lint']
+        else
+            let g:syntastic_javascript_checkers = ['eslint', 'tern-lint']
+            let g:syntastic_javascript_eslint_exec = 'eslint_d'
+        endif
+        unlet g:find_file_path
+
+        let g:syntastic_typescript_checkers = ['tslint']
+        let g:syntastic_vue_checkers = ['eslint']
+
+        let g:syntastic_mode_map = {
+                    \ 'mode': 'passive',
+                    \ 'active_filetypes': [
+                        \ 'css',
+                        \ 'html',
+                        \ 'javascript',
+                        \ 'typescript',
+                        \ 'json',
+                        \ 'less',
+                        \ 'markdown',
+                        \ 'php',
+                        \ 'python',
+                        \ 'sh',
+                        \ 'vim',
+                        \ 'xhtml',
+                        \ 'xml',
+                        \ 'zsh'
+                    \],
+                    \ 'passive_filetypes': [
+                        \ 'c',
+                        \ 'cpp',
+                        \ 'java'
+                    \]
+                \}
 
     "}
 
     " ALE {
-        if exists('g:use_ale_instead_of_syntastic') && g:use_ale_instead_of_syntastic == 1
-            if &diff
-                let g:ale_enabled = 0
-            else
-                let g:ale_sign_column_always = 1
-                let g:ale_open_list = 1
-                let g:ale_lint_on_text_changed = 'never'
-                let g:ale_lint_on_insert_leave = 0
-                let g:ale_completion_max_suggestions = 5
-                let g:ale_max_signs = 50
-                let g:ale_maximum_file_size = 1024 * 1024
-                let g:ale_echo_delay = 50
-                " Do not lint or fix minified files.
-                let g:ale_pattern_options = {
-                    \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-                    \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-                    \ 'dist/**/*.*': { 'ale_linters': [], 'ale_fixers': [] }
-                    \ }
-            endif
+
+        if &diff
+            g:ale_enabled = 0
         else
-            let g:ale_enabled = 0
+            let g:ale_linters = {
+                        \ 'javascript': ['eslint'],
+                        \ 'vue': ['eslint'],
+                        \ 'shell': ['shellcheck'],
+                        \ 'c': [],
+                        \ 'cpp': [],
+                        \ 'java': []
+                        \ }
+
+            if g:use_jshint
+                let g:ale_linters['javascript'] = ['jshint']
+            endif
+
+            let g:ale_sign_column_always = 1
+            let g:ale_open_list = 1
+            let g:ale_lint_on_text_changed = 'never'
+            let g:ale_lint_on_insert_leave = 0
+            let g:ale_completion_max_suggestions = 5
+            let g:ale_max_signs = 50
+            let g:ale_maximum_file_size = 1024 * 1024
+            " Do not lint or fix minified files.
+            let g:ale_pattern_options = {
+                \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+                \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+                \ 'dist\/': { 'ale_linters': [], 'ale_fixers': [] }
+                \ }
         endif
+
     " }
 
     " PIV {
@@ -928,17 +929,17 @@ augroup END
 
     " NerdTree {
         nnoremap <leader>tt :NERDTreeToggle <CR>
-        let NERDTreeWinPos='right' "NerdTree窗口显示在右边
+        let g:NERDTreeWinPos='right' "NerdTree窗口显示在右边
         "map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
         "map <leader>e :NERDTreeFind<CR>
         "nmap <leader>nt :NERDTreeFind<CR>
 
         "let NERDTreeShowBookmarks=1
-        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+        let g:NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
         "let NERDTreeChDirMode=0
         "let NERDTreeQuitOnOpen=1
         "let NERDTreeMouseMode=2
-        let NERDTreeShowHidden=1
+        let g:NERDTreeShowHidden=1
         "let NERDTreeKeepTreeInNewTab=1
         "let g:nerdtree_tabs_open_on_gui_startup=0
     " }
@@ -998,7 +999,7 @@ augroup END
         " @return {String}
         "
         function! CreateIgnoredCommand(type)
-            let directoryList = [
+            let l:directoryList = [
                             \ '.git',
                             \ '.gitmodules',
                             \ '.svn',
@@ -1009,11 +1010,11 @@ augroup END
                             \ 'dist',
                             \ 'libs'
                         \]
-            let fileListWithFullName = [
+            let l:fileListWithFullName = [
                     \ '.DS_Store'
                     \]
 
-            let fileListWithEndName = [
+            let l:fileListWithEndName = [
                     \ 'png',
                     \ 'jpg',
                     \ 'gif',
@@ -1022,68 +1023,69 @@ augroup END
                     \ 'so'
                     \]
 
-            let prefix = ''
-            let suffix = ''
-            let splitter = ' '
-            let strList = []
+            let l:prefix = ''
+            let l:suffix = ''
+            let l:splitter = ' '
+            let l:strList = []
 
             if a:type ==# 'wildignore'
-                let splitter = ','
-                for item in directoryList
-                    call add(strList, '*/' . item . '/*')
+                let l:splitter = ','
+                for l:item in l:directoryList
+                    call add(l:strList, '*/' . l:item . '/*')
                 endfor
-                for item in fileListWithFullName
-                    call add(strList, item)
+                for l:item in l:fileListWithFullName
+                    call add(l:strList, l:item)
                 endfor
-                for item in fileListWithEndName
-                    call add(strList, '*.' . item)
+                for l:item in l:fileListWithEndName
+                    call add(l:strList, '*.' . l:item)
                 endfor
             elseif a:type ==# 'ctrlp_user_command'
-                let prefix = 'ag %s -i --nocolor --nogroup '
-                let suffix = ' --hidden -g ""'
-                let splitter = ' '
-                for item in directoryList
-                    call add(strList, "--ignore '" . item . "'")
+                let l:prefix = 'ag %s -i --nocolor --nogroup '
+                let l:suffix = ' --hidden -g ""'
+                let l:splitter = ' '
+                for l:item in l:directoryList
+                    call add(l:strList, "--ignore '" . l:item . "'")
                 endfor
-                for item in fileListWithFullName
-                    call add(strList, "--ignore '" . item . "'")
+                for l:item in l:fileListWithFullName
+                    call add(l:strList, "--ignore '" . l:item . "'")
                 endfor
-                for item in fileListWithEndName
-                    call add(strList, "--ignore '*." . item . "'")
+                for l:item in l:fileListWithEndName
+                    call add(l:strList, "--ignore '*." . l:item . "'")
                 endfor
             elseif a:type ==# 'ctrlp_custom_ignore_dir'
-                let prefix = '\v[\/]('
-                let suffix = ')$'
-                let splitter = '|'
-                for item in directoryList
-                    if stridx(item, '.') == 0
-                        call add(strList, '\' . item)
+                let l:prefix = '\v[\/]('
+                let l:suffix = ')$'
+                let l:splitter = '|'
+                for l:item in l:directoryList
+                    if stridx(l:item, '.') == 0
+                        call add(l:strList, '\' . l:item)
                     else
-                        call add(strList, item)
+                        call add(l:strList, l:item)
                     endif
                 endfor
             elseif a:type ==# 'ctrlp_custom_ignore_file'
-                let prefix = '\v('
-                let suffix = ')$'
-                let splitter = '|'
-                for item in fileListWithFullName
-                    if stridx(item, '.') == 0
-                        call add(strList,  '\' . item)
+                let l:prefix = '\v('
+                let l:suffix = ')$'
+                let l:splitter = '|'
+                for l:item in l:fileListWithFullName
+                    if stridx(l:item, '.') == 0
+                        call add(l:strList,  '\' . l:item)
                     else
-                        call add(strList, item)
+                        call add(l:strList, l:item)
                     endif
                 endfor
-                for item in fileListWithEndName
-                    call add(strList, '\.' .item)
+                for l:item in l:fileListWithEndName
+                    call add(l:strList, '\.' .l:item)
                 endfor
             endif
 
-            let commandStr = prefix . join(strList, splitter) . suffix
-            return commandStr
+            let l:commandStr = l:prefix . join(l:strList, l:splitter) . l:suffix
+            return l:commandStr
         endfunction
 
-        let vimrc_temp_str = 'set wildignore+=' .  CreateIgnoredCommand('wildignore')
-        exec vimrc_temp_str
+        let g:vimrc_temp_str = 'set wildignore+=' .  CreateIgnoredCommand('wildignore')
+        exec g:vimrc_temp_str
+        unlet g:vimrc_temp_str
 
 
         if executable('ag')
@@ -1110,13 +1112,13 @@ augroup END
 
         let g:ft = ''
         function! NERDCommenter_before()
-          if &ft ==# 'vue'
+          if &filetype ==# 'vue'
             let g:ft = 'vue'
-            let stack = synstack(line('.'), col('.'))
-            if len(stack) > 0
-              let syn = synIDattr((stack)[0], 'name')
-              if len(syn) > 0
-                exe 'setf ' . substitute(tolower(syn), '^vue_', '', '')
+            let l:stack = synstack(line('.'), col('.'))
+            if len(l:stack) > 0
+              let l:syn = synIDattr((l:stack)[0], 'name')
+              if len(l:syn) > 0
+                exe 'setf ' . substitute(tolower(l:syn), '^vue_', '', '')
               endif
             endif
           endif
@@ -1198,7 +1200,7 @@ augroup END
  " Functions {
 
 function! UnBundle(arg, ...)
-  let bundle = vundle#config#init_bundle(a:arg, a:000)
+  let l:bundle = vundle#config#init_bundle(a:arg, a:000)
   call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
 endfunction
 
@@ -1206,31 +1208,31 @@ com! -nargs=+         UnBundle
 \ call UnBundle(<args>)
 
 function! InitializeDirectories()
-    let separator = '.'
-    let parent = $HOME
-    let prefix = '.vim'
-    let dir_list = {
+    let l:separator = '.'
+    let l:parent = $HOME
+    let l:prefix = '.vim'
+    let l:dir_list = {
                 \ 'backup': 'backupdir',
                 \ 'views': 'viewdir',
                 \ 'swap': 'directory' }
 
     if has('persistent_undo')
-        let dir_list['undo'] = 'undodir'
+        let l:dir_list['undo'] = 'undodir'
     endif
 
-    for [dirname, settingname] in items(dir_list)
-        let directory = parent . '/' . prefix . dirname . '/'
+    for [l:dirname, l:settingname] in items(l:dir_list)
+        let l:directory = l:parent . '/' . l:prefix . l:dirname . '/'
         if exists('*mkdir')
-            if !isdirectory(directory)
-                call mkdir(directory)
+            if !isdirectory(l:directory)
+                call mkdir(l:directory)
             endif
         endif
-        if !isdirectory(directory)
-            echo 'Warning: Unable to create backup directory: ' . directory
-            echo 'Try: mkdir -p ' . directory
+        if !isdirectory(l:directory)
+            echo 'Warning: Unable to create backup directory: ' . l:directory
+            echo 'Try: mkdir -p ' . l:directory
         else
-            let directory = substitute(directory, ' ', '\\\\ ', 'g')
-            exec 'set ' . settingname . '=' . directory
+            let l:directory = substitute(l:directory, ' ', '\\\\ ', 'g')
+            exec 'set ' . l:settingname . '=' . l:directory
         endif
     endfor
 endfunction
