@@ -782,6 +782,9 @@ augroup END
         if &diff
             let g:ale_enabled = 0
         else
+            call airline#parts#define_function('ALE', 'ALEGetStatusLine')
+            call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
+            let g:airline_section_error = airline#section#create_right(['ALE'])
             let g:ale_linters = {
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['tslint'],
@@ -796,8 +799,6 @@ augroup END
                 let g:ale_linters['javascript'] = ['jshint']
             endif
 
-            let g:ale_sign_error = '✖'
-            let g:ale_sign_warning = '⚠'
             let g:ale_sign_column_always = 1
             let g:ale_open_list = 0
             let g:ale_lint_on_text_changed = 'never'
