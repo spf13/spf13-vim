@@ -784,11 +784,12 @@ augroup END
         else
             let g:ale_linters = {
                         \ 'javascript': ['eslint'],
+                        \ 'typescript': ['tslint'],
                         \ 'vue': ['eslint'],
                         \ 'shell': ['shellcheck'],
                         \ 'c': [],
                         \ 'cpp': [],
-                        \ 'java': []
+                        \ 'java': [],
                         \ }
 
             if g:use_jshint
