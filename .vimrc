@@ -782,12 +782,6 @@ augroup END
         if &diff
             let g:ale_enabled = 0
         else
-            let g:airline#extensions#ale#enabled = 1
-            let airline#extensions#ale#error_symbol = 'E:'
-            let airline#extensions#ale#warning_symbol = 'W:'
-            let airline#extensions#ale#open_lnum_symbol = '(L'
-            let airline#extensions#ale#close_lnum_symbol = ')'
-
             let g:ale_linters = {
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['tslint'],
@@ -802,6 +796,8 @@ augroup END
                 let g:ale_linters['javascript'] = ['jshint']
             endif
 
+            let g:ale_sign_error = '✖'
+            let g:ale_sign_warning = '⚠'
             let g:ale_sign_column_always = 1
             let g:ale_open_list = 0
             let g:ale_lint_on_text_changed = 'never'
