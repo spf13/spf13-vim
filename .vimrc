@@ -796,17 +796,17 @@ augroup END
             endif
 
             let g:ale_sign_column_always = 1
-            let g:ale_open_list = 1
+            let g:ale_open_list = 0
             let g:ale_lint_on_text_changed = 'never'
             let g:ale_lint_on_insert_leave = 0
             let g:ale_completion_max_suggestions = 5
-            let g:ale_max_signs = 50
+            let g:ale_max_signs = 5
             let g:ale_maximum_file_size = 1024 * 1024
             " Do not lint or fix minified files.
             let g:ale_pattern_options = {
-                \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-                \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-                \ 'dist\/': { 'ale_linters': [], 'ale_fixers': [] }
+                \ '\.min\.js$': {'ale_enabled': 0},
+                \ '\.min\.css$': {'ale_enabled': 0},
+                \ 'dist\/': {'ale_enabled': 0}
                 \ }
         endif
 
