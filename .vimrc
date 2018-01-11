@@ -600,7 +600,7 @@ augroup END
         let g:jsdoc_input_description = 0
         let g:jsdoc_disable_function_name = 1
         let g:jsdoc_compress_mode = 1
-        let g:jsdoc_access_descriptions = 1
+        let g:jsdoc_access_descriptions = 2
         let g:jsdoc_underscore_private = 1
         let g:jsdoc_enable_es6 = 1
         let g:jsdoc_return = 0
