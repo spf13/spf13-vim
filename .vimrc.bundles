@@ -294,8 +294,6 @@ set nocompatible        " must be first line
             " vue
             if count(g:spf13_bundle_groups, 'vue')
                 Bundle 'posva/vim-vue'
-                Bundle 'buranelus/vim-vue-template.vim'
-                Bundle 'pocke/vueim'
             endif
 
             " typescript
