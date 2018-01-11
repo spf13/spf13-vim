@@ -596,11 +596,35 @@ augroup END
     " }
 
     " vim-jsdoc {
-        let g:jsdoc_allow_input_prompt = 1
-        let g:jsdoc_input_description = 1
+        let g:jsdoc_allow_input_prompt = 0
+        let g:jsdoc_input_description = 0
+        let g:jsdoc_disable_function_name = 1
         let g:jsdoc_access_descriptions = 1
         let g:jsdoc_underscore_private = 1
         let g:jsdoc_enable_es6 = 1
+        let g:jsdoc_return = 0
+        let g:jsdoc_custom_args_regex_only = 1
+        let g:jsdoc_custom_args_hook = {
+                \ '^$': {
+                        \ 'type': '{}'
+                    \ },
+                \ 'callback': {
+                        \ 'type': '{Function}'
+                    \},
+                \ 'data': {
+                        \ 'type': '{Object}'
+                    \},
+                \ 'el': {
+                        \ 'type': '{HTMLElement}'
+                    \},
+                \ '^is': {
+                        \ 'type': '{Boolean}'
+                    \},
+                \ 'options$': {
+                        \ 'type': '{Object}'
+                    \}
+                \}
+
     " }
 
     " NERDCommenter {
