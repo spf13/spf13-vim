@@ -60,9 +60,13 @@ call plug#begin('~/.vim/bundle')
     " Deps {
         Plug 'MarcWeber/vim-addon-mw-utils'
         Plug 'tomtom/tlib_vim'
-        if executable('ag')
+        if executable('ag') || executable('rg')
             Plug 'mileszs/ack.vim'
-            let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+            if executable('ag')
+                let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+            elseif executable('rg')
+                let g:ackprg = 'rg --vimgrep --no-heading'
+            endif
         elseif executable('ack-grep')
             let g:ackprg="ack-grep -H --nocolor --nogroup --column"
             Plug 'mileszs/ack.vim'
@@ -74,7 +78,7 @@ call plug#begin('~/.vim/bundle')
     " In your .vimrc.before.local file
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['general', 'writing', 'neocomplete', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc', 'rust',]
+        let g:spf13_bundle_groups=['general', 'writing', 'deoplete', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc', 'rust', 'markdown']
     endif
 
     " To override all the included bundles, add the following to your
@@ -137,7 +141,7 @@ call plug#begin('~/.vim/bundle')
     " General Programming {
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
-            Plug 'scrooloose/syntastic'
+            Plug 'w0rp/ALE'
             Plug 'tpope/vim-fugitive'
             Plug 'mattn/webapi-vim'
             Plug 'mattn/gist-vim'
@@ -168,8 +172,11 @@ call plug#begin('~/.vim/bundle')
             Plug 'Shougo/neosnippet'
             Plug 'Shougo/neosnippet-snippets'
             Plug 'honza/vim-snippets'
-        elseif count(g:spf13_bundle_groups, 'neocomplete')
-            Plug 'Shougo/neocomplete.vim'
+        elseif count(g:spf13_bundle_groups, 'deoplete') && has('python3') == 1
+            " See https://github.com/Shougo/deoplete.nvim
+            Plug 'Shougo/deoplete.nvim'
+            Plug 'roxma/nvim-yarp'
+            Plug 'roxma/vim-hug-neovim-rpc'
             Plug 'Shougo/neosnippet'
             Plug 'Shougo/neosnippet-snippets'
             Plug 'honza/vim-snippets'
