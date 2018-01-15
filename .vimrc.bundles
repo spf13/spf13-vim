@@ -300,7 +300,6 @@ set nocompatible        " must be first line
             if count(g:spf13_bundle_groups, 'typescript')
                 Bundle 'leafgarland/typescript-vim'
                 Bundle 'HerringtonDarkholme/yats.vim'
-                Bundle 'Quramy/tsuquyomi'
             endif
 
             " coffeescript
