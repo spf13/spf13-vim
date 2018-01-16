@@ -837,6 +837,19 @@ augroup END
                 \ '\.min\.css$': {'ale_enabled': 0},
                 \ 'dist\/': {'ale_enabled': 0}
                 \ }
+
+            let g:ale_fix_on_save = 1
+            let g:ale_javascript_prettier_use_local_config = 1
+            let g:ale_fixers = {
+                        \ 'markdown': ['prettier'],
+                        \ 'json': ['prettier'],
+                        \ 'css': ['prettier'],
+                        \ 'less': ['prettier'],
+                        \ 'scss': ['prettier'],
+                        \ 'javascript': ['prettier'],
+                        \ 'typescript': ['prettier'],
+                        \ 'vue': ['prettier']
+                        \}
         endif
 
     " }

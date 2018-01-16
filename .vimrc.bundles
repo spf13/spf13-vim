@@ -170,7 +170,6 @@ set nocompatible        " must be first line
             Bundle 'mileszs/ack.vim'
             Bundle 'FuDesign2008/vim-qargs'
             Bundle 'FuDesign2008/vim-tab'
-
         endif
 
     "Colors
@@ -289,6 +288,7 @@ set nocompatible        " must be first line
 
             if count(g:spf13_bundle_groups, 'react')
                 Bundle 'mxw/vim-jsx'
+                Bundle 'epilande/vim-react-snippets'
             endif
 
             " vue
