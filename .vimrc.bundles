@@ -85,6 +85,7 @@ set nocompatible        " must be first line
 
     " General
         if count(g:spf13_bundle_groups, 'general')
+            Bundle 'mhinz/vim-startify'
             Bundle 'scrooloose/nerdtree'
             Bundle 'matchit.zip'
             " airline is lightweight
@@ -109,7 +110,7 @@ set nocompatible        " must be first line
             "Bundle 'vim-scripts/ZoomWin'
 
             Bundle 'vim-scripts/IndentAnything'
-            Bundle 'FuDesign2008/WebSearch.vim'
+            " Bundle 'FuDesign2008/WebSearch.vim'
 
             " 1. http://aftnn.org/post/75730734352/vim-auto-closers-compared
             " 2. https://github.com/kana/vim-smartinput/issues/65
@@ -117,7 +118,8 @@ set nocompatible        " must be first line
             Bundle 'Raimondi/delimitMate'
 
             Bundle 'FuDesign2008/OpenUrl.vim'
-            Bundle 'FuDesign2008/ToggleNumber.vim'
+            " Bundle 'FuDesign2008/ToggleNumber.vim'
+            Bundle 'myusuf3/numbers.vim'
             Bundle 'FuDesign2008/style.vim'
 
             "Bundle 'Yggdroot/indentLine'
@@ -169,7 +171,9 @@ set nocompatible        " must be first line
             " @see https://github.com/rking/ag.vim/issues/124#issuecomment-227038003
             Bundle 'mileszs/ack.vim'
             Bundle 'FuDesign2008/vim-qargs'
-            Bundle 'FuDesign2008/vim-tab'
+            " Bundle 'FuDesign2008/vim-tab'
+
+            Bundle 'jiangmiao/auto-pairs'
         endif
 
     "Colors
@@ -348,8 +352,7 @@ set nocompatible        " must be first line
 
     " Document
         if count(g:spf13_bundle_groups, 'document')
-            "Bundle 'junegunn/goyo.vim'
-            "Bundle 'amix/vim-zenroom2'
+            Bundle 'junegunn/goyo.vim'
             Bundle 'jszakmeister/markdown2ctags'
             Bundle 'FuDesign2008/MarkdownViewer.vim'
             Bundle 'FuDesign2008/mkdInput.vim'
