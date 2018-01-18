@@ -191,7 +191,10 @@ set nocompatible        " must be first line
         if count(g:spf13_bundle_groups, 'programming')
             " see http://editorconfig.org/
             Bundle 'editorconfig/editorconfig-vim'
-            Bundle 'tpope/vim-endwise'
+
+            " conflicts with delimitMate
+            " @see https://github.com/Raimondi/delimitMate/issues/236
+            " Bundle 'tpope/vim-endwise'
 
             " ALE and Syntastic are conflict
             " Bundle 'scrooloose/syntastic'
