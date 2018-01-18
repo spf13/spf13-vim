@@ -115,6 +115,10 @@ set nocompatible        " must be first line
             " 1. http://aftnn.org/post/75730734352/vim-auto-closers-compared
             " 2. https://github.com/kana/vim-smartinput/issues/65
             "Bundle 'kana/vim-smartinput'
+
+            " use delimitMate instead vim-closetag
+            " for vim-closetag conflicts with YCM
+            " Bundle 'alvan/vim-closetag'
             Bundle 'Raimondi/delimitMate'
 
             Bundle 'FuDesign2008/OpenUrl.vim'
@@ -335,7 +339,6 @@ set nocompatible        " must be first line
     " HTML
         if count(g:spf13_bundle_groups, 'html')
             " Bundle 'amirh/HTML-AutoCloseTag'
-            Bundle 'alvan/vim-closetag'
             Bundle 'othree/html5.vim'
             Bundle 'mattn/emmet-vim'
             "Bundle 'lepture/vim-velocity'
