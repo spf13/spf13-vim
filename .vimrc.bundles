@@ -109,7 +109,7 @@ set nocompatible        " must be first line
             Bundle 'FuDesign2008/zoom.vim'
             "Bundle 'vim-scripts/ZoomWin'
 
-            Bundle 'vim-scripts/IndentAnything'
+            " Bundle 'vim-scripts/IndentAnything'
             " Bundle 'FuDesign2008/WebSearch.vim'
 
             " 1. http://aftnn.org/post/75730734352/vim-auto-closers-compared
@@ -229,10 +229,10 @@ set nocompatible        " must be first line
             "endif
 
             if executable('ctags') && !g:is_win
-                Bundle 'majutsushi/tagbar'
+                " Bundle 'majutsushi/tagbar'
 
-                Bundle 'xolox/vim-misc'
-                Bundle 'xolox/vim-easytags'
+                " Bundle 'xolox/vim-misc'
+                " Bundle 'xolox/vim-easytags'
             endif
         endif
     " Snippets
@@ -311,7 +311,7 @@ set nocompatible        " must be first line
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
                 Bundle 'leafgarland/typescript-vim'
-                Bundle 'HerringtonDarkholme/yats.vim'
+                " Bundle 'HerringtonDarkholme/yats.vim'
             endif
 
             " coffeescript
