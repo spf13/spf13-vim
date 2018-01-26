@@ -1222,6 +1222,11 @@ augroup END
         "let g:indent_guides_enable_on_vim_startup = 1
      " }
 
+     " prettier/vim-prettier {
+        let g:prettier#autoformat = 0
+        let g:prettier#exec_cmd_async = 1
+     " }
+
 " }
 
 " GUI Settings {
