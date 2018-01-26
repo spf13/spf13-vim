@@ -218,6 +218,7 @@ set nocompatible        " must be first line
             Bundle 'junkblocker/patchreview-vim'
             Bundle 'chrisbra/vim-diff-enhanced'
             Bundle 'Chiel92/vim-autoformat'
+            Bundle 'prettier/vim-prettier'
 
             "if !g:is_win
                 "Bundle 'tpope/vim-fugitive'
