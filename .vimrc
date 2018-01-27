@@ -723,8 +723,21 @@ augroup END
         return ''
     endfunction
 
-    let g:find_file_path = FindFilesUp( ['.jshintrc',  '.jshintrc.js'], 5)
-    let g:use_jshint = strlen(g:find_file_path) > 1
+    " support https://github.com/davidtheclark/cosmiconfig
+    " try to find eslint first and then jshint in the same directory
+    let g:find_file_path = FindFilesUp([
+        \ '.eslintrc',
+        \ '.eslintrc.json',
+        \ '.eslintrc.js',
+        \ '.eslintrc.yaml',
+        \ '.eslintrc.yml',
+        \ '.jshintrc',
+        \ '.jshintrc.json',
+        \ '.jshintrc.js',
+        \ '.jshintrc.yaml',
+        \ '.jshintrc.yml'
+        \ ], 5)
+    let g:use_jshint = stridx(g:find_file_path, 'jshintrc') > -1
     unlet g:find_file_path
 
     "Syntastic {
