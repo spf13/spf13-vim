@@ -173,7 +173,7 @@ set nocompatible        " must be first line
             " use the_silver_searcher which if faster
             " instead of ack
             " @see https://github.com/rking/ag.vim/issues/124#issuecomment-227038003
-            Bundle 'mileszs/ack.vim'
+            Bundle 'FuDesign2008/ack.vim'
             Bundle 'FuDesign2008/vim-qargs'
             " Bundle 'FuDesign2008/vim-tab'
 
