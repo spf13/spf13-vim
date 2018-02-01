@@ -815,14 +815,25 @@ augroup END
 
     "}
 
+    "airline {
+      let g:airline#extensions#ale#enabled = 1
+      let airline#extensions#ale#error_symbol = 'E:'
+      let airline#extensions#ale#warning_symbol = 'W:'
+      let airline#extensions#ale#open_lnum_symbol = '(L'
+      let airline#extensions#ale#close_lnum_symbol = ')'
+    "}
+
     " ALE {
 
         if &diff
             let g:ale_enabled = 0
         else
-            call airline#parts#define_function('ALE', 'ALEGetStatusLine')
-            call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
-            let g:airline_section_error = airline#section#create_right(['ALE'])
+            " show ALE erorr on airline
+            " @see https://github.com/w0rp/ale/issues/199
+            " call airline#parts#define_function('ALE', 'ALEGetStatusLine')
+            " call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
+            " let g:airline_section_error = airline#section#create_right(['ALE'])
+
             let g:ale_linters = {
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['tslint'],
