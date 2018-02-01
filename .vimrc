@@ -838,8 +838,8 @@ augroup END
             let g:ale_sign_column_always = 1
             let g:ale_open_list = 1
             let g:ale_list_window_size = 3
-            let g:ale_lint_on_text_changed = 'always'
-            " let g:ale_lint_on_insert_leave = 1
+            let g:ale_lint_on_text_changed = 'never'
+            let g:ale_lint_on_insert_leave = 1
             let g:ale_lint_delay = 700
             let g:ale_completion_max_suggestions = 5
             let g:ale_max_signs = 5
