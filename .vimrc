@@ -839,8 +839,8 @@ augroup END
             let g:ale_open_list = 1
             let g:ale_list_window_size = 3
             let g:ale_lint_on_text_changed = 'never'
-            let g:ale_lint_on_insert_leave = 1
-            let g:ale_lint_delay = 700
+            " let g:ale_lint_on_insert_leave = 0
+            " let g:ale_lint_delay = 200
             let g:ale_completion_max_suggestions = 5
             let g:ale_max_signs = 5
             let g:ale_maximum_file_size = 1024 * 1024
