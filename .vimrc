@@ -816,11 +816,12 @@ augroup END
     "}
 
     "airline {
+      let g:airline_extensions = []
       let g:airline#extensions#ale#enabled = 1
-      let airline#extensions#ale#error_symbol = 'E:'
-      let airline#extensions#ale#warning_symbol = 'W:'
-      let airline#extensions#ale#open_lnum_symbol = '(L'
-      let airline#extensions#ale#close_lnum_symbol = ')'
+      " let airline#extensions#ale#error_symbol = 'E:'
+      " let airline#extensions#ale#warning_symbol = 'W:'
+      " let airline#extensions#ale#open_lnum_symbol = '(L'
+      " let airline#extensions#ale#close_lnum_symbol = ')'
     "}
 
     " ALE {
