@@ -815,26 +815,12 @@ augroup END
 
     "}
 
-    "airline {
-      let g:airline_extensions = []
-      let g:airline#extensions#ale#enabled = 1
-      " let airline#extensions#ale#error_symbol = 'E:'
-      " let airline#extensions#ale#warning_symbol = 'W:'
-      " let airline#extensions#ale#open_lnum_symbol = '(L'
-      " let airline#extensions#ale#close_lnum_symbol = ')'
-    "}
 
     " ALE {
 
         if &diff
             let g:ale_enabled = 0
         else
-            " show ALE erorr on airline
-            " @see https://github.com/w0rp/ale/issues/199
-            " call airline#parts#define_function('ALE', 'ALEGetStatusLine')
-            " call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
-            " let g:airline_section_error = airline#section#create_right(['ALE'])
-
             let g:ale_linters = {
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['tslint'],
@@ -850,9 +836,11 @@ augroup END
             endif
 
             let g:ale_sign_column_always = 1
-            let g:ale_open_list = 0
-            let g:ale_lint_on_text_changed = 'never'
-            let g:ale_lint_on_insert_leave = 0
+            let g:ale_open_list = 1
+            let g:ale_list_window_size = 3
+            let g:ale_lint_on_text_changed = 'always'
+            " let g:ale_lint_on_insert_leave = 1
+            let g:ale_lint_delay = 700
             let g:ale_completion_max_suggestions = 5
             let g:ale_max_signs = 5
             let g:ale_maximum_file_size = 1024 * 1024
