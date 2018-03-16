@@ -831,6 +831,8 @@ augroup END
                         \ 'java': [],
                         \ }
 
+            let g:ale_typescript_tsserver_use_global = 1
+
             if g:use_jshint
                 let g:ale_linters['javascript'] = ['jshint']
             endif
