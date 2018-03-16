@@ -823,15 +823,13 @@ augroup END
         else
             let g:ale_linters = {
                         \ 'javascript': ['eslint'],
-                        \ 'typescript': ['eslint', 'tslint', 'tsserver'],
+                        \ 'typescript': ['tslint', 'tsserver', 'eslint'],
                         \ 'vue': ['eslint'],
                         \ 'shell': ['shellcheck'],
                         \ 'c': [],
                         \ 'cpp': [],
                         \ 'java': [],
                         \ }
-
-            let g:ale_typescript_tsserver_use_global = 1
 
             if g:use_jshint
                 let g:ale_linters['javascript'] = ['jshint']
