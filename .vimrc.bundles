@@ -311,7 +311,6 @@ set nocompatible        " must be first line
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
                 Bundle 'leafgarland/typescript-vim'
-                Bundle 'Quramy/tsuquyomi'
                 " Bundle 'HerringtonDarkholme/yats.vim'
             endif
 

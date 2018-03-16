@@ -823,7 +823,7 @@ augroup END
         else
             let g:ale_linters = {
                         \ 'javascript': ['eslint'],
-                        \ 'typescript': ['tslint', 'tsserver'],
+                        \ 'typescript': ['eslint', 'tslint', 'tsserver'],
                         \ 'vue': ['eslint'],
                         \ 'shell': ['shellcheck'],
                         \ 'c': [],
