@@ -295,6 +295,8 @@ set nocompatible        " must be first line
             "for es6/typescript
             Bundle 'Quramy/vim-js-pretty-template'
 
+            Bundle 'flowtype/vim-flow'
+
             " for wxapp
             " Bundle 'chemzqm/wxapp.vim'
 
