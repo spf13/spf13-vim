@@ -68,6 +68,7 @@ set nocompatible        " must be first line
             \ 'python',
             \ 'java',
             \ 'javascript',
+            \ 'node',
             \ 'vue',
             \ 'react',
             \ 'typescript',
@@ -287,10 +288,6 @@ set nocompatible        " must be first line
             Bundle 'FuDesign2008/vim-jsdoc'
             Bundle 'maksimr/vim-jsbeautify'
 
-            " for node
-            " Bundle 'myhere/vim-nodejs-complete'
-            Bundle 'sidorares/node-vim-debugger'
-            Bundle 'moll/vim-node'
 
             "for es6/typescript
             Bundle 'Quramy/vim-js-pretty-template'
@@ -320,6 +317,19 @@ set nocompatible        " must be first line
             if count(g:spf13_bundle_groups, 'coffeescript')
                 Bundle 'kchmck/vim-coffee-script'
             endif
+
+        endif
+
+    " node
+
+        if count(g:spf13_bundle_groups, 'node')
+
+            " for node
+            " Bundle 'myhere/vim-nodejs-complete'
+            Bundle 'guileen/vim-node-dict'
+            Bundle 'sidorares/node-vim-debugger'
+            Bundle 'moll/vim-node'
+            Bundle 'digitaltoad/vim-pug'
 
         endif
 

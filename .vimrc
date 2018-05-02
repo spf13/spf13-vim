@@ -1222,6 +1222,11 @@ augroup END
      "}
 
 
+     " guileen/vim-node-dict {
+        autocmd vimrc FileType javascript set dictionary+=$HOME/.vim/vim-node-dict/dict/node.dict
+     " }
+
+
      " indent_guides {
         "if !exists('g:spf13_no_indent_guides_autocolor')
             "let g:indent_guides_auto_colors = 1
