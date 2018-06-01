@@ -229,12 +229,12 @@ set nocompatible        " must be first line
 
             "endif
 
-            if executable('ctags') && !g:is_win
+            " if executable('ctags') && !g:is_win
                 " Bundle 'majutsushi/tagbar'
 
                 " Bundle 'xolox/vim-misc'
                 " Bundle 'xolox/vim-easytags'
-            endif
+            " endif
         endif
     " Snippets
         if count(g:spf13_bundle_groups, 'snip')
@@ -283,7 +283,10 @@ set nocompatible        " must be first line
             "Bundle 'mattn/jscomplete-vim'
             "Bundle 'jelera/vim-javascript-syntax'
             Bundle 'briancollins/vim-jst'
-            Bundle 'marijnh/tern_for_vim'
+
+            " tern is used in YCM
+            " Bundle 'marijnh/tern_for_vim'
+
             " Bundle 'scheakur/vim-jsdocy'
             Bundle 'FuDesign2008/vim-jsdoc'
             Bundle 'maksimr/vim-jsbeautify'
@@ -372,7 +375,7 @@ set nocompatible        " must be first line
     " Document
         if count(g:spf13_bundle_groups, 'document')
             "Bundle 'junegunn/goyo.vim'
-            Bundle 'jszakmeister/markdown2ctags'
+            " Bundle 'jszakmeister/markdown2ctags'
             Bundle 'FuDesign2008/MarkdownViewer.vim'
             Bundle 'FuDesign2008/mkdInput.vim'
             Bundle 'FuDesign2008/mermaidViewer.vim'
