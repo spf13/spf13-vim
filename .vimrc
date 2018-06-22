@@ -557,7 +557,8 @@ augroup END
                         \ 'pencil',
                         \ 'pyte',
                         \ 'solarized',
-                        \ 'summerfruit'
+                        \ 'summerfruit',
+                        \ 'OceanicNext'
                         \]
 
         let g:random_color_start = 2
