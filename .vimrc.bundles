@@ -176,7 +176,6 @@ set nocompatible        " must be first line
             " @see https://github.com/rking/ag.vim/issues/124#issuecomment-227038003
             Bundle 'FuDesign2008/ack.vim'
             Bundle 'FuDesign2008/vim-qargs'
-            " Bundle 'FuDesign2008/vim-tab'
 
             " conflict with delimitMate
             " Bundle 'jiangmiao/auto-pairs'
@@ -213,9 +212,8 @@ set nocompatible        " must be first line
 
             Bundle 'FuDesign2008/autoHighlight.vim'
             Bundle 'FuDesign2008/smartRename.vim'
-            Bundle 'FuDesign2008/vim-dirdiff'
-            Bundle 'FuDesign2008/diffsplit.vim'
 
+            Bundle 'will133/vim-dirdiff'
             Bundle 'junkblocker/patchreview-vim'
             Bundle 'chrisbra/vim-diff-enhanced'
             Bundle 'Chiel92/vim-autoformat'
