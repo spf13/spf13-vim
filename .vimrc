@@ -863,7 +863,7 @@ augroup END
                         \ 'scss': ['prettier'],
                         \ 'javascript': ['prettier'],
                         \ 'typescript': ['prettier'],
-                        \ 'vue': ['prettier'],
+                        \ 'vue': ['eslint'],
                         \ 'c': ['clang-format']
                         \}
         endif
