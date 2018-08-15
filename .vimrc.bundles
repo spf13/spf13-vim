@@ -89,9 +89,11 @@ set nocompatible        " must be first line
             Bundle 'mhinz/vim-startify'
             Bundle 'scrooloose/nerdtree'
             Bundle 'matchit.zip'
-            " airline is lightweight
-            Bundle 'bling/vim-airline'
-            "Bundle 'Lokaltog/powerline'
+
+            " airline is lightweight than powerline
+            Bundle 'vim-airline/vim-airline'
+            Bundle 'vim-airline/vim-airline-themes'
+
             "Bundle 'Lokaltog/vim-easymotion'
             "NOTE: csapprox cause errors
             "Bundle 'godlygeek/csapprox'
