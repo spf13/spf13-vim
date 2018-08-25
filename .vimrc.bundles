@@ -49,6 +49,10 @@
             " want to try them first.
             set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
           endif
+        else
+            " set default encoding to utf-8
+            set encoding=utf-8
+            set termencoding=utf-8
         endif
     " }
 
