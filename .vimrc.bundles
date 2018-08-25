@@ -129,7 +129,7 @@
                 Plugin 'vim-airline/vim-airline-themes'
             endif
             Plugin 'powerline/fonts'
-			Plugin 'wuqiling97/Consolas-with-Yahei'
+            Plugin 'StarryLeo/Consolas-with-Yahei'
             Plugin 'bling/vim-bufferline'
             Plugin 'easymotion/vim-easymotion'
             Plugin 'jistr/vim-nerdtree-tabs'
