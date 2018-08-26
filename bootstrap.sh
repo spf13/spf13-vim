@@ -17,11 +17,11 @@
 ############################  SETUP PARAMETERS
 app_name='spf13-vim'
 [ -z "$APP_PATH" ] && APP_PATH="$HOME/.spf13-vim-3"
-[ -z "$REPO_URI" ] && REPO_URI='https://github.com/spf13/spf13-vim.git'
+[ -z "$REPO_URI" ] && REPO_URI='https://github.com/StarryLeo/spf13-vim.git'
 [ -z "$REPO_BRANCH" ] && REPO_BRANCH='3.0'
 debug_mode='0'
 fork_maintainer='0'
-[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
+[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/VundleVim/Vundle.vim.git"
 
 ############################  BASIC SETUP TOOLS
 msg() {
@@ -164,8 +164,8 @@ setup_vundle() {
     vim \
         -u "$1" \
         "+set nomore" \
-        "+BundleInstall!" \
-        "+BundleClean" \
+        "+PluginInstall!" \
+        "+PluginClean" \
         "+qall"
 
     export SHELL="$system_shell"
@@ -182,7 +182,7 @@ program_must_exist "git"
 do_backup       "$HOME/.vim" \
                 "$HOME/.vimrc" \
                 "$HOME/.gvimrc"
-
+				
 sync_repo       "$APP_PATH" \
                 "$REPO_URI" \
                 "$REPO_BRANCH" \
@@ -195,10 +195,10 @@ setup_fork_mode "$fork_maintainer" \
                 "$APP_PATH" \
                 "$HOME"
 
-sync_repo       "$HOME/.vim/bundle/vundle" \
+sync_repo       "$HOME/.vim/bundle/Vundle.vim" \
                 "$VUNDLE_URI" \
                 "master" \
-                "vundle"
+                "Vundle.vim"
 
 setup_vundle    "$APP_PATH/.vimrc.bundles.default"
 
