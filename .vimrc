@@ -861,8 +861,8 @@ augroup END
                         \ 'css': ['prettier'],
                         \ 'less': ['prettier'],
                         \ 'scss': ['prettier'],
-                        \ 'javascript': ['prettier'],
-                        \ 'typescript': ['prettier'],
+                        \ 'javascript': ['eslint', 'prettier'],
+                        \ 'typescript': ['tslint', 'prettier'],
                         \ 'vue': ['eslint'],
                         \ 'c': ['clang-format']
                         \}
