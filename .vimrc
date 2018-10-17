@@ -1164,7 +1164,7 @@ augroup END
      "}
 
      " posva/vim-vue {
-        autocmd vimrc BufRead,BufNewFile *.vue,*.wpy setlocal filetype=vue.html.javascript.css
+        autocmd vimrc BufRead,BufNewFile,BufWritePre *.vue,*.wpy setlocal filetype=vue.html.javascript.css
         let g:vue_disable_pre_processors = 1
         autocmd vimrc FileType vue syntax sync fromstart
 
