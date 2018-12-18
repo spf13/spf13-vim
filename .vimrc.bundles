@@ -345,9 +345,9 @@ set nocompatible        " must be first line
             Bundle 'cakebaker/scss-syntax.vim'
             "Bundle 'tpope/vim-haml'
 
-            " vim-css-color will cause opening  .html/.markdown slow
-            " @see https://github.com/skammer/vim-css-color/issues/3
-            "Bundle 'skammer/vim-css-color'
+            " use ap/vim-css-color instead of skammer/vim-css-color
+            " @see https://github.com/jvortmann/vim-files/issues/2
+            Bundle 'ap/vim-css-color'
         endif
 
     " scala
