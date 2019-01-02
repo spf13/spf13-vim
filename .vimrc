@@ -1188,6 +1188,10 @@ augroup END
           endif
         endfunction
      " }
+     "
+     " FuDesign2008/vue-component.vim {
+        let g:vue_component_css_extension = 'scss'
+     " }
 
 
      " nvie/vim-flake8 {

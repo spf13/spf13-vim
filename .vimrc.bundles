@@ -309,6 +309,7 @@ set nocompatible        " must be first line
             " vue
             if count(g:spf13_bundle_groups, 'vue')
                 Bundle 'posva/vim-vue'
+                Bundle 'FuDesign2008/vue-component.vim'
             endif
 
             " typescript
