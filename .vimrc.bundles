@@ -179,6 +179,8 @@ set nocompatible        " must be first line
             Bundle 'FuDesign2008/ack.vim'
             Bundle 'FuDesign2008/vim-qargs'
 
+            Bundle 'spolu/dwm.vim'
+
             " conflict with delimitMate
             " Bundle 'jiangmiao/auto-pairs'
         endif
