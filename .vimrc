@@ -363,9 +363,9 @@ augroup END
         let g:ycm_semantic_triggers['typescript'] = ['.', '__']
 
         " for css
-        let g:ycm_semantic_triggers['css'] = [ 're!^', 're!^\s+', ':' ]
-        let g:ycm_semantic_triggers['scss'] = [ 're!^', 're!^\s+', ':' ]
-        let g:ycm_semantic_triggers['less'] = [ 're!^', 're!^\s+', ':' ]
+        let g:ycm_semantic_triggers['css'] = [ 're!^', 're!^\s+', ': ' ]
+        let g:ycm_semantic_triggers['scss'] = [ 're!^', 're!^\s+', ': ' ]
+        let g:ycm_semantic_triggers['less'] = [ 're!^', 're!^\s+', ': ' ]
      "}
 
      "ultisnips {
