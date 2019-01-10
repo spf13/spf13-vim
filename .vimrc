@@ -53,6 +53,9 @@ augroup END
         "set term=$TERM          " Make arrow and other keys work
     "endif
     filetype plugin indent on   " Automatically detect file types.
+    " open omni completion
+    " @see http://vim.wikia.com/wiki/Omni_completion
+    set omnifunc=syntaxcomplete#Complete
     syntax on                   " syntax highlighting
     set synmaxcol=256
     "set mouse=a                 " automatically enable mouse usage
