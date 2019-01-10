@@ -356,12 +356,16 @@ augroup END
               \ 'mail' : 1
               \}
 
-        " support for typescript
         if !exists('g:ycm_semantic_triggers')
             let g:ycm_semantic_triggers = {}
         endif
         let g:ycm_semantic_triggers['javascript'] = ['.', '__']
         let g:ycm_semantic_triggers['typescript'] = ['.', '__']
+
+        " for css
+        let g:ycm_semantic_triggers['css'] = [ 're!^', 're!^\s+', ':' ]
+        let g:ycm_semantic_triggers['scss'] = [ 're!^', 're!^\s+', ':' ]
+        let g:ycm_semantic_triggers['less'] = [ 're!^', 're!^\s+', ':' ]
      "}
 
      "ultisnips {
