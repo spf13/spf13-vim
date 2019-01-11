@@ -903,15 +903,19 @@ augroup END
         set cpoptions=aAceFsBd
         let g:easytags_dynamic_files = 2
 
-        let g:easytags_languages = {
-        \   'javascript': {
-        \     'cmd': 'jsctags',
-        \       'args': [],
-        \       'fileoutput_opt': '-f',
-        \       'stdout_opt': '-f-',
-        \       'recurse_flag': '-R'
-        \   }
-        \}
+        " @see https://github.com/xolox/vim-easytags/issues/131
+        " @see :help YCM
+        let g:easytags_opts = ['--fields=+l']
+
+        " let g:easytags_languages = {
+        " \   'javascript': {
+        " \     'cmd': 'jsctags',
+        " \       'args': [],
+        " \       'fileoutput_opt': '-f',
+        " \       'stdout_opt': '-f-',
+        " \       'recurse_flag': '-R'
+        " \   }
+        " \}
 
 
     "}
