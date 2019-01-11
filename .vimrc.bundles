@@ -230,12 +230,14 @@ set nocompatible        " must be first line
 
             "endif
 
-            " if executable('ctags') && !g:is_win
-                " Bundle 'majutsushi/tagbar'
+            if executable('ctags') && !g:is_win
+                Bundle 'majutsushi/tagbar'
 
-                " Bundle 'xolox/vim-misc'
-                " Bundle 'xolox/vim-easytags'
-            " endif
+                Bundle 'xolox/vim-misc'
+                " Use easytas with YCM for NOT C-family languages like html,
+                " css, scss
+                Bundle 'xolox/vim-easytags'
+            endif
         endif
     " Snippets
         if count(g:spf13_bundle_groups, 'snip')
