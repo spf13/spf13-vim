@@ -291,6 +291,8 @@ set nocompatible        " must be first line
             "Bundle 'jelera/vim-javascript-syntax'
             Bundle 'briancollins/vim-jst'
 
+            Bundle 'FuDesign2008/javascript-snippets.vim'
+
             " tern is used in YCM
             " Bundle 'marijnh/tern_for_vim'
 
