@@ -1209,7 +1209,7 @@ augroup END
         let g:vue_component_css_extension = 'scss'
         let g:vue_component_template_dir = 'built-in'
         " call VueLayout automatically
-        autocmd vimrc BufReadPost *.vue,*.wpy  if &diff == 0 && exists(':VueLayout') | call :VueLayout  | endif
+        autocmd vimrc BufReadPost *.vue,*.wpy  if &diff == 0 && exists(':VueLayout') | exec ':VueLayout'  | endif
      " }
 
 
