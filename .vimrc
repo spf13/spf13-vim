@@ -1208,6 +1208,7 @@ augroup END
      " FuDesign2008/vue-component.vim {
         let g:vue_component_css_extension = 'scss'
         let g:vue_component_template_dir = 'built-in'
+        let g:vue_component_auto_layout = 2
      " }
 
 
