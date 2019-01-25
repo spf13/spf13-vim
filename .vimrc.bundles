@@ -183,7 +183,7 @@ set nocompatible        " must be first line
             " conflict with delimitMate
             " Bundle 'jiangmiao/auto-pairs'
 
-            Bundle 'pmalek/toogle-maximize.vim'
+            Bundle 'FuDesign2008/toggle-maximize.vim'
         endif
 
     "Colors
