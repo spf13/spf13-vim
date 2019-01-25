@@ -1250,6 +1250,12 @@ augroup END
         autocmd vimrc FileType javascript set dictionary+=$HOME/.vim/vim-node-dict/dict/node.dict
      " }
 
+     " pmalek/toogle-maximize.vim {
+        set winminwidth=3
+        set winminheight=3
+        map <silent> <C-m> :call ToggleMaximizeCurrentWindow()<CR>
+     " }
+
 
      " indent_guides {
         "if !exists('g:spf13_no_indent_guides_autocolor')
