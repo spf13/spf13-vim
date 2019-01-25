@@ -1251,9 +1251,7 @@ augroup END
      " }
 
      " pmalek/toogle-maximize.vim {
-        set winminwidth=3
-        set winminheight=3
-        map <silent> <C-m> :call ToggleMaximizeCurrentWindow()<CR>
+        map <silent> <C-W-M> :call ToggleMaximizeCurrentWindow()<CR>
      " }
 
 
