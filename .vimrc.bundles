@@ -360,6 +360,8 @@ set nocompatible        " must be first line
             " use ap/vim-css-color instead of skammer/vim-css-color
             " @see https://github.com/jvortmann/vim-files/issues/2
             Bundle 'ap/vim-css-color'
+
+            Bundle 'FuDesign2008/css-snippets.vim'
         endif
 
     " scala
