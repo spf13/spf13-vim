@@ -460,12 +460,11 @@ augroup END
                 "...
                 "6 = sat
                 let g:plan_week_work = {
-                    \ 2 : '1. weekly report;',
-                    \ 3 : '1. 新项目例会;'
+                    \ 1 : '1. 升级软件;',
+                    \ 2 : '1. weekly report;'
                     \}
                 let g:plan_week_personal = {
-                    \ 0 : '1. 看望/call 父母;1. 锻炼身体;',
-                    \ 3 : '1. call 父母;'
+                    \ 0 : '1. 锻炼身体;',
                     \}
 
                 let g:plan_week_review = [
@@ -482,7 +481,6 @@ augroup END
 
                 let g:plan_month_work = {
                     \ 2 : '1. 确认上月考勤;',
-                    \ 15: '1. 查看有道云笔记的新闻, 浏览论坛;',
                     \ 27: '1. 月回顾与下月规划;'
                     \}
                 let g:plan_month_personal = {
