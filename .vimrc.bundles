@@ -184,6 +184,7 @@ set nocompatible        " must be first line
             " Bundle 'jiangmiao/auto-pairs'
 
             Bundle 'FuDesign2008/toggle-maximize.vim'
+            Bundle 'FuDesign2008/only.vim'
         endif
 
     "Colors
