@@ -364,13 +364,17 @@ augroup END
         let g:ycm_semantic_triggers['javascript'] = ['.', '__']
         let g:ycm_semantic_triggers['typescript'] = ['.', '__']
 
-        " for css
+        " for css @see https://github.com/Valloric/YouCompleteMe/issues/413
         " : for property: value
         " - for properties like border-radius
         " . for collect class name from html/vue file
-        let g:ycm_semantic_triggers['css'] = [ 're!^', 're!^\s+', ': ', '-' , '.' ]
-        let g:ycm_semantic_triggers['scss'] = [ 're!^', 're!^\s+', ': ', '-', '.' ]
-        let g:ycm_semantic_triggers['less'] = [ 're!^', 're!^\s+', ': ', '-', '.' ]
+        "
+        " BUT the following config will disable UltiSnips in .css/.scss/.less
+        " file
+        "
+        " let g:ycm_semantic_triggers['css'] = [ 're!^', 're!^\s+', ': ', '-' , '.' ]
+        " let g:ycm_semantic_triggers['scss'] = [ 're!^', 're!^\s+', ': ', '-', '.' ]
+        " let g:ycm_semantic_triggers['less'] = [ 're!^', 're!^\s+', ': ', '-', '.' ]
      "}
 
      "ultisnips {
@@ -540,7 +544,6 @@ augroup END
                         "\ 'railscasts',
                         "\ 'twilight',
                         "\ 'ir_black',
-                        "\ 'molokai',
                         "\ 'zenburn',
                         "\ 'desert',
                         "\ 'wombat',
