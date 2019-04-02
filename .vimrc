@@ -869,6 +869,7 @@ augroup END
             let g:ale_javascript_prettier_use_local_config = 1
             let g:ale_fixers = {
                         \ 'markdown': ['prettier'],
+                        \ 'html': ['prettier'],
                         \ 'json': ['prettier'],
                         \ 'css': ['prettier'],
                         \ 'less': ['prettier'],
