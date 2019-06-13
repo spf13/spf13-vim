@@ -80,6 +80,8 @@ augroup END
     set history=1000                " Store a ton of history (default is 20)
     "set spell                       " spell checking on
     set nospell
+    " @see https://webpack.js.org/configuration/watch/
+    set backupcopy=yes
     " Git commits, Subversion commits.
     autocmd vimrc FileType gitcommit,svn setlocal spell
     autocmd vimrc BufNewFile,BufReadPost *.md,*.mkd set filetype=markdown
