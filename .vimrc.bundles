@@ -185,6 +185,7 @@ set nocompatible        " must be first line
 
             Bundle 'FuDesign2008/toggle-maximize.vim'
             Bundle 'FuDesign2008/only.vim'
+            Bundle 'FuDesign2008/edit.vim'
         endif
 
     "Colors
