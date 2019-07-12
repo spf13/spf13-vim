@@ -313,9 +313,24 @@ set nocompatible        " must be first line
             " for wxapp
             " Bundle 'chemzqm/wxapp.vim'
 
+            " typescript
+            if count(g:spf13_bundle_groups, 'typescript')
+                Bundle 'leafgarland/typescript-vim'
+                " Bundle 'HerringtonDarkholme/yats.vim'
+            endif
+
+            " coffeescript
+            if count(g:spf13_bundle_groups, 'coffeescript')
+                Bundle 'kchmck/vim-coffee-script'
+            endif
+
             if count(g:spf13_bundle_groups, 'react')
-                Bundle 'mxw/vim-jsx'
-                Bundle 'epilande/vim-react-snippets'
+
+                " Bundle 'mxw/vim-jsx'
+                " vim-jsx-pretty may be better than vim-jsx
+                Bundle 'maxmellon/vim-jsx-pretty'
+
+                Bundle 'FuDesign2008/react-snippets.vim'
             endif
 
             " vue
@@ -327,16 +342,6 @@ set nocompatible        " must be first line
                 Bundle 'FuDesign2008/element-ui-snippets.vim'
             endif
 
-            " typescript
-            if count(g:spf13_bundle_groups, 'typescript')
-                Bundle 'leafgarland/typescript-vim'
-                " Bundle 'HerringtonDarkholme/yats.vim'
-            endif
-
-            " coffeescript
-            if count(g:spf13_bundle_groups, 'coffeescript')
-                Bundle 'kchmck/vim-coffee-script'
-            endif
 
         endif
 
