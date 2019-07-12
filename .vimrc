@@ -666,6 +666,11 @@ augroup END
         autocmd vimrc BufRead,BufNewFile,BufWritePre *.ts setf typescript
     " }
 
+    "react support {
+        autocmd vimrc BufRead,BufNewFile,BufWritePre *.tsx setf typescript
+        autocmd vimrc BufRead,BufNewFile,BufWritePre *.jsx setf javascript
+    "}
+
 
     "less.vim {
         autocmd vimrc BufRead,BufNewFile,BufWritePre *.less setf less
