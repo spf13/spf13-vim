@@ -61,8 +61,10 @@ set nocompatible        " must be first line
             "\ 'php',
             "\ 'ctags',
             "\ 'ios',
+            "\ 'tabnine',
         let g:spf13_bundle_groups=[
             \ 'general',
+            \ 'tabnine',
             \ 'colors',
             \ 'programming',
             \ 'snip',
@@ -152,13 +154,16 @@ set nocompatible        " must be first line
                 Bundle 'ervandew/supertab'
             else
 
-                " YCM is better than NeoComplCache and supertab
-                " @see http://valloric.github.io/YouCompleteMe/
-                "
-                " But YCM does not have good-enough support for obj-c
-                " @see https://github.com/Valloric/YouCompleteMe/issues/84
-                "
-                Bundle 'Valloric/YouCompleteMe'
+                if count(g:spf13_bundle_groups, 'tabnine')
+                    Bundle 'zxqfl/tabnine-vim'
+                else
+                    " YCM is better than NeoComplCache and supertab
+                    " @see http://valloric.github.io/YouCompleteMe/
+                    "
+                    " But YCM does not have good-enough support for obj-c
+                    " @see https://github.com/Valloric/YouCompleteMe/issues/84
+                    Bundle 'Valloric/YouCompleteMe'
+                endif
 
                 Bundle 'FuDesign2008/plan.vim'
                 "Bundle 'mattn/calendar-vim'
