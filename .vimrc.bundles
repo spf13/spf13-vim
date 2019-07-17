@@ -62,9 +62,11 @@ set nocompatible        " must be first line
             "\ 'ctags',
             "\ 'ios',
             "\ 'tabnine',
+            "\ 'fzf'
         let g:spf13_bundle_groups=[
             \ 'general',
             \ 'tabnine',
+            \ 'fzf',
             \ 'colors',
             \ 'programming',
             \ 'snip',
@@ -167,8 +169,12 @@ set nocompatible        " must be first line
 
                 Bundle 'FuDesign2008/plan.vim'
                 "Bundle 'mattn/calendar-vim'
-                " :find is enough for me
-                Bundle 'ctrlpvim/ctrlp.vim'
+
+                if count(g:spf13_bundle_groups, 'fzf')
+                    Bundle 'junegunn/fzf.vim'
+                else
+                    Bundle 'ctrlpvim/ctrlp.vim'
+                endif
             endif
 
             " ack
