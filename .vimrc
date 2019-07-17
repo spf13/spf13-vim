@@ -1066,6 +1066,7 @@ augroup END
 
      " fzf.vim {
         if count(g:spf13_bundle_groups, 'fzf')
+            set runtimepath+=/usr/local/opt/fzf
             nnoremap <C-p> :Files<Cr>
         else
          " ctrlp {
