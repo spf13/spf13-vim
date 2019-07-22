@@ -65,7 +65,6 @@ set nocompatible        " must be first line
             "\ 'fzf'
         let g:spf13_bundle_groups=[
             \ 'general',
-            \ 'tabnine',
             \ 'fzf',
             \ 'colors',
             \ 'programming',
