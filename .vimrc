@@ -334,8 +334,13 @@ augroup END
      " }
 
      " asyncomplete.vim {
+
         if exists('*asyncomplete#register_source')
-            "asyncomplete-buffer.vim
+            inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+            inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+            inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
+            " prabirshrestha/asyncomplete-buffer.vim
             call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
                 \ 'name': 'buffer',
                 \ 'whitelist': ['*'],
