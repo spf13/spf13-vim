@@ -1,0 +1,164 @@
+{
+    "vimlsp.debug": {
+        "type": "boolean",
+        "default": false,
+        "description": "enable coc-vimlsp service debug"
+    },
+    "vimlsp.diagnostic.enable": {
+        "type": "boolean",
+        "default": true,
+        "description": "enable diagnostic"
+    },
+    "vimlsp.indexes.runtimepath": {
+        "type": "boolean",
+        "default": true,
+        "description": "if index vim's runtimepath files, this will effect the suggest"
+    },
+    "vimlsp.indexes.count": {
+        "type": "number",
+        "default": 3,
+        "description": "count of files index at the same time, change to greater will speed up index but will cause high CPU usage for some time"
+    },
+    "vimlsp.indexes.gap": {
+        "type": "number",
+        "default": 100,
+        "description": "time gap between parse file, change to smaller will speed up index but will cause high CPU usage for some time"
+    },
+    "vimlsp.suggest.fromVimruntime": {
+        "type": "boolean",
+        "default": true,
+        "description": "completeitems from vimruntime's vim files"
+    },
+    "vimlsp.suggest.fromRuntimepath": {
+        "type": "boolean",
+        "default": false,
+        "description": "completeitems from runtimepath's vim files, if this is true that fromVimruntime is true"
+    },
+    "vimlsp.trace.server": {
+        "type": "string",
+        "default": "off",
+        "enum": ["off", "messages", "verbose"],
+        "description": "Trace level of vim language server"
+    },
+    "svg.completion.insertCloseTagSign": {
+        "title": "Insert close tag sign",
+        "type": "boolean",
+        "default": true,
+        "description": "Specifies whether insert close tag sign '>'"
+    },
+    "svg.completion.showAdvanced": {
+        "title": "Show advanced items in completion list.",
+        "type": "boolean",
+        "default": false,
+        "description": "Specifies whether advanced items that are not commonly used are displayed in the AutoComplete list."
+    },
+    "svg.completion.showDeprecated": {
+        "title": "Show deprecated items in completion list.",
+        "type": "boolean",
+        "default": false,
+        "description": "Specifies whether advanced items that are deprecated are displayed in the AutoComplete list."
+    },
+    "svg.disableFormatOnSave": {
+        "title": "[Experimental]Disable SVGO Format on save",
+        "type": "boolean",
+        "default": false,
+        "description": "Focus Disable SVGO Format On Save event if editor.formatOnSave is true"
+    },
+    "svg.format.plugins": {
+        "title": "SVGO plugins array.",
+        "type": "object",
+        "default": {
+            "sortAttrs": true
+        },
+        "description": "Each items corresponds to a plugin that should be enabled, the rest is disabled."
+    },
+    "svg.preview.background": {
+        "title": "Svg Preview Background",
+        "type": "string",
+        "enum": ["transparent", "white", "black", "custom"],
+        "default": "transparent",
+        "description": "Specifies the Svg Preview Background"
+    },
+    "svg.preview.backgroundCustom": {
+        "title": "Svg Preview Custom Background",
+        "type": "string",
+        "default": "#eee",
+        "description": "Specifies the Svg Preview Custom Background"
+    },
+    "svg.version": {
+        "title": "SVG Version",
+        "enum": ["1.1", "2.0"],
+        "description": "Specifies the SVG standard version that will be used for autocompletion and validation.",
+        "default": "1.1"
+    },
+    "svg.priority": {
+        "type": "integer",
+        "default": 99
+    },
+    "languageserver": {
+        "bash": {
+            "command": "bash-language-server",
+            "args": ["start"],
+            "filetypes": ["sh"],
+            "ignoredRootPaths": ["~"]
+        },
+        "python": {
+            "command": "python",
+            "args": ["-mpyls", "-vv", "--log-file", "/tmp/lsp_python.log"],
+            "trace.server": "verbose",
+            "filetypes": ["python"],
+            "settings": {
+                "pyls": {
+                    "enable": true,
+                    "trace": {
+                        "server": "verbose"
+                    },
+                    "commandPath": "",
+                    "configurationSources": ["pycodestyle"],
+                    "plugins": {
+                        "jedi_completion": {
+                            "enabled": true
+                        },
+                        "jedi_hover": {
+                            "enabled": true
+                        },
+                        "jedi_references": {
+                            "enabled": true
+                        },
+                        "jedi_signature_help": {
+                            "enabled": true
+                        },
+                        "jedi_symbols": {
+                            "enabled": true,
+                            "all_scopes": true
+                        },
+                        "mccabe": {
+                            "enabled": true,
+                            "threshold": 15
+                        },
+                        "preload": {
+                            "enabled": true
+                        },
+                        "pycodestyle": {
+                            "enabled": true
+                        },
+                        "pydocstyle": {
+                            "enabled": false,
+                            "match": "(?!test_).*\\.py",
+                            "matchDir": "[^\\.].*"
+                        },
+                        "pyflakes": {
+                            "enabled": true
+                        },
+                        "rope_completion": {
+                            "enabled": true
+                        },
+                        "yapf": {
+                            "enabled": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

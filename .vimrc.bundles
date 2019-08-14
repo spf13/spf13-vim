@@ -50,6 +50,8 @@ set nocompatible        " must be first line
     "
 
 
+
+
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
@@ -61,7 +63,6 @@ set nocompatible        " must be first line
             "\ 'php',
             "\ 'ctags',
             "\ 'ios',
-            "\ 'tabnine',
             "\ 'fzf'
         let g:spf13_bundle_groups=[
             \ 'general',
@@ -82,6 +83,8 @@ set nocompatible        " must be first line
             \ 'bash'
             \ ]
     endif
+
+    let g:spf13_autocomplete_method='asyncomplete'
 
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
@@ -155,8 +158,124 @@ set nocompatible        " must be first line
                 Bundle 'ervandew/supertab'
             else
 
-                if count(g:spf13_bundle_groups, 'tabnine')
+                if g:spf13_autocomplete_method ==# 'tabnine'
                     Bundle 'zxqfl/tabnine-vim'
+                elseif g:spf13_autocomplete_method ==# 'deoplete'
+                    Bundle 'Shougo/deoplete.nvim'
+                    Bundle 'roxma/nvim-yarp'
+                    Bundle 'roxma/vim-hug-neovim-rpc'
+
+
+                    " misc
+                    Bundle 'fszymanski/deoplete-emoji'
+                    Bundle 'thalesmello/webcomplete.vim'
+
+                    " common
+                    Bundle 'Shougo/neco-syntax'
+                    " javascript
+                    Bundle 'carlitux/deoplete-ternjs'
+                    " python
+                    Bundle 'deoplete-plugins/deoplete-jedi'
+                    " typescript
+                    Bundle 'mhartington/nvim-typescript'
+                    " viml
+                    Bundle 'Shougo/neco-vim'
+                    " zsh
+                    Bundle 'deoplete-plugins/deoplete-zsh'
+
+
+                elseif g:spf13_autocomplete_method ==# 'asyncomplete'
+                    Bundle 'prabirshrestha/asyncomplete.vim'
+                    Bundle 'prabirshrestha/async.vim'
+                    Bundle 'prabirshrestha/vim-lsp'
+                    Bundle 'prabirshrestha/asyncomplete-lsp.vim'
+
+                    " @see
+                    " https://github.com/prabirshrestha/asyncomplete.vim
+
+                    " Buffer
+                    Bundle 'prabirshrestha/asyncomplete-buffer.vim'
+
+                    " Emoji
+                    Bundle 'prabirshrestha/asyncomplete-emoji.vim'
+
+                    " Filenames / directories
+                    Bundle 'prabirshrestha/asyncomplete-file.vim'
+
+                    " NeoInclude
+                    " Bundle 'asyncomplete-neoinclude.vim'
+
+                    " Go
+                    " Bundle 'asyncomplete-gocode.vim'
+                    "
+                    " JavaScript (Flow)
+                    " Bundle 'asyncomplete-flow.vim'
+                    " Neosnippet
+                    " Bundle 'asyncomplete-neosnippet.vim'
+                    "
+                    " Omni
+                    " Bundle 'asyncomplete-omni.vim'
+
+                    " PivotalTracker stories
+                    " Bundle 'asyncomplete-pivotaltracker.vim'
+
+                    " Racer
+                    " Bundle 'asyncomplete-racer.vim'
+
+                    " tmux complete
+                    " Bundle 'tmux-complete.vim'
+
+                    " css/less/sass
+                    Bundle 'FuDesign2008/vim-lsp-css'
+
+                    " javascript
+                    Bundle 'ryanolsonx/vim-lsp-javascript'
+                    " python
+                    Bundle 'ryanolsonx/vim-lsp-python'
+
+
+                    " Typescript
+                    " Bundle 'runoshun/tscompletejob'
+                    " Bundle 'prabirshrestha/asyncomplete-tscompletejob.vim'
+                    Bundle 'ryanolsonx/vim-lsp-typescript'
+
+                    " Bash
+                    Bundle 'lgranie/vim-lsp-bash'
+
+                    " UltiSnips
+                    " Bundle 'prabirshrestha/asyncomplete-ultisnips.vim'
+                    Bundle 'thomasfaingnaert/vim-lsp-snippets'
+                    Bundle 'thomasfaingnaert/vim-lsp-ultisnips'
+
+                    " Syntax
+                    Bundle 'Shougo/neco-syntax'
+                    Bundle 'prabirshrestha/asyncomplete-necosyntax.vim'
+
+                    " Vim
+                    Bundle 'Shougo/neco-vim'
+                    Bundle 'prabirshrestha/asyncomplete-necovim.vim'
+                elseif g:spf13_autocomplete_method ==# 'coc'
+                    Bundle 'neoclide/coc.nvim'
+
+                    " viml
+                    " Bundle 'Shougo/neco-vim'
+                    " Bundle 'neoclide/coc-neco'
+                    Bundle 'iamcco/coc-vimlsp'
+
+                    "common source
+                    Bundle 'neoclide/coc-sources'
+
+                    Bundle 'neoclide/coc-tsserver'
+                    Bundle 'neoclide/coc-json'
+
+                    Bundle 'neoclide/coc-html'
+                    Bundle 'neoclide/coc-css'
+                    Bundle 'iamcco/coc-svg'
+
+                    Bundle 'neoclide/coc-vetur'
+                    Bundle 'neoclide/coc-python'
+                    Bundle 'neoclide/coc-git'
+
                 else
                     " YCM is better than NeoComplCache and supertab
                     " @see http://valloric.github.io/YouCompleteMe/
@@ -299,29 +418,35 @@ set nocompatible        " must be first line
     " Javascript
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'leshill/vim-json'
-            Bundle 'pangloss/vim-javascript'
-            Bundle 'othree/javascript-libraries-syntax.vim'
-            "Bundle 'mattn/jscomplete-vim'
+
+            " Bundle 'pangloss/vim-javascript'
             "Bundle 'jelera/vim-javascript-syntax'
-            Bundle 'briancollins/vim-jst'
+
+            Bundle 'othree/es.next.syntax.vim'
+            Bundle 'othree/yajs.vim'
+            Bundle 'othree/javascript-libraries-syntax.vim'
+
+            "Bundle 'mattn/jscomplete-vim'
 
             Bundle 'FuDesign2008/javascript-snippets.vim'
 
             " tern is used in YCM
             " Bundle 'marijnh/tern_for_vim'
 
-            " Bundle 'scheakur/vim-jsdocy'
+            " Bundle 'scheakur/vim-jsdoc'
             Bundle 'FuDesign2008/vim-jsdoc'
             Bundle 'maksimr/vim-jsbeautify'
 
-
-            "for es6/typescript
             Bundle 'Quramy/vim-js-pretty-template'
 
-            Bundle 'flowtype/vim-flow'
+            " Bundle 'flowtype/vim-flow'
 
             " for wxapp
             " Bundle 'chemzqm/wxapp.vim'
+
+            " Bundle 'mxw/vim-jsx'
+            " vim-jsx-pretty may be better than vim-jsx
+            Bundle 'maxmellon/vim-jsx-pretty'
 
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
@@ -335,11 +460,6 @@ set nocompatible        " must be first line
             endif
 
             if count(g:spf13_bundle_groups, 'react')
-
-                " Bundle 'mxw/vim-jsx'
-                " vim-jsx-pretty may be better than vim-jsx
-                Bundle 'maxmellon/vim-jsx-pretty'
-
                 Bundle 'FuDesign2008/react-snippets.vim'
             endif
 

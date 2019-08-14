@@ -42,6 +42,7 @@ lnif "$endpath/.vimrc.fork" "$HOME/.vimrc.fork"
 lnif "$endpath/.vimrc.bundles" "$HOME/.vimrc.bundles"
 lnif "$endpath/.vimrc.bundles.fork" "$HOME/.vimrc.bundles.fork"
 lnif "$endpath/.vim" "$HOME/.vim"
+lnif "$endpath/coc-settings.json" "$HOME/coc-settings.json"
 if [ ! -d "$endpath/.vim/bundle" ]; then
     mkdir -p "$endpath/.vim/bundle"
 fi

@@ -328,6 +328,78 @@ augroup END
         "let g:SuperTabLongestEnhanced = 1
      "}
 
+
+     " deoplete.vim {
+         let g:deoplete#enable_at_startup = 1
+     " }
+
+     " asyncomplete.vim {
+        if exists('*asyncomplete#register_source')
+            "asyncomplete-buffer.vim
+            call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+                \ 'name': 'buffer',
+                \ 'whitelist': ['*'],
+                \ 'blacklist': ['go'],
+                \ 'completor': function('asyncomplete#sources#buffer#completor'),
+                \ 'config': {
+                \    'max_buffer_size': 5000000,
+                \  },
+                \ }))
+            " asyncomplete-tscompletejob.vim
+            " call asyncomplete#register_source(asyncomplete#sources#tscompletejob#get_source_options({
+                " \ 'name': 'tscompletejob',
+                " \ 'whitelist': ['typescript'],
+                " \ 'completor': function('asyncomplete#sources#tscompletejob#completor'),
+                " \ }))
+                " asyncomplete-ultisnips.vim
+             " call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+                " \ 'name': 'ultisnips',
+                " \ 'whitelist': ['*'],
+                " \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+                " \ }))
+
+            " asyncomplete-emoji.vim
+            autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
+                \ 'name': 'emoji',
+                \ 'whitelist': ['*'],
+                \ 'completor': function('asyncomplete#sources#emoji#completor'),
+                \ }))
+            " asyncomplete-file.vim
+            autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+                \ 'name': 'file',
+                \ 'whitelist': ['*'],
+                \ 'priority': 10,
+                \ 'completor': function('asyncomplete#sources#file#completor')
+                \ }))
+            " prabirshrestha/asyncomplete-necosyntax.vim
+             autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necosyntax#get_source_options({
+                \ 'name': 'necosyntax',
+                \ 'whitelist': ['*'],
+                \ 'completor': function('asyncomplete#sources#necosyntax#completor'),
+                \ }))
+             " prabirshrestha/asyncomplete-necovim.vim
+             autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
+                \ 'name': 'necovim',
+                \ 'whitelist': ['vim'],
+                \ 'completor': function('asyncomplete#sources#necovim#completor'),
+                \ }))
+        endif
+
+     " }
+
+     " coc.vim {
+        " if exists('*coc#add_extension')
+            " call coc#add_extension('coc-json', 'coc-tsserver', 'coc-rls')
+        " endif
+
+        " vim-language-server
+        let g:markdown_fenced_languages = [
+            \ 'vim',
+            \ 'help'
+            \]
+
+     " }
+
      " YCM.vim {
         " the default .ycm_extra_conf.py
         let g:ycm_global_ycm_extra_conf = expand('~/.ycm_extra_conf.py')
@@ -845,7 +917,7 @@ augroup END
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['tslint', 'tsserver'],
                         \ 'vue': ['eslint'],
-                        \ 'shell': ['shellcheck'],
+                        \ 'shell': ['shellcheck', 'language_server'],
                         \ 'c': [],
                         \ 'cpp': [],
                         \ 'java': [],
@@ -1057,6 +1129,10 @@ augroup END
         autocmd vimrc BufNewFile,BufRead,BufWritePre .jshintrc setf json
         autocmd vimrc BufNewFile,BufRead,BufWritePre .eslintrc setf json
         "nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+     " }
+
+     " jsonc {
+        autocmd vimrc FileType json syntax match Comment +\/\/.\+$+
      " }
 
      " PyMode {
