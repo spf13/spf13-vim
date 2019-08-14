@@ -335,7 +335,7 @@ augroup END
 
      " asyncomplete.vim {
 
-        if exists('*asyncomplete#register_source')
+        if g:spf13_autocomplete_method ==# 'asyncomplete'
             inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
             inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
             inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
@@ -388,73 +388,74 @@ augroup END
                 \ 'whitelist': ['vim'],
                 \ 'completor': function('asyncomplete#sources#necovim#completor'),
                 \ }))
-        endif
-
      " }
 
-     " coc.vim {
-        " if exists('*coc#add_extension')
-            " call coc#add_extension('coc-json', 'coc-tsserver', 'coc-rls')
-        " endif
+        elseif g:spf13_autocomplete_method ==# 'coc'
+             " coc.vim {
+                " if exists('*coc#add_extension')
+                    " call coc#add_extension('coc-json', 'coc-tsserver', 'coc-rls')
+                " endif
 
-        " vim-language-server
-        let g:markdown_fenced_languages = [
-            \ 'vim',
-            \ 'help'
-            \]
+                " vim-language-server
+                let g:markdown_fenced_languages = [
+                    \ 'vim',
+                    \ 'help'
+                    \]
+             " }
+        else
+             " YCM.vim {
+                " the default .ycm_extra_conf.py
+                let g:ycm_global_ycm_extra_conf = expand('~/.ycm_extra_conf.py')
+                let g:ycm_confirm_extra_conf = 0
+                let g:ycm_complete_in_comments = 1
+                let g:ycm_collect_identifiers_from_comments_and_strings = 1
+                let g:ycm_collect_identifiers_from_tags_files = 1
+                let g:ycm_seed_identifiers_with_syntax = 1
+                let g:ycm_min_num_of_chars_for_completion = 1
+                let g:ycm_min_num_identifier_candidate_chars = 0
+                let g:ycm_always_populate_location_list = 0
 
-     " }
-
-     " YCM.vim {
-        " the default .ycm_extra_conf.py
-        let g:ycm_global_ycm_extra_conf = expand('~/.ycm_extra_conf.py')
-        let g:ycm_confirm_extra_conf = 0
-        let g:ycm_complete_in_comments = 1
-        let g:ycm_collect_identifiers_from_comments_and_strings = 1
-        let g:ycm_collect_identifiers_from_tags_files = 1
-        let g:ycm_seed_identifiers_with_syntax = 1
-        let g:ycm_min_num_of_chars_for_completion = 1
-        let g:ycm_min_num_identifier_candidate_chars = 0
-        let g:ycm_always_populate_location_list = 0
-
-        " default
-        "let g:ycm_key_list_select_completion = ['<TAB>', '<DOWN>'] " with vim default: <c-n>
-        "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<UP>'] " with vim default: <c-p>
-        let g:ycm_key_invoke_completion = '<C-S-N>'
+                " default
+                "let g:ycm_key_list_select_completion = ['<TAB>', '<DOWN>'] " with vim default: <c-n>
+                "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<UP>'] " with vim default: <c-p>
+                let g:ycm_key_invoke_completion = '<C-S-N>'
 
 
-        "the default setting
-              "\ 'markdown' : 1,
-        let g:ycm_filetype_blacklist = {
-              \ 'tagbar' : 1,
-              \ 'qf' : 1,
-              \ 'notes' : 1,
-              \ 'unite' : 1,
-              \ 'text' : 1,
-              \ 'vimwiki' : 1,
-              \ 'pandoc' : 1,
-              \ 'infolog' : 1,
-              \ 'mail' : 1
-              \}
+                "the default setting
+                      "\ 'markdown' : 1,
+                let g:ycm_filetype_blacklist = {
+                      \ 'tagbar' : 1,
+                      \ 'qf' : 1,
+                      \ 'notes' : 1,
+                      \ 'unite' : 1,
+                      \ 'text' : 1,
+                      \ 'vimwiki' : 1,
+                      \ 'pandoc' : 1,
+                      \ 'infolog' : 1,
+                      \ 'mail' : 1
+                      \}
 
-        if !exists('g:ycm_semantic_triggers')
-            let g:ycm_semantic_triggers = {}
+                if !exists('g:ycm_semantic_triggers')
+                    let g:ycm_semantic_triggers = {}
+                endif
+                let g:ycm_semantic_triggers['javascript'] = ['.', '__']
+                let g:ycm_semantic_triggers['typescript'] = ['.', '__']
+
+                " for css @see https://github.com/Valloric/YouCompleteMe/issues/413
+                " : for property: value
+                " - for properties like border-radius
+                " . for collect class name from html/vue file
+                "
+                " BUT the following config will disable UltiSnips in .css/.scss/.less
+                " file
+                "
+                " let g:ycm_semantic_triggers['css'] = [ 're!^', 're!^\s+', ': ', '-' , '.' ]
+                " let g:ycm_semantic_triggers['scss'] = [ 're!^', 're!^\s+', ': ', '-', '.' ]
+                " let g:ycm_semantic_triggers['less'] = [ 're!^', 're!^\s+', ': ', '-', '.' ]
+             "}
         endif
-        let g:ycm_semantic_triggers['javascript'] = ['.', '__']
-        let g:ycm_semantic_triggers['typescript'] = ['.', '__']
 
-        " for css @see https://github.com/Valloric/YouCompleteMe/issues/413
-        " : for property: value
-        " - for properties like border-radius
-        " . for collect class name from html/vue file
-        "
-        " BUT the following config will disable UltiSnips in .css/.scss/.less
-        " file
-        "
-        " let g:ycm_semantic_triggers['css'] = [ 're!^', 're!^\s+', ': ', '-' , '.' ]
-        " let g:ycm_semantic_triggers['scss'] = [ 're!^', 're!^\s+', ': ', '-', '.' ]
-        " let g:ycm_semantic_triggers['less'] = [ 're!^', 're!^\s+', ': ', '-', '.' ]
-     "}
+
 
      "ultisnips {
         let g:UltiSnipsExpandTrigger='<C-CR>'
