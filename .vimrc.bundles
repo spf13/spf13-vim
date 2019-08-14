@@ -243,9 +243,9 @@ set nocompatible        " must be first line
                     Bundle 'lgranie/vim-lsp-bash'
 
                     " UltiSnips
-                    " Bundle 'prabirshrestha/asyncomplete-ultisnips.vim'
-                    Bundle 'thomasfaingnaert/vim-lsp-snippets'
-                    Bundle 'thomasfaingnaert/vim-lsp-ultisnips'
+                    Bundle 'prabirshrestha/asyncomplete-ultisnips.vim'
+                    " Bundle 'thomasfaingnaert/vim-lsp-snippets'
+                    " Bundle 'thomasfaingnaert/vim-lsp-ultisnips'
 
                     " Syntax
                     Bundle 'Shougo/neco-syntax'

@@ -356,12 +356,12 @@ augroup END
                 " \ 'whitelist': ['typescript'],
                 " \ 'completor': function('asyncomplete#sources#tscompletejob#completor'),
                 " \ }))
-                " asyncomplete-ultisnips.vim
-             " call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-                " \ 'name': 'ultisnips',
-                " \ 'whitelist': ['*'],
-                " \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
-                " \ }))
+             " prabirshrestha/asyncomplete-ultisnips.vim
+             call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+                \ 'name': 'ultisnips',
+                \ 'whitelist': ['*'],
+                \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+                \ }))
 
             " asyncomplete-emoji.vim
             autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
