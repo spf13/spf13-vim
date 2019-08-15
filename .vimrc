@@ -535,15 +535,6 @@ augroup END
                     nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
                     " Resume latest coc list
                     nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-                    " if exists('*coc#add_extension')
-                        " call coc#add_extension('coc-json', 'coc-tsserver', 'coc-rls')
-                    " endif
-
-                    " vim-language-server
-                    let g:markdown_fenced_languages = [
-                        \ 'vim',
-                        \ 'help'
-                        \]
              " }
              " neoclide/coc-snippets {
                     inoremap <silent><expr> <TAB>
@@ -559,6 +550,27 @@ augroup END
 
                     let g:coc_snippet_next = '<tab>'
              " }
+
+                " vim-language-server {
+                let g:markdown_fenced_languages = [
+                    \ 'vim',
+                    \ 'help'
+                    \]
+                " }
+                call coc#add_extension(
+                    \'coc-vimlsp',
+                    \'coc-sources',
+                    \'coc-tsserver',
+                    \'coc-json',
+                    \'coc-html',
+                    \'coc-css',
+                    \'coc-svg',
+                    \'coc-vetur',
+                    \'coc-python',
+                    \'coc-git',
+                    \'coc-snippets'
+                    \)
+
         else
              " YCM.vim {
                 " the default .ycm_extra_conf.py

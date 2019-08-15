@@ -216,8 +216,6 @@ set nocompatible        " must be first line
                     "
                     " JavaScript (Flow)
                     " Bundle 'asyncomplete-flow.vim'
-                    " Neosnippet
-                    " Bundle 'asyncomplete-neosnippet.vim'
                     "
                     " Omni
                     " Bundle 'asyncomplete-omni.vim'
