@@ -367,6 +367,7 @@ augroup END
             autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
                 \ 'name': 'emoji',
                 \ 'whitelist': ['*'],
+                \ 'blacklist': ['typescript', 'javascript', 'css', 'less', 'sass', 'scss'],
                 \ 'completor': function('asyncomplete#sources#emoji#completor'),
                 \ }))
             " asyncomplete-file.vim
