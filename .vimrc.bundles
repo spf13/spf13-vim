@@ -84,7 +84,7 @@ set nocompatible        " must be first line
             \ ]
     endif
 
-    let g:spf13_autocomplete_method='deoplete'
+    let g:spf13_autocomplete_method='coc'
 
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
@@ -281,6 +281,7 @@ set nocompatible        " must be first line
                     Bundle 'neoclide/coc-vetur'
                     Bundle 'neoclide/coc-python'
                     Bundle 'neoclide/coc-git'
+                    Bundle 'neoclide/coc-snippets'
 
                 else
                     " YCM is better than NeoComplCache and supertab
