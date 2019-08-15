@@ -84,7 +84,7 @@ set nocompatible        " must be first line
             \ ]
     endif
 
-    let g:spf13_autocomplete_method='asyncomplete'
+    let g:spf13_autocomplete_method='deoplete'
 
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
