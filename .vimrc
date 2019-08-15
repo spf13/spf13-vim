@@ -139,7 +139,7 @@ augroup END
         " Always show status line, even for one window
         set laststatus=2
         "The commandbar height
-        set cmdheight=2
+        set cmdheight=1
 
         " Broken down into easily includeable segments
         set statusline=%<%f\    " Filename
@@ -329,9 +329,6 @@ augroup END
      "}
 
 
-     " deoplete.vim {
-         let g:deoplete#enable_at_startup = 1
-     " }
 
      " asyncomplete.vim {
 
@@ -366,8 +363,7 @@ augroup END
             " asyncomplete-emoji.vim
             autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
                 \ 'name': 'emoji',
-                \ 'whitelist': ['*'],
-                \ 'blacklist': ['typescript', 'javascript', 'css', 'less', 'sass', 'scss'],
+                \ 'whitelist': ['gitcommit', 'markdown'],
                 \ 'completor': function('asyncomplete#sources#emoji#completor'),
                 \ }))
             " asyncomplete-file.vim
@@ -393,6 +389,7 @@ augroup END
 
         elseif g:spf13_autocomplete_method ==# 'deoplete'
             " Shougo/deoplete.nvim {
+                let g:deoplete#enable_at_startup = 1
                 call deoplete#custom#option({
                 \ 'auto_complete_delay': 200,
                 \ 'smart_case': v:true,
@@ -403,6 +400,23 @@ augroup END
                 inoremap <expr>D       pumvisible() ?  deoplete#insert_candidate(2) : 'D'
                 inoremap <expr>F       pumvisible() ?  deoplete#insert_candidate(3) : 'F'
                 inoremap <expr>G       pumvisible() ?  deoplete#insert_candidate(4) : 'G'
+            " }
+            "
+            " Shougo/echodoc.vim {
+                " To use echodoc, you must increase 'cmdheight' value.
+                set cmdheight=2
+                let g:echodoc_enable_at_startup = 1
+            " }
+
+            " carlitux/deoplete-ternjs {
+                let g:deoplete#sources#ternjs#types = 1
+                let g:deoplete#sources#ternjs#depths = 1
+                let g:deoplete#sources#ternjs#docs = 1
+                let g:deoplete#sources#ternjs#include_keywords = 1
+                let g:deoplete#sources#ternjs#filetypes = [
+                            \ 'jsx',
+                            \ 'javascript.jsx',
+                            \ ]
             " }
 
         elseif g:spf13_autocomplete_method ==# 'coc'

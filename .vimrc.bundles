@@ -456,8 +456,8 @@ set nocompatible        " must be first line
 
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
-                Bundle 'leafgarland/typescript-vim'
-                " Bundle 'HerringtonDarkholme/yats.vim'
+                " Bundle 'leafgarland/typescript-vim'
+                Bundle 'HerringtonDarkholme/yats.vim'
             endif
 
             " coffeescript
@@ -474,7 +474,7 @@ set nocompatible        " must be first line
                 Bundle 'posva/vim-vue'
                 Bundle 'FuDesign2008/vue-component.vim'
                 Bundle 'FuDesign2008/vue-snippets.vim'
-                Bundle 'FuDesign2008/element-ui.vim'
+                " Bundle 'FuDesign2008/element-ui.vim'
                 Bundle 'FuDesign2008/element-ui-snippets.vim'
             endif
 
