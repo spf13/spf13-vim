@@ -426,12 +426,8 @@ set nocompatible        " must be first line
     " Javascript
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'leshill/vim-json'
-
-            " Bundle 'pangloss/vim-javascript'
-            "Bundle 'jelera/vim-javascript-syntax'
-
-            Bundle 'othree/es.next.syntax.vim'
-            Bundle 'othree/yajs.vim'
+            Bundle 'pangloss/vim-javascript'
+            Bundle 'jelera/vim-javascript-syntax'
             Bundle 'othree/javascript-libraries-syntax.vim'
 
             "Bundle 'mattn/jscomplete-vim'
