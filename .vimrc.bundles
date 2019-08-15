@@ -177,8 +177,7 @@ set nocompatible        " must be first line
                     " jedi source for Python
                     Bundle 'deoplete-plugins/deoplete-jedi'
                     " typescript
-                    " Bundle 'mhartington/nvim-typescript'
-                    Bundle 'Quramy/tsuquyomi'
+                    Bundle 'mhartington/nvim-typescript'
                     " viml
                     Bundle 'Shougo/neco-vim'
                     " zsh
