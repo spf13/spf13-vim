@@ -348,11 +348,11 @@ augroup END
                 \  },
                 \ }))
             " asyncomplete-tscompletejob.vim
-            " call asyncomplete#register_source(asyncomplete#sources#tscompletejob#get_source_options({
-                " \ 'name': 'tscompletejob',
-                " \ 'whitelist': ['typescript'],
-                " \ 'completor': function('asyncomplete#sources#tscompletejob#completor'),
-                " \ }))
+            call asyncomplete#register_source(asyncomplete#sources#tscompletejob#get_source_options({
+                \ 'name': 'tscompletejob',
+                \ 'whitelist': ['typescript'],
+                \ 'completor': function('asyncomplete#sources#tscompletejob#completor'),
+                \ }))
              " prabirshrestha/asyncomplete-ultisnips.vim
              call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
                 \ 'name': 'ultisnips',

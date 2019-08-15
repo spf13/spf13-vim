@@ -84,7 +84,8 @@ set nocompatible        " must be first line
             \ ]
     endif
 
-    let g:spf13_autocomplete_method='ycm'
+    " asyncomplete, ycm is better
+    let g:spf13_autocomplete_method='asyncomplete'
 
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
@@ -231,6 +232,8 @@ set nocompatible        " must be first line
 
                     " css/less/sass
                     Bundle 'FuDesign2008/vim-lsp-css'
+                    " vue
+                    Bundle 'FuDesign2008/vim-lsp-vue'
 
                     " javascript
                     Bundle 'ryanolsonx/vim-lsp-javascript'
@@ -239,9 +242,9 @@ set nocompatible        " must be first line
 
 
                     " Typescript
-                    " Bundle 'runoshun/tscompletejob'
-                    " Bundle 'prabirshrestha/asyncomplete-tscompletejob.vim'
-                    Bundle 'ryanolsonx/vim-lsp-typescript'
+                    Bundle 'runoshun/tscompletejob'
+                    Bundle 'prabirshrestha/asyncomplete-tscompletejob.vim'
+                    " Bundle 'ryanolsonx/vim-lsp-typescript'
 
                     " Bash
                     Bundle 'lgranie/vim-lsp-bash'
@@ -455,8 +458,9 @@ set nocompatible        " must be first line
 
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
-                " Bundle 'leafgarland/typescript-vim'
-                Bundle 'HerringtonDarkholme/yats.vim'
+                Bundle 'leafgarland/typescript-vim'
+                " yats has UltiSnips for typescript - which is not wanted
+                " Bundle 'HerringtonDarkholme/yats.vim'
             endif
 
             " coffeescript
