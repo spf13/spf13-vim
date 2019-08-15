@@ -174,7 +174,7 @@ set nocompatible        " must be first line
                     Bundle 'Shougo/neco-syntax'
                     " javascript
                     Bundle 'carlitux/deoplete-ternjs'
-                    " python
+                    " jedi source for Python
                     Bundle 'deoplete-plugins/deoplete-jedi'
                     " typescript
                     Bundle 'mhartington/nvim-typescript'
@@ -182,7 +182,13 @@ set nocompatible        " must be first line
                     Bundle 'Shougo/neco-vim'
                     " zsh
                     Bundle 'deoplete-plugins/deoplete-zsh'
+                    " shell terminal in vim
+                    Bundle 'Shougo/deol.nvim'
+                    " asm
+                    Bundle 'deoplete-plugins/deoplete-asm'
 
+                    " echo document
+                    Bundle 'Shougo/echodoc.vim'
 
                 elseif g:spf13_autocomplete_method ==# 'asyncomplete'
                     Bundle 'prabirshrestha/asyncomplete.vim'

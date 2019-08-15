@@ -139,7 +139,7 @@ augroup END
         " Always show status line, even for one window
         set laststatus=2
         "The commandbar height
-        set cmdheight=1
+        set cmdheight=2
 
         " Broken down into easily includeable segments
         set statusline=%<%f\    " Filename
@@ -390,6 +390,20 @@ augroup END
                 \ 'completor': function('asyncomplete#sources#necovim#completor'),
                 \ }))
      " }
+
+        elseif g:spf13_autocomplete_method ==# 'deoplete'
+            " Shougo/deoplete.nvim {
+                call deoplete#custom#option({
+                \ 'auto_complete_delay': 200,
+                \ 'smart_case': v:true,
+                \ 'candidate_marks': ['A', 'S', 'D', 'F', 'G'],
+                \ })
+                inoremap <expr>A       pumvisible() ?  deoplete#insert_candidate(0) : 'A'
+                inoremap <expr>S       pumvisible() ?  deoplete#insert_candidate(1) : 'S'
+                inoremap <expr>D       pumvisible() ?  deoplete#insert_candidate(2) : 'D'
+                inoremap <expr>F       pumvisible() ?  deoplete#insert_candidate(3) : 'F'
+                inoremap <expr>G       pumvisible() ?  deoplete#insert_candidate(4) : 'G'
+            " }
 
         elseif g:spf13_autocomplete_method ==# 'coc'
              " coc.vim {
