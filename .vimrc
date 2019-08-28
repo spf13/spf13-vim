@@ -906,6 +906,13 @@ augroup END
         let g:delimitMate_expand_space = 1
         let g:delimitMate_balance_matchpairs = 1
     "}
+    " wsdjeg/ChineseLinter.vim {
+        autocmd vimrc BufWritePre *.md CheckChinese
+    "}
+    "
+    " junegunn/rainbow_parentheses.vim {
+        autocmd vimrc FileType typescript,javacript,css,scss RainbowParentheses
+    "}
 
     " coffeescript plugin {
         " http://www.vim.org/scripts/script.php?script_id=3590

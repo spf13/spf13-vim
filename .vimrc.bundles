@@ -97,6 +97,11 @@ set nocompatible        " must be first line
             Bundle 'mhinz/vim-startify'
             Bundle 'scrooloose/nerdtree'
             Bundle 'matchit.zip'
+            Bundle 'ntpeters/vim-better-whitespace'
+            Bundle 'junegunn/rainbow_parentheses.vim'
+
+            Bundle 'haya14busa/incsearch.vim'
+            Bundle 'haya14busa/incsearch-fuzzy.vim'
 
             " airline is lightweight than powerline
             Bundle 'vim-airline/vim-airline'
@@ -136,6 +141,8 @@ set nocompatible        " must be first line
             " Bundle 'FuDesign2008/ToggleNumber.vim'
             Bundle 'myusuf3/numbers.vim'
             Bundle 'FuDesign2008/style.vim'
+
+            Bundle 'wsdjeg/ChineseLinter.vim'
 
             "Bundle 'Yggdroot/indentLine'
             "Bundle 'nathanaelkane/vim-indent-guides'
@@ -362,6 +369,8 @@ set nocompatible        " must be first line
             Bundle 'junkblocker/patchreview-vim'
             Bundle 'chrisbra/vim-diff-enhanced'
             Bundle 'Chiel92/vim-autoformat'
+
+            Bundle 'KabbAmine/zeavim.vim'
 
             "if !g:is_win
                 "Bundle 'tpope/vim-fugitive'
