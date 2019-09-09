@@ -1096,7 +1096,7 @@ augroup END
             let g:ale_enabled = 0
         else
             let g:ale_linters = {
-                        \ 'markdown': ['remark-lint'],
+                        \ 'markdown': ['textlint', 'remark-lint'],
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['tslint', 'tsserver'],
                         \ 'vue': ['eslint, vls'],
@@ -1130,7 +1130,7 @@ augroup END
             let g:ale_fix_on_save = 1
             let g:ale_javascript_prettier_use_local_config = 1
             let g:ale_fixers = {
-                        \ 'markdown': ['remark-lint', 'prettier'],
+                        \ 'markdown': ['textlint', 'prettier'],
                         \ 'html': ['prettier'],
                         \ 'json': ['prettier'],
                         \ 'css': ['prettier'],
