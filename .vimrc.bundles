@@ -107,6 +107,8 @@ set nocompatible        " must be first line
             Bundle 'vim-airline/vim-airline'
             Bundle 'vim-airline/vim-airline-themes'
 
+            Bundle 'vim-scripts/LanguageTool'
+
             "Bundle 'Lokaltog/vim-easymotion'
             "NOTE: csapprox cause errors
             "Bundle 'godlygeek/csapprox'
