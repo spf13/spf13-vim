@@ -142,8 +142,6 @@ set nocompatible        " must be first line
             Bundle 'myusuf3/numbers.vim'
             Bundle 'FuDesign2008/style.vim'
 
-            Bundle 'wsdjeg/ChineseLinter.vim'
-
             "Bundle 'Yggdroot/indentLine'
             "Bundle 'nathanaelkane/vim-indent-guides'
 

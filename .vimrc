@@ -906,10 +906,7 @@ augroup END
         let g:delimitMate_expand_space = 1
         let g:delimitMate_balance_matchpairs = 1
     "}
-    " wsdjeg/ChineseLinter.vim {
-        autocmd vimrc BufWritePre *.md CheckChinese
-    "}
-    "
+
     " junegunn/rainbow_parentheses.vim {
         autocmd vimrc FileType typescript,javacript,css,scss RainbowParentheses
     "}
@@ -1099,6 +1096,7 @@ augroup END
             let g:ale_enabled = 0
         else
             let g:ale_linters = {
+                        \ 'markdown': ['remark-lint'],
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['tslint', 'tsserver'],
                         \ 'vue': ['eslint, vls'],
@@ -1132,7 +1130,7 @@ augroup END
             let g:ale_fix_on_save = 1
             let g:ale_javascript_prettier_use_local_config = 1
             let g:ale_fixers = {
-                        \ 'markdown': ['prettier'],
+                        \ 'markdown': ['remark-lint', 'prettier'],
                         \ 'html': ['prettier'],
                         \ 'json': ['prettier'],
                         \ 'css': ['prettier'],
