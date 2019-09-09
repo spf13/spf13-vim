@@ -1144,6 +1144,10 @@ augroup END
         endif
 
     " }
+    " vim-scripts/LanguageTool {
+        let g:languagetool_jar=expand('~/workspace/LanguageTool-4.6/languagetool-commandline.jar')
+
+    " }
 
     " PIV {
         "let g:DisableAutoPHPFolding = 0
