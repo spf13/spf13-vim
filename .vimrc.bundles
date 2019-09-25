@@ -353,6 +353,7 @@ set nocompatible        " must be first line
             " Bundle 'scrooloose/syntastic'
             " Bundle 'mtscout6/syntastic-local-eslint.vim'
             Bundle 'w0rp/ale'
+            Bundle 'FuDesign2008/ale-shim.vim'
 
             "Bundle 'mattn/webapi-vim'
             "Bundle 'mattn/gist-vim'
