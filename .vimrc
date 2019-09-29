@@ -347,7 +347,17 @@ augroup END
                 \    'max_buffer_size': 5000000,
                 \  },
                 \ }))
-            " asyncomplete-tscompletejob.vim
+            " prabirshrestha/asyncomplete-flow.vim
+            autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#flow#get_source_options({
+            \ 'name': 'flow',
+            \ 'whitelist': ['javascript'],
+            \ 'completor': function('asyncomplete#sources#flow#completor'),
+            \ 'config': {
+            \    'show_typeinfo': 1
+            \  },
+            \ }))
+            "
+            " prabirshrestha/asyncomplete-tscompletejob.vim
             call asyncomplete#register_source(asyncomplete#sources#tscompletejob#get_source_options({
                 \ 'name': 'tscompletejob',
                 \ 'whitelist': ['typescript'],

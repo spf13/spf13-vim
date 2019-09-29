@@ -223,10 +223,10 @@ set nocompatible        " must be first line
                     " Bundle 'asyncomplete-gocode.vim'
                     "
                     " JavaScript (Flow)
-                    " Bundle 'asyncomplete-flow.vim'
+                    Bundle 'prabirshrestha/asyncomplete-flow.vim'
                     "
-                    " Omni
-                    " Bundle 'asyncomplete-omni.vim'
+                    "
+                    Bundle 'yami-beta/asyncomplete-omni.vim'
 
                     " PivotalTracker stories
                     " Bundle 'asyncomplete-pivotaltracker.vim'
@@ -242,8 +242,6 @@ set nocompatible        " must be first line
                     " vue
                     Bundle 'FuDesign2008/vim-lsp-vue'
 
-                    " javascript
-                    Bundle 'ryanolsonx/vim-lsp-javascript'
                     " python
                     Bundle 'ryanolsonx/vim-lsp-python'
 
