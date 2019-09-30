@@ -665,10 +665,8 @@ augroup END
         if !g:is_win
             function! ConfigPlanPlugin()
                 let g:p_edit_files = {
-                    \ 'book': expand('~/百度云同步盘/books'),
-                    \ 'todo': expand('~/workspace/github2008/philosophy/plan/fuyg-todo'),
-                    \ 'dev' : expand('~/workspace/github2008/philosophy/plan/family-dev'),
-                    \ 'pdp' : expand('~/workspace/github2008/philosophy/plan/pdp'),
+                    \ 'books': expand('~/workspace/github2008/philosophy/books'),
+                    \ 'home' : expand('~/workspace/github2008/philosophy/home'),
                     \ 'pwd' : expand('~/Dropbox/common/pwd.markdown'),
                     \ 'youdao': expand('~/Dropbox/common/youdao.mkd')
                     \}
