@@ -404,8 +404,6 @@ set nocompatible        " must be first line
 
                 "snippets
                 Bundle 'honza/vim-snippets'
-                "Bundle 'chrisgillis/vim-bootstrap3-snippets'
-                Bundle 'FuDesign2008/fu-snippets'
             endif
 
         endif
@@ -428,6 +426,7 @@ set nocompatible        " must be first line
             Bundle 'nvie/vim-flake8'
             " document
             Bundle 'fs111/pydoc.vim'
+            Bundle 'FuDesign2008/python-snippets'
 
         endif
 
