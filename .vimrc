@@ -666,7 +666,6 @@ augroup END
             function! ConfigPlanPlugin()
                 let g:p_edit_files = {
                     \ 'books': expand('~/workspace/github2008/philosophy/books'),
-                    \ 'home' : expand('~/workspace/github2008/philosophy/home'),
                     \ 'pwd' : expand('~/Dropbox/common/pwd.markdown'),
                     \ 'youdao': expand('~/Dropbox/common/youdao.mkd')
                     \}
