@@ -666,9 +666,9 @@ augroup END
             function! ConfigPlanPlugin()
                 let g:p_edit_files = {
                     \ 'book': expand('~/百度云同步盘/books'),
-                    \ 'todo': expand('~/Dropbox/plan/fuyg-todo'),
-                    \ 'dev' : expand('~/Dropbox/plan/family-dev'),
-                    \ 'pdp' : expand('~/Dropbox/plan/pdp'),
+                    \ 'todo': expand('~/workspace/github2008/philosophy/plan/fuyg-todo'),
+                    \ 'dev' : expand('~/workspace/github2008/philosophy/plan/family-dev'),
+                    \ 'pdp' : expand('~/workspace/github2008/philosophy/plan/pdp'),
                     \ 'pwd' : expand('~/Dropbox/common/pwd.markdown'),
                     \ 'youdao': expand('~/Dropbox/common/youdao.mkd')
                     \}
@@ -678,9 +678,9 @@ augroup END
                 let l:cur_month = strftime('%m')
                 let l:cur_month = l:cur_year . '-' . l:cur_month
 
-                let l:plan_year_path = '~/Dropbox/plan/' . l:cur_year
+                let l:plan_year_path = '~/workspace/github2008/philosophy/plan/' . l:cur_year
                 let l:plan_file_pattern = l:plan_year_path .'/' . l:cur_month . '/plan.*'
-                "  ~/Dropbox/plan/2013/2013-04/2013-04.*
+                "  ~/workspace/github2008/philosophy/plan/2013/2013-04/2013-04.*
                 "  the plan file may has different file extension
                 let l:plan_file_pattern_old = l:plan_year_path .'/' . l:cur_month . '/' . l:cur_month . '.*'
                 let l:diary_file_pattern = l:plan_year_path .'/' . l:cur_month . '/diary.*'
