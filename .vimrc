@@ -205,7 +205,7 @@
         set laststatus=2
 
         " Broken down into easily includeable segments
-        set statusline=%<%f\                     " Filename
+        set statusline=%<%F\                     " Filename,%f->%F
         set statusline+=%w%h%m%r                 " Options
         if !exists('g:override_spf13_bundles')
             set statusline+=%{fugitive#statusline()} " Git Hotness
