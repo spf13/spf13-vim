@@ -371,7 +371,11 @@
     if !exists('g:spf13_no_keyfixes')
         if has("user_commands")
             command! -bang -nargs=* -complete=file E e<bang> <args>
-            command! -bang -nargs=* -complete=file W w<bang> <args>
+            "command! -bang -nargs=* -complete=file W w<bang> <args>
+            "
+            " Sample command W
+            "
+            command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
             command! -bang -nargs=* -complete=file Wq wq<bang> <args>
             command! -bang -nargs=* -complete=file WQ wq<bang> <args>
             command! -bang Wa wa<bang>
