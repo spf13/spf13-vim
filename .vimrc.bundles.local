@@ -35,6 +35,7 @@ Bundle 'itchyny/vim-cursorword'
 
 " Bundle 'file://~/.vim/bundle/gutentags_plus'
 Bundle 'yaoyz-yuneec/gutentags_plus'
+Bundle 'ludovicchabant/vim-gutentags'
 Bundle 'sainnhe/vim-color-forest-night'
 Bundle 'isene/hyperlist.vim'
 Bundle 'voldikss/vim-translate-me'
