@@ -1105,7 +1105,7 @@ augroup END
             let g:ale_linters = {
                         \ 'markdown': ['textlint', 'remark-lint'],
                         \ 'javascript': ['eslint'],
-                        \ 'typescript': ['tslint', 'eslint', 'tsserver'],
+                        \ 'typescript': ['tslint', 'tsserver'],
                         \ 'vue': ['eslint, vls'],
                         \ 'shell': ['shellcheck', 'language_server'],
                         \ 'c': [],
@@ -1144,7 +1144,7 @@ augroup END
                         \ 'less': ['prettier'],
                         \ 'scss': ['prettier'],
                         \ 'javascript': ['eslint', 'prettier'],
-                        \ 'typescript': ['tslint', 'eslint', 'prettier'],
+                        \ 'typescript': ['tslint', 'prettier'],
                         \ 'vue': ['eslint', 'prettier'],
                         \ 'c': ['clang-format']
                         \}
