@@ -665,6 +665,8 @@ augroup END
         if !g:is_win
             function! ConfigPlanPlugin()
                 let g:p_edit_files = {
+                    \ 'log': expand('~/workspace/github2008/philosophy/log'),
+                    \ 'vlog': expand('~/workspace/github2008/philosophy/investing/log'),
                     \ 'books': expand('~/workspace/github2008/philosophy/books'),
                     \ 'pwd' : expand('~/Dropbox/common/pwd.markdown'),
                     \ 'youdao': expand('~/Dropbox/common/youdao.mkd')
@@ -710,9 +712,6 @@ augroup END
                 let g:plan_week_keypoint = [
                     \ '1. 技术博客;',
                     \ '    - 每周一篇;',
-                    \ '1. 知乎;',
-                    \ '    - 每周一答;',
-                    \ '    - 每天一赞一评;',
                     \ '1. 微信朋友圈;',
                     \ '    - 每天一发;',
                     \ '    - 每天一赞一评;'
