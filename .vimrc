@@ -328,6 +328,9 @@ augroup END
         "let g:SuperTabLongestEnhanced = 1
      "}
 
+     " 907th/vim-auto-save {
+         let g:auto_save = 1
+     "}
 
 
      " asyncomplete.vim {
