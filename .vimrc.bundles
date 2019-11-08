@@ -100,7 +100,8 @@ set nocompatible        " must be first line
             Bundle 'ntpeters/vim-better-whitespace'
             Bundle 'junegunn/rainbow_parentheses.vim'
 
-            Bundle '907th/vim-auto-save'
+            " Do NOT use, for `:ALEFix` will be run before save
+            " Bundle '907th/vim-auto-save'
 
             Bundle 'haya14busa/incsearch.vim'
             Bundle 'haya14busa/incsearch-fuzzy.vim'
