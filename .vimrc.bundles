@@ -553,11 +553,13 @@ set nocompatible        " must be first line
 
             Bundle 'FuDesign2008/mkdInput.vim'
             Bundle 'FuDesign2008/mermaidViewer.vim'
+            Bundle 'FuDesign2008/MarkdownViewer.vim'
+            Bundle 'FuDesign2008/markdown-snippets.vim'
 
-            " Bundle 'FuDesign2008/MarkdownViewer.vim'
             Bundle 'iamcco/markdown-preview.nvim'
             Bundle 'mzlogin/vim-markdown-toc'
             Bundle 'plasticboy/vim-markdown'
+
 
 
             "Bundle 'vim-scripts/Figlet.vim'
