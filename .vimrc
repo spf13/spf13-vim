@@ -671,8 +671,9 @@ augroup END
                     \ 'log': expand('~/workspace/github2008/philosophy/log'),
                     \ 'vlog': expand('~/workspace/github2008/philosophy/investing/log'),
                     \ 'books': expand('~/workspace/github2008/philosophy/books'),
-                    \ 'pwd' : expand('~/Dropbox/common/pwd.markdown'),
-                    \ 'youdao': expand('~/Dropbox/common/youdao.mkd')
+                    \ 'pwd' : expand('~/Dropbox/common/pwd.md'),
+                    \ 'yin' : expand('~/Dropbox/common/yin.md'),
+                    \ 'youdao': expand('~/Dropbox/common/youdao.md')
                     \}
 
                 let l:cur_year = strftime('%Y')
