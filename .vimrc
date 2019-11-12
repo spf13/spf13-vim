@@ -1109,7 +1109,7 @@ augroup END
                         \ 'markdown': ['textlint', 'remark-lint'],
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['tslint', 'tsserver'],
-                        \ 'vue': ['eslint, vls'],
+                        \ 'vue': ['eslint', 'vls'],
                         \ 'shell': ['shellcheck', 'language_server'],
                         \ 'c': [],
                         \ 'cpp': [],
