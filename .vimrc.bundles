@@ -407,6 +407,8 @@ set nocompatible        " must be first line
 
                 "snippets
                 Bundle 'honza/vim-snippets'
+
+                Bundle 'FuDesign2008/viml-snippets.vim'
             endif
 
         endif
