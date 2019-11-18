@@ -798,7 +798,7 @@ augroup END
     "}
 
 
-    " FuDesign2008/randomColor.vim {
+    " FuDesign2008/randomTheme.vim {
         "let g:favorite_color_schemes = ['pyte',
                         "\ 'summerfruit',
                         "\ 'codeschool',
@@ -835,7 +835,7 @@ augroup END
                         \ 'OceanicNext'
                         \]
 
-        let g:random_color_start = 2
+        let g:random_theme_start = 2
         if !has('gui_running')
             colo lucius
         endif
