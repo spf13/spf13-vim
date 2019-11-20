@@ -99,6 +99,11 @@ augroup END
         endif
 
     " }
+    "
+    " setting up for diff mode {
+        set diffopt-=horizontal
+        set diffopt+=vertical
+    " }
 " }
 "
 " File {
