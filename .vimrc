@@ -181,6 +181,9 @@ augroup END
     set scrolloff=3                 " minimum lines to keep above and below cursor
     set lazyredraw                  " for performance
 
+    " Do not use fold
+    set nofoldenable
+
     "making folding enabled for the file that has more than 1000 lines
     function! SetFolding()
         let l:lines = line('$')
@@ -1175,6 +1178,10 @@ augroup END
         "MarkdownViewer.vim
         let g:mdv_html = 0
     " }
+
+    " plasticboy/vim-markdown {
+        let g:vim_markdown_folding_disabled = 1
+    "}
 
 
     "easytags {
