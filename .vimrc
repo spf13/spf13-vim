@@ -679,6 +679,7 @@ augroup END
                     \ 'log': expand('~/workspace/github2008/philosophy/log'),
                     \ 'vlog': expand('~/workspace/github2008/philosophy/investing/log'),
                     \ 'fang': expand('~/workspace/github2008/philosophy/fang'),
+                    \ 'interp': expand('~/workspace/github2008/philosophy/interp'),
                     \ 'books': expand('~/workspace/github2008/philosophy/books'),
                     \ 'pwd' : expand('~/Dropbox/common/pwd.md'),
                     \ 'yin' : expand('~/Dropbox/common/yin.md'),
