@@ -1179,7 +1179,28 @@ augroup END
         "let g:NERDShutUp=1
         "let b:match_ignorecase = 1
         "MarkdownViewer.vim
-        let g:mdv_html = 0
+        let g:mdv_config_pack = {
+            \  'github': {
+                    \ 'theme': 'github2',
+                    \ 'highlight_code': 1,
+                    \ 'code_theme': 'default',
+                    \ 'mermaid_img': 0
+                \},
+            \  'weixin': {
+                    \ 'theme': 'github2',
+                    \ 'highlight_code': 1,
+                    \ 'code_theme': 'default',
+                    \ 'mermaid_img': 1
+                \},
+            \ 'vue': {
+                    \ 'theme': 'vue',
+                    \ 'highlight_code': 1,
+                    \ 'code_theme': 'default',
+                    \ 'mermaid_img': 0
+                \}
+            \ }
+
+
     " }
 
     " plasticboy/vim-markdown {
