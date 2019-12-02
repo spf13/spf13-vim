@@ -681,6 +681,8 @@ augroup END
                     \ 'fang': expand('~/workspace/github2008/philosophy/fang'),
                     \ 'interp': expand('~/workspace/github2008/philosophy/interp'),
                     \ 'books': expand('~/workspace/github2008/philosophy/books'),
+                    \ 'kid': expand('~/workspace/github2008/philosophy/kid'),
+                    \ 'edu': expand('~/workspace/github2008/philosophy/edu'),
                     \ 'writing': expand('~/workspace/github2008/philosophy/writing'),
                     \ 'pwd' : expand('~/Dropbox/common/pwd.md'),
                     \ 'yin' : expand('~/Dropbox/common/yin.md'),
