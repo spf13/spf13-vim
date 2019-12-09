@@ -676,15 +676,16 @@ augroup END
         if !g:is_win
             function! ConfigPlanPlugin()
                 let g:p_edit_files = {
-                    \ 'log': expand('~/workspace/github2008/philosophy/log'),
-                    \ 'vlog': expand('~/workspace/github2008/philosophy/investing/log'),
-                    \ 'fang': expand('~/workspace/github2008/philosophy/fang'),
-                    \ 'interp': expand('~/workspace/github2008/philosophy/interp'),
                     \ 'books': expand('~/workspace/github2008/philosophy/books'),
-                    \ 'kaixin': expand('~/workspace/github2008/philosophy/kaixin'),
                     \ 'edu': expand('~/workspace/github2008/philosophy/edu'),
-                    \ 'writing': expand('~/workspace/github2008/philosophy/writing'),
+                    \ 'fang': expand('~/workspace/github2008/philosophy/fang'),
+                    \ 'holiday': expand('~/workspace/github2008/philosophy/holiday'),
+                    \ 'interp': expand('~/workspace/github2008/philosophy/interp'),
+                    \ 'kaixin': expand('~/workspace/github2008/philosophy/kaixin'),
+                    \ 'log': expand('~/workspace/github2008/philosophy/log'),
                     \ 'pwd' : expand('~/Dropbox/common/pwd.md'),
+                    \ 'vlog': expand('~/workspace/github2008/philosophy/investing/log'),
+                    \ 'writing': expand('~/workspace/github2008/philosophy/writing'),
                     \ 'yin' : expand('~/Dropbox/common/yin.md'),
                     \ 'youdao': expand('~/Dropbox/common/youdao.md')
                     \}
