@@ -684,6 +684,7 @@ augroup END
                     \ 'kaixin': expand('~/workspace/github2008/philosophy/kaixin'),
                     \ 'log': expand('~/workspace/github2008/philosophy/log'),
                     \ 'pwd' : expand('~/Dropbox/common/pwd.md'),
+                    \ 'projects': expand('~/workspace/github2008/philosophy/projects'),
                     \ 'vlog': expand('~/workspace/github2008/philosophy/investing/log'),
                     \ 'writing': expand('~/workspace/github2008/philosophy/writing'),
                     \ 'yin' : expand('~/Dropbox/common/yin.md'),
