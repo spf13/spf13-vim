@@ -1037,7 +1037,19 @@ augroup END
         \ '.jshintrc.yaml',
         \ '.jshintrc.yml'
         \ ], 5)
-    let g:use_jshint = stridx(g:find_file_path, 'jshintrc') > -1
+    let g:use_jshint_for_javascript = stridx(g:find_file_path, 'jshintrc') > -1
+
+    let g:find_file_path = FindFilesUp([
+        \ 'tslint.json',
+        \ 'tslint.yaml',
+        \ '.eslintrc',
+        \ '.eslintrc.json',
+        \ '.eslintrc.js',
+        \ '.eslintrc.yaml',
+        \ '.eslintrc.yml'
+        \ ], 5)
+    let g:use_tslint_for_typescript = stridx(g:find_file_path, 'tslint') > -1
+
     unlet g:find_file_path
 
     "Syntastic {
@@ -1077,7 +1089,7 @@ augroup END
             let g:syntastic_java_javac_config_file = g:find_file_path
         endif
 
-        if g:use_jshint
+        if g:use_jshint_for_javascript
             let g:syntastic_javascript_checkers = ['jshint', 'tern-lint']
         else
             let g:syntastic_javascript_checkers = ['eslint', 'tern-lint']
@@ -1124,17 +1136,13 @@ augroup END
             let g:ale_linters = {
                         \ 'markdown': ['textlint', 'remark-lint'],
                         \ 'javascript': ['eslint'],
-                        \ 'typescript': ['tslint', 'tsserver'],
+                        \ 'typescript': ['eslint', 'tsserver'],
                         \ 'vue': ['eslint', 'vls'],
                         \ 'shell': ['shellcheck', 'language_server'],
                         \ 'c': [],
                         \ 'cpp': [],
                         \ 'java': [],
                         \ }
-
-            if g:use_jshint
-                let g:ale_linters['javascript'] = ['jshint']
-            endif
 
             let g:ale_sign_column_always = 1
             let g:ale_open_list = 1
@@ -1163,10 +1171,21 @@ augroup END
                         \ 'less': ['prettier'],
                         \ 'scss': ['prettier'],
                         \ 'javascript': ['eslint', 'prettier'],
-                        \ 'typescript': ['tslint', 'prettier'],
+                        \ 'typescript': ['eslint', 'prettier'],
                         \ 'vue': ['eslint', 'prettier'],
                         \ 'c': ['clang-format']
                         \}
+
+            if g:use_jshint_for_javascript
+                let g:ale_linters['javascript'] = ['jshint']
+                let g:ale_fixers['javascript'] = ['prettier']
+            endif
+
+            if g:use_tslint_for_typescript
+                let g:ale_linters['typescript'] = ['tslint', 'tsserver']
+                let g:ale_fixers['typescript'] = ['tslint', 'prettier']
+            endif
+
         endif
 
     " }
