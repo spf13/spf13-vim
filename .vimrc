@@ -676,7 +676,8 @@ augroup END
         if !g:is_win
             function! ConfigPlanPlugin()
                 let g:p_edit_files = {
-                    \ 'books': expand('~/workspace/github2008/philosophy/books'),
+                    \ 'read': expand('~/workspace/github2008/philosophy/read'),
+                    \ 'write': expand('~/workspace/github2008/philosophy/write'),
                     \ 'edu': expand('~/workspace/github2008/philosophy/edu'),
                     \ 'interp': expand('~/workspace/github2008/philosophy/interp'),
                     \ 'small-family': expand('~/workspace/github2008/philosophy/small-family'),
@@ -684,10 +685,9 @@ augroup END
                         \ 'fang': expand('~/workspace/github2008/philosophy/small-family/fang'),
                         \ 'holiday': expand('~/workspace/github2008/philosophy/small-family/holiday'),
                     \ 'log': expand('~/workspace/github2008/philosophy/log'),
-                    \ 'pwd' : expand('~/Dropbox/common/pwd.md'),
-                    \ 'projects': expand('~/workspace/github2008/philosophy/projects'),
                     \ 'vlog': expand('~/workspace/github2008/philosophy/investing/log'),
-                    \ 'writing': expand('~/workspace/github2008/philosophy/writing'),
+                    \ 'projects': expand('~/workspace/github2008/philosophy/projects'),
+                    \ 'pwd' : expand('~/Dropbox/common/pwd.md'),
                     \ 'yin' : expand('~/Dropbox/common/yin.md'),
                     \ 'youdao': expand('~/Dropbox/common/youdao.md')
                     \}
