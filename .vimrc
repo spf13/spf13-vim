@@ -683,6 +683,7 @@ augroup END
                     \ 'small-family': expand('~/workspace/github2008/philosophy/small-family'),
                         \ 'kaixin': expand('~/workspace/github2008/philosophy/small-family/kaixin'),
                         \ 'fang': expand('~/workspace/github2008/philosophy/small-family/fang'),
+                        \ 'che': expand('~/workspace/github2008/philosophy/small-family/che'),
                         \ 'holiday': expand('~/workspace/github2008/philosophy/small-family/holiday'),
                     \ 'log': expand('~/workspace/github2008/philosophy/log'),
                     \ 'vlog': expand('~/workspace/github2008/philosophy/investing/log'),
