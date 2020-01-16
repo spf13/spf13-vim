@@ -679,6 +679,7 @@ augroup END
                     \ 'read': expand('~/workspace/github2008/philosophy/read'),
                     \ 'write': expand('~/workspace/github2008/philosophy/write'),
                     \ 'edu': expand('~/workspace/github2008/philosophy/edu'),
+                    \ 'beijing': expand('~/workspace/github2008/philosophy/beijing'),
                     \ 'interp': expand('~/workspace/github2008/philosophy/interp'),
                     \ 'small-family': expand('~/workspace/github2008/philosophy/small-family'),
                         \ 'kaixin': expand('~/workspace/github2008/philosophy/small-family/kaixin'),
