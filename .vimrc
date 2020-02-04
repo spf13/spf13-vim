@@ -225,6 +225,9 @@
     set backspace=indent,eol,start  " Backspace for dummies
     set linespace=0                 " No extra spaces between rows
     set number                      " Line numbers on
+    set relativenumber              " Relative numbers on, for better displacement in buffer
+    set nocursorcolumn              " for better performance on each buffer
+    set colorcolumn=90              " limit for better reading code
     set showmatch                   " Show matching brackets/parenthesis
     set incsearch                   " Find as you type search
     set hlsearch                    " Highlight search terms
@@ -240,7 +243,14 @@
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
-" }
+    " set relative number for any buffer opened
+    augroup numbertoggle
+        autocmd!
+        autocmd BufNew * set relativenumber
+        autocmd BufNewFile * set relativenumber
+        autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+        autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+    augroup END
 
 " Formatting {
 
@@ -433,8 +443,7 @@
     vnoremap . :normal .<CR>
 
     " For when you forget to sudo.. Really Write the file.
-    cmap w!! w !sudo tee % >/dev/null
-
+    cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
     " Some helpers to edit mode
     " http://vimcasts.org/e/14
     cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
@@ -625,6 +634,7 @@
     " Session List {
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
         if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
+            let sessionman_save_on_exit=1
             nmap <leader>sl :SessionList<CR>
             nmap <leader>ss :SessionSave<CR>
             nmap <leader>sc :SessionClose<CR>
@@ -701,6 +711,12 @@
     " Rainbow {
         if isdirectory(expand("~/.vim/bundle/rainbow/"))
             let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+            if isdirectory(expand("~/.vim/bundle/vim-devicons/")) " this avoid any conflict with NERDTree
+                let g:rainbow_conf = {
+                            \    'separately': {
+                            \    'nerdtree': 0,
+                            \   }}
+            endif
         endif
     "}
 
@@ -1036,11 +1052,10 @@
         endif
     " }
 
-    " indent_guides {
-        if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
-            let g:indent_guides_start_level = 2
-            let g:indent_guides_guide_size = 1
-            let g:indent_guides_enable_on_vim_startup = 1
+    " indentLine {
+        if isdirectory(expand("~/.vim/bundle/indentLine/"))
+            let g:indentLine_setColors = 0
+            let g:indentLine_char = '┊'
         endif
     " }
 

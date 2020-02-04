@@ -114,7 +114,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'jistr/vim-nerdtree-tabs'
             Plug 'flazz/vim-colorschemes'
             Plug 'mbbill/undotree'
-            Plug 'nathanaelkane/vim-indent-guides'
+            Plug 'Yggdroot/indentLine'
             if !exists('g:spf13_no_views')
                 Plug 'vim-scripts/restore_view.vim'
             endif
