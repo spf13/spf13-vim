@@ -1,5 +1,5 @@
 # Background
-This branch feature/vim-plug is an attempt to replace [Vundle](https://github.com/VundleVim/Vundle.vim) with [Vim Plug](https://github.com/junegunn/vim-plug)  
+This branch 4.0 is an attempt to replace [Vundle](https://github.com/VundleVim/Vundle.vim) with [Vim Plug](https://github.com/junegunn/vim-plug)  
 The main reason being able to install/update/remove of the plugins asynchronously 
 
 .vimrc has included .vim_plug.unplug which has the UnPlug command  
