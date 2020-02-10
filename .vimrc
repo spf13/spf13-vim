@@ -660,44 +660,37 @@
         endif
     " }
 
-    " ctrlp {
-        if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
-            let g:ctrlp_working_path_mode = 'ra'
-            nnoremap <silent> <D-t> :CtrlP<CR>
-            nnoremap <silent> <D-r> :CtrlPMRU<CR>
-            let g:ctrlp_custom_ignore = {
-                \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-                \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+    " FZF {
+        if isdirectory(expand("~/.vim/bundle/fzf.vim/"))
+            let g:fzf_command_prefix = 'Fzf'
+            " [Buffers] Jump to the existing window if possible
+            let g:fzf_buffers_jump = 1
+            " [[B]Commits] Customize the options used by 'git log':
+            let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
+            " Customs Mappings
+            " Files (similar to :FZF)
+            nnoremap <silent> <leader>ff :FzfFiles<CR>
+            " Git files (git ls-files)
+            nnoremap <silent> <leader>fg :FzfGFiles<CR>
+            " Git files (git status)
+            nnoremap <silent> <leader>fg? :FzfGFiles?<CR>
+            " Open buffers
+            nnoremap <silent> <leader>fb :FzfBuffers<CR>
+            " Lines in loaded buffers
+            nnoremap <silent> <leader>fl :FzfLines<CR>
+            " Lines in the current buffer
+            nnoremap <silent> <leader>fbl :FzfBLines<CR>
+            " v:oldfiles and open buffers
+            nnoremap <silent> <leader>fru :FzfHistory<CR>
+            " Command history
+            nnoremap <silent> <leader>fch :FzfHistory:<CR>
+            " Search history
+            nnoremap <silent> <leader>fsh :FzfHistory/<CR>
+            
+            " ag search result (ALT-A to select all, ALT-D to deselect all)
             if executable('ag')
-                let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
-            elseif executable('ack-grep')
-                let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
-            elseif executable('ack')
-                let s:ctrlp_fallback = 'ack %s --nocolor -f'
-            " On Windows use "dir" as fallback command.
-            elseif WINDOWS()
-                let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
-            else
-                let s:ctrlp_fallback = 'find %s -type f'
-            endif
-            if exists("g:ctrlp_user_command")
-                unlet g:ctrlp_user_command
-            endif
-            let g:ctrlp_user_command = {
-                \ 'types': {
-                    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-                \ },
-                \ 'fallback': s:ctrlp_fallback
-            \ }
-
-            if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
-                " CtrlP extensions
-                let g:ctrlp_extensions = ['funky']
-
-                "funky
-                nnoremap <Leader>fu :CtrlPFunky<Cr>
+                nnoremap <silent> <leader>fag :FzfAg<CR>
             endif
         endif
     "}
@@ -1054,7 +1047,6 @@
 
     " indentLine {
         if isdirectory(expand("~/.vim/bundle/indentLine/"))
-            let g:indentLine_setColors = 0
             let g:indentLine_char = '┊'
         endif
     " }

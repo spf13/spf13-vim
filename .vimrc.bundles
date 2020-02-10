@@ -95,8 +95,8 @@ call plug#begin('~/.vim/bundle')
             Plug 'tpope/vim-repeat'
             Plug 'rhysd/conflict-marker.vim'
             Plug 'jiangmiao/auto-pairs'
-            Plug 'ctrlpvim/ctrlp.vim'
-            Plug 'tacahiroy/ctrlp-funky'
+            Plug 'junegunn/fzf', { 'dir': '~/.fzf'   'do': './install --bin' }
+            Plug 'junegunn/fzf.vim'
             Plug 'terryma/vim-multiple-cursors'
             Plug 'vim-scripts/sessionman.vim'
             Plug 'vim-scripts/matchit.zip'
@@ -251,6 +251,8 @@ call plug#begin('~/.vim/bundle')
     " Ruby {
         if count(g:spf13_bundle_groups, 'ruby')
             Plug 'tpope/vim-rails'
+            Plug 'vim-ruby/vim-ruby'
+            Plug 'ngmy/vim-rubocop'
             Plug 'tpope/vim-cucumber'
             Plug 'quentindecock/vim-cucumber-align-pipes'
             let g:rubycomplete_buffer_loading = 1
