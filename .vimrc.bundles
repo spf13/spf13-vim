@@ -95,7 +95,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'tpope/vim-repeat'
             Plug 'rhysd/conflict-marker.vim'
             Plug 'jiangmiao/auto-pairs'
-            Plug 'junegunn/fzf', { 'dir': '~/.fzf'   'do': './install --bin' }
+            Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
             Plug 'junegunn/fzf.vim'
             Plug 'terryma/vim-multiple-cursors'
             Plug 'vim-scripts/sessionman.vim'
