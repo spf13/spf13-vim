@@ -695,9 +695,9 @@
         endif
     "}
 
-    " TagBar {
-        if isdirectory(expand("~/.vim/bundle/tagbar/"))
-            nnoremap <silent> <leader>tt :TagbarToggle<CR>
+    " Vista.vim {
+        if isdirectory(expand("~/.vim/bundle/vista.vim/"))
+            nnoremap <silent> <leader>tt :Vista!!<CR>
         endif
     "}
 

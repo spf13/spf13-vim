@@ -150,7 +150,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'godlygeek/tabular'
             Plug 'luochen1990/rainbow'
             if executable('ctags')
-                Plug 'majutsushi/tagbar'
+                Plug 'liuchengxu/vista.vim'
             endif
         endif
     " }
