@@ -374,14 +374,14 @@ set nocompatible        " must be first line
 
             Bundle 'KabbAmine/zeavim.vim'
 
-            "if !g:is_win
-                "Bundle 'tpope/vim-fugitive'
+            if !g:is_win
+                Bundle 'tpope/vim-fugitive'
 
                 "dash.vim needs funcoo.vim
                 "Bundle 'rizzatti/funcoo.vim'
                 "Bundle 'rizzatti/dash.vim'
 
-            "endif
+            endif
 
         endif
 
