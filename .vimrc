@@ -1038,8 +1038,9 @@ augroup END
         \ '.jshintrc.js',
         \ '.jshintrc.yaml',
         \ '.jshintrc.yml'
-        \ ], 5)
+        \ ], 3)
     let g:use_jshint_for_javascript = stridx(g:find_file_path, 'jshintrc') > -1
+    let g:use_eslint_for_javascript = stridx(g:find_file_path, 'eslintrc') > -1
 
     let g:find_file_path = FindFilesUp([
         \ 'tslint.json',
@@ -1049,7 +1050,7 @@ augroup END
         \ '.eslintrc.js',
         \ '.eslintrc.yaml',
         \ '.eslintrc.yml'
-        \ ], 5)
+        \ ], 3)
     let g:use_tslint_for_typescript = stridx(g:find_file_path, 'tslint') > -1
 
     unlet g:find_file_path
@@ -1172,7 +1173,7 @@ augroup END
                         \ 'css': ['prettier'],
                         \ 'less': ['prettier'],
                         \ 'scss': ['prettier'],
-                        \ 'javascript': ['eslint', 'prettier'],
+                        \ 'javascript': ['prettier'],
                         \ 'typescript': ['eslint', 'prettier'],
                         \ 'vue': ['eslint', 'prettier'],
                         \ 'c': ['clang-format']
@@ -1181,6 +1182,8 @@ augroup END
             if g:use_jshint_for_javascript
                 let g:ale_linters['javascript'] = ['jshint']
                 let g:ale_fixers['javascript'] = ['prettier']
+            elseif g:use_eslint_for_javascript
+                let g:ale_fixers['javascript'] = ['eslint', 'prettier']
             endif
 
             if g:use_tslint_for_typescript
