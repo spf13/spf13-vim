@@ -84,9 +84,10 @@ augroup END
     set backupcopy=yes
     " Git commits, Subversion commits.
     autocmd vimrc FileType gitcommit,svn setlocal spell
-    autocmd vimrc BufNewFile,BufReadPost *.md,*.mkd set filetype=markdown
-    autocmd vimrc BufNewFile,BufReadPost *.mmd,*.mermaid set filetype=mermaid
-    autocmd vimrc BufNewFile,BufReadPost *.conf     set filetype=conf
+    autocmd vimrc BufNewFile,BufReadPost *.md,*.mkd         set filetype=markdown
+    autocmd vimrc BufNewFile,BufReadPost *.mmd,*.mermaid    set filetype=mermaid
+    autocmd vimrc BufNewFile,BufReadPost *.conf             set filetype=conf
+    autocmd vimrc BufNewFile,BufReadPost *.vm               set filetype=html
     "autocmd vimrc FileType text,wiki,markdown,mkd setlocal spell
     "set hidden                      " allow buffer switching without saving
 
