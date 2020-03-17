@@ -1054,12 +1054,12 @@ augroup END
         \ ], 3)
     let g:use_tslint_for_typescript = stridx(g:find_file_path, 'tslint') > -1
 
-    let g:find_file_path = FindFileUp([
+    let g:find_file_path = FindFilesUp([
         \ '.stylelintrc',
         \ '.stylelintrc.json',
         \ '.stylelintrc.js',
         \ '.stylelintrc.yaml',
-        \ '.stylelintrc.yml',
+        \ '.stylelintrc.yml'
         \], 3)
     let g:use_stylelint_for_style = stridx(g:find_file_path, 'stylelintrc') > -1
 
