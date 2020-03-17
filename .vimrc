@@ -1054,6 +1054,15 @@ augroup END
         \ ], 3)
     let g:use_tslint_for_typescript = stridx(g:find_file_path, 'tslint') > -1
 
+    let g:find_file_path = FindFileUp([
+        \ '.stylelintrc',
+        \ '.stylelintrc.json',
+        \ '.stylelintrc.js',
+        \ '.stylelintrc.yaml',
+        \ '.stylelintrc.yml',
+        \], 3)
+    let g:use_stylelint_for_style = stridx(g:find_file_path, 'stylelintrc') > -1
+
     unlet g:find_file_path
 
     "Syntastic {
@@ -1179,6 +1188,12 @@ augroup END
                         \ 'vue': ['eslint', 'prettier'],
                         \ 'c': ['clang-format']
                         \}
+
+            if g:use_stylelint_for_style
+                let g:ale_fixers['css'] = ['stylelint', 'prettier']
+                let g:ale_fixers['less'] = ['stylelint', 'prettier']
+                let g:ale_fixers['scss'] = ['stylelint', 'prettier']
+            endif
 
             if g:use_jshint_for_javascript
                 let g:ale_linters['javascript'] = ['jshint']
