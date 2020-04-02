@@ -851,7 +851,10 @@ augroup END
                         \ 'pyte',
                         \ 'solarized',
                         \ 'summerfruit',
-                        \ 'OceanicNext'
+                        \ 'OceanicNext',
+                        \ 'nerv-ous',
+                        \ 'vc',
+                        \ 'afterglow'
                         \]
 
         let g:random_theme_start = 2
