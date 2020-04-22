@@ -857,9 +857,21 @@ augroup END
                         \ 'afterglow'
                         \]
 
+        let g:favorite_gui_fonts = [
+                    \ 'Fira\ Code:h12',
+                    \ 'Cascadia\ Code:h12',
+                    \ 'Inconsolata:h14',
+                    \ 'Source\ Code\ Variable:h12',
+                    \ 'Monaco:h12',
+                    \ 'JetBrains\ Mono:h12'
+                    \]
+
         let g:random_theme_start = 2
+
         if !has('gui_running')
             colo lucius
+        else
+            set guifont=Fira\ Code:h12
         endif
     " }
 
@@ -967,25 +979,6 @@ augroup END
     "}
 
     "zoom.vim {
-
-        if has('gui_running')
-            if has('gui_macvim')
-                set guifont=Monaco:h11
-                "\ 'DejaVu Sans Mono:h12',
-                "\ 'Unbuntu Mono:h12'
-                "\ 'Consolas:h12',
-                let g:zoom_favorite_fonts = [
-                    \ 'Inconsolata:h14',
-                    \ 'Menlo:h12',
-                    \ 'Monaco:h11',
-                    \ 'Mononoki:h12'
-                    \ ]
-                let g:zoom_key_map = 1
-                let g:zoom_random_font = 0
-            else
-                set guifont=Consolas:h12
-            endif
-        endif
 
     "}
 
