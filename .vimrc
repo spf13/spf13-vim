@@ -1150,7 +1150,7 @@ augroup END
                         \ 'shell': ['shellcheck', 'language_server'],
                         \ 'c': [],
                         \ 'cpp': [],
-                        \ 'java': [],
+                        \ 'java': ['javac', 'checkstyle'],
                         \ }
 
             let g:ale_sign_column_always = 1
