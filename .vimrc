@@ -292,7 +292,7 @@
     " character) add the following to your .vimrc.before.local file:
     "   let g:spf13_leader='\'
     if !exists('g:spf13_leader')
-        let mapleader = '\ <Space>'
+        let mapleader = '<Space>'
     else
         let mapleader=g:spf13_leader
     endif
