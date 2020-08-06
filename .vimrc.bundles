@@ -55,7 +55,7 @@
 " }
 
 " Initialize Vim-Plug
-source ~/.vim/bundle/vim-plug/plug.vim
+source ~/.vim/autoload/vim-plug/plug.vim
 
 call plug#begin('~/.vim/bundle')
 " Bundles {
