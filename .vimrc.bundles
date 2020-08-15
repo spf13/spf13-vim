@@ -97,7 +97,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'jiangmiao/auto-pairs'
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
             Plug 'junegunn/fzf.vim'
-            Plug 'terryma/vim-multiple-cursors'
+            Plug 'mg979/vim-visual-multi', {'branch': 'master'}
             Plug 'vim-scripts/sessionman.vim'
             Plug 'vim-scripts/matchit.zip'
             if (has("python") || has("python3")) && exists('g:spf13_use_powerline') && !exists('g:spf13_use_old_powerline')

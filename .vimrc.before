@@ -83,14 +83,18 @@
     "   let g:spf13_no_omni_complete = 1
 
     " Don't create default mappings for multicursors
-    " See :help multiple-cursors-mappings
-    "   let g:multi_cursor_use_default_mapping=0
-    "   let g:multi_cursor_next_key='<C-n>'
-    "   let g:multi_cursor_prev_key='<C-p>'
-    "   let g:multi_cursor_skip_key='<C-x>'
-    "   let g:multi_cursor_quit_key='<Esc>'
-    " Require a special keypress to enter multiple cursors mode
-    "   let g:multi_cursor_start_key='+'
+    " See :help visual-multi
+    " If you want to add/change a mapping in your vimrc, first initialize the dictionary:
+    "   let g:VM_default_mappings = 0
+    "   let g:VM_maps = {}
+    "   let g:VM_maps["Find Next"]                   = ']'
+    "   let g:VM_maps["Find Prev"]                   = '['
+    "   let g:VM_maps["Goto Next"]                   = '}'
+    "   let g:VM_maps["Goto Prev"]                   = '{'
+    "   let g:VM_maps["Seek Next"]                   = '<C-f>'
+    "   let g:VM_maps["Seek Prev"]                   = '<C-b>'
+    "   let g:VM_maps["Skip Region"]                 = 'q'
+    "   let g:VM_maps["Remove Region"]               = 'Q'
 
     " Mappings for editing/applying spf13 config
     "   let g:spf13_edit_config_mapping='<leader>ev'
