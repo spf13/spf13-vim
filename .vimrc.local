@@ -1,2 +1,4 @@
 :set mmp=5000
 :set nu
+
+Plugin 'fatih/vim-go'
