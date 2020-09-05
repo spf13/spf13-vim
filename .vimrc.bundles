@@ -96,7 +96,7 @@ call plug#begin('~/.vim/plugged')
             Plug 'tacahiroy/ctrlp-funky'
             Plug 'terryma/vim-multiple-cursors'
             Plug 'vim-scripts/sessionman.vim'
-            Plug 'matchit.zip'
+            Plug 'vim-scripts/matchit.zip'
             if (has("python") || has("python3")) && exists('g:spf13_use_powerline') && !exists('g:spf13_use_old_powerline')
                 Plug 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
             elseif exists('g:spf13_use_powerline') && exists('g:spf13_use_old_powerline')
@@ -188,8 +188,8 @@ call plug#begin('~/.vim/plugged')
             " Pick either python-mode or pyflakes & pydoc
             Plug 'klen/python-mode'
             Plug 'yssource/python.vim'
-            Plug 'python_match.vim'
-            Plug 'pythoncomplete'
+            Plug 'vim-scripts/python_match.vim'
+            Plug 'vim-scripts/pythoncomplete'
         endif
     " }
 
