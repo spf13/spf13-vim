@@ -116,7 +116,7 @@ call plug#begin('~/.vim/plugged')
                 Plug 'vim-scripts/restore_view.vim'
             endif
             Plug 'mhinz/vim-signify'
-            Plug 'tpope/vim-abolish.git'
+            Plug 'tpope/vim-abolish'
             Plug 'osyo-manga/vim-over'
             Plug 'kana/vim-textobj-user'
             Plug 'kana/vim-textobj-indent'
@@ -168,7 +168,7 @@ call plug#begin('~/.vim/plugged')
             Plug 'Shougo/neosnippet-snippets'
             Plug 'honza/vim-snippets'
         elseif count(g:spf13_bundle_groups, 'neocomplete')
-            Plug 'Shougo/neocomplete.vim.git'
+            Plug 'Shougo/neocomplete.vim'
             Plug 'Shougo/neosnippet'
             Plug 'Shougo/neosnippet-snippets'
             Plug 'honza/vim-snippets'
