@@ -58,7 +58,6 @@ call plug#begin('~/.vim/plugged')
 " Bundles {
 
     " Deps {
-        Plug 'gmarik/vundle'
         Plug 'MarcWeber/vim-addon-mw-utils'
         Plug 'tomtom/tlib_vim'
         if executable('ag') || executable('rg')
@@ -79,7 +78,7 @@ call plug#begin('~/.vim/plugged')
     " In your .vimrc.before.local file
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['general', 'writing', 'deoplete', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc',]
+        let g:spf13_bundle_groups=['general', 'writing', 'deoplete', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc','rust', 'markdown']
     endif
 
     " To override all the included bundles, add the following to your
@@ -134,6 +133,8 @@ call plug#begin('~/.vim/plugged')
             Plug 'reedes/vim-textobj-sentence'
             Plug 'reedes/vim-textobj-quote'
             Plug 'reedes/vim-wordy'
+            Plug 'tpope/vim-markdown'
+            Plug 'greyblake/vim-preview'
         endif
     " }
 
@@ -236,6 +237,8 @@ call plug#begin('~/.vim/plugged')
     " Ruby {
         if count(g:spf13_bundle_groups, 'ruby')
             Plug 'tpope/vim-rails'
+            Plug 'tpope/vim-cucumber'
+            Plug 'quentindecock/vim-cucumber-align-pipes'
             let g:rubycomplete_buffer_loading = 1
             "let g:rubycomplete_classes_in_global = 1
             "let g:rubycomplete_rails = 1
@@ -260,17 +263,18 @@ call plug#begin('~/.vim/plugged')
             Plug 'elixir-lang/vim-elixir'
             Plug 'carlosgaldino/elixir-snippets'
             Plug 'mattreduce/vim-mix'
+            endif
+    " }
+
+    " Rust {
+        if count(g:spf13_bundle_groups, 'rust')
+            Plug 'rust-lang/rust.vim'
         endif
     " }
 
     " Misc {
         if count(g:spf13_bundle_groups, 'misc')
-            Plug 'rust-lang/rust.vim'
-            Plug 'tpope/vim-markdown'
-            Plug 'spf13/vim-preview'
-            Plug 'tpope/vim-cucumber'
             Plug 'cespare/vim-toml'
-            Plug 'quentindecock/vim-cucumber-align-pipes'
             Plug 'saltstack/salt-vim'
         endif
     " }
