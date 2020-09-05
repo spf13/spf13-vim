@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-app_dir="$HOME/.spf13-vim-3"
-
 warn() {
     echo "$1" >&2
 }
@@ -13,6 +11,15 @@ die() {
 
 rm $HOME/.vimrc
 rm $HOME/.vimrc.bundles
-rm $HOME/.vim
 
-rm -rf $app_dir
+rm $HOME/.vimrc.before
+
+# Remove fork folder
+rm $HOME/.vimrc.before.fork
+rm $HOME/.vimrc.bundles.fork
+rm $HOME/.vimrc.fork
+
+rm -rf $HOME/.vimbackup 
+rm -rf $HOME/.vimswap 
+rm -rf $HOME/.vimundo 
+rm -rf $HOME/.vimviews 
