@@ -179,8 +179,7 @@ variable_set "$HOME"
 program_must_exist "vim"
 program_must_exist "git"
 
-do_backup       "$HOME/.vim" \
-                "$HOME/.vimrc" \
+do_backup       "$HOME/.vimrc" \
                 "$HOME/.gvimrc"
 
 sync_repo       "$APP_PATH" \
