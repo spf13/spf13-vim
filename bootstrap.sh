@@ -202,4 +202,5 @@ sync_repo       "$HOME/.vim/autoload" \
 setup_plug    "$APP_PATH/.vimrc.bundles.default"
 
 msg             "\nThanks for installing $app_name."
+msg             "\nPlease run pip3 install --upgrade neovim to enjoy deoplete - asynchronous keyword completion system"
 msg             "© `date +%Y` http://vim.spf13.com/"
