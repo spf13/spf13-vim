@@ -635,7 +635,7 @@
     " }
 
     " FZF {
-        if isdirectory(expand("~/.vim/bundle/fzf.vim"))
+        if isdirectory(expand("~/.vim/plugged/fzf.vim"))
             " This is the default extra key bindings
             let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
