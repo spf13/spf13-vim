@@ -97,6 +97,9 @@ call plug#begin('~/.vim/plugged')
             Plug 'jiangmiao/auto-pairs'
             Plug 'ctrlpvim/ctrlp.vim'
             Plug 'tacahiroy/ctrlp-funky'
+            Plug 'junegunn/fzf',{ 'dir': '~/.fzf', 'do': './install --all'  }
+            Plug 'junegunn/fzf.vim'
+            Plug 'airblade/vim-rooter'
             Plug 'terryma/vim-multiple-cursors'
             Plug 'vim-scripts/sessionman.vim'
             Plug 'vim-scripts/matchit.zip'
