@@ -876,8 +876,7 @@
     " }
 
     " Snippets {
-        if count(g:spf13_bundle_groups, 'deoplete') ||
-                    \ count(g:spf13_bundle_groups, 'neocomplete')
+        if count(g:spf13_bundle_groups, 'deoplete')
 
             " Use honza's snippets.
             let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
