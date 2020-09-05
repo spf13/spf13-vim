@@ -100,7 +100,7 @@
     " endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
-    set mouse=a                 " Automatically enable mouse usage
+    set mouse+=a                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
 
@@ -177,13 +177,9 @@
 
 " Vim UI {
 
-    if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/plugged/vim-colors-solarized/colors/solarized.vim"))
-        let g:solarized_termcolors=256
-        let g:solarized_termtrans=1
-        let g:solarized_contrast="normal"
-        let g:solarized_visibility="normal"
-        color solarized             " Load a colorscheme
-    endif
+    color space-vim-dark
+    set termguicolors
+    hi LineNr ctermbg=NONE guibg=NONE
 
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
@@ -880,7 +876,7 @@
     " }
 
     " Snippets {
-        if count(g:spf13_bundle_groups, 'neocomplcache') ||
+        if count(g:spf13_bundle_groups, 'deoplete') ||
                     \ count(g:spf13_bundle_groups, 'neocomplete')
 
             " Use honza's snippets.
@@ -949,13 +945,42 @@
         " See `:echo g:airline_theme_map` for some more choices
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/plugged/vim-airline-themes/"))
+            let g:airline_powerline_fonts = 1
+            let g:airline#extensions#hunks#enabled=0
+            let g:airline#extensions#branch#enabled=1
+            let g:airline#extensions#tabline#enabled = 1
+            let g:airline#extensions#tabline#show_close_button = 0
             if !exists('g:airline_theme')
-                let g:airline_theme = 'solarized'
+                let g:airline_theme = 'violet'
             endif
             if !exists('g:airline_powerline_fonts')
-                " Use the default set of separators with a few customizations
-                let g:airline_left_sep='›'  " Slightly fancier than '>'
-                let g:airline_right_sep='‹' " Slightly fancier than '<'
+                if !exists('g:airline_symbols')
+                    let g:airline_symbols = {}
+                endif
+                " unicode symbols
+                let g:airline_left_sep = '»'
+                let g:airline_left_sep = '▶'
+                let g:airline_right_sep = '«'
+                let g:airline_right_sep = '◀'
+                let g:airline_symbols.crypt = '🔒'
+                let g:airline_symbols.linenr = '␊'
+                let g:airline_symbols.linenr = '␤'
+                let g:airline_symbols.linenr = '¶'
+                let g:airline_symbols.maxlinenr = '☰'
+                let g:airline_symbols.maxlinenr = ''
+                let g:airline_symbols.branch = '⎇'
+                let g:airline_symbols.paste = 'ρ'
+                let g:airline_symbols.paste = 'Þ'
+                let g:airline_symbols.paste = '∥'
+                let g:airline_symbols.spell = 'Ꞩ'
+                let g:airline_symbols.notexists = '∄'
+                let g:airline_symbols.whitespace = 'Ξ'
+                " airline symbols
+                let g:airline_left_alt_sep = ''
+                let g:airline_right_alt_sep = ''
+                let g:airline_symbols.branch = ''
+                let g:airline_symbols.readonly = ''
+                let g:airline_symbols.linenr = ''
             endif
         endif
     " }
