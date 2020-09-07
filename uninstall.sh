@@ -23,3 +23,4 @@ rm -rf $HOME/.vimbackup
 rm -rf $HOME/.vimswap 
 rm -rf $HOME/.vimundo 
 rm -rf $HOME/.vimviews 
+rm -rf $HOME/.vim/autoload
