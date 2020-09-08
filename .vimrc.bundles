@@ -129,6 +129,8 @@ call plug#begin('~/.vim/bundle')
 
     " Writing {
         if count(g:spf13_bundle_groups, 'writing')
+            Plug 'tommcdo/vim-exchange'
+            Plug 'matze/vim-move'
             Plug 'reedes/vim-litecorrect'
             Plug 'reedes/vim-textobj-sentence'
             Plug 'reedes/vim-textobj-quote'
@@ -198,10 +200,11 @@ call plug#begin('~/.vim/bundle')
     " Python {
         if count(g:spf13_bundle_groups, 'python')
             " Pick either python-mode or pyflakes & pydoc
-            Plug 'klen/python-mode'
+            Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
             Plug 'yssource/python.vim'
             Plug 'vim-scripts/python_match.vim'
-            Plug 'vim-scripts/pythoncomplete'
+            Plug 'vim-python/python-syntax'
+            Plug 'nvie/vim-flake8'
         endif
     " }
 
@@ -245,6 +248,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'gorodinskiy/vim-coloresque'
             Plug 'tpope/vim-haml'
             Plug 'mattn/emmet-vim'
+            Plug 'othree/html5.vim'
         endif
     " }
 
