@@ -778,15 +778,17 @@
             let g:deoplete#enable_at_startup = 1
             let g:deoplete#enable_auto_delimiter = 1
             let g:deoplete#force_overwrite_completefunc = 1
-            augroup Options
+
+            augroup DeopleteOptions
                 autocmd!
-                autocmd FileType * call deoplete#custom#option({
-                                            \'max_list': 15,
-                                            \'smart_case': 1,
-                                            \'keyword_patterns': {
-                                                \'default': '\h\w*',
-                                            \}
-                                        \})
+                autocmd FileType *.* call deoplete#custom#option({
+                            \'max_list': 15,
+                            \'smart_case': v:true,
+                            \'min_pattern_length': 1,
+                            \'keyword_patterns': {
+                                    \'default': '\h\w*',
+                                \}
+                            \})<CR>
             augroup END
 
             " Define dictionary.
