@@ -778,7 +778,7 @@
             let g:deoplete#enable_at_startup = 1
             let g:deoplete#enable_auto_delimiter = 1
             let g:deoplete#force_overwrite_completefunc = 1
-            call deoplete#custom#option({
+            let g:deoplete#custom#option({
                         \'max_list': 15,
                         \'smart_case': 1,
                         \'keyword_patterns': {
