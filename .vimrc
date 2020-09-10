@@ -577,7 +577,7 @@
     " }
 
     " AutoCloseTag {
-        " Make it so AutoCloseTag works for xml and xhtml files as well
+        " Make it so AutoCloseTag works for html, xml and xhtml files as well
         au FileType html,xhtml,xml ru ftplugin/html/autoclosetag.vim
         nmap <Leader>ac <Plug>ToggleAutoCloseMappings
     " }
@@ -776,11 +776,15 @@
         if count(g:spf13_bundle_groups, 'deoplete')
             let g:acp_enableAtStartup = 0
             let g:deoplete#enable_at_startup = 1
-            let g:deoplete#enable_smart_case = 1
             let g:deoplete#enable_auto_delimiter = 1
-            let g:deoplete#max_list = 15
             let g:deoplete#force_overwrite_completefunc = 1
-
+            call deoplete#custom#option({
+                        \'max_list': 15,
+                        \'smart_case': 1,
+                        \'keyword_patterns': {
+                                \'default': '\h\w*',
+                            \}
+                        \})
 
             " Define dictionary.
             let g:deoplete#sources#dictionary#dictionaries = {
@@ -788,12 +792,6 @@
                         \ 'vimshell' : $HOME.'/.vimshell_hist',
                         \ 'scheme' : $HOME.'/.gosh_completions'
                         \ }
-
-            " Define keyword.
-            if !exists('g:deoplete#keyword_patterns')
-                let g:deoplete#keyword_patterns = {}
-            endif
-            let g:deoplete#keyword_patterns['default'] = '\h\w*'
 
             " Plugin key-mappings {
                 " These two lines conflict with the default digraph mapping of <C-K>
