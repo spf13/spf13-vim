@@ -782,6 +782,9 @@
             augroup DeopleteOptions
                 autocmd!
                 autocmd FileType *.* call deoplete#custom#option({
+                            \'sources': {
+                                    \'_': ['ale', 'bufer']
+                                \},
                             \'max_list': 15,
                             \'smart_case': v:true,
                             \'min_pattern_length': 1,
