@@ -203,7 +203,6 @@ call plug#begin('~/.vim/bundle')
             Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
             Plug 'yssource/python.vim'
             Plug 'vim-scripts/python_match.vim'
-            Plug 'nvie/vim-flake8'
         endif
     " }
 
