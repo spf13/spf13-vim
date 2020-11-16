@@ -37,7 +37,9 @@ Lastly (and perhaps, most importantly) It is completely cross platform. It works
 
 # Installation
 ## Requirements
-To make all the plugins work, specifically [neocomplete](https://github.com/Shougo/neocomplete.vim), you need [vim with lua](https://github.com/Shougo/neocomplete.vim#requirements).
+To make all the plugins work, you need vim with lua.
+
+**Note:** deoplete requires Neovim(0.3.0+, and of course **latest** is recomended) or Vim8.1 with python 3.6.1+ and timers enabled.
 
 ## Linux, \*nix, Mac OSX Installation
 
@@ -58,7 +60,7 @@ If you have a bash-compatible shell you can run the script directly:
 
 ## Installing on Windows
 
-**WARNING!** this fork is not yet compatible with the follow Windows installation, the below instructions is for the original distribution from Steve Francia's
+**WARNING!** this fork is not yet compatible with the follow Windows installation instructions, the below instructions is for the original distribution from Steve Francia's
 
 On Windows and \*nix [Git] and [Curl] are required. Also, if you haven't done so already, you'll need to install [Vim].
 The quickest option to install all three dependencies ([Git], [Curl], [Vim] and [spf13-vim]) is via [Chocolatey] NuGet. After installing [Chocolatey], execute the following commands on the _command prompt_:
@@ -137,7 +139,7 @@ Alternatively you can manually perform the following steps. If anything has chan
 ```bash
     cd $HOME/to/spf13-vim/
     git pull
-    vim +BundleInstall! +BundleClean +q
+    vim +PlugInstall! +PlugClean +q
 ```
 
 ### Fork me on GitHub
@@ -241,32 +243,32 @@ spf13-vim contains a curated set of popular vim plugins, colors, snippets and sy
 
 Create `~/.vimrc.bundles.local` for any additional bundles.
 
-To add a new bundle, just add one line for each bundle you want to install. The line should start with the word "Bundle" followed by a string of either the vim.org project name or the githubusername/githubprojectname. For example, the github project [spf13/vim-colors](https://github.com/spf13/vim-colors) can be added with the following command
+To add a new bundle, just add one line for each bundle you want to install. The line should start with the word "Plug" followed by a string of either the vim.org project name or the githubusername/githubprojectname. For example, the github project [spf13/vim-colors](https://github.com/spf13/vim-colors) can be added with the following command
 
 ```bash
-    echo Bundle \'spf13/vim-colors\' >> ~/.vimrc.bundles.local
+    echo Plug \'spf13/vim-colors\' >> ~/.vimrc.bundles.local
 ```
 
 Once new plugins are added, they have to be installed.
 
 ```bash
-    vim +BundleInstall! +BundleClean +q
+    vim +PlugInstall! +PlugClean +q
 ```
 
 ## Removing (disabling) an included plugin
 
 Create `~/.vimrc.local` if it doesn't already exist.
 
-Add the UnBundle command to this line. It takes the same input as the Bundle line, so simply copy the line you want to disable and add 'Un' to the beginning.
+Add the UnPlug command to this line. It takes the same input as the Plug line, so simply copy the line you want to disable and add 'Un' to the beginning.
 
 For example, disabling the 'AutoClose' and 'scrooloose/syntastic' plugins
 
 ```bash
-    echo UnBundle \'AutoClose\' >> ~/.vimrc.bundles.local
-    echo UnBundle \'scrooloose/syntastic\' >> ~/.vimrc.bundles.local
+    echo UnPlug \'AutoClose\' >> ~/.vimrc.bundles.local
+    echo UnPlug \'scrooloose/syntastic\' >> ~/.vimrc.bundles.local
 ```
 
-**Remember to run ':BundleClean!' after this to remove the existing directories**
+**Remember to run ':PlugClean!' after this to remove the existing directories**
 
 
 Here are a few of the plugins:
@@ -352,7 +354,7 @@ YouCompleteMe is another amazing completion engine. It is slightly more involved
 
 To enable YouCompleteMe add `youcompleteme` to your list of groups by overriding it in your `.vimrc.before.local` like so: `let g:spf13_bundle_groups=['general', 'programming', 'misc', 'scala', 'youcompleteme']` This is just an example. Remember to choose the other groups you want here.
 
-Once you have done this you will need to get Plug to grab the latest code from git. You can do this by calling `:BundleInstall!`. You should see YouCompleteMe in the list.
+Once you have done this you will need to get Plug to grab the latest code from git. You can do this by calling `:PlugInstall!`. You should see YouCompleteMe in the list.
 
 You will now have the code in your bundles directory and can proceed to compile the core. Change to the directory it has been downloaded to. If you have a vanilla install then `cd ~/.spf13-vim-3/.vim/bundle/YouCompleteMe/` should do the trick. You should see a file in this directory called install.sh. There are a few options to consider before running the installer:
 
