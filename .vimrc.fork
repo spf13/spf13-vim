@@ -150,8 +150,8 @@
 
     " PyMode {
         let g:pymode_lint_checkers = ['flake8']
-        let g:pymode_syntax = g:pymode
-        let g:pymode_syntax_all = g:pymode
+        let g:pymode_syntax = 1
+        let g:pymode_syntax_all = 1
         let g:pymode_lint_on_write = 0
     " }
 
