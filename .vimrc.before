@@ -1,14 +1,14 @@
 " Modeline and Notes {
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
 "
-"                    __ _ _____              _
-"         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
-"        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
-"        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
-"        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
-"            |_|
+"       _ _                                __ _ _____            _
+"      (_) |_ _   _ _____ __    ___ _ __  / _/ |___ /     __   _(_)_ __ ___
+"      | | __| | | |_  / '_ \  / __| '_ \| |_| | |_ \ ____\ \ / / | '_ ` _ \
+"      | | |_| |_| |/ /| |_) | \__ \ |_) |  _| |___) |_____\ V /| | | | | | |
+"     _/ |\__|\__,_/___| .__/  |___/ .__/|_| |_|____/       \_/ |_|_| |_| |_|
+"    |__/              |_|         |_|
 "
-"   This is the personal .vimrc.before file of Steve Francia.
+"   This is the personal .vimrc.before file of jtuzp fork from Steve Francia.
 "   While much of it is beneficial for general use, I would
 "   recommend picking out the parts you want and understand.
 "
@@ -16,7 +16,7 @@
 "   are loaded and the main .vimrc config is run. Most of these
 "   are for preventing mappings or commands from being created.
 "
-"   You can find me at http://spf13.com
+"   You can find the original source at http://spf13.com
 " }
 
 " spf13 options {

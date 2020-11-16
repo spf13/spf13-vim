@@ -1,11 +1,11 @@
-# spf13-vim : Steve Francia's Vim Distribution
+# spf13-vim : jtuzp fork from Steve Francia's Vim Distribution
 
-                    __ _ _____              _
-         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
-        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
-        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
-        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
-            |_|
+       _ _                                __ _ _____            _
+      (_) |_ _   _ _____ __    ___ _ __  / _/ |___ /     __   _(_)_ __ ___
+      | | __| | | |_  / '_ \  / __| '_ \| |_| | |_ \ ____\ \ / / | '_ ` _ \
+      | | |_| |_| |/ /| |_) | \__ \ |_) |  _| |___) |_____\ V /| | | | | | |
+     _/ |\__|\__,_/___| .__/  |___/ .__/|_| |_|____/       \_/ |_|_| |_| |_|
+    |__/              |_|         |_|
 
 spf13-vim is a distribution of vim plugins and resources for Vim, Gvim and [MacVim].
 
@@ -15,7 +15,21 @@ The distribution is completely customisable using a `~/.vimrc.local`, `~/.vimrc.
 
 ![spf13-vim image][spf13-vim-img]
 
-Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses the [Vundle] plugin management system to have a well organized vim directory (Similar to mac's app folders). Vundle also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
+Unlike traditional VIM plugin structure, which similar to UNIX throws all files into common directories, making updating or disabling plugins a real mess, spf13-vim 3 uses the [Plug] plugin management system to have a well organized vim directory (Similar to mac's app folders). Plug also ensures that the latest versions of your plugins are installed and makes it easy to keep them up to date.
+
+This fork includes `.vim_plug.unplug` within `.vimrc` wich has the UnPlug command, so that the user can remove unwanted plugins based from the default list, just like the old Vundle.
+for example, to replace [Syntastic] with [ALE]
+
+In $HOME/.vimrc.bundles.local  
+````
+Plug 'w0rp/ALE'
+UnPlug 'syntastic'
+````
+
+The user is to run
+````
+vim +PlugInstall +PlugClean!
+````
 
 Great care has been taken to ensure that each plugin plays nicely with others, and optional configuration has been provided for what we believe is the most efficient use.
 
@@ -27,22 +41,24 @@ To make all the plugins work, specifically [neocomplete](https://github.com/Shou
 
 ## Linux, \*nix, Mac OSX Installation
 
-The easiest way to install spf13-vim is to use our [automatic installer](https://j.mp/spf13-vim3) by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration. If you are upgrading from a prior version (before 3.0) this is also the recommended installation.
+The easiest way to install spf13-vim is to use our [automatic installer](https://bit.ly/2H31LMx) by simply copying and pasting the following line into a terminal. This will install spf13-vim and backup your existing vim configuration. If you are upgrading from a prior version (before 4.0) this is also the recommended installation.
 
 *Requires Git 1.7+ and Vim 7.3+*
 
 ```bash
 
-    curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+    curl  https://bit.ly/2H31LMx -L > jtuzp-spf13-vim.sh && sh jtuzp-spf13-vim.sh
 ```
 
 If you have a bash-compatible shell you can run the script directly:
 ```bash
 
-    sh <(curl https://j.mp/spf13-vim3 -L)
+    sh <(curl  https://bit.ly/2H31LMx -L)
 ```
 
 ## Installing on Windows
+
+**WARNING!** this fork is not yet compatible with the follow Windows installation, the below instructions is for the original distribution from Steve Francia's
 
 On Windows and \*nix [Git] and [Curl] are required. Also, if you haven't done so already, you'll need to install [Vim].
 The quickest option to install all three dependencies ([Git], [Curl], [Vim] and [spf13-vim]) is via [Chocolatey] NuGet. After installing [Chocolatey], execute the following commands on the _command prompt_:
@@ -76,7 +92,7 @@ After installation try running `git --version` within _command prompt_ (press Wi
 #### Setup [Curl]
 _Instructions blatently copied from vundle readme_
 Installing Curl on Windows is easy as [Curl] is bundled with [msysgit]!
-But before it can be used with [Vundle] it's required make `curl` run in _command prompt_.
+But before it can be used with [Plug] it's required make `curl` run in _command prompt_.
 The easiest way is to create `curl.cmd` with [this content](https://gist.github.com/912993)
 
     @rem Do not use "echo off" to not affect any child calls.
@@ -112,7 +128,7 @@ The simpliest (and safest) way to update is to simply rerun the installer. It wi
 
 ```bash
 
-    curl https://j.mp/spf13-vim3 -L -o - | sh
+    curl  https://bit.ly/2H31LMx -L -o - | sh
 
 ```
 
@@ -281,10 +297,11 @@ functionality to your vim editing.  You can learn more about it with
 * Hide clutter ('\.pyc', '\.git', '\.hg', '\.svn', '\.bzr')
 * Treat NERDTree more like a panel than a split.
 
-## [ctrlp]
-Ctrlp replaces the Command-T plugin with a 100% viml plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files.
+## [FZF]
+FZF replaces the [ctrlp] plugin with a fuzzy finder and asynchronous plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files, and many
+options with a great experience while you are using FZF within vim.
 
-**QuickStart** Launch using `<c-p>`.
+**QuickStart** Launch using `<leader>ff`.
 
 ## [Surround]
 
@@ -315,9 +332,9 @@ filetype. View `help :NERDCommenter` or checkout my post on [NERDCommenter](http
 
 **QuickStart** Toggle comments using `<Leader>c<space>` in Visual or Normal mode.
 
-## [neocomplete]
-
-Neocomplete is an amazing autocomplete plugin with additional support for snippets. It can complete simulatiously from the dictionary, buffer, omnicomplete and snippets. This is the one true plugin that brings Vim autocomplete on par with the best editors.
+## [deoplete]
+Deoplete is the abbreviation of "dark powered neo-completion". It provides an extensible and asynchronous completion framework for neovim/Vim8. Deoplete replaces the old Neocomplete plugin, this plugin also has support for snippets
+It can complete simulatiously from the dictionary, buffer, omnicomplete and snippet.
 
 **QuickStart** Just start typing, it will autocomplete where possible
 
@@ -335,7 +352,7 @@ YouCompleteMe is another amazing completion engine. It is slightly more involved
 
 To enable YouCompleteMe add `youcompleteme` to your list of groups by overriding it in your `.vimrc.before.local` like so: `let g:spf13_bundle_groups=['general', 'programming', 'misc', 'scala', 'youcompleteme']` This is just an example. Remember to choose the other groups you want here.
 
-Once you have done this you will need to get Vundle to grab the latest code from git. You can do this by calling `:BundleInstall!`. You should see YouCompleteMe in the list.
+Once you have done this you will need to get Plug to grab the latest code from git. You can do this by calling `:BundleInstall!`. You should see YouCompleteMe in the list.
 
 You will now have the code in your bundles directory and can proceed to compile the core. Change to the directory it has been downloaded to. If you have a vanilla install then `cd ~/.spf13-vim-3/.vim/bundle/YouCompleteMe/` should do the trick. You should see a file in this directory called install.sh. There are a few options to consider before running the installer:
 
@@ -347,12 +364,14 @@ The plugin is well documented on the site linked above. Be sure to give that a r
 
 For java users wanting to use eclim be sure to add `let g:EclimCompletionMethod = 'omnifunc'` to your .vimrc.local.
 
-## [Syntastic]
+## [ALE]
 
-Syntastic is a syntax checking plugin that runs buffers through external syntax
-checkers as they are saved and opened. If syntax errors are detected, the user
-is notified and is happy because they didn't have to compile their code or
-execute their script to find them.
+ALE (Asynchronous Lint Engine) is a plugin providing linting (syntax checking and semantic errors) in NeoVim 0.2.0+ and Vim 8 while you edit your text files, and acts as a Vim [Language Server Protocol client](https://langserver.org/).
+by default language server feature is disabled, to enable you should set this into your `.vimrc.local` settings.
+
+```
+let g:ale_disable_lsp = 0
+```
 
 ## [AutoClose]
 
@@ -490,7 +509,7 @@ Terminal emulator colorschemes:
 
 ## Snippets
 
-It also contains a very complete set of [snippets](https://github.com/spf13/snipmate-snippets) for use with snipmate or [neocomplete].
+It also contains a very complete set of [snippets](https://github.com/spf13/snipmate-snippets) for use with snipmate or [deoplete].
 
 
 # Intro to VIM
@@ -533,18 +552,19 @@ Here's some tips if you've never used VIM before:
 [spf13-vim]:https://github.com/spf13/spf13-vim
 [contributors]:https://github.com/spf13/spf13-vim/contributors
 
-[Vundle]:https://github.com/gmarik/vundle
+[Plug]:https://github.com/junegunn/vim-plug
 [PIV]:https://github.com/spf13/PIV
 [NERDCommenter]:https://github.com/scrooloose/nerdcommenter
 [Undotree]:https://github.com/mbbill/undotree
 [NERDTree]:https://github.com/scrooloose/nerdtree
 [ctrlp]:https://github.com/kien/ctrlp.vim
 [solarized]:https://github.com/altercation/vim-colors-solarized
-[neocomplete]:https://github.com/shougo/neocomplete
+[deoplete]:https://github.com/Shougo/deoplete.nvim
 [Fugitive]:https://github.com/tpope/vim-fugitive
 [Surround]:https://github.com/tpope/vim-surround
 [Tagbar]:https://github.com/majutsushi/tagbar
 [Syntastic]:https://github.com/scrooloose/syntastic
+[ALE]:(https://github.com/w0rp/ale)
 [vim-easymotion]:https://github.com/Lokaltog/vim-easymotion
 [YouCompleteMe]:https://github.com/Valloric/YouCompleteMe
 [Matchit]:http://www.vim.org/scripts/script.php?script_id=39

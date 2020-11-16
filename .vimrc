@@ -1,18 +1,18 @@
 " Modeline and Notes {
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
-"                    __ _ _____              _
-"         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
-"        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
-"        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
-"        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
-"            |_|
+"       _ _                                __ _ _____            _
+"      (_) |_ _   _ _____ __    ___ _ __  / _/ |___ /     __   _(_)_ __ ___
+"      | | __| | | |_  / '_ \  / __| '_ \| |_| | |_ \ ____\ \ / / | '_ ` _ \
+"      | | |_| |_| |/ /| |_) | \__ \ |_) |  _| |___) |_____\ V /| | | | | | |
+"     _/ |\__|\__,_/___| .__/  |___/ .__/|_| |_|____/       \_/ |_|_| |_| |_|
+"    |__/              |_|         |_|
 "
-"   This is the personal .vimrc file of Steve Francia.
+"   This is the personal .vimrc file of jtuzp fork from Steve Francia.
 "   While much of it is beneficial for general use, I would
 "   recommend picking out the parts you want and understand.
 "
-"   You can find me at http://spf13.com
+"   You can find the original source at http://spf13.com
 "
 "   Copyright 2014 Steve Francia
 "
@@ -199,7 +199,7 @@
 
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
-    "highlight clear CursorLineNr    " Remove highlight color from current line number
+    highlight clear CursorLineNr    " Remove highlight color from current line number
 
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -687,7 +687,7 @@
             nnoremap <silent> <leader>fch :FzfHistory:<CR>
             " Search history
             nnoremap <silent> <leader>fsh :FzfHistory/<CR>
-            
+
             " ag search result (ALT-A to select all, ALT-D to deselect all)
             if executable('ag')
                 nnoremap <silent> <leader>fag :FzfAg<CR>

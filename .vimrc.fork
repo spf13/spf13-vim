@@ -1,0 +1,177 @@
+" Modeline and Notes {
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+"
+"       _ _                                __ _ _____            _
+"      (_) |_ _   _ _____ __    ___ _ __  / _/ |___ /     __   _(_)_ __ ___
+"      | | __| | | |_  / '_ \  / __| '_ \| |_| | |_ \ ____\ \ / / | '_ ` _ \
+"      | | |_| |_| |/ /| |_) | \__ \ |_) |  _| |___) |_____\ V /| | | | | | |
+"     _/ |\__|\__,_/___| .__/  |___/ .__/|_| |_|____/       \_/ |_|_| |_| |_|
+"    |__/              |_|         |_|
+"
+"   This is the personal .vimrc.fork file of jtuzp fork from Steve Francia.
+"   While much of it is beneficial for general use, I would
+"   recommend picking out the parts you want and understand.
+"
+"   You can find the original source at http://spf13.com
+"
+"   Copyright 2014 Steve Francia
+"
+"   Licensed under the Apache License, Version 2.0 (the "License");
+"   you may not use this file except in compliance with the License.
+"   You may obtain a copy of the License at
+"
+"       http://www.apache.org/licenses/LICENSE-2.0
+"
+"   Unless required by applicable law or agreed to in writing, software
+"   distributed under the License is distributed on an "AS IS" BASIS,
+"   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+"   See the License for the specific language governing permissions and
+"   limitations under the License.
+" }
+
+    set nospell
+
+" Vim UI settings {
+    set t_Co=256
+
+    if has("termguicolors")
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+        let &t_ZH = "\e[3m"
+        let &t_ZR = "\e[23m"
+        set termguicolors
+    endif
+
+    if has('nvim')
+       set inccommand=nosplit
+    endif
+
+    " PaperColor Settings {
+        let g:PaperColor_Theme_Options = {
+                    \   'theme': {
+                    \     'default': {
+                    \       'allow_bold': 1,
+                    \       'allow_italic': 1
+                    \     },
+                    \     'default.dark': {
+                    \       'override' : {
+                    \         'linenumber_bg' : ['#262626', '234']
+                    \       }
+                    \     },
+                    \     'default.light': {
+                    \       'override' : {
+                    \         'linenumber_bg' : ['#303030', '234']
+                    \       }
+                    \     }
+                    \   }
+                    \ }
+    " }
+
+    " Gruvbox {
+        let g:gruvbox_contrast_dark = 'hard'
+        let g:gruvbox_filetype_hi_groups = 1
+        let g:gruvbox_number_column="bg1"
+        let g:gruvbox_italic = 1
+        let g:gruvbox_plugin_hi_groups = 1
+    " }
+
+    " Srcery {
+        let g:srcery_italic = 1
+        let g:srcery_bold = 1
+        let g:srcery_inverse_match_paren = 1
+    " }
+" }
+
+" Key (re) Mappings {
+    " Achieve a productivity ninja skills
+    noremap   <Up>      <NOP>
+    noremap   <Down>    <NOP>
+    noremap   <Left>    <NOP>
+    noremap   <Right>   <NOP>
+
+    " Map Ctrl-movement keys to window switching
+    if OSX()
+        map <M-D-k> <M-w><Up>
+        map <M-D-j> <M-w><Down>
+        map <M-D-l> <M-w><Right>
+        map <M-D-h> <M-w><Left>
+    else
+        map <M-k> <C-w><Up>
+        map <M-j> <C-w><Down>
+        map <M-l> <C-w><Right>
+        map <M-h> <C-w><Left>
+    endif
+
+    " Open new tabs and manage flow movement
+    map <leader>tn :tabnew<CR>
+    map <leader>tc :tabclose<CR>
+    map <leader>to :tabonly<CR>
+    map <leader>tf :tabfirst<CR>
+    map <leader>tl :tablast<CR>
+    map <leader>tx :tabnext<CR>
+" }
+
+" Plugins {
+    " Indentline {
+        let g:indentLine_setColors = 1
+    " }
+
+    " Vim move {
+        let g:move_key_modifier = 'C'
+    " }
+
+    " FZF {
+        let g:fzf_layout = { 'down': '~40%' }
+        let g:fzf_colors =
+                    \ { 'fg':    ['fg', 'Normal'],
+                    \ 'bg':      ['bg', 'Normal'],
+                    \ 'hl':      ['fg', 'Comment'],
+                    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+                    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+                    \ 'hl+':     ['fg', 'Statement'],
+                    \ 'info':    ['fg', 'PreProc'],
+                    \ 'border':  ['fg', 'Ignore'],
+                    \ 'prompt':  ['fg', 'Conditional'],
+                    \ 'pointer': ['fg', 'Exception'],
+                    \ 'marker':  ['fg', 'Keyword'],
+                    \ 'spinner': ['fg', 'Label'],
+                    \ 'header':  ['fg', 'Comment'] }
+    " }
+
+    " Markdown {
+        let g:markdown_fenced_languages = ['html', 'python', 'ruby', 'bash=sh']
+        let g:markdown_syntax_conceal = 0
+    " }
+
+    " Editorconfig {
+        let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*', 'fzf://.*']
+        let g:EditorConfig_max_line_indicator = 'line'
+    " }
+
+    " PyMode {
+        let g:pymode_lint_checkers = ['flake8']
+        let g:pymode_syntax = g:pymode
+        let g:pymode_syntax_all = g:pymode
+        let g:pymode_lint_on_write = 0
+    " }
+
+    " Javascript tweaks {
+        let g:javascript_plugin_flow = 1
+    " }
+
+    " NERDTree & WebDevIcons {
+        let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+        let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+        let g:DevIconsEnableFoldersOpenClose = 1
+        let g:DevIconsEnableFolderExtensionPatternMatching = 1
+    " }
+
+    " ALE {
+        " Set this. Airline will handle the rest.
+        let g:airline#extensions#ale#enabled = 1
+
+        " Check lint only when file is saved
+        let g:ale_lint_on_text_changed = 'never'
+        let g:ale_lint_on_insert_leave = 0
+    " }
+" }
