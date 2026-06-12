@@ -86,6 +86,7 @@ do_backup() {
     if [ -e "$1" ] || [ -e "$2" ] || [ -e "$3" ]; then
         msg "Attempting to back up your original vim configuration."
         today=`date +%Y%m%d_%s`
+        # remove the current vim config and backup
         for i in "$1" "$2" "$3"; do
             [ -e "$i" ] && [ ! -L "$i" ] && mv -v "$i" "$i.$today";
         done
@@ -124,6 +125,7 @@ create_symlinks() {
     lnif "$source_path/.vimrc"         "$target_path/.vimrc"
     lnif "$source_path/.vimrc.bundles" "$target_path/.vimrc.bundles"
     lnif "$source_path/.vimrc.before"  "$target_path/.vimrc.before"
+    lnif "$source_path/.vimrc.local"  "$target_path/.vimrc.local"
     lnif "$source_path/.vim"           "$target_path/.vim"
 
     if program_exists "nvim"; then
@@ -131,7 +133,8 @@ create_symlinks() {
         lnif "$source_path/.vimrc"     "$target_path/.config/nvim/init.vim"
     fi
 
-    touch  "$target_path/.vimrc.local"
+    # Use the file in the spf13-vim-3 project, not create the file in the ~ dir
+    #touch  "$target_path/.vimrc.local"
 
     ret="$?"
     success "Setting up vim symlinks."

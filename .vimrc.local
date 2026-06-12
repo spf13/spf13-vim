@@ -1,0 +1,163 @@
+" 关闭NERDTree快捷键
+" map <leader>t :NERDTreeToggle<CR>
+" 显示行号
+let NERDTreeShowLineNumbers=1
+let NERDTreeAutoCenter=1
+" 是否显示隐藏文件
+let NERDTreeShowHidden=1
+" 设置宽度
+let NERDTreeWinSize=31
+" 在终端启动vim时，共享NERDTree
+let g:nerdtree_tabs_open_on_console_startup=1
+" 忽略一下文件的显示
+let NERDTreeIgnore=['\.pyc','\~$','\.swp']
+" 显示书签列表
+let NERDTreeShowBookmarks=1
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "?",
+    \ "Staged"    : "?",
+    \ "Untracked" : "?",
+    \ "Renamed"   : "?",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "?",
+    \ "Dirty"     : "?",
+    \ "Clean"     : "??",
+    \ "Unknown"   : "?"
+    \ }
+" Show the line number
+set nu
+" Enable wrap
+set wrap
+" Auto open NERDTree when enter vim
+" Use vim, not vim ./dir
+autocmd vimenter * NERDTree
+" NERDTree config
+map <silent><F2> :NERDTreeToggle<CR>
+imap <F2> <ESC> :NERDTreeToggle<CR>
+"Use the pre dir tree
+"nmap <F2> :NERDTreeToggle<CR> :NERDTreeMirror<CR>
+ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+
+
+"安装tagbar插件
+""设置tagbar使用的ctags的插件,必须要设置对
+let g:tagbar_ctags_bin='/usr/bin/ctags'
+"设置tagbar的窗口宽度
+"let g:tagbar_width=30
+""设置tagbar的窗口显示的位置,为左边
+let g:tagbar_right=1  
+"打开文件自动 打开tagbar
+"autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()  
+let Tlist_Show_One_File=1
+let Tlist_OnlyWindow=1
+let Tlist_Use_Right_Window=1
+let Tlist_Sort_Type='name'
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Show_Menu=1
+let Tlist_Max_Submenu_Items=10
+let Tlist_Max_Tag_length=20
+let Tlist_Use_SingleClick=0
+let Tlist_Auto_Open=0
+let Tlist_Close_On_Select=0
+let Tlist_File_Fold_Auto_Close=1
+let Tlist_GainFocus_On_ToggleOpen=1
+let Tlist_Process_File_Always=1
+let Tlist_WinHeight=10
+let Tlist_WinWidth=30
+let Tlist_Use_Horiz_Window=0
+map <silent><F3> :TagbarToggle<CR>
+imap <F3> <ESC> :TagbarToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+colorschem murphy
+"In normal mode, ; is equal to :
+nmap ; :
+
+" Buf explore
+nnoremap <silent> <leader>f :CtrlPMRU<CR>
+
+" airline statusline etc.
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+
+" Close the current buffer
+map <leader>bd :Bclose<cr>:tabclose<cr>gT
+
+" Close all the buffers
+map <leader>ba :bufdo bd<cr>
+
+map <leader>l :bnext<cr>
+map <leader>h :bprevious<cr>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove 
+map <leader>t<leader> :tabnext 
+
+" Let 'tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
+""""""""""""""""""""""""""""""
+" => bufExplorer plugin
+""""""""""""""""""""""""""""""
+" Disalbe the bufExplorer, Because it conflict with many other vim plugs
+" When enable it often pop the warning as follow:
+" Error detected while processing function <SNR>49_BEActivateBuffer:
+" line   18:
+" E684: list index out of range: 2  
+" This will disable the bufExplorer
+let g:bufexplorer_version = "disabled"
+let g:bufExplorerDefaultHelp=0
+let g:bufExplorerShowRelativePath=1
+let g:bufExplorerFindActive=1
+let g:bufExplorerSortBy='name'
+"map <leader>o :BufExplorer<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vimroom
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:goyo_width=100
+let g:goyo_margin_top = 2
+let g:goyo_margin_bottom = 2
+nnoremap <silent> <leader>z :Goyo<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Global copy/paste
+" Use the global clipbord by install vim-gnome
+" See: https://www.cnblogs.com/songlen/p/6883522.html
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set clipboard=unnamedplus
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => cscope quickfix
+"See:
+" https://stackoverflow.com/questions/28185067/vim-go-to-next-search-result-across-multiple-files
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Replaced by the gutentags_plus plug@2019-08-02
+" set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+" view the list of matches with:
+" :cw[indow] Open the quickfix window
+map <silent><F5> :cw<CR>
+imap <F5> <ESC> :cw<CR>
+" :ccl[ose] Close the quickfix window
+nmap <S-c> :ccl<cr>
+map <silent><F4> :ccl<CR>
+imap <F4> <ESC> :ccl<CR>
+" :[count]cn[ext][!]
+nmap <S-z> :cn<cr>
+" :[count]cp[revious][!]
+nmap <S-x> :cp<cr>
+
+" Use the new colorscheme plug
+colorscheme forest-night
+let g:airline_theme = 'forest_night'
+
+
+

@@ -1,5 +1,5 @@
 " Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=9 foldmethod=marker spell:
 "
 "                    __ _ _____              _
 "         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
@@ -205,7 +205,7 @@
         set laststatus=2
 
         " Broken down into easily includeable segments
-        set statusline=%<%f\                     " Filename
+        set statusline=%<%F\                     " Filename,%f->%F
         set statusline+=%w%h%m%r                 " Options
         if !exists('g:override_spf13_bundles')
             set statusline+=%{fugitive#statusline()} " Git Hotness
@@ -229,7 +229,8 @@
     set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
-    set foldenable                  " Auto fold code
+    "set foldenable                  " Auto fold code
+    set nofoldenable                  " Not Auto fold code
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
@@ -370,7 +371,11 @@
     if !exists('g:spf13_no_keyfixes')
         if has("user_commands")
             command! -bang -nargs=* -complete=file E e<bang> <args>
-            command! -bang -nargs=* -complete=file W w<bang> <args>
+            "command! -bang -nargs=* -complete=file W w<bang> <args>
+            "
+            " Sample command W
+            "
+            command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
             command! -bang -nargs=* -complete=file Wq wq<bang> <args>
             command! -bang -nargs=* -complete=file WQ wq<bang> <args>
             command! -bang Wa wa<bang>
@@ -581,7 +586,9 @@
             let NERDTreeShowBookmarks=1
             let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
             let NERDTreeChDirMode=0
-            let NERDTreeQuitOnOpen=1
+            " Notice: If let it =1, the tree will auto close after the file
+            " open
+            let NERDTreeQuitOnOpen=0
             let NERDTreeMouseMode=2
             let NERDTreeShowHidden=1
             let NERDTreeKeepTreeInNewTab=1
