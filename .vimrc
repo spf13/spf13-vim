@@ -561,9 +561,39 @@
     " }
 
     " AutoCloseTag {
-        " Make it so AutoCloseTag works for xml and xhtml files as well
-        au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
         nmap <Leader>ac <Plug>ToggleAutoCloseMappings
+        " filenames like *.xml, *.html, *.xhtml, ...
+        " These are the file extensions where this plugin is enabled.
+        "
+        let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+
+        " filenames like *.xml, *.xhtml, ...
+        " This will make the list of non-closing tags self-closing in the specified files.
+        "
+        let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+
+        " filetypes like xml, html, xhtml, ...
+        " These are the file types where this plugin is enabled.
+        "
+        let g:closetag_filetypes = 'html,xhtml,phtml'
+
+        " filetypes like xml, xhtml, ...
+        " This will make the list of non-closing tags self-closing in the specified files.
+        "
+        let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+        " integer value [0|1]
+        " This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+        "
+        let g:closetag_emptyTags_caseSensitive = 1
+
+        " Shortcut for closing tags, default is '>'
+        "
+        let g:closetag_shortcut = '>'
+
+        " Add > at current position without closing the current tag, default is ''
+        "
+        let g:closetag_close_shortcut = '<leader>>'
     " }
 
     " SnipMate {
@@ -1078,7 +1108,7 @@
             elseif OSX() && has("gui_running")
                 set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
             elseif WINDOWS() && has("gui_running")
-                set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
+                set guifont=Consolas-with-Yahei:h10,Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10,Microsoft_YaHei_UI:h10
             endif
         endif
     else

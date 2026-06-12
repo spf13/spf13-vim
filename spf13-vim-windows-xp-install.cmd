@@ -33,7 +33,7 @@ REM    limitations under the License.
     chdir /d "%ORIGINAL_DIR%"
 ) else (
     echo cloning spf13-vim
-    call git clone -b 3.0 git://github.com/spf13/spf13-vim.git "%APP_PATH%"
+    call git clone -b 3.0 https://github.com/StarryLeo/spf13-vim.git "%APP_PATH%"
 )
 
 @if not exist  "%APP_PATH%\.vim\bundle" call mkdir "%APP_PATH%\.vim\bundle"
@@ -46,5 +46,5 @@ call copy "%APP_PATH%\.vimrc.bundles.fork" "%HOME%\.vimrc.bundles.fork"
 call copy "%APP_PATH%\.vimrc.before" "%HOME%\.vimrc.before"
 call copy "%APP_PATH%\.vimrc.before.fork" "%HOME%\.vimrc.before.fork"
 
-@if not exist "%HOME%/.vim/bundle/vundle" call git clone https://github.com/gmarik/vundle.git "%HOME%/.vim/bundle/vundle"
-call vim -u "%APP_PATH%/.vimrc.bundles" - +BundleInstall! +BundleClean +qall
+@if not exist "%HOME%/.vim/bundle/Vundle.vim" call git clone https://github.com/VundleVim/Vundle.vim.git "%HOME%/.vim/bundle/Vundle.vim"
+call vim -u "%APP_PATH%/.vimrc.bundles" - +PluginInstall! +PluginClean +qall
