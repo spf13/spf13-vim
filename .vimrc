@@ -67,6 +67,13 @@
 
 " }
 
+" Load Vim Plug - UnPlug Function {
+    if filereadable(expand("~/.spf13-vim-3/.vim_plug.unplug"))
+        source ~/.spf13-vim-3/.vim_plug.unplug"
+    endif
+" }
+
+
 " Use before config if available {
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
@@ -207,7 +214,7 @@
         " Broken down into easily includeable segments
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
-        if !exists('g:override_spf13_bundles')
+        if !exists('g:override_spf13_bundles') && exists('*fugitive#statusline')
             set statusline+=%{fugitive#statusline()} " Git Hotness
         endif
         set statusline+=\ [%{&ff}/%Y]            " Filetype
@@ -589,6 +596,11 @@
         endif
     " }
 
+    " NerdCommenter {
+            " Add space when comment
+            let NERDSpaceDelims=1
+    " }
+
     " Tabularize {
         if isdirectory(expand("~/.vim/bundle/tabular"))
             nmap <Leader>a& :Tabularize /&<CR>
@@ -751,28 +763,28 @@
         endif
     " }
 
-    " neocomplete {
-        if count(g:spf13_bundle_groups, 'neocomplete')
+    " deoplete {
+        if count(g:spf13_bundle_groups, 'deoplete')
             let g:acp_enableAtStartup = 0
-            let g:neocomplete#enable_at_startup = 1
-            let g:neocomplete#enable_smart_case = 1
-            let g:neocomplete#enable_auto_delimiter = 1
-            let g:neocomplete#max_list = 15
-            let g:neocomplete#force_overwrite_completefunc = 1
+            let g:deoplete#enable_at_startup = 1
+            let g:deoplete#enable_smart_case = 1
+            let g:deoplete#enable_auto_delimiter = 1
+            let g:deoplete#max_list = 15
+            let g:deoplete#force_overwrite_completefunc = 1
 
 
             " Define dictionary.
-            let g:neocomplete#sources#dictionary#dictionaries = {
+            let g:deoplete#sources#dictionary#dictionaries = {
                         \ 'default' : '',
                         \ 'vimshell' : $HOME.'/.vimshell_hist',
                         \ 'scheme' : $HOME.'/.gosh_completions'
                         \ }
 
             " Define keyword.
-            if !exists('g:neocomplete#keyword_patterns')
-                let g:neocomplete#keyword_patterns = {}
+            if !exists('g:deoplete#keyword_patterns')
+                let g:deoplete#keyword_patterns = {}
             endif
-            let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+            let g:deoplete#keyword_patterns['default'] = '\h\w*'
 
             " Plugin key-mappings {
                 " These two lines conflict with the default digraph mapping of <C-K>
@@ -800,21 +812,21 @@
                                 \ "\<C-e>" : "\<Plug>(neosnippet_expand_or_jump)")
                     smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
-                    inoremap <expr><C-g> neocomplete#undo_completion()
-                    inoremap <expr><C-l> neocomplete#complete_common_string()
-                    "inoremap <expr><CR> neocomplete#complete_common_string()
+                    inoremap <expr><C-g> deoplete#undo_completion()
+                    inoremap <expr><C-l> deoplete#complete_common_string()
+                    "inoremap <expr><CR> deoplete#complete_common_string()
 
                     " <CR>: close popup
                     " <s-CR>: close popup and save indent.
-                    inoremap <expr><s-CR> pumvisible() ? neocomplete#smart_close_popup()."\<CR>" : "\<CR>"
+                    inoremap <expr><s-CR> pumvisible() ? deoplete#smart_close_popup()."\<CR>" : "\<CR>"
 
                     function! CleverCr()
                         if pumvisible()
                             if neosnippet#expandable()
                                 let exp = "\<Plug>(neosnippet_expand)"
-                                return exp . neocomplete#smart_close_popup()
+                                return exp . deoplete#smart_close_popup()
                             else
-                                return neocomplete#smart_close_popup()
+                                return deoplete#smart_close_popup()
                             endif
                         else
                             return "\<CR>"
@@ -824,8 +836,8 @@
                     " <CR> close popup and save indent or expand snippet
                     imap <expr> <CR> CleverCr()
                     " <C-h>, <BS>: close popup and delete backword char.
-                    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-                    inoremap <expr><C-y> neocomplete#smart_close_popup()
+                    inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+                    inoremap <expr><C-y> deoplete#smart_close_popup()
                 endif
                 " <TAB>: completion.
                 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -847,7 +859,7 @@
                         if neosnippet#expandable_or_jumpable()
                             return "\<Plug>(neosnippet_expand_or_jump)"
                         else
-                            return neocomplete#start_manual_complete()
+                            return deoplete#start_manual_complete()
                         endif
                     endif
                 endfunction
@@ -856,14 +868,14 @@
             " }
 
             " Enable heavy omni completion.
-            if !exists('g:neocomplete#sources#omni#input_patterns')
-                let g:neocomplete#sources#omni#input_patterns = {}
+            if !exists('g:deoplete#sources#omni#input_patterns')
+                let g:deoplete#sources#omni#input_patterns = {}
             endif
-            let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-            let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-            let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-            let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-            let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+            let g:deoplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+            let g:deoplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+            let g:deoplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+            let g:deoplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+            let g:deoplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
     " }
     " neocomplcache {
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
@@ -983,7 +995,7 @@
 
     " Snippets {
         if count(g:spf13_bundle_groups, 'neocomplcache') ||
-                    \ count(g:spf13_bundle_groups, 'neocomplete')
+                    \ count(g:spf13_bundle_groups, 'deoplete')
 
             " Use honza's snippets.
             let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
@@ -1061,9 +1073,6 @@
             endif
         endif
     " }
-
-
-
 " }
 
 " GUI Settings {

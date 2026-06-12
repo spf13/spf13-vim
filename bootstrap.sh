@@ -17,11 +17,11 @@
 ############################  SETUP PARAMETERS
 app_name='spf13-vim'
 [ -z "$APP_PATH" ] && APP_PATH="$HOME/.spf13-vim-3"
-[ -z "$REPO_URI" ] && REPO_URI='https://github.com/spf13/spf13-vim.git'
-[ -z "$REPO_BRANCH" ] && REPO_BRANCH='3.0'
+[ -z "$REPO_URI" ] && REPO_URI='https://github.com/compleatguru/spf13-vim.git'
+[ -z "$REPO_BRANCH" ] && REPO_BRANCH='feature/vim-plug'
 debug_mode='0'
 fork_maintainer='0'
-[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
+[ -z "$VIM_PLUG_URI" ] && VIM_PLUG_URI="https://github.com/junegunn/vim-plug.git"
 
 ############################  BASIC SETUP TOOLS
 msg() {
@@ -157,20 +157,20 @@ setup_fork_mode() {
     fi
 }
 
-setup_vundle() {
+setup_vim_plug() {
     local system_shell="$SHELL"
     export SHELL='/bin/sh'
 
     vim \
         -u "$1" \
         "+set nomore" \
-        "+BundleInstall!" \
-        "+BundleClean" \
+        "+PlugInstall!" \
+        "+PlugClean" \
         "+qall"
 
     export SHELL="$system_shell"
 
-    success "Now updating/installing plugins using Vundle"
+    success "Now updating/installing plugins using Vim-Plug"
     debug
 }
 
@@ -195,12 +195,13 @@ setup_fork_mode "$fork_maintainer" \
                 "$APP_PATH" \
                 "$HOME"
 
-sync_repo       "$HOME/.vim/bundle/vundle" \
-                "$VUNDLE_URI" \
+sync_repo       "$HOME/.vim/autoload/vim-plug" \
+                "$VIM_PLUG_URI" \
                 "master" \
-                "vundle"
+                "vim-plug"
 
-setup_vundle    "$APP_PATH/.vimrc.bundles.default"
+setup_vim_plug    "$APP_PATH/.vimrc.bundles.default"
 
+msg             "\nPlease run pip3 install --upgrade neovim to enjoy deoplete - asynchronous keyword completion system"
 msg             "\nThanks for installing $app_name."
 msg             "© `date +%Y` http://vim.spf13.com/"

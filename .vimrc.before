@@ -95,7 +95,7 @@
     " Mappings for editing/applying spf13 config
     "   let g:spf13_edit_config_mapping='<leader>ev'
     "   let g:spf13_apply_config_mapping='<leader>sv'
-    
+
 " }
 
 " Use fork before if available {
