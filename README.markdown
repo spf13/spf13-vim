@@ -239,7 +239,7 @@ Once new plugins are added, they have to be installed.
 
 ## Removing (disabling) an included plugin
 
-Create `~/.vimrc.local` if it doesn't already exist.
+Create `~/.vimrc.bundles.local` if it doesn't already exist.
 
 Add the UnBundle command to this line. It takes the same input as the Bundle line, so simply copy the line you want to disable and add 'Un' to the beginning.
 
